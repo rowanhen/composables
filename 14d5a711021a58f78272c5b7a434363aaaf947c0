@@ -1,0 +1,23 @@
+src/tokens/semantic.json
+  ee892091d0b14936 90,147,159,161,163,165,187,189,197-199,201,209,211,213,215
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.4",
+  "base_commit_sha": "14d5a711021a58f78272c5b7a434363aaaf947c0",
+  "prompts": {
+    "ee892091d0b14936": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7502c2f3-d948-403c-8095-2de9e7ddc078",
+        "model": "claude-opus-4-5-20251101"
+      },
+      "human_author": "Rowan Henseleit <rowan.henseleit@marshmallow.co>",
+      "messages": [],
+      "total_additions": 18,
+      "total_deletions": 456,
+      "accepted_lines": 17,
+      "overriden_lines": 0
+    }
+  }
+}
