@@ -1,0 +1,107 @@
+showcase/components/skeleton-showcase.tsx
+  1e4f648f1d198447 1-28
+showcase/components/cards-showcase.tsx
+  1e4f648f1d198447 1-72
+showcase/components/alerts-showcase.tsx
+  1e4f648f1d198447 1-80
+showcase/components/separator-showcase.tsx
+  1e4f648f1d198447 1-27
+showcase/components/alert-dialog-showcase.tsx
+  1e4f648f1d198447 1-78
+src/components/ui/calendar.tsx
+  1e4f648f1d198447 33,50,91,94,111,210
+showcase/components/scroll-area-showcase.tsx
+  1e4f648f1d198447 1-53
+showcase/components/tooltip-showcase.tsx
+  1e4f648f1d198447 1-40
+showcase/components/table-showcase.tsx
+  1e4f648f1d198447 1-65
+showcase/components/responsive-grid-showcase.tsx
+  1e4f648f1d198447 1-58
+showcase/components/breadcrumb-showcase.tsx
+  1e4f648f1d198447 1-34
+src/components/ui/badge.tsx
+  1e4f648f1d198447 21-25
+showcase/components/spacing-showcase.tsx
+  1e4f648f1d198447 1-48
+showcase/components/grid-showcase.tsx
+  1e4f648f1d198447 1-96
+showcase/components/dropzone-showcase.tsx
+  1e4f648f1d198447 1-63
+src/components/ui/button.tsx
+  1e4f648f1d198447 19-23
+showcase/components/buttons-showcase.tsx
+  1e4f648f1d198447 1-107
+showcase/components/popover-showcase.tsx
+  1e4f648f1d198447 1-47
+showcase/components/index.ts
+  1e4f648f1d198447 1-36
+showcase/components/dialog-showcase.tsx
+  1e4f648f1d198447 1-57
+showcase/components/tabs-showcase.tsx
+  1e4f648f1d198447 1-57
+src/components/ui/alert.tsx
+  1e4f648f1d198447 16-18
+src/components/ui/accordion.tsx
+  1e4f648f1d198447 2,6-18,20-21,23-24,28-29,43-45,108-109
+showcase/components/item-showcase.tsx
+  1e4f648f1d198447 1-111
+showcase/components/calendar-showcase.tsx
+  1e4f648f1d198447 1-70
+showcase/components/container-showcase.tsx
+  1e4f648f1d198447 1-32
+showcase/components/empty-showcase.tsx
+  1e4f648f1d198447 1-28
+showcase/components/sheet-showcase.tsx
+  1e4f648f1d198447 1-103
+showcase/components/toggle-showcase.tsx
+  1e4f648f1d198447 1-38
+showcase/app.tsx
+  1e4f648f1d198447 5,14-51,69-70,82-86,151-202
+showcase/components/dropdown-menu-showcase.tsx
+  1e4f648f1d198447 1-38
+showcase/components/select-showcase.tsx
+  1e4f648f1d198447 1-42
+showcase/components/slider-showcase.tsx
+  1e4f648f1d198447 1-24
+showcase/components/typography-showcase.tsx
+  1e4f648f1d198447 1-59
+showcase/components/form-controls-showcase.tsx
+  1e4f648f1d198447 1-94
+showcase/components/badges-showcase.tsx
+  1e4f648f1d198447 1-41
+showcase/components/color-tokens.tsx
+  1e4f648f1d198447 1-74
+showcase/components/showcase-section.tsx
+  1e4f648f1d198447 1-84
+showcase/components/accordion-showcase.tsx
+  1e4f648f1d198447 1-71
+showcase/components/collapsible-showcase.tsx
+  1e4f648f1d198447 1-56
+showcase/components/pagination-showcase.tsx
+  1e4f648f1d198447 1-44
+showcase/components/stack-showcase.tsx
+  1e4f648f1d198447 1-81
+showcase/components/resizable-showcase.tsx
+  1e4f648f1d198447 1-51
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.4",
+  "base_commit_sha": "9dba60d165f3cf3fef8fc3595cb132c25943cad8",
+  "prompts": {
+    "1e4f648f1d198447": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7a92d124-b340-4497-bcc7-bea0d5d1bce7",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Rowan Henseleit <rowan.henseleit@marshmallow.co>",
+      "messages": [],
+      "total_additions": 2365,
+      "total_deletions": 1564,
+      "accepted_lines": 2329,
+      "overriden_lines": 0
+    }
+  }
+}
