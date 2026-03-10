@@ -1,0 +1,27 @@
+lint-rules/no-hardcoded-duration.grit
+  2e546ed815fad5c7 7
+lint-rules/no-hardcoded-opacity.grit
+  2e546ed815fad5c7 7
+lint-rules/no-hardcoded-z-index.grit
+  2e546ed815fad5c7 7
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.4",
+  "base_commit_sha": "6e7c9ec48ce1abf520f437ce078df7fced4c4ae2",
+  "prompts": {
+    "2e546ed815fad5c7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "be79da30-dbe3-4cf9-9482-021e5dae3397",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Rowan Henseleit <rowan.henseleit@marshmallow.co>",
+      "messages": [],
+      "total_additions": 17,
+      "total_deletions": 7,
+      "accepted_lines": 14,
+      "overriden_lines": 0
+    }
+  }
+}
