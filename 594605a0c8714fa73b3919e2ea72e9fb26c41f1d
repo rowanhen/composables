@@ -1,0 +1,70 @@
+registry/components/ui/button.tsx
+  d5c03bd8c1e3ebdb 29
+registry/components/ui-extended/scroll-area.tsx
+  d5c03bd8c1e3ebdb 30-33
+src/components/ui/slider.tsx
+  d5c03bd8c1e3ebdb 55
+src/components/ui/radio-group.tsx
+  d5c03bd8c1e3ebdb 30
+registry/components/ui/checkbox.tsx
+  d5c03bd8c1e3ebdb 11
+showcase/components/token-config-panel.tsx
+  d5c03bd8c1e3ebdb 99-103,107-115,123,125-127,133-134,145-146,206,557-574,593,596,611,614
+src/components/ui-extended/scroll-area.tsx
+  d5c03bd8c1e3ebdb 30-33
+registry/components/ui/radio-group.tsx
+  d5c03bd8c1e3ebdb 30
+registry/components/ui/slider.tsx
+  d5c03bd8c1e3ebdb 55
+registry/components/ui/switch.tsx
+  d5c03bd8c1e3ebdb 18,25
+src/components/ui/switch.tsx
+  d5c03bd8c1e3ebdb 18,25
+registry/components/ui/typography.tsx
+  d5c03bd8c1e3ebdb 10-13,16-21,24-26,30,32,36,40,42
+src/components/ui/tabs.tsx
+  d5c03bd8c1e3ebdb 25
+registry/components/ui/tabs.tsx
+  d5c03bd8c1e3ebdb 25
+src/components/ui/checkbox.tsx
+  d5c03bd8c1e3ebdb 11
+src/components/ui/button.tsx
+  d5c03bd8c1e3ebdb 29
+src/index.css
+  d5c03bd8c1e3ebdb 45-47,49-53,55-56,58-62,64-65,67-68,70-71,73-74,76-77,79-80,82-83,85-86,88-89,91-94,96-100,117-122
+src/components/ui/typography.tsx
+  d5c03bd8c1e3ebdb 10-13,16-21,24-26,30,32,36,40,42
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.4",
+  "base_commit_sha": "594605a0c8714fa73b3919e2ea72e9fb26c41f1d",
+  "prompts": {
+    "c0c9ee3a904626d9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d69799b9-9010-49d4-a7f1-ac9fe594a4f8",
+        "model": "<synthetic>"
+      },
+      "human_author": "Rowan Henseleit <rowan.henseleit@marshmallow.co>",
+      "messages": [],
+      "total_additions": 269,
+      "total_deletions": 53,
+      "accepted_lines": 251,
+      "overriden_lines": 0
+    },
+    "d5c03bd8c1e3ebdb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d36391fd-553b-45a6-bf72-2f743941a58e",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Rowan Henseleit <rowan.henseleit@marshmallow.co>",
+      "messages": [],
+      "total_additions": 194,
+      "total_deletions": 374,
+      "accepted_lines": 175,
+      "overriden_lines": 0
+    }
+  }
+}
