@@ -1,0 +1,55 @@
+src/components/ui/select.tsx
+  5ca12c7cc14806ec 42
+src/index.css
+  5ca12c7cc14806ec 149-150
+src/components/ui/input.tsx
+  5ca12c7cc14806ec 13
+src/components/ui/slider.tsx
+  5ca12c7cc14806ec 55
+src/components/ui/breadcrumb.tsx
+  5ca12c7cc14806ec 51
+src/components/ui/checkbox.tsx
+  5ca12c7cc14806ec 11
+src/components/ui/toggle.tsx
+  5ca12c7cc14806ec 7
+showcase/components/token-config-panel.tsx
+  5ca12c7cc14806ec 157-173
+src/components/ui/badge.tsx
+  5ca12c7cc14806ec 12
+src/components/ui/button.tsx
+  5ca12c7cc14806ec 10,17,22
+biome.json
+  5ca12c7cc14806ec 66-67
+src/components/ui/tabs.tsx
+  5ca12c7cc14806ec 60
+lint-rules/no-hardcoded-state-opacity.grit
+  5ca12c7cc14806ec 1-10
+src/components/ui/switch.tsx
+  5ca12c7cc14806ec 18
+src/components/ui/radio-group.tsx
+  5ca12c7cc14806ec 22
+src/components/ui/accordion.tsx
+  5ca12c7cc14806ec 58
+src/components/ui/item.tsx
+  5ca12c7cc14806ec 37
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.4",
+  "base_commit_sha": "1d0d6ac6596352b484e1d18687cb4d75107fd652",
+  "prompts": {
+    "5ca12c7cc14806ec": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5fae756b-9e0d-46d7-bc5c-b7a23499d315",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Rowan Henseleit <rowan.henseleit@marshmallow.co>",
+      "messages": [],
+      "total_additions": 53,
+      "total_deletions": 22,
+      "accepted_lines": 53,
+      "overriden_lines": 0
+    }
+  }
+}
