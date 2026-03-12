@@ -1,0 +1,31 @@
+src/components/ui/breadcrumb.tsx
+  44c822de7446da7f 5,51-53
+src/components/ui/slider.tsx
+  44c822de7446da7f 4,54-57
+src/components/ui/dropdown-menu.tsx
+  44c822de7446da7f 4,91-92,117-118,163-164,201-202
+src/components/ui/combobox.tsx
+  44c822de7446da7f 11,143-144
+src/components/ui/accordion.tsx
+  44c822de7446da7f 4,62-63
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.4",
+  "base_commit_sha": "fd201720f9260464fe6b274f5449ac5be404cd37",
+  "prompts": {
+    "44c822de7446da7f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9f3b868d-5c2e-4cda-afcb-926803890cd1",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Rowan Henseleit <rowan.henseleit@marshmallow.co>",
+      "messages": [],
+      "total_additions": 31,
+      "total_deletions": 18,
+      "accepted_lines": 24,
+      "overriden_lines": 0
+    }
+  }
+}

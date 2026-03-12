@@ -1,0 +1,25 @@
+showcase/components/token-config-panel.tsx
+  bb8af004281d5637 222-229,231-237,240-246,249-255,267,271,747-748,754-757
+src/index.css
+  bb8af004281d5637 104-106,108,110-111,113-114,116-117,119-120
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.4",
+  "base_commit_sha": "b98e00b8f551853783261bfb82e79fdd9c71a639",
+  "prompts": {
+    "bb8af004281d5637": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ebe89f3c-eb3a-455d-b157-d818e92cd346",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Rowan Henseleit <rowan.henseleit@marshmallow.co>",
+      "messages": [],
+      "total_additions": 58,
+      "total_deletions": 74,
+      "accepted_lines": 52,
+      "overriden_lines": 0
+    }
+  }
+}

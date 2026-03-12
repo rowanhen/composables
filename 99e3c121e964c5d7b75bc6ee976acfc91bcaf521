@@ -1,0 +1,27 @@
+src/components/ui-extended/form-dropzone.tsx
+  212b3c5ac60ebeb6 26,42,94
+src/components/ui-extended/form-select.tsx
+  212b3c5ac60ebeb6 28,53,102
+src/components/ui-extended/form-input-group.tsx
+  212b3c5ac60ebeb6 29,61,149,159
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.4",
+  "base_commit_sha": "99e3c121e964c5d7b75bc6ee976acfc91bcaf521",
+  "prompts": {
+    "212b3c5ac60ebeb6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "238c80c5-e542-4a28-97bb-8c3332a88129",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Rowan Henseleit <rowan.henseleit@marshmallow.co>",
+      "messages": [],
+      "total_additions": 10,
+      "total_deletions": 1,
+      "accepted_lines": 10,
+      "overriden_lines": 0
+    }
+  }
+}
