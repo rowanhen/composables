@@ -1,0 +1,27 @@
+package.json
+  6d86f5de9476d1e0 95-96
+biome.json
+  6d86f5de9476d1e0 62-83
+src/cli/commands/add.ts
+  6d86f5de9476d1e0 99,101-103,109-111
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.4",
+  "base_commit_sha": "08b889c63068bee0e7ca37b84784faaa879aaf10",
+  "prompts": {
+    "6d86f5de9476d1e0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b572dc50-cb19-4670-9fbe-8c64b4971270",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Rowan Henseleit <rowan.henseleit@marshmallow.co>",
+      "messages": [],
+      "total_additions": 44,
+      "total_deletions": 19,
+      "accepted_lines": 31,
+      "overriden_lines": 0
+    }
+  }
+}
