@@ -49,7 +49,7 @@ export const addCommand = new Command("add")
 		for (const name of requested) {
 			if (!registry[name]) {
 				console.error(pc.red(`Unknown component: ${name}`));
-				console.log(pc.dim('Run "composable list" to see available components.'));
+				console.log(pc.dim('Run "composables list" to see available components.'));
 				process.exit(1);
 			}
 		}

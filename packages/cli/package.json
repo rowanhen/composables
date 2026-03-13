@@ -1,10 +1,10 @@
 {
-	"name": "@leitware/composable-cli",
+	"name": "@leitware/composables-cli",
 	"version": "0.1.0",
-	"description": "Composable — extended shadcn/ui-style copy-paste component library for React with a CLI installer",
+	"description": "Composables — extended shadcn/ui-style copy-paste component library for React with a CLI installer",
 	"type": "module",
 	"bin": {
-		"composable": "dist/cli.js"
+		"composables": "dist/cli.js"
 	},
 	"files": ["dist", "templates"],
 	"scripts": {

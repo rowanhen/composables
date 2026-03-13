@@ -12,8 +12,8 @@ const pkg = JSON.parse(readFileSync(join(__dirname, "..", "package.json"), "utf-
 const program = new Command();
 
 program
-	.name("composable")
-	.description("Composable — design system CLI")
+	.name("composables")
+	.description("Composables — design system CLI")
 	.version(pkg.version);
 
 program.addCommand(addCommand);

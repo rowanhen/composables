@@ -126,7 +126,7 @@ export function App() {
 					<HStack align="center" justify="between" className="h-14">
 						<HStack gap={3} align="center">
 							<Typography variant="heading-300" as="h1">
-								Composable
+								Composables
 							</Typography>
 							<Badge variant="outline">v0.1.0</Badge>
 						</HStack>
@@ -227,8 +227,8 @@ export function App() {
 				<Separator />
 				<Spacer size={6} />
 				<HStack justify="between" align="center" className="pb-8">
-					<Typography variant="caption-100">@leitware/composable</Typography>
-					<Typography variant="caption-100">Composable Design System</Typography>
+					<Typography variant="caption-100">@leitware/composables</Typography>
+					<Typography variant="caption-100">Composables Design System</Typography>
 				</HStack>
 			</Container>
 		</div>

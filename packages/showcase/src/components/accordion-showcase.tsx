@@ -10,12 +10,12 @@ import { ShowcaseSection } from './showcase-section'
 
 const faqItems = [
   {
-    q: 'What is Composable?',
+    q: 'What is Composables?',
     a: 'A React component library built on Base UI and Tailwind CSS v4, designed for copy-paste composition.',
   },
   {
     q: 'How do I install components?',
-    a: 'Use the CLI: npx @leitware/composable-cli add button. This copies the component source directly into your project.',
+    a: 'Use the CLI: npx @leitware/composables-cli add button. This copies the component source directly into your project.',
   },
   {
     q: 'Does it support dark mode?',

@@ -21,17 +21,17 @@ export function HoverCardShowcase() {
               onClick={(e) => e.preventDefault()}
               className="w-fit cursor-pointer underline underline-offset-4 decoration-muted-foreground/40 text-foreground font-medium"
             >
-              @composable
+              @composables
             </HoverCardTrigger>
             <HoverCardContent>
               <HStack gap={3}>
                 <Avatar size="lg">
-                  <AvatarImage src="https://i.pravatar.cc/80?img=20" alt="Composable" />
+                  <AvatarImage src="https://i.pravatar.cc/80?img=20" alt="Composables" />
                   <AvatarFallback>CO</AvatarFallback>
                 </Avatar>
                 <VStack gap={1}>
                   <Typography variant="label-200" className="font-semibold">
-                    Composable
+                    Composables
                   </Typography>
                   <Typography variant="caption-100" className="text-muted-foreground">
                     A composable design system for modern React applications.

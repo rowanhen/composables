@@ -1,11 +1,11 @@
 {
-	"name": "@leitware/composable",
+	"name": "@leitware/composables",
 	"private": true,
 	"workspaces": ["packages/*"],
 	"scripts": {
-		"build": "bun run --filter '@leitware/composable-cli' build",
+		"build": "bun run --filter '@leitware/composables-cli' build",
 		"dev": "bun run --cwd packages/showcase dev",
-		"test": "bun run --filter '@leitware/composable-cli' test",
+		"test": "bun run --filter '@leitware/composables-cli' test",
 		"prepare": "git config core.hooksPath .githooks"
 	},
 	"devDependencies": {

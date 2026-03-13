@@ -153,7 +153,7 @@ interface Preset {
   darkOverrides: Record<string, string>
 }
 
-const PRESET_STYLE_ID = 'composable-preset-overrides'
+const PRESET_STYLE_ID = 'composables-preset-overrides'
 
 /** Build a <style> element with :root and .dark blocks from a preset */
 function buildPresetStyleSheet(preset: Preset): string {
