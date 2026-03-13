@@ -294,11 +294,37 @@
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
 
+  /* Semantic text-color utilities */
+  --color-success: var(--text-success);
+  --color-warning: var(--text-warning);
+  --color-critical: var(--text-critical);
+  --color-info: var(--text-info);
+  --color-emphasis: var(--text-emphasis);
+  --color-brand: var(--text-brand);
+
+  /* Semantic background surface utilities (bg-surface-*) */
+  --color-surface-success: var(--bg-surface-success);
+  --color-surface-warning: var(--bg-surface-warning);
+  --color-surface-critical: var(--bg-surface-critical);
+  --color-surface-info: var(--bg-surface-info);
+  --color-surface-emphasis: var(--bg-surface-emphasis);
+  --color-surface-brand: var(--bg-surface-brand);
+
+  /* Semantic icon-color utilities (text-icon-*) */
+  --color-icon-success: var(--icon-success);
+  --color-icon-warning: var(--icon-warning);
+  --color-icon-critical: var(--icon-critical);
+  --color-icon-info: var(--icon-info);
+  --color-icon-emphasis: var(--icon-emphasis);
+  --color-icon-brand: var(--icon-brand);
+
   /* Semantic border-color utilities (stroke-*) */
   --color-stroke-critical: var(--border-critical);
   --color-stroke-success: var(--border-success);
   --color-stroke-warning: var(--border-warning);
   --color-stroke-info: var(--border-info);
+  --color-stroke-emphasis: var(--border-emphasis);
+  --color-stroke-brand: var(--border-brand);
 }
 
 /* ---------- Light mode (default) ---------- */

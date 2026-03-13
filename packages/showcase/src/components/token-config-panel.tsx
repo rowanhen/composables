@@ -208,6 +208,18 @@ const lineHeightTokens: DimensionToken[] = [
   },
 ]
 
+const letterSpacingTokens: DimensionToken[] = [
+  {
+    cssVar: '--letter-spacing-base',
+    label: 'Base letter spacing',
+    defaultValue: 0.025,
+    min: 0,
+    max: 0.1,
+    step: 0.005,
+    unit: 'em',
+  },
+]
+
 const opacityTokens: DimensionToken[] = [
   {
     cssVar: '--opacity-hover',
@@ -361,6 +373,7 @@ const allDimensionTokens = [
   ...radiusTokens,
   ...typographySizeTokens,
   ...lineHeightTokens,
+  ...letterSpacingTokens,
   ...opacityTokens,
   ...shadowDimensionTokens,
   ...containerTokens,
@@ -883,6 +896,18 @@ export function TokenConfigPanel() {
                   <SectionHeader>Line Height</SectionHeader>
                   <VStack gap={1}>
                     {lineHeightTokens.map((t) => (
+                      <DimensionSliderRow key={t.cssVar} token={t} onApply={applyOverride} />
+                    ))}
+                  </VStack>
+                </div>
+
+                <Separator className="my-3" />
+
+                {/* Letter Spacing */}
+                <div className="mb-4">
+                  <SectionHeader>Letter Spacing</SectionHeader>
+                  <VStack gap={1}>
+                    {letterSpacingTokens.map((t) => (
                       <DimensionSliderRow key={t.cssVar} token={t} onApply={applyOverride} />
                     ))}
                   </VStack>

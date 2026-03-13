@@ -6,17 +6,17 @@ import { cn } from "@/lib/utils";
 const typographyVariants = cva("", {
 	variants: {
 		variant: {
-			// Hero variants - brand font, 700, letter-spacing -0.02em, line-height 1
+			// Hero variants - brand font, 700, tighter letter-spacing, line-height 1
 			"hero-100":
-				"font-brand font-bold text-4xl leading-none tracking-[-0.02em]",
+				"font-brand font-bold text-4xl leading-none tracking-tighter",
 			"hero-200":
-				"font-brand font-bold text-5xl leading-none tracking-[-0.02em]",
+				"font-brand font-bold text-5xl leading-none tracking-tighter",
 			"hero-300":
-				"font-brand font-bold text-6xl leading-none tracking-[-0.02em]",
+				"font-brand font-bold text-6xl leading-none tracking-tighter",
 			"hero-400":
-				"font-brand font-bold text-7xl leading-none tracking-[-0.02em]",
+				"font-brand font-bold text-7xl leading-none tracking-tighter",
 
-			// Heading variants - heading font, 500, letter-spacing 0
+			// Heading variants - heading font, 500, normal letter-spacing
 			"heading-100": "font-heading font-medium text-sm tracking-normal",
 			"heading-200": "font-heading font-medium text-base tracking-normal",
 			"heading-300": "font-heading font-medium text-xl tracking-normal",
@@ -24,15 +24,15 @@ const typographyVariants = cva("", {
 			"heading-500": "font-heading font-medium text-3xl tracking-normal",
 			"heading-600": "font-heading font-medium text-4xl tracking-normal",
 
-			// Brand heading variants - brand font, 700, letter-spacing -0.01em
-			"brand-heading-100": "font-brand font-bold text-sm tracking-[-0.01em]",
-			"brand-heading-200": "font-brand font-bold text-base tracking-[-0.01em]",
-			"brand-heading-300": "font-brand font-bold text-xl tracking-[-0.01em]",
-			"brand-heading-400": "font-brand font-bold text-2xl tracking-[-0.01em]",
-			"brand-heading-500": "font-brand font-bold text-3xl tracking-[-0.01em]",
-			"brand-heading-600": "font-brand font-bold text-4xl tracking-[-0.01em]",
+			// Brand heading variants - brand font, 700, tight letter-spacing
+			"brand-heading-100": "font-brand font-bold text-sm tracking-tight",
+			"brand-heading-200": "font-brand font-bold text-base tracking-tight",
+			"brand-heading-300": "font-brand font-bold text-xl tracking-tight",
+			"brand-heading-400": "font-brand font-bold text-2xl tracking-tight",
+			"brand-heading-500": "font-brand font-bold text-3xl tracking-tight",
+			"brand-heading-600": "font-brand font-bold text-4xl tracking-tight",
 
-			// Body variants - heading font, 400, letter-spacing 0
+			// Body variants - heading font, 400, normal letter-spacing
 			"body-100": "font-heading font-normal text-sm tracking-normal",
 			"body-200": "font-heading font-normal text-base tracking-normal",
 			"body-300": "font-heading font-normal text-lg tracking-normal",
@@ -42,17 +42,17 @@ const typographyVariants = cva("", {
 			"brand-body-200": "font-brand font-bold text-base tracking-normal",
 			"brand-body-300": "font-brand font-bold text-lg tracking-normal",
 
-			// Label variants - heading font, 500
+			// Label variants - heading font, 500, wider letter-spacing
 			"label-100":
-				"font-heading font-medium text-2xs leading-none tracking-normal uppercase",
+				"font-heading font-medium text-2xs leading-none tracking-wider uppercase",
 			"label-200":
-				"font-heading font-medium text-base leading-none tracking-normal uppercase",
+				"font-heading font-medium text-base leading-none tracking-wider uppercase",
 
-			// Brand label variants - brand font, 700
+			// Brand label variants - brand font, 700, wider letter-spacing
 			"brand-label-100":
-				"font-brand font-bold text-2xs leading-none tracking-normal uppercase",
+				"font-brand font-bold text-2xs leading-none tracking-wider uppercase",
 			"brand-label-200":
-				"font-brand font-bold text-base leading-none tracking-normal uppercase",
+				"font-brand font-bold text-base leading-none tracking-wider uppercase",
 
 			// Caption variant - heading font, 400
 			"caption-100":
