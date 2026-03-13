@@ -21,6 +21,8 @@ const badgeVariants = cva(
 				success: "bg-surface-success text-success border-stroke-success",
 				warning: "bg-surface-warning text-warning border-stroke-warning",
 				info: "bg-surface-info text-info border-stroke-info",
+				brand: "bg-surface-brand text-brand border-stroke-brand",
+				emphasis: "bg-surface-emphasis text-emphasis border-stroke-emphasis",
 				link: "text-primary underline-offset-4 hover:underline",
 			},
 		},

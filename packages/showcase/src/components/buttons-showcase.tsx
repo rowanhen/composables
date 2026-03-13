@@ -27,6 +27,8 @@ export function ButtonsShowcase() {
             <Button variant="success">Success</Button>
             <Button variant="warning">Warning</Button>
             <Button variant="info">Info</Button>
+            <Button variant="brand">Brand</Button>
+            <Button variant="emphasis">Emphasis</Button>
             <Button variant="link">Link</Button>
           </HStack>
         </VStack>

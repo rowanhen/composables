@@ -18,6 +18,8 @@ export function BadgesShowcase() {
             <Badge variant="success">Success</Badge>
             <Badge variant="warning">Warning</Badge>
             <Badge variant="info">Info</Badge>
+            <Badge variant="brand">Brand</Badge>
+            <Badge variant="emphasis">Emphasis</Badge>
             <Badge variant="link">Link</Badge>
           </HStack>
         </VStack>

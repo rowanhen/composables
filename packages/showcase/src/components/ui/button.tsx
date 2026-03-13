@@ -21,6 +21,10 @@ const buttonVariants = cva(
 				warning:
 					"bg-surface-warning text-warning border-stroke-warning hover:bg-surface-warning/(--opacity-hover) active:bg-surface-warning/(--opacity-active)",
 				info: "bg-surface-info text-info border-stroke-info hover:bg-surface-info/(--opacity-hover) active:bg-surface-info/(--opacity-active)",
+				brand:
+					"bg-surface-brand text-brand border-stroke-brand hover:bg-surface-brand/(--opacity-hover) active:bg-surface-brand/(--opacity-active)",
+				emphasis:
+					"bg-surface-emphasis text-emphasis border-stroke-emphasis hover:bg-surface-emphasis/(--opacity-hover) active:bg-surface-emphasis/(--opacity-active)",
 				link: "text-primary underline-offset-4 hover:underline",
 			},
 			size: {

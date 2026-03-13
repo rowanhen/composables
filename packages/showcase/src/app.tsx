@@ -18,6 +18,7 @@ import {
 	AspectRatioShowcase,
 	AvatarShowcase,
 	BadgesShowcase,
+	BrandShowcase,
 	BreadcrumbShowcase,
 	ButtonsShowcase,
 	CalendarShowcase,
@@ -68,6 +69,7 @@ const navItems = [
 	"Responsive Grid",
 	"Buttons",
 	"Badges",
+	"Brand",
 	"Icon",
 	"Avatar",
 	"Cards",
@@ -171,6 +173,7 @@ export function App() {
 					{/* Actions */}
 					<ButtonsShowcase />
 					<BadgesShowcase />
+					<BrandShowcase />
 					<IconShowcase />
 					<AvatarShowcase />
 
