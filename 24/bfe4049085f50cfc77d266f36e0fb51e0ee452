@@ -1,0 +1,23 @@
+vite.config.showcase.ts
+  6d86f5de9476d1e0 7
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.4",
+  "base_commit_sha": "24bfe4049085f50cfc77d266f36e0fb51e0ee452",
+  "prompts": {
+    "6d86f5de9476d1e0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b572dc50-cb19-4670-9fbe-8c64b4971270",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Rowan Henseleit <rowan.henseleit@marshmallow.co>",
+      "messages": [],
+      "total_additions": 1,
+      "total_deletions": 1,
+      "accepted_lines": 1,
+      "overriden_lines": 0
+    }
+  }
+}
