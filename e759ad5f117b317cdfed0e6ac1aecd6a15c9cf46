@@ -1,0 +1,25 @@
+showcase/components/form-controls-showcase.tsx
+  e2b13c6f93865526 2-11,18-19,21-22,91-107,111-256
+src/components/ui/input-group.tsx
+  e2b13c6f93865526 28,30
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.4",
+  "base_commit_sha": "e759ad5f117b317cdfed0e6ac1aecd6a15c9cf46",
+  "prompts": {
+    "e2b13c6f93865526": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "566c6670-4e63-4d29-894e-1b7bc2601b61",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Rowan Henseleit <rowan.henseleit@marshmallow.co>",
+      "messages": [],
+      "total_additions": 188,
+      "total_deletions": 13,
+      "accepted_lines": 179,
+      "overriden_lines": 0
+    }
+  }
+}
