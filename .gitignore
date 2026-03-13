@@ -1,18 +1,6 @@
-# dependencies
-/node_modules
-
-# testing
-/coverage
-
-# build
-/dist
-
-# misc
+node_modules
+dist
 .DS_Store
-.idea/
-.vscode/**/*
-!.vscode/extensions.json
-
-logs
 *.log
-npm-debug.log*
+coverage
+.vite

@@ -1,0 +1,29 @@
+{
+	"name": "smores-internal",
+	"version": "0.1.0",
+	"description": "Smores Internal — extended shadcn/ui-style copy-paste component library for React with a CLI installer",
+	"type": "module",
+	"bin": {
+		"smores": "dist/cli.js"
+	},
+	"files": ["dist", "templates"],
+	"scripts": {
+		"build": "tsc -p tsconfig.json",
+		"dev": "bun run src/cli.ts",
+		"test": "bun test"
+	},
+	"dependencies": {
+		"commander": "^12.1.0",
+		"picocolors": "^1.1.0"
+	},
+	"devDependencies": {
+		"@types/node": "^22.0.0",
+		"typescript": "^5.7.0"
+	},
+	"engines": {
+		"node": ">=18.0.0"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
+}

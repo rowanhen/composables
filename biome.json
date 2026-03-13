@@ -1,95 +1,18 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.4.6/schema.json",
-  "vcs": {
-    "enabled": true,
-    "clientKind": "git",
-    "useIgnoreFile": true
-  },
-  "files": {
-    "ignoreUnknown": false,
-    "includes": [
-      "src/**/*",
-      "showcase/**/*",
-      "!!node_modules/**/*",
-      "!!dist/**/*",
-      "!!showcase/dist/**/*",
-      "!!build/**/*",
-      "!!coverage/**/*",
-      "!!docs/**/*",
-      "!! public/**/*",
-      "!!vite.config.ts",
-      "!!vitest.config.ts",
-      "!!*.md"
-    ]
-  },
-  "formatter": {
-    "enabled": true,
-    "indentStyle": "space",
-    "indentWidth": 2,
-    "lineWidth": 100
-  },
-  "linter": {
-    "enabled": true,
-    "rules": {
-      "recommended": true
-    }
-  },
-  "css": {
-    "parser": {
-      "tailwindDirectives": true
-    }
-  },
-  "javascript": {
-    "formatter": {
-      "arrowParentheses": "always",
-      "bracketSameLine": false,
-      "bracketSpacing": true,
-      "quoteStyle": "single",
-      "jsxQuoteStyle": "double",
-      "quoteProperties": "asNeeded",
-      "semicolons": "asNeeded",
-      "trailingCommas": "all"
-    }
-  },
-  "assist": {
-    "enabled": true,
-    "actions": {
-      "source": {
-        "organizeImports": "on"
-      }
-    }
-  },
-  "overrides": [
-    {
-      "includes": ["src/components/ui/**/*"],
-      "formatter": {
-        "enabled": false
-      },
-      "linter": {
-        "rules": {
-          "recommended": false,
-          "suspicious": {
-            "noArrayIndexKey": "off"
-          },
-          "correctness": {
-            "useExhaustiveDependencies": "off"
-          }
-        }
-      },
-      "assist": {
-        "enabled": false
-      }
-    }
-  ],
-  "plugins": [
-    "./lint-rules/no-hardcoded-colors.grit",
-    "./lint-rules/no-hardcoded-z-index.grit",
-    "./lint-rules/no-hardcoded-duration.grit",
-    "./lint-rules/no-hardcoded-opacity.grit",
-    "./lint-rules/no-hardcoded-overlay.grit",
-    "./lint-rules/no-hardcoded-state-opacity.grit",
-    "./lint-rules/no-raw-status-variables.grit",
-    "./lint-rules/no-legacy-status-tokens.grit",
-    "./lint-rules/no-bare-status-border.grit"
-  ]
+	"$schema": "https://biomejs.dev/schemas/2.0.0/schema.json",
+	"organizeImports": { "enabled": true },
+	"formatter": {
+		"enabled": true,
+		"indentStyle": "tab",
+		"lineWidth": 100
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"recommended": true
+		}
+	},
+	"files": {
+		"ignore": ["node_modules", "dist", "packages/showcase"]
+	}
 }

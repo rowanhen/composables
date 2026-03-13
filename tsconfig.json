@@ -1,52 +1,9 @@
 {
 	"compilerOptions": {
-		"rootDir": ".",
-		"outDir": "./dist",
-		"module": "esnext",
-		"target": "esnext",
-		"lib": [
-			"esnext",
-			"dom",
-			"dom.iterable"
-		],
-		"types": [
-			"react",
-			"node",
-			"vitest/globals",
-			"@testing-library/jest-dom"
-		],
-		"sourceMap": true,
-		"inlineSources": true,
-		"jsx": "react-jsx",
-		"declaration": true,
-		"moduleResolution": "Bundler",
-		"baseUrl": "src",
-		"forceConsistentCasingInFileNames": true,
-		"allowJs": false,
+		"target": "ES2022",
 		"strict": true,
-		"noImplicitAny": true,
-		"strictNullChecks": true,
-		"strictFunctionTypes": true,
-		"noUnusedLocals": true,
-		"noUnusedParameters": true,
-		"noImplicitReturns": true,
-		"allowSyntheticDefaultImports": true,
-		"experimentalDecorators": true,
+		"esModuleInterop": true,
 		"skipLibCheck": true,
-		"paths": {
-			"@/*": [
-				"./*"
-			],
-		}
-	},
-	"include": [
-		"src/**/*",
-		"vite.config.ts",
-		"vitest.config.ts"
-	],
-	"exclude": [
-		"node_modules",
-		"dist",
-		"scripts"
-	]
+		"forceConsistentCasingInFileNames": true
+	}
 }
