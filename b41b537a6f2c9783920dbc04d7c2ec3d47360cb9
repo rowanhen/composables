@@ -1,0 +1,27 @@
+src/components/ui/sonner.tsx
+  e2b13c6f93865526 20-22
+registry/components/ui/sonner.tsx
+  e2b13c6f93865526 20-22
+showcase/components/toast-showcase.tsx
+  e2b13c6f93865526 110
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.4",
+  "base_commit_sha": "b41b537a6f2c9783920dbc04d7c2ec3d47360cb9",
+  "prompts": {
+    "e2b13c6f93865526": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "566c6670-4e63-4d29-894e-1b7bc2601b61",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Rowan Henseleit <rowan.henseleit@marshmallow.co>",
+      "messages": [],
+      "total_additions": 7,
+      "total_deletions": 3,
+      "accepted_lines": 7,
+      "overriden_lines": 0
+    }
+  }
+}
