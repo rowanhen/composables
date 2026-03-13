@@ -2,6 +2,11 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 @import "@fontsource-variable/inter";
+@import "@fontsource-variable/fraunces";
+@import "@fontsource-variable/source-serif-4";
+@import "@fontsource-variable/space-grotesk";
+@import "@fontsource-variable/plus-jakarta-sans";
+@import "@fontsource/ibm-plex-mono";
 @import "./tokens.css";
 
 @source "./**/*.{ts,tsx}";
@@ -9,162 +14,210 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  /* Spacing base unit — reactive at runtime via calc(var(--spacing) * N) */
-  --spacing: 0.25rem;
+	/* Spacing base unit — reactive at runtime via calc(var(--spacing) * N) */
+	--spacing: 0.25rem;
 
-  /* Type scale — all sizes derived from --font-size-base,
-     all line-heights derived from --leading-base.
-     Adjust the two root tokens to scale the entire system. */
-  --text-2xs: calc(var(--font-size-base) * 0.625);
-  --text-2xs--line-height: calc(var(--leading-base) * 0.75);
+	/* Type scale — all sizes derived from --font-size-base,
+	   all line-heights derived from --leading-base.
+	   Adjust the two root tokens to scale the entire system. */
+	--text-2xs: calc(var(--font-size-base) * 0.625);
+	--text-2xs--line-height: calc(var(--leading-base) * 0.75);
 
-  --text-xs: calc(var(--font-size-base) * 0.75);
-  --text-xs--line-height: calc(var(--leading-base) * 0.94);
+	--text-xs: calc(var(--font-size-base) * 0.75);
+	--text-xs--line-height: calc(var(--leading-base) * 0.94);
 
-  --text-sm: calc(var(--font-size-base) * 0.875);
-  --text-sm--line-height: var(--leading-base);
+	--text-sm: calc(var(--font-size-base) * 0.875);
+	--text-sm--line-height: var(--leading-base);
 
-  --text-base: var(--font-size-base);
-  --text-base--line-height: var(--leading-base);
+	--text-base: var(--font-size-base);
+	--text-base--line-height: var(--leading-base);
 
-  --text-lg: calc(var(--font-size-base) * 1.125);
-  --text-lg--line-height: var(--leading-base);
+	--text-lg: calc(var(--font-size-base) * 1.125);
+	--text-lg--line-height: var(--leading-base);
 
-  --text-xl: calc(var(--font-size-base) * 1.25);
-  --text-xl--line-height: calc(var(--leading-base) * 0.94);
+	--text-xl: calc(var(--font-size-base) * 1.25);
+	--text-xl--line-height: calc(var(--leading-base) * 0.94);
 
-  --text-2xl: calc(var(--font-size-base) * 1.5);
-  --text-2xl--line-height: calc(var(--leading-base) * 0.94);
+	--text-2xl: calc(var(--font-size-base) * 1.5);
+	--text-2xl--line-height: calc(var(--leading-base) * 0.94);
 
-  --text-3xl: calc(var(--font-size-base) * 1.75);
-  --text-3xl--line-height: calc(var(--leading-base) * 0.85);
+	--text-3xl: calc(var(--font-size-base) * 1.75);
+	--text-3xl--line-height: calc(var(--leading-base) * 0.85);
 
-  --text-4xl: calc(var(--font-size-base) * 2);
-  --text-4xl--line-height: calc(var(--leading-base) * 0.85);
+	--text-4xl: calc(var(--font-size-base) * 2);
+	--text-4xl--line-height: calc(var(--leading-base) * 0.85);
 
-  --text-5xl: calc(var(--font-size-base) * 2.5);
-  --text-5xl--line-height: calc(var(--leading-base) * 0.75);
+	--text-5xl: calc(var(--font-size-base) * 2.5);
+	--text-5xl--line-height: calc(var(--leading-base) * 0.75);
 
-  --text-6xl: calc(var(--font-size-base) * 3.5);
-  --text-6xl--line-height: calc(var(--leading-base) * 0.75);
+	--text-6xl: calc(var(--font-size-base) * 3.5);
+	--text-6xl--line-height: calc(var(--leading-base) * 0.75);
 
-  --text-7xl: calc(var(--font-size-base) * 5);
-  --text-7xl--line-height: calc(var(--leading-base) * 0.75);
+	--text-7xl: calc(var(--font-size-base) * 5);
+	--text-7xl--line-height: calc(var(--leading-base) * 0.75);
 
-  /* Letter-spacing scale — all steps derived from --letter-spacing-base.
-     Adjust the single root token to scale the entire tracking system.
-     tighter=-2x  tight=-1x  normal=0  wide=1x  wider=2x  widest=4x */
-  --tracking-tighter: calc(var(--letter-spacing-base) * -2);
-  --tracking-tight: calc(var(--letter-spacing-base) * -1);
-  --tracking-normal: 0em;
-  --tracking-wide: var(--letter-spacing-base);
-  --tracking-wider: calc(var(--letter-spacing-base) * 2);
-  --tracking-widest: calc(var(--letter-spacing-base) * 4);
+	/* Letter-spacing scale — all steps derived from --letter-spacing-base.
+	   Adjust the single root token to scale the entire tracking system.
+	   tighter=-2x  tight=-1x  normal=0  wide=1x  wider=2x  widest=4x */
+	--tracking-tighter: calc(var(--letter-spacing-base) * -2);
+	--tracking-tight: calc(var(--letter-spacing-base) * -1);
+	--tracking-normal: 0em;
+	--tracking-wide: var(--letter-spacing-base);
+	--tracking-wider: calc(var(--letter-spacing-base) * 2);
+	--tracking-widest: calc(var(--letter-spacing-base) * 4);
 
-  /* Font families — in the main @theme block (not inline) so that
-     Tailwind generates var() references, making them runtime-changeable
-     via the token config panel or JS overrides. */
-  --font-sans: "Inter Variable", sans-serif;
-  --font-heading: "Inter Variable", sans-serif;
-  --font-brand: "Inter Variable", sans-serif;
+	/* Font families — in the main @theme block (not inline) so that
+	   Tailwind generates var() references, making them runtime-changeable
+	   via the token config panel or JS overrides. */
+	--font-sans: "Inter Variable", sans-serif;
+	--font-heading: "Inter Variable", sans-serif;
+	--font-brand: "Inter Variable", sans-serif;
 
-  /* Border width — reactive at runtime */
-  --border-width: var(--border-width-base);
-  --default-border-width: var(--border-width-base);
+	/* Border width — reactive at runtime */
+	--border-width: var(--border-width-base);
+	--default-border-width: var(--border-width-base);
 
-  /* Border radius — derived from --radius (set in tokens.css) so the
-     panel slider scales all radii at runtime */
-  --radius-sm: calc(var(--radius) - 0.25rem);
-  --radius-md: calc(var(--radius) - 0.125rem);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 0.25rem);
-  --radius-2xl: calc(var(--radius) + 0.5rem);
-  --radius-3xl: calc(var(--radius) + 0.75rem);
-  --radius-4xl: calc(var(--radius) + 1rem);
+	/* Border radius — derived from --radius (set in tokens.css) so the
+	   panel slider scales all radii at runtime */
+	--radius-sm: calc(var(--radius) - 0.25rem);
+	--radius-md: calc(var(--radius) - 0.125rem);
+	--radius-lg: var(--radius);
+	--radius-xl: calc(var(--radius) + 0.25rem);
+	--radius-2xl: calc(var(--radius) + 0.5rem);
+	--radius-3xl: calc(var(--radius) + 0.75rem);
+	--radius-4xl: calc(var(--radius) + 1rem);
 
-  /* Overlay */
-  --color-overlay: var(--overlays-black-alpha-800);
+	/* Overlay */
+	--color-overlay: var(--overlays-black-alpha-800);
 
-  /* Shadow scale — programmatic, derived from base variables
-     Each level multiplies the base offset/blur/spread by a scale ratio.
-     xs=1x  sm=1.5x  md=3x  lg=6x  xl=12x */
-  --shadow-xs: 0 calc(var(--shadow-offset-y) * 1) calc(var(--shadow-blur) * 1)
-    calc(var(--shadow-spread) * 1) var(--shadow-base-color);
-  --shadow-sm:
-    0 calc(var(--shadow-offset-y) * 1.5) calc(var(--shadow-blur) * 1.5)
-    calc(var(--shadow-spread) * 1.5) var(--shadow-base-color),
-    0 calc(var(--shadow-offset-y) * 1) calc(var(--shadow-blur) * 1) calc(var(--shadow-spread) * -1)
-    var(--shadow-base-color);
-  --shadow-md:
-    0 calc(var(--shadow-offset-y) * 3) calc(var(--shadow-blur) * 3) calc(var(--shadow-spread) * -1)
-    var(--shadow-base-color),
-    0 calc(var(--shadow-offset-y) * 1.5) calc(var(--shadow-blur) * 2)
-    calc(var(--shadow-spread) * -2) var(--shadow-base-color);
-  --shadow-lg:
-    0 calc(var(--shadow-offset-y) * 6) calc(var(--shadow-blur) * 7) calc(var(--shadow-spread) * -3)
-    var(--shadow-base-color),
-    0 calc(var(--shadow-offset-y) * 3) calc(var(--shadow-blur) * 3) calc(var(--shadow-spread) * -4)
-    var(--shadow-base-color);
-  --shadow-xl:
-    0 calc(var(--shadow-offset-y) * 12) calc(var(--shadow-blur) * 12)
-    calc(var(--shadow-spread) * -5) var(--shadow-base-color),
-    0 calc(var(--shadow-offset-y) * 5) calc(var(--shadow-blur) * 5) calc(var(--shadow-spread) * -6)
-    var(--shadow-base-color);
+	/* Shadow scale — programmatic, derived from base variables
+	   Each level multiplies the base offset/blur/spread by a scale ratio.
+	   xs=1x  sm=1.5x  md=3x  lg=6x  xl=12x */
+	--shadow-xs: 0 calc(var(--shadow-offset-y) * 1) calc(var(--shadow-blur) * 1)
+		calc(var(--shadow-spread) * 1) var(--shadow-base-color);
+	--shadow-sm:
+		0 calc(var(--shadow-offset-y) * 1.5) calc(var(--shadow-blur) * 1.5)
+		calc(var(--shadow-spread) * 1.5) var(--shadow-base-color),
+		0 calc(var(--shadow-offset-y) * 1) calc(var(--shadow-blur) * 1) calc(var(--shadow-spread) * -1)
+		var(--shadow-base-color);
+	--shadow-md:
+		0 calc(var(--shadow-offset-y) * 3) calc(var(--shadow-blur) * 3)
+		calc(var(--shadow-spread) * -1) var(--shadow-base-color),
+		0 calc(var(--shadow-offset-y) * 1.5) calc(var(--shadow-blur) * 2)
+		calc(var(--shadow-spread) * -2) var(--shadow-base-color);
+	--shadow-lg:
+		0 calc(var(--shadow-offset-y) * 6) calc(var(--shadow-blur) * 7)
+		calc(var(--shadow-spread) * -3) var(--shadow-base-color),
+		0 calc(var(--shadow-offset-y) * 3) calc(var(--shadow-blur) * 3)
+		calc(var(--shadow-spread) * -4) var(--shadow-base-color);
+	--shadow-xl:
+		0 calc(var(--shadow-offset-y) * 12) calc(var(--shadow-blur) * 12)
+		calc(var(--shadow-spread) * -5) var(--shadow-base-color),
+		0 calc(var(--shadow-offset-y) * 5) calc(var(--shadow-blur) * 5)
+		calc(var(--shadow-spread) * -6) var(--shadow-base-color);
 
-  /* Z-index scale */
-  --z-dropdown: 50;
-  --z-sticky: 100;
-  --z-overlay: 200;
-  --z-modal: 300;
-  --z-popover: 400;
-  --z-toast: 500;
-  --z-tooltip: 600;
+	/* Z-index scale */
+	--z-dropdown: 50;
+	--z-sticky: 100;
+	--z-overlay: 200;
+	--z-modal: 300;
+	--z-popover: 400;
+	--z-toast: 500;
+	--z-tooltip: 600;
 
-  /* Motion tokens */
-  --duration-fast: 100ms;
-  --duration-normal: 200ms;
-  --duration-slow: 300ms;
-  --ease-default: cubic-bezier(0.4, 0, 0.2, 1);
-  --ease-in: cubic-bezier(0.4, 0, 1, 1);
-  --ease-out: cubic-bezier(0, 0, 0.2, 1);
-  --ease-linear: linear;
+	/* Motion tokens */
+	--duration-fast: 100ms;
+	--duration-normal: 200ms;
+	--duration-slow: 300ms;
+	--ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+	--ease-in: cubic-bezier(0.4, 0, 1, 1);
+	--ease-out: cubic-bezier(0, 0, 0.2, 1);
+	--ease-linear: linear;
 
-  /* Opacity tokens */
-  --opacity-disabled: 0.5;
+	/* Opacity tokens */
+	--opacity-disabled: 0.5;
+
+	/* ------------------------------------------------------------------ */
+	/* Phase 1a — Component-level semantic tokens                          */
+	/* ------------------------------------------------------------------ */
+	--button-radius: var(--radius-md);
+	--button-padding-x: calc(var(--spacing) * 4);
+	--button-padding-y: calc(var(--spacing) * 2);
+	--card-radius: var(--radius-lg);
+	--card-padding: calc(var(--spacing) * 6);
+	--nav-height: calc(var(--spacing) * 16);
+	--section-padding-y: calc(var(--spacing) * 24);
+	--hero-padding-y: calc(var(--spacing) * 40);
+	--input-radius: var(--radius-md);
+	--input-height: calc(var(--spacing) * 10);
+	--badge-radius: var(--radius-4xl);
+
+	/* ------------------------------------------------------------------ */
+	/* Phase 1b — Motion / animation composition tokens                    */
+	/* ------------------------------------------------------------------ */
+	--transition-default: var(--duration-normal) var(--ease-default);
+	--transition-fast: var(--duration-fast) var(--ease-default);
+	--transition-slow: var(--duration-slow) var(--ease-out);
+	--hover-transform: none;
+	--hover-shadow: var(--shadow-md);
+	--active-scale: 0.98;
+
+	/* ------------------------------------------------------------------ */
+	/* Phase 1c — Typography composition tokens                            */
+	/* ------------------------------------------------------------------ */
+	--heading-font-weight: 700;
+	--heading-letter-spacing: var(--tracking-tight);
+	--body-letter-spacing: var(--tracking-normal);
+	--hero-font-size: var(--text-5xl);
+	--section-title-size: var(--text-3xl);
+	--card-title-size: var(--text-lg);
 }
 
 @theme inline {
-  /* Container max-widths (breakpoint-aligned for page layout) */
-  --container-sm: 640px;
-  --container-md: 768px;
-  --container-lg: 1024px;
-  --container-xl: 1280px;
-  --container-2xl: 1400px;
+	/* Container max-widths (breakpoint-aligned for page layout) */
+	--container-sm: 640px;
+	--container-md: 768px;
+	--container-lg: 1024px;
+	--container-xl: 1280px;
+	--container-2xl: 1400px;
 }
 
 @layer base {
-  :root {
-    --font-size-base: 1rem;
-    --leading-base: 1.33;
-    --letter-spacing-base: 0.025em;
-    --border-width-base: 0.0625rem;
-    --shadow-base-color: rgba(0, 0, 0, 0.1);
-    --shadow-offset-y: 1px;
-    --shadow-blur: 2px;
-    --shadow-spread: 1px;
-    --dropdown-offset: 4;
-    --overlay-offset: 4;
-  }
+	:root {
+		--font-size-base: 1rem;
+		--leading-base: 1.33;
+		--letter-spacing-base: 0.025em;
+		--border-width-base: 0.0625rem;
+		--shadow-base-color: rgba(0, 0, 0, 0.1);
+		--shadow-offset-y: 1px;
+		--shadow-blur: 2px;
+		--shadow-spread: 1px;
+		--dropdown-offset: 4;
+		--overlay-offset: 4;
 
-  * {
-    @apply border-border outline-ring/50;
-  }
+		/* Phase 1a component tokens also in :root for preset override support */
+		--button-radius: var(--radius-md);
+		--button-padding-x: calc(var(--spacing) * 4);
+		--button-padding-y: calc(var(--spacing) * 2);
+		--card-radius: var(--radius-lg);
+		--card-padding: calc(var(--spacing) * 6);
+		--nav-height: calc(var(--spacing) * 16);
+		--section-padding-y: calc(var(--spacing) * 24);
+		--hero-padding-y: calc(var(--spacing) * 40);
+		--input-radius: var(--radius-md);
+		--input-height: calc(var(--spacing) * 10);
+		--badge-radius: var(--radius-4xl);
+	}
 
-  body {
-    @apply font-sans bg-background text-foreground text-sm antialiased;
-  }
+	* {
+		@apply border-border outline-ring/50;
+	}
 
-  html {
-    @apply font-sans;
-  }
+	body {
+		@apply font-sans bg-background text-foreground text-sm antialiased;
+	}
+
+	html {
+		@apply font-sans;
+	}
 }
