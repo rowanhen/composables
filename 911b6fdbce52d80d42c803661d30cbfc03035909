@@ -1,0 +1,25 @@
+src/components/ui/button.tsx
+  e2b13c6f93865526 28-31
+showcase/components/spacing-showcase.tsx
+  e2b13c6f93865526 5-21,26,29,31,36,39
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.4",
+  "base_commit_sha": "911b6fdbce52d80d42c803661d30cbfc03035909",
+  "prompts": {
+    "e2b13c6f93865526": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "566c6670-4e63-4d29-894e-1b7bc2601b61",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Rowan Henseleit <rowan.henseleit@marshmallow.co>",
+      "messages": [],
+      "total_additions": 26,
+      "total_deletions": 22,
+      "accepted_lines": 26,
+      "overriden_lines": 0
+    }
+  }
+}
