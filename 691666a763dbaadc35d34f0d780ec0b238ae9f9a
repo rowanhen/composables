@@ -1,0 +1,41 @@
+src/tokens.css
+  e2b13c6f93865526 638
+src/lib/utils.ts
+  e2b13c6f93865526 13,17
+src/components/ui/dropzone.tsx
+  e2b13c6f93865526 372-373,421
+src/components/ui/combobox.tsx
+  e2b13c6f93865526 225
+src/components/ui/button.tsx
+  e2b13c6f93865526 18
+src/components/ui/alert.tsx
+  e2b13c6f93865526 13
+src/components/ui/sonner.tsx
+  e2b13c6f93865526 48
+src/components/ui/badge.tsx
+  e2b13c6f93865526 16
+src/components/ui/input-group.tsx
+  e2b13c6f93865526 14
+src/components/ui-extended/form-date-of-birth.tsx
+  e2b13c6f93865526 120
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.4",
+  "base_commit_sha": "691666a763dbaadc35d34f0d780ec0b238ae9f9a",
+  "prompts": {
+    "e2b13c6f93865526": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "566c6670-4e63-4d29-894e-1b7bc2601b61",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Rowan Henseleit <rowan.henseleit@marshmallow.co>",
+      "messages": [],
+      "total_additions": 16,
+      "total_deletions": 17,
+      "accepted_lines": 13,
+      "overriden_lines": 0
+    }
+  }
+}
