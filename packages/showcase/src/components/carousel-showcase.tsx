@@ -20,7 +20,7 @@ export function CarouselShowcase() {
         {/* Basic */}
         <VStack gap={2}>
           <Typography variant="heading-200">Basic</Typography>
-          <div className="mx-auto max-w-xs">
+          <div className="mx-auto w-full max-w-xs px-12">
             <Carousel>
               <CarouselContent>
                 {['slide-1', 'slide-2', 'slide-3', 'slide-4', 'slide-5'].map((id, i) => (
@@ -44,11 +44,11 @@ export function CarouselShowcase() {
         {/* Multiple items */}
         <VStack gap={2}>
           <Typography variant="heading-200">Multiple Items</Typography>
-          <div className="mx-auto max-w-sm">
+          <div className="mx-auto w-full max-w-sm px-12">
             <Carousel opts={{ align: 'start' }}>
               <CarouselContent>
                 {['m-1', 'm-2', 'm-3', 'm-4', 'm-5', 'm-6', 'm-7', 'm-8'].map((id, i) => (
-                  <CarouselItem key={id} className="basis-1/3">
+                  <CarouselItem key={id} className="basis-1/2 sm:basis-1/3">
                     <Card className="p-0">
                       <div className="flex aspect-square items-center justify-center bg-muted rounded-lg">
                         <Typography variant="heading-300" className="text-muted-foreground">
