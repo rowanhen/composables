@@ -1,0 +1,33 @@
+lint-rules/no-bare-status-border.grit
+  e2b13c6f93865526 1-10
+biome-ui.json
+  e2b13c6f93865526 17-20
+lint-rules/no-raw-status-variables.grit
+  e2b13c6f93865526 1-10
+src/components/ui/sonner.tsx
+  e2b13c6f93865526 46,48,50-51
+lint-rules/no-legacy-status-tokens.grit
+  e2b13c6f93865526 1-10
+biome.json
+  e2b13c6f93865526 69-72
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.4",
+  "base_commit_sha": "c7fcf4661340ed5cf7bbbb09a867c11d5356caeb",
+  "prompts": {
+    "e2b13c6f93865526": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "566c6670-4e63-4d29-894e-1b7bc2601b61",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Rowan Henseleit <rowan.henseleit@marshmallow.co>",
+      "messages": [],
+      "total_additions": 42,
+      "total_deletions": 6,
+      "accepted_lines": 42,
+      "overriden_lines": 0
+    }
+  }
+}
