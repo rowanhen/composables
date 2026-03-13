@@ -1,6 +1,7 @@
 import { Select as SelectPrimitive } from "@base-ui/react/select";
 import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from "lucide-react";
 import type * as React from "react";
+import { useCssVar } from "@/hooks/use-css-var";
 import { cn, FOCUS_RING } from "@/lib/utils";
 
 const Select = SelectPrimitive.Root;
@@ -58,7 +59,7 @@ function SelectContent({
 	className,
 	children,
 	side = "bottom",
-	sideOffset = 4,
+	sideOffset: sideOffsetProp,
 	align = "center",
 	alignOffset = 0,
 	alignItemWithTrigger = true,
@@ -68,6 +69,7 @@ function SelectContent({
 		SelectPrimitive.Positioner.Props,
 		"align" | "alignOffset" | "side" | "sideOffset" | "alignItemWithTrigger"
 	>) {
+	const sideOffset = sideOffsetProp ?? useCssVar("--dropdown-offset", 4);
 	return (
 		<SelectPrimitive.Portal>
 			<SelectPrimitive.Positioner
@@ -81,7 +83,7 @@ function SelectContent({
 				<SelectPrimitive.Popup
 					data-slot="select-content"
 					className={cn(
-						"bg-popover text-popover-foreground data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 ring-foreground/10 min-w-32 rounded-lg shadow-md ring-1 duration-fast relative isolate z-popover max-h-(--available-height) w-(--anchor-width) origin-(--transform-origin) overflow-x-hidden overflow-y-auto",
+						"bg-popover text-popover-foreground data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 ring-foreground/10 min-w-32 rounded-lg shadow-md ring-[length:var(--border-width)] duration-fast relative isolate z-popover max-h-(--available-height) w-(--anchor-width) origin-(--transform-origin) overflow-x-hidden overflow-y-auto",
 						className,
 					)}
 					{...props}

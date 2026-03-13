@@ -6,40 +6,6 @@
 
 @source "./**/*.{ts,tsx}";
 
-/* CircularXX font-face declarations */
-@font-face {
-  font-family: "CircularXX";
-  src: url("https://assets.marshmallow.com/fonts/CircularXXWeb-Regular.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "CircularXX";
-  src: url("https://assets.marshmallow.com/fonts/CircularXXWeb-Medium.woff2") format("woff2");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "CircularXX";
-  src: url("https://assets.marshmallow.com/fonts/CircularXXWeb-Bold.woff2") format("woff2");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* Marshmallow Youth font-face declaration */
-@font-face {
-  font-family: "Marshmallow Youth";
-  src: url("https://assets.marshmallow.com/fonts/MarshmallowYouth-Bold.woff2") format("woff2");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
 @custom-variant dark (&:is(.dark *));
 
 @theme {
@@ -87,6 +53,7 @@
 
   /* Border width — reactive at runtime */
   --border-width: var(--border-width-base);
+  --default-border-width: var(--border-width-base);
 
   /* Border radius — derived from --radius (set in tokens.css) so the
      panel slider scales all radii at runtime */
@@ -150,10 +117,10 @@
 }
 
 @theme inline {
-  /* Font families */
+  /* Font families — override --font-heading and --font-brand in :root to swap fonts */
   --font-sans: "Inter Variable", sans-serif;
-  --font-circular: "CircularXX", sans-serif;
-  --font-brand: "Marshmallow Youth", sans-serif;
+  --font-heading: var(--font-sans);
+  --font-brand: var(--font-sans);
 
   /* Container max-widths (breakpoint-aligned for page layout) */
   --container-sm: 640px;
@@ -172,6 +139,8 @@
     --shadow-offset-y: 1px;
     --shadow-blur: 2px;
     --shadow-spread: 1px;
+    --dropdown-offset: 4;
+    --overlay-offset: 4;
   }
 
   * {
@@ -179,7 +148,7 @@
   }
 
   body {
-    @apply font-circular bg-background text-foreground text-sm antialiased;
+    @apply font-heading bg-background text-foreground text-sm antialiased;
   }
 
   html {

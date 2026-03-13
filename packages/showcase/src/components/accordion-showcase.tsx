@@ -10,12 +10,12 @@ import { ShowcaseSection } from './showcase-section'
 
 const faqItems = [
   {
-    q: 'What is smores-internal?',
-    a: "A React component library for Marshmallow's internal tooling, built on Base UI and Tailwind CSS v4.",
+    q: 'What is Composable?',
+    a: 'A React component library built on Base UI and Tailwind CSS v4, designed for copy-paste composition.',
   },
   {
     q: 'How do I install components?',
-    a: 'Use the CLI: npx smores-internal add button. This copies the component source directly into your project.',
+    a: 'Use the CLI: npx @leitware/composable-cli add button. This copies the component source directly into your project.',
   },
   {
     q: 'Does it support dark mode?',

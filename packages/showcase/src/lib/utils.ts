@@ -10,7 +10,7 @@ export function cn(...inputs: ClassValue[]) {
  * Change this once to update focus behaviour across every component.
  */
 export const FOCUS_RING =
-  'focus-visible:border-ring focus-visible:ring-ring/30 focus-visible:ring-[2px] aria-invalid:ring-stroke-critical/20 dark:aria-invalid:ring-stroke-critical/40 aria-invalid:border-stroke-critical dark:aria-invalid:border-stroke-critical/50 aria-invalid:ring-[2px]'
+  'focus-visible:border-ring focus-visible:ring-ring/30 focus-visible:ring-[length:calc(var(--border-width)*2)] aria-invalid:ring-stroke-critical/20 dark:aria-invalid:ring-stroke-critical/40 aria-invalid:border-stroke-critical dark:aria-invalid:border-stroke-critical/50 aria-invalid:ring-[length:calc(var(--border-width)*2)]'
 
 /** Destructive-variant focus override – layer on top of FOCUS_RING. */
 export const FOCUS_RING_DESTRUCTIVE =

@@ -35,5 +35,5 @@ export const listCommand = new Command("list")
 		}
 
 		console.log(`\n${pc.dim(`${filtered.length} components available`)}`);
-		console.log(pc.dim('Usage: smores add <component>'));
+		console.log(pc.dim('Usage: composable add <component>'));
 	});

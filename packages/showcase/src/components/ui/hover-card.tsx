@@ -1,5 +1,6 @@
 import { PreviewCard as HoverCardPrimitive } from "@base-ui/react/preview-card";
 
+import { useCssVar } from "@/hooks/use-css-var";
 import { cn } from "@/lib/utils";
 
 function HoverCard({ ...props }: HoverCardPrimitive.Root.Props) {
@@ -17,7 +18,7 @@ function HoverCardContent({
 	align = "center",
 	alignOffset = 0,
 	side = "bottom",
-	sideOffset = 8,
+	sideOffset: sideOffsetProp,
 	children,
 	...props
 }: HoverCardPrimitive.Popup.Props &
@@ -25,6 +26,7 @@ function HoverCardContent({
 		HoverCardPrimitive.Positioner.Props,
 		"align" | "alignOffset" | "side" | "sideOffset"
 	>) {
+	const sideOffset = sideOffsetProp ?? useCssVar("--overlay-offset", 4);
 	return (
 		<HoverCardPrimitive.Portal>
 			<HoverCardPrimitive.Positioner
@@ -37,7 +39,7 @@ function HoverCardContent({
 				<HoverCardPrimitive.Popup
 					data-slot="hover-card-content"
 					className={cn(
-						"bg-popover text-popover-foreground data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 ring-foreground/10 rounded-lg p-4 text-xs shadow-md ring-1 duration-fast z-popover w-80 origin-(--transform-origin) outline-hidden",
+						"bg-popover text-popover-foreground data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 ring-foreground/10 rounded-lg p-4 text-xs shadow-md ring-[length:var(--border-width)] duration-fast z-popover w-80 origin-(--transform-origin) outline-hidden",
 						className,
 					)}
 					{...props}

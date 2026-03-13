@@ -20,7 +20,7 @@ export const registry: Record<string, ComponentEntry> = {
 	styles: {
 		name: "styles",
 		description: "Base design system CSS styles and theme tokens",
-		files: [{ src: "templates/styles/smores.css", dest: "styles/smores.css" }],
+		files: [{ src: "templates/styles/composable.css", dest: "styles/composable.css" }],
 		deps: ["tailwindcss"],
 		internalDeps: [],
 		tags: ["foundation"],

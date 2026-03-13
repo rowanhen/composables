@@ -28,11 +28,11 @@ export function DialogShowcase() {
           <VStack gap={3}>
             <VStack gap={1}>
               <Label htmlFor="name">Name</Label>
-              <Input id="name" defaultValue="Marshmallow User" />
+              <Input id="name" defaultValue="Jane Doe" />
             </VStack>
             <VStack gap={1}>
               <Label htmlFor="email">Email</Label>
-              <Input id="email" defaultValue="user@marshmallow.com" />
+              <Input id="email" defaultValue="jane@example.com" />
             </VStack>
           </VStack>
           <DialogFooter showCloseButton>

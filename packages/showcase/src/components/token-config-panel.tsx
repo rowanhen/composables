@@ -22,6 +22,40 @@ import { FormSlider } from '@/components/ui-opinionated/form-slider'
 import semanticJson from '@/tokens/semantic.json'
 
 /* ------------------------------------------------------------------ */
+/*  Google Fonts                                                        */
+/* ------------------------------------------------------------------ */
+
+const GOOGLE_FONTS = [
+  'Inter',
+  'Roboto',
+  'Open Sans',
+  'Lato',
+  'Montserrat',
+  'Poppins',
+  'DM Sans',
+  'Space Grotesk',
+  'Playfair Display',
+  'Merriweather',
+  'Nunito',
+  'Raleway',
+  'Source Sans 3',
+  'JetBrains Mono',
+  'IBM Plex Sans',
+] as const
+
+const loadedFonts = new Set<string>()
+
+function loadGoogleFont(name: string) {
+  // Inter is already bundled via @fontsource-variable/inter
+  if (name === 'Inter' || loadedFonts.has(name)) return
+  loadedFonts.add(name)
+  const link = document.createElement('link')
+  link.rel = 'stylesheet'
+  link.href = `https://fonts.googleapis.com/css2?family=${encodeURIComponent(name)}:wght@300;400;500;600;700&display=swap`
+  document.head.appendChild(link)
+}
+
+/* ------------------------------------------------------------------ */
 /*  Presets                                                             */
 /* ------------------------------------------------------------------ */
 
@@ -32,7 +66,7 @@ interface Preset {
   darkOverrides: Record<string, string>
 }
 
-const PRESET_STYLE_ID = 'smores-preset-overrides'
+const PRESET_STYLE_ID = 'composable-preset-overrides'
 
 /** Build a <style> element with :root and .dark blocks from a preset */
 function buildPresetStyleSheet(preset: Preset): string {
@@ -57,305 +91,8 @@ function removePresetStyle() {
   document.getElementById(PRESET_STYLE_ID)?.remove()
 }
 
-/**
- * Marshmallow customer-facing website tokens mapped to internal CSS variables.
- *
- * Tokens that DON'T have a direct 1:1 mapping (kept as comments for reference):
- *  - fontFamily (CircularXX / "Marshmallow Youth") — no runtime CSS var exposed
- *  - font composite tokens (hero, heading, body, label, caption, link) — composite objects
- *  - grid (breakpoints, columns, gutter, margin) — different structure
- *  - elevation / z-index tokens — no panel equivalent
- *  - letterSpacing — no exposed CSS var
- *  - thirdParty / extended1 — no internal equivalent
- *  - space / size / radius — different scale naming; closest match is base unit sliders
- */
-const marshmallowPreset: Preset = {
-  label: 'Marshmallow',
-  description: 'Customer-facing website colour scheme',
-  overrides: {
-    /* ── Backgrounds ─────────────────────────────────────── */
-    '--bg-default': '#fbf8f5', // color.background.100 → neutral.010
-    '--bg-muted': '#f8f2ea', // color.background.200 → neutral.020
-    '--bg-inverse': '#292924', // color.text.base → secondary.100
-
-    /* ── Surface backgrounds ─────────────────────────────── */
-    '--bg-surface-default': '#ffffff', // color.surface.base.000
-    '--bg-surface-hover': '#f8f2ea', // color.interactive.neutral.subtle.hover
-    '--bg-surface-inverse': '#292924', // color.surface.base.900
-    '--bg-surface-brand': '#ffcce7', // color.surface.brand.100 → primary.040
-    '--bg-surface-info': '#d0e3f2', // color.feedback.informative.100
-    '--bg-surface-success': '#c9e2ce', // color.feedback.positive.100
-    '--bg-surface-warning': '#fcf0d0', // color.feedback.notice.100
-    '--bg-surface-critical': '#f5cfcc', // color.feedback.negative.100
-
-    /* ── Fill backgrounds ────────────────────────────────── */
-    '--bg-fill-default': '#fbf8f5', // color.surface.base.100
-    '--bg-fill-primary': '#292924', // color.text.base (dark fill)
-    '--bg-fill-brand': '#ff88c8', // color.interactive.primary.base → primary.100
-    '--bg-fill-info': '#4d92c9', // color.feedback.informative.200
-    '--bg-fill-success': '#317a4c', // color.feedback.positive.200
-    '--bg-fill-warning': '#f2cb4a', // color.feedback.notice.200
-    '--bg-fill-critical': '#d03c30', // color.feedback.negative.200
-    '--bg-fill-secondary': '#292924', // secondary.100
-    '--bg-fill-secondary-inverse': '#ffffff', // neutral.000
-
-    /* ── Text ────────────────────────────────────────────── */
-    '--text-default': '#292924', // color.text.base → secondary.100
-    '--text-secondary': '#444543', // color.text.subtle fallback → secondary.080
-    '--text-muted': '#636768', // color.text.subtle → secondary.060
-    '--text-disabled': '#a2a5a6', // secondary.050
-    '--text-inverse': '#ffffff', // color.text.inverse
-    '--text-info': '#4d92c9', // color.feedback.informative.200
-    '--text-success': '#317a4c', // color.feedback.positive.200
-    '--text-warning': '#f2cb4a', // color.feedback.notice.200
-    '--text-critical': '#d03c30', // color.feedback.negative.200
-    '--text-brand': '#e43e93', // primary.140
-    '--text-link': '#4d92c9', // informative.100
-
-    /* ── Icons ───────────────────────────────────────────── */
-    '--icon-default': '#292924', // color.icon.base
-    '--icon-secondary': '#636768', // color.icon.subtle
-    '--icon-disabled': '#d2d2d2', // secondary.040
-    '--icon-inverse': '#ffffff', // color.icon.inverse
-    '--icon-info': '#4d92c9', // informative.100
-    '--icon-success': '#317a4c', // positive.100
-    '--icon-warning': '#f2cb4a', // notice.100
-    '--icon-critical': '#d03c30', // negative.100
-    '--icon-brand': '#c22274', // primary.160
-
-    /* ── Borders ─────────────────────────────────────────── */
-    '--border-default': '#dad2c4', // color.border.subtle → neutral.060
-    '--border-secondary': '#9d927b', // color.border.base → neutral.100
-    '--border-tertiary': '#292924', // color.border.contrast
-    '--border-disabled': '#d2d2d2', // secondary.040
-    '--border-inverse': '#0e0e0c', // secondary.120
-    '--border-focus': '#0e0e0c', // color.focus.onLight
-    '--border-brand': '#ff88c8', // primary.100
-    '--border-info': '#4d92c9', // informative.100
-    '--border-success': '#317a4c', // positive.100
-    '--border-warning': '#f2cb4a', // notice.100
-    '--border-critical': '#d03c30', // negative.100
-
-    /* ── Charts (using brand accent colours) ─────────────── */
-    '--chart-1': '#294636', // brand1.100
-    '--chart-2': '#89a2b6', // brand2.100
-    '--chart-3': '#838e49', // brand3.100
-    '--chart-4': '#c26b2a', // brand4.100
-    '--chart-5': '#ff88c8', // primary.100
-
-    /* ── Primitive overrides (for components that reference primitives) ── */
-    '--pink-100': '#ffe0f0', // primary.020
-    '--pink-200': '#ffcce7', // primary.040
-    '--pink-300': '#ffb3da', // primary.060
-    '--pink-400': '#ff9dcd', // primary.080
-    '--pink-500': '#ff88c8', // primary.100
-    '--pink-600': '#ff88c8', // primary.100 (closest)
-    '--pink-700': '#f759a9', // primary.120
-    '--pink-800': '#e43e93', // primary.140
-    '--pink-900': '#c22274', // primary.160
-    '--pink-950': '#c22274', // primary.160
-    '--pink-1000': '#c22274', // primary.160
-
-    '--neutral-50': '#ffffff', // neutral.000
-    '--neutral-100': '#fbf8f5', // neutral.010
-    '--neutral-200': '#f8f2ea', // neutral.020
-    '--neutral-300': '#f1e9dc', // neutral.040
-    '--neutral-400': '#dad2c4', // neutral.060
-    '--neutral-500': '#dad2c4', // neutral.060
-    '--neutral-600': '#beb4a0', // neutral.080
-    '--neutral-700': '#9d927b', // neutral.100
-    '--neutral-800': '#7c735f', // neutral.120
-    '--neutral-900': '#7c735f', // neutral.120
-    '--neutral-950': '#444543', // secondary.080
-    '--neutral-1000': '#292924', // secondary.100
-
-    '--red-100': '#f5cfcc', // negative.020
-    '--red-200': '#f5cfcc', // negative.020
-    '--red-300': '#f1b2a8', // negative.040
-    '--red-400': '#f1b2a8', // negative.040
-    '--red-500': '#e27a67', // negative.080
-    '--red-600': '#e27a67', // negative.080
-    '--red-700': '#d03c30', // negative.100
-    '--red-800': '#d03c30', // negative.100
-    '--red-900': '#a32f26', // negative.120
-    '--red-950': '#a32f26', // negative.120
-    '--red-1000': '#a32f26', // negative.120
-
-    '--green-100': '#c9e2ce', // positive.020
-    '--green-200': '#c9e2ce', // positive.020
-    '--green-700': '#317a4c', // positive.100
-    '--green-800': '#317a4c', // positive.100
-    '--green-900': '#28653f', // positive.120
-    '--green-950': '#28653f', // positive.120
-    '--green-1000': '#28653f', // positive.120
-
-    '--blue-100': '#d0e3f2', // informative.020
-    '--blue-200': '#d0e3f2', // informative.020
-    '--blue-700': '#4d92c9', // informative.100
-    '--blue-800': '#4d92c9', // informative.100
-    '--blue-950': '#4d92c9', // informative.100
-    '--blue-1000': '#4d92c9', // informative.100
-
-    '--sky-100': '#d0e3f2', // informative.020
-    '--sky-800': '#4d92c9', // informative.100
-    '--sky-950': '#4d92c9', // informative.100
-    '--sky-1000': '#4d92c9', // informative.100
-
-    '--orange-100': '#fcf0d0', // notice.020
-    '--orange-800': '#f2cb4a', // notice.100
-    '--orange-950': '#f2cb4a', // notice.100
-    '--orange-1000': '#f2cb4a', // notice.100
-
-    '--amber-100': '#fcf0d0', // notice.020
-    '--amber-800': '#f2cb4a', // notice.100
-  },
-  darkOverrides: {
-    /* ── Backgrounds (inverted — dark surfaces) ──────────── */
-    '--bg-default': '#0e0e0c', // secondary.120 (darkest)
-    '--bg-muted': '#292924', // secondary.100
-    '--bg-inverse': '#fbf8f5', // neutral.010
-
-    /* ── Surface backgrounds ─────────────────────────────── */
-    '--bg-surface-default': '#0e0e0c', // secondary.120
-    '--bg-surface-hover': '#292924', // secondary.100
-    '--bg-surface-inverse': '#fbf8f5', // neutral.010
-    '--bg-surface-brand': '#c22274', // primary.160 (darker brand)
-    '--bg-surface-info': '#1a3a52', // informative darkened
-    '--bg-surface-success': '#1a3d28', // positive darkened
-    '--bg-surface-warning': '#3d3218', // notice darkened
-    '--bg-surface-critical': '#3d1a17', // negative darkened
-
-    /* ── Fill backgrounds ────────────────────────────────── */
-    '--bg-fill-default': '#0e0e0c', // secondary.120
-    '--bg-fill-primary': '#f8f2ea', // neutral.020 (light fill on dark)
-    '--bg-fill-brand': '#e43e93', // primary.140
-    '--bg-fill-info': '#4d92c9', // informative.100
-    '--bg-fill-success': '#317a4c', // positive.100
-    '--bg-fill-warning': '#f2cb4a', // notice.100
-    '--bg-fill-critical': '#d03c30', // negative.100
-    '--bg-fill-secondary': '#f8f2ea', // neutral.020
-    '--bg-fill-secondary-inverse': '#0e0e0c', // secondary.120
-
-    /* ── Text (light on dark) ────────────────────────────── */
-    '--text-default': '#f8f2ea', // neutral.020
-    '--text-secondary': '#dad2c4', // neutral.060
-    '--text-muted': '#beb4a0', // neutral.080
-    '--text-disabled': '#636768', // secondary.060
-    '--text-inverse': '#0e0e0c', // secondary.120
-    '--text-info': '#89a2b6', // brand2.100 (lighter blue)
-    '--text-success': '#c9e2ce', // positive.020
-    '--text-warning': '#f2cb4a', // notice.100
-    '--text-critical': '#f1b2a8', // negative.040
-    '--text-brand': '#ff88c8', // primary.100
-    '--text-link': '#89a2b6', // brand2.100
-
-    /* ── Icons ───────────────────────────────────────────── */
-    '--icon-default': '#f8f2ea', // neutral.020
-    '--icon-secondary': '#beb4a0', // neutral.080
-    '--icon-disabled': '#636768', // secondary.060
-    '--icon-inverse': '#0e0e0c', // secondary.120
-    '--icon-info': '#89a2b6', // brand2.100
-    '--icon-success': '#c9e2ce', // positive.020
-    '--icon-warning': '#f2cb4a', // notice.100
-    '--icon-critical': '#f1b2a8', // negative.040
-    '--icon-brand': '#ff88c8', // primary.100
-
-    /* ── Borders ─────────────────────────────────────────── */
-    '--border-default': '#444543', // secondary.080
-    '--border-secondary': '#636768', // secondary.060
-    '--border-tertiary': '#9d927b', // neutral.100
-    '--border-disabled': '#444543', // secondary.080
-    '--border-inverse': '#f8f2ea', // neutral.020
-    '--border-focus': '#ffffff', // color.focus.onDark
-    '--border-brand': '#e43e93', // primary.140
-    '--border-info': '#89a2b6', // brand2.100
-    '--border-success': '#317a4c', // positive.100
-    '--border-warning': '#f2cb4a', // notice.100
-    '--border-critical': '#d03c30', // negative.100
-
-    /* ── Charts ──────────────────────────────────────────── */
-    '--chart-1': '#3b5848', // brand1.060
-    '--chart-2': '#bbcfdf', // brand2.060
-    '--chart-3': '#dbe1b0', // brand3.060
-    '--chart-4': '#f8c699', // brand4.060
-    '--chart-5': '#ff88c8', // primary.100
-
-    /* ── Primitive overrides (dark mode) ─────────────────── */
-    '--pink-100': '#3d1228', // darkened primary
-    '--pink-200': '#4b1733', // darkened primary
-    '--pink-300': '#5e1d40', // darkened primary
-    '--pink-400': '#7a2656', // darkened primary
-    '--pink-500': '#9e3270', // darkened primary
-    '--pink-600': '#c22274', // primary.160
-    '--pink-700': '#e43e93', // primary.140
-    '--pink-800': '#e43e93', // primary.140
-    '--pink-900': '#f759a9', // primary.120
-    '--pink-950': '#ff88c8', // primary.100
-    '--pink-1000': '#ffcce7', // primary.040
-
-    '--neutral-50': '#0a0a09', // near black
-    '--neutral-100': '#0e0e0c', // secondary.120
-    '--neutral-200': '#1a1a18', // dark step
-    '--neutral-300': '#292924', // secondary.100
-    '--neutral-400': '#444543', // secondary.080
-    '--neutral-500': '#444543', // secondary.080
-    '--neutral-600': '#636768', // secondary.060
-    '--neutral-700': '#7c735f', // neutral.120
-    '--neutral-800': '#9d927b', // neutral.100
-    '--neutral-900': '#beb4a0', // neutral.080
-    '--neutral-950': '#dad2c4', // neutral.060
-    '--neutral-1000': '#f8f2ea', // neutral.020
-
-    '--red-100': '#3d1a17', // darkened negative
-    '--red-200': '#4d201c', // darkened negative
-    '--red-300': '#5e2822', // darkened negative
-    '--red-400': '#73312a', // darkened negative
-    '--red-500': '#8c3c34', // darkened negative
-    '--red-600': '#a32f26', // negative.120
-    '--red-700': '#d03c30', // negative.100
-    '--red-800': '#d03c30', // negative.100
-    '--red-900': '#e27a67', // negative.080
-    '--red-950': '#f1b2a8', // negative.040
-    '--red-1000': '#f5cfcc', // negative.020
-
-    '--green-100': '#1a3d28', // darkened positive
-    '--green-200': '#1e4a30', // darkened positive
-    '--green-700': '#317a4c', // positive.100
-    '--green-800': '#317a4c', // positive.100
-    '--green-900': '#c9e2ce', // positive.020 (lighter for dark)
-    '--green-950': '#c9e2ce', // positive.020
-    '--green-1000': '#c9e2ce', // positive.020
-
-    '--blue-100': '#1a3a52', // darkened informative
-    '--blue-200': '#1e4463', // darkened informative
-    '--blue-700': '#4d92c9', // informative.100
-    '--blue-800': '#4d92c9', // informative.100
-    '--blue-950': '#89a2b6', // brand2.100
-    '--blue-1000': '#d0e3f2', // informative.020
-
-    '--sky-100': '#1a3a52', // darkened informative
-    '--sky-800': '#4d92c9', // informative.100
-    '--sky-950': '#89a2b6', // brand2.100
-    '--sky-1000': '#d0e3f2', // informative.020
-
-    '--orange-100': '#3d3218', // darkened notice
-    '--orange-800': '#f2cb4a', // notice.100
-    '--orange-950': '#f2cb4a', // notice.100
-    '--orange-1000': '#fcf0d0', // notice.020
-
-    '--amber-100': '#3d3218', // darkened notice
-    '--amber-800': '#f2cb4a', // notice.100
-
-    '--base-white': '#000000', // inverted for dark
-    '--base-black': '#ffffff', // inverted for dark
-
-    '--shadow-base-color': 'rgba(0, 0, 0, 0.5)',
-  },
-}
-
 const presets: Record<string, Preset | null> = {
   default: null,
-  marshmallow: marshmallowPreset,
 }
 
 /* ------------------------------------------------------------------ */
@@ -501,6 +238,30 @@ const opacityTokens: DimensionToken[] = [
   },
 ]
 
+const dropdownOffsetTokens: DimensionToken[] = [
+  {
+    cssVar: '--dropdown-offset',
+    label: 'Dropdown offset',
+    defaultValue: 4,
+    min: 0,
+    max: 16,
+    step: 1,
+    unit: '',
+  },
+]
+
+const overlayOffsetTokens: DimensionToken[] = [
+  {
+    cssVar: '--overlay-offset',
+    label: 'Overlay offset',
+    defaultValue: 4,
+    min: 0,
+    max: 16,
+    step: 1,
+    unit: '',
+  },
+]
+
 const containerTokens: DimensionToken[] = [
   {
     cssVar: '--container-sm',
@@ -603,9 +364,13 @@ const allDimensionTokens = [
   ...opacityTokens,
   ...shadowDimensionTokens,
   ...containerTokens,
+  ...dropdownOffsetTokens,
+  ...overlayOffsetTokens,
 ]
 
 const allStringTokens = [shadowColorToken]
+
+const fontCssVars = ['--font-sans', '--font-heading', '--font-brand'] as const
 
 /* ------------------------------------------------------------------ */
 /*  Helpers                                                             */
@@ -815,6 +580,58 @@ function StringTokenRow({
 }
 
 /* ------------------------------------------------------------------ */
+/*  Font select row                                                     */
+/* ------------------------------------------------------------------ */
+
+function FontSelectRow({
+  label,
+  cssVar,
+  onApply,
+}: {
+  label: string
+  cssVar: string
+  onApply: (cssVar: string, value: string) => void
+}) {
+  const [value, setValue] = React.useState(() => {
+    const resolved = getResolvedDimension(cssVar).trim()
+    // Try to find the matching font name from our list
+    for (const font of GOOGLE_FONTS) {
+      if (resolved.startsWith(`"${font}"`) || resolved.startsWith(font)) {
+        return font
+      }
+    }
+    return 'Inter'
+  })
+
+  function handleChange(e: React.ChangeEvent<HTMLSelectElement>) {
+    const font = e.target.value
+    setValue(font)
+    loadGoogleFont(font)
+    const fontValue = font === 'Inter' ? '"Inter Variable", sans-serif' : `"${font}", sans-serif`
+    onApply(cssVar, fontValue)
+  }
+
+  return (
+    <div className="py-1">
+      <Typography variant="caption-100" className="text-muted-foreground mb-1 block">
+        {label}
+      </Typography>
+      <select
+        value={value}
+        onChange={handleChange}
+        className="w-full h-7 rounded-md border border-border bg-transparent px-2 text-xs text-foreground outline-none focus:ring-[length:var(--border-width)] focus:ring-ring"
+      >
+        {GOOGLE_FONTS.map((font) => (
+          <option key={font} value={font}>
+            {font}
+          </option>
+        ))}
+      </select>
+    </div>
+  )
+}
+
+/* ------------------------------------------------------------------ */
 /*  Section header                                                      */
 /* ------------------------------------------------------------------ */
 
@@ -886,6 +703,9 @@ export function TokenConfigPanel() {
     for (const token of allStringTokens) {
       document.documentElement.style.removeProperty(token.cssVar)
     }
+    for (const v of fontCssVars) {
+      document.documentElement.style.removeProperty(v)
+    }
     setOverrides({})
   }
 
@@ -919,6 +739,9 @@ export function TokenConfigPanel() {
     }
     for (const token of allStringTokens) {
       current[token.cssVar] = getResolvedDimension(token.cssVar)
+    }
+    for (const v of fontCssVars) {
+      current[v] = getResolvedDimension(v)
     }
     return current
   }
@@ -980,7 +803,7 @@ export function TokenConfigPanel() {
           <select
             value={activePreset}
             onChange={(e) => applyPreset(e.target.value)}
-            className="w-full h-7 rounded-md border border-border bg-transparent px-2 text-xs text-foreground outline-none focus:ring-1 focus:ring-ring"
+            className="w-full h-7 rounded-md border border-border bg-transparent px-2 text-xs text-foreground outline-none focus:ring-[length:var(--border-width)] focus:ring-ring"
           >
             <option value="default">Default</option>
             {Object.entries(presets)
@@ -1067,6 +890,18 @@ export function TokenConfigPanel() {
 
                 <Separator className="my-3" />
 
+                {/* Font Family */}
+                <div className="mb-4">
+                  <SectionHeader>Font Family</SectionHeader>
+                  <VStack gap={1}>
+                    <FontSelectRow label="Sans / body (--font-sans)" cssVar="--font-sans" onApply={applyOverride} />
+                    <FontSelectRow label="Heading (--font-heading)" cssVar="--font-heading" onApply={applyOverride} />
+                    <FontSelectRow label="Brand (--font-brand)" cssVar="--font-brand" onApply={applyOverride} />
+                  </VStack>
+                </div>
+
+                <Separator className="my-3" />
+
                 {/* Shadow */}
                 <div className="mb-4">
                   <SectionHeader>Shadow</SectionHeader>
@@ -1097,6 +932,21 @@ export function TokenConfigPanel() {
                   <SectionHeader>Container Breakpoints</SectionHeader>
                   <VStack gap={1}>
                     {containerTokens.map((t) => (
+                      <DimensionSliderRow key={t.cssVar} token={t} onApply={applyOverride} />
+                    ))}
+                  </VStack>
+                </div>
+
+                <Separator className="my-3" />
+
+                {/* Positioning */}
+                <div className="mb-4">
+                  <SectionHeader>Positioning</SectionHeader>
+                  <VStack gap={1}>
+                    {dropdownOffsetTokens.map((t) => (
+                      <DimensionSliderRow key={t.cssVar} token={t} onApply={applyOverride} />
+                    ))}
+                    {overlayOffsetTokens.map((t) => (
                       <DimensionSliderRow key={t.cssVar} token={t} onApply={applyOverride} />
                     ))}
                   </VStack>

@@ -28,11 +28,11 @@ export function SheetShowcase() {
             <VStack gap={3} className="p-6">
               <VStack gap={1}>
                 <Label>Display name</Label>
-                <Input defaultValue="Marshmallow User" />
+                <Input defaultValue="Jane Doe" />
               </VStack>
               <VStack gap={1}>
                 <Label>Email</Label>
-                <Input defaultValue="user@marshmallow.com" />
+                <Input defaultValue="jane@example.com" />
               </VStack>
             </VStack>
             <SheetFooter>

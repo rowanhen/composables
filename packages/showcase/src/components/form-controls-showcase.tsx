@@ -185,7 +185,7 @@ export function FormControlsShowcase() {
                   <LinkIcon />
                 </InputGroupText>
               </InputGroupAddon>
-              <InputGroupInput defaultValue="https://marshmallow.com/invite/abc123" readOnly />
+              <InputGroupInput defaultValue="https://example.com/invite/abc123" readOnly />
               <InputGroupAddon align="inline-end">
                 <InputGroupButton>
                   <CopyIcon />
@@ -204,7 +204,7 @@ export function FormControlsShowcase() {
                   <SearchIcon />
                 </InputGroupText>
               </InputGroupAddon>
-              <InputGroupInput placeholder="Type to search..." defaultValue="marshmallow" />
+              <InputGroupInput placeholder="Type to search..." defaultValue="composable" />
               <InputGroupAddon align="inline-end">
                 <InputGroupButton>
                   <XIcon />

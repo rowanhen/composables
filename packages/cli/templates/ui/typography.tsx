@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 const typographyVariants = cva("", {
 	variants: {
 		variant: {
-			// Hero variants - Marshmallow Youth, 700, letter-spacing -0.02em, line-height 1
+			// Hero variants - brand font, 700, letter-spacing -0.02em, line-height 1
 			"hero-100":
 				"font-brand font-bold text-4xl leading-none tracking-[-0.02em]",
 			"hero-200":
@@ -16,15 +16,15 @@ const typographyVariants = cva("", {
 			"hero-400":
 				"font-brand font-bold text-7xl leading-none tracking-[-0.02em]",
 
-			// Heading variants - CircularXX, 500, letter-spacing 0
-			"heading-100": "font-circular font-medium text-sm tracking-normal",
-			"heading-200": "font-circular font-medium text-base tracking-normal",
-			"heading-300": "font-circular font-medium text-xl tracking-normal",
-			"heading-400": "font-circular font-medium text-2xl tracking-normal",
-			"heading-500": "font-circular font-medium text-3xl tracking-normal",
-			"heading-600": "font-circular font-medium text-4xl tracking-normal",
+			// Heading variants - heading font, 500, letter-spacing 0
+			"heading-100": "font-heading font-medium text-sm tracking-normal",
+			"heading-200": "font-heading font-medium text-base tracking-normal",
+			"heading-300": "font-heading font-medium text-xl tracking-normal",
+			"heading-400": "font-heading font-medium text-2xl tracking-normal",
+			"heading-500": "font-heading font-medium text-3xl tracking-normal",
+			"heading-600": "font-heading font-medium text-4xl tracking-normal",
 
-			// Brand heading variants - Marshmallow Youth, 700, letter-spacing -0.01em
+			// Brand heading variants - brand font, 700, letter-spacing -0.01em
 			"brand-heading-100": "font-brand font-bold text-sm tracking-[-0.01em]",
 			"brand-heading-200": "font-brand font-bold text-base tracking-[-0.01em]",
 			"brand-heading-300": "font-brand font-bold text-xl tracking-[-0.01em]",
@@ -32,36 +32,36 @@ const typographyVariants = cva("", {
 			"brand-heading-500": "font-brand font-bold text-3xl tracking-[-0.01em]",
 			"brand-heading-600": "font-brand font-bold text-4xl tracking-[-0.01em]",
 
-			// Body variants - CircularXX, 400, letter-spacing 0
-			"body-100": "font-circular font-normal text-sm tracking-normal",
-			"body-200": "font-circular font-normal text-base tracking-normal",
-			"body-300": "font-circular font-normal text-lg tracking-normal",
+			// Body variants - heading font, 400, letter-spacing 0
+			"body-100": "font-heading font-normal text-sm tracking-normal",
+			"body-200": "font-heading font-normal text-base tracking-normal",
+			"body-300": "font-heading font-normal text-lg tracking-normal",
 
-			// Brand body variants - Marshmallow Youth, 700
+			// Brand body variants - brand font, 700
 			"brand-body-100": "font-brand font-bold text-sm tracking-normal",
 			"brand-body-200": "font-brand font-bold text-base tracking-normal",
 			"brand-body-300": "font-brand font-bold text-lg tracking-normal",
 
-			// Label variants - CircularXX, 500
+			// Label variants - heading font, 500
 			"label-100":
-				"font-circular font-medium text-2xs leading-none tracking-normal uppercase",
+				"font-heading font-medium text-2xs leading-none tracking-normal uppercase",
 			"label-200":
-				"font-circular font-medium text-base leading-none tracking-normal uppercase",
+				"font-heading font-medium text-base leading-none tracking-normal uppercase",
 
-			// Brand label variants - Marshmallow Youth, 700
+			// Brand label variants - brand font, 700
 			"brand-label-100":
 				"font-brand font-bold text-2xs leading-none tracking-normal uppercase",
 			"brand-label-200":
 				"font-brand font-bold text-base leading-none tracking-normal uppercase",
 
-			// Caption variant - CircularXX, 400
+			// Caption variant - heading font, 400
 			"caption-100":
-				"font-circular font-normal text-xs tracking-normal text-muted-foreground",
+				"font-heading font-normal text-xs tracking-normal text-muted-foreground",
 
-			// Link variants - CircularXX, 500, underline
-			"link-100": "font-circular font-medium text-sm tracking-normal underline",
+			// Link variants - heading font, 500, underline
+			"link-100": "font-heading font-medium text-sm tracking-normal underline",
 			"link-200":
-				"font-circular font-medium text-base tracking-normal underline",
+				"font-heading font-medium text-base tracking-normal underline",
 		},
 	},
 	defaultVariants: {

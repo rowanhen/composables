@@ -1,11 +1,11 @@
 {
-	"name": "smores-internal",
+	"name": "@leitware/composable",
 	"private": true,
 	"workspaces": ["packages/*"],
 	"scripts": {
-		"build": "bun run --filter 'smores-internal' build",
+		"build": "bun run --filter '@leitware/composable-cli' build",
 		"dev": "bun run --cwd packages/showcase dev",
-		"test": "bun run --filter 'smores-internal' test",
+		"test": "bun run --filter '@leitware/composable-cli' test",
 		"prepare": "git config core.hooksPath .githooks"
 	},
 	"devDependencies": {

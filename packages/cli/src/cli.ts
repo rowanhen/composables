@@ -12,8 +12,8 @@ const pkg = JSON.parse(readFileSync(join(__dirname, "..", "package.json"), "utf-
 const program = new Command();
 
 program
-	.name("smores")
-	.description("Smores Internal — design system CLI")
+	.name("composable")
+	.description("Composable — design system CLI")
 	.version(pkg.version);
 
 program.addCommand(addCommand);

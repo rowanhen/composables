@@ -1,10 +1,10 @@
 {
-	"name": "smores-internal",
+	"name": "@leitware/composable-cli",
 	"version": "0.1.0",
-	"description": "Smores Internal — extended shadcn/ui-style copy-paste component library for React with a CLI installer",
+	"description": "Composable — extended shadcn/ui-style copy-paste component library for React with a CLI installer",
 	"type": "module",
 	"bin": {
-		"smores": "dist/cli.js"
+		"composable": "dist/cli.js"
 	},
 	"files": ["dist", "templates"],
 	"scripts": {

@@ -4,7 +4,7 @@ import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "vite";
 
 export default defineConfig({
-	base: process.env.GITHUB_PAGES ? "/smores-internal/" : "/",
+	base: process.env.GITHUB_PAGES ? "/composable/" : "/",
 	plugins: [react(), tailwindcss()],
 	resolve: {
 		alias: {

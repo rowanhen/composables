@@ -29,7 +29,7 @@ function Alert({
   className,
   ...alertProps
 }: AlertProps) {
-  // Map smores-react Alert types to variants
+  // Map alert types to variants
   const variant = type === 'negative' ? 'destructive' : type === 'warning' ? 'warning' : 'default'
 
   // Get icon based on type

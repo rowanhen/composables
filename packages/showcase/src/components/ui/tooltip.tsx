@@ -1,5 +1,6 @@
 import { Tooltip as TooltipPrimitive } from "@base-ui/react/tooltip";
 
+import { useCssVar } from "@/hooks/use-css-var";
 import { cn } from "@/lib/utils";
 
 function TooltipProvider({
@@ -30,7 +31,7 @@ function TooltipTrigger({ ...props }: TooltipPrimitive.Trigger.Props) {
 function TooltipContent({
 	className,
 	side = "top",
-	sideOffset = 4,
+	sideOffset: sideOffsetProp,
 	align = "center",
 	alignOffset = 0,
 	children,
@@ -40,6 +41,7 @@ function TooltipContent({
 		TooltipPrimitive.Positioner.Props,
 		"align" | "alignOffset" | "side" | "sideOffset"
 	>) {
+	const sideOffset = sideOffsetProp ?? useCssVar("--overlay-offset", 4);
 	return (
 		<TooltipPrimitive.Portal>
 			<TooltipPrimitive.Positioner
@@ -58,7 +60,6 @@ function TooltipContent({
 					{...props}
 				>
 					{children}
-					<TooltipPrimitive.Arrow className="size-2.5 translate-y-[calc(-50%_-_2px)] rotate-45 rounded-[2px] bg-foreground fill-foreground z-tooltip data-[side=bottom]:top-1 data-[side=left]:top-1/2! data-[side=left]:-right-1 data-[side=left]:-translate-y-1/2 data-[side=right]:top-1/2! data-[side=right]:-left-1 data-[side=right]:-translate-y-1/2 data-[side=top]:-bottom-2.5" />
 				</TooltipPrimitive.Popup>
 			</TooltipPrimitive.Positioner>
 		</TooltipPrimitive.Portal>
