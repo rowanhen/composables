@@ -1,0 +1,23 @@
+showcase/components/token-config-panel.tsx
+  af1ed0a1c63cb6cb 25-360,865,869-873,879,892-909,936-938,972-995,998
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.4",
+  "base_commit_sha": "676780bcc3cb09a2bd8cae1a9ec52b9f66fdec2c",
+  "prompts": {
+    "af1ed0a1c63cb6cb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6dd63056-819a-4ca4-becb-e74e5e64ce3e",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Rowan Henseleit <rowan.henseleit@marshmallow.co>",
+      "messages": [],
+      "total_additions": 406,
+      "total_deletions": 22,
+      "accepted_lines": 393,
+      "overriden_lines": 0
+    }
+  }
+}
