@@ -1,0 +1,35 @@
+src/components/ui/icon.tsx
+  800a373cbd82e52b 1-45
+showcase/components/icon-showcase.tsx
+  800a373cbd82e52b 1,5-7,16-27,29-132,134
+showcase/components/scroll-area-showcase.tsx
+  800a373cbd82e52b 19,36
+showcase/main.tsx
+  800a373cbd82e52b 6
+biome.json
+  800a373cbd82e52b 12,15
+showcase/components/stack-showcase.tsx
+  800a373cbd82e52b 53
+showcase/components/token-config-panel.tsx
+  800a373cbd82e52b 510,512
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.4",
+  "base_commit_sha": "a3e6a443c585854b0d714c5b542c09952f509867",
+  "prompts": {
+    "800a373cbd82e52b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "71d2615b-6355-4f7b-a2cf-2bbffe37e498",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Rowan Henseleit <rowan.henseleit@marshmallow.co>",
+      "messages": [],
+      "total_additions": 191,
+      "total_deletions": 0,
+      "accepted_lines": 174,
+      "overriden_lines": 13
+    }
+  }
+}
