@@ -32,21 +32,21 @@ const typographyVariants = cva("", {
 			"brand-heading-500": "font-brand font-bold text-3xl tracking-tight",
 			"brand-heading-600": "font-brand font-bold text-4xl tracking-tight",
 
-			// Body variants - heading font, 400, normal letter-spacing
-			"body-100": "font-heading font-normal text-sm tracking-normal",
-			"body-200": "font-heading font-normal text-base tracking-normal",
-			"body-300": "font-heading font-normal text-lg tracking-normal",
+			// Body variants - sans font, 400, normal letter-spacing
+			"body-100": "font-sans font-normal text-sm tracking-normal",
+			"body-200": "font-sans font-normal text-base tracking-normal",
+			"body-300": "font-sans font-normal text-lg tracking-normal",
 
 			// Brand body variants - brand font, 700
 			"brand-body-100": "font-brand font-bold text-sm tracking-normal",
 			"brand-body-200": "font-brand font-bold text-base tracking-normal",
 			"brand-body-300": "font-brand font-bold text-lg tracking-normal",
 
-			// Label variants - heading font, 500, wider letter-spacing
+			// Label variants - sans font, 500, wider letter-spacing
 			"label-100":
-				"font-heading font-medium text-2xs leading-none tracking-wider uppercase",
+				"font-sans font-medium text-2xs leading-none tracking-wider uppercase",
 			"label-200":
-				"font-heading font-medium text-base leading-none tracking-wider uppercase",
+				"font-sans font-medium text-base leading-none tracking-wider uppercase",
 
 			// Brand label variants - brand font, 700, wider letter-spacing
 			"brand-label-100":
@@ -54,14 +54,14 @@ const typographyVariants = cva("", {
 			"brand-label-200":
 				"font-brand font-bold text-base leading-none tracking-wider uppercase",
 
-			// Caption variant - heading font, 400
+			// Caption variant - sans font, 400
 			"caption-100":
-				"font-heading font-normal text-xs tracking-normal text-muted-foreground",
+				"font-sans font-normal text-xs tracking-normal text-muted-foreground",
 
-			// Link variants - heading font, 500, underline
-			"link-100": "font-heading font-medium text-sm tracking-normal underline",
+			// Link variants - sans font, 500, underline
+			"link-100": "font-sans font-medium text-sm tracking-normal underline",
 			"link-200":
-				"font-heading font-medium text-base tracking-normal underline",
+				"font-sans font-medium text-base tracking-normal underline",
 		},
 	},
 	defaultVariants: {

@@ -161,7 +161,7 @@
   }
 
   body {
-    @apply font-heading bg-background text-foreground text-sm antialiased;
+    @apply font-sans bg-background text-foreground text-sm antialiased;
   }
 
   html {
