@@ -20,28 +20,115 @@ import { FormInput } from '@/components/ui-opinionated/form-input'
 import { FormSlider } from '@/components/ui-opinionated/form-slider'
 
 import semanticJson from '@/tokens/semantic.json'
+import {
+  defaultNeutral,
+  softPastel,
+  brutalist,
+  corporateBlue,
+  warmEarth,
+  midnight,
+  roseGold,
+  forest,
+  swissMinimal,
+  oceanBreeze,
+} from '@/presets'
 
 /* ------------------------------------------------------------------ */
-/*  Google Fonts                                                        */
+/*  Google Fonts — grouped by style                                     */
 /* ------------------------------------------------------------------ */
 
-const GOOGLE_FONTS = [
-  'Inter',
-  'Roboto',
-  'Open Sans',
-  'Lato',
-  'Montserrat',
-  'Poppins',
-  'DM Sans',
-  'Space Grotesk',
-  'Playfair Display',
-  'Merriweather',
-  'Nunito',
-  'Raleway',
-  'Source Sans 3',
-  'JetBrains Mono',
-  'IBM Plex Sans',
-] as const
+interface FontGroup {
+  label: string
+  fonts: string[]
+}
+
+const FONT_GROUPS: FontGroup[] = [
+  {
+    label: 'Sans-Serif',
+    fonts: [
+      'Inter',
+      'Roboto',
+      'Open Sans',
+      'Lato',
+      'Montserrat',
+      'Poppins',
+      'DM Sans',
+      'Nunito',
+      'Raleway',
+      'Source Sans 3',
+      'IBM Plex Sans',
+      'Work Sans',
+      'Outfit',
+      'Plus Jakarta Sans',
+      'Manrope',
+      'Figtree',
+      'Albert Sans',
+      'Red Hat Display',
+      'Lexend',
+      'General Sans',
+    ],
+  },
+  {
+    label: 'Serif',
+    fonts: [
+      'Playfair Display',
+      'Merriweather',
+      'Lora',
+      'Source Serif 4',
+      'Cormorant Garamond',
+      'Libre Baskerville',
+      'Bitter',
+      'Crimson Text',
+      'EB Garamond',
+      'DM Serif Display',
+      'Fraunces',
+      'Instrument Serif',
+      'Newsreader',
+    ],
+  },
+  {
+    label: 'Display & Decorative',
+    fonts: [
+      'Space Grotesk',
+      'Sora',
+      'Clash Display',
+      'Cabinet Grotesk',
+      'Satoshi',
+      'Epilogue',
+      'Urbanist',
+      'Archivo',
+      'Be Vietnam Pro',
+      'Schibsted Grotesk',
+    ],
+  },
+  {
+    label: 'Monospace',
+    fonts: [
+      'JetBrains Mono',
+      'Fira Code',
+      'Source Code Pro',
+      'IBM Plex Mono',
+      'Space Mono',
+      'Roboto Mono',
+      'Inconsolata',
+      'Red Hat Mono',
+      'DM Mono',
+    ],
+  },
+  {
+    label: 'Handwriting & Script',
+    fonts: [
+      'Caveat',
+      'Dancing Script',
+      'Pacifico',
+      'Satisfy',
+      'Kalam',
+      'Patrick Hand',
+    ],
+  },
+]
+
+const ALL_FONT_NAMES = FONT_GROUPS.flatMap((g) => g.fonts)
 
 const loadedFonts = new Set<string>()
 
@@ -93,6 +180,66 @@ function removePresetStyle() {
 
 const presets: Record<string, Preset | null> = {
   default: null,
+  'default-neutral': {
+    label: 'Default Neutral',
+    description: 'Warm neutral base with JetBrains Mono body text',
+    overrides: defaultNeutral,
+    darkOverrides: {},
+  },
+  'soft-pastel': {
+    label: 'Soft Pastel',
+    description: 'Gentle lavender tones with rounded corners and soft shadows',
+    overrides: softPastel,
+    darkOverrides: {},
+  },
+  brutalist: {
+    label: 'Brutalist',
+    description: 'Bold borders, sharp corners, high contrast, monospace type',
+    overrides: brutalist,
+    darkOverrides: {},
+  },
+  'corporate-blue': {
+    label: 'Corporate Blue',
+    description: 'Professional blue palette with clean Inter typography',
+    overrides: corporateBlue,
+    darkOverrides: {},
+  },
+  'warm-earth': {
+    label: 'Warm Earth',
+    description: 'Earthy amber tones with elegant serif typography',
+    overrides: warmEarth,
+    darkOverrides: {},
+  },
+  midnight: {
+    label: 'Midnight',
+    description: 'Dark background with vibrant purple and blue accents',
+    overrides: midnight,
+    darkOverrides: {},
+  },
+  'rose-gold': {
+    label: 'Rose Gold',
+    description: 'Warm pinks with elegant Cormorant Garamond headings',
+    overrides: roseGold,
+    darkOverrides: {},
+  },
+  forest: {
+    label: 'Forest',
+    description: 'Deep greens with warm serif typography',
+    overrides: forest,
+    darkOverrides: {},
+  },
+  'swiss-minimal': {
+    label: 'Swiss Minimal',
+    description: 'Helvetica, no radius, no shadows, red accent — pure Swiss style',
+    overrides: swissMinimal,
+    darkOverrides: {},
+  },
+  'ocean-breeze': {
+    label: 'Ocean Breeze',
+    description: 'Cool cyan and teal tones with airy Nunito body text',
+    overrides: oceanBreeze,
+    darkOverrides: {},
+  },
 }
 
 /* ------------------------------------------------------------------ */
@@ -608,7 +755,7 @@ function FontSelectRow({
   const [value, setValue] = React.useState(() => {
     const resolved = getResolvedDimension(cssVar).trim()
     // Try to find the matching font name from our list
-    for (const font of GOOGLE_FONTS) {
+    for (const font of ALL_FONT_NAMES) {
       if (resolved.startsWith(`"${font}"`) || resolved.startsWith(font)) {
         return font
       }
@@ -634,10 +781,14 @@ function FontSelectRow({
         onChange={handleChange}
         className="w-full h-7 rounded-md border border-border bg-transparent px-2 text-xs text-foreground outline-none focus:ring-[length:var(--border-width)] focus:ring-ring"
       >
-        {GOOGLE_FONTS.map((font) => (
-          <option key={font} value={font}>
-            {font}
-          </option>
+        {FONT_GROUPS.map((group) => (
+          <optgroup key={group.label} label={group.label}>
+            {group.fonts.map((font) => (
+              <option key={font} value={font}>
+                {font}
+              </option>
+            ))}
+          </optgroup>
         ))}
       </select>
     </div>
@@ -735,6 +886,15 @@ export function TokenConfigPanel() {
 
     const preset = presets[presetKey]
     if (!preset) return
+
+    // Pre-load any Google Fonts referenced in the preset
+    for (const v of fontCssVars) {
+      const fontValue = preset.overrides[v]
+      if (fontValue) {
+        const match = fontValue.match(/^"([^"]+)"/)
+        if (match) loadGoogleFont(match[1])
+      }
+    }
 
     // Inject a <style> sheet with :root and .dark blocks so the preset
     // respects dark-mode toggling via the .dark class on <html>.
