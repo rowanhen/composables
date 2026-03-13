@@ -1,0 +1,21 @@
+name: Merge Main
+on:
+  push:
+    branches:
+      - main
+jobs:
+  merge-main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Setup Node
+        uses: marshmallow-insurance/campfire/.github/actions/setup-node-project@main
+      - name: Run Check Types
+        run: |
+          npm run check-types
+      - uses: marshmallow-insurance/campfire/.github/actions/run-fossa-analysis@main
+        with:
+          api-key: ${{ secrets.FOSSA_API_KEY }}

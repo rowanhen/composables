@@ -1,0 +1,22 @@
+---
+version: 1
+service:
+  name: smores-internal
+  lifecycle: pre_alpha
+  product: S'mores Internal
+  owner: frontend
+  language: TypeScript
+  framework: React
+  description:
+    React component library for Marshmallow's internal tools.
+  tier: essential
+  repositories:
+    - name: marshmallow-insurance/smores-internal
+      path: '/'
+      provider: github
+  properties:
+    penetration_testing: false
+    public_repository: false
+    product: core
+    region: all
+    type: library

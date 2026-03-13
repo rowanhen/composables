@@ -1,0 +1,188 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/inter";
+@import "./tokens.css";
+
+@source "./**/*.{ts,tsx}";
+
+/* CircularXX font-face declarations */
+@font-face {
+  font-family: "CircularXX";
+  src: url("https://assets.marshmallow.com/fonts/CircularXXWeb-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "CircularXX";
+  src: url("https://assets.marshmallow.com/fonts/CircularXXWeb-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "CircularXX";
+  src: url("https://assets.marshmallow.com/fonts/CircularXXWeb-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Marshmallow Youth font-face declaration */
+@font-face {
+  font-family: "Marshmallow Youth";
+  src: url("https://assets.marshmallow.com/fonts/MarshmallowYouth-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  /* Spacing base unit — reactive at runtime via calc(var(--spacing) * N) */
+  --spacing: 0.25rem;
+
+  /* Type scale — all sizes derived from --font-size-base,
+     all line-heights derived from --leading-base.
+     Adjust the two root tokens to scale the entire system. */
+  --text-2xs: calc(var(--font-size-base) * 0.625);
+  --text-2xs--line-height: calc(var(--leading-base) * 0.75);
+
+  --text-xs: calc(var(--font-size-base) * 0.75);
+  --text-xs--line-height: calc(var(--leading-base) * 0.94);
+
+  --text-sm: calc(var(--font-size-base) * 0.875);
+  --text-sm--line-height: var(--leading-base);
+
+  --text-base: var(--font-size-base);
+  --text-base--line-height: var(--leading-base);
+
+  --text-lg: calc(var(--font-size-base) * 1.125);
+  --text-lg--line-height: var(--leading-base);
+
+  --text-xl: calc(var(--font-size-base) * 1.25);
+  --text-xl--line-height: calc(var(--leading-base) * 0.94);
+
+  --text-2xl: calc(var(--font-size-base) * 1.5);
+  --text-2xl--line-height: calc(var(--leading-base) * 0.94);
+
+  --text-3xl: calc(var(--font-size-base) * 1.75);
+  --text-3xl--line-height: calc(var(--leading-base) * 0.85);
+
+  --text-4xl: calc(var(--font-size-base) * 2);
+  --text-4xl--line-height: calc(var(--leading-base) * 0.85);
+
+  --text-5xl: calc(var(--font-size-base) * 2.5);
+  --text-5xl--line-height: calc(var(--leading-base) * 0.75);
+
+  --text-6xl: calc(var(--font-size-base) * 3.5);
+  --text-6xl--line-height: calc(var(--leading-base) * 0.75);
+
+  --text-7xl: calc(var(--font-size-base) * 5);
+  --text-7xl--line-height: calc(var(--leading-base) * 0.75);
+
+  /* Border width — reactive at runtime */
+  --border-width: var(--border-width-base);
+
+  /* Border radius — derived from --radius (set in tokens.css) so the
+     panel slider scales all radii at runtime */
+  --radius-sm: calc(var(--radius) - 0.25rem);
+  --radius-md: calc(var(--radius) - 0.125rem);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 0.25rem);
+  --radius-2xl: calc(var(--radius) + 0.5rem);
+  --radius-3xl: calc(var(--radius) + 0.75rem);
+  --radius-4xl: calc(var(--radius) + 1rem);
+
+  /* Overlay */
+  --color-overlay: var(--overlays-black-alpha-800);
+
+  /* Shadow scale — programmatic, derived from base variables
+     Each level multiplies the base offset/blur/spread by a scale ratio.
+     xs=1x  sm=1.5x  md=3x  lg=6x  xl=12x */
+  --shadow-xs: 0 calc(var(--shadow-offset-y) * 1) calc(var(--shadow-blur) * 1)
+    calc(var(--shadow-spread) * 1) var(--shadow-base-color);
+  --shadow-sm:
+    0 calc(var(--shadow-offset-y) * 1.5) calc(var(--shadow-blur) * 1.5)
+    calc(var(--shadow-spread) * 1.5) var(--shadow-base-color),
+    0 calc(var(--shadow-offset-y) * 1) calc(var(--shadow-blur) * 1) calc(var(--shadow-spread) * -1)
+    var(--shadow-base-color);
+  --shadow-md:
+    0 calc(var(--shadow-offset-y) * 3) calc(var(--shadow-blur) * 3) calc(var(--shadow-spread) * -1)
+    var(--shadow-base-color),
+    0 calc(var(--shadow-offset-y) * 1.5) calc(var(--shadow-blur) * 2)
+    calc(var(--shadow-spread) * -2) var(--shadow-base-color);
+  --shadow-lg:
+    0 calc(var(--shadow-offset-y) * 6) calc(var(--shadow-blur) * 7) calc(var(--shadow-spread) * -3)
+    var(--shadow-base-color),
+    0 calc(var(--shadow-offset-y) * 3) calc(var(--shadow-blur) * 3) calc(var(--shadow-spread) * -4)
+    var(--shadow-base-color);
+  --shadow-xl:
+    0 calc(var(--shadow-offset-y) * 12) calc(var(--shadow-blur) * 12)
+    calc(var(--shadow-spread) * -5) var(--shadow-base-color),
+    0 calc(var(--shadow-offset-y) * 5) calc(var(--shadow-blur) * 5) calc(var(--shadow-spread) * -6)
+    var(--shadow-base-color);
+
+  /* Z-index scale */
+  --z-dropdown: 50;
+  --z-sticky: 100;
+  --z-overlay: 200;
+  --z-modal: 300;
+  --z-popover: 400;
+  --z-toast: 500;
+  --z-tooltip: 600;
+
+  /* Motion tokens */
+  --duration-fast: 100ms;
+  --duration-normal: 200ms;
+  --duration-slow: 300ms;
+  --ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-linear: linear;
+
+  /* Opacity tokens */
+  --opacity-disabled: 0.5;
+}
+
+@theme inline {
+  /* Font families */
+  --font-sans: "Inter Variable", sans-serif;
+  --font-circular: "CircularXX", sans-serif;
+  --font-brand: "Marshmallow Youth", sans-serif;
+
+  /* Container max-widths (breakpoint-aligned for page layout) */
+  --container-sm: 640px;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1280px;
+  --container-2xl: 1400px;
+}
+
+@layer base {
+  :root {
+    --font-size-base: 1rem;
+    --leading-base: 1.33;
+    --border-width-base: 0.0625rem;
+    --shadow-base-color: rgba(0, 0, 0, 0.1);
+    --shadow-offset-y: 1px;
+    --shadow-blur: 2px;
+    --shadow-spread: 1px;
+  }
+
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply font-circular bg-background text-foreground text-sm antialiased;
+  }
+
+  html {
+    @apply font-sans;
+  }
+}

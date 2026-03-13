@@ -1,0 +1,8 @@
+version: 3
+
+project:
+  id: smores-internal
+  name: smores-internal
+  url: https://github.com/marshmallow-insurance/smores-internal
+  team: frontend
+  policy: Frontend Security Policy

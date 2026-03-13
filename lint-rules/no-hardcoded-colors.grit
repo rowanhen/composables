@@ -1,0 +1,10 @@
+language js
+
+`"$value"` where {
+  $value <: r"(^|\s)(bg-black|bg-white|text-black|text-white|border-black|border-white)(\/|\s|$)",
+  register_diagnostic(
+    span = $value,
+    message = "Hardcoded color class detected. Use a semantic token instead (e.g., bg-overlay, bg-background, text-foreground).",
+    severity = "error"
+  )
+}

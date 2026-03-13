@@ -1,0 +1,10 @@
+language js
+
+`"$value"` where {
+  $value <: r"(^|\s)(hover|active|dark:hover|dark:active):(bg|text|border|ring)-[a-z][-a-z]*/\d+(\s|$)",
+  register_diagnostic(
+    span = $value,
+    message = "Hardcoded opacity on interactive state color. Use /(--opacity-hover) or /(--opacity-active) token instead.",
+    severity = "warning"
+  )
+}

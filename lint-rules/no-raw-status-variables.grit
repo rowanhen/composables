@@ -1,0 +1,10 @@
+language js
+
+`"$value"` where {
+  $value <: r"var\(--(text|border|icon|bg|bg-surface)-(critical|success|warning|info)\)",
+  register_diagnostic(
+    span = $value,
+    message = "Raw CSS variable for status color detected. Use the semantic Tailwind utility instead (e.g., text-critical, border-stroke-critical, bg-surface-critical, text-icon-critical).",
+    severity = "error"
+  )
+}

@@ -1,0 +1,172 @@
+{
+  "name": "@mrshmllw/smores-internal-react",
+  "version": "2.0.1",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "description": "Collection of React components used for UK Car Finance internal tooling by Marshmallow",
+  "type": "module",
+  "bin": {
+    "smores-internal": "./dist/cli/index.js"
+  },
+  "keywords": [
+    "react",
+    "components",
+    "design system",
+    "component library"
+  ],
+  "files": [
+    "dist",
+    "registry",
+    "biome-smores.json"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json",
+    "./styles.css": "./dist/styles.css",
+    "./ui-primitive/*": {
+      "types": "./dist/components/ui/*.d.ts",
+      "import": "./dist/components/ui/*.js",
+      "default": "./dist/components/ui/*.js"
+    },
+    "./ui-extended/*": {
+      "types": "./dist/components/ui-extended/*.d.ts",
+      "import": "./dist/components/ui-extended/*.js",
+      "default": "./dist/components/ui-extended/*.js"
+    },
+    "./ui-feature/*": {
+      "types": "./dist/components/ui-feature/*.d.ts",
+      "import": "./dist/components/ui-feature/*.js",
+      "default": "./dist/components/ui-feature/*.js"
+    },
+    "./ui-product/*": {
+      "types": "./dist/components/ui-product/*.d.ts",
+      "import": "./dist/components/ui-product/*.js",
+      "default": "./dist/components/ui-product/*.js"
+    },
+    "./hooks/*": {
+      "types": "./dist/hooks/*.d.ts",
+      "import": "./dist/hooks/*.js",
+      "default": "./dist/hooks/*.js"
+    },
+    "./lib/*": {
+      "types": "./dist/lib/*.d.ts",
+      "import": "./dist/lib/*.js",
+      "default": "./dist/lib/*.js"
+    },
+    "./biome-smores.json": "./biome-smores.json"
+  },
+  "typesVersions": {
+    "*": {
+      "ui-primitive/*": [
+        "./dist/components/ui/*.d.ts"
+      ],
+      "ui-extended/*": [
+        "./dist/components/ui-extended/*.d.ts"
+      ],
+      "ui-feature/*": [
+        "./dist/components/ui-feature/*.d.ts"
+      ],
+      "ui-product/*": [
+        "./dist/components/ui-product/*.d.ts"
+      ],
+      "hooks/*": [
+        "./dist/hooks/*.d.ts"
+      ],
+      "lib/*": [
+        "./dist/lib/*.d.ts"
+      ]
+    }
+  },
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "scripts": {
+    "clean": "rimraf ./dist",
+    "build": "npm run clean && npm run build:registry && vite build && npm run build:cli",
+    "build:registry": "tsx scripts/generate-registry.ts",
+    "build:cli": "vite build --config vite.config.cli.ts",
+    "build:watch": "vite build --watch",
+    "check-types": "tsc --noEmit",
+    "lint": "biome check .",
+    "lint:fix": "biome check . --write",
+    "test:coverage": "vitest --coverage --silent",
+    "test:watch": "vitest --watch --silent",
+    "test": "vitest",
+    "prepare": "husky",
+    "pre-commit-lint": "npm run check-types && npm run lint:fix && npm run test && git add .",
+    "prepublishOnly": "npm run check-types && npm run test && npm run build",
+    "showcase": "vite --config vite.config.showcase.ts",
+    "build:showcase": "vite build --config vite.config.showcase.ts",
+    "generate:tokens": "tsx scripts/generate-css.ts",
+    "yalc:publish": "npm run build && yalc publish",
+    "yalc:push": "npm run build && yalc push"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.4.6",
+    "@commitlint/cli": "^20.4.3",
+    "@mrshmllw/campfire": "^3.1.0",
+    "@tailwindcss/postcss": "^4.2.1",
+    "@tanstack/react-router": "^1.166.2",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.1",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/node": "^25.3.5",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^5.1.4",
+    "husky": "^9.1.7",
+    "jsdom": "^28.1.0",
+    "lint-staged": "^16.3.2",
+    "postcss": "^8.5.8",
+    "react": "^19.2.4",
+    "react-colorful": "^5.6.1",
+    "react-dom": "^19.2.4",
+    "rimraf": "^6.1.3",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.1",
+    "vite-plugin-dts": "^4.5.4",
+    "vitest": "^4.0.18"
+  },
+  "dependencies": {
+    "@base-ui/react": "^1.2.0",
+    "@fontsource-variable/inter": "^5.2.8",
+    "@mrshmllw/smores-foundations": "^1.1.0",
+    "citty": "^0.2.1",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "embla-carousel-react": "^8.6.0",
+    "lucide-react": "^0.577.0",
+    "picocolors": "^1.1.1",
+    "react-day-picker": "^9.14.0",
+    "react-dropzone": "^15.0.0",
+    "react-resizable-panels": "^4.7.1",
+    "shadcn": "^3.8.5",
+    "sonner": "^2.0.7",
+    "tailwind-merge": "^3.5.0",
+    "tailwindcss": "^4.2.1",
+    "tw-animate-css": "^1.4.0"
+  },
+  "peerDependencies": {
+    "@tanstack/react-router": "*",
+    "react": "^19",
+    "react-dom": "^19"
+  },
+  "peerDependenciesMeta": {
+    "@tanstack/react-router": {
+      "optional": true
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marshmallow-insurance/smores-internal.git"
+  },
+  "author": "Marshmallow",
+  "license": "MIT",
+  "homepage": "https://github.com/marshmallow-insurance/smores-internal#readme"
+}

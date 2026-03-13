@@ -1,0 +1,24 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "baseUrl": "src",
+    "outDir": "./dist"
+  },
+  "exclude": [
+    "src/**/*/__tests__",
+    "**/__tests__/*",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "node_modules",
+    "dist",
+    "scripts",
+    "src/cli",
+    "vite.config.ts",
+    "vite.config.cli.ts",
+    "vite.config.showcase.ts",
+    "showcase",
+    "vitest.config.ts",
+    "commitlint.config.ts"
+  ]
+}
