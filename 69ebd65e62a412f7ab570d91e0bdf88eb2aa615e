@@ -1,0 +1,27 @@
+.github/workflows/deploy-showcase.yml
+  e2b13c6f93865526 1-32
+package.json
+  e2b13c6f93865526 104
+vite.config.showcase.ts
+  e2b13c6f93865526 7
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.4",
+  "base_commit_sha": "69ebd65e62a412f7ab570d91e0bdf88eb2aa615e",
+  "prompts": {
+    "e2b13c6f93865526": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "566c6670-4e63-4d29-894e-1b7bc2601b61",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Rowan Henseleit <rowan.henseleit@marshmallow.co>",
+      "messages": [],
+      "total_additions": 34,
+      "total_deletions": 0,
+      "accepted_lines": 34,
+      "overriden_lines": 0
+    }
+  }
+}
