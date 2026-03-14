@@ -4,9 +4,9 @@
  * Information-dense receipt/ledger layout components for data-heavy UIs.
  * Inspired by thermal receipts, Bloomberg Terminal, and raw HTML aesthetics.
  *
- * Semantic tokens (set in your CSS or a preset):
- *
- *   --receipt-divider-opacity  Opacity of fill/dot characters (default: 0.25)
+ * All semantic tokens come from base design system tokens — no custom CSS
+ * variables needed for this component. Typography, spacing, border widths,
+ * and border radii all adapt automatically when switching presets.
  *
  * SectionLabel uses base tokens directly:
  *   bg-foreground / text-background (inverted block label)
@@ -42,6 +42,11 @@ import { cn } from "@/lib/utils"
 //   equals        — repeated "=========" (use for totals separator)
 //   solid         — thin solid CSS border
 //   dashed-border — CSS dashed border (switchable via --border-style)
+//
+// Opacity (character-based variants only):
+//   subtle        — opacity-25 (default, decorative/background)
+//   medium        — opacity-50
+//   bold          — opacity-75
 
 const dividerVariants = cva("w-full my-2", {
 	variants: {
@@ -49,14 +54,30 @@ const dividerVariants = cva("w-full my-2", {
 			dots: "text-xs h-[1em] relative overflow-hidden",
 			dashes: "text-xs h-[1em] relative overflow-hidden",
 			equals: "text-xs h-[1em] relative overflow-hidden",
-			solid: "h-0 border-t border-foreground",
-			"dashed-border": "h-0 border-t border-dashed border-foreground",
+			solid: "h-0 border-t-[length:var(--border-width)] border-t-border",
+			"dashed-border": "h-0 border-t-[length:var(--border-width)] border-dashed border-t-border",
 		},
 	},
 	defaultVariants: {
 		variant: "dots",
 	},
 })
+
+const dividerCharVariants = cva(
+	"absolute inset-x-0 whitespace-nowrap tracking-tighter text-muted-foreground select-none",
+	{
+		variants: {
+			opacity: {
+				subtle: "opacity-25",
+				medium: "opacity-50",
+				bold: "opacity-75",
+			},
+		},
+		defaultVariants: {
+			opacity: "subtle",
+		},
+	},
+)
 
 const DIVIDER_CHARS: Record<"dots" | "dashes" | "equals", string> = {
 	dots: ".".repeat(400),
@@ -65,12 +86,15 @@ const DIVIDER_CHARS: Record<"dots" | "dashes" | "equals", string> = {
 }
 
 type DividerVariant = "dots" | "dashes" | "equals" | "solid" | "dashed-border"
+type DividerOpacity = "subtle" | "medium" | "bold"
 
 interface DividerProps extends React.ComponentProps<"div"> {
 	variant?: DividerVariant
+	/** Opacity of character fills (dots/dashes/equals only). Default: "subtle" (25%) */
+	opacity?: DividerOpacity
 }
 
-function Divider({ variant = "dots", className, ...props }: DividerProps) {
+function Divider({ variant = "dots", opacity = "subtle", className, ...props }: DividerProps) {
 	const isCharBased = variant === "dots" || variant === "dashes" || variant === "equals"
 
 	return (
@@ -82,10 +106,7 @@ function Divider({ variant = "dots", className, ...props }: DividerProps) {
 			{...props}
 		>
 			{isCharBased && (
-				<span
-					className="absolute inset-x-0 whitespace-nowrap tracking-[-1px] text-foreground select-none"
-					style={{ opacity: "var(--receipt-divider-opacity, 0.25)" }}
-				>
+				<span className={cn(dividerCharVariants({ opacity }))}>
 					{DIVIDER_CHARS[variant as "dots" | "dashes" | "equals"]}
 				</span>
 			)}
@@ -102,11 +123,12 @@ function Divider({ variant = "dots", className, ...props }: DividerProps) {
 //   default   — filled background (foreground) with contrasting text (background)
 //   bordered  — transparent background with top/bottom borders
 
-const sectionLabelVariants = cva("text-xs font-bold uppercase px-2 py-0.5", {
+const sectionLabelVariants = cva("text-sm font-bold uppercase px-2 py-0.5", {
 	variants: {
 		variant: {
 			default: "bg-foreground text-background",
-			bordered: "bg-transparent text-foreground border-t border-b border-border",
+			bordered:
+				"bg-transparent text-foreground border-t-[length:var(--border-width)] border-b-[length:var(--border-width)] border-t-border border-b-border",
 		},
 	},
 	defaultVariants: {
@@ -141,13 +163,13 @@ function SectionLabel({ variant = "default", className, ...props }: SectionLabel
 //   bold     — bold weight, no fill (use for totals/subtotals)
 //   compact  — tighter vertical padding + smaller text
 
-const rowVariants = cva("flex items-end text-xs gap-0", {
+const rowVariants = cva("flex items-end text-sm gap-1", {
 	variants: {
 		variant: {
-			default: "py-0",
-			fill: "py-0",
-			bold: "font-bold py-0",
-			compact: "leading-[1.1] text-[0.6875rem] py-0",
+			default: "py-1",
+			fill: "py-1",
+			bold: "font-bold py-1.5",
+			compact: "leading-tight text-xs py-0.5",
 		},
 	},
 	defaultVariants: {
@@ -159,9 +181,19 @@ interface RowProps extends Omit<React.ComponentProps<"div">, "children"> {
 	label: React.ReactNode
 	value: React.ReactNode
 	variant?: "default" | "fill" | "bold" | "compact"
+	/** Opacity of the dot-leader fill (fill variant only). Default: "subtle" (25%) */
+	/** Opacity of the dot-leader fill. Only applies when `variant="fill"`. */
+	fillOpacity?: DividerOpacity
 }
 
-function Row({ label, value, variant = "default", className, ...props }: RowProps) {
+/** Maps opacity variants to Tailwind opacity classes — shared with Divider's CVA scale. */
+const OPACITY_CLASS: Record<DividerOpacity, string> = {
+	subtle: "opacity-25",
+	medium: "opacity-50",
+	bold: "opacity-75",
+}
+
+function Row({ label, value, variant = "default", fillOpacity = "subtle", className, ...props }: RowProps) {
 	const hasFill = variant === "fill"
 
 	return (
@@ -176,8 +208,10 @@ function Row({ label, value, variant = "default", className, ...props }: RowProp
 				<>
 					<span
 						aria-hidden
-						className="flex-1 min-w-[2ch] overflow-hidden tracking-[-1px] whitespace-nowrap text-foreground select-none"
-						style={{ opacity: "var(--receipt-divider-opacity, 0.25)" }}
+						className={cn(
+							"flex-1 min-w-[2ch] overflow-hidden tracking-tighter whitespace-nowrap text-muted-foreground select-none",
+							OPACITY_CLASS[fillOpacity],
+						)}
 					>
 						{DIVIDER_CHARS.dots}
 					</span>
@@ -220,11 +254,11 @@ function DataTable({ columns, rows, className, ...props }: DataTableProps) {
 		<div
 			role="table"
 			data-slot="receipt-data-table"
-			className={cn("text-xs", className)}
+			className={cn("text-sm", className)}
 			{...props}
 		>
 			{/* Header row */}
-			<div role="row" className="flex border-b border-border pb-px mb-px">
+			<div role="row" className="flex border-b-[length:var(--border-width)] border-b-border pb-px mb-px">
 				{columns.map((col, i) => (
 					<span
 						key={i}
@@ -242,7 +276,7 @@ function DataTable({ columns, rows, className, ...props }: DataTableProps) {
 			</div>
 			{/* Data rows */}
 			{rows.map((row, ri) => (
-				<div key={ri} role="row" className="flex border-b border-border/30 py-px last:border-b-0">
+				<div key={ri} role="row" className="flex border-b-[length:var(--border-width)] border-b-border/30 py-px last:border-b-0">
 					{row.map((cell, ci) => {
 						const col = columns[ci]
 						return (
@@ -270,6 +304,9 @@ function DataTable({ columns, rows, className, ...props }: DataTableProps) {
 //
 // A fixed-size square containing a centred character or symbol.
 // Size must be one of the preset GlyphSize values (multiples of 8/16).
+// Corner radius adapts to the current preset via design system tokens:
+//   default/filled → rounded-lg (square with rounded corners)
+//   circle/circle-inverted → rounded-full (circular container)
 //
 // Variants:
 //   default          — bordered square, standard bg + fg
@@ -290,14 +327,14 @@ const GLYPH_TEXT: Record<GlyphSize, string> = {
 }
 
 const glyphVariants = cva(
-	"relative inline-flex items-center justify-center shrink-0 border font-bold select-none",
+	"relative inline-flex items-center justify-center shrink-0 border-[length:var(--border-width)] font-bold select-none",
 	{
 		variants: {
 			variant: {
-				default: "bg-card text-foreground border-border",
-				filled: "bg-foreground text-background border-foreground",
-				circle: "bg-card border-border",
-				"circle-inverted": "bg-foreground border-foreground",
+				default: "bg-card text-foreground border-border rounded-lg",
+				filled: "bg-foreground text-background border-foreground rounded-lg",
+				circle: "bg-card border-border rounded-full",
+				"circle-inverted": "bg-foreground border-foreground rounded-full",
 			},
 		},
 		defaultVariants: {
@@ -332,7 +369,7 @@ function Glyph({ children, size = 48, variant = "default", className, ...props }
 						variant === "circle" && "bg-foreground",
 						variant === "circle-inverted" && "bg-card",
 					)}
-					style={{ width: circleDiameter, height: circleDiameter, borderRadius: "50%" }}
+					className="rounded-full" style={{ width: circleDiameter, height: circleDiameter }}
 				/>
 			)}
 			<span
@@ -378,7 +415,7 @@ interface LedgerProps extends React.ComponentProps<"div"> {
 
 function Ledger({ title, rows, total, className, ...props }: LedgerProps) {
 	return (
-		<div data-slot="receipt-ledger" className={cn("text-xs", className)} {...props}>
+		<div data-slot="receipt-ledger" className={cn("text-sm", className)} {...props}>
 			{title && <SectionLabel>{title}</SectionLabel>}
 			<div className="py-2 space-y-px">
 				{rows.map((row, i) => (
@@ -396,4 +433,14 @@ function Ledger({ title, rows, total, className, ...props }: LedgerProps) {
 }
 
 export { Divider, SectionLabel, Row, DataTable, Glyph, Ledger }
-export type { DividerProps, SectionLabelProps, RowProps, DataTableProps, GlyphProps, LedgerProps, LedgerRow, DividerVariant }
+export type {
+	DividerProps,
+	DividerOpacity,
+	SectionLabelProps,
+	RowProps,
+	DataTableProps,
+	GlyphProps,
+	LedgerProps,
+	LedgerRow,
+	DividerVariant,
+}

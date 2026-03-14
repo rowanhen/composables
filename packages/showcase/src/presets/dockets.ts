@@ -176,11 +176,6 @@ export const dockets: Record<string, string> = {
   "--card-title-font-weight": "700",
   "--card-title-letter-spacing": "var(--tracking-normal)",
 
-  // ── Receipt component token ───────────────────────────────────────────
-  // SectionLabel bg/text/padding derive from base tokens (fg/bg/Tailwind spacing).
-  // Only keep divider opacity — no base equivalent exists.
-  "--receipt-divider-opacity": "0.25",
-
   // ── Bento layout token ────────────────────────────────────────────────
   // Gap = hairline (same as border-width). Color derives from bg-border.
   // Radius derives from rounded-lg (--radius = 0 in dockets = square corners).
@@ -294,9 +289,6 @@ export const docketsDark: Record<string, string> = {
   "--font-sans": '"IBM Plex Mono", "Courier New", monospace',
   "--font-heading": '"IBM Plex Mono", "Courier New", monospace',
   "--font-brand": '"IBM Plex Mono", "Courier New", monospace',
-
-  // ── Receipt component token (dark) ───────────────────────────────────
-  "--receipt-divider-opacity": "0.3",
 
   // ── Bento layout token (dark) ─────────────────────────────────────────
   "--bento-gap": "1px",
