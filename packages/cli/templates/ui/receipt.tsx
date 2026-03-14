@@ -39,7 +39,6 @@ import { cn } from "@/lib/utils"
 //   dashes        — dashed CSS border
 //   equals        — double CSS border (use for totals separator)
 //   solid         — thin solid CSS border
-//   dashed-border — CSS dashed border (switchable via --border-style)
 
 const dividerVariants = cva("w-full my-2", {
 	variants: {
@@ -48,7 +47,6 @@ const dividerVariants = cva("w-full my-2", {
 			dashes: "h-0 border-dashed border-t-[length:var(--border-width)] border-t-border",
 			equals: "h-[3px] border-t-[length:var(--border-width)] border-b-[length:var(--border-width)] border-border",
 			solid: "h-0 border-t-[length:var(--border-width)] border-t-border",
-			"dashed-border": "h-0 border-t-[length:var(--border-width)] border-dashed border-t-border",
 		},
 	},
 	defaultVariants: {
@@ -61,7 +59,7 @@ const DIVIDER_CHARS = {
 	dots: ".".repeat(400),
 }
 
-type DividerVariant = "dots" | "dashes" | "equals" | "solid" | "dashed-border"
+type DividerVariant = "dots" | "dashes" | "equals" | "solid"
 type DividerOpacity = "subtle" | "medium" | "bold"
 
 interface DividerProps extends React.ComponentProps<"div"> {

@@ -111,7 +111,7 @@ const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
 				data-slot="tree-view"
 				role={isRoot ? 'tree' : undefined}
 				aria-label={isRoot ? `tree: ${title}` : undefined}
-				className={cn('whitespace-nowrap font-mono text-sm rounded-lg', className)}
+				className={cn('whitespace-nowrap font-mono text-sm rounded-lg overflow-hidden', className)}
 				{...props}
 			>
 				{/* Node row — role="treeitem" lives here (the focusable element) */}

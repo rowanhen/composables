@@ -55,8 +55,8 @@ function DividerVariants() {
 					<Divider variant="equals" />
 					<div className="text-[10px] text-muted-foreground uppercase">solid</div>
 					<Divider variant="solid" />
-					<div className="text-[10px] text-muted-foreground uppercase">dashed-border</div>
-					<Divider variant="dashed-border" />
+					<div className="text-[10px] text-muted-foreground uppercase">solid</div>
+					<Divider variant="solid" />
 				</div>
 			</ReceiptCard>
 		</VStack>
