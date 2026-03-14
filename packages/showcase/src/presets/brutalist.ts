@@ -9,7 +9,7 @@
  * Fonts:
  *   Heading — Space Grotesk Variable: constructed, slightly mechanical,
  *             pairs well with mono body without feeling like a joke.
- *   Body    — IBM Plex Mono: the Bloomberg terminal aesthetic. Readable,
+ *   Body    — Space Grotesk Variable: the Bloomberg terminal aesthetic. Readable,
  *             functional, carries authority. Uncompromising.
  *
  * Character: zero border-radius, heavy borders, hard offset shadows,

@@ -6,7 +6,7 @@
  * Fonts:
  *   Heading — Plus Jakarta Sans Variable: rounded, confident, slightly
  *             quirky. The friendliest grotesque there is.
- *   Body    — Plus Jakarta Sans Variable: consistent with heading for
+ *   Body    — DM Sans Variable: consistent with heading for
  *             a cohesive, approachable feel throughout.
  *
  * Character: generous border-radius, soft diffuse shadows, subtle lavender

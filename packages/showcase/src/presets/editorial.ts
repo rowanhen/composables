@@ -159,8 +159,14 @@ export const editorial: Record<string, string> = {
 	"--heading-letter-spacing": "var(--tracking-tight)",
 	"--body-letter-spacing": "var(--tracking-normal)",
 	"--hero-font-size": "var(--text-6xl)",
+	"--hero-font-weight": "300",
+	"--hero-letter-spacing": "var(--tracking-wide)",
 	"--section-title-size": "var(--text-4xl)",
+	"--section-title-font-weight": "400",
+	"--section-title-letter-spacing": "var(--tracking-tight)",
 	"--card-title-size": "var(--text-xl)",
+	"--card-title-font-weight": "400",
+	"--card-title-letter-spacing": "var(--tracking-normal)",
 }
 
 export const editorialDark: Record<string, string> = {

@@ -93,7 +93,7 @@
 
 	/* Border radius — derived from --radius (set in tokens.css) so the
 	   panel slider scales all radii at runtime */
-	--radius-sm: calc(var(--radius) - 0.25rem);
+	--radius-sm: max(0px, calc(var(--radius) - 0.25rem));
 	--radius-md: calc(var(--radius) - 0.125rem);
 	--radius-lg: var(--radius);
 	--radius-xl: calc(var(--radius) + 0.25rem);
@@ -264,6 +264,7 @@
 	button:not(:disabled):hover,
 	[role="button"]:not([aria-disabled="true"]):hover {
 		transform: var(--hover-transform, none);
+		box-shadow: var(--hover-shadow);
 	}
 
 	button:not(:disabled):active,
