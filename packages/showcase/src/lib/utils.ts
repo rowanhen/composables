@@ -18,3 +18,11 @@ export const FOCUS_RING_DESTRUCTIVE =
 
 /** Disabled state opacity — single source of truth for all disabled elements. */
 export const DISABLED_OPACITY = 'disabled:opacity-disabled'
+
+/**
+ * Left-pad a string to a given total length using the provided fill character.
+ * Used by CodeBlock to right-align line numbers.
+ */
+export function leftPad(str: string, length: number, fill = ' '): string {
+  return str.length >= length ? str : fill.repeat(length - str.length) + str
+}

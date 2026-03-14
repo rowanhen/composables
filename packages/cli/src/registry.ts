@@ -757,4 +757,46 @@ export const registry: Record<string, ComponentEntry> = {
 		internalDeps: ["typography"],
 		tags: ["opinionated"],
 	},
+
+	// ─── Phase 2 Components ──────────────────────────────────────────────
+	"tree-view": {
+		name: "tree-view",
+		description: "ASCII-art collapsible tree with keyboard navigation and ARIA semantics",
+		files: [{ src: "templates/ui/tree-view.tsx", dest: "components/ui/tree-view.tsx" }],
+		deps: [],
+		internalDeps: ["utils"],
+		tags: ["primitive"],
+	},
+	"code-block": {
+		name: "code-block",
+		description: "Monospace code display with line numbers and overflow scrolling",
+		files: [{ src: "templates/ui/code-block.tsx", dest: "components/ui/code-block.tsx" }],
+		deps: [],
+		internalDeps: ["utils"],
+		tags: ["primitive"],
+	},
+	"block-loader": {
+		name: "block-loader",
+		description: "Animated Unicode spinner with 11 sequence modes",
+		files: [{ src: "templates/ui/block-loader.tsx", dest: "components/ui/block-loader.tsx" }],
+		deps: [],
+		internalDeps: ["utils"],
+		tags: ["primitive"],
+	},
+	list: {
+		name: "list",
+		description: "Variant list renderer: arrow, check, check-bordered, bullet",
+		files: [{ src: "templates/ui-opinionated/list.tsx", dest: "components/ui-opinionated/list.tsx" }],
+		deps: ["class-variance-authority", "lucide-react"],
+		internalDeps: ["utils"],
+		tags: ["opinionated"],
+	},
+	"pricing-receipt": {
+		name: "pricing-receipt",
+		description: "Receipt-styled pricing card using composables receipt primitives",
+		files: [{ src: "templates/ui-opinionated/pricing-receipt.tsx", dest: "components/ui-opinionated/pricing-receipt.tsx" }],
+		deps: [],
+		internalDeps: ["receipt", "utils"],
+		tags: ["opinionated"],
+	},
 };

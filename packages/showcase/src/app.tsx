@@ -55,6 +55,11 @@ import {
 	TokenConfigPanel,
 	TooltipShowcase,
 	TypographyShowcase,
+	TreeViewShowcase,
+	CodeBlockShowcase,
+	BlockLoaderShowcase,
+	ListShowcase,
+	PricingReceiptShowcase,
 } from "./components";
 
 /* ---- NAV ---- */
@@ -102,6 +107,11 @@ const navItems = [
 	"Empty State",
 	"Skeletons",
 	"Separator",
+	"Tree View",
+	"Code Block",
+	"Block Loader",
+	"List",
+	"Pricing Receipt",
 ];
 
 /* ---- APP ---- */
@@ -217,6 +227,13 @@ export function App() {
 					<EmptyShowcase />
 					<SkeletonShowcase />
 					<SeparatorShowcase />
+
+					{/* Phase 2 */}
+					<TreeViewShowcase />
+					<CodeBlockShowcase />
+					<BlockLoaderShowcase />
+					<ListShowcase />
+					<PricingReceiptShowcase />
 				</VStack>
 
 				<Spacer size={24} />
