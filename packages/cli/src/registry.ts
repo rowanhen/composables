@@ -464,6 +464,25 @@ export const registry: Record<string, ComponentEntry> = {
 		tags: ["primitive"],
 	},
 
+	receipt: {
+		name: "receipt",
+		description:
+			"Receipt and ledger primitives: Divider, SectionLabel, Row, DataTable, Glyph, Ledger. Information-dense receipt/typewriter aesthetic with CVA variants and semantic tokens.",
+		files: [{ src: "templates/ui/receipt.tsx", dest: "components/ui/receipt.tsx" }],
+		deps: ["class-variance-authority"],
+		internalDeps: ["utils"],
+		tags: ["primitive", "layout"],
+	},
+	"layout-bento": {
+		name: "layout-bento",
+		description:
+			"Bento grid layout primitives: BentoGrid, BentoCell, BentoSplit, BentoLeader, BentoQuad, BentoTriple, CellGrid, CellRow, StatCell. Gap-as-border system with configurable --bento-gap, --bento-border-color, --bento-radius tokens.",
+		files: [{ src: "templates/ui/layout-bento.tsx", dest: "components/ui/layout-bento.tsx" }],
+		deps: [],
+		internalDeps: ["utils"],
+		tags: ["primitive", "layout"],
+	},
+
 	// ─── Opinionated UI Components ───────────────────────────────────────
 	"accordion-opinionated": {
 		name: "accordion-opinionated",

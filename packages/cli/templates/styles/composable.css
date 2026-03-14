@@ -21,6 +21,9 @@
      @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap");
 
    Swiss      — Helvetica Neue / Arial — system fonts, no import needed.
+
+   Dockets    — IBM Plex Mono (all text):
+     @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&display=swap");
 ──────────────────────────────────────────────────────────────────────────── */
 
 @source "./**/*.{ts,tsx}";
@@ -245,6 +248,34 @@
 		--card-title-size: var(--text-lg);
 		--card-title-font-weight: 600;
 		--card-title-letter-spacing: var(--tracking-normal);
+
+		/* ── Border style ──────────────────────────────────────────────────
+		   Controls border rendering across all components that respect it.
+		   Override to "dashed" in a preset or :root to switch globally.
+		   Default: solid */
+		--border-style: solid;
+
+		/* ── Receipt component tokens ──────────────────────────────────────
+		   Used by the receipt.tsx primitive. Override in a preset or :root.
+		   --receipt-spacing:         vertical padding for Row components
+		   --receipt-divider-opacity: opacity of dot/dash fill characters
+		   --section-label-padding:   padding inside SectionLabel
+		   --section-label-bg:        SectionLabel background color
+		   --section-label-text:      SectionLabel text color */
+		--receipt-spacing: 0px;
+		--receipt-divider-opacity: 0.25;
+		--section-label-padding: 3px 8px;
+		--section-label-bg: var(--border);
+		--section-label-text: var(--background);
+
+		/* ── Bento layout tokens ───────────────────────────────────────────
+		   Used by the layout-bento.tsx primitive. Override in a preset or :root.
+		   --bento-gap:          width of the gap-border between cells
+		   --bento-border-color: the container bg color that shows through as borders
+		   --bento-radius:       corner radius of the outer bento container */
+		--bento-gap: 1px;
+		--bento-border-color: var(--border);
+		--bento-radius: var(--radius);
 	}
 
 	* {
@@ -257,6 +288,11 @@
 
 	html {
 		@apply font-sans;
+	}
+
+	/* Wire --border-style into elements that should respect it */
+	*:where([data-slot]) {
+		border-style: var(--border-style, solid);
 	}
 
 	/* Wire motion tokens into interactive elements so presets that set

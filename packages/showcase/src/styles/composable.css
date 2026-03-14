@@ -236,6 +236,26 @@
 		--card-title-size: var(--text-lg);
 		--card-title-font-weight: 600;
 		--card-title-letter-spacing: var(--tracking-normal);
+
+		/* ── Border style ──────────────────────────────────────────────────
+		   Controls border rendering across all components that respect it.
+		   Override to "dashed" in a preset or :root to switch globally.
+		   Default: solid */
+		--border-style: solid;
+
+		/* ── Receipt component tokens ──────────────────────────────────────
+		   Used by the receipt.tsx primitive. Override in a preset or :root. */
+		--receipt-spacing: 0px;
+		--receipt-divider-opacity: 0.25;
+		--section-label-padding: 3px 8px;
+		--section-label-bg: var(--border);
+		--section-label-text: var(--background);
+
+		/* ── Bento layout tokens ───────────────────────────────────────────
+		   Used by the layout-bento.tsx primitive. Override in a preset or :root. */
+		--bento-gap: 1px;
+		--bento-border-color: var(--border);
+		--bento-radius: var(--radius);
 	}
 
 	* {
@@ -248,6 +268,11 @@
 
 	html {
 		@apply font-sans;
+	}
+
+	/* Wire --border-style into elements that should respect it */
+	*:where([data-slot]) {
+		border-style: var(--border-style, solid);
 	}
 
 	/* Wire motion tokens into interactive elements so presets that set
