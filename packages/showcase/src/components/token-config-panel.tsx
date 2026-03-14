@@ -21,16 +21,18 @@ import { FormSlider } from '@/components/ui-opinionated/form-slider'
 
 import semanticJson from '@/tokens/semantic.json'
 import {
-  defaultNeutral,
-  softPastel,
+  defaultPreset,
+  defaultPresetDark,
+  editorial,
+  editorialDark,
   brutalist,
-  corporateBlue,
-  warmEarth,
+  brutalistDark,
+  soft,
+  softDark,
+  swiss,
+  swissDark,
   midnight,
-  roseGold,
-  forest,
-  swissMinimal,
-  oceanBreeze,
+  midnightDark,
 } from '@/presets'
 
 /* ------------------------------------------------------------------ */
@@ -180,65 +182,41 @@ function removePresetStyle() {
 
 const presets: Record<string, Preset | null> = {
   default: null,
-  'default-neutral': {
-    label: 'Default Neutral',
-    description: 'Warm neutral base with JetBrains Mono body text',
-    overrides: defaultNeutral,
-    darkOverrides: {},
+  'default-preset': {
+    label: 'Default',
+    description: 'Clean neutral base with Inter Variable — the "no opinion" starting point',
+    overrides: defaultPreset,
+    darkOverrides: defaultPresetDark,
   },
-  'soft-pastel': {
-    label: 'Soft Pastel',
-    description: 'Gentle lavender tones with rounded corners and soft shadows',
-    overrides: softPastel,
-    darkOverrides: {},
+  editorial: {
+    label: 'Editorial',
+    description: 'Sophisticated magazine aesthetic — Fraunces headings, Source Serif 4 body, warm palette',
+    overrides: editorial,
+    darkOverrides: editorialDark,
   },
   brutalist: {
     label: 'Brutalist',
-    description: 'Bold borders, sharp corners, high contrast, monospace type',
+    description: 'Architectural restraint — zero radius, hard shadows, IBM Plex Mono body, editorial red',
     overrides: brutalist,
-    darkOverrides: {},
+    darkOverrides: brutalistDark,
   },
-  'corporate-blue': {
-    label: 'Corporate Blue',
-    description: 'Professional blue palette with clean Inter typography',
-    overrides: corporateBlue,
-    darkOverrides: {},
+  soft: {
+    label: 'Soft',
+    description: 'Warm and approachable — Plus Jakarta Sans, lavender tones, generous radius',
+    overrides: soft,
+    darkOverrides: softDark,
   },
-  'warm-earth': {
-    label: 'Warm Earth',
-    description: 'Earthy amber tones with elegant serif typography',
-    overrides: warmEarth,
-    darkOverrides: {},
+  swiss: {
+    label: 'Swiss',
+    description: 'International Typographic Style — Helvetica Neue, zero radius, zero shadow, red accent',
+    overrides: swiss,
+    darkOverrides: swissDark,
   },
   midnight: {
     label: 'Midnight',
-    description: 'Dark background with vibrant purple and blue accents',
+    description: 'Dark-first premium — deep navy, violet accent, glow shadows, Space Grotesk headings',
     overrides: midnight,
-    darkOverrides: {},
-  },
-  'rose-gold': {
-    label: 'Rose Gold',
-    description: 'Warm pinks with elegant Cormorant Garamond headings',
-    overrides: roseGold,
-    darkOverrides: {},
-  },
-  forest: {
-    label: 'Forest',
-    description: 'Deep greens with warm serif typography',
-    overrides: forest,
-    darkOverrides: {},
-  },
-  'swiss-minimal': {
-    label: 'Swiss Minimal',
-    description: 'Helvetica, no radius, no shadows, red accent — pure Swiss style',
-    overrides: swissMinimal,
-    darkOverrides: {},
-  },
-  'ocean-breeze': {
-    label: 'Ocean Breeze',
-    description: 'Cool cyan and teal tones with airy Nunito body text',
-    overrides: oceanBreeze,
-    darkOverrides: {},
+    darkOverrides: midnightDark,
   },
 }
 
