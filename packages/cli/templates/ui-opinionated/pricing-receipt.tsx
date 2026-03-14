@@ -66,7 +66,7 @@ export function PricingReceipt({ product, className }: PricingReceiptProps) {
 			<SectionLabel className="mb-2">INCLUDES</SectionLabel>
 
 			{/* Line items */}
-			<div className="mb-4 space-y-px">
+			<div className="mb-4 space-y-1">
 				{product.items.map((item) => (
 					<div key={item.name} className="flex justify-between items-start">
 						<Typography variant="label-100" as="span" className="flex-1 break-words">
