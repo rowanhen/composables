@@ -260,6 +260,23 @@
 		   Default: solid */
 		--border-style: solid;
 
+		/* ── Focus ring tokens ─────────────────────────────────────────────
+		   Single source of truth for all focus ring styling — used by both
+		   the FOCUS_RING utility class (components) and the universal CSS
+		   rule below (bare anchors, summaries, tabindex elements).
+		   Override in a preset or :root to adjust globally.
+		
+		   ⚠️  KNOWN LIMITATION: --focus-ring-style ONLY affects the
+		   outline-based focus path below (anchors, summary, tabindex
+		   elements). It does NOT affect the FOCUS_RING constant path used
+		   by components, which relies on Tailwind ring-* utilities
+		   (box-shadow). Preset authors who override --focus-ring-style
+		   should be aware that component focus rings will remain solid. */
+		--focus-ring-color: var(--ring);
+		--focus-ring-width: calc(var(--border-width-base) * 2);
+		--focus-ring-offset: 0px;
+		--focus-ring-style: solid; /* presets can override to "dashed" etc — outline path only, see note above */
+
 		/* ── Bento layout tokens ───────────────────────────────────────────
 		   Used by the layout-bento.tsx primitive. Override in a preset or :root.
 		   --bento-gap: gap width = visual border width. Defaults to --border-width-base.
@@ -281,7 +298,33 @@
 	}
 
 	* {
-		@apply border-border outline-ring/50;
+		@apply border-border;
+	}
+
+	/* Universal focus ring — single source of truth for all focusable elements
+	   that don't use the FOCUS_RING component utility (bare anchors, links,
+	   summary elements, and explicit tabindex targets). Both paths read from
+	   the same --focus-ring-* tokens so they stay in sync. */
+	a:focus-visible,
+	[role="link"]:focus-visible,
+	summary:focus-visible,
+	[tabindex]:focus-visible:not([data-slot]) {
+		outline: var(--focus-ring-width) var(--focus-ring-style) var(--focus-ring-color);
+		outline-offset: var(--focus-ring-offset);
+	}
+
+	/* ⚠️  BARE NATIVE ELEMENTS: Native form controls (<button>, <input>,
+	   <select>, etc.) used outside the component system will NOT receive
+	   focus rings — the universal rule above intentionally targets only
+	   anchors, summary, and explicit tabindex elements to avoid double-rings
+	   on components. If your project uses unstyled native elements, add
+	   classless selectors like the fallback below so they stay accessible. */
+	button:not([class]):focus-visible,
+	input:not([class]):focus-visible,
+	select:not([class]):focus-visible,
+	textarea:not([class]):focus-visible {
+		outline: var(--focus-ring-width) var(--focus-ring-style) var(--focus-ring-color);
+		outline-offset: var(--focus-ring-offset);
 	}
 
 	body {
