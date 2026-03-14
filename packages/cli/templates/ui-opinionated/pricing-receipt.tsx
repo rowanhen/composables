@@ -50,7 +50,7 @@ export function PricingReceipt({ product, className }: PricingReceiptProps) {
 		>
 			{/* Header */}
 			<div className="text-center mb-3">
-				<Typography variant="heading-200" as="div" className="mb-1">
+				<Typography variant="heading-200" as="div" className="mb-1 font-mono">
 					# {product.orderNum}
 				</Typography>
 				<Typography variant="label-100" as="div">
@@ -72,7 +72,7 @@ export function PricingReceipt({ product, className }: PricingReceiptProps) {
 						<Typography variant="label-100" as="span" className="flex-1 break-words">
 							{item.name}
 						</Typography>
-						<Typography variant="body-100" as="span" className="min-w-[72px] text-right shrink-0">
+						<Typography variant="label-100" as="span" className="min-w-[72px] text-right shrink-0">
 							{item.value}
 						</Typography>
 					</div>
@@ -86,7 +86,7 @@ export function PricingReceipt({ product, className }: PricingReceiptProps) {
 				<Typography variant="label-100" as="span">
 					TOTAL:
 				</Typography>
-				<Typography variant="brand-body-100" as="span">
+				<Typography variant="brand-body-100" as="span" className="font-mono">
 					{product.total}
 				</Typography>
 			</div>
