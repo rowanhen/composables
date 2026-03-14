@@ -104,7 +104,7 @@ const sectionLabelVariants = cva("text-xs font-bold uppercase", {
 	variants: {
 		variant: {
 			default:
-				"bg-[var(--section-label-bg,var(--border))] text-[var(--section-label-text,var(--background))]",
+				"bg-[var(--section-label-bg,var(--foreground))] text-[var(--section-label-text,var(--background))]",
 			bordered: "bg-transparent text-foreground border-t border-b border-border",
 		},
 	},
@@ -147,7 +147,9 @@ const rowVariants = cva("flex items-end text-xs gap-0", {
 			default: "",
 			fill: "",
 			bold: "font-bold",
-			compact: "leading-none",
+			// compact: explicit 0px padding + tighter leading so it's visually
+			// distinct even when --receipt-spacing is already 0px.
+			compact: "leading-[1.1] text-[0.6875rem]",
 		},
 	},
 	defaultVariants: {
@@ -156,20 +158,25 @@ const rowVariants = cva("flex items-end text-xs gap-0", {
 })
 
 interface RowProps extends Omit<React.ComponentProps<"div">, "children"> {
-	label: string
-	value: string
+	label: React.ReactNode
+	value: React.ReactNode
 	variant?: "default" | "fill" | "bold" | "compact"
 }
 
 function Row({ label, value, variant = "default", className, style, ...props }: RowProps) {
 	const hasFill = variant === "fill"
+	const isCompact = variant === "compact"
 
 	return (
 		<div
 			data-slot="receipt-row"
 			data-variant={variant}
 			className={cn(rowVariants({ variant }), className)}
-			style={{ paddingTop: "var(--receipt-spacing, 0)", paddingBottom: "var(--receipt-spacing, 0)", ...style }}
+			style={{
+				paddingTop: isCompact ? "0px" : "var(--receipt-spacing, 0)",
+				paddingBottom: isCompact ? "0px" : "var(--receipt-spacing, 0)",
+				...style,
+			}}
 			{...props}
 		>
 			<span className="uppercase shrink-0">{label}</span>
@@ -180,7 +187,7 @@ function Row({ label, value, variant = "default", className, style, ...props }: 
 						className="flex-1 min-w-[2ch] overflow-hidden tracking-[-1px] whitespace-nowrap text-border select-none"
 						style={{ opacity: "var(--receipt-divider-opacity, 0.25)" }}
 					>
-						{".".repeat(400)}
+						{DIVIDER_CHARS.dots}
 					</span>
 					<span className="shrink-0">{value}</span>
 				</>
@@ -218,12 +225,19 @@ interface DataTableProps extends React.ComponentProps<"div"> {
 
 function DataTable({ columns, rows, className, ...props }: DataTableProps) {
 	return (
-		<div data-slot="receipt-data-table" className={cn("text-xs", className)} {...props}>
+		<div
+			role="table"
+			data-slot="receipt-data-table"
+			className={cn("text-xs", className)}
+			{...props}
+		>
 			{/* Header row */}
-			<div className="flex border-b border-border pb-px mb-px">
+			<div role="row" className="flex border-b border-border pb-px mb-px">
 				{columns.map((col, i) => (
 					<span
 						key={i}
+						role="columnheader"
+						aria-sort="none"
 						className={cn(
 							"uppercase shrink-0 text-muted-foreground",
 							!col.width && "flex-1",
@@ -237,12 +251,13 @@ function DataTable({ columns, rows, className, ...props }: DataTableProps) {
 			</div>
 			{/* Data rows */}
 			{rows.map((row, ri) => (
-				<div key={ri} className="flex border-b border-border/30 py-px last:border-b-0">
+				<div key={ri} role="row" className="flex border-b border-border/30 py-px last:border-b-0">
 					{row.map((cell, ci) => {
 						const col = columns[ci]
 						return (
 							<span
 								key={ci}
+								role="cell"
 								className={cn(
 									"shrink-0",
 									!col?.width && "flex-1",
@@ -359,9 +374,9 @@ function Glyph({ children, size = 48, variant = "default", className, ...props }
 //   />
 
 interface LedgerRow {
-	label: string
-	value: string
-	variant?: "default" | "fill" | "compact"
+	label: React.ReactNode
+	value: React.ReactNode
+	variant?: "default" | "fill" | "bold" | "compact"
 }
 
 interface LedgerProps extends React.ComponentProps<"div"> {

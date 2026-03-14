@@ -162,7 +162,7 @@ function BentoSplit({ icon, content, stats, className, ...props }: BentoSplitPro
 				{content}
 			</div>
 			{/* Stats — auto-places into col 2, row 2 */}
-			<div data-slot="bento-split-stats">
+			<div data-slot="bento-split-stats" className={cn(BENTO_CELL, "p-4")}>
 				{stats}
 			</div>
 		</div>
@@ -177,7 +177,8 @@ function BentoSplit({ icon, content, stats, className, ...props }: BentoSplitPro
 // Mobile: header → columns stacked.
 // Desktop: header (full width) | N equal columns.
 
-const LEADER_COLS: Record<2 | 3 | 4, string> = {
+const LEADER_COLS: Record<1 | 2 | 3 | 4, string> = {
+	1: "md:grid-cols-1",
 	2: "md:grid-cols-2",
 	3: "md:grid-cols-3",
 	4: "md:grid-cols-4",
@@ -189,7 +190,8 @@ interface BentoLeaderProps extends React.ComponentProps<"div"> {
 }
 
 function BentoLeader({ header, columns, className, ...props }: BentoLeaderProps) {
-	const n = Math.min(Math.max(columns.length, 2), 4) as 2 | 3 | 4
+	// Clamp to at least 1 so arrays with 0–1 items don't create ghost columns.
+	const n = Math.min(Math.max(columns.length, 1), 4) as 1 | 2 | 3 | 4
 
 	return (
 		<div
@@ -240,8 +242,7 @@ function BentoQuad({ topLeft, topRight, bottomLeft, bottomRight, className, ...p
 			<div data-slot="bento-quad-top-right" className={BENTO_CELL}>
 				{topRight}
 			</div>
-			{/* bottomLeft may be a sub-grid (no extra bg wrapper) */}
-			<div data-slot="bento-quad-bottom-left">
+			<div data-slot="bento-quad-bottom-left" className={BENTO_CELL}>
 				{bottomLeft}
 			</div>
 			<div data-slot="bento-quad-bottom-right" className={BENTO_CELL}>
@@ -290,7 +291,7 @@ function BentoTriple({ header, aside, body, footer, className, ...props }: Bento
 			{/* Footer spans both columns */}
 			<div
 				data-slot="bento-triple-footer"
-				className={cn("md:[grid-column:1/-1]", "bg-[var(--bento-border-color,var(--border))]")}
+				className={cn(BENTO_CELL, "md:[grid-column:1/-1]")}
 			>
 				{footer}
 			</div>

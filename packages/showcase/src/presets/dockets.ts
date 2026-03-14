@@ -46,7 +46,7 @@ export const dockets: Record<string, string> = {
   "--text-default": "#0A0A08FF",
   "--text-secondary": "#2A2A28FF",
   "--text-muted": "#6A6A68FF",
-  "--text-disabled": "#AAAAА8FF",
+  "--text-disabled": "#AAAAA8FF",
   "--text-inverse": "#FAFAF7FF",
   "--text-info": "#0A1E3AFF",
   "--text-success": "#0A2A0AFF",
@@ -180,13 +180,13 @@ export const dockets: Record<string, string> = {
   "--receipt-spacing": "0px",
   "--receipt-divider-opacity": "0.25",
   "--section-label-padding": "3px 8px",
-  "--section-label-bg": "#8A8A88FF",
-  "--section-label-text": "#FAFAF7FF",
+  "--section-label-bg": "var(--border)",
+  "--section-label-text": "var(--foreground)",
 
   // ── Bento layout tokens ───────────────────────────────────────────────
   "--bento-radius": "0px",
   "--bento-gap": "1px",
-  "--bento-border-color": "#8A8A88FF",
+  "--bento-border-color": "var(--border)",
 
   // ── Border style ──────────────────────────────────────────────────────
   "--border-style": "solid",
@@ -295,13 +295,13 @@ export const docketsDark: Record<string, string> = {
   "--receipt-spacing": "0px",
   "--receipt-divider-opacity": "0.3",
   "--section-label-padding": "3px 8px",
-  "--section-label-bg": "#6A6A68FF",
-  "--section-label-text": "#FAFAF7FF",
+  "--section-label-bg": "var(--border)",
+  "--section-label-text": "var(--foreground)",
 
   // ── Bento layout tokens (dark) ────────────────────────────────────────
   "--bento-radius": "0px",
   "--bento-gap": "1px",
-  "--bento-border-color": "#6A6A68FF",
+  "--bento-border-color": "var(--border)",
 
   // ── Border style ──────────────────────────────────────────────────────
   "--border-style": "solid",
