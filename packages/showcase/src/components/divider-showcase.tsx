@@ -5,18 +5,15 @@ import { ShowcaseSection } from "./showcase-section";
 
 const HORIZONTAL_VARIANTS = [
 	{ variant: "solid", label: "Solid" },
-	{ variant: "dashed", label: "Dashed" },
-	{ variant: "dotted", label: "Dotted" },
-	{ variant: "dots", label: "Dots (·····)" },
-	{ variant: "equals", label: "Equals (═════)" },
-	{ variant: "pills", label: "Pills (token-reactive)" },
+	{ variant: "dots", label: "Dots" },
+	{ variant: "pills", label: "Pills" },
 ] as const;
 
 export function DividerShowcase() {
 	return (
 		<ShowcaseSection
 			title="Divider"
-			description="Semantic divider that responds to design tokens. The pills variant is especially expressive — it renders as square dashes on zero-radius presets (Brutalist, Dockets) and as capsule pills on high-radius presets (Soft)."
+			description="Semantic divider with 3 token-reactive variants. All variants respond to --radius: at zero radius you get sharp lines, squares, and rectangular dashes; at max radius the solid line becomes a long pill shape, dots become circles, and pills become capsules. The dots and pills variants also respond to --spacing for gap and sizing."
 		>
 			<VStack gap={8}>
 				{/* Horizontal variants */}
@@ -36,7 +33,7 @@ export function DividerShowcase() {
 				<VStack gap={4}>
 					<Typography variant="heading-200">Vertical</Typography>
 					<HStack gap={6} align="center" className="h-16">
-						{(["solid", "dashed", "dotted", "dots", "equals", "pills"] as const).map((variant) => (
+						{(["solid", "dots", "pills"] as const).map((variant) => (
 							<HStack key={variant} gap={4} align="center" className="h-full">
 								<Typography variant="caption-100" className="text-muted-foreground w-12">
 									{variant}
@@ -50,10 +47,13 @@ export function DividerShowcase() {
 				{/* Token reactivity callout */}
 				<div className="rounded-[var(--radius)] border border-border bg-muted/40 p-4">
 					<Typography variant="caption-100" className="text-muted-foreground">
-						💡 Switch presets using the token panel — the <strong>pills</strong> variant will morph
-						from square dashes (Brutalist/Dockets, radius: 0) to soft capsules (Soft preset, high
-						radius). Same component, different personality via{" "}
-						<code className="font-mono text-xs">--radius</code>.
+						💡 Switch presets using the token panel — all variants morph with the tokens.{" "}
+						<strong>Solid</strong> gains border-radius (becoming a long pill at max),{" "}
+						<strong>dots</strong> shift from squares to circles, and <strong>pills</strong> go from
+						rectangular dashes to capsules. All driven by{" "}
+						<code className="font-mono text-xs">--radius</code>,{" "}
+						<code className="font-mono text-xs">--border-width-base</code>, and{" "}
+						<code className="font-mono text-xs">--spacing</code>.
 					</Typography>
 				</div>
 			</VStack>
