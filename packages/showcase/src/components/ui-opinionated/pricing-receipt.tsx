@@ -44,7 +44,7 @@ export function PricingReceipt({ product, className }: PricingReceiptProps) {
 		<div
 			data-slot="pricing-receipt"
 			className={cn(
-				'bg-card border border-border w-full min-w-[288px] max-w-[336px] flex-1 p-6 leading-tight font-mono',
+				'bg-card border border-border rounded-lg w-full min-w-[288px] max-w-[336px] flex-1 p-6 leading-tight font-mono',
 				className,
 			)}
 		>
