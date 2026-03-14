@@ -14,7 +14,7 @@ export function TreeViewShowcase() {
         {/* Basic tree */}
         <VStack gap={2}>
           <Typography variant="heading-200">File system tree</Typography>
-          <div className="border border-border rounded-md p-4 bg-muted/30 w-fit min-w-[300px]">
+          <div className="border border-border rounded-md p-4 bg-muted/30 w-full max-w-[300px]">
             <TreeView title="my-project" isRoot defaultOpen>
               <TreeView title="src" defaultOpen>
                 <TreeView title="components">
@@ -45,7 +45,7 @@ export function TreeViewShowcase() {
         {/* Collapsed by default */}
         <VStack gap={2}>
           <Typography variant="heading-200">Collapsed by default</Typography>
-          <div className="border border-border rounded-md p-4 bg-muted/30 w-fit min-w-[260px]">
+          <div className="border border-border rounded-md p-4 bg-muted/30 w-full max-w-[260px]">
             <TreeView title="packages" isRoot>
               <TreeView title="cli">
                 <TreeView title="src">

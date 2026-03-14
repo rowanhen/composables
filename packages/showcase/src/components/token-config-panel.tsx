@@ -932,7 +932,7 @@ export function TokenConfigPanel() {
           <PaletteIcon className="size-4" />
         </Button>
       </SheetTrigger>
-      <SheetContent side="right" className="w-[400px] sm:w-[440px] px-0 pb-0 pt-14">
+      <SheetContent side="right" className="w-full max-w-[400px] sm:max-w-[440px] px-0 pb-0 pt-14">
         <SheetHeader className="px-4 pt-4 pb-2">
           <SheetTitle className="flex items-center justify-between">
             <span>Token Config</span>
