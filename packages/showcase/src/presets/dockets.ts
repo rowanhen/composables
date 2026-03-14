@@ -184,6 +184,10 @@ export const dockets: Record<string, string> = {
   // ── Border style ──────────────────────────────────────────────────────
   "--border-style": "solid",
 
+  // ── Focus ring ────────────────────────────────────────────────────────
+  // Dashes suit the receipt / terminal aesthetic over a solid ring.
+  "--focus-ring-style": "dashed",
+
   // ── Macro spacing scale — layout.tsx Section primitives ──────────────
   // Expressed as calc(var(--spacing)*N) so they scale with the spacing token.
   "--space-layout-sm": "calc(var(--spacing) * 6)",
@@ -295,6 +299,9 @@ export const docketsDark: Record<string, string> = {
 
   // ── Border style ──────────────────────────────────────────────────────
   "--border-style": "solid",
+
+  // ── Focus ring ────────────────────────────────────────────────────────
+  "--focus-ring-style": "dashed",
 
   // ── Macro spacing scale — layout.tsx Section primitives ──────────────
   "--space-layout-sm": "calc(var(--spacing) * 6)",
