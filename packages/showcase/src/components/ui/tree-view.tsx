@@ -39,6 +39,7 @@ export interface TreeViewProps extends Omit<React.HTMLAttributes<HTMLDivElement>
 /* ─── Tree characters ─── */
 
 const CHARS = {
+	// Intentional dot-spacing: the dots render as spaces in the dockets tree aesthetic
 	pipe: '│ . ',
 	blank: '. . ',
 	branch: '├───',
@@ -84,6 +85,15 @@ const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
 			} else if (e.key === 'ArrowLeft' && isFolder && open) {
 				e.preventDefault()
 				setOpen(false)
+			} else if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+				e.preventDefault()
+				const tree = e.currentTarget.closest('[role="tree"]')
+				if (!tree) return
+				const items = Array.from(tree.querySelectorAll<HTMLElement>('[role="treeitem"]'))
+				const currentIndex = items.indexOf(e.currentTarget)
+				if (currentIndex === -1) return
+				const nextIndex = e.key === 'ArrowDown' ? currentIndex + 1 : currentIndex - 1
+				items[nextIndex]?.focus()
 			}
 		}
 
@@ -99,16 +109,16 @@ const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
 			<div
 				ref={ref}
 				data-slot="tree-view"
-				role={isRoot ? 'tree' : 'treeitem'}
-				aria-expanded={isFolder ? open : undefined}
+				role={isRoot ? 'tree' : undefined}
 				aria-label={isRoot ? `tree: ${title}` : undefined}
 				className={cn('whitespace-nowrap font-mono text-xs', className)}
 				{...props}
 			>
-				{/* Node row */}
+				{/* Node row — role="treeitem" lives here (the focusable element) for non-root nodes */}
 				<div
 					tabIndex={0}
-					role={isFolder ? 'button' : undefined}
+					role={isRoot ? undefined : 'treeitem'}
+					aria-expanded={!isRoot && isFolder ? open : undefined}
 					onClick={toggle}
 					onKeyDown={handleKeyDown}
 					className={cn(
@@ -122,11 +132,11 @@ const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
 					<span className="text-foreground">{title}</span>
 				</div>
 
-				{/* Children */}
+				{/* Children — only TreeView children receive injected layout props */}
 				{open && hasChildren && (
 					<div>
 						{React.Children.map(children, (child, index) =>
-							React.isValidElement(child)
+							React.isValidElement(child) && child.type === TreeView
 								? React.cloneElement(child as React.ReactElement<TreeViewProps>, {
 										depth: depth + 1,
 										isLastChild: index === React.Children.count(children) - 1,

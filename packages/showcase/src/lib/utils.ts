@@ -22,6 +22,9 @@ export const DISABLED_OPACITY = 'disabled:opacity-disabled'
 /**
  * Left-pad a string to a given total length using the provided fill character.
  * Used by CodeBlock to right-align line numbers.
+ *
+ * @example leftPad('7', 3)   // '  7'  (using space fill)
+ * @example leftPad('42', 3)  // ' 42'
  */
 export function leftPad(str: string, length: number, fill = ' '): string {
   return str.length >= length ? str : fill.repeat(length - str.length) + str

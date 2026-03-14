@@ -12,7 +12,9 @@
 import * as React from 'react'
 import { cn, leftPad } from '@/lib/utils'
 
-export interface CodeBlockProps extends React.HTMLAttributes<HTMLPreElement> {}
+export interface CodeBlockProps extends Omit<React.HTMLAttributes<HTMLPreElement>, 'children'> {
+	children: string | number
+}
 
 const CodeBlock = React.forwardRef<HTMLPreElement, CodeBlockProps>(
 	({ children, className, ...props }, ref) => {
@@ -30,7 +32,10 @@ const CodeBlock = React.forwardRef<HTMLPreElement, CodeBlockProps>(
 					.split('\n')
 					.map((line, index) => (
 						<div key={index} className="flex justify-between items-start">
-							<span className="inline-flex w-[3ch] text-right pr-[1ch] select-none bg-background text-muted-foreground opacity-50">
+							<span
+								aria-hidden="true"
+								className="inline-flex w-[3ch] text-right pr-[1ch] select-none bg-background text-muted-foreground opacity-50"
+							>
 								{leftPad(String(index + 1), 3)}
 							</span>
 							<span className="min-w-[10%] w-full whitespace-pre bg-muted pl-[2ch] text-foreground">

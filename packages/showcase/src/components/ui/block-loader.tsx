@@ -30,7 +30,7 @@ export type BlockLoaderMode = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
 
 export interface BlockLoaderProps extends Omit<React.HTMLAttributes<HTMLSpanElement>, 'children'> {
 	/** Spinner sequence (0–10). Defaults to 1. */
-	mode?: number
+	mode?: BlockLoaderMode
 	/** Frame interval in milliseconds. Defaults to 100. */
 	intervalMs?: number
 }
@@ -39,22 +39,27 @@ function BlockLoader({ mode = 1, intervalMs = 100, className, ...props }: BlockL
 	const sequence = SEQUENCES[mode] ?? SEQUENCES[0]
 	const [index, setIndex] = React.useState(0)
 
+	const prefersReducedMotion =
+		typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
 	React.useEffect(() => {
-		const id = window.setInterval(() => {
+		if (prefersReducedMotion) return
+		const id = setInterval(() => {
 			setIndex((prev) => (prev + 1) % sequence.length)
 		}, intervalMs)
 		return () => clearInterval(id)
-	}, [sequence.length, intervalMs])
+	}, [sequence.length, intervalMs, prefersReducedMotion])
 
 	return (
 		<span
 			data-slot="block-loader"
 			className={cn('inline-block w-[1em] text-center', className)}
-			aria-label="Loading"
-			aria-live="polite"
 			{...props}
 		>
-			{sequence[index]}
+			{/* aria-hidden: screen readers must not announce every frame change */}
+			<span aria-hidden="true">{sequence[prefersReducedMotion ? 0 : index]}</span>
+			{/* Stable label for screen readers */}
+			<span className="sr-only">Loading</span>
 		</span>
 	)
 }

@@ -85,6 +85,7 @@ export function PricingReceipt({ product, className }: PricingReceiptProps) {
 					'px-6 py-3 text-[11px] uppercase tracking-wide border border-foreground',
 					'bg-foreground text-background no-underline cursor-pointer',
 					'hover:opacity-80 transition-opacity',
+					'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
 				)}
 			>
 				{product.cta}

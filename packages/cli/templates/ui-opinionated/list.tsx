@@ -93,11 +93,13 @@ export interface ListProps extends VariantProps<typeof listVariants> {
 
 /* ─── Component ─── */
 
-function List({ items, variant = 'bullet', className, children }: ListProps) {
+function List({ items, variant, className, children }: ListProps) {
+	// Coerce null → 'bullet' so variant={null} doesn't crash VARIANT_ITEM lookup
+	const safeVariant: ListVariant = (variant ?? 'bullet') as ListVariant
 	if (items) {
-		const ItemComponent = VARIANT_ITEM[variant as ListVariant]
+		const ItemComponent = VARIANT_ITEM[safeVariant]
 		return (
-			<ul className={cn(listVariants({ variant }), className)}>
+			<ul className={cn(listVariants({ variant: safeVariant }), className)}>
 				{items.map((item, i) => (
 					<ItemComponent key={i} content={item.content} />
 				))}
@@ -106,7 +108,7 @@ function List({ items, variant = 'bullet', className, children }: ListProps) {
 	}
 
 	return (
-		<ul className={cn(listVariants({ variant }), className)}>
+		<ul className={cn(listVariants({ variant: safeVariant }), className)}>
 			{children}
 		</ul>
 	)
