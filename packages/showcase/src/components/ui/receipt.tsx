@@ -29,53 +29,11 @@ import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
-
-// ─── DIVIDER ──────────────────────────────────────────────────────────────────
-//
-// Renders a horizontal divider using CSS borders — scales with --border-width.
-//
-// Variants:
-//   dots          — dotted CSS border (default)
-//   dashes        — dashed CSS border
-//   equals        — double CSS border (use for totals separator)
-//   solid         — thin solid CSS border
-
-const dividerVariants = cva("w-full my-2", {
-	variants: {
-		variant: {
-			dots: "h-0 border-dotted border-t-[length:var(--border-width)] border-t-border",
-			dashes: "h-0 border-dashed border-t-[length:var(--border-width)] border-t-border",
-			equals: "h-[3px] border-t-[length:var(--border-width)] border-b-[length:var(--border-width)] border-border",
-			solid: "h-0 border-t-[length:var(--border-width)] border-t-border",
-		},
-	},
-	defaultVariants: {
-		variant: "dots",
-	},
-})
+import { Divider } from "@/components/ui/divider"
 
 // Dot-leader characters used by the Row component's fill variant
 const DIVIDER_CHARS = {
 	dots: ".".repeat(400),
-}
-
-type DividerVariant = "dots" | "dashes" | "equals" | "solid"
-type DividerOpacity = "subtle" | "medium" | "bold"
-
-interface DividerProps extends React.ComponentProps<"div"> {
-	variant?: DividerVariant
-}
-
-function Divider({ variant = "dots", className, ...props }: DividerProps) {
-	return (
-		<div
-			data-slot="receipt-divider"
-			data-variant={variant}
-			aria-hidden
-			className={cn(dividerVariants({ variant }), className)}
-			{...props}
-		/>
-	)
 }
 
 // ─── SECTION LABEL ────────────────────────────────────────────────────────────
@@ -140,6 +98,8 @@ const rowVariants = cva("flex items-end text-sm gap-1", {
 		variant: "default",
 	},
 })
+
+type DividerOpacity = "subtle" | "medium" | "bold"
 
 interface RowProps extends Omit<React.ComponentProps<"div">, "children"> {
 	label: React.ReactNode
@@ -386,7 +346,7 @@ function Ledger({ title, rows, total, className, ...props }: LedgerProps) {
 			</div>
 			{total && (
 				<>
-					<Divider variant="equals" />
+					<Divider variant="solid" className="my-2" />
 					<Row label={total.label} value={total.value} variant="bold" />
 				</>
 			)}
@@ -394,15 +354,12 @@ function Ledger({ title, rows, total, className, ...props }: LedgerProps) {
 	)
 }
 
-export { Divider, SectionLabel, Row, DataTable, Glyph, Ledger }
+export { SectionLabel, Row, DataTable, Glyph, Ledger }
 export type {
-	DividerProps,
-	DividerOpacity,
 	SectionLabelProps,
 	RowProps,
 	DataTableProps,
 	GlyphProps,
 	LedgerProps,
 	LedgerRow,
-	DividerVariant,
 }
