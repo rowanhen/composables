@@ -1,6 +1,6 @@
 {
-	"$schema": "https://biomejs.dev/schemas/2.4.7/schema.json",
-	"assist": { "actions": { "source": { "organizeImports": "on" } } },
+	"$schema": "https://biomejs.dev/schemas/2.0.0/schema.json",
+	"organizeImports": { "enabled": true },
 	"formatter": {
 		"enabled": true,
 		"indentStyle": "tab",
@@ -13,6 +13,6 @@
 		}
 	},
 	"files": {
-		"includes": ["packages/cli/**"]
+		"ignore": ["node_modules", "dist", "packages/showcase"]
 	}
 }
