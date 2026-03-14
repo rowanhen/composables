@@ -796,7 +796,7 @@ export const registry: Record<string, ComponentEntry> = {
 		description: "Receipt-styled pricing card using composables receipt primitives",
 		files: [{ src: "templates/ui-opinionated/pricing-receipt.tsx", dest: "components/ui-opinionated/pricing-receipt.tsx" }],
 		deps: [],
-		internalDeps: ["receipt", "utils"],
+		internalDeps: ["receipt", "typography", "button", "badge", "utils"],
 		tags: ["opinionated"],
 	},
 };
