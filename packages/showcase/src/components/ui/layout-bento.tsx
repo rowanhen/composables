@@ -39,7 +39,7 @@ const BENTO_CONTAINER =
 	"bg-border gap-[var(--bento-gap,var(--border-width,1px))] p-[var(--bento-gap,var(--border-width,1px))] rounded-lg"
 
 /** Every direct cell child gets card background — it sits on top of the border bg. */
-const BENTO_CELL = "bg-card rounded-lg"
+const BENTO_CELL = "bg-card rounded-lg overflow-hidden"
 
 // ─── STAT CELL ────────────────────────────────────────────────────────────────
 //

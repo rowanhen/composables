@@ -243,17 +243,12 @@
 		   Default: solid */
 		--border-style: solid;
 
-		/* ── Receipt component tokens ──────────────────────────────────────
-		   Used by the receipt.tsx primitive. Override in a preset or :root.
-		   Note: SectionLabel bg/text/padding now derive from base tokens
-		   (bg-foreground / text-background / px-2 py-0.5) — no custom vars needed. */
-		--receipt-divider-opacity: 0.25;
-
 		/* ── Bento layout tokens ───────────────────────────────────────────
 		   Used by the layout-bento.tsx primitive. Override in a preset or :root.
-		   --bento-gap: gap width = visual border width. Defaults to --border-width.
-		   Border color derives from bg-border (base token). Radius from rounded-lg. */
-		--bento-gap: var(--border-width, 1px);
+		   --bento-gap: gap width = visual border width. Defaults to --border-width-base.
+		   Border color derives from bg-border (base token). Radius from rounded-lg.
+		   Cell content is clipped to radius via overflow-hidden on each cell. */
+		--bento-gap: var(--border-width-base, 0.0625rem);
 
 		/* ── Layout macro spacing tokens ────────────────────────────────────
 		   Used by the layout.tsx Section primitive via py-[var(...)].
