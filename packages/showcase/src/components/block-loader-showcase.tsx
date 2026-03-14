@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { BlockLoader, SEQUENCES } from '@/components/ui/block-loader'
+import { BlockLoader, SEQUENCES, type BlockLoaderMode } from '@/components/ui/block-loader'
 import { VStack } from '@/components/ui/stack'
 import { Typography } from '@/components/ui/typography'
 import { ShowcaseSection } from './showcase-section'
@@ -18,7 +18,7 @@ export function BlockLoaderShowcase() {
             {SEQUENCES.map((_, i) => (
               <div key={i} className="flex flex-col items-center gap-1">
                 <div className="flex items-center justify-center w-10 h-10 border border-border rounded-md bg-muted/30">
-                  <BlockLoader mode={i} className="text-lg text-foreground" />
+                  <BlockLoader mode={i as BlockLoaderMode} className="text-lg text-foreground" />
                 </div>
                 <Typography variant="caption-100" className="text-muted-foreground">
                   {i}

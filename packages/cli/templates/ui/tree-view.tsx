@@ -114,11 +114,11 @@ const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
 				className={cn('whitespace-nowrap font-mono text-xs', className)}
 				{...props}
 			>
-				{/* Node row — role="treeitem" lives here (the focusable element) for non-root nodes */}
+				{/* Node row — role="treeitem" lives here (the focusable element) */}
 				<div
 					tabIndex={0}
-					role={isRoot ? undefined : 'treeitem'}
-					aria-expanded={!isRoot && isFolder ? open : undefined}
+					role="treeitem"
+					aria-expanded={isFolder ? open : undefined}
 					onClick={toggle}
 					onKeyDown={handleKeyDown}
 					className={cn(
