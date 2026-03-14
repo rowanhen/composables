@@ -21,6 +21,9 @@
      @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap");
 
    Swiss      — Helvetica Neue / Arial — system fonts, no import needed.
+
+   Dockets    — IBM Plex Mono (all text):
+     @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&display=swap");
 ──────────────────────────────────────────────────────────────────────────── */
 
 @source "./**/*.{ts,tsx}";
@@ -245,6 +248,53 @@
 		--card-title-size: var(--text-lg);
 		--card-title-font-weight: 600;
 		--card-title-letter-spacing: var(--tracking-normal);
+
+		/* ── Border style ──────────────────────────────────────────────────
+		   Controls border rendering across all components that respect it.
+		   Override to "dashed" in a preset or :root to switch globally.
+		   Default: solid */
+		--border-style: solid;
+
+		/* ── Receipt component tokens ──────────────────────────────────────
+		   Used by the receipt.tsx primitive. Override in a preset or :root.
+		   --receipt-spacing:         vertical padding for Row components
+		   --receipt-divider-opacity: opacity of dot/dash fill characters
+		   --section-label-padding:   padding inside SectionLabel
+		   --section-label-bg:        SectionLabel background color
+		   --section-label-text:      SectionLabel text color */
+		--receipt-spacing: 0px;
+		--receipt-divider-opacity: 0.25;
+		--section-label-padding: 3px 8px;
+		--section-label-bg: var(--border);
+		--section-label-text: var(--foreground);
+
+		/* ── Bento layout tokens ───────────────────────────────────────────
+		   Used by the layout-bento.tsx primitive. Override in a preset or :root.
+		   --bento-gap:          width of the gap-border between cells
+		   --bento-border-color: the container bg color that shows through as borders
+		   --bento-radius:       corner radius of the outer bento container */
+		--bento-gap: 1px;
+		--bento-border-color: var(--border);
+		--bento-radius: var(--radius);
+
+		/* ── Layout macro spacing tokens ────────────────────────────────────
+		   Used by the layout.tsx Section primitive via py-[var(...)].
+		   Override in a preset (e.g. dockets.ts) or :root for custom scale.
+		   --space-1 through --space-8: fine-grained spacing scale (0.25rem increments)
+		   --space-layout-sm: section vertical padding small  (24px)
+		   --space-layout-md: section vertical padding medium (48px)
+		   --space-layout-lg: section vertical padding large  (96px) */
+		--space-1: 0.25rem;
+		--space-2: 0.5rem;
+		--space-3: 0.75rem;
+		--space-4: 1rem;
+		--space-5: 1.25rem;
+		--space-6: 1.5rem;
+		--space-7: 1.75rem;
+		--space-8: 2rem;
+		--space-layout-sm: 1.5rem;
+		--space-layout-md: 3rem;
+		--space-layout-lg: 6rem;
 	}
 
 	* {
@@ -257,6 +307,11 @@
 
 	html {
 		@apply font-sans;
+	}
+
+	/* Wire --border-style into elements that should respect it */
+	*:where([data-slot]) {
+		border-style: var(--border-style, solid);
 	}
 
 	/* Wire motion tokens into interactive elements so presets that set
