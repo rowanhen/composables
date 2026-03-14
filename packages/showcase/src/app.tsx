@@ -18,7 +18,6 @@ import {
 	AspectRatioShowcase,
 	AvatarShowcase,
 	BadgesShowcase,
-	BrandShowcase,
 	BreadcrumbShowcase,
 	ButtonsShowcase,
 	CalendarShowcase,
@@ -173,7 +172,6 @@ export function App() {
 					{/* Actions */}
 					<ButtonsShowcase />
 					<BadgesShowcase />
-					<BrandShowcase />
 					<IconShowcase />
 					<AvatarShowcase />
 
