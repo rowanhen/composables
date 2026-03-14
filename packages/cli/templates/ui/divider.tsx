@@ -6,10 +6,7 @@ const dividerVariants = cva("shrink-0", {
 	variants: {
 		variant: {
 			solid: "",
-			dashed: "",
-			dotted: "",
 			dots: "flex items-center overflow-hidden",
-			equals: "flex items-center overflow-hidden",
 			pills: "flex items-center overflow-hidden",
 		},
 		orientation: {
@@ -21,68 +18,32 @@ const dividerVariants = cva("shrink-0", {
 		{
 			variant: "solid",
 			orientation: "horizontal",
-			class:
-				"h-[var(--border-width-base)] bg-border",
+			class: "h-[var(--border-width-base)] bg-border",
 		},
 		{
 			variant: "solid",
 			orientation: "vertical",
-			class:
-				"w-[var(--border-width-base)] bg-border",
-		},
-		{
-			variant: "dashed",
-			orientation: "horizontal",
-			class:
-				"h-0 border-t-[length:var(--border-width-base)] border-dashed border-border",
-		},
-		{
-			variant: "dashed",
-			orientation: "vertical",
-			class:
-				"w-0 border-l-[length:var(--border-width-base)] border-dashed border-border",
-		},
-		{
-			variant: "dotted",
-			orientation: "horizontal",
-			class:
-				"h-0 border-t-[length:var(--border-width-base)] border-dotted border-border",
-		},
-		{
-			variant: "dotted",
-			orientation: "vertical",
-			class:
-				"w-0 border-l-[length:var(--border-width-base)] border-dotted border-border",
+			class: "w-[var(--border-width-base)] bg-border",
 		},
 		{
 			variant: "dots",
 			orientation: "horizontal",
-			class: "h-4 w-full",
+			class: "flex-row gap-[calc(var(--spacing)*2)] h-[calc(var(--spacing)*2)] w-full",
 		},
 		{
 			variant: "dots",
 			orientation: "vertical",
-			class: "flex-col w-4 h-full",
-		},
-		{
-			variant: "equals",
-			orientation: "horizontal",
-			class: "h-4 w-full",
-		},
-		{
-			variant: "equals",
-			orientation: "vertical",
-			class: "flex-col w-4 h-full",
+			class: "flex-col gap-[calc(var(--spacing)*2)] w-[calc(var(--spacing)*2)] h-full",
 		},
 		{
 			variant: "pills",
 			orientation: "horizontal",
-			class: "flex-row gap-[calc(var(--spacing)*2)] h-4 w-full",
+			class: "flex-row gap-[calc(var(--spacing)*2)] h-[max(var(--border-width-base),4px)] w-full",
 		},
 		{
 			variant: "pills",
 			orientation: "vertical",
-			class: "flex-col gap-[calc(var(--spacing)*2)] w-4 h-full",
+			class: "flex-col gap-[calc(var(--spacing)*2)] w-[max(var(--border-width-base),4px)] h-full",
 		},
 	],
 	defaultVariants: {
@@ -98,11 +59,29 @@ interface DividerProps extends React.HTMLAttributes<HTMLDivElement> {
 	orientation?: DividerVariants["orientation"];
 }
 
-function PillsContent({ orientation }: { orientation: "horizontal" | "vertical" }) {
-	const count = orientation === "horizontal" ? 24 : 16;
+function DotsContent({ orientation }: { orientation: "horizontal" | "vertical" }) {
 	return (
 		<>
-			{Array.from({ length: count }).map((_, i) => (
+			{Array.from({ length: 60 }).map((_, i) => (
+				<span
+					// biome-ignore lint/suspicious/noArrayIndexKey: static decorative elements
+					key={i}
+					className="bg-border shrink-0"
+					style={{
+						borderRadius: "var(--radius)",
+						width: "calc(var(--spacing) * 2)",
+						height: "calc(var(--spacing) * 2)",
+					}}
+				/>
+			))}
+		</>
+	);
+}
+
+function PillsContent({ orientation }: { orientation: "horizontal" | "vertical" }) {
+	return (
+		<>
+			{Array.from({ length: 60 }).map((_, i) => (
 				<span
 					// biome-ignore lint/suspicious/noArrayIndexKey: static decorative elements
 					key={i}
@@ -124,52 +103,22 @@ function PillsContent({ orientation }: { orientation: "horizontal" | "vertical" 
 	);
 }
 
-function CharContent({
-	char,
-	orientation,
-}: {
-	char: string;
-	orientation: "horizontal" | "vertical";
-}) {
-	const text = char.repeat(80);
-	return (
-		<span
-			className="text-border leading-none select-none overflow-hidden"
-			style={{
-				fontSize: "calc(var(--spacing) * 3)",
-				writingMode: orientation === "vertical" ? "vertical-lr" : undefined,
-				whiteSpace: "nowrap",
-				letterSpacing: "0.05em",
-			}}
-		>
-			{text}
-		</span>
-	);
-}
-
 function Divider({
 	variant = "solid",
 	orientation = "horizontal",
 	className,
 	...props
 }: DividerProps) {
-	const isCharVariant = variant === "dots" || variant === "equals";
-	const isPills = variant === "pills";
-
 	return (
 		<div
 			role="separator"
 			aria-orientation={orientation}
 			className={cn(dividerVariants({ variant, orientation }), className)}
+			style={variant === "solid" ? { borderRadius: "var(--radius)" } : undefined}
 			{...props}
 		>
-			{isCharVariant && (
-				<CharContent
-					char={variant === "dots" ? "·" : "═"}
-					orientation={orientation}
-				/>
-			)}
-			{isPills && <PillsContent orientation={orientation} />}
+			{variant === "dots" && <DotsContent orientation={orientation} />}
+			{variant === "pills" && <PillsContent orientation={orientation} />}
 		</div>
 	);
 }
