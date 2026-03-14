@@ -257,44 +257,27 @@
 
 		/* ── Receipt component tokens ──────────────────────────────────────
 		   Used by the receipt.tsx primitive. Override in a preset or :root.
-		   --receipt-spacing:         vertical padding for Row components
-		   --receipt-divider-opacity: opacity of dot/dash fill characters
-		   --section-label-padding:   padding inside SectionLabel
-		   --section-label-bg:        SectionLabel background color
-		   --section-label-text:      SectionLabel text color */
-		--receipt-spacing: 0px;
+		   Note: SectionLabel bg/text/padding now derive from base tokens
+		   (bg-foreground / text-background / px-2 py-0.5) — no custom vars needed. */
 		--receipt-divider-opacity: 0.25;
-		--section-label-padding: 3px 8px;
-		--section-label-bg: var(--border);
-		--section-label-text: var(--foreground);
 
 		/* ── Bento layout tokens ───────────────────────────────────────────
 		   Used by the layout-bento.tsx primitive. Override in a preset or :root.
-		   --bento-gap:          width of the gap-border between cells
-		   --bento-border-color: the container bg color that shows through as borders
-		   --bento-radius:       corner radius of the outer bento container */
-		--bento-gap: 1px;
-		--bento-border-color: var(--border);
-		--bento-radius: var(--radius);
+		   --bento-gap: gap width = visual border width. Defaults to --border-width.
+		   Border color derives from bg-border (base token). Radius from rounded-lg. */
+		--bento-gap: var(--border-width, 1px);
 
 		/* ── Layout macro spacing tokens ────────────────────────────────────
 		   Used by the layout.tsx Section primitive via py-[var(...)].
-		   Override in a preset (e.g. dockets.ts) or :root for custom scale.
-		   --space-1 through --space-8: fine-grained spacing scale (0.25rem increments)
-		   --space-layout-sm: section vertical padding small  (24px)
-		   --space-layout-md: section vertical padding medium (48px)
-		   --space-layout-lg: section vertical padding large  (96px) */
-		--space-1: 0.25rem;
-		--space-2: 0.5rem;
-		--space-3: 0.75rem;
-		--space-4: 1rem;
-		--space-5: 1.25rem;
-		--space-6: 1.5rem;
-		--space-7: 1.75rem;
-		--space-8: 2rem;
-		--space-layout-sm: 1.5rem;
-		--space-layout-md: 3rem;
-		--space-layout-lg: 6rem;
+		   Override in a preset or :root for custom scale.
+		   Defaults are expressed as calc(var(--spacing)*N) so they scale
+		   with the --spacing base token.
+		   --space-layout-sm: section vertical padding small  (~24px at 0.25rem spacing)
+		   --space-layout-md: section vertical padding medium (~48px at 0.25rem spacing)
+		   --space-layout-lg: section vertical padding large  (~96px at 0.25rem spacing) */
+		--space-layout-sm: calc(var(--spacing) * 6);
+		--space-layout-md: calc(var(--spacing) * 12);
+		--space-layout-lg: calc(var(--spacing) * 24);
 	}
 
 	* {

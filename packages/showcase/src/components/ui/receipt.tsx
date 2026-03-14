@@ -6,11 +6,11 @@
  *
  * Semantic tokens (set in your CSS or a preset):
  *
- *   --receipt-spacing          Row vertical padding (default: 0px)
  *   --receipt-divider-opacity  Opacity of fill/dot characters (default: 0.25)
- *   --section-label-padding    SectionLabel padding (default: 3px 8px)
- *   --section-label-bg         SectionLabel background (default: var(--border))
- *   --section-label-text       SectionLabel text color (default: var(--background))
+ *
+ * SectionLabel uses base tokens directly:
+ *   bg-foreground / text-background (inverted block label)
+ *   padding via Tailwind spacing classes (px-2 py-0.5)
  *
  * All components use `data-slot` for structural targeting and CVA for variants.
  *
@@ -49,8 +49,8 @@ const dividerVariants = cva("w-full my-2", {
 			dots: "text-xs h-[1em] relative overflow-hidden",
 			dashes: "text-xs h-[1em] relative overflow-hidden",
 			equals: "text-xs h-[1em] relative overflow-hidden",
-			solid: "h-0 border-t border-border",
-			"dashed-border": "h-0 border-t border-dashed border-border",
+			solid: "h-0 border-t border-foreground",
+			"dashed-border": "h-0 border-t border-dashed border-foreground",
 		},
 	},
 	defaultVariants: {
@@ -83,7 +83,7 @@ function Divider({ variant = "dots", className, ...props }: DividerProps) {
 		>
 			{isCharBased && (
 				<span
-					className="absolute inset-x-0 whitespace-nowrap tracking-[-1px] text-border select-none"
+					className="absolute inset-x-0 whitespace-nowrap tracking-[-1px] text-foreground select-none"
 					style={{ opacity: "var(--receipt-divider-opacity, 0.25)" }}
 				>
 					{DIVIDER_CHARS[variant as "dots" | "dashes" | "equals"]}
@@ -96,15 +96,16 @@ function Divider({ variant = "dots", className, ...props }: DividerProps) {
 // ─── SECTION LABEL ────────────────────────────────────────────────────────────
 //
 // A reversed-out block label that visually separates content sections.
+// Uses base tokens directly: bg-foreground / text-background.
+//
 // Variants:
-//   default   — filled background (--section-label-bg) with contrasting text
+//   default   — filled background (foreground) with contrasting text (background)
 //   bordered  — transparent background with top/bottom borders
 
-const sectionLabelVariants = cva("text-xs font-bold uppercase", {
+const sectionLabelVariants = cva("text-xs font-bold uppercase px-2 py-0.5", {
 	variants: {
 		variant: {
-			default:
-				"bg-[var(--section-label-bg,var(--foreground))] text-[var(--section-label-text,var(--background))]",
+			default: "bg-foreground text-background",
 			bordered: "bg-transparent text-foreground border-t border-b border-border",
 		},
 	},
@@ -117,13 +118,12 @@ interface SectionLabelProps extends React.ComponentProps<"div"> {
 	variant?: "default" | "bordered"
 }
 
-function SectionLabel({ variant = "default", className, style, ...props }: SectionLabelProps) {
+function SectionLabel({ variant = "default", className, ...props }: SectionLabelProps) {
 	return (
 		<div
 			data-slot="receipt-section-label"
 			data-variant={variant}
 			className={cn(sectionLabelVariants({ variant }), className)}
-			style={{ padding: "var(--section-label-padding, 3px 8px)", ...style }}
 			{...props}
 		/>
 	)
@@ -139,17 +139,15 @@ function SectionLabel({ variant = "default", className, style, ...props }: Secti
 //   default  — label left, value right, standard weight
 //   fill     — dot-leader fill between label and value
 //   bold     — bold weight, no fill (use for totals/subtotals)
-//   compact  — tighter vertical padding
+//   compact  — tighter vertical padding + smaller text
 
 const rowVariants = cva("flex items-end text-xs gap-0", {
 	variants: {
 		variant: {
-			default: "",
-			fill: "",
-			bold: "font-bold",
-			// compact: explicit 0px padding + tighter leading so it's visually
-			// distinct even when --receipt-spacing is already 0px.
-			compact: "leading-[1.1] text-[0.6875rem]",
+			default: "py-0",
+			fill: "py-0",
+			bold: "font-bold py-0",
+			compact: "leading-[1.1] text-[0.6875rem] py-0",
 		},
 	},
 	defaultVariants: {
@@ -163,20 +161,14 @@ interface RowProps extends Omit<React.ComponentProps<"div">, "children"> {
 	variant?: "default" | "fill" | "bold" | "compact"
 }
 
-function Row({ label, value, variant = "default", className, style, ...props }: RowProps) {
+function Row({ label, value, variant = "default", className, ...props }: RowProps) {
 	const hasFill = variant === "fill"
-	const isCompact = variant === "compact"
 
 	return (
 		<div
 			data-slot="receipt-row"
 			data-variant={variant}
 			className={cn(rowVariants({ variant }), className)}
-			style={{
-				paddingTop: isCompact ? "0px" : "var(--receipt-spacing, 0)",
-				paddingBottom: isCompact ? "0px" : "var(--receipt-spacing, 0)",
-				...style,
-			}}
 			{...props}
 		>
 			<span className="uppercase shrink-0">{label}</span>
@@ -184,7 +176,7 @@ function Row({ label, value, variant = "default", className, style, ...props }: 
 				<>
 					<span
 						aria-hidden
-						className="flex-1 min-w-[2ch] overflow-hidden tracking-[-1px] whitespace-nowrap text-border select-none"
+						className="flex-1 min-w-[2ch] overflow-hidden tracking-[-1px] whitespace-nowrap text-foreground select-none"
 						style={{ opacity: "var(--receipt-divider-opacity, 0.25)" }}
 					>
 						{DIVIDER_CHARS.dots}
