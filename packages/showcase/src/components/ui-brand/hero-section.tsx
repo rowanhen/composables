@@ -14,9 +14,9 @@ const heroSectionVariants = cva(
 					"items-center text-center bg-[var(--bg-fill-brand)] text-inverse",
 			},
 			intensity: {
-				subtle: "",
+				subtle: "bg-muted/20",
 				standard: "",
-				bold: "",
+				bold: "bg-surface-brand/20 shadow-md",
 			},
 		},
 		defaultVariants: {
@@ -29,7 +29,7 @@ const heroSectionVariants = cva(
 const heroPaddingVariants = cva("", {
 	variants: {
 		intensity: {
-			subtle: "py-16 px-6",
+			subtle: "py-[var(--hero-padding-y,theme(spacing.24))] px-6",
 			standard:
 				"py-[var(--hero-padding-y,theme(spacing.40))] px-6",
 			bold: "py-[var(--hero-padding-y,theme(spacing.40))] px-6",

@@ -8,7 +8,7 @@ const featureGridVariants = cva("group/feature-grid w-full", {
 		layout: {
 			grid: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6",
 			bento:
-				"grid grid-cols-1 md:grid-cols-4 grid-rows-auto gap-4",
+				"grid grid-cols-1 md:grid-cols-4 auto-rows-auto gap-4",
 			alternating: "flex flex-col gap-16",
 		},
 		intensity: {

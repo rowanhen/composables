@@ -12,7 +12,7 @@ const blogCardVariants = cva(
 			intensity: {
 				subtle: "border border-border bg-transparent",
 				standard:
-					"bg-card ring-[length:var(--border-width)] ring-foreground/10 hover:shadow-md",
+					"bg-card ring-[length:var(--border-width)] ring-foreground/10 hover:[box-shadow:var(--hover-shadow)]",
 				bold: "bg-[var(--bg-fill-brand)]",
 			},
 			size: {
@@ -161,9 +161,14 @@ function BlogCardAuthor({ name, avatarSrc, className }: BlogCardAuthorProps) {
 	);
 }
 
-function BlogCardDate({ className, ...props }: React.ComponentProps<"time">) {
+type BlogCardDateProps = Omit<React.ComponentProps<"time">, "dateTime"> & {
+	dateTime: string;
+};
+
+function BlogCardDate({ className, dateTime, ...props }: BlogCardDateProps) {
 	return (
 		<time
+			dateTime={dateTime}
 			className={cn(
 				"text-2xs text-muted-foreground ml-auto group-data-[intensity=bold]/blog-card:text-inverse/60",
 				className,

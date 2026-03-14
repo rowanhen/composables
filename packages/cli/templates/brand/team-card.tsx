@@ -107,10 +107,14 @@ function TeamCardSocials({
 	);
 }
 
+type TeamCardSocialLinkProps = Omit<React.ComponentProps<"a">, "aria-label"> & {
+	"aria-label": string;
+};
+
 function TeamCardSocialLink({
 	className,
 	...props
-}: React.ComponentProps<"a">) {
+}: TeamCardSocialLinkProps) {
 	return (
 		<a
 			className={cn(

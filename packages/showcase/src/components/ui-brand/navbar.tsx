@@ -85,7 +85,7 @@ function NavbarLink({ className, ...props }: React.ComponentProps<"a">) {
 	return (
 		<a
 			className={cn(
-				"text-xs font-medium text-muted-foreground hover:text-foreground px-3 py-1.5 rounded-md hover:bg-muted transition-colors group-data-[intensity=bold]/navbar:text-inverse/70 group-data-[intensity=bold]/navbar:hover:text-inverse group-data-[intensity=bold]/navbar:hover:bg-white/10",
+				"text-xs font-medium text-muted-foreground hover:text-foreground px-3 py-1.5 rounded-md hover:bg-muted [transition:color_var(--transition-default,200ms_ease),background-color_var(--transition-default,200ms_ease)] group-data-[intensity=bold]/navbar:text-inverse/70 group-data-[intensity=bold]/navbar:hover:text-inverse group-data-[intensity=bold]/navbar:hover:bg-white/10",
 				className,
 			)}
 			{...props}
@@ -106,7 +106,7 @@ function NavbarActions({
 }
 
 // Mobile drawer state managed externally via open prop
-type NavbarMobileProps = React.ComponentProps<"div"> & {
+type NavbarMobileProps = Omit<React.ComponentProps<"div">, "role"> & {
 	open: boolean;
 	onClose: () => void;
 };
@@ -133,6 +133,8 @@ function NavbarMobileDrawer({
 				/>
 			)}
 			<div
+				role="dialog"
+				aria-modal="true"
 				className={cn(
 					"fixed inset-y-0 left-0 z-50 w-72 bg-background border-r border-border flex flex-col p-6 gap-4 md:hidden transition-transform duration-200",
 					open ? "translate-x-0" : "-translate-x-full",
@@ -154,10 +156,15 @@ function NavbarMobileDrawer({
 	);
 }
 
+type NavbarHamburgerProps = React.ComponentProps<"button"> & {
+	open?: boolean;
+};
+
 function NavbarHamburger({
 	className,
+	open = false,
 	...props
-}: React.ComponentProps<"button">) {
+}: NavbarHamburgerProps) {
 	return (
 		<button
 			type="button"
@@ -166,6 +173,7 @@ function NavbarHamburger({
 				className,
 			)}
 			aria-label="Open navigation"
+			aria-expanded={open}
 			{...props}
 		>
 			<MenuIcon className="size-4" />

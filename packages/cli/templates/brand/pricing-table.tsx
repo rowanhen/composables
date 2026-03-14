@@ -25,9 +25,15 @@ type PricingToggleProps = {
 	value: "monthly" | "annual";
 	onChange: (value: "monthly" | "annual") => void;
 	className?: string;
+	annualDiscount?: string;
 };
 
-function PricingToggle({ value, onChange, className }: PricingToggleProps) {
+function PricingToggle({
+	value,
+	onChange,
+	className,
+	annualDiscount = "-20%",
+}: PricingToggleProps) {
 	return (
 		<div
 			className={cn(
@@ -59,7 +65,7 @@ function PricingToggle({ value, onChange, className }: PricingToggleProps) {
 			>
 				Annual
 				<span className="ml-1.5 text-2xs font-semibold text-brand">
-					-20%
+					{annualDiscount}
 				</span>
 			</button>
 		</div>
@@ -76,9 +82,9 @@ const pricingCardVariants = cva(
 					"bg-card ring-[length:var(--border-width)] ring-foreground/10",
 			},
 			intensity: {
-				subtle: "",
+				subtle: "bg-card/60 opacity-90",
 				standard: "",
-				bold: "",
+				bold: "shadow-md ring-[length:var(--border-width)] ring-foreground/15",
 			},
 		},
 		defaultVariants: {

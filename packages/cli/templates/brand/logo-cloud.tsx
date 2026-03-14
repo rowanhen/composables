@@ -11,8 +11,8 @@ const logoCloudVariants = cva("group/logo-cloud w-full", {
 		},
 		intensity: {
 			subtle: "",
-			standard: "",
-			bold: "",
+			standard: "py-4",
+			bold: "bg-muted/30 rounded-xl p-8",
 		},
 	},
 	defaultVariants: {

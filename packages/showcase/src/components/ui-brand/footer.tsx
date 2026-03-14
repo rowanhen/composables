@@ -11,9 +11,9 @@ const footerVariants = cva("group/footer w-full border-t border-border", {
 			cta: "bg-[var(--bg-fill-brand)]",
 		},
 		intensity: {
-			subtle: "",
+			subtle: "border-border/40",
 			standard: "",
-			bold: "",
+			bold: "border-border shadow-sm",
 		},
 	},
 	defaultVariants: {
@@ -132,7 +132,7 @@ function FooterLink({ className, ...props }: React.ComponentProps<"a">) {
 	return (
 		<a
 			className={cn(
-				"text-xs text-muted-foreground hover:text-foreground transition-colors group-data-[variant=cta]/footer:text-inverse/70 group-data-[variant=cta]/footer:hover:text-inverse",
+				"text-xs text-muted-foreground hover:text-foreground [transition:color_var(--transition-default,200ms_ease),background-color_var(--transition-default,200ms_ease)] group-data-[variant=cta]/footer:text-inverse/70 group-data-[variant=cta]/footer:hover:text-inverse",
 				className,
 			)}
 			{...props}

@@ -18,7 +18,7 @@ const faqSectionVariants = cva("group/faq w-full", {
 		},
 		layout: {
 			single: "max-w-2xl mx-auto",
-			two_col: "grid grid-cols-1 md:grid-cols-2 gap-6",
+			"two-col": "grid grid-cols-1 md:grid-cols-2 gap-6",
 		},
 	},
 	defaultVariants: {
@@ -49,9 +49,20 @@ type FAQAccordionProps = {
 	items: Array<{ question: string; answer: string }>;
 	className?: string;
 	intensity?: "subtle" | "standard" | "bold";
+	layout?: "single" | "two-col";
 };
 
-function FAQAccordion({ items, className, intensity = "standard" }: FAQAccordionProps) {
+function FAQAccordionList({
+	items,
+	className,
+	intensity = "standard",
+	startIndex = 0,
+}: {
+	items: Array<{ question: string; answer: string }>;
+	className?: string;
+	intensity?: "subtle" | "standard" | "bold";
+	startIndex?: number;
+}) {
 	return (
 		<Accordion
 			multiple
@@ -61,8 +72,8 @@ function FAQAccordion({ items, className, intensity = "standard" }: FAQAccordion
 				className,
 			)}
 		>
-			{items.map((item) => (
-				<AccordionItem key={item.question} value={item.question}>
+			{items.map((item, idx) => (
+				<AccordionItem key={startIndex + idx} value={`item-${startIndex + idx}`}>
 					<AccordionTrigger
 						className={cn(
 							intensity === "bold" &&
@@ -81,6 +92,43 @@ function FAQAccordion({ items, className, intensity = "standard" }: FAQAccordion
 				</AccordionItem>
 			))}
 		</Accordion>
+	);
+}
+
+function FAQAccordion({
+	items,
+	className,
+	intensity = "standard",
+	layout = "single",
+}: FAQAccordionProps) {
+	if (layout === "two-col") {
+		const mid = Math.ceil(items.length / 2);
+		const leftItems = items.slice(0, mid);
+		const rightItems = items.slice(mid);
+		return (
+			<>
+				<FAQAccordionList
+					items={leftItems}
+					intensity={intensity}
+					className={className}
+					startIndex={0}
+				/>
+				<FAQAccordionList
+					items={rightItems}
+					intensity={intensity}
+					className={className}
+					startIndex={mid}
+				/>
+			</>
+		);
+	}
+	return (
+		<FAQAccordionList
+			items={items}
+			intensity={intensity}
+			className={className}
+			startIndex={0}
+		/>
 	);
 }
 

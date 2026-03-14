@@ -5,9 +5,8 @@ const sectionHeaderVariants = cva("group/section-header flex flex-col", {
 	variants: {
 		intensity: {
 			subtle: "bg-transparent",
-			standard:
-				"bg-surface-brand border border-stroke-brand rounded-lg p-6",
-			bold: "bg-[var(--bg-fill-brand)] rounded-lg p-6",
+			standard: "bg-transparent",
+			bold: "bg-surface-brand border border-stroke-brand rounded-lg p-6",
 		},
 		align: {
 			start: "items-start text-left",
@@ -30,7 +29,7 @@ function SectionHeader({
 	return (
 		<div
 			data-intensity={intensity}
-			className={cn(sectionHeaderVariants({ intensity, align, className }))}
+			className={cn(sectionHeaderVariants({ intensity, align }), className)}
 			{...props}
 		/>
 	);
@@ -43,7 +42,7 @@ function SectionHeaderEyebrow({
 	return (
 		<p
 			className={cn(
-				"text-2xs font-brand font-semibold uppercase tracking-wider text-brand group-data-[intensity=bold]/section-header:text-inverse",
+				"text-2xs font-brand font-semibold uppercase tracking-wider text-brand group-data-[intensity=bold]/section-header:text-brand",
 				className,
 			)}
 			{...props}
@@ -58,7 +57,7 @@ function SectionHeaderTitle({
 	return (
 		<h2
 			className={cn(
-				"font-brand font-bold text-2xl text-foreground mt-1 group-data-[intensity=bold]/section-header:text-inverse",
+				"font-brand font-bold text-2xl text-foreground mt-1",
 				className,
 			)}
 			{...props}
@@ -73,7 +72,7 @@ function SectionHeaderSubtitle({
 	return (
 		<p
 			className={cn(
-				"text-sm text-muted-foreground max-w-prose mt-2 group-data-[intensity=bold]/section-header:text-inverse/80",
+				"text-sm text-muted-foreground max-w-prose mt-2",
 				className,
 			)}
 			{...props}

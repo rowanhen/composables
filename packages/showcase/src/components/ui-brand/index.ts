@@ -3,6 +3,7 @@ export {
 	SectionHeaderEyebrow,
 	SectionHeaderTitle,
 	SectionHeaderSubtitle,
+	sectionHeaderVariants,
 } from "./section-header";
 
 export {
@@ -10,6 +11,7 @@ export {
 	CallToActionHeadline,
 	CallToActionBody,
 	CallToActionActions,
+	callToActionVariants,
 } from "./call-to-action";
 
 export {
@@ -17,6 +19,7 @@ export {
 	FeatureCardIcon,
 	FeatureCardTitle,
 	FeatureCardDescription,
+	featureCardVariants,
 } from "./feature-card";
 
 export {

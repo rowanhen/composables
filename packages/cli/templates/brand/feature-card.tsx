@@ -23,7 +23,7 @@ function FeatureCard({
 	return (
 		<div
 			data-intensity={intensity}
-			className={cn(featureCardVariants({ intensity, className }))}
+			className={cn(featureCardVariants({ intensity }), className)}
 			{...props}
 		/>
 	);

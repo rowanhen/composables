@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 // which is a card-level element. This is a full-width section.
 
 const ctaBannerVariants = cva(
-	"group/cta-banner w-full flex flex-col md:flex-row items-center justify-between gap-8",
+	"group/cta-banner w-full flex flex-col items-center justify-between gap-8",
 	{
 		variants: {
 			intensity: {
@@ -17,8 +17,7 @@ const ctaBannerVariants = cva(
 			},
 			align: {
 				left: "md:flex-row text-left",
-				center:
-					"md:flex-col items-center text-center",
+				center: "text-center",
 			},
 		},
 		defaultVariants: {

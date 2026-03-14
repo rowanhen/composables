@@ -29,7 +29,7 @@ function CallToAction({
 	return (
 		<div
 			data-intensity={intensity}
-			className={cn(callToActionVariants({ intensity, align, className }))}
+			className={cn(callToActionVariants({ intensity, align }), className)}
 			{...props}
 		/>
 	);
