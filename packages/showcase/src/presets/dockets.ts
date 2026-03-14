@@ -176,37 +176,24 @@ export const dockets: Record<string, string> = {
   "--card-title-font-weight": "700",
   "--card-title-letter-spacing": "var(--tracking-normal)",
 
-  // ── Receipt-specific tokens ───────────────────────────────────────────
-  "--receipt-spacing": "0px",
+  // ── Receipt component token ───────────────────────────────────────────
+  // SectionLabel bg/text/padding derive from base tokens (fg/bg/Tailwind spacing).
+  // Only keep divider opacity — no base equivalent exists.
   "--receipt-divider-opacity": "0.25",
-  "--section-label-padding": "3px 8px",
-  "--section-label-bg": "var(--border)",
-  "--section-label-text": "var(--foreground)",
 
-  // ── Bento layout tokens ───────────────────────────────────────────────
-  "--bento-radius": "0px",
+  // ── Bento layout token ────────────────────────────────────────────────
+  // Gap = hairline (same as border-width). Color derives from bg-border.
+  // Radius derives from rounded-lg (--radius = 0 in dockets = square corners).
   "--bento-gap": "1px",
-  "--bento-border-color": "var(--border)",
 
   // ── Border style ──────────────────────────────────────────────────────
   "--border-style": "solid",
 
   // ── Macro spacing scale — layout.tsx Section primitives ──────────────
-  // Used by Section component via py-[var(--space-layout-sm/md/lg)]
-  "--space-layout-sm": "1.5rem",   // 24px
-  "--space-layout-md": "3rem",     // 48px
-  "--space-layout-lg": "6rem",     // 96px
-
-  // ── Fine-grained spacing scale (--space-1 … --space-8) ───────────────
-  // 0.25rem increments (1=4px, 2=8px, 3=12px, 4=16px, 5=20px, 6=24px, 8=32px)
-  "--space-1": "0.25rem",
-  "--space-2": "0.5rem",
-  "--space-3": "0.75rem",
-  "--space-4": "1rem",
-  "--space-5": "1.25rem",
-  "--space-6": "1.5rem",
-  "--space-7": "1.75rem",
-  "--space-8": "2rem",
+  // Expressed as calc(var(--spacing)*N) so they scale with the spacing token.
+  "--space-layout-sm": "calc(var(--spacing) * 6)",
+  "--space-layout-md": "calc(var(--spacing) * 12)",
+  "--space-layout-lg": "calc(var(--spacing) * 24)",
 }
 
 export const docketsDark: Record<string, string> = {
@@ -308,33 +295,17 @@ export const docketsDark: Record<string, string> = {
   "--font-heading": '"IBM Plex Mono", "Courier New", monospace',
   "--font-brand": '"IBM Plex Mono", "Courier New", monospace',
 
-  // ── Receipt-specific tokens (dark) ────────────────────────────────────
-  "--receipt-spacing": "0px",
+  // ── Receipt component token (dark) ───────────────────────────────────
   "--receipt-divider-opacity": "0.3",
-  "--section-label-padding": "3px 8px",
-  "--section-label-bg": "var(--border)",
-  "--section-label-text": "var(--foreground)",
 
-  // ── Bento layout tokens (dark) ────────────────────────────────────────
-  "--bento-radius": "0px",
+  // ── Bento layout token (dark) ─────────────────────────────────────────
   "--bento-gap": "1px",
-  "--bento-border-color": "var(--border)",
 
   // ── Border style ──────────────────────────────────────────────────────
   "--border-style": "solid",
 
   // ── Macro spacing scale — layout.tsx Section primitives ──────────────
-  "--space-layout-sm": "1.5rem",
-  "--space-layout-md": "3rem",
-  "--space-layout-lg": "6rem",
-
-  // ── Fine-grained spacing scale ────────────────────────────────────────
-  "--space-1": "0.25rem",
-  "--space-2": "0.5rem",
-  "--space-3": "0.75rem",
-  "--space-4": "1rem",
-  "--space-5": "1.25rem",
-  "--space-6": "1.5rem",
-  "--space-7": "1.75rem",
-  "--space-8": "2rem",
+  "--space-layout-sm": "calc(var(--spacing) * 6)",
+  "--space-layout-md": "calc(var(--spacing) * 12)",
+  "--space-layout-lg": "calc(var(--spacing) * 24)",
 }

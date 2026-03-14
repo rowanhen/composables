@@ -60,6 +60,9 @@ import {
 	BlockLoaderShowcase,
 	ListShowcase,
 	PricingReceiptShowcase,
+	ReceiptShowcase,
+	BentoShowcase,
+	LayoutShowcase,
 } from "./components";
 
 /* ---- NAV ---- */
@@ -112,6 +115,9 @@ const navItems = [
 	"Block Loader",
 	"List",
 	"Pricing Receipt",
+	"Receipt Primitives",
+	"Bento Layout",
+	"Layout Primitives",
 ];
 
 /* ---- APP ---- */
@@ -234,6 +240,11 @@ export function App() {
 					<BlockLoaderShowcase />
 					<ListShowcase />
 					<PricingReceiptShowcase />
+
+					{/* Phase 1 — Receipt, Bento, Layout primitives */}
+					<ReceiptShowcase />
+					<BentoShowcase />
+					<LayoutShowcase />
 				</VStack>
 
 				<Spacer size={24} />
