@@ -32,30 +32,21 @@ import { cn } from "@/lib/utils"
 
 // ─── DIVIDER ──────────────────────────────────────────────────────────────────
 //
-// Renders a horizontal divider. Character-based variants (dots/dashes/equals)
-// flood the row with repeated characters clipped to the container. Solid and
-// dashed-border variants render CSS border lines — no characters involved.
+// Renders a horizontal divider using CSS borders — scales with --border-width.
 //
 // Variants:
-//   dots          — repeated "........." (default)
-//   dashes        — repeated "---------"
-//   equals        — repeated "=========" (use for totals separator)
+//   dots          — dotted CSS border (default)
+//   dashes        — dashed CSS border
+//   equals        — double CSS border (use for totals separator)
 //   solid         — thin solid CSS border
-//   dashed-border — CSS dashed border (switchable via --border-style)
-//
-// Opacity (character-based variants only):
-//   subtle        — opacity-25 (default, decorative/background)
-//   medium        — opacity-50
-//   bold          — opacity-75
 
 const dividerVariants = cva("w-full my-2", {
 	variants: {
 		variant: {
-			dots: "text-xs h-[1em] relative overflow-hidden",
-			dashes: "text-xs h-[1em] relative overflow-hidden",
-			equals: "text-xs h-[1em] relative overflow-hidden",
+			dots: "h-0 border-dotted border-t-[length:var(--border-width)] border-t-border",
+			dashes: "h-0 border-dashed border-t-[length:var(--border-width)] border-t-border",
+			equals: "h-[3px] border-t-[length:var(--border-width)] border-b-[length:var(--border-width)] border-border",
 			solid: "h-0 border-t-[length:var(--border-width)] border-t-border",
-			"dashed-border": "h-0 border-t-[length:var(--border-width)] border-dashed border-t-border",
 		},
 	},
 	defaultVariants: {
@@ -63,40 +54,19 @@ const dividerVariants = cva("w-full my-2", {
 	},
 })
 
-const dividerCharVariants = cva(
-	"absolute inset-x-0 whitespace-nowrap tracking-tighter text-muted-foreground select-none",
-	{
-		variants: {
-			opacity: {
-				subtle: "opacity-25",
-				medium: "opacity-50",
-				bold: "opacity-75",
-			},
-		},
-		defaultVariants: {
-			opacity: "subtle",
-		},
-	},
-)
-
-const DIVIDER_CHARS: Record<"dots" | "dashes" | "equals", string> = {
+// Dot-leader characters used by the Row component's fill variant
+const DIVIDER_CHARS = {
 	dots: ".".repeat(400),
-	dashes: "-".repeat(400),
-	equals: "=".repeat(400),
 }
 
-type DividerVariant = "dots" | "dashes" | "equals" | "solid" | "dashed-border"
+type DividerVariant = "dots" | "dashes" | "equals" | "solid"
 type DividerOpacity = "subtle" | "medium" | "bold"
 
 interface DividerProps extends React.ComponentProps<"div"> {
 	variant?: DividerVariant
-	/** Opacity of character fills (dots/dashes/equals only). Default: "subtle" (25%) */
-	opacity?: DividerOpacity
 }
 
-function Divider({ variant = "dots", opacity = "subtle", className, ...props }: DividerProps) {
-	const isCharBased = variant === "dots" || variant === "dashes" || variant === "equals"
-
+function Divider({ variant = "dots", className, ...props }: DividerProps) {
 	return (
 		<div
 			data-slot="receipt-divider"
@@ -104,13 +74,7 @@ function Divider({ variant = "dots", opacity = "subtle", className, ...props }: 
 			aria-hidden
 			className={cn(dividerVariants({ variant }), className)}
 			{...props}
-		>
-			{isCharBased && (
-				<span className={cn(dividerCharVariants({ opacity }))}>
-					{DIVIDER_CHARS[variant as "dots" | "dashes" | "equals"]}
-				</span>
-			)}
-		</div>
+		/>
 	)
 }
 
@@ -123,7 +87,7 @@ function Divider({ variant = "dots", opacity = "subtle", className, ...props }: 
 //   default   — filled background (foreground) with contrasting text (background)
 //   bordered  — transparent background with top/bottom borders
 
-const sectionLabelVariants = cva("text-sm font-bold uppercase px-2 py-0.5 rounded-md", {
+const sectionLabelVariants = cva("text-sm font-bold px-2 py-0.5 rounded-md", {
 	variants: {
 		variant: {
 			default: "bg-primary text-primary-foreground",
@@ -181,12 +145,11 @@ interface RowProps extends Omit<React.ComponentProps<"div">, "children"> {
 	label: React.ReactNode
 	value: React.ReactNode
 	variant?: "default" | "fill" | "bold" | "compact"
-	/** Opacity of the dot-leader fill (fill variant only). Default: "subtle" (25%) */
 	/** Opacity of the dot-leader fill. Only applies when `variant="fill"`. */
 	fillOpacity?: DividerOpacity
 }
 
-/** Maps opacity variants to Tailwind opacity classes — shared with Divider's CVA scale. */
+/** Maps opacity variants to Tailwind opacity classes — used by Row's dot-leader fill. */
 const OPACITY_CLASS: Record<DividerOpacity, string> = {
 	subtle: "opacity-25",
 	medium: "opacity-50",
@@ -203,7 +166,7 @@ function Row({ label, value, variant = "default", fillOpacity = "subtle", classN
 			className={cn(rowVariants({ variant }), className)}
 			{...props}
 		>
-			<span className="uppercase shrink-0">{label}</span>
+			<span className="shrink-0">{label}</span>
 			{hasFill ? (
 				<>
 					<span
@@ -236,7 +199,7 @@ function Row({ label, value, variant = "default", fillOpacity = "subtle", classN
 //   />
 
 export interface ColDef {
-	/** Column header label (displayed uppercase) */
+	/** Column header label */
 	label: string
 	/** Column width in `ch` character units. Omit to flex-fill. */
 	width?: number
@@ -264,7 +227,7 @@ function DataTable({ columns, rows, className, ...props }: DataTableProps) {
 						key={i}
 						role="columnheader"
 						className={cn(
-							"uppercase shrink-0 text-muted-foreground",
+							"shrink-0 text-muted-foreground",
 							!col.width && "flex-1",
 							col.align === "right" && "text-right",
 						)}
@@ -326,7 +289,7 @@ const GLYPH_TEXT: Record<GlyphSize, string> = {
 }
 
 const glyphVariants = cva(
-	"relative inline-flex items-center justify-center shrink-0 border-[length:var(--border-width)] font-bold select-none",
+	"relative inline-flex items-center justify-center shrink-0 border-[length:var(--border-width)] font-bold select-none [font-family:system-ui,_-apple-system,_sans-serif]",
 	{
 		variants: {
 			variant: {
