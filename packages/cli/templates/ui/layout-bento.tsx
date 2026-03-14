@@ -7,13 +7,12 @@
  *
  * Semantic tokens (set in your CSS or a preset):
  *
- *   --bento-gap           Gap between cells, also the border width (default: 1px)
- *   --bento-border-color  Grid line color (default: var(--border))
- *   --bento-radius        Corner radius of the outer container (default: var(--radius))
+ *   --bento-gap           Gap between cells (default: var(--border-width, 1px))
  *
- * Border style token (global):
- *
- *   --border-style        Applies to all component borders (default: solid)
+ * Base tokens used directly:
+ *   --border              Grid line color (via bg-border)
+ *   --radius              Corner radius (via rounded-lg)
+ *   --border-style        Border style on all components (default: solid)
  *
  * Layout philosophy:
  *   • Container background IS the border color

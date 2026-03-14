@@ -476,7 +476,7 @@ export const registry: Record<string, ComponentEntry> = {
 	"layout-bento": {
 		name: "layout-bento",
 		description:
-			"Bento grid layout primitives: BentoGrid, BentoCell, BentoSplit, BentoLeader, BentoQuad, BentoTriple, CellGrid, CellRow, StatCell. Gap-as-border system with configurable --bento-gap, --bento-border-color, --bento-radius tokens.",
+			"Bento grid layout primitives: BentoGrid, BentoCell, BentoSplit, BentoLeader, BentoQuad, BentoTriple, CellGrid, CellRow, StatCell. Gap-as-border system using base tokens (--border, --radius) with configurable --bento-gap.",
 		files: [{ src: "templates/ui/layout-bento.tsx", dest: "components/ui/layout-bento.tsx" }],
 		deps: [],
 		internalDeps: ["utils"],

@@ -12,14 +12,14 @@
  *
  * SPACING:
  *   All padding/gap values pull from semantic tokens.
- *   Macro layout values come from --space-layout-sm/md/lg (24px/48px/96px).
- *   Fine-grained spacing uses --space-1 through --space-8 (0.25rem increments).
+ *   Macro layout values come from --space-layout-sm/md/lg (derived from base --spacing).
+ *   Fine-grained spacing uses Tailwind's spacing scale (based on --spacing base token).
  *
  * Semantic tokens (set in your CSS or a preset):
  *
- *   --space-layout-sm   Section macro spacing small  (default: 1.5rem / 24px)
- *   --space-layout-md   Section macro spacing medium (default: 3rem   / 48px)
- *   --space-layout-lg   Section macro spacing large  (default: 6rem   / 96px)
+ *   --space-layout-sm   Section macro spacing small  (default: calc(var(--spacing) * 6))
+ *   --space-layout-md   Section macro spacing medium (default: calc(var(--spacing) * 12))
+ *   --space-layout-lg   Section macro spacing large  (default: calc(var(--spacing) * 24))
  *   --border-width      Border thickness token (default: var(--border-width-base))
  *
  * All components use `data-slot` for structural targeting and CVA for variants.
@@ -33,7 +33,7 @@ import { cn } from "@/lib/utils"
 // ─── SECTION ──────────────────────────────────────────────────────────────────
 //
 // Page-level section wrapper with macro spacing tokens.
-// Spacing drives py (vertical padding) — sm=24px, md=48px, lg=96px.
+// Spacing drives py (vertical padding) — sm=spacing*6, md=spacing*12, lg=spacing*24.
 
 const sectionVariants = cva("w-full", {
 	variants: {
