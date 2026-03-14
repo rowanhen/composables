@@ -9,7 +9,7 @@
  * and border radii all adapt automatically when switching presets.
  *
  * SectionLabel uses base tokens directly:
- *   bg-foreground / text-background (inverted block label)
+ *   bg-primary / text-primary-foreground (matches Button default variant)
  *   padding via Tailwind spacing classes (px-2 py-0.5)
  *
  * All components use `data-slot` for structural targeting and CVA for variants.
@@ -117,7 +117,7 @@ function Divider({ variant = "dots", opacity = "subtle", className, ...props }: 
 // ─── SECTION LABEL ────────────────────────────────────────────────────────────
 //
 // A reversed-out block label that visually separates content sections.
-// Uses base tokens directly: bg-foreground / text-background.
+// Uses primary tokens: bg-primary / text-primary-foreground (matches Button default).
 //
 // Variants:
 //   default   — filled background (foreground) with contrasting text (background)
@@ -126,9 +126,9 @@ function Divider({ variant = "dots", opacity = "subtle", className, ...props }: 
 const sectionLabelVariants = cva("text-sm font-bold uppercase px-2 py-0.5 rounded-md", {
 	variants: {
 		variant: {
-			default: "bg-foreground text-background",
+			default: "bg-primary text-primary-foreground",
 			bordered:
-				"bg-transparent text-foreground border-t-[length:var(--border-width)] border-b-[length:var(--border-width)] border-t-border border-b-border",
+				"bg-transparent text-foreground border-[length:var(--border-width)] border-border",
 		},
 	},
 	defaultVariants: {
@@ -304,9 +304,8 @@ function DataTable({ columns, rows, className, ...props }: DataTableProps) {
 //
 // A fixed-size square containing a centred character or symbol.
 // Size must be one of the preset GlyphSize values (multiples of 8/16).
-// Corner radius adapts to the current preset via design system tokens:
-//   default/filled → rounded-lg (square with rounded corners)
-//   circle/circle-inverted → rounded-full (circular container)
+// All variants use rounded-lg on the outer container (square with radius).
+// For circle/circle-inverted, the circle shape lives INSIDE the square container.
 //
 // Variants:
 //   default          — bordered square, standard bg + fg
@@ -333,8 +332,8 @@ const glyphVariants = cva(
 			variant: {
 				default: "bg-card text-foreground border-border rounded-lg",
 				filled: "bg-foreground text-background border-foreground rounded-lg",
-				circle: "bg-card border-border rounded-full",
-				"circle-inverted": "bg-foreground border-foreground rounded-full",
+				circle: "bg-card border-border rounded-lg",
+				"circle-inverted": "bg-foreground border-foreground rounded-lg",
 			},
 		},
 		defaultVariants: {
@@ -365,11 +364,11 @@ function Glyph({ children, size = 48, variant = "default", className, ...props }
 				<div
 					aria-hidden
 					className={cn(
-						"absolute",
+						"absolute rounded-full",
 						variant === "circle" && "bg-foreground",
 						variant === "circle-inverted" && "bg-card",
 					)}
-					className="rounded-full" style={{ width: circleDiameter, height: circleDiameter }}
+					style={{ width: circleDiameter, height: circleDiameter }}
 				/>
 			)}
 			<span
@@ -417,7 +416,7 @@ function Ledger({ title, rows, total, className, ...props }: LedgerProps) {
 	return (
 		<div data-slot="receipt-ledger" className={cn("text-sm", className)} {...props}>
 			{title && <SectionLabel>{title}</SectionLabel>}
-			<div className="py-2 space-y-px">
+			<div className="py-2 space-y-0.5">
 				{rows.map((row, i) => (
 					<Row key={i} label={row.label} value={row.value} variant={row.variant ?? "default"} />
 				))}

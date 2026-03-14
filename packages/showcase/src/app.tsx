@@ -62,7 +62,6 @@ import {
 	PricingReceiptShowcase,
 	ReceiptShowcase,
 	BentoShowcase,
-	LayoutShowcase,
 } from "./components";
 
 /* ---- NAV ---- */
@@ -117,7 +116,6 @@ const navItems = [
 	"Pricing Receipt",
 	"Receipt Primitives",
 	"Bento Layout",
-	"Layout Primitives",
 ];
 
 /* ---- APP ---- */
@@ -241,10 +239,9 @@ export function App() {
 					<ListShowcase />
 					<PricingReceiptShowcase />
 
-					{/* Phase 1 — Receipt, Bento, Layout primitives */}
+					{/* Phase 1 — Receipt, Bento */}
 					<ReceiptShowcase />
 					<BentoShowcase />
-					<LayoutShowcase />
 				</VStack>
 
 				<Spacer size={24} />
