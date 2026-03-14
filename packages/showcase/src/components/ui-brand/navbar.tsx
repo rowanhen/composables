@@ -1,6 +1,6 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import { MenuIcon, XIcon } from "lucide-react";
-import React from "react";
+import type React from "react";
 import { cn } from "@/lib/utils";
 
 // ─── Navbar ──────────────────────────────────────────────────────────────────
@@ -26,15 +26,9 @@ const navbarVariants = cva(
 	},
 );
 
-type NavbarProps = React.ComponentProps<"header"> &
-	VariantProps<typeof navbarVariants>;
+type NavbarProps = React.ComponentProps<"header"> & VariantProps<typeof navbarVariants>;
 
-function Navbar({
-	className,
-	sticky = true,
-	intensity = "standard",
-	...props
-}: NavbarProps) {
+function Navbar({ className, sticky = true, intensity = "standard", ...props }: NavbarProps) {
 	return (
 		<header
 			data-intensity={intensity}
@@ -70,15 +64,7 @@ function NavbarBrand({ className, ...props }: React.ComponentProps<"div">) {
 }
 
 function NavbarLinks({ className, ...props }: React.ComponentProps<"nav">) {
-	return (
-		<nav
-			className={cn(
-				"hidden md:flex items-center gap-1",
-				className,
-			)}
-			{...props}
-		/>
-	);
+	return <nav className={cn("hidden md:flex items-center gap-1", className)} {...props} />;
 }
 
 function NavbarLink({ className, ...props }: React.ComponentProps<"a">) {
@@ -93,16 +79,8 @@ function NavbarLink({ className, ...props }: React.ComponentProps<"a">) {
 	);
 }
 
-function NavbarActions({
-	className,
-	...props
-}: React.ComponentProps<"div">) {
-	return (
-		<div
-			className={cn("flex items-center gap-2", className)}
-			{...props}
-		/>
-	);
+function NavbarActions({ className, ...props }: React.ComponentProps<"div">) {
+	return <div className={cn("flex items-center gap-2", className)} {...props} />;
 }
 
 // Mobile drawer state managed externally via open prop
@@ -111,23 +89,14 @@ type NavbarMobileProps = Omit<React.ComponentProps<"div">, "role"> & {
 	onClose: () => void;
 };
 
-function NavbarMobileDrawer({
-	className,
-	open,
-	onClose,
-	children,
-	...props
-}: NavbarMobileProps) {
+function NavbarMobileDrawer({ className, open, onClose, children, ...props }: NavbarMobileProps) {
 	return (
 		<>
 			{open && (
-				<div
+				<button
+					type="button"
 					className="fixed inset-0 z-40 bg-black/40 md:hidden"
 					onClick={onClose}
-					onKeyDown={(e) => {
-						if (e.key === "Escape") onClose();
-					}}
-					role="button"
 					tabIndex={-1}
 					aria-label="Close navigation"
 				/>
@@ -135,6 +104,7 @@ function NavbarMobileDrawer({
 			<div
 				role="dialog"
 				aria-modal="true"
+				aria-label="Navigation"
 				className={cn(
 					"fixed inset-y-0 left-0 z-50 w-72 bg-background border-r border-border flex flex-col p-6 gap-4 md:hidden transition-transform duration-200",
 					open ? "translate-x-0" : "-translate-x-full",
@@ -160,11 +130,7 @@ type NavbarHamburgerProps = React.ComponentProps<"button"> & {
 	open?: boolean;
 };
 
-function NavbarHamburger({
-	className,
-	open = false,
-	...props
-}: NavbarHamburgerProps) {
+function NavbarHamburger({ className, open = false, ...props }: NavbarHamburgerProps) {
 	return (
 		<button
 			type="button"
@@ -183,12 +149,12 @@ function NavbarHamburger({
 
 export {
 	Navbar,
-	NavbarInner,
-	NavbarBrand,
-	NavbarLinks,
-	NavbarLink,
 	NavbarActions,
-	NavbarMobileDrawer,
+	NavbarBrand,
 	NavbarHamburger,
+	NavbarInner,
+	NavbarLink,
+	NavbarLinks,
+	NavbarMobileDrawer,
 	navbarVariants,
 };

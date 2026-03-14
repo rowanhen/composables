@@ -1,18 +1,18 @@
 import { cva, type VariantProps } from "class-variance-authority";
-import { cn } from "@/lib/utils";
 import {
 	Accordion,
 	AccordionContent,
 	AccordionItem,
 	AccordionTrigger,
 } from "@/components/ui/accordion";
+import { cn } from "@/lib/utils";
 
 // ─── FAQSection ───────────────────────────────────────────────────────────────
 
 const faqSectionVariants = cva("group/faq w-full", {
 	variants: {
 		intensity: {
-			subtle: "",
+			subtle: "border border-border rounded-xl p-6",
 			standard: "",
 			bold: "bg-[var(--bg-fill-brand)] rounded-xl p-8",
 		},
@@ -27,8 +27,7 @@ const faqSectionVariants = cva("group/faq w-full", {
 	},
 });
 
-type FAQSectionProps = React.ComponentProps<"div"> &
-	VariantProps<typeof faqSectionVariants>;
+type FAQSectionProps = React.ComponentProps<"div"> & VariantProps<typeof faqSectionVariants>;
 
 function FAQSection({
 	className,
@@ -67,26 +66,16 @@ function FAQAccordionList({
 		<Accordion
 			multiple
 			variant={intensity === "bold" ? "flush" : "default"}
-			className={cn(
-				intensity === "bold" && "border-0 text-inverse",
-				className,
-			)}
+			className={cn(intensity === "bold" && "border-0 text-inverse", className)}
 		>
 			{items.map((item, idx) => (
 				<AccordionItem key={startIndex + idx} value={`item-${startIndex + idx}`}>
 					<AccordionTrigger
-						className={cn(
-							intensity === "bold" &&
-								"text-inverse hover:text-inverse/80",
-						)}
+						className={cn(intensity === "bold" && "text-inverse hover:text-inverse/80")}
 					>
 						{item.question}
 					</AccordionTrigger>
-					<AccordionContent
-						className={cn(
-							intensity === "bold" && "text-inverse/70",
-						)}
-					>
+					<AccordionContent className={cn(intensity === "bold" && "text-inverse/70")}>
 						{item.answer}
 					</AccordionContent>
 				</AccordionItem>
@@ -123,25 +112,15 @@ function FAQAccordion({
 		);
 	}
 	return (
-		<FAQAccordionList
-			items={items}
-			intensity={intensity}
-			className={className}
-			startIndex={0}
-		/>
+		<FAQAccordionList items={items} intensity={intensity} className={className} startIndex={0} />
 	);
 }
 
 function FAQItem({ className, ...props }: React.ComponentProps<"div">) {
-	return (
-		<div className={cn("flex flex-col gap-2", className)} {...props} />
-	);
+	return <div className={cn("flex flex-col gap-2", className)} {...props} />;
 }
 
-function FAQQuestion({
-	className,
-	...props
-}: React.ComponentProps<"h4">) {
+function FAQQuestion({ className, ...props }: React.ComponentProps<"h4">) {
 	return (
 		<h4
 			className={cn(
@@ -165,11 +144,4 @@ function FAQAnswer({ className, ...props }: React.ComponentProps<"p">) {
 	);
 }
 
-export {
-	FAQSection,
-	FAQAccordion,
-	FAQItem,
-	FAQQuestion,
-	FAQAnswer,
-	faqSectionVariants,
-};
+export { FAQAccordion, FAQAnswer, FAQItem, FAQQuestion, FAQSection, faqSectionVariants };
