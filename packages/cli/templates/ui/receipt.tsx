@@ -237,7 +237,6 @@ function DataTable({ columns, rows, className, ...props }: DataTableProps) {
 					<span
 						key={i}
 						role="columnheader"
-						aria-sort="none"
 						className={cn(
 							"uppercase shrink-0 text-muted-foreground",
 							!col.width && "flex-1",

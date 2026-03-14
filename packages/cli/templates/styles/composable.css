@@ -266,7 +266,7 @@
 		--receipt-divider-opacity: 0.25;
 		--section-label-padding: 3px 8px;
 		--section-label-bg: var(--border);
-		--section-label-text: var(--background);
+		--section-label-text: var(--foreground);
 
 		/* ── Bento layout tokens ───────────────────────────────────────────
 		   Used by the layout-bento.tsx primitive. Override in a preset or :root.
@@ -280,9 +280,18 @@
 		/* ── Layout macro spacing tokens ────────────────────────────────────
 		   Used by the layout.tsx Section primitive via py-[var(...)].
 		   Override in a preset (e.g. dockets.ts) or :root for custom scale.
+		   --space-1 through --space-8: fine-grained spacing scale (0.25rem increments)
 		   --space-layout-sm: section vertical padding small  (24px)
 		   --space-layout-md: section vertical padding medium (48px)
 		   --space-layout-lg: section vertical padding large  (96px) */
+		--space-1: 0.25rem;
+		--space-2: 0.5rem;
+		--space-3: 0.75rem;
+		--space-4: 1rem;
+		--space-5: 1.25rem;
+		--space-6: 1.5rem;
+		--space-7: 1.75rem;
+		--space-8: 2rem;
 		--space-layout-sm: 1.5rem;
 		--space-layout-md: 3rem;
 		--space-layout-lg: 6rem;

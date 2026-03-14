@@ -6,8 +6,8 @@
  *
  * BORDERS NEVER STACK RULES:
  *   • Stack/Row gaps use margin (not padding) — items never double-border.
- *   • BentoGrid: container holds border-t + border-l.
- *     BentoCell adds border-b + border-r → each edge drawn exactly once.
+ *   • NewspaperGrid: container holds border-t + border-l.
+ *     NewspaperCell adds border-b + border-r → each edge drawn exactly once.
  *   • Use `border-[length:var(--border-width)]` throughout, never hardcoded 1px.
  *
  * SPACING:
@@ -77,18 +77,20 @@ function FlexSpacer({ className, ...props }: React.ComponentProps<"div">) {
 	)
 }
 
-// ─── BENTO GRID ───────────────────────────────────────────────────────────────
+// ─── NEWSPAPER GRID ───────────────────────────────────────────────────────────
 //
 // Composable CSS grid using the newspaper-border pattern.
+// (Named NewspaperGrid to distinguish from layout-bento's BentoGrid, which uses
+// gap-as-border rather than this edge-sharing approach.)
 //
 // Border rule — "each edge drawn exactly once":
 //   Container: border-t + border-l  (outer frame — top and left)
-//   BentoCell: border-b + border-r  (completes each cell — bottom and right)
+//   NewspaperCell: border-b + border-r  (completes each cell — bottom and right)
 //
 // Result: every grid line is a single border, never doubled.
 // Use `border-[length:var(--border-width)]` throughout — never hardcoded px.
 
-const bentoGridVariants = cva(
+const newspaperGridVariants = cva(
 	[
 		"grid",
 		// Container provides the top + left edge of the newspaper grid
@@ -111,22 +113,22 @@ const bentoGridVariants = cva(
 	},
 )
 
-type BentoGridProps = React.ComponentProps<"div"> &
-	VariantProps<typeof bentoGridVariants>
+type NewspaperGridProps = React.ComponentProps<"div"> &
+	VariantProps<typeof newspaperGridVariants>
 
-function BentoGrid({ className, cols, ...props }: BentoGridProps) {
+function NewspaperGrid({ className, cols, ...props }: NewspaperGridProps) {
 	return (
 		<div
-			data-slot="bento-grid"
-			className={cn(bentoGridVariants({ cols }), className)}
+			data-slot="newspaper-grid"
+			className={cn(newspaperGridVariants({ cols }), className)}
 			{...props}
 		/>
 	)
 }
 
-// ─── BENTO CELL ───────────────────────────────────────────────────────────────
+// ─── NEWSPAPER CELL ───────────────────────────────────────────────────────────
 //
-// A single cell within BentoGrid. Provides the bottom + right border edges
+// A single cell within NewspaperGrid. Provides the bottom + right border edges
 // (newspaper rule — completes the grid line each container started).
 //
 // span    — column span (1–4)
@@ -152,17 +154,17 @@ const CELL_BORDERS = [
 	"border-foreground",
 ].join(" ")
 
-interface BentoCellProps extends React.ComponentProps<"div"> {
+interface NewspaperCellProps extends React.ComponentProps<"div"> {
 	/** Number of columns to span (1–4) */
 	span?: 1 | 2 | 3 | 4
 	/** Number of rows to span (1–3) */
 	rowSpan?: 1 | 2 | 3
 }
 
-function BentoCell({ className, span = 1, rowSpan = 1, ...props }: BentoCellProps) {
+function NewspaperCell({ className, span = 1, rowSpan = 1, ...props }: NewspaperCellProps) {
 	return (
 		<div
-			data-slot="bento-cell"
+			data-slot="newspaper-cell"
 			className={cn(
 				COL_SPANS[span],
 				ROW_SPANS[rowSpan],
@@ -175,6 +177,6 @@ function BentoCell({ className, span = 1, rowSpan = 1, ...props }: BentoCellProp
 	)
 }
 
-export { Section, sectionVariants, FlexSpacer, BentoGrid, bentoGridVariants, BentoCell }
+export { Section, sectionVariants, FlexSpacer, NewspaperGrid, newspaperGridVariants, NewspaperCell }
 
-export type { SectionProps, BentoGridProps, BentoCellProps }
+export type { SectionProps, NewspaperGridProps, NewspaperCellProps }

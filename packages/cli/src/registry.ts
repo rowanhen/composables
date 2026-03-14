@@ -485,7 +485,7 @@ export const registry: Record<string, ComponentEntry> = {
 	layout: {
 		name: "layout",
 		description:
-			"Rigid layout primitives: Section (macro spacing tokens), FlexSpacer (flex-1 aria-hidden), BentoGrid and BentoCell (newspaper-border pattern — container border-t/l, cells border-b/r, each edge drawn once). All spacing via --space-layout-sm/md/lg tokens.",
+			"Rigid layout primitives: Section (macro spacing tokens), FlexSpacer (flex-1 aria-hidden), NewspaperGrid and NewspaperCell (newspaper-border pattern — container border-t/l, cells border-b/r, each edge drawn once). All spacing via --space-layout-sm/md/lg tokens.",
 		files: [{ src: "templates/ui/layout.tsx", dest: "components/ui/layout.tsx" }],
 		deps: ["class-variance-authority"],
 		internalDeps: ["utils"],
