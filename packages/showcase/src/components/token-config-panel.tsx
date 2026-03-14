@@ -21,8 +21,7 @@ import { FormSlider } from '@/components/ui-opinionated/form-slider'
 
 import semanticJson from '@/tokens/semantic.json'
 import {
-  defaultPreset,
-  defaultPresetDark,
+
   editorial,
   editorialDark,
   brutalist,
@@ -184,12 +183,6 @@ function removePresetStyle() {
 
 const presets: Record<string, Preset | null> = {
   default: null,
-  'default-preset': {
-    label: 'Default',
-    description: 'Clean neutral base with Inter Variable — the "no opinion" starting point',
-    overrides: defaultPreset,
-    darkOverrides: defaultPresetDark,
-  },
   editorial: {
     label: 'Editorial',
     description: 'Sophisticated magazine aesthetic — Fraunces headings, Source Serif 4 body, warm palette',
