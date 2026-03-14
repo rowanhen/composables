@@ -256,6 +256,16 @@
 		--bento-gap: 1px;
 		--bento-border-color: var(--border);
 		--bento-radius: var(--radius);
+
+		/* ── Layout macro spacing tokens ────────────────────────────────────
+		   Used by the layout.tsx Section primitive via py-[var(...)].
+		   Override in a preset (e.g. dockets.ts) or :root for custom scale.
+		   --space-layout-sm: section vertical padding small  (24px)
+		   --space-layout-md: section vertical padding medium (48px)
+		   --space-layout-lg: section vertical padding large  (96px) */
+		--space-layout-sm: 1.5rem;
+		--space-layout-md: 3rem;
+		--space-layout-lg: 6rem;
 	}
 
 	* {

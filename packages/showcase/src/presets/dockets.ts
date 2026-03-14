@@ -190,6 +190,23 @@ export const dockets: Record<string, string> = {
 
   // ── Border style ──────────────────────────────────────────────────────
   "--border-style": "solid",
+
+  // ── Macro spacing scale — layout.tsx Section primitives ──────────────
+  // Used by Section component via py-[var(--space-layout-sm/md/lg)]
+  "--space-layout-sm": "1.5rem",   // 24px
+  "--space-layout-md": "3rem",     // 48px
+  "--space-layout-lg": "6rem",     // 96px
+
+  // ── Fine-grained spacing scale (--space-1 … --space-8) ───────────────
+  // 0.25rem increments (1=4px, 2=8px, 3=12px, 4=16px, 5=20px, 6=24px, 8=32px)
+  "--space-1": "0.25rem",
+  "--space-2": "0.5rem",
+  "--space-3": "0.75rem",
+  "--space-4": "1rem",
+  "--space-5": "1.25rem",
+  "--space-6": "1.5rem",
+  "--space-7": "1.75rem",
+  "--space-8": "2rem",
 }
 
 export const docketsDark: Record<string, string> = {
@@ -305,4 +322,19 @@ export const docketsDark: Record<string, string> = {
 
   // ── Border style ──────────────────────────────────────────────────────
   "--border-style": "solid",
+
+  // ── Macro spacing scale — layout.tsx Section primitives ──────────────
+  "--space-layout-sm": "1.5rem",
+  "--space-layout-md": "3rem",
+  "--space-layout-lg": "6rem",
+
+  // ── Fine-grained spacing scale ────────────────────────────────────────
+  "--space-1": "0.25rem",
+  "--space-2": "0.5rem",
+  "--space-3": "0.75rem",
+  "--space-4": "1rem",
+  "--space-5": "1.25rem",
+  "--space-6": "1.5rem",
+  "--space-7": "1.75rem",
+  "--space-8": "2rem",
 }
