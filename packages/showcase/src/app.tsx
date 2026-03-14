@@ -130,15 +130,15 @@ const GRID_OVERLAY_STYLE: React.CSSProperties = {
 		repeating-linear-gradient(
 			to right,
 			var(--grid-line-color) 0px,
-			var(--grid-line-color) 1px,
-			transparent 1px,
+			var(--grid-line-color) var(--border-width-base, 1px),
+			transparent var(--border-width-base, 1px),
 			transparent calc(var(--spacing) * 12)
 		),
 		repeating-linear-gradient(
 			to bottom,
 			var(--grid-line-color) 0px,
-			var(--grid-line-color) 1px,
-			transparent 1px,
+			var(--grid-line-color) var(--border-width-base, 1px),
+			transparent var(--border-width-base, 1px),
 			transparent calc(var(--spacing) * 12)
 		)
 	`,
@@ -157,11 +157,15 @@ export function App() {
 		}
 	}, [dark]);
 
-	// Inject --grid-line-color onto :root so it reacts to dark mode
+	// Inject --grid-line-color onto :root only while grid is active
 	React.useEffect(() => {
-		const color = dark ? "rgba(255,255,255,0.06)" : "rgba(0,0,0,0.06)";
-		document.documentElement.style.setProperty("--grid-line-color", color);
-	}, [dark]);
+		if (gridOn) {
+			const color = dark ? "rgba(255,255,255,0.06)" : "rgba(0,0,0,0.06)";
+			document.documentElement.style.setProperty("--grid-line-color", color);
+		} else {
+			document.documentElement.style.removeProperty("--grid-line-color");
+		}
+	}, [dark, gridOn]);
 
 	return (
 		<div className="min-h-screen bg-background text-foreground">
@@ -187,7 +191,7 @@ export function App() {
 							</Typography>
 							<Switch
 								checked={gridOn}
-								onCheckedChange={(checked) => setGridOn(checked)}
+								onCheckedChange={setGridOn}
 								aria-label="Toggle grid overlay"
 							/>
 							<Typography variant="caption-100">Dark mode</Typography>

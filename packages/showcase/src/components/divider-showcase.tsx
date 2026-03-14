@@ -36,7 +36,7 @@ export function DividerShowcase() {
 				<VStack gap={4}>
 					<Typography variant="heading-200">Vertical</Typography>
 					<HStack gap={6} align="center" className="h-16">
-						{(["solid", "dashed", "pills"] as const).map((variant) => (
+						{(["solid", "dashed", "dotted", "dots", "equals", "pills"] as const).map((variant) => (
 							<HStack key={variant} gap={4} align="center" className="h-full">
 								<Typography variant="caption-100" className="text-muted-foreground w-12">
 									{variant}

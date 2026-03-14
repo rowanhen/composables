@@ -10,7 +10,7 @@ const dividerVariants = cva("shrink-0", {
 			dotted: "",
 			dots: "flex items-center overflow-hidden",
 			equals: "flex items-center overflow-hidden",
-			pills: "flex items-center",
+			pills: "flex items-center overflow-hidden",
 		},
 		orientation: {
 			horizontal: "w-full",

@@ -12,10 +12,5 @@
 	},
 	"devDependencies": {
 		"typescript": "^5.7.0"
-	},
-	"dependencies": {
-		"@fontsource-variable/bricolage-grotesque": "^5.2.10",
-		"@fontsource-variable/jetbrains-mono": "^5.2.8",
-		"@fontsource/ibm-plex-sans": "^5.2.8"
 	}
 }
