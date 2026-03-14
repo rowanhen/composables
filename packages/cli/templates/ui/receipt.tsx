@@ -54,8 +54,8 @@ const dividerVariants = cva("w-full my-2", {
 			dots: "text-xs h-[1em] relative overflow-hidden",
 			dashes: "text-xs h-[1em] relative overflow-hidden",
 			equals: "text-xs h-[1em] relative overflow-hidden",
-			solid: "h-0 border-t border-[length:var(--border-width)] border-border",
-			"dashed-border": "h-0 border-t border-[length:var(--border-width)] border-dashed border-border",
+			solid: "h-0 border-t-[length:var(--border-width)] border-t-border",
+			"dashed-border": "h-0 border-t-[length:var(--border-width)] border-dashed border-t-border",
 		},
 	},
 	defaultVariants: {
@@ -128,7 +128,7 @@ const sectionLabelVariants = cva("text-sm font-bold uppercase px-2 py-0.5", {
 		variant: {
 			default: "bg-foreground text-background",
 			bordered:
-				"bg-transparent text-foreground border-t border-b border-[length:var(--border-width)] border-border",
+				"bg-transparent text-foreground border-t-[length:var(--border-width)] border-b-[length:var(--border-width)] border-t-border border-b-border",
 		},
 	},
 	defaultVariants: {
@@ -182,17 +182,19 @@ interface RowProps extends Omit<React.ComponentProps<"div">, "children"> {
 	value: React.ReactNode
 	variant?: "default" | "fill" | "bold" | "compact"
 	/** Opacity of the dot-leader fill (fill variant only). Default: "subtle" (25%) */
+	/** Opacity of the dot-leader fill. Only applies when `variant="fill"`. */
 	fillOpacity?: DividerOpacity
+}
+
+/** Maps opacity variants to Tailwind opacity classes — shared with Divider's CVA scale. */
+const OPACITY_CLASS: Record<DividerOpacity, string> = {
+	subtle: "opacity-25",
+	medium: "opacity-50",
+	bold: "opacity-75",
 }
 
 function Row({ label, value, variant = "default", fillOpacity = "subtle", className, ...props }: RowProps) {
 	const hasFill = variant === "fill"
-
-	const fillOpacityClass: Record<DividerOpacity, string> = {
-		subtle: "opacity-25",
-		medium: "opacity-50",
-		bold: "opacity-75",
-	}
 
 	return (
 		<div
@@ -208,7 +210,7 @@ function Row({ label, value, variant = "default", fillOpacity = "subtle", classN
 						aria-hidden
 						className={cn(
 							"flex-1 min-w-[2ch] overflow-hidden tracking-tighter whitespace-nowrap text-muted-foreground select-none",
-							fillOpacityClass[fillOpacity],
+							OPACITY_CLASS[fillOpacity],
 						)}
 					>
 						{DIVIDER_CHARS.dots}
@@ -256,7 +258,7 @@ function DataTable({ columns, rows, className, ...props }: DataTableProps) {
 			{...props}
 		>
 			{/* Header row */}
-			<div role="row" className="flex border-b border-border pb-px mb-px">
+			<div role="row" className="flex border-b-[length:var(--border-width)] border-b-border pb-px mb-px">
 				{columns.map((col, i) => (
 					<span
 						key={i}
@@ -274,7 +276,7 @@ function DataTable({ columns, rows, className, ...props }: DataTableProps) {
 			</div>
 			{/* Data rows */}
 			{rows.map((row, ri) => (
-				<div key={ri} role="row" className="flex border-b border-border/30 py-px last:border-b-0">
+				<div key={ri} role="row" className="flex border-b-[length:var(--border-width)] border-b-border/30 py-px last:border-b-0">
 					{row.map((cell, ci) => {
 						const col = columns[ci]
 						return (
@@ -303,7 +305,7 @@ function DataTable({ columns, rows, className, ...props }: DataTableProps) {
 // A fixed-size square containing a centred character or symbol.
 // Size must be one of the preset GlyphSize values (multiples of 8/16).
 // Corner radius adapts to the current preset via design system tokens:
-//   default/filled → rounded-[var(--radius)] (square with rounded corners)
+//   default/filled → rounded-lg (square with rounded corners)
 //   circle/circle-inverted → rounded-full (circular container)
 //
 // Variants:
@@ -329,8 +331,8 @@ const glyphVariants = cva(
 	{
 		variants: {
 			variant: {
-				default: "bg-card text-foreground border-border rounded-[var(--radius)]",
-				filled: "bg-foreground text-background border-foreground rounded-[var(--radius)]",
+				default: "bg-card text-foreground border-border rounded-lg",
+				filled: "bg-foreground text-background border-foreground rounded-lg",
 				circle: "bg-card border-border rounded-full",
 				"circle-inverted": "bg-foreground border-foreground rounded-full",
 			},
@@ -367,7 +369,7 @@ function Glyph({ children, size = 48, variant = "default", className, ...props }
 						variant === "circle" && "bg-foreground",
 						variant === "circle-inverted" && "bg-card",
 					)}
-					style={{ width: circleDiameter, height: circleDiameter, borderRadius: "50%" }}
+					className="rounded-full" style={{ width: circleDiameter, height: circleDiameter }}
 				/>
 			)}
 			<span
