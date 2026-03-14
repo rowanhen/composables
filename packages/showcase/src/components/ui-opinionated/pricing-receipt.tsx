@@ -13,7 +13,8 @@
  *   <PricingReceipt product={myProduct} />
  */
 
-import { Divider, SectionLabel } from '@/components/ui/receipt'
+import { Divider } from '@/components/ui/divider'
+import { SectionLabel } from '@/components/ui/receipt'
 import { Typography } from '@/components/ui/typography'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
@@ -61,7 +62,7 @@ export function PricingReceipt({ product, className }: PricingReceiptProps) {
 				</Typography>
 			</div>
 
-			<Divider variant="dashes" />
+			<Divider variant="pills" className="my-2" />
 
 			<SectionLabel className="mb-2">INCLUDES</SectionLabel>
 
@@ -79,7 +80,7 @@ export function PricingReceipt({ product, className }: PricingReceiptProps) {
 				))}
 			</div>
 
-			<Divider variant="dashes" />
+			<Divider variant="pills" className="my-2" />
 
 			{/* Total */}
 			<div className="mb-4 flex justify-between items-baseline">

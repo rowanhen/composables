@@ -6,8 +6,8 @@
  */
 
 import { HStack, VStack } from "@/components/ui/stack"
+import { Divider } from "@/components/ui/divider"
 import {
-	Divider,
 	Glyph,
 	DataTable,
 	Ledger,
@@ -45,18 +45,14 @@ function DividerVariants() {
 	return (
 		<VStack gap={4}>
 			<Typography variant="heading-300">Divider Variants</Typography>
-			<ReceiptCard title="All 5 variants" width="w-80">
+			<ReceiptCard title="All 3 variants" width="w-80">
 				<div className="space-y-1">
 					<div className="text-[10px] text-muted-foreground uppercase">dots (default)</div>
-					<Divider variant="dots" />
-					<div className="text-[10px] text-muted-foreground uppercase">dashes</div>
-					<Divider variant="dashes" />
-					<div className="text-[10px] text-muted-foreground uppercase">equals</div>
-					<Divider variant="equals" />
+					<Divider variant="dots" className="my-2" />
+					<div className="text-[10px] text-muted-foreground uppercase">pills</div>
+					<Divider variant="pills" className="my-2" />
 					<div className="text-[10px] text-muted-foreground uppercase">solid</div>
-					<Divider variant="solid" />
-					<div className="text-[10px] text-muted-foreground uppercase">solid</div>
-					<Divider variant="solid" />
+					<Divider variant="solid" className="my-2" />
 				</div>
 			</ReceiptCard>
 		</VStack>
@@ -80,7 +76,7 @@ function RowVariants() {
 				</ReceiptCard>
 				<ReceiptCard title="bold (totals)">
 					<Row label="Subtotal" value="$4,600" variant="fill" />
-					<Divider variant="equals" />
+					<Divider variant="solid" className="my-2" />
 					<Row label="Total Due" value="$4,600" variant="bold" />
 					<Row label="Paid" value="-$4,600" variant="bold" />
 				</ReceiptCard>
@@ -286,11 +282,11 @@ function CompleteReceiptComposition() {
 					<div className="text-muted-foreground text-[10px]">123 Business St, London EC1A 1BB</div>
 					<div className="text-muted-foreground text-[10px]">VAT: GB123456789</div>
 				</div>
-				<Divider variant="equals" />
+				<Divider variant="solid" className="my-2" />
 				<Row label="Invoice #" value="INV-2024-042" />
 				<Row label="Date" value="01 Jun 2024" />
 				<Row label="Due Date" value="30 Jun 2024" />
-				<Divider variant="dashes" />
+				<Divider variant="pills" className="my-2" />
 				<SectionLabel>Services</SectionLabel>
 				<div className="py-1 space-y-px">
 					<Row label="Brand Identity" value="$3,200" variant="fill" />
@@ -302,13 +298,13 @@ function CompleteReceiptComposition() {
 					<Row label="Stock photography" value="$180" variant="fill" />
 					<Row label="Font licenses" value="$60" variant="fill" />
 				</div>
-				<Divider variant="dashes" />
+				<Divider variant="pills" className="my-2" />
 				<Row label="Subtotal" value="$10,640" />
 				<Row label="Discount (5%)" value="-$532" variant="compact" />
 				<Row label="VAT (20%)" value="$2,022" variant="compact" />
-				<Divider variant="equals" />
+				<Divider variant="solid" className="my-2" />
 				<Row label="Total Due" value="$12,130" variant="bold" />
-				<Divider variant="dots" />
+				<Divider variant="dots" className="my-2" />
 				<DataTable
 					columns={[
 						{ label: "Payment terms", width: 18 },
@@ -319,7 +315,7 @@ function CompleteReceiptComposition() {
 						["Net 30", "DUE"],
 					]}
 				/>
-				<Divider variant="dots" />
+				<Divider variant="dots" className="my-2" />
 				<div className="text-center text-[10px] text-muted-foreground">
 					Thank you for your business.
 				</div>
