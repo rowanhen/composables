@@ -18,15 +18,19 @@ import {
 	AspectRatioShowcase,
 	AvatarShowcase,
 	BadgesShowcase,
+	BentoShowcase,
+	BlockLoaderShowcase,
 	BreadcrumbShowcase,
 	ButtonsShowcase,
 	CalendarShowcase,
 	CardsShowcase,
 	CarouselShowcase,
+	CodeBlockShowcase,
 	CollapsibleShowcase,
 	ColorTokensShowcase,
 	ContainerShowcase,
 	DialogShowcase,
+	DividerShowcase,
 	DropdownMenuShowcase,
 	DropzoneShowcase,
 	EmptyShowcase,
@@ -35,9 +39,12 @@ import {
 	HoverCardShowcase,
 	IconShowcase,
 	ItemShowcase,
+	ListShowcase,
 	PaginationShowcase,
 	PopoverShowcase,
+	PricingReceiptShowcase,
 	ProgressShowcase,
+	ReceiptShowcase,
 	ResizableShowcase,
 	ResponsiveGridShowcase,
 	ScrollAreaShowcase,
@@ -54,14 +61,8 @@ import {
 	ToggleShowcase,
 	TokenConfigPanel,
 	TooltipShowcase,
-	TypographyShowcase,
 	TreeViewShowcase,
-	CodeBlockShowcase,
-	BlockLoaderShowcase,
-	ListShowcase,
-	PricingReceiptShowcase,
-	ReceiptShowcase,
-	BentoShowcase,
+	TypographyShowcase,
 } from "./components";
 
 /* ---- NAV ---- */
@@ -109,6 +110,7 @@ const navItems = [
 	"Empty State",
 	"Skeletons",
 	"Separator",
+	"Divider",
 	"Tree View",
 	"Code Block",
 	"Block Loader",
@@ -118,9 +120,34 @@ const navItems = [
 	"Bento Layout",
 ];
 
+/* ── Grid overlay styles ─────────────────────────────────────────────── */
+const GRID_OVERLAY_STYLE: React.CSSProperties = {
+	position: "fixed",
+	inset: 0,
+	pointerEvents: "none",
+	zIndex: 9999,
+	backgroundImage: `
+		repeating-linear-gradient(
+			to right,
+			var(--grid-line-color) 0px,
+			var(--grid-line-color) var(--border-width-base, 1px),
+			transparent var(--border-width-base, 1px),
+			transparent calc(var(--spacing) * 12)
+		),
+		repeating-linear-gradient(
+			to bottom,
+			var(--grid-line-color) 0px,
+			var(--grid-line-color) var(--border-width-base, 1px),
+			transparent var(--border-width-base, 1px),
+			transparent calc(var(--spacing) * 12)
+		)
+	`,
+};
+
 /* ---- APP ---- */
 export function App() {
 	const [dark, setDark] = React.useState(false);
+	const [gridOn, setGridOn] = React.useState(false);
 
 	React.useEffect(() => {
 		if (dark) {
@@ -130,9 +157,23 @@ export function App() {
 		}
 	}, [dark]);
 
+	// Inject --grid-line-color onto :root only while grid is active
+	React.useEffect(() => {
+		if (gridOn) {
+			const color = dark ? "rgba(255,255,255,0.06)" : "rgba(0,0,0,0.06)";
+			document.documentElement.style.setProperty("--grid-line-color", color);
+		} else {
+			document.documentElement.style.removeProperty("--grid-line-color");
+		}
+	}, [dark, gridOn]);
+
 	return (
 		<div className="min-h-screen bg-background text-foreground">
 			<Toaster />
+
+			{/* Grid overlay */}
+			{gridOn && <div aria-hidden="true" style={GRID_OVERLAY_STYLE} />}
+
 			{/* Header */}
 			<header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur">
 				<Container>
@@ -145,6 +186,14 @@ export function App() {
 						</HStack>
 						<HStack gap={3} align="center">
 							<TokenConfigPanel />
+							<Typography variant="caption-100" className="text-muted-foreground">
+								Grid
+							</Typography>
+							<Switch
+								checked={gridOn}
+								onCheckedChange={setGridOn}
+								aria-label="Toggle grid overlay"
+							/>
 							<Typography variant="caption-100">Dark mode</Typography>
 							<Switch checked={dark} onCheckedChange={(checked) => setDark(checked)} />
 						</HStack>
@@ -231,6 +280,7 @@ export function App() {
 					<EmptyShowcase />
 					<SkeletonShowcase />
 					<SeparatorShowcase />
+					<DividerShowcase />
 
 					{/* Phase 2 */}
 					<TreeViewShowcase />

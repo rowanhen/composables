@@ -136,9 +136,9 @@ export const dockets: Record<string, string> = {
   "--dropdown-offset": "0",
   "--overlay-offset": "0",
 
-  // ── Fonts: IBM Plex Mono — monospaced, columns snap, numbers align ────
+  // ── Fonts: mono body/brand, sans heading for cleaner receipt headers ──
   "--font-sans": '"IBM Plex Mono", "Courier New", monospace',
-  "--font-heading": '"IBM Plex Mono", "Courier New", monospace',
+  "--font-heading": '"IBM Plex Sans", "Helvetica Neue", sans-serif',
   "--font-brand": '"IBM Plex Mono", "Courier New", monospace',
 
   // ── Phase 1a: Component tokens ────────────────────────────────────────
@@ -287,7 +287,7 @@ export const docketsDark: Record<string, string> = {
 
   // ── Fonts carry over ──────────────────────────────────────────────────
   "--font-sans": '"IBM Plex Mono", "Courier New", monospace',
-  "--font-heading": '"IBM Plex Mono", "Courier New", monospace',
+  "--font-heading": '"IBM Plex Sans", "Helvetica Neue", sans-serif',
   "--font-brand": '"IBM Plex Mono", "Courier New", monospace',
 
   // ── Bento layout token (dark) ─────────────────────────────────────────

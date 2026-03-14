@@ -129,11 +129,10 @@ export const soft: Record<string, string> = {
 	"--overlay-offset": "6",
 
 	// ── Fonts: Plus Jakarta Sans heading × DM Sans body ──────────────────
-	// DM Sans provides a complementary geometric warmth to Jakarta's rounder
-	// personality — two approachable sans-serifs with distinct voices.
+	// DM Sans body, Jakarta heading, Bricolage Grotesque for brand warmth.
 	"--font-sans": '"DM Sans Variable", sans-serif',
 	"--font-heading": '"Plus Jakarta Sans Variable", sans-serif',
-	"--font-brand": '"Plus Jakarta Sans Variable", sans-serif',
+	"--font-brand": '"Bricolage Grotesque Variable", sans-serif',
 
 	// ── Phase 1a: Component tokens ────────────────────────────────────────
 	// Generous radius — everything is rounded and friendly
@@ -269,5 +268,5 @@ export const softDark: Record<string, string> = {
 	// ── Fonts carry over ──────────────────────────────────────────────────
 	"--font-sans": '"DM Sans Variable", sans-serif',
 	"--font-heading": '"Plus Jakarta Sans Variable", sans-serif',
-	"--font-brand": '"Plus Jakarta Sans Variable", sans-serif',
+	"--font-brand": '"Bricolage Grotesque Variable", sans-serif',
 }

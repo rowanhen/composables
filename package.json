@@ -1,7 +1,9 @@
 {
 	"name": "@leitware/composables",
 	"private": true,
-	"workspaces": ["packages/*"],
+	"workspaces": [
+		"packages/*"
+	],
 	"scripts": {
 		"build": "bun run --filter '@leitware/composables-cli' build",
 		"dev": "bun run --cwd packages/showcase dev",
