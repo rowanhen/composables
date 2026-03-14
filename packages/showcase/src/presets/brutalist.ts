@@ -133,9 +133,8 @@ export const brutalist: Record<string, string> = {
 	"--overlay-offset": "0",
 
 	// ── Fonts: Space Grotesk for both heading and body ────────────────────
-	// Real editorial brutalism (Bloomberg, Ssense) uses grotesque sans for body;
-	// mono is reserved for accents/code — not the entire body text.
-	"--font-sans": '"Space Grotesk Variable", "Arial", sans-serif',
+	// Terminal-meets-architecture: mono body, grotesque heading/brand.
+	"--font-sans": '"JetBrains Mono Variable", monospace',
 	"--font-heading": '"Space Grotesk Variable", "Arial", sans-serif',
 	"--font-brand": '"Space Grotesk Variable", "Arial", sans-serif',
 
@@ -271,7 +270,7 @@ export const brutalistDark: Record<string, string> = {
 	"--sidebar-ring": "#FF3322FF",
 
 	// ── Fonts carry over ──────────────────────────────────────────────────
-	"--font-sans": '"Space Grotesk Variable", "Arial", sans-serif',
+	"--font-sans": '"JetBrains Mono Variable", monospace',
 	"--font-heading": '"Space Grotesk Variable", "Arial", sans-serif',
 	"--font-brand": '"Space Grotesk Variable", "Arial", sans-serif',
 }

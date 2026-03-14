@@ -7,7 +7,10 @@
 @import "@fontsource-variable/source-serif-4";
 @import "@fontsource-variable/space-grotesk";
 @import "@fontsource-variable/plus-jakarta-sans";
+@import "@fontsource-variable/bricolage-grotesque";
+@import "@fontsource-variable/jetbrains-mono";
 @import "@fontsource/ibm-plex-mono";
+@import "@fontsource/ibm-plex-sans";
 @import "./tokens.css";
 
 @source "./**/*.{ts,tsx}";

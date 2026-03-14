@@ -120,10 +120,10 @@ export const defaultPreset: Record<string, string> = {
 	"--dropdown-offset": "4",
 	"--overlay-offset": "4",
 
-	// ── Fonts: Inter Variable for everything ─────────────────────────────
+	// ── Fonts: Inter for body/heading, Bricolage Grotesque for brand ─────
 	"--font-sans": '"Inter Variable", sans-serif',
 	"--font-heading": '"Inter Variable", sans-serif',
-	"--font-brand": '"Inter Variable", sans-serif',
+	"--font-brand": '"Bricolage Grotesque Variable", sans-serif',
 
 	// ── Phase 1a: Component tokens ────────────────────────────────────────
 	"--button-radius": "var(--radius-md)",
@@ -262,5 +262,5 @@ export const defaultPresetDark: Record<string, string> = {
 	// ── Fonts carry over ──────────────────────────────────────────────────
 	"--font-sans": '"Inter Variable", sans-serif',
 	"--font-heading": '"Inter Variable", sans-serif',
-	"--font-brand": '"Inter Variable", sans-serif',
+	"--font-brand": '"Bricolage Grotesque Variable", sans-serif',
 }
