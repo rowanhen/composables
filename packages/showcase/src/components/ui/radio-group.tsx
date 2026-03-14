@@ -1,6 +1,5 @@
 import { Radio as RadioPrimitive } from "@base-ui/react/radio";
 import { RadioGroup as RadioGroupPrimitive } from "@base-ui/react/radio-group";
-import { CircleIcon } from "lucide-react";
 import { cn, FOCUS_RING } from "@/lib/utils";
 
 function RadioGroup({ className, ...props }: RadioGroupPrimitive.Props) {
@@ -19,16 +18,16 @@ function RadioGroupItem({ className, ...props }: RadioPrimitive.Root.Props) {
 			data-slot="radio-group-item"
 			className={cn(
 				FOCUS_RING,
-				"border-input text-primary dark:bg-input/30 data-checked:bg-primary data-checked:border-primary hover:border-foreground/50 data-checked:hover:bg-primary-hover flex size-4 rounded-full transition-none group/radio-group-item peer relative aspect-square shrink-0 border outline-none after:absolute after:-inset-x-3 after:-inset-y-2 disabled:cursor-not-allowed disabled:opacity-disabled",
+				"border-input text-primary dark:bg-input/30 data-checked:bg-primary data-checked:border-primary hover:border-foreground/50 data-checked:hover:bg-primary-hover flex size-4 rounded-[var(--radius)] transition-none group/radio-group-item peer relative aspect-square shrink-0 border outline-none after:absolute after:-inset-x-3 after:-inset-y-2 disabled:cursor-not-allowed disabled:opacity-disabled",
 				className,
 			)}
 			{...props}
 		>
 			<RadioPrimitive.Indicator
 				data-slot="radio-group-indicator"
-				className="group-aria-invalid/radio-group-item:text-destructive flex size-4 items-center justify-center text-primary-foreground"
+				className="group-aria-invalid/radio-group-item:bg-destructive flex size-4 items-center justify-center"
 			>
-				<CircleIcon className="absolute top-1/2 left-1/2 size-2 -translate-x-1/2 -translate-y-1/2 fill-current" />
+				<div className="absolute top-1/2 left-1/2 size-2 -translate-x-1/2 -translate-y-1/2 rounded-[var(--radius)] bg-primary-foreground" />
 			</RadioPrimitive.Indicator>
 		</RadioPrimitive.Root>
 	);

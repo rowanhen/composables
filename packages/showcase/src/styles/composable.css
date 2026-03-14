@@ -190,6 +190,11 @@
 }
 
 @layer base {
+	::selection {
+		background-color: var(--primary);
+		color: var(--primary-foreground);
+	}
+
 	:root {
 		--font-size-base: 1rem;
 		--leading-base: 1.33;
