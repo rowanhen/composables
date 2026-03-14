@@ -142,6 +142,7 @@ const GRID_OVERLAY_STYLE: React.CSSProperties = {
 			transparent calc(var(--spacing) * 12)
 		)
 	`,
+	backgroundPosition: "center center",
 };
 
 /* ---- APP ---- */

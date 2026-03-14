@@ -94,12 +94,12 @@ function BentoSplitDemo() {
 					</div>
 				}
 				stats={
-					<div className="grid grid-cols-3 gap-0">
-						<div className="p-3 border-r border-border">
+					<div className="grid grid-cols-1 sm:grid-cols-3 gap-0">
+						<div className="p-3 border-b sm:border-b-0 sm:border-r border-border">
 							<div className="text-[10px] text-muted-foreground uppercase mb-0.5">Revenue</div>
 							<div className="text-sm font-bold">$124k</div>
 						</div>
-						<div className="p-3 border-r border-border">
+						<div className="p-3 border-b sm:border-b-0 sm:border-r border-border">
 							<div className="text-[10px] text-muted-foreground uppercase mb-0.5">Users</div>
 							<div className="text-sm font-bold">3,891</div>
 						</div>
