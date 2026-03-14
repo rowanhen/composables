@@ -132,8 +132,10 @@ export const brutalist: Record<string, string> = {
 	"--dropdown-offset": "0",
 	"--overlay-offset": "0",
 
-	// ── Fonts: Space Grotesk heading × IBM Plex Mono body ─────────────────
-	"--font-sans": '"IBM Plex Mono", "Courier New", monospace',
+	// ── Fonts: Space Grotesk for both heading and body ────────────────────
+	// Real editorial brutalism (Bloomberg, Ssense) uses grotesque sans for body;
+	// mono is reserved for accents/code — not the entire body text.
+	"--font-sans": '"Space Grotesk Variable", "Arial", sans-serif',
 	"--font-heading": '"Space Grotesk Variable", "Arial", sans-serif',
 	"--font-brand": '"Space Grotesk Variable", "Arial", sans-serif',
 
@@ -164,8 +166,14 @@ export const brutalist: Record<string, string> = {
 	"--heading-letter-spacing": "var(--tracking-tight)",
 	"--body-letter-spacing": "var(--tracking-normal)",
 	"--hero-font-size": "var(--text-6xl)",
+	"--hero-font-weight": "700",
+	"--hero-letter-spacing": "var(--tracking-tight)",
 	"--section-title-size": "var(--text-3xl)",
+	"--section-title-font-weight": "700",
+	"--section-title-letter-spacing": "var(--tracking-tight)",
 	"--card-title-size": "var(--text-base)",
+	"--card-title-font-weight": "700",
+	"--card-title-letter-spacing": "var(--tracking-normal)",
 }
 
 export const brutalistDark: Record<string, string> = {
@@ -263,7 +271,7 @@ export const brutalistDark: Record<string, string> = {
 	"--sidebar-ring": "#FF3322FF",
 
 	// ── Fonts carry over ──────────────────────────────────────────────────
-	"--font-sans": '"IBM Plex Mono", "Courier New", monospace',
+	"--font-sans": '"Space Grotesk Variable", "Arial", sans-serif',
 	"--font-heading": '"Space Grotesk Variable", "Arial", sans-serif',
 	"--font-brand": '"Space Grotesk Variable", "Arial", sans-serif',
 }

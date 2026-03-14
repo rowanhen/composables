@@ -4,6 +4,25 @@
 @import "@fontsource-variable/inter";
 @import "./tokens.css";
 
+/* ── Preset font imports ──────────────────────────────────────────────────
+   Uncomment the @import(s) for the preset you are using. Inter is already
+   bundled above (default preset). For other presets:
+
+   Editorial  — Fraunces (heading) + Source Serif 4 (body):
+     @import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,100..900&family=Source+Serif+4:opsz,wght@8..60,200..900&display=swap");
+
+   Midnight   — Space Grotesk (heading, already used by Brutalist too):
+     @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap");
+
+   Soft       — Plus Jakarta Sans (heading) + DM Sans (body):
+     @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200..800&family=DM+Sans:opsz,wght@9..40,100..900&display=swap");
+
+   Brutalist  — Space Grotesk (heading + body):
+     @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap");
+
+   Swiss      — Helvetica Neue / Arial — system fonts, no import needed.
+──────────────────────────────────────────────────────────────────────────── */
+
 @source "./**/*.{ts,tsx}";
 
 @custom-variant dark (&:is(.dark *));
@@ -61,7 +80,9 @@
 	--tracking-wider: calc(var(--letter-spacing-base) * 2);
 	--tracking-widest: calc(var(--letter-spacing-base) * 4);
 
-	/* Font families — override in presets or :root to swap fonts */
+	/* Font families — override in presets or :root to swap fonts.
+	   Kept in @theme (not @theme inline) so Tailwind generates var()
+	   references, making them runtime-changeable. */
 	--font-sans: "Inter Variable", sans-serif;
 	--font-heading: "Inter Variable", sans-serif;
 	--font-brand: "Inter Variable", sans-serif;
@@ -154,17 +175,22 @@
 	--heading-letter-spacing: var(--tracking-tight);
 	--body-letter-spacing: var(--tracking-normal);
 	--hero-font-size: var(--text-5xl);
+	--hero-font-weight: 700;
+	--hero-letter-spacing: var(--tracking-tight);
 	--section-title-size: var(--text-3xl);
+	--section-title-font-weight: 700;
+	--section-title-letter-spacing: var(--tracking-tight);
 	--card-title-size: var(--text-lg);
+	--card-title-font-weight: 600;
+	--card-title-letter-spacing: var(--tracking-normal);
 }
 
 @theme inline {
-	/* Font families — override --font-heading and --font-brand in :root to swap fonts */
-	--font-sans: "Inter Variable", sans-serif;
-	--font-heading: var(--font-sans);
-	--font-brand: var(--font-sans);
-
-	/* Container max-widths (breakpoint-aligned for page layout) */
+	/* Container max-widths (breakpoint-aligned for page layout).
+	   Fonts are intentionally NOT declared here — they belong in @theme
+	   (non-inline) so Tailwind generates var() references that remain
+	   runtime-changeable. Inline values are resolved at build time and
+	   cannot be overridden by preset CSS. */
 	--container-sm: 640px;
 	--container-md: 768px;
 	--container-lg: 1024px;
@@ -185,7 +211,7 @@
 		--dropdown-offset: 4;
 		--overlay-offset: 4;
 
-		/* Phase 1a component tokens also in :root for preset override support */
+		/* Phase 1a component tokens in :root for preset override support */
 		--button-radius: var(--radius-md);
 		--button-padding-x: calc(var(--spacing) * 4);
 		--button-padding-y: calc(var(--spacing) * 2);
@@ -197,6 +223,28 @@
 		--input-radius: var(--radius-md);
 		--input-height: calc(var(--spacing) * 10);
 		--badge-radius: var(--radius-4xl);
+
+		/* Phase 1b motion tokens in :root for preset override support */
+		--transition-default: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+		--transition-fast: 100ms cubic-bezier(0.4, 0, 0.2, 1);
+		--transition-slow: 300ms cubic-bezier(0, 0, 0.2, 1);
+		--hover-transform: none;
+		--hover-shadow: var(--shadow-md);
+		--active-scale: 0.98;
+
+		/* Phase 1c typography composition tokens in :root for preset override support */
+		--heading-font-weight: 700;
+		--heading-letter-spacing: var(--tracking-tight);
+		--body-letter-spacing: var(--tracking-normal);
+		--hero-font-size: var(--text-5xl);
+		--hero-font-weight: 700;
+		--hero-letter-spacing: var(--tracking-tight);
+		--section-title-size: var(--text-3xl);
+		--section-title-font-weight: 700;
+		--section-title-letter-spacing: var(--tracking-tight);
+		--card-title-size: var(--text-lg);
+		--card-title-font-weight: 600;
+		--card-title-letter-spacing: var(--tracking-normal);
 	}
 
 	* {
@@ -209,5 +257,17 @@
 
 	html {
 		@apply font-sans;
+	}
+
+	/* Wire motion tokens into interactive elements so presets that set
+	   --hover-transform / --active-scale actually affect the UI. */
+	button:not(:disabled):hover,
+	[role="button"]:not([aria-disabled="true"]):hover {
+		transform: var(--hover-transform, none);
+	}
+
+	button:not(:disabled):active,
+	[role="button"]:not([aria-disabled="true"]):active {
+		transform: scale(var(--active-scale, 1));
 	}
 }

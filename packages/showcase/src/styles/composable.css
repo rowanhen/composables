@@ -2,6 +2,7 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 @import "@fontsource-variable/inter";
+@import "@fontsource-variable/dm-sans";
 @import "@fontsource-variable/fraunces";
 @import "@fontsource-variable/source-serif-4";
 @import "@fontsource-variable/space-grotesk";
@@ -169,8 +170,14 @@
 	--heading-letter-spacing: var(--tracking-tight);
 	--body-letter-spacing: var(--tracking-normal);
 	--hero-font-size: var(--text-5xl);
+	--hero-font-weight: 700;
+	--hero-letter-spacing: var(--tracking-tight);
 	--section-title-size: var(--text-3xl);
+	--section-title-font-weight: 700;
+	--section-title-letter-spacing: var(--tracking-tight);
 	--card-title-size: var(--text-lg);
+	--card-title-font-weight: 600;
+	--card-title-letter-spacing: var(--tracking-normal);
 }
 
 @theme inline {
@@ -207,6 +214,28 @@
 		--input-radius: var(--radius-md);
 		--input-height: calc(var(--spacing) * 10);
 		--badge-radius: var(--radius-4xl);
+
+		/* Phase 1b motion tokens in :root for preset override support */
+		--transition-default: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+		--transition-fast: 100ms cubic-bezier(0.4, 0, 0.2, 1);
+		--transition-slow: 300ms cubic-bezier(0, 0, 0.2, 1);
+		--hover-transform: none;
+		--hover-shadow: var(--shadow-md);
+		--active-scale: 0.98;
+
+		/* Phase 1c typography composition tokens in :root for preset override support */
+		--heading-font-weight: 700;
+		--heading-letter-spacing: var(--tracking-tight);
+		--body-letter-spacing: var(--tracking-normal);
+		--hero-font-size: var(--text-5xl);
+		--hero-font-weight: 700;
+		--hero-letter-spacing: var(--tracking-tight);
+		--section-title-size: var(--text-3xl);
+		--section-title-font-weight: 700;
+		--section-title-letter-spacing: var(--tracking-tight);
+		--card-title-size: var(--text-lg);
+		--card-title-font-weight: 600;
+		--card-title-letter-spacing: var(--tracking-normal);
 	}
 
 	* {
@@ -219,5 +248,17 @@
 
 	html {
 		@apply font-sans;
+	}
+
+	/* Wire motion tokens into interactive elements so presets that set
+	   --hover-transform / --active-scale actually affect the UI. */
+	button:not(:disabled):hover,
+	[role="button"]:not([aria-disabled="true"]):hover {
+		transform: var(--hover-transform, none);
+	}
+
+	button:not(:disabled):active,
+	[role="button"]:not([aria-disabled="true"]):active {
+		transform: scale(var(--active-scale, 1));
 	}
 }

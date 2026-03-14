@@ -49,7 +49,7 @@ export const swiss: Record<string, string> = {
 	"--text-critical": "#881818FF",
 	"--text-emphasis": "#111111FF",
 	"--text-brand": "#BB1818FF",
-	"--text-link": "#111111FF",
+	"--text-link": "#E53B3BFF",
 	"--icon-default": "#111111FF",
 	"--icon-secondary": "#444444FF",
 	"--icon-disabled": "#DDDDDDFF",
@@ -160,8 +160,14 @@ export const swiss: Record<string, string> = {
 	"--heading-letter-spacing": "var(--tracking-tight)",
 	"--body-letter-spacing": "var(--tracking-wide)",
 	"--hero-font-size": "var(--text-6xl)",
+	"--hero-font-weight": "700",
+	"--hero-letter-spacing": "var(--tracking-tight)",
 	"--section-title-size": "var(--text-4xl)",
+	"--section-title-font-weight": "700",
+	"--section-title-letter-spacing": "var(--tracking-tight)",
 	"--card-title-size": "var(--text-base)",
+	"--card-title-font-weight": "700",
+	"--card-title-letter-spacing": "var(--tracking-normal)",
 }
 
 export const swissDark: Record<string, string> = {
@@ -201,7 +207,7 @@ export const swissDark: Record<string, string> = {
 	"--text-critical": "#FF7777FF",
 	"--text-emphasis": "#F2F2F2FF",
 	"--text-brand": "#FF8888FF",
-	"--text-link": "#F2F2F2FF",
+	"--text-link": "#FF4444FF",
 	"--icon-default": "#F2F2F2FF",
 	"--icon-secondary": "#C0C0C0FF",
 	"--icon-disabled": "#383838FF",

@@ -128,8 +128,10 @@ export const soft: Record<string, string> = {
 	"--dropdown-offset": "6",
 	"--overlay-offset": "6",
 
-	// ── Fonts: Plus Jakarta Sans for everything ───────────────────────────
-	"--font-sans": '"Plus Jakarta Sans Variable", sans-serif',
+	// ── Fonts: Plus Jakarta Sans heading × DM Sans body ──────────────────
+	// DM Sans provides a complementary geometric warmth to Jakarta's rounder
+	// personality — two approachable sans-serifs with distinct voices.
+	"--font-sans": '"DM Sans Variable", sans-serif',
 	"--font-heading": '"Plus Jakarta Sans Variable", sans-serif',
 	"--font-brand": '"Plus Jakarta Sans Variable", sans-serif',
 
@@ -160,8 +162,14 @@ export const soft: Record<string, string> = {
 	"--heading-letter-spacing": "var(--tracking-tight)",
 	"--body-letter-spacing": "var(--tracking-normal)",
 	"--hero-font-size": "var(--text-5xl)",
+	"--hero-font-weight": "700",
+	"--hero-letter-spacing": "var(--tracking-tight)",
 	"--section-title-size": "var(--text-3xl)",
+	"--section-title-font-weight": "700",
+	"--section-title-letter-spacing": "var(--tracking-tight)",
 	"--card-title-size": "var(--text-lg)",
+	"--card-title-font-weight": "600",
+	"--card-title-letter-spacing": "var(--tracking-normal)",
 }
 
 export const softDark: Record<string, string> = {
@@ -259,7 +267,7 @@ export const softDark: Record<string, string> = {
 	"--sidebar-ring": "#9B8ECFFF",
 
 	// ── Fonts carry over ──────────────────────────────────────────────────
-	"--font-sans": '"Plus Jakarta Sans Variable", sans-serif',
+	"--font-sans": '"DM Sans Variable", sans-serif',
 	"--font-heading": '"Plus Jakarta Sans Variable", sans-serif',
 	"--font-brand": '"Plus Jakarta Sans Variable", sans-serif',
 }
