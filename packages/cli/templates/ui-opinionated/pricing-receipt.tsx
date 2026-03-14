@@ -1,8 +1,10 @@
 /**
  * PricingReceipt (opinionated)
  * ─────────────────────────────────────────────────────────────────────────────
- * Receipt-styled pricing card. Pairs with the composables receipt primitive
- * for Divider and SectionLabel — no dockets-specific variables needed.
+ * Receipt-styled pricing card. Composes composables primitives:
+ *   - Divider / SectionLabel from receipt
+ *   - Typography for all text
+ *   - Button for the CTA
  *
  * All colors come from composables semantic tokens (bg-card, bg-muted,
  * text-muted-foreground, bg-foreground, text-background, etc.).
@@ -12,6 +14,8 @@
  */
 
 import { Divider, SectionLabel } from '@/components/ui/receipt'
+import { Typography } from '@/components/ui/typography'
+import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 
 /* ─── Types ─── */
@@ -40,17 +44,21 @@ export function PricingReceipt({ product, className }: PricingReceiptProps) {
 		<div
 			data-slot="pricing-receipt"
 			className={cn(
-				'bg-card border border-border w-full min-w-[288px] max-w-[336px] flex-1 p-6 text-sm leading-tight font-mono',
+				'bg-card border border-border w-full min-w-[288px] max-w-[336px] flex-1 p-6 leading-tight font-mono',
 				className,
 			)}
 		>
 			{/* Header */}
 			<div className="text-center mb-3">
-				<div className="text-base font-bold mb-1 text-foreground"># {product.orderNum}</div>
-				<div className="text-xs uppercase text-foreground">{product.title}</div>
-				<div className="text-[10px] text-muted-foreground mt-0.5 h-4">
+				<Typography variant="heading-200" as="div" className="mb-1 font-mono">
+					# {product.orderNum}
+				</Typography>
+				<Typography variant="label-100" as="div">
+					{product.title}
+				</Typography>
+				<Typography variant="caption-100" as="div" className="mt-0.5 h-4">
 					{product.subtitle || '\u00A0'}
-				</div>
+				</Typography>
 			</div>
 
 			<Divider variant="dashes" />
@@ -60,9 +68,13 @@ export function PricingReceipt({ product, className }: PricingReceiptProps) {
 			{/* Line items */}
 			<div className="mb-4 space-y-px">
 				{product.items.map((item) => (
-					<div key={item.name} className="flex justify-between items-start text-xs">
-						<span className="flex-1 uppercase break-words text-foreground">{item.name}</span>
-						<span className="min-w-[72px] text-right shrink-0 text-foreground">{item.value}</span>
+					<div key={item.name} className="flex justify-between items-start">
+						<Typography variant="label-100" as="span" className="flex-1 break-words">
+							{item.name}
+						</Typography>
+						<Typography variant="label-100" as="span" className="min-w-[72px] text-right shrink-0">
+							{item.value}
+						</Typography>
 					</div>
 				))}
 			</div>
@@ -70,35 +82,30 @@ export function PricingReceipt({ product, className }: PricingReceiptProps) {
 			<Divider variant="dashes" />
 
 			{/* Total */}
-			<div className="mb-4">
-				<div className="flex justify-between text-xs font-bold">
-					<span className="uppercase text-foreground">TOTAL:</span>
-					<span className="text-foreground">{product.total}</span>
-				</div>
+			<div className="mb-4 flex justify-between items-baseline">
+				<Typography variant="label-100" as="span">
+					TOTAL:
+				</Typography>
+				<Typography variant="brand-body-100" as="span" className="font-mono">
+					{product.total}
+				</Typography>
 			</div>
 
 			{/* CTA */}
-			<a
-				href={product.link}
-				className={cn(
-					'inline-flex items-center justify-center gap-2 w-full text-center',
-					'px-6 py-3 text-[11px] uppercase tracking-wide border border-foreground',
-					'bg-foreground text-background no-underline cursor-pointer',
-					'hover:opacity-80 transition-opacity',
-					'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
-				)}
+			<Button
+				variant="default"
+				size="lg"
+				className="w-full"
+				render={<a href={product.link} />}
 			>
 				{product.cta}
-			</a>
+			</Button>
 
 			{/* Footer */}
-			<div className="text-center pt-4 text-[11px]">
-				<a
-					href={product.learnMoreLink ?? product.link}
-					className="text-[11px] no-underline lowercase text-muted-foreground hover:text-foreground transition-colors"
-				>
+			<div className="text-center pt-4">
+				<Typography variant="caption-100" as="a" href={product.learnMoreLink ?? product.link} className="no-underline hover:text-foreground transition-colors">
 					learn more
-				</a>
+				</Typography>
 			</div>
 		</div>
 	)

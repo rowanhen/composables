@@ -123,7 +123,7 @@ function Divider({ variant = "dots", opacity = "subtle", className, ...props }: 
 //   default   — filled background (foreground) with contrasting text (background)
 //   bordered  — transparent background with top/bottom borders
 
-const sectionLabelVariants = cva("text-sm font-bold uppercase px-2 py-0.5", {
+const sectionLabelVariants = cva("text-sm font-bold uppercase px-2 py-0.5 rounded-md", {
 	variants: {
 		variant: {
 			default: "bg-foreground text-background",
