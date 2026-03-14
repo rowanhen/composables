@@ -28,22 +28,22 @@ const dividerVariants = cva("shrink-0", {
 		{
 			variant: "dots",
 			orientation: "horizontal",
-			class: "flex-row gap-[calc(var(--spacing)*2)] h-[calc(var(--spacing)*2)] w-full",
+			class: "flex-row gap-[calc(var(--spacing)*2)] h-[max(var(--border-width-base),calc(var(--spacing)*2))] w-full",
 		},
 		{
 			variant: "dots",
 			orientation: "vertical",
-			class: "flex-col gap-[calc(var(--spacing)*2)] w-[calc(var(--spacing)*2)] h-full",
+			class: "flex-col gap-[calc(var(--spacing)*2)] w-[max(var(--border-width-base),calc(var(--spacing)*2))] h-full",
 		},
 		{
 			variant: "pills",
 			orientation: "horizontal",
-			class: "flex-row gap-[calc(var(--spacing)*2)] h-[max(var(--border-width-base),4px)] w-full",
+			class: "flex-row gap-[calc(var(--spacing)*2)] h-[max(var(--border-width-base),calc(var(--spacing)*2))] w-full",
 		},
 		{
 			variant: "pills",
 			orientation: "vertical",
-			class: "flex-col gap-[calc(var(--spacing)*2)] w-[max(var(--border-width-base),4px)] h-full",
+			class: "flex-col gap-[calc(var(--spacing)*2)] w-[max(var(--border-width-base),calc(var(--spacing)*2))] h-full",
 		},
 	],
 	defaultVariants: {
@@ -69,8 +69,8 @@ function DotsContent({ orientation }: { orientation: "horizontal" | "vertical" }
 					className="bg-border shrink-0"
 					style={{
 						borderRadius: "var(--radius)",
-						width: "calc(var(--spacing) * 2)",
-						height: "calc(var(--spacing) * 2)",
+						width: "max(var(--border-width-base), calc(var(--spacing) * 2))",
+						height: "max(var(--border-width-base), calc(var(--spacing) * 2))",
 					}}
 				/>
 			))}
@@ -90,12 +90,12 @@ function PillsContent({ orientation }: { orientation: "horizontal" | "vertical" 
 						borderRadius: "var(--radius)",
 						height:
 							orientation === "horizontal"
-								? "max(var(--border-width-base), 4px)"
+								? "max(var(--border-width-base), calc(var(--spacing) * 2))"
 								: "calc(var(--spacing) * 4)",
 						width:
 							orientation === "horizontal"
 								? "calc(var(--spacing) * 4)"
-								: "max(var(--border-width-base), 4px)",
+								: "max(var(--border-width-base), calc(var(--spacing) * 2))",
 					}}
 				/>
 			))}
