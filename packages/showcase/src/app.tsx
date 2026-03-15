@@ -44,7 +44,9 @@ import {
 	PaginationShowcase,
 	PopoverShowcase,
 	GlyphShowcase,
+	LedgerShowcase,
 	LineItemShowcase,
+	PricingCardShowcase,
 	ProgressShowcase,
 	ResizableShowcase,
 	ResponsiveGridShowcase,
@@ -228,9 +230,11 @@ export function App() {
 					<DividerShowcase />
 					<BlockLoaderShowcase />
 
-					{/* LineItem & Glyph */}
+					{/* Ledger, LineItem, Glyph & Pricing */}
+					<LedgerShowcase />
 					<LineItemShowcase />
 					<GlyphShowcase />
+					<PricingCardShowcase />
 				</VStack>
 
 				<Spacer size={24} />

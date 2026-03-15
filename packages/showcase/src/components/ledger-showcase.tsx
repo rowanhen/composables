@@ -43,7 +43,6 @@ export function LedgerShowcase() {
         <VStack gap={2}>
           <Typography variant="label-100">Ledger Compositions</Typography>
           <HStack gap={6} align="start" wrap>
-            {/* Simple ledger */}
             <Ledger
               title="INVOICE #001"
               rows={[
@@ -54,8 +53,6 @@ export function LedgerShowcase() {
               total={{ label: 'Total Due', value: '$5,520' }}
               className="w-64"
             />
-
-            {/* Ledger without title */}
             <Ledger
               rows={[
                 { label: 'Components', value: '80+', variant: 'fill', dividerVariant: 'pills' },
@@ -75,7 +72,7 @@ export function LedgerShowcase() {
           <div className="w-80 border border-border rounded-lg p-4">
             <SectionLabel className="mb-2">ORDER SUMMARY</SectionLabel>
             <LineItem label="Subtotal" value="$240.00" variant="fill" dividerVariant="dots" />
-            <LineItem label="Discount (10%)" value="−$24.00" variant="fill" dividerVariant="dots" />
+            <LineItem label="Discount (10%)" value="-$24.00" variant="fill" dividerVariant="dots" />
             <LineItem label="Tax (VAT 20%)" value="$43.20" variant="fill" dividerVariant="dots" />
             <LineItem label="Shipping" value="FREE" variant="fill" dividerVariant="dots" />
             <LineItem label="TOTAL" value="$259.20" variant="bold" />

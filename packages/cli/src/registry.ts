@@ -472,6 +472,14 @@ export const registry: Record<string, ComponentEntry> = {
 		internalDeps: ["divider", "utils"],
 		tags: ["primitive"],
 	},
+	ledger: {
+		name: "ledger",
+		description: "Information-dense ledger layout: SectionLabel (filled/bordered header) and Ledger (title + rows + total). Uses LineItem internally.",
+		files: [{ src: "templates/ui/ledger.tsx", dest: "components/ui/ledger.tsx" }],
+		deps: ["class-variance-authority"],
+		internalDeps: ["divider", "line-item", "utils"],
+		tags: ["primitive"],
+	},
 	"line-item-header": {
 		name: "line-item-header",
 		description: "Section header label for ledger/list layouts. Variants: default (filled), bordered.",
@@ -508,6 +516,15 @@ export const registry: Record<string, ComponentEntry> = {
 	},
 
 	// ─── Opinionated UI Components ───────────────────────────────────────
+	"pricing-card": {
+		name: "pricing-card",
+		description: "Receipt-styled opinionated pricing card. Accepts a PricingProduct data shape and renders a full card with header, feature list, total, and CTA button.",
+		files: [{ src: "templates/ui-opinionated/pricing-card.tsx", dest: "components/ui-opinionated/pricing-card.tsx" }],
+		deps: [],
+		internalDeps: ["button", "divider", "ledger", "typography"],
+		tags: ["opinionated"],
+	},
+
 	"accordion-opinionated": {
 		name: "accordion-opinionated",
 		description: "Opinionated accordion with items array API",
