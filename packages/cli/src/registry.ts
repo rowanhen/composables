@@ -472,17 +472,9 @@ export const registry: Record<string, ComponentEntry> = {
 		internalDeps: ["divider", "utils"],
 		tags: ["primitive"],
 	},
-	ledger: {
-		name: "ledger",
-		description: "Information-dense ledger layout: SectionLabel (filled/bordered header) and Ledger (title + rows + total). Uses LineItem internally.",
-		files: [{ src: "templates/ui/ledger.tsx", dest: "components/ui/ledger.tsx" }],
-		deps: ["class-variance-authority"],
-		internalDeps: ["divider", "line-item", "utils"],
-		tags: ["primitive"],
-	},
 	"line-item-header": {
 		name: "line-item-header",
-		description: "Section header label for ledger/list layouts. Variants: default (filled), bordered.",
+		description: "Section header label for receipt/list layouts. Variants: default (filled), bordered.",
 		files: [{ src: "templates/ui/line-item-header.tsx", dest: "components/ui/line-item-header.tsx" }],
 		deps: ["class-variance-authority"],
 		internalDeps: ["utils"],
@@ -521,7 +513,7 @@ export const registry: Record<string, ComponentEntry> = {
 		description: "Receipt-styled opinionated pricing card. Accepts a PricingProduct data shape and renders a full card with header, feature list, total, and CTA button.",
 		files: [{ src: "templates/ui-opinionated/pricing-card.tsx", dest: "components/ui-opinionated/pricing-card.tsx" }],
 		deps: [],
-		internalDeps: ["button", "divider", "ledger", "typography"],
+		internalDeps: ["button", "divider", "line-item-header", "typography"],
 		tags: ["opinionated"],
 	},
 

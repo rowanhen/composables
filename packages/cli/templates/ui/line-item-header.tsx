@@ -2,13 +2,13 @@
  * LineItemHeader
  * ─────────────────────────────────────────────────────────────────────────────
  * A reversed-out block label that visually separates content sections in
- * ledger/list layouts.
+ * receipt/list layouts.
  *
  * Uses primary tokens: bg-primary / text-primary-foreground (matches Button default).
  *
  * Variants:
  *   default   — filled background (foreground) with contrasting text (background)
- *   bordered  — transparent background with top/bottom borders
+ *   bordered  — transparent background with border
  */
 
 import * as React from "react"
@@ -44,4 +44,3 @@ function LineItemHeader({ variant = "default", className, ...props }: LineItemHe
 }
 
 export { LineItemHeader, lineItemHeaderVariants }
-export type { VariantProps }

@@ -90,4 +90,3 @@ function Glyph({ children, size = 48, variant = "default", className, ...props }
 }
 
 export { Glyph, glyphVariants }
-export type { VariantProps }

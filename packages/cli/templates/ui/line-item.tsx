@@ -1,7 +1,7 @@
 /**
  * LineItem
  * ─────────────────────────────────────────────────────────────────────────────
- * A single key-value row for ledger/receipt-style layouts.
+ * A single key-value row for receipt-style layouts.
  *
  * Use `fill` to add a divider leader between label and value (like a classic
  * menu or receipt). Use `bold` for totals. Use `compact` to reduce vertical
@@ -74,14 +74,14 @@ function LineItem({
 					{hideDivider ? (
 						<span className="flex-1 min-w-[2ch]" aria-hidden />
 					) : (
-						<Divider
-							variant={dividerVariant}
-							aria-hidden
-							className="flex-1 min-w-[2ch]"
-							{...(dividerPillsMultiplier !== undefined
-								? { pillsMultiplier: dividerPillsMultiplier }
-								: {})}
-						/>
+						<span className="flex-1 min-w-[2ch]" aria-hidden>
+							<Divider
+								variant={dividerVariant}
+								{...(dividerPillsMultiplier !== undefined
+									? { pillsMultiplier: dividerPillsMultiplier }
+									: {})}
+							/>
+						</span>
 					)}
 					<span className="shrink-0">{value}</span>
 				</>

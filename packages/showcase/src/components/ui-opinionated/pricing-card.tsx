@@ -3,7 +3,7 @@
  * ─────────────────────────────────────────────────────────────────────────────
  * Receipt-styled pricing card. Composes composables primitives:
  *   - Divider from divider
- *   - SectionLabel from ledger
+ *   - LineItemHeader from line-item-header
  *   - Typography for all text
  *   - Button for the CTA
  *
@@ -12,7 +12,7 @@
  */
 
 import { Divider } from '@/components/ui/divider'
-import { SectionLabel } from '@/components/ui/ledger'
+import { LineItemHeader } from '@/components/ui/line-item-header'
 import { Typography } from '@/components/ui/typography'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
@@ -57,7 +57,7 @@ export function PricingCard({ product, className }: PricingCardProps) {
 
 			<Divider variant="pills" className="my-2" />
 
-			<SectionLabel className="mb-2">INCLUDES</SectionLabel>
+			<LineItemHeader className="mb-2">INCLUDES</LineItemHeader>
 
 			<div className="mb-4 space-y-1">
 				{product.items.map((item) => (

@@ -142,7 +142,7 @@ export function LineItemShowcase() {
 	return (
 		<ShowcaseSection
 			title="LineItem & LineItemHeader"
-			description="Key-value row and section header primitives for ledger-style layouts. LineItem supports dot, solid, and pills divider leaders. LineItemHeader separates content sections with filled or bordered labels."
+			description="Key-value row and section header primitives for receipt-style layouts. LineItem supports dot, solid, and pills divider leaders. LineItemHeader separates content sections with filled or bordered labels."
 		>
 			<VStack gap={12}>
 				<LineItemVariants />
