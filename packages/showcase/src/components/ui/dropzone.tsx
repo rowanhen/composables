@@ -366,7 +366,7 @@ function DropZoneArea({ children, className }: DropZoneAreaProps) {
 			data-drag-accept={isDragAccept || undefined}
 			data-drag-reject={isDragReject || undefined}
 			className={cn(
-				"rounded-[var(--radius)] border p-8 transition-[opacity,box-shadow]",
+				"rounded-[var(--radius-xl)] border p-8 transition-[opacity,box-shadow]",
 				disabled ? "cursor-not-allowed opacity-50" : "cursor-pointer",
 				isDragActive && "border-primary bg-accent",
 				isDragReject && "border-stroke-critical bg-destructive/10",

@@ -76,67 +76,79 @@ import {
 } from "./components";
 
 /* ---- NAV ---- */
-const navItems = [
-	// Foundations
-	"Color Tokens",
-	"Typography",
-	// Layout & Spacing
-	"Spacing Scale",
-	"Container",
-	"Grid System",
-	"Stack & HStack",
-	"Responsive Grid",
-	"Bento Layout",
-	// Actions
-	"Buttons",
-	"Badges",
-	"Icon",
-	"Avatar",
-	// Content
-	"Cards",
-	"Alerts",
-	"Accordion",
-	"Collapsible",
-	"Item",
-	"List",
-	// Overlays
-	"Dialog",
-	"Alert Dialog",
-	"Sheet",
-	"Dropdown Menu",
-	"Popover",
-	"Tooltip",
-	"Hover Card",
-	"Toast",
-	// Navigation
-	"Tabs",
-	"Breadcrumb",
-	"Pagination",
-	// Data Display
-	"Table",
-	"Carousel",
-	"Progress",
-	"Tree View",
-	"Code Block",
-	// Form Controls
-	"Form Controls",
-	"Select",
-	"Toggle",
-	"Slider",
-	"Calendar & Date Pickers",
-	"Dropzone",
-	// Utilities
-	"Scroll Area",
-	"Resizable",
-	"Aspect Ratio",
-	"Empty State",
-	"Skeletons",
-	"Separator",
-	"Divider",
-	"Block Loader",
-	// Receipt & Financial
-	"Pricing Receipt",
-	"Receipt Primitives",
+const navGroups = [
+	{
+		label: "Foundations",
+		items: ["Color Tokens", "Typography"],
+	},
+	{
+		label: "Layout & Spacing",
+		items: [
+			"Spacing Scale",
+			"Container",
+			"Grid System",
+			"Stack & HStack",
+			"Responsive Grid",
+			"Bento Layout",
+		],
+	},
+	{
+		label: "Actions",
+		items: ["Buttons", "Badges", "Icon", "Avatar"],
+	},
+	{
+		label: "Content",
+		items: ["Cards", "Alerts", "Accordion", "Collapsible", "Item", "List"],
+	},
+	{
+		label: "Overlays",
+		items: [
+			"Dialog",
+			"Alert Dialog",
+			"Sheet",
+			"Dropdown Menu",
+			"Popover",
+			"Tooltip",
+			"Hover Card",
+			"Toast",
+		],
+	},
+	{
+		label: "Navigation",
+		items: ["Tabs", "Breadcrumb", "Pagination"],
+	},
+	{
+		label: "Data Display",
+		items: ["Table", "Carousel", "Progress", "Tree View", "Code Block"],
+	},
+	{
+		label: "Form Controls",
+		items: [
+			"Form Controls",
+			"Select",
+			"Toggle",
+			"Slider",
+			"Calendar & Date Pickers",
+			"Dropzone",
+		],
+	},
+	{
+		label: "Utilities",
+		items: [
+			"Scroll Area",
+			"Resizable",
+			"Aspect Ratio",
+			"Empty State",
+			"Skeletons",
+			"Separator",
+			"Divider",
+			"Block Loader",
+		],
+	},
+	{
+		label: "Receipt & Financial",
+		items: ["Pricing Receipt", "Receipt Primitives"],
+	},
 ];
 
 /* ── Grid overlay styles ─────────────────────────────────────────────── */
@@ -195,8 +207,8 @@ export function App() {
 			{/* Grid overlay */}
 			{gridOn && <div aria-hidden="true" style={GRID_OVERLAY_STYLE} />}
 
-			{/* Header — sticky, no background */}
-			<header className="sticky top-0 z-50">
+			{/* Header — sticky with subtle backdrop */}
+			<header className="sticky top-0 z-50 bg-background/80 backdrop-blur-sm border-b border-border/50">
 				<Container>
 					<HStack align="center" justify="between" className="h-14">
 						{/* Left side: burger menu + theme controls */}
@@ -214,16 +226,28 @@ export function App() {
 										<SheetTitle>Navigation</SheetTitle>
 									</SheetHeader>
 									<nav className="px-6 pb-6">
-										<VStack gap={1}>
-											{navItems.map((item) => (
-												<a
-													key={item}
-													href={`#${item.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
-													onClick={() => setNavOpen(false)}
-													className="text-sm text-muted-foreground hover:text-foreground transition-colors py-1.5 px-2 rounded-md hover:bg-muted/60"
-												>
-													{item}
-												</a>
+										<VStack gap={4}>
+											{navGroups.map((group) => (
+												<div key={group.label}>
+													<Typography
+														variant="caption-100"
+														className="text-muted-foreground/60 uppercase tracking-wider font-semibold px-2 mb-1"
+													>
+														{group.label}
+													</Typography>
+													<VStack gap={0.5}>
+														{group.items.map((item) => (
+															<a
+																key={item}
+																href={`#${item.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
+																onClick={() => setNavOpen(false)}
+																className="text-sm text-muted-foreground hover:text-foreground transition-colors py-1.5 px-2 rounded-md hover:bg-muted/60"
+															>
+																{item}
+															</a>
+														))}
+													</VStack>
+												</div>
 											))}
 										</VStack>
 									</nav>

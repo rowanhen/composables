@@ -1,4 +1,11 @@
 /**
+ * MIGRATION NOTE: The `check` variant was removed. Use `check-bordered` instead.
+ *   Before: <List variant="check" ... />
+ *   After:  <List variant="check-bordered" ... />
+ * ListCheckItem has also been removed — use ListCheckBorderedItem for compositional use.
+ */
+
+/**
  * List (opinionated)
  * ─────────────────────────────────────────────────────────────────────────────
  * Variant list renderer: arrow | check-bordered | bullet.
