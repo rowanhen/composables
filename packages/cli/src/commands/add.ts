@@ -58,9 +58,10 @@ export const addCommand = new Command("add")
 		const resolved = collectDeps(requested);
 		const unique = [...new Set(resolved)];
 
-		// Collect all files and npm deps
+		// Collect all files, npm deps, and post-install notes
 		const filesToCopy: { src: string; destPath: string; component: string }[] = [];
 		const npmDeps = new Set<string>();
+		const postInstallNotes: { name: string; note: string }[] = [];
 
 		for (const name of unique) {
 			const entry = registry[name];
@@ -73,6 +74,9 @@ export const addCommand = new Command("add")
 			}
 			for (const dep of entry.deps) {
 				npmDeps.add(dep);
+			}
+			if (entry.postInstallNote) {
+				postInstallNotes.push({ name, note: entry.postInstallNote });
 			}
 		}
 
@@ -116,8 +120,22 @@ export const addCommand = new Command("add")
 		}
 
 		if (npmDeps.size > 0) {
+			const deps = [...npmDeps].join(" ");
 			console.log(pc.bold("\nInstall required dependencies:"));
-			console.log(`  bun add ${[...npmDeps].join(" ")}`);
+			console.log(`  npm install ${deps}`);
+			console.log(pc.dim(`  # or: pnpm add ${deps}`));
+			console.log(pc.dim(`  # or: bun add ${deps}`));
 		}
+
+		if (postInstallNotes.length > 0) {
+			console.log(pc.bold("\nNext steps:"));
+			for (const { name, note } of postInstallNotes) {
+				console.log(`\n  ${pc.cyan(name)}`);
+				for (const line of note.split("\n")) {
+					console.log(`  ${line}`);
+				}
+			}
+		}
+
 		console.log();
 	});

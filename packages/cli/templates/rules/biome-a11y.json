@@ -1,0 +1,25 @@
+{
+	"linter": {
+		"rules": {
+			"a11y": {
+				"noSvgWithoutTitle": "warn",
+				"noAutofocus": "warn",
+				"noDistractingElements": "error",
+				"noRedundantAlt": "error",
+				"noBlankTarget": "error",
+				"noAccessKey": "error",
+				"noAriaUnsupportedElements": "error",
+				"noInteractiveElementToNoninteractiveRole": "error",
+				"noNoninteractiveElementToInteractiveRole": "error",
+				"useAltText": "error",
+				"useAriaPropsForRole": "error",
+				"useButtonType": "error",
+				"useKeyWithClickEvents": "error",
+				"useKeyWithMouseEvents": "error",
+				"useValidAnchor": "error",
+				"useValidAriaProps": "error",
+				"useValidAriaValues": "error"
+			}
+		}
+	}
+}

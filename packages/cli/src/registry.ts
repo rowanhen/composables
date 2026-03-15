@@ -5,6 +5,7 @@ export interface ComponentEntry {
 	deps: string[];
 	internalDeps: string[];
 	tags: string[];
+	postInstallNote?: string;
 }
 
 export const registry: Record<string, ComponentEntry> = {
@@ -68,6 +69,33 @@ export const registry: Record<string, ComponentEntry> = {
 		deps: [],
 		internalDeps: [],
 		tags: ["tooling"],
+		postInstallNote:
+			'Add to your biome.json to activate:\n  "extends": ["./src/rules/biome-ui-restricted.json"]',
+	},
+	"biome-no-direct-icons": {
+		name: "biome-no-direct-icons",
+		description: "Biome lint rule discouraging direct lucide-react imports in app code",
+		files: [
+			{
+				src: "templates/rules/biome-no-direct-icons.json",
+				dest: "rules/biome-no-direct-icons.json",
+			},
+		],
+		deps: [],
+		internalDeps: [],
+		tags: ["tooling"],
+		postInstallNote:
+			'Add to your biome.json to activate:\n  "extends": ["./src/rules/biome-no-direct-icons.json"]',
+	},
+	"biome-a11y": {
+		name: "biome-a11y",
+		description: "Biome lint rule set with enhanced accessibility enforcement",
+		files: [{ src: "templates/rules/biome-a11y.json", dest: "rules/biome-a11y.json" }],
+		deps: [],
+		internalDeps: [],
+		tags: ["tooling"],
+		postInstallNote:
+			'Add to your biome.json to activate:\n  "extends": ["./src/rules/biome-a11y.json"]',
 	},
 
 	// ─── Primitive UI Components ─────────────────────────────────────────
@@ -197,6 +225,14 @@ export const registry: Record<string, ComponentEntry> = {
 		files: [{ src: "templates/ui/dialog.tsx", dest: "components/ui/dialog.tsx" }],
 		deps: ["@base-ui/react", "lucide-react"],
 		internalDeps: ["button", "utils"],
+		tags: ["primitive"],
+	},
+	divider: {
+		name: "divider",
+		description: "Horizontal or vertical divider with solid, dots, and pills variants",
+		files: [{ src: "templates/ui/divider.tsx", dest: "components/ui/divider.tsx" }],
+		deps: ["class-variance-authority"],
+		internalDeps: ["utils"],
 		tags: ["primitive"],
 	},
 	"dropdown-menu": {
