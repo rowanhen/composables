@@ -334,7 +334,7 @@
 		input,
 		textarea,
 		select {
-			font-size: max(1em, 16px);
+			font-size: max(1em, 16px) !important;
 		}
 	}
 
