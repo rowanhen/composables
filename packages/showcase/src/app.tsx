@@ -9,6 +9,16 @@ import { Spacer } from "@/components/ui/spacer";
 import { HStack, VStack } from "@/components/ui/stack";
 import { Switch } from "@/components/ui/switch";
 import { Typography } from "@/components/ui/typography";
+/* ---- Sheet (burger menu drawer) ---- */
+import {
+	Sheet,
+	SheetContent,
+	SheetHeader,
+	SheetTitle,
+	SheetTrigger,
+} from "@/components/ui/sheet";
+/* ---- Icons ---- */
+import { MenuIcon } from "lucide-react";
 
 /* ---- Showcase components ---- */
 import {
@@ -67,22 +77,29 @@ import {
 
 /* ---- NAV ---- */
 const navItems = [
+	// Foundations
 	"Color Tokens",
 	"Typography",
+	// Layout & Spacing
 	"Spacing Scale",
 	"Container",
 	"Grid System",
 	"Stack & HStack",
 	"Responsive Grid",
+	"Bento Layout",
+	// Actions
 	"Buttons",
 	"Badges",
-	"Brand",
 	"Icon",
 	"Avatar",
+	// Content
 	"Cards",
 	"Alerts",
 	"Accordion",
 	"Collapsible",
+	"Item",
+	"List",
+	// Overlays
 	"Dialog",
 	"Alert Dialog",
 	"Sheet",
@@ -91,33 +108,35 @@ const navItems = [
 	"Tooltip",
 	"Hover Card",
 	"Toast",
+	// Navigation
 	"Tabs",
+	"Breadcrumb",
+	"Pagination",
+	// Data Display
 	"Table",
 	"Carousel",
 	"Progress",
+	"Tree View",
+	"Code Block",
+	// Form Controls
 	"Form Controls",
 	"Select",
 	"Toggle",
 	"Slider",
-	"Breadcrumb",
-	"Pagination",
 	"Calendar & Date Pickers",
 	"Dropzone",
+	// Utilities
 	"Scroll Area",
 	"Resizable",
 	"Aspect Ratio",
-	"Item",
 	"Empty State",
 	"Skeletons",
 	"Separator",
 	"Divider",
-	"Tree View",
-	"Code Block",
 	"Block Loader",
-	"List",
+	// Receipt & Financial
 	"Pricing Receipt",
 	"Receipt Primitives",
-	"Bento Layout",
 ];
 
 /* ── Grid overlay styles ─────────────────────────────────────────────── */
@@ -149,6 +168,7 @@ const GRID_OVERLAY_STYLE: React.CSSProperties = {
 export function App() {
 	const [dark, setDark] = React.useState(false);
 	const [gridOn, setGridOn] = React.useState(false);
+	const [navOpen, setNavOpen] = React.useState(false);
 
 	React.useEffect(() => {
 		if (dark) {
@@ -175,63 +195,86 @@ export function App() {
 			{/* Grid overlay */}
 			{gridOn && <div aria-hidden="true" style={GRID_OVERLAY_STYLE} />}
 
-			{/* Header */}
-			<header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur">
+			{/* Header — sticky, no background */}
+			<header className="sticky top-0 z-50">
 				<Container>
 					<HStack align="center" justify="between" className="h-14">
+						{/* Left side: burger menu + theme controls */}
 						<HStack gap={3} align="center">
-							<Typography variant="heading-300" as="h1">
-								Composables
-							</Typography>
-							<Badge variant="outline">v0.1.0</Badge>
-						</HStack>
-						<HStack gap={3} align="center">
+							{/* Burger menu */}
+							<Sheet open={navOpen} onOpenChange={setNavOpen}>
+								<SheetTrigger
+									aria-label="Open navigation"
+									className="flex items-center justify-center w-8 h-8 rounded-md hover:bg-muted/60 transition-colors"
+								>
+									<MenuIcon className="w-4 h-4" />
+								</SheetTrigger>
+								<SheetContent side="left" showCloseButton>
+									<SheetHeader>
+										<SheetTitle>Navigation</SheetTitle>
+									</SheetHeader>
+									<nav className="px-6 pb-6">
+										<VStack gap={1}>
+											{navItems.map((item) => (
+												<a
+													key={item}
+													href={`#${item.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
+													onClick={() => setNavOpen(false)}
+													className="text-sm text-muted-foreground hover:text-foreground transition-colors py-1.5 px-2 rounded-md hover:bg-muted/60"
+												>
+													{item}
+												</a>
+											))}
+										</VStack>
+									</nav>
+								</SheetContent>
+							</Sheet>
+
+							{/* Token config */}
 							<TokenConfigPanel />
-							<Typography variant="caption-100" className="text-muted-foreground">
-								Grid
-							</Typography>
-							<Switch
-								checked={gridOn}
-								onCheckedChange={setGridOn}
-								aria-label="Toggle grid overlay"
-							/>
-							<Typography variant="caption-100">Dark mode</Typography>
-							<Switch checked={dark} onCheckedChange={(checked) => setDark(checked)} />
+
+							{/* Grid toggle */}
+							<HStack gap={1.5} align="center">
+								<Typography variant="caption-100" className="text-muted-foreground">
+									Grid
+								</Typography>
+								<Switch
+									checked={gridOn}
+									onCheckedChange={setGridOn}
+									aria-label="Toggle grid overlay"
+								/>
+							</HStack>
+
+							{/* Dark mode toggle */}
+							<HStack gap={1.5} align="center">
+								<Typography variant="caption-100" className="text-muted-foreground">
+									Dark
+								</Typography>
+								<Switch checked={dark} onCheckedChange={(checked) => setDark(checked)} />
+							</HStack>
 						</HStack>
+
+						{/* Right side: version badge */}
+						<Badge variant="outline">v0.1.0</Badge>
 					</HStack>
 				</Container>
 			</header>
 
 			<Container>
-				<Spacer size={6} />
-
-				{/* Quick nav */}
-				<HStack gap={2} wrap className="pb-6">
-					{navItems.map((item) => (
-						<a
-							key={item}
-							href={`#${item.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
-							className="text-xs text-muted-foreground hover:text-foreground transition-colors"
-						>
-							{item}
-						</a>
-					))}
-				</HStack>
-
-				<Separator />
 				<Spacer size={10} />
 
 				<VStack gap={16}>
 					{/* Foundations */}
 					<ColorTokensShowcase />
 					<TypographyShowcase />
-					<SpacingShowcase />
 
-					{/* Layout */}
+					{/* Layout & Spacing */}
+					<SpacingShowcase />
 					<ContainerShowcase />
 					<GridShowcase />
 					<StackShowcase />
 					<ResponsiveGridShowcase />
+					<BentoShowcase />
 
 					{/* Actions */}
 					<ButtonsShowcase />
@@ -245,6 +288,7 @@ export function App() {
 					<AccordionShowcase />
 					<CollapsibleShowcase />
 					<ItemShowcase />
+					<ListShowcase />
 
 					{/* Overlays */}
 					<DialogShowcase />
@@ -261,12 +305,14 @@ export function App() {
 					<BreadcrumbShowcase />
 					<PaginationShowcase />
 
-					{/* Data display */}
+					{/* Data Display */}
 					<TableShowcase />
 					<CarouselShowcase />
 					<ProgressShowcase />
+					<TreeViewShowcase />
+					<CodeBlockShowcase />
 
-					{/* Form controls */}
+					{/* Form Controls */}
 					<FormControlsShowcase />
 					<SelectShowcase />
 					<ToggleShowcase />
@@ -282,17 +328,11 @@ export function App() {
 					<SkeletonShowcase />
 					<SeparatorShowcase />
 					<DividerShowcase />
-
-					{/* Phase 2 */}
-					<TreeViewShowcase />
-					<CodeBlockShowcase />
 					<BlockLoaderShowcase />
-					<ListShowcase />
-					<PricingReceiptShowcase />
 
-					{/* Phase 1 — Receipt, Bento */}
+					{/* Receipt & Financial */}
+					<PricingReceiptShowcase />
 					<ReceiptShowcase />
-					<BentoShowcase />
 				</VStack>
 
 				<Spacer size={24} />

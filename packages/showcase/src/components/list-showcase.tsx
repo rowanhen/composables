@@ -3,7 +3,6 @@ import {
   ListArrowItem,
   ListBulletItem,
   ListCheckBorderedItem,
-  ListCheckItem,
 } from '@/components/ui-opinionated/list'
 import { VStack } from '@/components/ui/stack'
 import { Typography } from '@/components/ui/typography'
@@ -32,7 +31,7 @@ export function ListShowcase() {
   return (
     <ShowcaseSection
       title="List"
-      description="Variant list renderer: arrow, check, check-bordered, and bullet styles."
+      description="Variant list renderer: arrow, check-bordered, and bullet styles."
     >
       <VStack gap={8}>
         {/* Arrow */}
@@ -40,14 +39,6 @@ export function ListShowcase() {
           <Typography variant="heading-200">Arrow variant</Typography>
           <div className="max-w-sm">
             <List variant="arrow" items={STEPS} />
-          </div>
-        </VStack>
-
-        {/* Check */}
-        <VStack gap={2}>
-          <Typography variant="heading-200">Check variant</Typography>
-          <div className="max-w-sm">
-            <List variant="check" items={FEATURES} />
           </div>
         </VStack>
 
@@ -77,10 +68,16 @@ export function ListShowcase() {
               <ListArrowItem content={<span className="font-semibold text-primary">Highlighted item C</span>} />
             </List>
           </div>
+          <div className="max-w-2xl mt-4">
+            <List variant="check-bordered">
+              <ListCheckBorderedItem content="Composable bordered checkmark" />
+              <ListCheckBorderedItem content={<>With <code className="text-xs bg-muted px-1">React.ReactNode</code> content</>} />
+            </List>
+          </div>
           <div className="max-w-sm mt-4">
-            <List variant="check">
-              <ListCheckItem content="Composable checkmark" />
-              <ListCheckItem content={<>With <code className="text-xs bg-muted px-1">React.ReactNode</code> content</>} />
+            <List variant="bullet">
+              <ListBulletItem content="Bullet point A" />
+              <ListBulletItem content="Bullet point B with extra detail" />
             </List>
           </div>
         </VStack>
