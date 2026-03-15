@@ -2,8 +2,7 @@ import { LineItem } from "@/components/ui/line-item"
 import { LineItemHeader } from "@/components/ui/line-item-header"
 import { Divider } from "@/components/ui/divider"
 import { HStack, VStack } from "@/components/ui/stack"
-import { Typography } from "@/components/ui/typography"
-import { ShowcaseSection } from "./showcase-section"
+import { ShowcaseGroup, ShowcaseSection } from "./showcase-section"
 import { cn } from "@/lib/utils"
 
 function DemoCard({
@@ -29,8 +28,7 @@ function DemoCard({
 
 function LineItemVariants() {
 	return (
-		<VStack gap={4}>
-			<Typography variant="heading-300">LineItem Variants</Typography>
+		<ShowcaseGroup label="LineItem Variants">
 			<HStack gap={4} wrap align="start">
 				<DemoCard title="default">
 					<LineItem label="Subtotal" value="$4,000" variant="default" />
@@ -72,14 +70,13 @@ function LineItemVariants() {
 					<LineItem label="Jun 2024" value="$900" variant="compact" />
 				</DemoCard>
 			</HStack>
-		</VStack>
+		</ShowcaseGroup>
 	)
 }
 
 function LineItemHeaderVariants() {
 	return (
-		<VStack gap={4}>
-			<Typography variant="heading-300">LineItemHeader Variants</Typography>
+		<ShowcaseGroup label="LineItemHeader Variants">
 			<HStack gap={4} wrap align="start">
 				<DemoCard title="default (filled)">
 					<LineItemHeader>Services</LineItemHeader>
@@ -118,14 +115,13 @@ function LineItemHeaderVariants() {
 					</div>
 				</DemoCard>
 			</HStack>
-		</VStack>
+		</ShowcaseGroup>
 	)
 }
 
 function LineItemComposition() {
 	return (
-		<VStack gap={4}>
-			<Typography variant="heading-300">Composition</Typography>
+		<ShowcaseGroup label="Composition">
 			<div className="w-full border border-border p-4 font-mono text-xs max-w-sm">
 				<LineItemHeader>Services</LineItemHeader>
 				<div className="py-1 space-y-px">
@@ -145,7 +141,7 @@ function LineItemComposition() {
 				<Divider variant="solid" className="my-2" />
 				<LineItem label="Total Due" value="$12,130" variant="bold" />
 			</div>
-		</VStack>
+		</ShowcaseGroup>
 	)
 }
 

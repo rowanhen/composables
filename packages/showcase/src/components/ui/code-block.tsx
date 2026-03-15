@@ -2,8 +2,6 @@
  * CodeBlock
  * ─────────────────────────────────────────────────────────────────────────────
  * Monospace code display with line numbers and overflow scrolling.
- * Uses composables semantic tokens (bg-muted / bg-background) rather than
- * raw CSS variable references from dockets.
  *
  * Usage:
  *   <CodeBlock>{`const x = 1\nconsole.log(x)`}</CodeBlock>
@@ -18,31 +16,33 @@ export interface CodeBlockProps extends Omit<React.HTMLAttributes<HTMLPreElement
 
 const CodeBlock = React.forwardRef<HTMLPreElement, CodeBlockProps>(
 	({ children, className, ...props }, ref) => {
+		const lines = String(children).split('\n')
+		// Width of the widest line number (e.g. 3 for a 100-line file)
+		const lineNumWidth = String(lines.length).length
+
 		return (
 			<pre
 				data-slot="code-block"
 				ref={ref}
 				className={cn(
-					'block font-mono text-sm font-normal overflow-auto bg-muted scrollbar-none rounded-lg border border-[length:var(--border-width)] border-border',
+					'block font-mono text-xs leading-5 font-normal overflow-auto rounded-md border border-border bg-muted scrollbar-none',
 					className,
 				)}
 				{...props}
 			>
-				{String(children)
-					.split('\n')
-					.map((line, index) => (
-						<div key={index} className="flex justify-between items-start">
-							<span
-								aria-hidden="true"
-								className="inline-flex w-[3ch] text-right pr-[1ch] select-none bg-background text-muted-foreground"
-							>
-								{leftPad(String(index + 1), 3)}
-							</span>
-							<span className="min-w-[10%] w-full whitespace-pre bg-muted pl-[2ch] text-foreground">
-								{line}
-							</span>
-						</div>
-					))}
+				{lines.map((line, index) => (
+					<div key={index} className="flex items-start">
+						<span
+							aria-hidden="true"
+							className="inline-flex shrink-0 select-none border-r border-border bg-background text-right tabular-nums text-muted-foreground/60"
+							// 1ch left pad + number width + 2ch right pad = comfortable gutter
+							style={{ width: `${lineNumWidth + 3}ch`, paddingRight: '1ch' }}
+						>
+							{leftPad(String(index + 1), lineNumWidth)}
+						</span>
+						<span className="w-full whitespace-pre pl-[2ch] text-foreground/90">{line}</span>
+					</div>
+				))}
 			</pre>
 		)
 	},

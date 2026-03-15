@@ -8,7 +8,7 @@ import {
 } from '@/components/ui/carousel'
 import { VStack } from '@/components/ui/stack'
 import { Typography } from '@/components/ui/typography'
-import { ShowcaseSection } from './showcase-section'
+import { ShowcaseGroup, ShowcaseSection } from './showcase-section'
 
 export function CarouselShowcase() {
   return (
@@ -17,9 +17,7 @@ export function CarouselShowcase() {
       description="A slideshow component for cycling through elements."
     >
       <VStack gap={6}>
-        {/* Basic */}
-        <VStack gap={2}>
-          <Typography variant="heading-200">Basic</Typography>
+        <ShowcaseGroup label="Basic">
           <div className="mx-auto w-full max-w-xs px-12">
             <Carousel>
               <CarouselContent>
@@ -39,11 +37,9 @@ export function CarouselShowcase() {
               <CarouselNext />
             </Carousel>
           </div>
-        </VStack>
+        </ShowcaseGroup>
 
-        {/* Multiple items */}
-        <VStack gap={2}>
-          <Typography variant="heading-200">Multiple Items</Typography>
+        <ShowcaseGroup label="Multiple Items">
           <div className="mx-auto w-full max-w-sm px-12">
             <Carousel opts={{ align: 'start' }}>
               <CarouselContent>
@@ -63,11 +59,9 @@ export function CarouselShowcase() {
               <CarouselNext />
             </Carousel>
           </div>
-        </VStack>
+        </ShowcaseGroup>
 
-        {/* Vertical */}
-        <VStack gap={2}>
-          <Typography variant="heading-200">Vertical</Typography>
+        <ShowcaseGroup label="Vertical">
           <div className="mx-auto max-w-xs">
             <Carousel orientation="vertical" className="max-h-[200px]">
               <CarouselContent className="-mt-2 h-[200px]">
@@ -85,7 +79,7 @@ export function CarouselShowcase() {
               </CarouselContent>
             </Carousel>
           </div>
-        </VStack>
+        </ShowcaseGroup>
       </VStack>
     </ShowcaseSection>
   )

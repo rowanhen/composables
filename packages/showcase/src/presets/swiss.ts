@@ -120,11 +120,11 @@ export const swiss: Record<string, string> = {
 	"--shadow-blur": "0px",
 	"--shadow-spread": "0px",
 	"--shadow-base-color": "rgba(0, 0, 0, 0)",
-	"--container-sm": "600px",
+	"--container-sm": "576px",
 	"--container-md": "720px",
 	"--container-lg": "960px",
 	"--container-xl": "1200px",
-	"--container-2xl": "1320px",
+	"--container-2xl": "1296px",
 	"--dropdown-offset": "2",
 	"--overlay-offset": "2",
 

@@ -1,15 +1,13 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { HStack, VStack } from '@/components/ui/stack'
 import { Typography } from '@/components/ui/typography'
-import { ShowcaseSection } from './showcase-section'
+import { ShowcaseGroup, ShowcaseSection } from './showcase-section'
 
 export function AvatarShowcase() {
   return (
     <ShowcaseSection title="Avatar" description="User profile images with fallback initials.">
       <VStack gap={6}>
-        {/* Sizes */}
-        <VStack gap={2}>
-          <Typography variant="heading-200">Sizes</Typography>
+        <ShowcaseGroup label="Sizes">
           <HStack gap={3} align="center">
             <Avatar size="xs">
               <AvatarImage src="https://i.pravatar.cc/80?img=1" alt="User" />
@@ -35,11 +33,9 @@ export function AvatarShowcase() {
           <Typography variant="caption-100" className="text-muted-foreground">
             xs · sm · md · lg · xl
           </Typography>
-        </VStack>
+        </ShowcaseGroup>
 
-        {/* Fallbacks */}
-        <VStack gap={2}>
-          <Typography variant="heading-200">Fallbacks</Typography>
+        <ShowcaseGroup label="Fallbacks">
           <HStack gap={3} align="center">
             <Avatar size="lg">
               <AvatarImage src="/broken-image.jpg" alt="Broken" />
@@ -57,11 +53,9 @@ export function AvatarShowcase() {
           <Typography variant="caption-100" className="text-muted-foreground">
             Shows initials when image fails to load
           </Typography>
-        </VStack>
+        </ShowcaseGroup>
 
-        {/* Group */}
-        <VStack gap={2}>
-          <Typography variant="heading-200">Avatar Group</Typography>
+        <ShowcaseGroup label="Avatar Group">
           <div className="flex -space-x-2">
             <Avatar size="md" className="ring-2 ring-background">
               <AvatarImage src="https://i.pravatar.cc/80?img=10" alt="User" />
@@ -79,7 +73,7 @@ export function AvatarShowcase() {
               <AvatarFallback className="text-2xs">+3</AvatarFallback>
             </Avatar>
           </div>
-        </VStack>
+        </ShowcaseGroup>
       </VStack>
     </ShowcaseSection>
   )

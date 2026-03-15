@@ -8,8 +8,7 @@ import {
   DropZoneInput,
 } from '@/components/ui/dropzone'
 import { VStack } from '@/components/ui/stack'
-import { Typography } from '@/components/ui/typography'
-import { ShowcaseSection } from './showcase-section'
+import { ShowcaseGroup, ShowcaseSection } from './showcase-section'
 
 export function DropzoneShowcase() {
   const [file, setFile] = React.useState<File | null>(null)
@@ -17,8 +16,7 @@ export function DropzoneShowcase() {
   return (
     <ShowcaseSection title="Dropzone" description="File upload area with drag-and-drop support.">
       <VStack gap={6} className="max-w-md">
-        <VStack gap={2}>
-          <Typography variant="heading-200">Default</Typography>
+        <ShowcaseGroup label="Default">
           <DropZone
             onDrop={(accepted) => {
               if (accepted.length > 0) setFile(accepted[0])
@@ -38,16 +36,15 @@ export function DropzoneShowcase() {
               )}
             </DropZoneArea>
           </DropZone>
-        </VStack>
-        <VStack gap={2}>
-          <Typography variant="heading-200">Disabled</Typography>
+        </ShowcaseGroup>
+        <ShowcaseGroup label="Disabled">
           <DropZone onDrop={() => {}} disabled>
             <DropZoneArea>
               <DropZoneInput />
               <DropZoneContent title="Upload disabled" />
             </DropZoneArea>
           </DropZone>
-        </VStack>
+        </ShowcaseGroup>
       </VStack>
     </ShowcaseSection>
   )

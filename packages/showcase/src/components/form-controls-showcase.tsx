@@ -27,7 +27,7 @@ import { HStack, VStack } from '@/components/ui/stack'
 import { Switch } from '@/components/ui/switch'
 import { Textarea } from '@/components/ui/textarea'
 import { Typography } from '@/components/ui/typography'
-import { ShowcaseSection } from './showcase-section'
+import { ShowcaseGroup, ShowcaseSection } from './showcase-section'
 
 export function FormControlsShowcase() {
   return (
@@ -35,6 +35,7 @@ export function FormControlsShowcase() {
       title="Form Controls"
       description="Input primitives: input, textarea, input group, label, checkbox, switch, radio group."
     >
+      <VStack gap={8}>
       <Grid columns={1} gap={6} className="sm:grid-cols-2">
         <VStack gap={2}>
           <Label>Text Input</Label>
@@ -89,8 +90,7 @@ export function FormControlsShowcase() {
         </VStack>
       </Grid>
 
-      <VStack gap={4} className="mt-8">
-        <Typography variant="heading-300">Input Group</Typography>
+      <ShowcaseGroup label="Input Group">
         <Typography variant="body-100" className="text-muted-foreground">
           Composable input groups with icons, text, and buttons on either side.
         </Typography>
@@ -253,6 +253,7 @@ export function FormControlsShowcase() {
             </InputGroup>
           </VStack>
         </Grid>
+      </ShowcaseGroup>
       </VStack>
     </ShowcaseSection>
   )

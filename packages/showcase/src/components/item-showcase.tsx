@@ -11,8 +11,7 @@ import {
   ItemTitle,
 } from '@/components/ui/item'
 import { VStack } from '@/components/ui/stack'
-import { Typography } from '@/components/ui/typography'
-import { ShowcaseSection } from './showcase-section'
+import { ShowcaseGroup, ShowcaseSection } from './showcase-section'
 
 export function ItemShowcase() {
   return (
@@ -21,8 +20,7 @@ export function ItemShowcase() {
       description="List item component with media, content, and action slots."
     >
       <VStack gap={6} className="max-w-lg">
-        <VStack gap={2}>
-          <Typography variant="heading-200">Variants</Typography>
+        <ShowcaseGroup label="Variants">
           <ItemGroup>
             <Item variant="default">
               <ItemMedia variant="icon">
@@ -60,9 +58,8 @@ export function ItemShowcase() {
               </ItemContent>
             </Item>
           </ItemGroup>
-        </VStack>
-        <VStack gap={2}>
-          <Typography variant="heading-200">Sizes</Typography>
+        </ShowcaseGroup>
+        <ShowcaseGroup label="Sizes">
           <ItemGroup>
             <Item size="default" variant="outline">
               <ItemMedia variant="icon">
@@ -92,7 +89,7 @@ export function ItemShowcase() {
               </ItemContent>
             </Item>
           </ItemGroup>
-        </VStack>
+        </ShowcaseGroup>
       </VStack>
     </ShowcaseSection>
   )

@@ -3,7 +3,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card'
 import { HStack, VStack } from '@/components/ui/stack'
 import { Typography } from '@/components/ui/typography'
-import { ShowcaseSection } from './showcase-section'
+import { ShowcaseGroup, ShowcaseSection } from './showcase-section'
 
 export function HoverCardShowcase() {
   return (
@@ -12,9 +12,7 @@ export function HoverCardShowcase() {
       description="A card that appears on hover, typically used for user profile previews."
     >
       <VStack gap={6}>
-        {/* Basic */}
-        <VStack gap={2}>
-          <Typography variant="heading-200">Basic</Typography>
+        <ShowcaseGroup label="Basic">
           <HoverCard>
             <HoverCardTrigger
               href="#"
@@ -54,11 +52,9 @@ export function HoverCardShowcase() {
               </HStack>
             </HoverCardContent>
           </HoverCard>
-        </VStack>
+        </ShowcaseGroup>
 
-        {/* Multiple triggers */}
-        <VStack gap={2}>
-          <Typography variant="heading-200">Inline Usage</Typography>
+        <ShowcaseGroup label="Inline Usage">
           <Typography variant="body-200" className="max-w-lg">
             The project was started by{' '}
             <HoverCard>
@@ -114,7 +110,7 @@ export function HoverCardShowcase() {
             </HoverCard>
             .
           </Typography>
-        </VStack>
+        </ShowcaseGroup>
       </VStack>
     </ShowcaseSection>
   )

@@ -9,15 +9,13 @@ import {
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { HStack, VStack } from '@/components/ui/stack'
-import { Typography } from '@/components/ui/typography'
-import { ShowcaseSection } from './showcase-section'
+import { ShowcaseGroup, ShowcaseSection } from './showcase-section'
 
 export function ButtonsShowcase() {
   return (
     <ShowcaseSection title="Buttons" description="Button variants and sizes with icon support.">
       <VStack gap={6}>
-        <VStack gap={2}>
-          <Typography variant="heading-200">Variants</Typography>
+        <ShowcaseGroup label="Variants">
           <HStack gap={3} wrap align="center">
             <Button variant="default">Default</Button>
             <Button variant="secondary">Secondary</Button>
@@ -31,18 +29,16 @@ export function ButtonsShowcase() {
             <Button variant="emphasis">Emphasis</Button>
             <Button variant="link">Link</Button>
           </HStack>
-        </VStack>
-        <VStack gap={2}>
-          <Typography variant="heading-200">Sizes</Typography>
+        </ShowcaseGroup>
+        <ShowcaseGroup label="Sizes">
           <HStack gap={3} wrap align="center">
             <Button size="xs">Extra Small</Button>
             <Button size="sm">Small</Button>
             <Button size="default">Default</Button>
             <Button size="lg">Large</Button>
           </HStack>
-        </VStack>
-        <VStack gap={2}>
-          <Typography variant="heading-200">Icon sizes</Typography>
+        </ShowcaseGroup>
+        <ShowcaseGroup label="Icon sizes">
           <HStack gap={3} wrap align="center">
             <Button size="icon-xs">
               <PlusIcon />
@@ -57,9 +53,8 @@ export function ButtonsShowcase() {
               <PlusIcon />
             </Button>
           </HStack>
-        </VStack>
-        <VStack gap={2}>
-          <Typography variant="heading-200">With icons</Typography>
+        </ShowcaseGroup>
+        <ShowcaseGroup label="With icons">
           <HStack gap={3} wrap align="center">
             <Button>
               <MailIcon data-icon="inline-start" />
@@ -86,9 +81,8 @@ export function ButtonsShowcase() {
               Details
             </Button>
           </HStack>
-        </VStack>
-        <VStack gap={2}>
-          <Typography variant="heading-200">Disabled</Typography>
+        </ShowcaseGroup>
+        <ShowcaseGroup label="Disabled">
           <HStack gap={3} wrap align="center">
             <Button disabled>Disabled</Button>
             <Button variant="outline" disabled>
@@ -98,7 +92,7 @@ export function ButtonsShowcase() {
               Disabled Destructive
             </Button>
           </HStack>
-        </VStack>
+        </ShowcaseGroup>
       </VStack>
     </ShowcaseSection>
   )

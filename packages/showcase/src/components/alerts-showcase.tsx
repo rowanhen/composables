@@ -1,15 +1,13 @@
 import { AlertCircleIcon, AlertTriangleIcon, CheckCircleIcon, InfoIcon } from 'lucide-react'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { VStack } from '@/components/ui/stack'
-import { Typography } from '@/components/ui/typography'
-import { ShowcaseSection } from './showcase-section'
+import { ShowcaseGroup, ShowcaseSection } from './showcase-section'
 
 export function AlertsShowcase() {
   return (
     <ShowcaseSection title="Alerts" description="Alert variants for messaging and notifications.">
       <VStack gap={4}>
-        <VStack gap={2}>
-          <Typography variant="heading-200">Variants</Typography>
+        <ShowcaseGroup label="Variants">
           <Alert>
             <AlertTitle>Default Alert</AlertTitle>
             <AlertDescription>Informational message with default styling.</AlertDescription>
@@ -36,9 +34,8 @@ export function AlertsShowcase() {
             <AlertTitle>Destructive Alert</AlertTitle>
             <AlertDescription>Something went wrong. Please try again.</AlertDescription>
           </Alert>
-        </VStack>
-        <VStack gap={2}>
-          <Typography variant="heading-200">Without icons</Typography>
+        </ShowcaseGroup>
+        <ShowcaseGroup label="Without icons">
           <Alert variant="info">
             <AlertTitle>Info</AlertTitle>
             <AlertDescription>Alerts work without icons too.</AlertDescription>
@@ -47,7 +44,7 @@ export function AlertsShowcase() {
             <AlertTitle>Success</AlertTitle>
             <AlertDescription>Clean and minimal success message.</AlertDescription>
           </Alert>
-        </VStack>
+        </ShowcaseGroup>
       </VStack>
     </ShowcaseSection>
   )

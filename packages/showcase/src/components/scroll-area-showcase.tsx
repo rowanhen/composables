@@ -1,8 +1,8 @@
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area'
 import { Separator } from '@/components/ui/separator'
-import { HStack, VStack } from '@/components/ui/stack'
+import { HStack } from '@/components/ui/stack'
 import { Typography } from '@/components/ui/typography'
-import { ShowcaseSection } from './showcase-section'
+import { ShowcaseGroup, ShowcaseSection } from './showcase-section'
 
 export function ScrollAreaShowcase() {
   return (
@@ -11,8 +11,7 @@ export function ScrollAreaShowcase() {
       description="Custom scrollbar container with vertical and horizontal support."
     >
       <HStack gap={6} wrap>
-        <VStack gap={2}>
-          <Typography variant="heading-200">Vertical</Typography>
+        <ShowcaseGroup label="Vertical">
           <ScrollArea className="h-48 w-64 rounded-md border border-border">
             <div className="p-4">
               {Array.from({ length: 20 }, (_, i) => (
@@ -26,9 +25,8 @@ export function ScrollAreaShowcase() {
               ))}
             </div>
           </ScrollArea>
-        </VStack>
-        <VStack gap={2}>
-          <Typography variant="heading-200">Horizontal</Typography>
+        </ShowcaseGroup>
+        <ShowcaseGroup label="Horizontal">
           <ScrollArea className="w-64 rounded-md border border-border">
             <div className="flex gap-4 p-4">
               {Array.from({ length: 10 }, (_, i) => (
@@ -43,7 +41,7 @@ export function ScrollAreaShowcase() {
             </div>
             <ScrollBar orientation="horizontal" />
           </ScrollArea>
-        </VStack>
+        </ShowcaseGroup>
       </HStack>
     </ShowcaseSection>
   )

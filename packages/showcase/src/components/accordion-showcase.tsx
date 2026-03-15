@@ -5,8 +5,7 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion'
 import { VStack } from '@/components/ui/stack'
-import { Typography } from '@/components/ui/typography'
-import { ShowcaseSection } from './showcase-section'
+import { ShowcaseGroup, ShowcaseSection } from './showcase-section'
 
 const faqItems = [
   {
@@ -30,8 +29,7 @@ export function AccordionShowcase() {
       description="Expandable content sections with multiple visual variants."
     >
       <VStack gap={6}>
-        <VStack gap={2}>
-          <Typography variant="heading-200">Default (bordered)</Typography>
+        <ShowcaseGroup label="Default (bordered)">
           <Accordion>
             {faqItems.map(({ q, a }) => (
               <AccordionItem key={q}>
@@ -40,9 +38,8 @@ export function AccordionShowcase() {
               </AccordionItem>
             ))}
           </Accordion>
-        </VStack>
-        <VStack gap={2}>
-          <Typography variant="heading-200">Flush (no border)</Typography>
+        </ShowcaseGroup>
+        <ShowcaseGroup label="Flush (no border)">
           <Accordion variant="flush">
             {faqItems.map(({ q, a }) => (
               <AccordionItem key={q}>
@@ -51,9 +48,8 @@ export function AccordionShowcase() {
               </AccordionItem>
             ))}
           </Accordion>
-        </VStack>
-        <VStack gap={2}>
-          <Typography variant="heading-200">Separated</Typography>
+        </ShowcaseGroup>
+        <ShowcaseGroup label="Separated">
           <Accordion variant="separated">
             {faqItems.map(({ q, a }) => (
               <AccordionItem key={q}>
@@ -62,7 +58,7 @@ export function AccordionShowcase() {
               </AccordionItem>
             ))}
           </Accordion>
-        </VStack>
+        </ShowcaseGroup>
       </VStack>
     </ShowcaseSection>
   )

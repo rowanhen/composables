@@ -1,8 +1,7 @@
 import * as React from 'react'
 import { TreeView } from '@/components/ui/tree-view'
 import { VStack } from '@/components/ui/stack'
-import { Typography } from '@/components/ui/typography'
-import { ShowcaseSection } from './showcase-section'
+import { ShowcaseGroup, ShowcaseSection } from './showcase-section'
 
 export function TreeViewShowcase() {
   return (
@@ -11,9 +10,7 @@ export function TreeViewShowcase() {
       description="ASCII-art collapsible tree. Click folders or use Enter/Space/Arrow keys to navigate."
     >
       <VStack gap={8}>
-        {/* Basic tree */}
-        <VStack gap={2}>
-          <Typography variant="heading-200">File system tree</Typography>
+        <ShowcaseGroup label="File system tree">
           <div className="border border-border rounded-md p-4 bg-muted/30 w-full max-w-[300px]">
             <TreeView title="my-project" isRoot defaultOpen>
               <TreeView title="src" defaultOpen>
@@ -40,11 +37,9 @@ export function TreeViewShowcase() {
               <TreeView title="tsconfig.json" isFile />
             </TreeView>
           </div>
-        </VStack>
+        </ShowcaseGroup>
 
-        {/* Collapsed by default */}
-        <VStack gap={2}>
-          <Typography variant="heading-200">Collapsed by default</Typography>
+        <ShowcaseGroup label="Collapsed by default">
           <div className="border border-border rounded-md p-4 bg-muted/30 w-full max-w-[260px]">
             <TreeView title="packages" isRoot>
               <TreeView title="cli">
@@ -59,7 +54,7 @@ export function TreeViewShowcase() {
               </TreeView>
             </TreeView>
           </div>
-        </VStack>
+        </ShowcaseGroup>
       </VStack>
     </ShowcaseSection>
   )

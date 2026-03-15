@@ -1,7 +1,6 @@
 import { CodeBlock } from '@/components/ui/code-block'
 import { VStack } from '@/components/ui/stack'
-import { Typography } from '@/components/ui/typography'
-import { ShowcaseSection } from './showcase-section'
+import { ShowcaseGroup, ShowcaseSection } from './showcase-section'
 
 const TYPESCRIPT_EXAMPLE = `import * as React from 'react'
 import { cn } from '@/lib/utils'
@@ -42,26 +41,23 @@ export function CodeBlockShowcase() {
       description="Monospace code display with line numbers and horizontal overflow scrolling."
     >
       <VStack gap={6}>
-        <VStack gap={2}>
-          <Typography variant="heading-200">TypeScript</Typography>
+        <ShowcaseGroup label="TypeScript">
           <div className="max-w-2xl">
             <CodeBlock>{TYPESCRIPT_EXAMPLE}</CodeBlock>
           </div>
-        </VStack>
+        </ShowcaseGroup>
 
-        <VStack gap={2}>
-          <Typography variant="heading-200">JSON</Typography>
+        <ShowcaseGroup label="JSON">
           <div className="max-w-lg">
             <CodeBlock>{JSON_EXAMPLE}</CodeBlock>
           </div>
-        </VStack>
+        </ShowcaseGroup>
 
-        <VStack gap={2}>
-          <Typography variant="heading-200">Inline / short snippet</Typography>
+        <ShowcaseGroup label="Inline / short snippet">
           <div className="max-w-xs">
             <CodeBlock>{`npm install @leitware/composables`}</CodeBlock>
           </div>
-        </VStack>
+        </ShowcaseGroup>
       </VStack>
     </ShowcaseSection>
   )

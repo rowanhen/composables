@@ -1,7 +1,7 @@
 import { Divider } from "@/components/ui/divider";
 import { HStack, VStack } from "@/components/ui/stack";
 import { Typography } from "@/components/ui/typography";
-import { ShowcaseSection } from "./showcase-section";
+import { ShowcaseGroup, ShowcaseSection } from "./showcase-section";
 
 const HORIZONTAL_VARIANTS = [
 	{ variant: "solid", label: "Solid" },
@@ -18,22 +18,20 @@ export function DividerShowcase() {
 			description="Semantic divider with 3 token-reactive variants. All variants respond to --radius: at zero radius you get sharp lines, squares, and rectangular dashes; at max radius the solid line becomes a long pill shape, dots become circles, and pills become capsules. Dots and pills derive their element dimensions from --border-width-base (dots are square at that size; pills use it as the thin dimension and double it for the long dimension). Gaps between elements use --spacing."
 		>
 			<VStack gap={8}>
-				{/* Horizontal variants */}
-				<VStack gap={6}>
-					<Typography variant="heading-200">Horizontal</Typography>
-					{HORIZONTAL_VARIANTS.map(({ variant, label }) => (
-						<VStack key={variant} gap={2}>
-							<Typography variant="caption-100" className="text-muted-foreground">
-								{label}
-							</Typography>
-							<Divider variant={variant} orientation="horizontal" />
-						</VStack>
-					))}
-				</VStack>
+				<ShowcaseGroup label="Horizontal">
+					<VStack gap={4}>
+						{HORIZONTAL_VARIANTS.map(({ variant, label }) => (
+							<VStack key={variant} gap={2}>
+								<Typography variant="caption-100" className="text-muted-foreground">
+									{label}
+								</Typography>
+								<Divider variant={variant} orientation="horizontal" />
+							</VStack>
+						))}
+					</VStack>
+				</ShowcaseGroup>
 
-				{/* Vertical variants */}
-				<VStack gap={4}>
-					<Typography variant="heading-200">Vertical</Typography>
+				<ShowcaseGroup label="Vertical">
 					<HStack gap={6} align="center" className="h-16">
 						{(["solid", "dots", "pills"] as const).map((variant) => (
 							<HStack key={variant} gap={4} align="center" className="h-full">
@@ -44,7 +42,7 @@ export function DividerShowcase() {
 							</HStack>
 						))}
 					</HStack>
-				</VStack>
+				</ShowcaseGroup>
 
 				{/* Align variants */}
 				<VStack gap={4}>

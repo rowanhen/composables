@@ -5,8 +5,8 @@
  *
  * Usage:
  *   <TreeView title="src" defaultOpen>
- *     <TreeView title="components" isLastChild>
- *       <TreeView title="Button.tsx" isFile isLastChild />
+ *     <TreeView title="components">
+ *       <TreeView title="Button.tsx" isFile />
  *     </TreeView>
  *   </TreeView>
  *
@@ -15,7 +15,7 @@
  */
 
 import * as React from 'react'
-import { cn } from '@/lib/utils'
+import { cn, FOCUS_RING } from '@/lib/utils'
 
 /* ─── Types ─── */
 
@@ -36,17 +36,23 @@ export interface TreeViewProps extends Omit<React.HTMLAttributes<HTMLDivElement>
 	isRoot?: boolean
 }
 
-/* ─── Tree characters ─── */
+/* ─── Tree characters ─────────────────────────────────────────────────────────
+ * Non-breaking spaces (\u00a0) are used for padding. Regular spaces collapse
+ * in HTML inline elements; \u00a0 never does, keeping the monospace grid intact
+ * without requiring white-space: pre on every span.
+ * All segments are 4 characters wide so indentation levels align exactly.
+ * ─────────────────────────────────────────────────────────────────────────── */
+
+const NBSP = '\u00a0'
 
 const CHARS = {
-	// Intentional dot-spacing: the dots render as spaces in the dockets tree aesthetic
-	pipe: '│ . ',
-	blank: '. . ',
-	branch: '├───',
-	last: '└───',
-	folderOpen: '╦ ',
-	folderClosed: '╤ ',
-	file: '  ',
+	pipe:         `│${NBSP}${NBSP}${NBSP}`, // 4 chars — vertical continuation line
+	blank:        `${NBSP}${NBSP}${NBSP}${NBSP}`, // 4 chars — gap where no line passes
+	branch:       `├──${NBSP}`, // 4 chars — non-last child connector
+	last:         `└──${NBSP}`, // 4 chars — last child connector
+	folderOpen:   `▾${NBSP}`,   // icon + spacing before label
+	folderClosed: `▸${NBSP}`,
+	file:         `·${NBSP}`,
 } as const
 
 /* ─── Component ─── */
@@ -97,7 +103,8 @@ const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
 			}
 		}
 
-		// Build the prefix string from parent line markers
+		// Build the prefix from parent line markers. Each level contributes exactly
+		// 4 chars: a pipe (│) if that ancestor still has siblings, blank otherwise.
 		const spacing = parentLines.map((line) => (line ? CHARS.pipe : CHARS.blank)).join('')
 		const endPrefix = depth === 0 ? '' : isLastChild ? CHARS.last : CHARS.branch
 		const prefix = `${spacing}${endPrefix}`
@@ -111,7 +118,7 @@ const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
 				data-slot="tree-view"
 				role={isRoot ? 'tree' : undefined}
 				aria-label={isRoot ? `tree: ${title}` : undefined}
-				className={cn('whitespace-nowrap font-mono text-sm rounded-lg overflow-hidden', className)}
+				className={cn('whitespace-nowrap font-mono text-xs', className)}
 				{...props}
 			>
 				{/* Node row — role="treeitem" lives here (the focusable element) */}
@@ -122,14 +129,28 @@ const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
 					onClick={toggle}
 					onKeyDown={handleKeyDown}
 					className={cn(
-						'flex items-center gap-0 rounded-sm pl-2 pr-1 py-px outline-none',
-						isFolder && 'cursor-pointer hover:bg-muted focus-visible:ring-[length:var(--border-width)] focus-visible:ring-ring/30',
+						'flex items-center gap-0 rounded-sm border border-transparent px-1.5 py-0.5 outline-none transition-colors',
+						isFolder && 'cursor-pointer hover:bg-muted',
+						FOCUS_RING,
 					)}
 					aria-label={`${isFolder ? (open ? 'collapse' : 'expand') : ''} ${title}`}
 				>
-					<span className="text-muted-foreground select-none">{prefix}</span>
-					<span className="text-muted-foreground select-none">{icon}</span>
-					<span className="text-foreground">{title}</span>
+					{/* Prefix includes all ancestor indentation + the branch connector.
+					    Non-breaking spaces in CHARS guarantee nothing collapses. */}
+					{depth > 0 && (
+						<span className="select-none text-muted-foreground/50 shrink-0">{prefix}</span>
+					)}
+					<span
+						className={cn(
+							'select-none shrink-0',
+							isFolder ? 'text-muted-foreground' : 'text-muted-foreground/50',
+						)}
+					>
+						{icon}
+					</span>
+					<span className={cn('text-foreground/80', isFolder && 'font-medium text-foreground')}>
+						{title}
+					</span>
 				</div>
 
 				{/* Children — only TreeView children receive injected layout props */}

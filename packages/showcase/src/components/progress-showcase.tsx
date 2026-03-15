@@ -7,8 +7,7 @@ import {
   ProgressValue,
 } from '@/components/ui/progress'
 import { HStack, VStack } from '@/components/ui/stack'
-import { Typography } from '@/components/ui/typography'
-import { ShowcaseSection } from './showcase-section'
+import { ShowcaseGroup, ShowcaseSection } from './showcase-section'
 
 export function ProgressShowcase() {
   const [animated, setAnimated] = React.useState(25)
@@ -26,9 +25,7 @@ export function ProgressShowcase() {
       description="Displays task completion status as a progress bar."
     >
       <VStack gap={6}>
-        {/* Basic */}
-        <VStack gap={2}>
-          <Typography variant="heading-200">Basic</Typography>
+        <ShowcaseGroup label="Basic">
           <VStack gap={3} className="max-w-md">
             <Progress value={0}>
               <ProgressTrack>
@@ -56,11 +53,9 @@ export function ProgressShowcase() {
               </ProgressTrack>
             </Progress>
           </VStack>
-        </VStack>
+        </ShowcaseGroup>
 
-        {/* With label and value */}
-        <VStack gap={2}>
-          <Typography variant="heading-200">With Label</Typography>
+        <ShowcaseGroup label="With Label">
           <VStack gap={3} className="max-w-md">
             <Progress value={65}>
               <HStack justify="between" className="mb-1">
@@ -81,11 +76,9 @@ export function ProgressShowcase() {
               </ProgressTrack>
             </Progress>
           </VStack>
-        </VStack>
+        </ShowcaseGroup>
 
-        {/* Animated */}
-        <VStack gap={2}>
-          <Typography variant="heading-200">Animated</Typography>
+        <ShowcaseGroup label="Animated">
           <div className="max-w-md">
             <Progress value={animated}>
               <HStack justify="between" className="mb-1">
@@ -97,11 +90,9 @@ export function ProgressShowcase() {
               </ProgressTrack>
             </Progress>
           </div>
-        </VStack>
+        </ShowcaseGroup>
 
-        {/* Custom colors */}
-        <VStack gap={2}>
-          <Typography variant="heading-200">Custom Colors</Typography>
+        <ShowcaseGroup label="Custom Colors">
           <VStack gap={3} className="max-w-md">
             <Progress value={80}>
               <ProgressTrack>
@@ -124,7 +115,7 @@ export function ProgressShowcase() {
               </ProgressTrack>
             </Progress>
           </VStack>
-        </VStack>
+        </ShowcaseGroup>
       </VStack>
     </ShowcaseSection>
   )

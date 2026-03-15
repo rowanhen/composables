@@ -4,8 +4,7 @@ import {
   ListBulletItem,
 } from '@/components/ui-opinionated/list'
 import { VStack } from '@/components/ui/stack'
-import { Typography } from '@/components/ui/typography'
-import { ShowcaseSection } from './showcase-section'
+import { ShowcaseGroup, ShowcaseSection } from './showcase-section'
 
 const STEPS = [
   { content: 'Install the CLI from npm' },
@@ -26,39 +25,35 @@ export function ListShowcase() {
       description="Variant list renderer: arrow and bullet styles."
     >
       <VStack gap={8}>
-        {/* Arrow */}
-        <VStack gap={2}>
-          <Typography variant="heading-200">Arrow variant</Typography>
+        <ShowcaseGroup label="Arrow variant">
           <div className="max-w-sm">
             <List variant="arrow" items={STEPS} />
           </div>
-        </VStack>
+        </ShowcaseGroup>
 
-        {/* Bullet */}
-        <VStack gap={2}>
-          <Typography variant="heading-200">Bullet variant</Typography>
+        <ShowcaseGroup label="Bullet variant">
           <div className="max-w-sm">
             <List variant="bullet" items={BASICS} />
           </div>
-        </VStack>
+        </ShowcaseGroup>
 
-        {/* Compositional (children) */}
-        <VStack gap={2}>
-          <Typography variant="heading-200">Compositional (children API)</Typography>
-          <div className="max-w-sm">
-            <List variant="arrow">
-              <ListArrowItem content="Hand-rolled item A" />
-              <ListArrowItem content="Hand-rolled item B with longer description text" />
-              <ListArrowItem content={<span className="font-semibold text-primary">Highlighted item C</span>} />
-            </List>
-          </div>
-          <div className="max-w-sm mt-4">
-            <List variant="bullet">
-              <ListBulletItem content="Bullet point A" />
-              <ListBulletItem content="Bullet point B with extra detail" />
-            </List>
-          </div>
-        </VStack>
+        <ShowcaseGroup label="Compositional (children API)">
+          <VStack gap={4}>
+            <div className="max-w-sm">
+              <List variant="arrow">
+                <ListArrowItem content="Hand-rolled item A" />
+                <ListArrowItem content="Hand-rolled item B with longer description text" />
+                <ListArrowItem content={<span className="font-semibold text-primary">Highlighted item C</span>} />
+              </List>
+            </div>
+            <div className="max-w-sm">
+              <List variant="bullet">
+                <ListBulletItem content="Bullet point A" />
+                <ListBulletItem content="Bullet point B with extra detail" />
+              </List>
+            </div>
+          </VStack>
+        </ShowcaseGroup>
       </VStack>
     </ShowcaseSection>
   )

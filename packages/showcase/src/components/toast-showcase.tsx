@@ -2,8 +2,7 @@ import { Loader2Icon } from 'lucide-react'
 import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
 import { HStack, VStack } from '@/components/ui/stack'
-import { Typography } from '@/components/ui/typography'
-import { ShowcaseSection } from './showcase-section'
+import { ShowcaseGroup, ShowcaseSection } from './showcase-section'
 
 export function ToastShowcase() {
   return (
@@ -12,8 +11,7 @@ export function ToastShowcase() {
       description="Toast notifications using sonner with design system variant styling."
     >
       <VStack gap={4}>
-        <VStack gap={2}>
-          <Typography variant="heading-200">Variants</Typography>
+        <ShowcaseGroup label="Variants">
           <HStack gap={2} wrap>
             <Button
               variant="outline"
@@ -66,9 +64,8 @@ export function ToastShowcase() {
               Info
             </Button>
           </HStack>
-        </VStack>
-        <VStack gap={2}>
-          <Typography variant="heading-200">With actions</Typography>
+        </ShowcaseGroup>
+        <ShowcaseGroup label="With actions">
           <HStack gap={2} wrap>
             <Button
               variant="outline"
@@ -99,9 +96,8 @@ export function ToastShowcase() {
               Error with action
             </Button>
           </HStack>
-        </VStack>
-        <VStack gap={2}>
-          <Typography variant="heading-200">Promise</Typography>
+        </ShowcaseGroup>
+        <ShowcaseGroup label="Promise">
           <Button
             variant="outline"
             onClick={() => {
@@ -115,7 +111,7 @@ export function ToastShowcase() {
           >
             Promise toast
           </Button>
-        </VStack>
+        </ShowcaseGroup>
       </VStack>
     </ShowcaseSection>
   )

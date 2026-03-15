@@ -76,6 +76,7 @@
 	--font-sans: "Inter Variable", sans-serif;
 	--font-heading: "Inter Variable", sans-serif;
 	--font-brand: "Inter Variable", sans-serif;
+	--font-mono: "JetBrains Mono Variable", monospace;
 
 	/* Border width — reactive at runtime */
 	--border-width: var(--border-width-base);
@@ -185,11 +186,11 @@
 
 @theme inline {
 	/* Container max-widths (breakpoint-aligned for page layout) */
-	--container-sm: 640px;
+	--container-sm: 624px;
 	--container-md: 768px;
-	--container-lg: 1024px;
-	--container-xl: 1280px;
-	--container-2xl: 1400px;
+	--container-lg: 1056px;
+	--container-xl: 1296px;
+	--container-2xl: 1440px;
 }
 
 @layer base {

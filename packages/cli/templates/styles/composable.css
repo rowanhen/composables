@@ -194,11 +194,11 @@
 	   (non-inline) so Tailwind generates var() references that remain
 	   runtime-changeable. Inline values are resolved at build time and
 	   cannot be overridden by preset CSS. */
-	--container-sm: 640px;
+	--container-sm: 624px;
 	--container-md: 768px;
-	--container-lg: 1024px;
-	--container-xl: 1280px;
-	--container-2xl: 1400px;
+	--container-lg: 1056px;
+	--container-xl: 1296px;
+	--container-2xl: 1440px;
 }
 
 @layer base {

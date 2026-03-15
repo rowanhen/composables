@@ -56,6 +56,21 @@ export function Swatch({
   )
 }
 
+export function ShowcaseGroup({
+  label,
+  children,
+}: {
+  label?: string
+  children: React.ReactNode
+}) {
+  return (
+    <VStack gap={2}>
+      {label && <Typography variant="heading-200">{label}</Typography>}
+      {children}
+    </VStack>
+  )
+}
+
 export function DemoBox({
   children,
   className,

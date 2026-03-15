@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button'
 import { Grid, GridItem } from '@/components/ui/grid'
 import { HStack, VStack } from '@/components/ui/stack'
 import { Typography } from '@/components/ui/typography'
-import { DemoBox, ShowcaseSection } from './showcase-section'
+import { DemoBox, ShowcaseGroup, ShowcaseSection } from './showcase-section'
 
 export function StackShowcase() {
   return (
@@ -13,28 +13,25 @@ export function StackShowcase() {
     >
       <Grid columns={12} gap={6}>
         <GridItem colSpan={6}>
-          <VStack gap={3}>
-            <Typography variant="heading-200">VStack (vertical)</Typography>
+          <ShowcaseGroup label="VStack (vertical)">
             <VStack gap={3} className="rounded-lg border border-border p-4">
               <DemoBox>Item 1</DemoBox>
               <DemoBox>Item 2</DemoBox>
               <DemoBox>Item 3</DemoBox>
             </VStack>
-          </VStack>
+          </ShowcaseGroup>
         </GridItem>
         <GridItem colSpan={6}>
-          <VStack gap={3}>
-            <Typography variant="heading-200">HStack (horizontal)</Typography>
+          <ShowcaseGroup label="HStack (horizontal)">
             <HStack gap={3} className="rounded-lg border border-border p-4">
               <DemoBox className="flex-1">1</DemoBox>
               <DemoBox className="flex-1">2</DemoBox>
               <DemoBox className="flex-1">3</DemoBox>
             </HStack>
-          </VStack>
+          </ShowcaseGroup>
         </GridItem>
         <GridItem colSpan={6}>
-          <VStack gap={3}>
-            <Typography variant="heading-200">justify="between"</Typography>
+          <ShowcaseGroup label='justify="between"'>
             <HStack
               justify="between"
               align="center"
@@ -43,11 +40,10 @@ export function StackShowcase() {
               <Typography variant="body-100">Left</Typography>
               <Button>Action</Button>
             </HStack>
-          </VStack>
+          </ShowcaseGroup>
         </GridItem>
         <GridItem colSpan={6}>
-          <VStack gap={3}>
-            <Typography variant="heading-200">Wrapping tags</Typography>
+          <ShowcaseGroup label="Wrapping tags">
             <HStack gap={2} wrap className="rounded-lg border border-border p-4">
               {Array.from({ length: 8 }, (_, i) => (
                 // biome-ignore lint/suspicious/noArrayIndexKey: static demo list
@@ -56,7 +52,7 @@ export function StackShowcase() {
                 </Badge>
               ))}
             </HStack>
-          </VStack>
+          </ShowcaseGroup>
         </GridItem>
       </Grid>
     </ShowcaseSection>

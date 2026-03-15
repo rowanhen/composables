@@ -9,9 +9,7 @@ import {
 } from '@/components/ui/card'
 import { Grid } from '@/components/ui/grid'
 import { Skeleton } from '@/components/ui/skeleton'
-import { VStack } from '@/components/ui/stack'
-import { Typography } from '@/components/ui/typography'
-import { ShowcaseSection } from './showcase-section'
+import { ShowcaseGroup, ShowcaseSection } from './showcase-section'
 
 export function ResponsiveGridShowcase() {
   return (
@@ -19,8 +17,7 @@ export function ResponsiveGridShowcase() {
       title="Responsive Grid"
       description="Grid with Tailwind responsive prefixes. Resize the window to see changes."
     >
-      <VStack gap={6}>
-        <Typography variant="heading-200">Card grid (1 → 2 → 3 cols)</Typography>
+      <ShowcaseGroup label="Card grid (1 → 2 → 3 cols)">
         <Grid columns={1} gap={6} className="sm:grid-cols-2 lg:grid-cols-3">
           {[
             ['Policies', 'Manage insurance policies'],
@@ -46,7 +43,7 @@ export function ResponsiveGridShowcase() {
             </Card>
           ))}
         </Grid>
-      </VStack>
+      </ShowcaseGroup>
     </ShowcaseSection>
   )
 }

@@ -12,7 +12,7 @@ import { Button } from '@/components/ui/button'
 import { Icon } from '@/components/ui/icon'
 import { HStack, VStack } from '@/components/ui/stack'
 import { Typography } from '@/components/ui/typography'
-import { ShowcaseSection } from './showcase-section'
+import { ShowcaseGroup, ShowcaseSection } from './showcase-section'
 
 export function IconShowcase() {
   return (
@@ -21,9 +21,7 @@ export function IconShowcase() {
       description="Wrapper component for consistent icon sizing, colour inheritance, and spin animation."
     >
       <VStack gap={4}>
-        {/* Sizes */}
-        <VStack gap={2}>
-          <Typography variant="heading-200">Sizes</Typography>
+        <ShowcaseGroup label="Sizes">
           <HStack gap={4} align="center">
             {(['xs', 'sm', 'md', 'lg', 'xl'] as const).map((size) => (
               <VStack key={size} gap={1} align="center">
@@ -34,11 +32,9 @@ export function IconShowcase() {
               </VStack>
             ))}
           </HStack>
-        </VStack>
+        </ShowcaseGroup>
 
-        {/* Spin */}
-        <VStack gap={2}>
-          <Typography variant="heading-200">Spin animation</Typography>
+        <ShowcaseGroup label="Spin animation">
           <HStack gap={4} align="center">
             <Icon spin>
               <LoaderIcon />
@@ -50,11 +46,9 @@ export function IconShowcase() {
               <LoaderIcon />
             </Icon>
           </HStack>
-        </VStack>
+        </ShowcaseGroup>
 
-        {/* Colour inheritance */}
-        <VStack gap={2}>
-          <Typography variant="heading-200">Colour inheritance</Typography>
+        <ShowcaseGroup label="Colour inheritance">
           <HStack gap={4} align="center">
             <span className="text-foreground">
               <Icon size="lg">
@@ -77,11 +71,9 @@ export function IconShowcase() {
               </Icon>
             </span>
           </HStack>
-        </VStack>
+        </ShowcaseGroup>
 
-        {/* Inside Button */}
-        <VStack gap={2}>
-          <Typography variant="heading-200">Inside Button</Typography>
+        <ShowcaseGroup label="Inside Button">
           <HStack gap={3} align="center">
             <Button size="sm">
               <Icon size="sm">
@@ -102,11 +94,9 @@ export function IconShowcase() {
               Settings
             </Button>
           </HStack>
-        </VStack>
+        </ShowcaseGroup>
 
-        {/* Inside Badge */}
-        <VStack gap={2}>
-          <Typography variant="heading-200">Inside Badge</Typography>
+        <ShowcaseGroup label="Inside Badge">
           <HStack gap={3} align="center">
             <Badge variant="default">
               <Icon size="xs">
@@ -127,7 +117,7 @@ export function IconShowcase() {
               Healthy
             </Badge>
           </HStack>
-        </VStack>
+        </ShowcaseGroup>
       </VStack>
     </ShowcaseSection>
   )

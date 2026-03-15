@@ -19,7 +19,7 @@ import {
 import { Glyph } from "@/components/ui/glyph"
 import { VStack } from "@/components/ui/stack"
 import { Typography } from "@/components/ui/typography"
-import { ShowcaseSection } from "./showcase-section"
+import { ShowcaseGroup, ShowcaseSection } from "./showcase-section"
 
 // ── Demo content helpers ──────────────────────────────────────────────────────
 
@@ -68,11 +68,10 @@ function ChartPlaceholder({ label }: { label: string }) {
 
 function BentoSplitDemo() {
 	return (
-		<VStack gap={4}>
-			<Typography variant="heading-300">BentoSplit</Typography>
-			<p className="text-xs text-muted-foreground">
+		<ShowcaseGroup label="BentoSplit">
+			<Typography variant="body-100" className="text-muted-foreground">
 				Fixed 200px icon panel (spans both rows) | content + stats stacked in the second column.
-			</p>
+			</Typography>
 			<BentoSplit
 				icon={
 					<VStack gap={2} align="center">
@@ -110,17 +109,16 @@ function BentoSplitDemo() {
 					</div>
 				}
 			/>
-		</VStack>
+		</ShowcaseGroup>
 	)
 }
 
 function BentoLeaderDemo() {
 	return (
-		<VStack gap={4}>
-			<Typography variant="heading-300">BentoLeader</Typography>
-			<p className="text-xs text-muted-foreground">
+		<ShowcaseGroup label="BentoLeader">
+			<Typography variant="body-100" className="text-muted-foreground">
 				Full-width header spanning all columns, then N equal columns below.
-			</p>
+			</Typography>
 			<BentoLeader
 				header={
 					<ChartPlaceholder label="Monthly Revenue — Jan to Dec 2024" />
@@ -145,17 +143,16 @@ function BentoLeaderDemo() {
 					<MetricContent key="e" label="Errors" value="0.01%" trend="Last 24h" />,
 				]}
 			/>
-		</VStack>
+		</ShowcaseGroup>
 	)
 }
 
 function BentoQuadDemo() {
 	return (
-		<VStack gap={4}>
-			<Typography variant="heading-300">BentoQuad</Typography>
-			<p className="text-xs text-muted-foreground">
+		<ShowcaseGroup label="BentoQuad">
+			<Typography variant="body-100" className="text-muted-foreground">
 				2×2 grid with [2fr | 1fr] column ratio. Mobile: stacked.
-			</p>
+			</Typography>
 			<BentoQuad
 				topLeft={
 					<div className="p-4">
@@ -191,17 +188,16 @@ function BentoQuadDemo() {
 					<MetricContent label="Open PRs" value="7" trend="3 awaiting review" />
 				}
 			/>
-		</VStack>
+		</ShowcaseGroup>
 	)
 }
 
 function BentoTripleDemo() {
 	return (
-		<VStack gap={4}>
-			<Typography variant="heading-300">BentoTriple</Typography>
-			<p className="text-xs text-muted-foreground">
+		<ShowcaseGroup label="BentoTriple">
+			<Typography variant="body-100" className="text-muted-foreground">
 				Header (full width) | aside + body | footer (full width). Aside = [1fr], body = [2fr].
-			</p>
+			</Typography>
 			<BentoTriple
 				header={
 					<div className="p-4 flex items-center justify-between">
@@ -234,17 +230,16 @@ function BentoTripleDemo() {
 					</div>
 				}
 			/>
-		</VStack>
+		</ShowcaseGroup>
 	)
 }
 
 function CellGridDemo() {
 	return (
-		<VStack gap={4}>
-			<Typography variant="heading-300">CellGrid + StatCell</Typography>
-			<p className="text-xs text-muted-foreground">
+		<ShowcaseGroup label="CellGrid + StatCell">
+			<Typography variant="body-100" className="text-muted-foreground">
 				Equal-column grid using gap-as-border. StatCell is the canonical cell child.
-			</p>
+			</Typography>
 			<VStack gap={4}>
 				<div>
 					<div className="text-xs text-muted-foreground mb-2">2-column</div>
@@ -281,17 +276,16 @@ function CellGridDemo() {
 					</CellGrid>
 				</div>
 			</VStack>
-		</VStack>
+		</ShowcaseGroup>
 	)
 }
 
 function CellRowDemo() {
 	return (
-		<VStack gap={4}>
-			<Typography variant="heading-300">CellRow</Typography>
-			<p className="text-xs text-muted-foreground">
+		<ShowcaseGroup label="CellRow">
+			<Typography variant="body-100" className="text-muted-foreground">
 				Flex-direction flip — mobile: stacked, desktop: side-by-side. Uses gap-as-divider.
-			</p>
+			</Typography>
 			<VStack gap={3}>
 				<CellRow>
 					<div className="bg-card p-4 md:w-48 md:shrink-0">
@@ -323,17 +317,16 @@ function CellRowDemo() {
 					</div>
 				</CellRow>
 			</VStack>
-		</VStack>
+		</ShowcaseGroup>
 	)
 }
 
 function BentoGridDemo() {
 	return (
-		<VStack gap={4}>
-			<Typography variant="heading-300">BentoGrid + BentoCell</Typography>
-			<p className="text-xs text-muted-foreground">
+		<ShowcaseGroup label="BentoGrid + BentoCell">
+			<Typography variant="body-100" className="text-muted-foreground">
 				General-purpose grid with col/row span control. Background = border color; gap exposes it as lines.
-			</p>
+			</Typography>
 			<BentoGrid cols={3}>
 				<BentoCell colSpan={2}>
 					<ChartPlaceholder label="Revenue Trend" />
@@ -351,7 +344,7 @@ function BentoGridDemo() {
 					<MetricContent label="LTV" value="$1,248" trend="↑ $88 vs prev" />
 				</BentoCell>
 			</BentoGrid>
-		</VStack>
+		</ShowcaseGroup>
 	)
 }
 
