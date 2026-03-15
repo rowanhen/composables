@@ -11,7 +11,6 @@ permissions:
 jobs:
   release:
     runs-on: ubuntu-latest
-    # Skip the version bump commit pushed by this workflow to avoid an infinite loop
     if: "!startsWith(github.event.head_commit.message, 'chore: release')"
     steps:
       - name: Checkout
@@ -44,7 +43,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          registry-url: "https://registry.npmjs.org"
+          registry-url: 'https://registry.npmjs.org'
 
       - name: Update npm
         run: npm install -g npm@latest
@@ -59,8 +58,9 @@ jobs:
 
       - name: Bump version
         id: version
+        working-directory: packages/cli
         run: |
-          NEW_VERSION=$(npm --prefix packages/cli version ${{ steps.bump.outputs.type }} --no-git-tag-version)
+          NEW_VERSION=$(npm version ${{ steps.bump.outputs.type }} --no-git-tag-version)
           echo "version=${NEW_VERSION#v}" >> $GITHUB_OUTPUT
           echo "tag=$NEW_VERSION" >> $GITHUB_OUTPUT
 
