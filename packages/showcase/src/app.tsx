@@ -56,6 +56,7 @@ import {
 	SkeletonShowcase,
 	SliderShowcase,
 	SpacingShowcase,
+	SidebarShowcase,
 	StackShowcase,
 	TableShowcase,
 	TabsShowcase,
@@ -91,7 +92,7 @@ const GRID_OVERLAY_STYLE: React.CSSProperties = {
 			transparent calc(var(--spacing) * 12)
 		)
 	`,
-	backgroundPosition: "center center",
+	backgroundPosition: "center top",
 };
 
 /* ---- APP ---- */
@@ -200,6 +201,7 @@ export function App() {
 					<ToastShowcase />
 
 					{/* Navigation */}
+					<SidebarShowcase />
 					<TabsShowcase />
 					<BreadcrumbShowcase />
 					<PaginationShowcase />
