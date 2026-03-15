@@ -47,6 +47,8 @@ export interface LineItemProps extends Omit<React.ComponentProps<"div">, "childr
 	hideDivider?: boolean
 	/** Multiplier for pills width when dividerVariant="pills". Passed to Divider's pillsMultiplier prop. */
 	pillsMultiplier?: number
+	/** Vertical alignment of the divider within its line. @default "end" */
+	dividerAlign?: "start" | "center" | "end"
 }
 
 function LineItem({
@@ -56,6 +58,7 @@ function LineItem({
 	dividerVariant = "dots",
 	hideDivider = false,
 	pillsMultiplier,
+	dividerAlign = "end",
 	className,
 	...props
 }: LineItemProps) {
@@ -77,6 +80,7 @@ function LineItem({
 						<span className="flex-1 min-w-[2ch]" aria-hidden>
 							<Divider
 								variant={dividerVariant}
+								align={dividerAlign}
 								{...(pillsMultiplier !== undefined
 									? { pillsMultiplier }
 									: {})}

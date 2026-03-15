@@ -9,6 +9,8 @@ const HORIZONTAL_VARIANTS = [
 	{ variant: "pills", label: "Pills" },
 ] as const;
 
+const ALIGN_OPTIONS = ["start", "center", "end"] as const;
+
 export function DividerShowcase() {
 	return (
 		<ShowcaseSection
@@ -44,10 +46,37 @@ export function DividerShowcase() {
 					</HStack>
 				</VStack>
 
+				{/* Align variants */}
+				<VStack gap={4}>
+					<Typography variant="heading-200">Alignment</Typography>
+					<Typography variant="caption-100" className="text-muted-foreground">
+						Position the divider at the start, center, or end of its containing line.
+					</Typography>
+					{(["dots", "pills"] as const).map((variant) => (
+						<VStack key={variant} gap={3}>
+							<Typography variant="caption-100" className="text-muted-foreground capitalize">
+								{variant}
+							</Typography>
+							<HStack gap={6} align="start">
+								{ALIGN_OPTIONS.map((align) => (
+									<VStack key={align} gap={1} className="flex-1">
+										<Typography variant="caption-100" className="text-muted-foreground text-xs">
+											{align}
+										</Typography>
+										<div className="flex items-center h-6 border border-border/40 rounded px-2">
+											<Divider variant={variant} align={align} />
+										</div>
+									</VStack>
+								))}
+							</HStack>
+						</VStack>
+					))}
+				</VStack>
+
 				{/* Token reactivity callout */}
 				<div className="rounded-[var(--radius)] border border-border bg-muted/40 p-4">
 					<Typography variant="caption-100" className="text-muted-foreground">
-						💡 Switch presets using the token panel — all variants morph with the tokens.{" "}
+						Switch presets using the token panel — all variants morph with the tokens.{" "}
 						<strong>Solid</strong> gains border-radius (becoming a long pill at max),{" "}
 						<strong>dots</strong> shift from squares to circles, and <strong>pills</strong> go from
 						rectangular dashes to capsules.{" "}
