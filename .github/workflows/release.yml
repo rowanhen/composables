@@ -21,7 +21,6 @@ permissions:
 jobs:
   release:
     runs-on: ubuntu-latest
-    environment: npm
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -57,7 +56,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          registry-url: https://registry.npmjs.org
 
       - name: Update npm
         run: npm install -g npm@latest
@@ -74,10 +72,9 @@ jobs:
         id: version
         working-directory: packages/cli
         run: |
-          npm version ${{ steps.bump.outputs.type }} --no-git-tag-version
-          NEW_VERSION=$(node -p "require('./package.json').version")
-          echo "version=$NEW_VERSION" >> $GITHUB_OUTPUT
-          echo "tag=v$NEW_VERSION" >> $GITHUB_OUTPUT
+          NEW_VERSION=$(npm version ${{ steps.bump.outputs.type }} --no-git-tag-version)
+          echo "version=${NEW_VERSION#v}" >> $GITHUB_OUTPUT
+          echo "tag=$NEW_VERSION" >> $GITHUB_OUTPUT
 
       - name: Build
         run: bun run build
@@ -88,8 +85,6 @@ jobs:
       - name: Publish to npm
         working-directory: packages/cli
         run: npm publish --provenance --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Commit and tag
         run: |
@@ -101,6 +96,8 @@ jobs:
           git push origin HEAD --tags
 
       - name: Create GitHub Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh release create "${{ steps.version.outputs.tag }}" \
             --title "${{ steps.version.outputs.tag }}" \
