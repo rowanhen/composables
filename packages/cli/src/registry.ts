@@ -510,7 +510,7 @@ export const registry: Record<string, ComponentEntry> = {
 	// ─── Opinionated UI Components ───────────────────────────────────────
 	"pricing-card": {
 		name: "pricing-card",
-		description: "Receipt-styled opinionated pricing card. Accepts a PricingProduct data shape and renders a full card with header, feature list, total, and CTA button.",
+		description: "Pricing card with ledger-style layout using composables primitives. Accepts a PricingProduct data shape and renders a full card with header, feature list, total, and CTA button.",
 		files: [{ src: "templates/ui-opinionated/pricing-card.tsx", dest: "components/ui-opinionated/pricing-card.tsx" }],
 		deps: [],
 		internalDeps: ["button", "divider", "line-item-header", "typography"],

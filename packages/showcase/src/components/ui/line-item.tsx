@@ -46,7 +46,7 @@ export interface LineItemProps extends Omit<React.ComponentProps<"div">, "childr
 	/** Hides the divider but preserves the spacing/layout between label and value. Only applies when variant="fill". */
 	hideDivider?: boolean
 	/** Multiplier for pills width when dividerVariant="pills". Passed to Divider's pillsMultiplier prop. */
-	dividerPillsMultiplier?: number
+	pillsMultiplier?: number
 }
 
 function LineItem({
@@ -55,7 +55,7 @@ function LineItem({
 	variant = "default",
 	dividerVariant = "dots",
 	hideDivider = false,
-	dividerPillsMultiplier,
+	pillsMultiplier,
 	className,
 	...props
 }: LineItemProps) {
@@ -77,8 +77,8 @@ function LineItem({
 						<span className="flex-1 min-w-[2ch]" aria-hidden>
 							<Divider
 								variant={dividerVariant}
-								{...(dividerPillsMultiplier !== undefined
-									? { pillsMultiplier: dividerPillsMultiplier }
+								{...(pillsMultiplier !== undefined
+									? { pillsMultiplier }
 									: {})}
 							/>
 						</span>

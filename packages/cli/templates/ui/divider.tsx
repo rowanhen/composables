@@ -52,7 +52,7 @@ const dividerVariants = cva("shrink-0", {
 	},
 });
 
-type DividerVariants = VariantProps<typeof dividerVariants>;
+export type DividerVariants = VariantProps<typeof dividerVariants>;
 
 interface DividerProps extends React.HTMLAttributes<HTMLDivElement> {
 	variant?: DividerVariants["variant"];
@@ -135,4 +135,4 @@ function Divider({
 }
 
 export { Divider, dividerVariants };
-export type { DividerProps };
+export type { DividerProps, DividerVariants };
