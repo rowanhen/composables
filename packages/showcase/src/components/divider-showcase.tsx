@@ -13,7 +13,7 @@ export function DividerShowcase() {
 	return (
 		<ShowcaseSection
 			title="Divider"
-			description="Semantic divider with 3 token-reactive variants. All variants respond to --radius: at zero radius you get sharp lines, squares, and rectangular dashes; at max radius the solid line becomes a long pill shape, dots become circles, and pills become capsules. The dots and pills variants also respond to --spacing for gap and sizing."
+			description="Semantic divider with 3 token-reactive variants. All variants respond to --radius: at zero radius you get sharp lines, squares, and rectangular dashes; at max radius the solid line becomes a long pill shape, dots become circles, and pills become capsules. Dots and pills derive their element dimensions from --border-width-base (dots are square at that size; pills use it as the thin dimension and double it for the long dimension). Gaps between elements use --spacing."
 		>
 			<VStack gap={8}>
 				{/* Horizontal variants */}
@@ -50,10 +50,12 @@ export function DividerShowcase() {
 						💡 Switch presets using the token panel — all variants morph with the tokens.{" "}
 						<strong>Solid</strong> gains border-radius (becoming a long pill at max),{" "}
 						<strong>dots</strong> shift from squares to circles, and <strong>pills</strong> go from
-						rectangular dashes to capsules. All driven by{" "}
-						<code className="font-mono text-xs">--radius</code>,{" "}
-						<code className="font-mono text-xs">--border-width-base</code>, and{" "}
-						<code className="font-mono text-xs">--spacing</code>.
+						rectangular dashes to capsules.{" "}
+						<strong>Dots and pills</strong> size their elements from{" "}
+						<code className="font-mono text-xs">--border-width-base</code> — increase it for chunkier
+						dots/pills. Gaps between elements are controlled by{" "}
+						<code className="font-mono text-xs">--spacing</code>, and corner rounding by{" "}
+						<code className="font-mono text-xs">--radius</code>.
 					</Typography>
 				</div>
 			</VStack>

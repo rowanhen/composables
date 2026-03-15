@@ -28,22 +28,22 @@ const dividerVariants = cva("shrink-0", {
 		{
 			variant: "dots",
 			orientation: "horizontal",
-			class: "flex-row gap-[calc(var(--spacing)*2)] h-[calc(var(--spacing)*2)] w-full",
+			class: "flex-row gap-[calc(var(--spacing)*2)] h-[var(--border-width-base)] w-full",
 		},
 		{
 			variant: "dots",
 			orientation: "vertical",
-			class: "flex-col gap-[calc(var(--spacing)*2)] w-[calc(var(--spacing)*2)] h-full",
+			class: "flex-col gap-[calc(var(--spacing)*2)] w-[var(--border-width-base)] h-full",
 		},
 		{
 			variant: "pills",
 			orientation: "horizontal",
-			class: "flex-row gap-[calc(var(--spacing)*2)] h-[max(var(--border-width-base),4px)] w-full",
+			class: "flex-row gap-[calc(var(--spacing)*2)] h-[var(--border-width-base)] w-full",
 		},
 		{
 			variant: "pills",
 			orientation: "vertical",
-			class: "flex-col gap-[calc(var(--spacing)*2)] w-[max(var(--border-width-base),4px)] h-full",
+			class: "flex-col gap-[calc(var(--spacing)*2)] w-[var(--border-width-base)] h-full",
 		},
 	],
 	defaultVariants: {
@@ -69,8 +69,8 @@ function DotsContent({ orientation }: { orientation: "horizontal" | "vertical" }
 					className="bg-border shrink-0"
 					style={{
 						borderRadius: "var(--radius)",
-						width: "calc(var(--spacing) * 2)",
-						height: "calc(var(--spacing) * 2)",
+						width: "var(--border-width-base)",
+						height: "var(--border-width-base)",
 					}}
 				/>
 			))}
@@ -90,12 +90,12 @@ function PillsContent({ orientation }: { orientation: "horizontal" | "vertical" 
 						borderRadius: "var(--radius)",
 						height:
 							orientation === "horizontal"
-								? "max(var(--border-width-base), 4px)"
-								: "calc(var(--spacing) * 4)",
+								? "var(--border-width-base)"
+								: "calc(var(--border-width-base) * 2)",
 						width:
 							orientation === "horizontal"
-								? "calc(var(--spacing) * 4)"
-								: "max(var(--border-width-base), 4px)",
+								? "calc(var(--border-width-base) * 2)"
+								: "var(--border-width-base)",
 					}}
 				/>
 			))}
