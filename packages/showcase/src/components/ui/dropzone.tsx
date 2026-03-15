@@ -366,7 +366,7 @@ function DropZoneArea({ children, className }: DropZoneAreaProps) {
 			data-drag-accept={isDragAccept || undefined}
 			data-drag-reject={isDragReject || undefined}
 			className={cn(
-				"rounded-xl border p-8 transition-[opacity,box-shadow]",
+				"rounded-[var(--radius-xl)] border p-8 transition-[opacity,box-shadow]",
 				disabled ? "cursor-not-allowed opacity-50" : "cursor-pointer",
 				isDragActive && "border-primary bg-accent",
 				isDragReject && "border-stroke-critical bg-destructive/10",
@@ -416,7 +416,7 @@ function DropZoneContent({
 		>
 			<div
 				className={cn(
-					"text-muted-foreground mb-3 flex size-10 items-center justify-center rounded-lg border transition-[opacity,box-shadow]",
+					"text-muted-foreground mb-3 flex size-10 items-center justify-center rounded-[var(--radius)] border transition-[opacity,box-shadow]",
 					isDragAccept && "border-primary text-primary",
 					isDragReject && "border-stroke-critical text-destructive",
 				)}
@@ -460,7 +460,7 @@ function DropZoneFile({
 
 	return (
 		<div className={cn("flex items-center gap-3", className)}>
-			<div className="text-muted-foreground flex size-10 shrink-0 items-center justify-center rounded-lg border">
+			<div className="text-muted-foreground flex size-10 shrink-0 items-center justify-center rounded-[var(--radius)] border">
 				<FileIcon className="size-5" />
 			</div>
 			<div className="flex min-w-0 flex-1 flex-col gap-0.5">

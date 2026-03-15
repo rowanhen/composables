@@ -41,24 +41,6 @@ function ReceiptCard({
 
 // ── Sub-sections ─────────────────────────────────────────────────────────────
 
-function DividerVariants() {
-	return (
-		<VStack gap={4}>
-			<Typography variant="heading-300">Divider Variants</Typography>
-			<ReceiptCard title="All 3 variants" width="w-80">
-				<div className="space-y-1">
-					<div className="text-[10px] text-muted-foreground uppercase">dots (default)</div>
-					<Divider variant="dots" className="my-2" />
-					<div className="text-[10px] text-muted-foreground uppercase">pills</div>
-					<Divider variant="pills" className="my-2" />
-					<div className="text-[10px] text-muted-foreground uppercase">solid</div>
-					<Divider variant="solid" className="my-2" />
-				</div>
-			</ReceiptCard>
-		</VStack>
-	)
-}
-
 function RowVariants() {
 	return (
 		<VStack gap={4}>
@@ -331,7 +313,6 @@ export function ReceiptShowcase() {
 			description="Thermal receipt-inspired layout primitives for information-dense data UIs. All components adapt to the active preset's base tokens."
 		>
 			<VStack gap={12}>
-				<DividerVariants />
 				<RowVariants />
 				<SectionLabelVariants />
 				<DataTableDemo />

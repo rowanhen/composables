@@ -1,12 +1,19 @@
 /**
+ * MIGRATION NOTE: The `check` variant was removed. Use `check-bordered` instead.
+ *   Before: <List variant="check" ... />
+ *   After:  <List variant="check-bordered" ... />
+ * ListCheckItem has also been removed — use ListCheckBorderedItem for compositional use.
+ */
+
+/**
  * List (opinionated)
  * ─────────────────────────────────────────────────────────────────────────────
- * Variant list renderer: arrow | check | check-bordered | bullet.
+ * Variant list renderer: arrow | check-bordered | bullet.
  * Builds on the composables item primitive for consistent sizing and tokens.
  *
  * Usage:
  *   // Data-driven:
- *   <List variant="check" items={[{ content: "Feature one" }, { content: "Feature two" }]} />
+ *   <List variant="check-bordered" items={[{ content: "Feature one" }, { content: "Feature two" }]} />
  *
  *   // Compositional:
  *   <List variant="arrow">
@@ -27,7 +34,7 @@ export interface ListItemData {
 
 /* ─── Variants ─── */
 
-export type ListVariant = 'arrow' | 'check' | 'check-bordered' | 'bullet'
+export type ListVariant = 'arrow' | 'check-bordered' | 'bullet'
 
 /* ─── Item renderers ─── */
 
@@ -35,15 +42,6 @@ function ArrowItem({ content }: ListItemData) {
 	return (
 		<li className="flex items-start gap-3">
 			<span className="text-primary text-sm select-none" aria-hidden="true">→</span>
-			<span className="text-muted-foreground text-sm">{content}</span>
-		</li>
-	)
-}
-
-function CheckItem({ content }: ListItemData) {
-	return (
-		<li className="flex items-start gap-3">
-			<Check className="w-4 h-4 text-primary flex-shrink-0 mt-1" aria-hidden="true" />
 			<span className="text-muted-foreground text-sm">{content}</span>
 		</li>
 	)
@@ -64,7 +62,6 @@ function BulletItem({ content }: ListItemData) {
 
 const VARIANT_ITEM: Record<ListVariant, React.FC<ListItemData>> = {
 	arrow: ArrowItem,
-	check: CheckItem,
 	'check-bordered': CheckBorderedItem,
 	bullet: BulletItem,
 }
@@ -73,7 +70,6 @@ const listVariants = cva('', {
 	variants: {
 		variant: {
 			arrow: 'space-y-4',
-			check: 'space-y-3',
 			'check-bordered': 'grid md:grid-cols-2 gap-4',
 			bullet: 'list-disc list-inside space-y-1',
 		},
@@ -119,7 +115,6 @@ function List({ items, variant, className, children }: ListProps) {
 export {
 	List,
 	ArrowItem as ListArrowItem,
-	CheckItem as ListCheckItem,
 	CheckBorderedItem as ListCheckBorderedItem,
 	BulletItem as ListBulletItem,
 }
