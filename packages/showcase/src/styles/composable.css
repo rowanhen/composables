@@ -319,6 +319,17 @@
 		outline-offset: var(--focus-ring-offset);
 	}
 
+	/* Prevent iOS Safari auto-zoom on input focus.
+	   Safari zooms when font-size < 16px. This sets a 16px floor on mobile
+	   touch devices without affecting desktop sizing. */
+	@media (hover: none) and (pointer: coarse) {
+		input,
+		textarea,
+		select {
+			font-size: max(1em, 16px);
+		}
+	}
+
 	body {
 		@apply font-sans bg-background text-foreground text-sm antialiased;
 	}
