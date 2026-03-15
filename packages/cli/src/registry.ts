@@ -44,14 +44,6 @@ export const registry: Record<string, ComponentEntry> = {
 		internalDeps: [],
 		tags: ["hook"],
 	},
-	"use-breadcrumbs": {
-		name: "use-breadcrumbs",
-		description: "Hook to generate breadcrumbs from TanStack Router matches",
-		files: [{ src: "templates/hooks/use-breadcrumbs.ts", dest: "hooks/use-breadcrumbs.ts" }],
-		deps: ["@tanstack/react-router"],
-		internalDeps: [],
-		tags: ["hook"],
-	},
 	"use-numeric-input": {
 		name: "use-numeric-input",
 		description: "Hook for numeric input handling with sanitization and parsing",
