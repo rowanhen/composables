@@ -1,25 +1,21 @@
 /**
- * PricingReceipt (opinionated)
+ * PricingCard (opinionated)
  * ─────────────────────────────────────────────────────────────────────────────
  * Receipt-styled pricing card. Composes composables primitives:
- *   - Divider / SectionLabel from receipt
+ *   - Divider from divider
+ *   - LineItemHeader from line-item-header
  *   - Typography for all text
  *   - Button for the CTA
  *
- * All colors come from composables semantic tokens (bg-card, bg-muted,
- * text-muted-foreground, bg-foreground, text-background, etc.).
- *
  * Usage:
- *   <PricingReceipt product={myProduct} />
+ *   <PricingCard product={myProduct} />
  */
 
 import { Divider } from '@/components/ui/divider'
-import { SectionLabel } from '@/components/ui/receipt'
+import { LineItemHeader } from '@/components/ui/line-item-header'
 import { Typography } from '@/components/ui/typography'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
-
-/* ─── Types ─── */
 
 export interface PricingProduct {
 	id: string
@@ -33,23 +29,20 @@ export interface PricingProduct {
 	learnMoreLink?: string
 }
 
-export interface PricingReceiptProps {
+export interface PricingCardProps {
 	product: PricingProduct
 	className?: string
 }
 
-/* ─── Component ─── */
-
-export function PricingReceipt({ product, className }: PricingReceiptProps) {
+export function PricingCard({ product, className }: PricingCardProps) {
 	return (
 		<div
-			data-slot="pricing-receipt"
+			data-slot="pricing-card"
 			className={cn(
 				'bg-card border border-border rounded-lg w-full flex-1 p-6 leading-tight font-mono',
 				className,
 			)}
 		>
-			{/* Header */}
 			<div className="text-center mb-3">
 				<Typography variant="heading-200" as="div" className="mb-1 font-mono">
 					# {product.orderNum}
@@ -64,9 +57,8 @@ export function PricingReceipt({ product, className }: PricingReceiptProps) {
 
 			<Divider variant="pills" className="my-2" />
 
-			<SectionLabel className="mb-2">INCLUDES</SectionLabel>
+			<LineItemHeader className="mb-2">INCLUDES</LineItemHeader>
 
-			{/* Line items */}
 			<div className="mb-4 space-y-1">
 				{product.items.map((item) => (
 					<div key={item.name} className="flex justify-between items-start">
@@ -82,7 +74,6 @@ export function PricingReceipt({ product, className }: PricingReceiptProps) {
 
 			<Divider variant="pills" className="my-2" />
 
-			{/* Total */}
 			<div className="mb-4 flex justify-between items-baseline">
 				<Typography variant="label-100" as="span">
 					TOTAL:
@@ -92,7 +83,6 @@ export function PricingReceipt({ product, className }: PricingReceiptProps) {
 				</Typography>
 			</div>
 
-			{/* CTA */}
 			<Button
 				variant="default"
 				size="lg"
@@ -102,7 +92,6 @@ export function PricingReceipt({ product, className }: PricingReceiptProps) {
 				{product.cta}
 			</Button>
 
-			{/* Footer */}
 			<div className="text-center pt-4">
 				<Typography variant="caption-100" as="a" href={product.learnMoreLink ?? product.link} className="no-underline hover:text-foreground transition-colors">
 					learn more

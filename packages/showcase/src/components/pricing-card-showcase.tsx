@@ -1,7 +1,7 @@
-import { PricingReceipt } from '@/components/ui-opinionated/pricing-receipt'
+import { PricingCard } from '@/components/ui-opinionated/pricing-card'
 import { HStack } from '@/components/ui/stack'
 import { ShowcaseSection } from './showcase-section'
-import type { PricingProduct } from '@/components/ui-opinionated/pricing-receipt'
+import type { PricingProduct } from '@/components/ui-opinionated/pricing-card'
 
 const STARTER: PricingProduct = {
   id: 'starter',
@@ -53,16 +53,16 @@ const ENTERPRISE: PricingProduct = {
   link: '#',
 }
 
-export function PricingReceiptShowcase() {
+export function PricingCardShowcase() {
   return (
     <ShowcaseSection
-      title="Pricing Receipt"
+      title="Pricing Card"
       description="Receipt-styled pricing cards. Drop three side-by-side for a classic tier layout."
     >
       <HStack gap={4} wrap>
-        <PricingReceipt product={STARTER} />
-        <PricingReceipt product={PRO} />
-        <PricingReceipt product={ENTERPRISE} />
+        <PricingCard product={STARTER} />
+        <PricingCard product={PRO} />
+        <PricingCard product={ENTERPRISE} />
       </HStack>
     </ShowcaseSection>
   )

@@ -464,14 +464,29 @@ export const registry: Record<string, ComponentEntry> = {
 		tags: ["primitive"],
 	},
 
-	receipt: {
-		name: "receipt",
-		description:
-			"Receipt and ledger primitives: Divider, SectionLabel, Row, Glyph, Ledger. Information-dense receipt/typewriter aesthetic with CVA variants and semantic tokens.",
-		files: [{ src: "templates/ui/receipt.tsx", dest: "components/ui/receipt.tsx" }],
+	"line-item": {
+		name: "line-item",
+		description: "Key-value row primitive with dot/solid/pills divider leader between label and value. Variants: default, fill, bold, compact.",
+		files: [{ src: "templates/ui/line-item.tsx", dest: "components/ui/line-item.tsx" }],
+		deps: ["class-variance-authority"],
+		internalDeps: ["divider", "utils"],
+		tags: ["primitive"],
+	},
+	"line-item-header": {
+		name: "line-item-header",
+		description: "Section header label for receipt/list layouts. Variants: default (filled), bordered.",
+		files: [{ src: "templates/ui/line-item-header.tsx", dest: "components/ui/line-item-header.tsx" }],
 		deps: ["class-variance-authority"],
 		internalDeps: ["utils"],
-		tags: ["primitive", "layout"],
+		tags: ["primitive"],
+	},
+	glyph: {
+		name: "glyph",
+		description: "Fixed-size square containing a centred character or symbol. Variants: default, filled, circle, circle-inverted.",
+		files: [{ src: "templates/ui/glyph.tsx", dest: "components/ui/glyph.tsx" }],
+		deps: ["class-variance-authority"],
+		internalDeps: ["utils"],
+		tags: ["primitive"],
 	},
 	"layout-bento": {
 		name: "layout-bento",
@@ -493,6 +508,15 @@ export const registry: Record<string, ComponentEntry> = {
 	},
 
 	// ─── Opinionated UI Components ───────────────────────────────────────
+	"pricing-card": {
+		name: "pricing-card",
+		description: "Pricing card with ledger-style layout using composables primitives. Accepts a PricingProduct data shape and renders a full card with header, feature list, total, and CTA button.",
+		files: [{ src: "templates/ui-opinionated/pricing-card.tsx", dest: "components/ui-opinionated/pricing-card.tsx" }],
+		deps: [],
+		internalDeps: ["button", "divider", "line-item-header", "typography"],
+		tags: ["opinionated"],
+	},
+
 	"accordion-opinionated": {
 		name: "accordion-opinionated",
 		description: "Opinionated accordion with items array API",
@@ -791,12 +815,5 @@ export const registry: Record<string, ComponentEntry> = {
 		internalDeps: ["utils"],
 		tags: ["opinionated"],
 	},
-	"pricing-receipt": {
-		name: "pricing-receipt",
-		description: "Receipt-styled pricing card using composables receipt primitives",
-		files: [{ src: "templates/ui-opinionated/pricing-receipt.tsx", dest: "components/ui-opinionated/pricing-receipt.tsx" }],
-		deps: [],
-		internalDeps: ["receipt", "typography", "button", "utils"],
-		tags: ["opinionated"],
-	},
+
 };
