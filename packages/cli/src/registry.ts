@@ -467,7 +467,7 @@ export const registry: Record<string, ComponentEntry> = {
 	receipt: {
 		name: "receipt",
 		description:
-			"Receipt and ledger primitives: Divider, SectionLabel, Row, DataTable, Glyph, Ledger. Information-dense receipt/typewriter aesthetic with CVA variants and semantic tokens.",
+			"Receipt and ledger primitives: Divider, SectionLabel, Row, Glyph, Ledger. Information-dense receipt/typewriter aesthetic with CVA variants and semantic tokens.",
 		files: [{ src: "templates/ui/receipt.tsx", dest: "components/ui/receipt.tsx" }],
 		deps: ["class-variance-authority"],
 		internalDeps: ["utils"],
@@ -785,7 +785,7 @@ export const registry: Record<string, ComponentEntry> = {
 	},
 	list: {
 		name: "list",
-		description: "Variant list renderer: arrow, check, check-bordered, bullet",
+		description: "Variant list renderer: arrow, bullet",
 		files: [{ src: "templates/ui-opinionated/list.tsx", dest: "components/ui-opinionated/list.tsx" }],
 		deps: ["class-variance-authority", "lucide-react"],
 		internalDeps: ["utils"],

@@ -2,18 +2,10 @@ import {
   List,
   ListArrowItem,
   ListBulletItem,
-  ListCheckBorderedItem,
 } from '@/components/ui-opinionated/list'
 import { VStack } from '@/components/ui/stack'
 import { Typography } from '@/components/ui/typography'
 import { ShowcaseSection } from './showcase-section'
-
-const FEATURES = [
-  { content: 'Full TypeScript support out of the box' },
-  { content: 'Composable with any Tailwind preset' },
-  { content: 'Semantic tokens for consistent theming' },
-  { content: 'Accessible by default with ARIA roles' },
-]
 
 const STEPS = [
   { content: 'Install the CLI from npm' },
@@ -31,7 +23,7 @@ export function ListShowcase() {
   return (
     <ShowcaseSection
       title="List"
-      description="Variant list renderer: arrow, check-bordered, and bullet styles."
+      description="Variant list renderer: arrow and bullet styles."
     >
       <VStack gap={8}>
         {/* Arrow */}
@@ -39,14 +31,6 @@ export function ListShowcase() {
           <Typography variant="heading-200">Arrow variant</Typography>
           <div className="max-w-sm">
             <List variant="arrow" items={STEPS} />
-          </div>
-        </VStack>
-
-        {/* Check bordered */}
-        <VStack gap={2}>
-          <Typography variant="heading-200">Check-bordered variant</Typography>
-          <div className="max-w-2xl">
-            <List variant="check-bordered" items={FEATURES} />
           </div>
         </VStack>
 
@@ -66,12 +50,6 @@ export function ListShowcase() {
               <ListArrowItem content="Hand-rolled item A" />
               <ListArrowItem content="Hand-rolled item B with longer description text" />
               <ListArrowItem content={<span className="font-semibold text-primary">Highlighted item C</span>} />
-            </List>
-          </div>
-          <div className="max-w-2xl mt-4">
-            <List variant="check-bordered">
-              <ListCheckBorderedItem content="Composable bordered checkmark" />
-              <ListCheckBorderedItem content={<>With <code className="text-xs bg-muted px-1">React.ReactNode</code> content</>} />
             </List>
           </div>
           <div className="max-w-sm mt-4">

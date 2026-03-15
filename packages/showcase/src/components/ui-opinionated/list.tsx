@@ -1,19 +1,12 @@
 /**
- * MIGRATION NOTE: The `check` variant was removed. Use `check-bordered` instead.
- *   Before: <List variant="check" ... />
- *   After:  <List variant="check-bordered" ... />
- * ListCheckItem has also been removed — use ListCheckBorderedItem for compositional use.
- */
-
-/**
  * List (opinionated)
  * ─────────────────────────────────────────────────────────────────────────────
- * Variant list renderer: arrow | check-bordered | bullet.
+ * Variant list renderer: arrow | bullet.
  * Builds on the composables item primitive for consistent sizing and tokens.
  *
  * Usage:
  *   // Data-driven:
- *   <List variant="check-bordered" items={[{ content: "Feature one" }, { content: "Feature two" }]} />
+ *   <List variant="arrow" items={[{ content: "Feature one" }, { content: "Feature two" }]} />
  *
  *   // Compositional:
  *   <List variant="arrow">
@@ -23,7 +16,6 @@
 
 import type * as React from 'react'
 import { cva, type VariantProps } from 'class-variance-authority'
-import { Check } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 /* ─── Item data type ─── */
@@ -34,7 +26,7 @@ export interface ListItemData {
 
 /* ─── Variants ─── */
 
-export type ListVariant = 'arrow' | 'check-bordered' | 'bullet'
+export type ListVariant = 'arrow' | 'bullet'
 
 /* ─── Item renderers ─── */
 
@@ -47,22 +39,12 @@ function ArrowItem({ content }: ListItemData) {
 	)
 }
 
-function CheckBorderedItem({ content }: ListItemData) {
-	return (
-		<li className="flex items-start gap-3 border border-border p-4 rounded-sm">
-			<Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" aria-hidden="true" />
-			<span className="text-foreground text-sm">{content}</span>
-		</li>
-	)
-}
-
 function BulletItem({ content }: ListItemData) {
 	return <li className="text-muted-foreground text-sm">{content}</li>
 }
 
 const VARIANT_ITEM: Record<ListVariant, React.FC<ListItemData>> = {
 	arrow: ArrowItem,
-	'check-bordered': CheckBorderedItem,
 	bullet: BulletItem,
 }
 
@@ -70,7 +52,6 @@ const listVariants = cva('', {
 	variants: {
 		variant: {
 			arrow: 'space-y-4',
-			'check-bordered': 'grid md:grid-cols-2 gap-4',
 			bullet: 'list-disc list-inside space-y-1',
 		},
 	},
@@ -115,6 +96,5 @@ function List({ items, variant, className, children }: ListProps) {
 export {
 	List,
 	ArrowItem as ListArrowItem,
-	CheckBorderedItem as ListCheckBorderedItem,
 	BulletItem as ListBulletItem,
 }

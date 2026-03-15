@@ -2,14 +2,13 @@
  * Receipt Showcase
  * ─────────────────────────────────────────────────────────────────────────────
  * Comprehensive showcase for all Phase 1 receipt primitives:
- * Divider, SectionLabel, Row, DataTable, Glyph, Ledger
+ * Divider, SectionLabel, Row, Glyph, Ledger
  */
 
 import { HStack, VStack } from "@/components/ui/stack"
 import { Divider } from "@/components/ui/divider"
 import {
 	Glyph,
-	DataTable,
 	Ledger,
 	Row,
 	SectionLabel,
@@ -106,45 +105,6 @@ function SectionLabelVariants() {
 					</div>
 				</ReceiptCard>
 			</HStack>
-		</VStack>
-	)
-}
-
-function DataTableDemo() {
-	return (
-		<VStack gap={4}>
-			<Typography variant="heading-300">DataTable</Typography>
-			<ReceiptCard title="service breakdown" width="w-96">
-				<DataTable
-					columns={[
-						{ label: "Service", width: 18 },
-						{ label: "Qty", width: 4, align: "right" },
-						{ label: "Rate", width: 8, align: "right" },
-						{ label: "Amount", align: "right" },
-					]}
-					rows={[
-						["Design", "1", "$2,000", "$2,000"],
-						["Dev", "2", "$1,500", "$3,000"],
-						["QA", "1", "$800", "$800"],
-						["Deploy", "1", "$200", "$200"],
-					]}
-				/>
-			</ReceiptCard>
-			<ReceiptCard title="monthly revenue" width="w-80">
-				<DataTable
-					columns={[
-						{ label: "Month", width: 10 },
-						{ label: "Orders", width: 8, align: "right" },
-						{ label: "Revenue", align: "right" },
-					]}
-					rows={[
-						["Jan", "42", "$8,400"],
-						["Feb", "58", "$11,600"],
-						["Mar", "51", "$10,200"],
-						["Apr", "67", "$13,400"],
-					]}
-				/>
-			</ReceiptCard>
 		</VStack>
 	)
 }
@@ -287,16 +247,8 @@ function CompleteReceiptComposition() {
 				<Divider variant="solid" className="my-2" />
 				<Row label="Total Due" value="$12,130" variant="bold" />
 				<Divider variant="dots" className="my-2" />
-				<DataTable
-					columns={[
-						{ label: "Payment terms", width: 18 },
-						{ label: "Status", align: "right" },
-					]}
-					rows={[
-						["Bank Transfer", "PENDING"],
-						["Net 30", "DUE"],
-					]}
-				/>
+				<Row label="Payment" value="Bank Transfer" />
+				<Row label="Status" value="PENDING" />
 				<Divider variant="dots" className="my-2" />
 				<div className="text-center text-[10px] text-muted-foreground">
 					Thank you for your business.
@@ -315,7 +267,6 @@ export function ReceiptShowcase() {
 			<VStack gap={12}>
 				<RowVariants />
 				<SectionLabelVariants />
-				<DataTableDemo />
 				<GlyphVariants />
 				<LedgerVariants />
 				<CompleteReceiptComposition />

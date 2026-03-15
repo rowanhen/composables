@@ -147,82 +147,6 @@ function Row({ label, value, variant = "default", fillOpacity = "subtle", classN
 	)
 }
 
-// ─── DATA TABLE ───────────────────────────────────────────────────────────────
-//
-// Fixed-column tabular data. Column widths are in `ch` units so they snap to
-// the monospaced grid. Omit `width` on a column to have it fill remaining space.
-//
-// Example:
-//   <DataTable
-//     columns={[{ label: "Service", width: 20 }, { label: "Amount", align: "right" }]}
-//     rows={[["Consulting", "$4,000"], ["Expenses", "$320"]]}
-//   />
-
-export interface ColDef {
-	/** Column header label */
-	label: string
-	/** Column width in `ch` character units. Omit to flex-fill. */
-	width?: number
-	/** Text alignment for both header and cells */
-	align?: "left" | "right"
-}
-
-interface DataTableProps extends React.ComponentProps<"div"> {
-	columns: ColDef[]
-	rows: (string | React.ReactNode)[][]
-}
-
-function DataTable({ columns, rows, className, ...props }: DataTableProps) {
-	return (
-		<div
-			role="table"
-			data-slot="receipt-data-table"
-			className={cn("text-sm", className)}
-			{...props}
-		>
-			{/* Header row */}
-			<div role="row" className="flex border-b-[length:var(--border-width)] border-b-border pb-px mb-px">
-				{columns.map((col, i) => (
-					<span
-						key={i}
-						role="columnheader"
-						className={cn(
-							"shrink-0 text-muted-foreground",
-							!col.width && "flex-1",
-							col.align === "right" && "text-right",
-						)}
-						style={col.width ? { width: `${col.width}ch` } : undefined}
-					>
-						{col.label}
-					</span>
-				))}
-			</div>
-			{/* Data rows */}
-			{rows.map((row, ri) => (
-				<div key={ri} role="row" className="flex border-b-[length:var(--border-width)] border-b-border/30 py-px last:border-b-0">
-					{row.map((cell, ci) => {
-						const col = columns[ci]
-						return (
-							<span
-								key={ci}
-								role="cell"
-								className={cn(
-									"shrink-0",
-									!col?.width && "flex-1",
-									col?.align === "right" && "text-right",
-								)}
-								style={col?.width ? { width: `${col.width}ch` } : undefined}
-							>
-								{cell}
-							</span>
-						)
-					})}
-				</div>
-			))}
-		</div>
-	)
-}
-
 // ─── GLYPH ────────────────────────────────────────────────────────────────────
 //
 // A fixed-size square containing a centred character or symbol.
@@ -354,11 +278,10 @@ function Ledger({ title, rows, total, className, ...props }: LedgerProps) {
 	)
 }
 
-export { SectionLabel, Row, DataTable, Glyph, Ledger }
+export { SectionLabel, Row, Glyph, Ledger }
 export type {
 	SectionLabelProps,
 	RowProps,
-	DataTableProps,
 	GlyphProps,
 	LedgerProps,
 	LedgerRow,
