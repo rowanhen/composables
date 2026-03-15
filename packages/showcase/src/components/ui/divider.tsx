@@ -28,22 +28,22 @@ const dividerVariants = cva("shrink-0", {
 		{
 			variant: "dots",
 			orientation: "horizontal",
-			class: "flex-row gap-[calc(var(--spacing)*2)] h-[var(--border-width-base)] w-full",
+			class: "flex-row gap-[calc(var(--spacing)*1)] h-[var(--border-width-base)] w-full",
 		},
 		{
 			variant: "dots",
 			orientation: "vertical",
-			class: "flex-col gap-[calc(var(--spacing)*2)] w-[var(--border-width-base)] h-full",
+			class: "flex-col gap-[calc(var(--spacing)*1)] w-[var(--border-width-base)] h-full",
 		},
 		{
 			variant: "pills",
 			orientation: "horizontal",
-			class: "flex-row gap-[calc(var(--spacing)*2)] h-[var(--border-width-base)] w-full",
+			class: "flex-row gap-[calc(var(--spacing)*1)] h-[var(--border-width-base)] w-full",
 		},
 		{
 			variant: "pills",
 			orientation: "vertical",
-			class: "flex-col gap-[calc(var(--spacing)*2)] w-[var(--border-width-base)] h-full",
+			class: "flex-col gap-[calc(var(--spacing)*1)] w-[var(--border-width-base)] h-full",
 		},
 	],
 	defaultVariants: {
@@ -54,9 +54,11 @@ const dividerVariants = cva("shrink-0", {
 
 type DividerVariants = VariantProps<typeof dividerVariants>;
 
-interface DividerProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface DividerProps extends React.HTMLAttributes<HTMLDivElement> {
 	variant?: DividerVariants["variant"];
 	orientation?: DividerVariants["orientation"];
+	/** Width multiplier for pills. Controls pill width as calc(var(--border-width-base) * n). @default 4 */
+	pillsMultiplier?: number;
 }
 
 function DotsContent({ orientation }: { orientation: "horizontal" | "vertical" }) {
@@ -78,7 +80,13 @@ function DotsContent({ orientation }: { orientation: "horizontal" | "vertical" }
 	);
 }
 
-function PillsContent({ orientation }: { orientation: "horizontal" | "vertical" }) {
+function PillsContent({
+	orientation,
+	pillsMultiplier = 4,
+}: {
+	orientation: "horizontal" | "vertical";
+	pillsMultiplier?: number;
+}) {
 	return (
 		<>
 			{Array.from({ length: 60 }).map((_, i) => (
@@ -91,10 +99,10 @@ function PillsContent({ orientation }: { orientation: "horizontal" | "vertical" 
 						height:
 							orientation === "horizontal"
 								? "var(--border-width-base)"
-								: "calc(var(--border-width-base) * 2)",
+								: `calc(var(--border-width-base) * ${pillsMultiplier})`,
 						width:
 							orientation === "horizontal"
-								? "calc(var(--border-width-base) * 2)"
+								? `calc(var(--border-width-base) * ${pillsMultiplier})`
 								: "var(--border-width-base)",
 					}}
 				/>
@@ -106,6 +114,7 @@ function PillsContent({ orientation }: { orientation: "horizontal" | "vertical" 
 function Divider({
 	variant = "solid",
 	orientation = "horizontal",
+	pillsMultiplier = 4,
 	className,
 	...props
 }: DividerProps) {
@@ -118,10 +127,12 @@ function Divider({
 			{...props}
 		>
 			{variant === "dots" && <DotsContent orientation={orientation} />}
-			{variant === "pills" && <PillsContent orientation={orientation} />}
+			{variant === "pills" && (
+				<PillsContent orientation={orientation} pillsMultiplier={pillsMultiplier} />
+			)}
 		</div>
 	);
 }
 
 export { Divider, dividerVariants };
-export type { DividerProps };
+export type { DividerVariants };

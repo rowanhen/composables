@@ -16,7 +16,7 @@ import {
 	CellRow,
 	StatCell,
 } from "@/components/ui/layout-bento"
-import { Glyph } from "@/components/ui/receipt"
+import { Glyph } from "@/components/ui/glyph"
 import { VStack } from "@/components/ui/stack"
 import { Typography } from "@/components/ui/typography"
 import { ShowcaseSection } from "./showcase-section"
