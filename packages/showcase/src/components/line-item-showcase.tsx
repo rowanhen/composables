@@ -106,6 +106,17 @@ function LineItemHeaderVariants() {
 						<LineItem label="Status" value="PENDING" />
 					</div>
 				</DemoCard>
+				<DemoCard title="centered">
+					<LineItemHeader centered>Q2 Summary</LineItemHeader>
+					<div className="py-1 space-y-px">
+						<LineItem label="Revenue" value="$24,800" variant="fill" />
+						<LineItem label="Expenses" value="$8,200" variant="fill" />
+					</div>
+					<LineItemHeader variant="bordered" centered>Net Total</LineItemHeader>
+					<div className="py-1 space-y-px">
+						<LineItem label="Profit" value="$16,600" variant="bold" />
+					</div>
+				</DemoCard>
 			</HStack>
 		</VStack>
 	)
