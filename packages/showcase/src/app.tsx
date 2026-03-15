@@ -9,16 +9,7 @@ import { Spacer } from "@/components/ui/spacer";
 import { HStack, VStack } from "@/components/ui/stack";
 import { Switch } from "@/components/ui/switch";
 import { Typography } from "@/components/ui/typography";
-/* ---- Sheet (burger menu drawer) ---- */
-import {
-	Sheet,
-	SheetContent,
-	SheetHeader,
-	SheetTitle,
-	SheetTrigger,
-} from "@/components/ui/sheet";
-/* ---- Icons ---- */
-import { MenuIcon } from "lucide-react";
+
 
 /* ---- Showcase components ---- */
 import {
@@ -75,81 +66,7 @@ import {
 	TypographyShowcase,
 } from "./components";
 
-/* ---- NAV ---- */
-const navGroups = [
-	{
-		label: "Foundations",
-		items: ["Color Tokens", "Typography"],
-	},
-	{
-		label: "Layout & Spacing",
-		items: [
-			"Spacing Scale",
-			"Container",
-			"Grid System",
-			"Stack & HStack",
-			"Responsive Grid",
-			"Bento Layout",
-		],
-	},
-	{
-		label: "Actions",
-		items: ["Buttons", "Badges", "Icon", "Avatar"],
-	},
-	{
-		label: "Content",
-		items: ["Cards", "Alerts", "Accordion", "Collapsible", "Item", "List"],
-	},
-	{
-		label: "Overlays",
-		items: [
-			"Dialog",
-			"Alert Dialog",
-			"Sheet",
-			"Dropdown Menu",
-			"Popover",
-			"Tooltip",
-			"Hover Card",
-			"Toast",
-		],
-	},
-	{
-		label: "Navigation",
-		items: ["Tabs", "Breadcrumb", "Pagination"],
-	},
-	{
-		label: "Data Display",
-		items: ["Table", "Carousel", "Progress", "Tree View", "Code Block"],
-	},
-	{
-		label: "Form Controls",
-		items: [
-			"Form Controls",
-			"Select",
-			"Toggle",
-			"Slider",
-			"Calendar & Date Pickers",
-			"Dropzone",
-		],
-	},
-	{
-		label: "Utilities",
-		items: [
-			"Scroll Area",
-			"Resizable",
-			"Aspect Ratio",
-			"Empty State",
-			"Skeletons",
-			"Separator",
-			"Divider",
-			"Block Loader",
-		],
-	},
-	{
-		label: "Receipt & Financial",
-		items: ["Pricing Receipt", "Receipt Primitives"],
-	},
-];
+
 
 /* ── Grid overlay styles ─────────────────────────────────────────────── */
 const GRID_OVERLAY_STYLE: React.CSSProperties = {
@@ -180,8 +97,6 @@ const GRID_OVERLAY_STYLE: React.CSSProperties = {
 export function App() {
 	const [dark, setDark] = React.useState(false);
 	const [gridOn, setGridOn] = React.useState(false);
-	const [navOpen, setNavOpen] = React.useState(false);
-
 	React.useEffect(() => {
 		if (dark) {
 			document.documentElement.classList.add("dark");
@@ -211,49 +126,8 @@ export function App() {
 			<header className="sticky top-0 z-50 bg-background/80 backdrop-blur-sm border-b border-border/50">
 				<Container>
 					<HStack align="center" justify="between" className="h-14">
-						{/* Left side: burger menu + theme controls */}
+						{/* Left side: theme controls */}
 						<HStack gap={3} align="center">
-							{/* Burger menu */}
-							<Sheet open={navOpen} onOpenChange={setNavOpen}>
-								<SheetTrigger
-									aria-label="Open navigation"
-									className="flex items-center justify-center w-8 h-8 rounded-md hover:bg-muted/60 transition-colors"
-								>
-									<MenuIcon className="w-4 h-4" />
-								</SheetTrigger>
-								<SheetContent side="left" showCloseButton>
-									<SheetHeader>
-										<SheetTitle>Navigation</SheetTitle>
-									</SheetHeader>
-									<nav className="px-6 pb-6">
-										<VStack gap={4}>
-											{navGroups.map((group) => (
-												<div key={group.label}>
-													<Typography
-														variant="caption-100"
-														className="text-muted-foreground/60 uppercase tracking-wider font-semibold px-2 mb-1"
-													>
-														{group.label}
-													</Typography>
-													<VStack gap={0.5}>
-														{group.items.map((item) => (
-															<a
-																key={item}
-																href={`#${item.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
-																onClick={() => setNavOpen(false)}
-																className="text-sm text-muted-foreground hover:text-foreground transition-colors py-1.5 px-2 rounded-md hover:bg-muted/60"
-															>
-																{item}
-															</a>
-														))}
-													</VStack>
-												</div>
-											))}
-										</VStack>
-									</nav>
-								</SheetContent>
-							</Sheet>
-
 							{/* Token config */}
 							<TokenConfigPanel />
 
