@@ -5,6 +5,7 @@
  * Divider, SectionLabel, Row, Glyph, Ledger
  */
 
+import { cn } from "@/lib/utils"
 import { HStack, VStack } from "@/components/ui/stack"
 import { Divider } from "@/components/ui/divider"
 import {
@@ -20,14 +21,14 @@ import { ShowcaseSection } from "./showcase-section"
 function ReceiptCard({
 	title,
 	children,
-	width = "w-64",
+	className,
 }: {
 	title?: string
 	children: React.ReactNode
-	width?: string
+	className?: string
 }) {
 	return (
-		<div className={`border border-border p-4 font-mono text-xs ${width}`}>
+		<div className={cn("w-full border border-border p-4 font-mono text-xs", className)}>
 			{title && (
 				<div className="text-muted-foreground mb-2 text-[10px] uppercase tracking-wider">
 					{title}
@@ -216,7 +217,7 @@ function CompleteReceiptComposition() {
 	return (
 		<VStack gap={4}>
 			<Typography variant="heading-300">Complete Composition</Typography>
-			<div className="border border-border p-4 font-mono text-xs w-80">
+			<div className="w-full border border-border p-4 font-mono text-xs max-w-sm">
 				{/* Header */}
 				<div className="text-center mb-3">
 					<Glyph size={32} variant="filled" className="mx-auto mb-1">◆</Glyph>

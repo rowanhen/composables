@@ -261,7 +261,7 @@ interface LedgerProps extends React.ComponentProps<"div"> {
 
 function Ledger({ title, rows, total, className, ...props }: LedgerProps) {
 	return (
-		<div data-slot="receipt-ledger" className={cn("text-sm", className)} {...props}>
+		<div data-slot="receipt-ledger" className={cn("w-full text-sm", className)} {...props}>
 			{title && <SectionLabel>{title}</SectionLabel>}
 			<div className="py-2 space-y-0.5">
 				{rows.map((row, i) => (
