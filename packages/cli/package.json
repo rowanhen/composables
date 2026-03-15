@@ -9,6 +9,7 @@
 	"files": ["dist", "templates"],
 	"scripts": {
 		"build": "tsc -p tsconfig.json",
+		"prepublishOnly": "bun run build",
 		"dev": "bun run src/cli.ts",
 		"test": "bun test"
 	},

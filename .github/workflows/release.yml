@@ -1,8 +1,18 @@
 name: Release
 
 on:
-  push:
-    branches: [main]
+  workflow_dispatch:
+    inputs:
+      bump:
+        description: "Version bump (auto-detected from commits if not specified)"
+        required: false
+        type: choice
+        options:
+          - auto
+          - patch
+          - minor
+          - major
+        default: auto
 
 permissions:
   contents: write
@@ -10,48 +20,68 @@ permissions:
 
 jobs:
   release:
-    if: "!startsWith(github.event.head_commit.message, 'chore: release')"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          token: ${{ secrets.RELEASE_TOKEN }}
 
       - name: Determine version bump
         id: bump
         run: |
-          LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
-          if [ -z "$LAST_TAG" ]; then
-            echo "type=minor" >> "$GITHUB_OUTPUT"
+          if [ "${{ inputs.bump }}" != "auto" ]; then
+            echo "type=${{ inputs.bump }}" >> $GITHUB_OUTPUT
             exit 0
           fi
-          COMMITS=$(git log "$LAST_TAG"..HEAD --pretty=format:"%s")
-          if echo "$COMMITS" | grep -qE "^[a-z]+(\(.+\))?!:"; then
-            echo "type=major" >> "$GITHUB_OUTPUT"
-          elif echo "$COMMITS" | grep -qE "^feat(\(.+\))?:"; then
-            echo "type=minor" >> "$GITHUB_OUTPUT"
+
+          # Get commits since last tag
+          LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
+          if [ -z "$LAST_TAG" ]; then
+            COMMITS=$(git log --oneline)
           else
-            echo "type=patch" >> "$GITHUB_OUTPUT"
+            COMMITS=$(git log ${LAST_TAG}..HEAD --oneline)
           fi
 
-      - uses: actions/setup-node@v4
+          # Determine bump type from conventional commits
+          if echo "$COMMITS" | grep -qE "^[a-f0-9]+ (feat|fix|refactor|perf|docs|style|test|build|ci|chore|revert)(\(.+\))?!:"; then
+            echo "type=major" >> $GITHUB_OUTPUT
+          elif echo "$COMMITS" | grep -qE "^[a-f0-9]+ feat(\(.+\))?:"; then
+            echo "type=minor" >> $GITHUB_OUTPUT
+          else
+            echo "type=patch" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
           node-version: 22
           registry-url: https://registry.npmjs.org
 
-      - uses: oven-sh/setup-bun@v2
+      - name: Update npm
+        run: npm install -g npm@latest
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
 
-      - run: bun install
+      - name: Install
+        run: bun install
 
       - name: Bump version
+        id: version
         working-directory: packages/cli
-        run: npm version ${{ steps.bump.outputs.type }} --no-git-tag-version
+        run: |
+          NEW_VERSION=$(npm version ${{ steps.bump.outputs.type }} --no-git-tag-version)
+          echo "version=${NEW_VERSION#v}" >> $GITHUB_OUTPUT
+          echo "tag=$NEW_VERSION" >> $GITHUB_OUTPUT
 
-      - run: bun run build
-      - run: bun run test
+      - name: Build
+        run: bun run build
+
+      - name: Test
+        run: bun run test
 
       - name: Publish to npm
         working-directory: packages/cli
@@ -59,19 +89,17 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Commit, tag, and push
+      - name: Commit and tag
         run: |
-          VERSION=$(node -p "require('./packages/cli/package.json').version")
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add packages/cli/package.json
-          git commit -m "chore: release v${VERSION}"
-          git tag "v${VERSION}"
-          git push origin main --tags
+          git commit -m "chore: release ${{ steps.version.outputs.tag }}"
+          git tag "${{ steps.version.outputs.tag }}"
+          git push origin HEAD --tags
 
       - name: Create GitHub Release
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          VERSION=$(node -p "require('./packages/cli/package.json').version")
-          gh release create "v${VERSION}" --generate-notes
+          gh release create "${{ steps.version.outputs.tag }}" \
+            --title "${{ steps.version.outputs.tag }}" \
+            --generate-notes

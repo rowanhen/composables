@@ -15,29 +15,38 @@ import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
-const lineItemHeaderVariants = cva("text-sm font-bold px-2 py-0.5 rounded-md", {
-	variants: {
-		variant: {
-			default: "bg-primary text-primary-foreground",
-			bordered:
-				"bg-transparent text-foreground border-[length:var(--border-width)] border-border",
+const lineItemHeaderVariants = cva(
+	"text-sm font-bold px-[calc(var(--spacing)*3)] py-[calc(var(--spacing)*1)] rounded-md",
+	{
+		variants: {
+			variant: {
+				default: "bg-primary text-primary-foreground",
+				bordered:
+					"bg-transparent text-foreground border-[length:var(--border-width)] border-border",
+			},
+		},
+		defaultVariants: {
+			variant: "default",
 		},
 	},
-	defaultVariants: {
-		variant: "default",
-	},
-})
+)
 
 export interface LineItemHeaderProps extends React.ComponentProps<"div"> {
 	variant?: "default" | "bordered"
+	centered?: boolean
 }
 
-function LineItemHeader({ variant = "default", className, ...props }: LineItemHeaderProps) {
+function LineItemHeader({
+	variant = "default",
+	centered = false,
+	className,
+	...props
+}: LineItemHeaderProps) {
 	return (
 		<div
 			data-slot="line-item-header"
 			data-variant={variant}
-			className={cn(lineItemHeaderVariants({ variant }), className)}
+			className={cn(lineItemHeaderVariants({ variant }), centered && "text-center", className)}
 			{...props}
 		/>
 	)
