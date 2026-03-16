@@ -56,6 +56,17 @@ jobs:
       - name: Install
         run: bun install
 
+      - name: Sync version from npm registry
+        working-directory: packages/cli
+        run: |
+          # Ensure local version matches what's actually on npm to prevent desync
+          NPM_VERSION=$(npm view @leitware/composables-cli version 2>/dev/null || echo "0.0.0")
+          LOCAL_VERSION=$(node -p "require('./package.json').version")
+          if [ "$NPM_VERSION" != "$LOCAL_VERSION" ]; then
+            echo "Version desync detected: local=$LOCAL_VERSION npm=$NPM_VERSION — syncing to npm version"
+            npm version "$NPM_VERSION" --no-git-tag-version --allow-same-version > /dev/null 2>&1
+          fi
+
       - name: Bump version
         id: version
         working-directory: packages/cli
@@ -75,7 +86,14 @@ jobs:
         working-directory: packages/cli
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npm publish --provenance --access public
+        run: |
+          # Skip publish if this version already exists on npm
+          PUBLISHED=$(npm view "@leitware/composables-cli@${{ steps.version.outputs.version }}" version 2>/dev/null || echo "")
+          if [ "$PUBLISHED" = "${{ steps.version.outputs.version }}" ]; then
+            echo "Version ${{ steps.version.outputs.version }} already published — skipping"
+          else
+            npm publish --provenance --access public
+          fi
 
       - name: Commit and tag
         run: |
