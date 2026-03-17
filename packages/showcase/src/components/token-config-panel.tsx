@@ -13,6 +13,7 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet'
 import { HStack, VStack } from '@/components/ui/stack'
+import { Switch } from '@/components/ui/switch'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Textarea } from '@/components/ui/textarea'
 import { Typography } from '@/components/ui/typography'
@@ -820,7 +821,14 @@ function PaletteIcon({ className }: { className?: string }) {
 /*  TokenConfigPanel                                                    */
 /* ------------------------------------------------------------------ */
 
-export function TokenConfigPanel() {
+interface TokenConfigPanelProps {
+  dark?: boolean
+  onDarkChange?: (dark: boolean) => void
+  grid?: boolean
+  onGridChange?: (grid: boolean) => void
+}
+
+export function TokenConfigPanel({ dark, onDarkChange, grid, onGridChange }: TokenConfigPanelProps = {}) {
   const [overrides, setOverrides] = React.useState<Record<string, string>>({})
   const [activePreset, setActivePreset] = React.useState<string>('default')
   const [jsonText, setJsonText] = React.useState('')
@@ -943,6 +951,32 @@ export function TokenConfigPanel() {
             )}
           </SheetTitle>
         </SheetHeader>
+
+        {/* Display toggles */}
+        {(onDarkChange !== undefined || onGridChange !== undefined) && (
+          <div className="px-4 pb-3">
+            <Typography
+              variant="caption-100"
+              className="text-muted-foreground uppercase tracking-wider mb-2 block"
+            >
+              Display
+            </Typography>
+            <HStack gap={4}>
+              {onDarkChange !== undefined && (
+                <HStack gap={2} align="center">
+                  <Switch checked={dark ?? false} onCheckedChange={onDarkChange} aria-label="Toggle dark mode" />
+                  <Typography variant="caption-100" className="text-muted-foreground">Dark mode</Typography>
+                </HStack>
+              )}
+              {onGridChange !== undefined && (
+                <HStack gap={2} align="center">
+                  <Switch checked={grid ?? false} onCheckedChange={onGridChange} aria-label="Toggle grid overlay" />
+                  <Typography variant="caption-100" className="text-muted-foreground">Grid</Typography>
+                </HStack>
+              )}
+            </HStack>
+          </div>
+        )}
 
         {/* Preset selector */}
         <div className="px-4 pb-2">
