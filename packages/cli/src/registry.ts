@@ -200,7 +200,7 @@ export const registry: Record<string, ComponentEntry> = {
 		description: "Searchable select dropdown with autocomplete",
 		files: [{ src: "templates/ui/combobox.tsx", dest: "components/ui/combobox.tsx" }],
 		deps: ["@base-ui/react", "lucide-react"],
-		internalDeps: ["button", "utils"],
+		internalDeps: ["button", "input-group", "utils"],
 		tags: ["primitive"],
 	},
 	container: {

@@ -65,7 +65,7 @@ function Select({
   size = 'default',
 }: SelectProps) {
   return (
-    <SelectPrimitive value={value} onValueChange={onValueChange} disabled={disabled}>
+    <SelectPrimitive value={value} onValueChange={(v) => { if (v !== null) onValueChange?.(v) }} disabled={disabled}>
       <SelectTrigger className={className} size={size}>
         <SelectValue placeholder={placeholder} />
       </SelectTrigger>

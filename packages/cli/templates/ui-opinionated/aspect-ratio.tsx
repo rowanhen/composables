@@ -9,4 +9,4 @@
  * </AspectRatio>
  * ```
  */
-export { AspectRatio, type AspectRatioProps } from '@/components/ui/aspect-ratio'
+export { AspectRatio } from '@/components/ui/aspect-ratio'

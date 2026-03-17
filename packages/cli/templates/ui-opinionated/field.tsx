@@ -17,5 +17,10 @@ export {
   FieldDescription,
   FieldError,
   FieldLabel,
-  type FieldProps,
+  FieldGroup,
+  FieldLegend,
+  FieldSeparator,
+  FieldSet,
+  FieldContent,
+  FieldTitle,
 } from '@/components/ui/field'

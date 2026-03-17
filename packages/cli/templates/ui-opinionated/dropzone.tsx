@@ -18,8 +18,22 @@
  * ```
  */
 export {
-  Dropzone,
-  DropzoneContent,
-  DropzoneInput,
-  DropzoneLabel,
+  DropZone,
+  DropZone as Dropzone,
+  DropZoneContent,
+  DropZoneContent as DropzoneContent,
+  DropZoneInput,
+  DropZoneInput as DropzoneInput,
+  DropZoneArea,
+  DropZoneArea as DropzoneLabel,
+  DropZoneFile,
+  DropZoneFileList,
+  useDropZoneContext,
+  formatFileSize,
+  getAcceptDescription,
+  getRejectionMessage,
+  DEFAULT_MAX_SIZE,
+  DEFAULT_ACCEPT,
+  ACCEPT_PRESETS,
 } from '@/components/ui/dropzone'
+export type { DropZoneProps, DropZoneFileProps, Accept, FileRejection } from '@/components/ui/dropzone'

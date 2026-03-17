@@ -11,4 +11,4 @@
  * </Icon>
  * ```
  */
-export { Icon, type IconProps, iconVariants } from '@/components/ui/icon'
+export { Icon, iconVariants } from '@/components/ui/icon'

@@ -81,8 +81,8 @@ function Combobox({
 
   return (
     <ComboboxPrimitive
-      value={value ? [value] : []}
-      onValueChange={(values) => onValueChange?.(values[0] ?? '')}
+      value={value ?? null}
+      onValueChange={(v) => onValueChange?.(v ?? '')}
     >
       <ComboboxInput
         placeholder={selectedOption?.label ?? placeholder}

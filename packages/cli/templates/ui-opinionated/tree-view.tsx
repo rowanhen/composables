@@ -15,4 +15,4 @@
  * </TreeView>
  * ```
  */
-export { TreeItem, TreeView, type TreeItemProps, type TreeViewProps } from '@/components/ui/tree-view'
+export { TreeView, type TreeViewProps } from '@/components/ui/tree-view'
