@@ -71,7 +71,7 @@ export function HoverCardShowcase() {
                     <AvatarImage src="https://i.pravatar.cc/80?img=25" alt="Alice" />
                     <AvatarFallback>AL</AvatarFallback>
                   </Avatar>
-                  <VStack gap={0.5}>
+                  <VStack gap={1}>
                     <Typography variant="label-200" className="font-semibold">
                       Alice Johnson
                     </Typography>
@@ -97,7 +97,7 @@ export function HoverCardShowcase() {
                     <AvatarImage src="https://i.pravatar.cc/80?img=30" alt="Bob" />
                     <AvatarFallback>BM</AvatarFallback>
                   </Avatar>
-                  <VStack gap={0.5}>
+                  <VStack gap={1}>
                     <Typography variant="label-200" className="font-semibold">
                       Bob Martinez
                     </Typography>
