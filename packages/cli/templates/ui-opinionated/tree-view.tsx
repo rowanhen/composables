@@ -4,14 +4,12 @@
  *
  * @example
  * ```tsx
- * <TreeView>
- *   <TreeItem label="Documents">
- *     <TreeItem label="Reports">
- *       <TreeItem label="Q1.pdf" />
- *       <TreeItem label="Q2.pdf" />
- *     </TreeItem>
- *     <TreeItem label="Notes.txt" />
- *   </TreeItem>
+ * <TreeView title="Documents">
+ *   <TreeView title="Reports">
+ *     <TreeView title="Q1.pdf" isFile />
+ *     <TreeView title="Q2.pdf" isFile />
+ *   </TreeView>
+ *   <TreeView title="Notes.txt" isFile />
  * </TreeView>
  * ```
  */

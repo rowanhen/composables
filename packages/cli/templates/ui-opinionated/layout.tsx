@@ -19,7 +19,8 @@ export {
   FlexSpacer,
   NewspaperCell,
   NewspaperGrid,
+  newspaperGridVariants,
   Section,
-  type SectionProps,
   sectionVariants,
 } from '@/components/ui/layout'
+export type { SectionProps, NewspaperGridProps, NewspaperCellProps } from '@/components/ui/layout'

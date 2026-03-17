@@ -1,4 +1,4 @@
-import type * as React from 'react'
+import * as React from 'react'
 
 import {
   Breadcrumb as BreadcrumbPrimitive,
@@ -60,24 +60,26 @@ function Breadcrumb({ items, separator, className, children }: BreadcrumbProps) 
           const isFirst = index === 0
 
           return (
-            <BreadcrumbItem key={index}>
+            <React.Fragment key={index}>
               {!isFirst && <BreadcrumbSeparator>{separator}</BreadcrumbSeparator>}
-              {isLast ? (
-                <BreadcrumbPage>{item.label}</BreadcrumbPage>
-              ) : item.href ? (
-                <BreadcrumbLink href={item.href}>{item.label}</BreadcrumbLink>
-              ) : item.onClick ? (
-                <BreadcrumbLink
-                  render={
-                    <button type="button" onClick={item.onClick}>
-                      {item.label}
-                    </button>
-                  }
-                />
-              ) : (
-                <BreadcrumbPage>{item.label}</BreadcrumbPage>
-              )}
-            </BreadcrumbItem>
+              <BreadcrumbItem>
+                {isLast ? (
+                  <BreadcrumbPage>{item.label}</BreadcrumbPage>
+                ) : item.href ? (
+                  <BreadcrumbLink href={item.href}>{item.label}</BreadcrumbLink>
+                ) : item.onClick ? (
+                  <BreadcrumbLink
+                    render={
+                      <button type="button" onClick={item.onClick}>
+                        {item.label}
+                      </button>
+                    }
+                  />
+                ) : (
+                  <BreadcrumbPage>{item.label}</BreadcrumbPage>
+                )}
+              </BreadcrumbItem>
+            </React.Fragment>
           )
         })}
       </BreadcrumbList>
