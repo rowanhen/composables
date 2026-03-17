@@ -62,7 +62,7 @@ type DividerVariants = VariantProps<typeof dividerVariants>;
 
 export interface DividerProps extends React.HTMLAttributes<HTMLDivElement> {
 	variant?: DividerVariants["variant"];
-	orientation?: DividerVariants["orientation"];
+	orientation?: "horizontal" | "vertical";
 	/** Vertical alignment of the divider within its line. @default "center" */
 	align?: "start" | "center" | "end";
 	/** Width multiplier for pills. Controls pill width as calc(var(--border-width-base) * n). @default 4 */

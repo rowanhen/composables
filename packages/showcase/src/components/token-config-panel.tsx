@@ -927,10 +927,8 @@ export function TokenConfigPanel({ dark, onDarkChange, grid, onGridChange }: Tok
 
   return (
     <Sheet>
-      <SheetTrigger asChild>
-        <Button variant="outline" size="icon" className="size-8">
-          <PaletteIcon className="size-4" />
-        </Button>
+      <SheetTrigger render={<Button variant="outline" size="icon" className="size-8" />}>
+        <PaletteIcon className="size-4" />
       </SheetTrigger>
       <SheetContent side="right" className="w-full max-w-[400px] sm:max-w-[440px] px-0 pb-0 pt-14">
         <SheetHeader className="px-4 pt-4 pb-2">

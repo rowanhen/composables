@@ -1,5 +1,5 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
-import { dirname, join } from "node:path";
+import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { Command } from "commander";
 import pc from "picocolors";
@@ -93,7 +93,7 @@ export const addCommand = new Command("add")
 		let written = 0;
 
 		for (const file of filesToCopy) {
-			const fullDest = join(process.cwd(), file.destPath);
+			const fullDest = resolve(file.destPath);
 			const exists = existsSync(fullDest);
 
 			if (exists && !overwrite) {

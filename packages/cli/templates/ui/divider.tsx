@@ -58,11 +58,11 @@ const dividerVariants = cva("shrink-0", {
 	},
 });
 
-export type DividerVariants = VariantProps<typeof dividerVariants>;
+type DividerVariants = VariantProps<typeof dividerVariants>;
 
 interface DividerProps extends React.HTMLAttributes<HTMLDivElement> {
 	variant?: DividerVariants["variant"];
-	orientation?: DividerVariants["orientation"];
+	orientation?: "horizontal" | "vertical";
 	/** Vertical alignment of the divider within its line. @default "center" */
 	align?: "start" | "center" | "end";
 	/** Width multiplier for pills. Controls pill width as calc(var(--border-width-base) * n). @default 4 */
@@ -153,4 +153,4 @@ function Divider({
 }
 
 export { Divider, dividerVariants };
-export type { DividerProps, DividerVariants };
+export type { DividerProps };

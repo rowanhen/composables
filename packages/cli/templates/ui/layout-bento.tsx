@@ -132,7 +132,7 @@ function BentoCell({ colSpan = 1, rowSpan = 1, className, ...props }: BentoCellP
 // Mobile: single column — icon, then content, then stats.
 // Desktop: [200px icon (row-span-2)] | [content / stats]
 
-interface BentoSplitProps extends React.ComponentProps<"div"> {
+interface BentoSplitProps extends Omit<React.ComponentProps<"div">, "content"> {
 	icon: React.ReactNode
 	content: React.ReactNode
 	stats: React.ReactNode
