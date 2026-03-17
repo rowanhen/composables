@@ -3,7 +3,7 @@
  * ─────────────────────────────────────────────────────────────────────────────
  * Monospace code display with line numbers and overflow scrolling.
  * Uses composables semantic tokens (bg-muted / bg-background) rather than
- * raw CSS variable references from dockets.
+ * raw CSS variable references.
  *
  * Usage:
  *   <CodeBlock>{`const x = 1\nconsole.log(x)`}</CodeBlock>

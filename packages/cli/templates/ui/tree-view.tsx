@@ -39,7 +39,7 @@ export interface TreeViewProps extends Omit<React.HTMLAttributes<HTMLDivElement>
 /* ─── Tree characters ─── */
 
 const CHARS = {
-	// Intentional dot-spacing: the dots render as spaces in the dockets tree aesthetic
+	// Intentional dot-spacing: the dots render as spaces in the tree aesthetic
 	pipe: '│ . ',
 	blank: '. . ',
 	branch: '├───',

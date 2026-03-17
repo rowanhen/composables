@@ -2,7 +2,7 @@
  * Layout Primitives
  * ─────────────────────────────────────────────────────────────────────────────
  * Rigid, snap-to-grid composable layout building blocks for structured UIs.
- * Enforces the dockets spacing and border system.
+ * Enforces the spacing and border system.
  *
  * BORDERS NEVER STACK RULES:
  *   • Stack/Row gaps use margin (not padding) — items never double-border.

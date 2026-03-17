@@ -33,8 +33,6 @@ import {
   swissDark,
   midnight,
   midnightDark,
-  dockets,
-  docketsDark,
 } from '@/presets'
 
 /* ------------------------------------------------------------------ */
@@ -213,12 +211,6 @@ const presets: Record<string, Preset | null> = {
     description: 'Dark-first premium — deep navy, violet accent, glow shadows, Space Grotesk headings',
     overrides: midnight,
     darkOverrides: midnightDark,
-  },
-  dockets: {
-    label: 'Dockets',
-    description: 'Receipt, typewriter, information-dense — IBM Plex Mono, hairline borders, zero radius, paper-white',
-    overrides: dockets,
-    darkOverrides: docketsDark,
   },
 }
 
