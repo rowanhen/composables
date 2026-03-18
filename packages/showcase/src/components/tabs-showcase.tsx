@@ -1,6 +1,6 @@
-import { Card, CardContent } from '@/components/ui/card'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { Typography } from '@/components/ui/typography'
+import { Card, CardContent } from '@/components/_internal/card'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/_internal/tabs'
+import { Typography } from '@/components/_internal/typography'
 import { ShowcaseSection } from './showcase-section'
 
 export function TabsShowcase() {

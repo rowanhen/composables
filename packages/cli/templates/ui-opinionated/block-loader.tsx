@@ -8,4 +8,4 @@
  * <BlockLoader mode="spinner" className="text-primary" />
  * ```
  */
-export { BlockLoader, type BlockLoaderProps } from '@/components/ui/block-loader'
+export { BlockLoader, type BlockLoaderProps } from '@/components/_internal/block-loader'

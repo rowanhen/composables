@@ -4,7 +4,7 @@ import {
   CollapsibleContent,
   Collapsible as CollapsiblePrimitive,
   CollapsibleTrigger,
-} from '@/components/ui/collapsible'
+} from '@/components/_internal/collapsible'
 import { FOCUS_RING } from '@/lib/utils'
 
 export interface CollapsibleProps

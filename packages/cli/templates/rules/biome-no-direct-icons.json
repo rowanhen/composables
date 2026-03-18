@@ -6,7 +6,7 @@
 					"level": "warn",
 					"options": {
 						"paths": {
-							"lucide-react": "Do not import icons directly from 'lucide-react' in app code. Use '@/components/ui/icon' for consistent sizing via design tokens."
+							"lucide-react": "Do not import icons directly from 'lucide-react' in app code. Use '@/components/_internal/icon' for consistent sizing via design tokens."
 						}
 					}
 				}
@@ -16,7 +16,7 @@
 	"overrides": [
 		{
 			"includes": [
-				"src/components/ui/**",
+				"src/components/_internal/**",
 				"src/components/ui-opinionated/**"
 			],
 			"linter": {

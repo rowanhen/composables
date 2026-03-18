@@ -8,4 +8,4 @@
  * <Separator orientation="vertical" className="h-4" />
  * ```
  */
-export { Separator } from '@/components/ui/separator'
+export { Separator } from '@/components/_internal/separator'

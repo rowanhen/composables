@@ -7,14 +7,14 @@ import {
   ComboboxInput,
   ComboboxItem,
   ComboboxList,
-} from '@/components/ui/combobox'
+} from '@/components/_internal/combobox'
 import {
   Field,
   FieldContent,
   FieldDescription,
   FieldError,
   FieldLabel,
-} from '@/components/ui/field'
+} from '@/components/_internal/field'
 
 export interface FormComboboxOption {
   label: string

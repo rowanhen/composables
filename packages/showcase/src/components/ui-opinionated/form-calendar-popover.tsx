@@ -1,16 +1,16 @@
 import type { VariantProps } from 'class-variance-authority'
 import { ChevronDownIcon } from 'lucide-react'
 import * as React from 'react'
-import { Button as ButtonPrimitive } from '@/components/ui/button'
-import { Calendar } from '@/components/ui/calendar'
+import { Button as ButtonPrimitive } from '@/components/_internal/button'
+import { Calendar } from '@/components/_internal/calendar'
 import {
   Field,
   FieldContent,
   FieldDescription,
   FieldError,
   FieldLabel,
-} from '@/components/ui/field'
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
+} from '@/components/_internal/field'
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/_internal/popover'
 import { cn } from '@/lib/utils'
 
 export interface FormCalendarPopoverProps {

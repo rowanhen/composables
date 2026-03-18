@@ -30,9 +30,9 @@ import {
   SidebarProvider,
   SidebarSeparator,
   SidebarTrigger,
-} from '@/components/ui/sidebar'
-import { HStack, VStack } from '@/components/ui/stack'
-import { Typography } from '@/components/ui/typography'
+} from '@/components/_internal/sidebar'
+import { HStack, VStack } from '@/components/_internal/stack'
+import { Typography } from '@/components/_internal/typography'
 import { ShowcaseGroup, ShowcaseSection } from './showcase-section'
 
 const mainNav = [

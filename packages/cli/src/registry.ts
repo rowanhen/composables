@@ -94,7 +94,7 @@ export const registry: Record<string, ComponentEntry> = {
 	accordion: {
 		name: "accordion",
 		description: "Vertically collapsible content sections",
-		files: [{ src: "templates/ui/accordion.tsx", dest: "components/ui/accordion.tsx" }],
+		files: [{ src: "templates/_internal/accordion.tsx", dest: "components/_internal/accordion.tsx" }],
 		deps: ["@base-ui/react", "class-variance-authority", "lucide-react"],
 		internalDeps: ["utils"],
 		tags: ["primitive"],
@@ -102,7 +102,7 @@ export const registry: Record<string, ComponentEntry> = {
 	alert: {
 		name: "alert",
 		description: "Contextual feedback messages for user actions",
-		files: [{ src: "templates/ui/alert.tsx", dest: "components/ui/alert.tsx" }],
+		files: [{ src: "templates/_internal/alert.tsx", dest: "components/_internal/alert.tsx" }],
 		deps: ["class-variance-authority"],
 		internalDeps: ["utils"],
 		tags: ["primitive"],
@@ -110,7 +110,7 @@ export const registry: Record<string, ComponentEntry> = {
 	"alert-dialog": {
 		name: "alert-dialog",
 		description: "Modal dialog for important confirmations",
-		files: [{ src: "templates/ui/alert-dialog.tsx", dest: "components/ui/alert-dialog.tsx" }],
+		files: [{ src: "templates/_internal/alert-dialog.tsx", dest: "components/_internal/alert-dialog.tsx" }],
 		deps: ["@base-ui/react"],
 		internalDeps: ["button", "utils"],
 		tags: ["primitive"],
@@ -118,7 +118,7 @@ export const registry: Record<string, ComponentEntry> = {
 	"aspect-ratio": {
 		name: "aspect-ratio",
 		description: "Container that maintains a fixed aspect ratio",
-		files: [{ src: "templates/ui/aspect-ratio.tsx", dest: "components/ui/aspect-ratio.tsx" }],
+		files: [{ src: "templates/_internal/aspect-ratio.tsx", dest: "components/_internal/aspect-ratio.tsx" }],
 		deps: [],
 		internalDeps: ["utils"],
 		tags: ["primitive"],
@@ -126,7 +126,7 @@ export const registry: Record<string, ComponentEntry> = {
 	avatar: {
 		name: "avatar",
 		description: "Circular image element for user profiles",
-		files: [{ src: "templates/ui/avatar.tsx", dest: "components/ui/avatar.tsx" }],
+		files: [{ src: "templates/_internal/avatar.tsx", dest: "components/_internal/avatar.tsx" }],
 		deps: ["@base-ui/react", "class-variance-authority"],
 		internalDeps: ["utils"],
 		tags: ["primitive"],
@@ -134,7 +134,7 @@ export const registry: Record<string, ComponentEntry> = {
 	badge: {
 		name: "badge",
 		description: "Small status label with color variants",
-		files: [{ src: "templates/ui/badge.tsx", dest: "components/ui/badge.tsx" }],
+		files: [{ src: "templates/_internal/badge.tsx", dest: "components/_internal/badge.tsx" }],
 		deps: ["@base-ui/react", "class-variance-authority"],
 		internalDeps: ["utils"],
 		tags: ["primitive"],
@@ -142,7 +142,7 @@ export const registry: Record<string, ComponentEntry> = {
 	breadcrumb: {
 		name: "breadcrumb",
 		description: "Navigation trail showing page hierarchy",
-		files: [{ src: "templates/ui/breadcrumb.tsx", dest: "components/ui/breadcrumb.tsx" }],
+		files: [{ src: "templates/_internal/breadcrumb.tsx", dest: "components/_internal/breadcrumb.tsx" }],
 		deps: ["@base-ui/react", "lucide-react"],
 		internalDeps: ["utils"],
 		tags: ["primitive"],
@@ -150,7 +150,7 @@ export const registry: Record<string, ComponentEntry> = {
 	button: {
 		name: "button",
 		description: "Clickable button element with size and style variants",
-		files: [{ src: "templates/ui/button.tsx", dest: "components/ui/button.tsx" }],
+		files: [{ src: "templates/_internal/button.tsx", dest: "components/_internal/button.tsx" }],
 		deps: ["@base-ui/react", "class-variance-authority"],
 		internalDeps: ["utils"],
 		tags: ["primitive"],
@@ -158,7 +158,7 @@ export const registry: Record<string, ComponentEntry> = {
 	calendar: {
 		name: "calendar",
 		description: "Date picker calendar powered by react-day-picker",
-		files: [{ src: "templates/ui/calendar.tsx", dest: "components/ui/calendar.tsx" }],
+		files: [{ src: "templates/_internal/calendar.tsx", dest: "components/_internal/calendar.tsx" }],
 		deps: ["lucide-react", "react-day-picker"],
 		internalDeps: ["button", "utils"],
 		tags: ["primitive"],
@@ -166,7 +166,7 @@ export const registry: Record<string, ComponentEntry> = {
 	card: {
 		name: "card",
 		description: "Bordered content container with header and footer slots",
-		files: [{ src: "templates/ui/card.tsx", dest: "components/ui/card.tsx" }],
+		files: [{ src: "templates/_internal/card.tsx", dest: "components/_internal/card.tsx" }],
 		deps: [],
 		internalDeps: ["utils"],
 		tags: ["primitive"],
@@ -174,7 +174,7 @@ export const registry: Record<string, ComponentEntry> = {
 	carousel: {
 		name: "carousel",
 		description: "Horizontally scrollable content slider with navigation",
-		files: [{ src: "templates/ui/carousel.tsx", dest: "components/ui/carousel.tsx" }],
+		files: [{ src: "templates/_internal/carousel.tsx", dest: "components/_internal/carousel.tsx" }],
 		deps: ["embla-carousel-react", "lucide-react"],
 		internalDeps: ["button", "utils"],
 		tags: ["primitive"],
@@ -182,7 +182,7 @@ export const registry: Record<string, ComponentEntry> = {
 	checkbox: {
 		name: "checkbox",
 		description: "Toggle checkbox input with checked state",
-		files: [{ src: "templates/ui/checkbox.tsx", dest: "components/ui/checkbox.tsx" }],
+		files: [{ src: "templates/_internal/checkbox.tsx", dest: "components/_internal/checkbox.tsx" }],
 		deps: ["@base-ui/react", "lucide-react"],
 		internalDeps: ["utils"],
 		tags: ["primitive"],
@@ -190,7 +190,7 @@ export const registry: Record<string, ComponentEntry> = {
 	collapsible: {
 		name: "collapsible",
 		description: "Expandable and collapsible content panel",
-		files: [{ src: "templates/ui/collapsible.tsx", dest: "components/ui/collapsible.tsx" }],
+		files: [{ src: "templates/_internal/collapsible.tsx", dest: "components/_internal/collapsible.tsx" }],
 		deps: ["@base-ui/react"],
 		internalDeps: [],
 		tags: ["primitive"],
@@ -198,7 +198,7 @@ export const registry: Record<string, ComponentEntry> = {
 	combobox: {
 		name: "combobox",
 		description: "Searchable select dropdown with autocomplete",
-		files: [{ src: "templates/ui/combobox.tsx", dest: "components/ui/combobox.tsx" }],
+		files: [{ src: "templates/_internal/combobox.tsx", dest: "components/_internal/combobox.tsx" }],
 		deps: ["@base-ui/react", "lucide-react"],
 		internalDeps: ["button", "input-group", "utils"],
 		tags: ["primitive"],
@@ -206,7 +206,7 @@ export const registry: Record<string, ComponentEntry> = {
 	container: {
 		name: "container",
 		description: "Centered max-width content wrapper",
-		files: [{ src: "templates/ui/container.tsx", dest: "components/ui/container.tsx" }],
+		files: [{ src: "templates/_internal/container.tsx", dest: "components/_internal/container.tsx" }],
 		deps: ["class-variance-authority"],
 		internalDeps: ["utils"],
 		tags: ["primitive", "layout"],
@@ -214,7 +214,7 @@ export const registry: Record<string, ComponentEntry> = {
 	dialog: {
 		name: "dialog",
 		description: "Modal dialog overlay with header, body, and footer",
-		files: [{ src: "templates/ui/dialog.tsx", dest: "components/ui/dialog.tsx" }],
+		files: [{ src: "templates/_internal/dialog.tsx", dest: "components/_internal/dialog.tsx" }],
 		deps: ["@base-ui/react", "lucide-react"],
 		internalDeps: ["button", "utils"],
 		tags: ["primitive"],
@@ -222,7 +222,7 @@ export const registry: Record<string, ComponentEntry> = {
 	divider: {
 		name: "divider",
 		description: "Horizontal or vertical divider with solid, dots, and pills variants",
-		files: [{ src: "templates/ui/divider.tsx", dest: "components/ui/divider.tsx" }],
+		files: [{ src: "templates/_internal/divider.tsx", dest: "components/_internal/divider.tsx" }],
 		deps: ["class-variance-authority"],
 		internalDeps: ["utils"],
 		tags: ["primitive"],
@@ -230,7 +230,7 @@ export const registry: Record<string, ComponentEntry> = {
 	"dropdown-menu": {
 		name: "dropdown-menu",
 		description: "Contextual menu triggered by a button",
-		files: [{ src: "templates/ui/dropdown-menu.tsx", dest: "components/ui/dropdown-menu.tsx" }],
+		files: [{ src: "templates/_internal/dropdown-menu.tsx", dest: "components/_internal/dropdown-menu.tsx" }],
 		deps: ["@base-ui/react", "lucide-react"],
 		internalDeps: ["utils"],
 		tags: ["primitive"],
@@ -238,7 +238,7 @@ export const registry: Record<string, ComponentEntry> = {
 	dropzone: {
 		name: "dropzone",
 		description: "Drag-and-drop file upload area",
-		files: [{ src: "templates/ui/dropzone.tsx", dest: "components/ui/dropzone.tsx" }],
+		files: [{ src: "templates/_internal/dropzone.tsx", dest: "components/_internal/dropzone.tsx" }],
 		deps: ["lucide-react", "react-dropzone"],
 		internalDeps: ["button", "utils"],
 		tags: ["primitive"],
@@ -246,7 +246,7 @@ export const registry: Record<string, ComponentEntry> = {
 	empty: {
 		name: "empty",
 		description: "Empty state placeholder with icon, title, and description",
-		files: [{ src: "templates/ui/empty.tsx", dest: "components/ui/empty.tsx" }],
+		files: [{ src: "templates/_internal/empty.tsx", dest: "components/_internal/empty.tsx" }],
 		deps: ["class-variance-authority"],
 		internalDeps: ["utils"],
 		tags: ["primitive"],
@@ -254,7 +254,7 @@ export const registry: Record<string, ComponentEntry> = {
 	field: {
 		name: "field",
 		description: "Form field wrapper with label, description, and error slots",
-		files: [{ src: "templates/ui/field.tsx", dest: "components/ui/field.tsx" }],
+		files: [{ src: "templates/_internal/field.tsx", dest: "components/_internal/field.tsx" }],
 		deps: ["class-variance-authority"],
 		internalDeps: ["label", "separator", "utils"],
 		tags: ["primitive"],
@@ -262,7 +262,7 @@ export const registry: Record<string, ComponentEntry> = {
 	grid: {
 		name: "grid",
 		description: "Responsive CSS grid layout component",
-		files: [{ src: "templates/ui/grid.tsx", dest: "components/ui/grid.tsx" }],
+		files: [{ src: "templates/_internal/grid.tsx", dest: "components/_internal/grid.tsx" }],
 		deps: ["class-variance-authority"],
 		internalDeps: ["utils"],
 		tags: ["primitive", "layout"],
@@ -270,7 +270,7 @@ export const registry: Record<string, ComponentEntry> = {
 	"hover-card": {
 		name: "hover-card",
 		description: "Preview card shown on hover",
-		files: [{ src: "templates/ui/hover-card.tsx", dest: "components/ui/hover-card.tsx" }],
+		files: [{ src: "templates/_internal/hover-card.tsx", dest: "components/_internal/hover-card.tsx" }],
 		deps: ["@base-ui/react"],
 		internalDeps: ["utils"],
 		tags: ["primitive"],
@@ -278,7 +278,7 @@ export const registry: Record<string, ComponentEntry> = {
 	icon: {
 		name: "icon",
 		description: "Icon wrapper with size and color variants",
-		files: [{ src: "templates/ui/icon.tsx", dest: "components/ui/icon.tsx" }],
+		files: [{ src: "templates/_internal/icon.tsx", dest: "components/_internal/icon.tsx" }],
 		deps: ["class-variance-authority"],
 		internalDeps: ["utils"],
 		tags: ["primitive"],
@@ -286,7 +286,7 @@ export const registry: Record<string, ComponentEntry> = {
 	input: {
 		name: "input",
 		description: "Text input field with focus ring styling",
-		files: [{ src: "templates/ui/input.tsx", dest: "components/ui/input.tsx" }],
+		files: [{ src: "templates/_internal/input.tsx", dest: "components/_internal/input.tsx" }],
 		deps: ["@base-ui/react"],
 		internalDeps: ["utils"],
 		tags: ["primitive"],
@@ -294,7 +294,7 @@ export const registry: Record<string, ComponentEntry> = {
 	"input-group": {
 		name: "input-group",
 		description: "Input with addons, buttons, and text segments",
-		files: [{ src: "templates/ui/input-group.tsx", dest: "components/ui/input-group.tsx" }],
+		files: [{ src: "templates/_internal/input-group.tsx", dest: "components/_internal/input-group.tsx" }],
 		deps: ["class-variance-authority"],
 		internalDeps: ["button", "input", "textarea", "utils"],
 		tags: ["primitive"],
@@ -302,7 +302,7 @@ export const registry: Record<string, ComponentEntry> = {
 	item: {
 		name: "item",
 		description: "Flexible list item with media, content, and actions",
-		files: [{ src: "templates/ui/item.tsx", dest: "components/ui/item.tsx" }],
+		files: [{ src: "templates/_internal/item.tsx", dest: "components/_internal/item.tsx" }],
 		deps: ["@base-ui/react", "class-variance-authority"],
 		internalDeps: ["separator", "utils"],
 		tags: ["primitive"],
@@ -310,7 +310,7 @@ export const registry: Record<string, ComponentEntry> = {
 	label: {
 		name: "label",
 		description: "Accessible text label for form controls",
-		files: [{ src: "templates/ui/label.tsx", dest: "components/ui/label.tsx" }],
+		files: [{ src: "templates/_internal/label.tsx", dest: "components/_internal/label.tsx" }],
 		deps: [],
 		internalDeps: ["utils"],
 		tags: ["primitive"],
@@ -318,7 +318,7 @@ export const registry: Record<string, ComponentEntry> = {
 	pagination: {
 		name: "pagination",
 		description: "Page navigation with previous, next, and page links",
-		files: [{ src: "templates/ui/pagination.tsx", dest: "components/ui/pagination.tsx" }],
+		files: [{ src: "templates/_internal/pagination.tsx", dest: "components/_internal/pagination.tsx" }],
 		deps: ["lucide-react"],
 		internalDeps: ["button", "utils"],
 		tags: ["primitive"],
@@ -326,7 +326,7 @@ export const registry: Record<string, ComponentEntry> = {
 	popover: {
 		name: "popover",
 		description: "Floating content panel anchored to a trigger",
-		files: [{ src: "templates/ui/popover.tsx", dest: "components/ui/popover.tsx" }],
+		files: [{ src: "templates/_internal/popover.tsx", dest: "components/_internal/popover.tsx" }],
 		deps: ["@base-ui/react"],
 		internalDeps: ["utils"],
 		tags: ["primitive"],
@@ -334,7 +334,7 @@ export const registry: Record<string, ComponentEntry> = {
 	progress: {
 		name: "progress",
 		description: "Horizontal progress bar indicator",
-		files: [{ src: "templates/ui/progress.tsx", dest: "components/ui/progress.tsx" }],
+		files: [{ src: "templates/_internal/progress.tsx", dest: "components/_internal/progress.tsx" }],
 		deps: ["@base-ui/react"],
 		internalDeps: ["utils"],
 		tags: ["primitive"],
@@ -342,7 +342,7 @@ export const registry: Record<string, ComponentEntry> = {
 	"radio-group": {
 		name: "radio-group",
 		description: "Group of mutually exclusive radio options",
-		files: [{ src: "templates/ui/radio-group.tsx", dest: "components/ui/radio-group.tsx" }],
+		files: [{ src: "templates/_internal/radio-group.tsx", dest: "components/_internal/radio-group.tsx" }],
 		deps: ["@base-ui/react", "lucide-react"],
 		internalDeps: ["utils"],
 		tags: ["primitive"],
@@ -350,7 +350,7 @@ export const registry: Record<string, ComponentEntry> = {
 	resizable: {
 		name: "resizable",
 		description: "Resizable split pane panels",
-		files: [{ src: "templates/ui/resizable.tsx", dest: "components/ui/resizable.tsx" }],
+		files: [{ src: "templates/_internal/resizable.tsx", dest: "components/_internal/resizable.tsx" }],
 		deps: ["react-resizable-panels"],
 		internalDeps: ["utils"],
 		tags: ["primitive"],
@@ -358,7 +358,7 @@ export const registry: Record<string, ComponentEntry> = {
 	"scroll-area": {
 		name: "scroll-area",
 		description: "Custom scrollbar container with overflow handling",
-		files: [{ src: "templates/ui/scroll-area.tsx", dest: "components/ui/scroll-area.tsx" }],
+		files: [{ src: "templates/_internal/scroll-area.tsx", dest: "components/_internal/scroll-area.tsx" }],
 		deps: ["@base-ui/react"],
 		internalDeps: ["utils"],
 		tags: ["primitive"],
@@ -366,7 +366,7 @@ export const registry: Record<string, ComponentEntry> = {
 	select: {
 		name: "select",
 		description: "Dropdown select menu with scrollable options",
-		files: [{ src: "templates/ui/select.tsx", dest: "components/ui/select.tsx" }],
+		files: [{ src: "templates/_internal/select.tsx", dest: "components/_internal/select.tsx" }],
 		deps: ["@base-ui/react", "lucide-react"],
 		internalDeps: ["utils"],
 		tags: ["primitive"],
@@ -374,7 +374,7 @@ export const registry: Record<string, ComponentEntry> = {
 	separator: {
 		name: "separator",
 		description: "Visual divider line between content sections",
-		files: [{ src: "templates/ui/separator.tsx", dest: "components/ui/separator.tsx" }],
+		files: [{ src: "templates/_internal/separator.tsx", dest: "components/_internal/separator.tsx" }],
 		deps: ["@base-ui/react"],
 		internalDeps: ["utils"],
 		tags: ["primitive", "layout"],
@@ -382,7 +382,7 @@ export const registry: Record<string, ComponentEntry> = {
 	sheet: {
 		name: "sheet",
 		description: "Slide-out panel from screen edge",
-		files: [{ src: "templates/ui/sheet.tsx", dest: "components/ui/sheet.tsx" }],
+		files: [{ src: "templates/_internal/sheet.tsx", dest: "components/_internal/sheet.tsx" }],
 		deps: ["@base-ui/react", "lucide-react"],
 		internalDeps: ["button", "utils"],
 		tags: ["primitive"],
@@ -390,7 +390,7 @@ export const registry: Record<string, ComponentEntry> = {
 	sidebar: {
 		name: "sidebar",
 		description: "Application sidebar with collapsible navigation groups",
-		files: [{ src: "templates/ui/sidebar.tsx", dest: "components/ui/sidebar.tsx" }],
+		files: [{ src: "templates/_internal/sidebar.tsx", dest: "components/_internal/sidebar.tsx" }],
 		deps: ["@base-ui/react", "class-variance-authority", "lucide-react"],
 		internalDeps: ["button", "input", "separator", "sheet", "skeleton", "tooltip", "use-mobile", "utils"],
 		tags: ["primitive"],
@@ -398,7 +398,7 @@ export const registry: Record<string, ComponentEntry> = {
 	skeleton: {
 		name: "skeleton",
 		description: "Animated placeholder for loading content",
-		files: [{ src: "templates/ui/skeleton.tsx", dest: "components/ui/skeleton.tsx" }],
+		files: [{ src: "templates/_internal/skeleton.tsx", dest: "components/_internal/skeleton.tsx" }],
 		deps: [],
 		internalDeps: ["utils"],
 		tags: ["primitive"],
@@ -406,7 +406,7 @@ export const registry: Record<string, ComponentEntry> = {
 	slider: {
 		name: "slider",
 		description: "Draggable range slider input",
-		files: [{ src: "templates/ui/slider.tsx", dest: "components/ui/slider.tsx" }],
+		files: [{ src: "templates/_internal/slider.tsx", dest: "components/_internal/slider.tsx" }],
 		deps: ["@base-ui/react"],
 		internalDeps: ["utils"],
 		tags: ["primitive"],
@@ -414,7 +414,7 @@ export const registry: Record<string, ComponentEntry> = {
 	sonner: {
 		name: "sonner",
 		description: "Toast notification system powered by Sonner",
-		files: [{ src: "templates/ui/sonner.tsx", dest: "components/ui/sonner.tsx" }],
+		files: [{ src: "templates/_internal/sonner.tsx", dest: "components/_internal/sonner.tsx" }],
 		deps: ["sonner"],
 		internalDeps: [],
 		tags: ["primitive"],
@@ -422,7 +422,7 @@ export const registry: Record<string, ComponentEntry> = {
 	spacer: {
 		name: "spacer",
 		description: "Flexible whitespace component for spacing",
-		files: [{ src: "templates/ui/spacer.tsx", dest: "components/ui/spacer.tsx" }],
+		files: [{ src: "templates/_internal/spacer.tsx", dest: "components/_internal/spacer.tsx" }],
 		deps: ["class-variance-authority"],
 		internalDeps: ["utils"],
 		tags: ["primitive", "layout"],
@@ -430,7 +430,7 @@ export const registry: Record<string, ComponentEntry> = {
 	stack: {
 		name: "stack",
 		description: "Flex-based vertical or horizontal stack layout",
-		files: [{ src: "templates/ui/stack.tsx", dest: "components/ui/stack.tsx" }],
+		files: [{ src: "templates/_internal/stack.tsx", dest: "components/_internal/stack.tsx" }],
 		deps: ["class-variance-authority"],
 		internalDeps: ["utils"],
 		tags: ["primitive", "layout"],
@@ -438,7 +438,7 @@ export const registry: Record<string, ComponentEntry> = {
 	switch: {
 		name: "switch",
 		description: "Toggle switch for on/off states",
-		files: [{ src: "templates/ui/switch.tsx", dest: "components/ui/switch.tsx" }],
+		files: [{ src: "templates/_internal/switch.tsx", dest: "components/_internal/switch.tsx" }],
 		deps: ["@base-ui/react"],
 		internalDeps: ["utils"],
 		tags: ["primitive"],
@@ -446,7 +446,7 @@ export const registry: Record<string, ComponentEntry> = {
 	table: {
 		name: "table",
 		description: "Semantic HTML table with styled rows and cells",
-		files: [{ src: "templates/ui/table.tsx", dest: "components/ui/table.tsx" }],
+		files: [{ src: "templates/_internal/table.tsx", dest: "components/_internal/table.tsx" }],
 		deps: [],
 		internalDeps: ["utils"],
 		tags: ["primitive"],
@@ -454,7 +454,7 @@ export const registry: Record<string, ComponentEntry> = {
 	tabs: {
 		name: "tabs",
 		description: "Tabbed content navigation with line and pill variants",
-		files: [{ src: "templates/ui/tabs.tsx", dest: "components/ui/tabs.tsx" }],
+		files: [{ src: "templates/_internal/tabs.tsx", dest: "components/_internal/tabs.tsx" }],
 		deps: ["@base-ui/react", "class-variance-authority"],
 		internalDeps: ["utils"],
 		tags: ["primitive"],
@@ -462,7 +462,7 @@ export const registry: Record<string, ComponentEntry> = {
 	textarea: {
 		name: "textarea",
 		description: "Multi-line text input with auto-sizing",
-		files: [{ src: "templates/ui/textarea.tsx", dest: "components/ui/textarea.tsx" }],
+		files: [{ src: "templates/_internal/textarea.tsx", dest: "components/_internal/textarea.tsx" }],
 		deps: [],
 		internalDeps: ["utils"],
 		tags: ["primitive"],
@@ -470,7 +470,7 @@ export const registry: Record<string, ComponentEntry> = {
 	toggle: {
 		name: "toggle",
 		description: "Pressable toggle button with active state",
-		files: [{ src: "templates/ui/toggle.tsx", dest: "components/ui/toggle.tsx" }],
+		files: [{ src: "templates/_internal/toggle.tsx", dest: "components/_internal/toggle.tsx" }],
 		deps: ["@base-ui/react", "class-variance-authority"],
 		internalDeps: ["utils"],
 		tags: ["primitive"],
@@ -478,7 +478,7 @@ export const registry: Record<string, ComponentEntry> = {
 	tooltip: {
 		name: "tooltip",
 		description: "Informational popup on hover or focus",
-		files: [{ src: "templates/ui/tooltip.tsx", dest: "components/ui/tooltip.tsx" }],
+		files: [{ src: "templates/_internal/tooltip.tsx", dest: "components/_internal/tooltip.tsx" }],
 		deps: ["@base-ui/react"],
 		internalDeps: ["utils"],
 		tags: ["primitive"],
@@ -486,7 +486,7 @@ export const registry: Record<string, ComponentEntry> = {
 	typography: {
 		name: "typography",
 		description: "Polymorphic text component with typographic scale variants",
-		files: [{ src: "templates/ui/typography.tsx", dest: "components/ui/typography.tsx" }],
+		files: [{ src: "templates/_internal/typography.tsx", dest: "components/_internal/typography.tsx" }],
 		deps: ["class-variance-authority"],
 		internalDeps: ["utils"],
 		tags: ["primitive"],
@@ -495,7 +495,7 @@ export const registry: Record<string, ComponentEntry> = {
 	"line-item": {
 		name: "line-item",
 		description: "Key-value row primitive with dot/solid/pills divider leader between label and value. Variants: default, fill, bold, compact.",
-		files: [{ src: "templates/ui/line-item.tsx", dest: "components/ui/line-item.tsx" }],
+		files: [{ src: "templates/_internal/line-item.tsx", dest: "components/_internal/line-item.tsx" }],
 		deps: ["class-variance-authority"],
 		internalDeps: ["divider", "utils"],
 		tags: ["primitive"],
@@ -503,7 +503,7 @@ export const registry: Record<string, ComponentEntry> = {
 	"line-item-header": {
 		name: "line-item-header",
 		description: "Section header label for receipt/list layouts. Variants: default (filled), bordered.",
-		files: [{ src: "templates/ui/line-item-header.tsx", dest: "components/ui/line-item-header.tsx" }],
+		files: [{ src: "templates/_internal/line-item-header.tsx", dest: "components/_internal/line-item-header.tsx" }],
 		deps: ["class-variance-authority"],
 		internalDeps: ["utils"],
 		tags: ["primitive"],
@@ -511,7 +511,7 @@ export const registry: Record<string, ComponentEntry> = {
 	glyph: {
 		name: "glyph",
 		description: "Fixed-size square containing a centred character or symbol. Variants: default, filled, circle, circle-inverted.",
-		files: [{ src: "templates/ui/glyph.tsx", dest: "components/ui/glyph.tsx" }],
+		files: [{ src: "templates/_internal/glyph.tsx", dest: "components/_internal/glyph.tsx" }],
 		deps: ["class-variance-authority"],
 		internalDeps: ["utils"],
 		tags: ["primitive"],
@@ -520,7 +520,7 @@ export const registry: Record<string, ComponentEntry> = {
 		name: "layout-bento",
 		description:
 			"Bento grid layout primitives: BentoGrid, BentoCell, BentoSplit, BentoLeader, BentoQuad, BentoTriple, CellGrid, CellRow, StatCell. Gap-as-border system using base tokens (--border, --radius) with configurable --bento-gap.",
-		files: [{ src: "templates/ui/layout-bento.tsx", dest: "components/ui/layout-bento.tsx" }],
+		files: [{ src: "templates/_internal/layout-bento.tsx", dest: "components/_internal/layout-bento.tsx" }],
 		deps: [],
 		internalDeps: ["utils"],
 		tags: ["primitive", "layout"],
@@ -529,7 +529,7 @@ export const registry: Record<string, ComponentEntry> = {
 		name: "layout",
 		description:
 			"Rigid layout primitives: Section (macro spacing tokens), FlexSpacer (flex-1 aria-hidden), NewspaperGrid and NewspaperCell (newspaper-border pattern — container border-t/l, cells border-b/r, each edge drawn once). All spacing via --space-layout-sm/md/lg tokens.",
-		files: [{ src: "templates/ui/layout.tsx", dest: "components/ui/layout.tsx" }],
+		files: [{ src: "templates/_internal/layout.tsx", dest: "components/_internal/layout.tsx" }],
 		deps: ["class-variance-authority"],
 		internalDeps: ["utils"],
 		tags: ["primitive", "layout"],
@@ -1128,7 +1128,7 @@ export const registry: Record<string, ComponentEntry> = {
 	"tree-view": {
 		name: "tree-view",
 		description: "ASCII-art collapsible tree with keyboard navigation and ARIA semantics",
-		files: [{ src: "templates/ui/tree-view.tsx", dest: "components/ui/tree-view.tsx" }],
+		files: [{ src: "templates/_internal/tree-view.tsx", dest: "components/_internal/tree-view.tsx" }],
 		deps: [],
 		internalDeps: ["utils"],
 		tags: ["primitive"],
@@ -1136,7 +1136,7 @@ export const registry: Record<string, ComponentEntry> = {
 	"code-block": {
 		name: "code-block",
 		description: "Monospace code display with line numbers and overflow scrolling",
-		files: [{ src: "templates/ui/code-block.tsx", dest: "components/ui/code-block.tsx" }],
+		files: [{ src: "templates/_internal/code-block.tsx", dest: "components/_internal/code-block.tsx" }],
 		deps: [],
 		internalDeps: ["utils"],
 		tags: ["primitive"],
@@ -1144,7 +1144,7 @@ export const registry: Record<string, ComponentEntry> = {
 	"block-loader": {
 		name: "block-loader",
 		description: "Animated Unicode spinner with 11 sequence modes",
-		files: [{ src: "templates/ui/block-loader.tsx", dest: "components/ui/block-loader.tsx" }],
+		files: [{ src: "templates/_internal/block-loader.tsx", dest: "components/_internal/block-loader.tsx" }],
 		deps: [],
 		internalDeps: ["utils"],
 		tags: ["primitive"],

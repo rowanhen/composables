@@ -5,7 +5,7 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from '@/components/ui/breadcrumb'
+} from '@/components/_internal/breadcrumb'
 import { ShowcaseSection } from './showcase-section'
 
 export function BreadcrumbShowcase() {

@@ -1,5 +1,5 @@
-import { Skeleton } from '@/components/ui/skeleton'
-import { HStack, VStack } from '@/components/ui/stack'
+import { Skeleton } from '@/components/_internal/skeleton'
+import { HStack, VStack } from '@/components/_internal/stack'
 import { ShowcaseSection } from './showcase-section'
 
 export function SkeletonShowcase() {

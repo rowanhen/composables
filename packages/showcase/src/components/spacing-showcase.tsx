@@ -1,5 +1,5 @@
-import { HStack, VStack } from '@/components/ui/stack'
-import { Typography } from '@/components/ui/typography'
+import { HStack, VStack } from '@/components/_internal/stack'
+import { Typography } from '@/components/_internal/typography'
 import { ShowcaseSection } from './showcase-section'
 
 const spacingScale = [

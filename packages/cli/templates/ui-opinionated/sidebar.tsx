@@ -65,4 +65,4 @@ export {
   SidebarSeparator,
   SidebarTrigger,
   useSidebar,
-} from '@/components/ui/sidebar'
+} from '@/components/_internal/sidebar'

@@ -7,9 +7,9 @@ import {
   FieldDescription,
   FieldError,
   FieldLabel,
-} from '@/components/ui/field'
-import { Label } from '@/components/ui/label'
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
+} from '@/components/_internal/field'
+import { Label } from '@/components/_internal/label'
+import { RadioGroup, RadioGroupItem } from '@/components/_internal/radio-group'
 
 export interface FormRadioGroupOption {
   label: string

@@ -4,4 +4,4 @@ export {
   type TypographyProps,
   type TypographyVariant,
   typographyVariants,
-} from '@/components/ui/typography'
+} from '@/components/_internal/typography'

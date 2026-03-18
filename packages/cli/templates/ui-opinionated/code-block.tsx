@@ -9,4 +9,4 @@
  * </CodeBlock>
  * ```
  */
-export { CodeBlock, type CodeBlockProps } from '@/components/ui/code-block'
+export { CodeBlock, type CodeBlockProps } from '@/components/_internal/code-block'

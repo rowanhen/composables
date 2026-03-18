@@ -1,5 +1,5 @@
-import { Grid, GridItem } from '@/components/ui/grid'
-import { VStack } from '@/components/ui/stack'
+import { Grid, GridItem } from '@/components/_internal/grid'
+import { VStack } from '@/components/_internal/stack'
 import { DemoBox, ShowcaseGroup, ShowcaseSection } from './showcase-section'
 
 export function GridShowcase() {

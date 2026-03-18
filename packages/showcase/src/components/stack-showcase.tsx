@@ -1,8 +1,8 @@
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
-import { Grid, GridItem } from '@/components/ui/grid'
-import { HStack, VStack } from '@/components/ui/stack'
-import { Typography } from '@/components/ui/typography'
+import { Badge } from '@/components/_internal/badge'
+import { Button } from '@/components/_internal/button'
+import { Grid, GridItem } from '@/components/_internal/grid'
+import { HStack, VStack } from '@/components/_internal/stack'
+import { Typography } from '@/components/_internal/typography'
 import { DemoBox, ShowcaseGroup, ShowcaseSection } from './showcase-section'
 
 export function StackShowcase() {

@@ -9,4 +9,4 @@
  * <Divider orientation="vertical" />
  * ```
  */
-export { Divider, type DividerProps, dividerVariants } from '@/components/ui/divider'
+export { Divider, type DividerProps, dividerVariants } from '@/components/_internal/divider'

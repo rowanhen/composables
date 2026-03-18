@@ -7,11 +7,11 @@ import {
   SettingsIcon,
   StarIcon,
 } from 'lucide-react'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
-import { Icon } from '@/components/ui/icon'
-import { HStack, VStack } from '@/components/ui/stack'
-import { Typography } from '@/components/ui/typography'
+import { Badge } from '@/components/_internal/badge'
+import { Button } from '@/components/_internal/button'
+import { Icon } from '@/components/_internal/icon'
+import { HStack, VStack } from '@/components/_internal/stack'
+import { Typography } from '@/components/_internal/typography'
 import { ShowcaseGroup, ShowcaseSection } from './showcase-section'
 
 export function IconShowcase() {

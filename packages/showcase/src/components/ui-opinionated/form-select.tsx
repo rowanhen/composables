@@ -7,7 +7,7 @@ import {
   FieldDescription,
   FieldError,
   FieldLabel,
-} from '@/components/ui/field'
+} from '@/components/_internal/field'
 import {
   Select,
   SelectContent,
@@ -16,7 +16,7 @@ import {
   SelectScrollUpButton,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select'
+} from '@/components/_internal/select'
 
 export interface FormSelectOption {
   label: string

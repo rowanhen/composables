@@ -26,4 +26,4 @@ export {
   CellGrid,
   CellRow,
   StatCell,
-} from '@/components/ui/layout-bento'
+} from '@/components/_internal/layout-bento'

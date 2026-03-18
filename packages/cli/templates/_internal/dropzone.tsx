@@ -7,7 +7,7 @@ import {
 	useDropzone,
 } from "react-dropzone";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/_internal/button";
 import { cn } from "@/lib/utils";
 
 const DEFAULT_MAX_SIZE = 10 * 1024 * 1024; // 10MB

@@ -1,4 +1,4 @@
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/_internal/button'
 import {
   Dialog,
   DialogContent,
@@ -7,10 +7,10 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@/components/ui/dialog'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import { VStack } from '@/components/ui/stack'
+} from '@/components/_internal/dialog'
+import { Input } from '@/components/_internal/input'
+import { Label } from '@/components/_internal/label'
+import { VStack } from '@/components/_internal/stack'
 import { ShowcaseSection } from './showcase-section'
 
 export function DialogShowcase() {

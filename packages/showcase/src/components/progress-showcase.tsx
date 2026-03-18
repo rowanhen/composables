@@ -5,8 +5,8 @@ import {
   ProgressLabel,
   ProgressTrack,
   ProgressValue,
-} from '@/components/ui/progress'
-import { HStack, VStack } from '@/components/ui/stack'
+} from '@/components/_internal/progress'
+import { HStack, VStack } from '@/components/_internal/stack'
 import { ShowcaseGroup, ShowcaseSection } from './showcase-section'
 
 export function ProgressShowcase() {

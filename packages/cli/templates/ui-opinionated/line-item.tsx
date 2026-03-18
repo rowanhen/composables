@@ -9,4 +9,4 @@
  * <LineItem label="Total" value="$107.91" variant="bold" divider="solid" />
  * ```
  */
-export { LineItem, type LineItemProps, lineItemVariants } from '@/components/ui/line-item'
+export { LineItem, type LineItemProps, lineItemVariants } from '@/components/_internal/line-item'

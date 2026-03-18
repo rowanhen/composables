@@ -6,8 +6,8 @@ import {
   DropZoneContent,
   DropZoneFile,
   DropZoneInput,
-} from '@/components/ui/dropzone'
-import { VStack } from '@/components/ui/stack'
+} from '@/components/_internal/dropzone'
+import { VStack } from '@/components/_internal/stack'
 import { ShowcaseGroup, ShowcaseSection } from './showcase-section'
 
 export function DropzoneShowcase() {

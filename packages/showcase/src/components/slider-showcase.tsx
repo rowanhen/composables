@@ -1,6 +1,6 @@
-import { Label } from '@/components/ui/label'
-import { Slider } from '@/components/ui/slider'
-import { VStack } from '@/components/ui/stack'
+import { Label } from '@/components/_internal/label'
+import { Slider } from '@/components/_internal/slider'
+import { VStack } from '@/components/_internal/stack'
 import { ShowcaseSection } from './showcase-section'
 
 export function SliderShowcase() {

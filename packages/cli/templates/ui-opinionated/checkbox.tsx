@@ -8,4 +8,4 @@
  * <Checkbox defaultChecked />
  * ```
  */
-export { Checkbox } from '@/components/ui/checkbox'
+export { Checkbox } from '@/components/_internal/checkbox'

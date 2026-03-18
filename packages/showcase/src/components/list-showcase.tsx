@@ -3,7 +3,7 @@ import {
   ListArrowItem,
   ListBulletItem,
 } from '@/components/ui-opinionated/list'
-import { VStack } from '@/components/ui/stack'
+import { VStack } from '@/components/_internal/stack'
 import { ShowcaseGroup, ShowcaseSection } from './showcase-section'
 
 const STEPS = [

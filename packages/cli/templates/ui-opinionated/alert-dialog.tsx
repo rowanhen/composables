@@ -14,7 +14,7 @@ import {
   AlertDialog as AlertDialogPrimitive,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from '@/components/ui/alert-dialog'
+} from '@/components/_internal/alert-dialog'
 
 export interface AlertDialogProps extends Omit<AlertDialogPrimitiveBase.Root.Props, 'children'> {
   /** Element that triggers the dialog */

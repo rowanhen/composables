@@ -1,6 +1,6 @@
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
+import { Button } from '@/components/_internal/button'
+import { Input } from '@/components/_internal/input'
+import { Label } from '@/components/_internal/label'
 import {
   Sheet,
   SheetContent,
@@ -9,9 +9,9 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from '@/components/ui/sheet'
-import { HStack, VStack } from '@/components/ui/stack'
-import { Typography } from '@/components/ui/typography'
+} from '@/components/_internal/sheet'
+import { HStack, VStack } from '@/components/_internal/stack'
+import { Typography } from '@/components/_internal/typography'
 import { ShowcaseSection } from './showcase-section'
 
 export function SheetShowcase() {

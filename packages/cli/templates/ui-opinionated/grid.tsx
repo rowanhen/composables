@@ -11,4 +11,4 @@
  * </Grid>
  * ```
  */
-export { Grid, type GridProps, gridVariants } from '@/components/ui/grid'
+export { Grid, type GridProps, gridVariants } from '@/components/_internal/grid'

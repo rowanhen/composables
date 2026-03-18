@@ -10,7 +10,7 @@ import {
   Sheet as SheetPrimitive,
   SheetTitle,
   SheetTrigger,
-} from '@/components/ui/sheet'
+} from '@/components/_internal/sheet'
 
 export interface SheetProps extends Omit<SheetPrimitiveBase.Root.Props, 'children'> {
   // Opinionated API props

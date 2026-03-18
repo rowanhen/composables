@@ -7,7 +7,7 @@ import {
   EmptyMedia,
   Empty as EmptyPrimitive,
   EmptyTitle,
-} from '@/components/ui/empty'
+} from '@/components/_internal/empty'
 import { TableCell, TableRow } from '@/components/ui-opinionated/table'
 import { Typography } from '@/components/ui-opinionated/typography'
 

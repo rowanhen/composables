@@ -7,7 +7,7 @@ import {
   CardHeader,
   Card as CardPrimitive,
   CardTitle,
-} from '@/components/ui/card'
+} from '@/components/_internal/card'
 
 export interface CardProps
   extends Omit<React.ComponentProps<typeof CardPrimitive>, 'size' | 'children' | 'title'> {
@@ -54,4 +54,4 @@ export {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card'
+} from '@/components/_internal/card'

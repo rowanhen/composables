@@ -7,8 +7,8 @@ import {
   FieldDescription,
   FieldError,
   FieldLabel,
-} from '@/components/ui/field'
-import { Slider as SliderPrimitive } from '@/components/ui/slider'
+} from '@/components/_internal/field'
+import { Slider as SliderPrimitive } from '@/components/_internal/slider'
 
 export interface FormSliderProps
   extends Omit<SliderPrimitiveBase.Root.Props, 'children' | 'orientation'> {

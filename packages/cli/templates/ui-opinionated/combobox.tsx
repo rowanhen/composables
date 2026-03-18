@@ -17,7 +17,7 @@ import {
   ComboboxTrigger,
   ComboboxValue,
   useComboboxAnchor,
-} from '@/components/ui/combobox'
+} from '@/components/_internal/combobox'
 
 export interface ComboboxOption {
   label: string

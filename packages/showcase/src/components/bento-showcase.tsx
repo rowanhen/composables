@@ -15,10 +15,10 @@ import {
 	CellGrid,
 	CellRow,
 	StatCell,
-} from "@/components/ui/layout-bento"
-import { Glyph } from "@/components/ui/glyph"
-import { VStack } from "@/components/ui/stack"
-import { Typography } from "@/components/ui/typography"
+} from "@/components/_internal/layout-bento"
+import { Glyph } from "@/components/_internal/glyph"
+import { VStack } from "@/components/_internal/stack"
+import { Typography } from "@/components/_internal/typography"
 import { ShowcaseGroup, ShowcaseSection } from "./showcase-section"
 
 // ── Demo content helpers ──────────────────────────────────────────────────────

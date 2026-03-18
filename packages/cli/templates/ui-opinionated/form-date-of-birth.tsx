@@ -7,8 +7,8 @@ import {
   FieldDescription,
   FieldError,
   FieldLabel,
-} from '@/components/ui/field'
-import { Input } from '@/components/ui/input'
+} from '@/components/_internal/field'
+import { Input } from '@/components/_internal/input'
 import { cn } from '@/lib/utils'
 
 export interface DateOfBirthValue {

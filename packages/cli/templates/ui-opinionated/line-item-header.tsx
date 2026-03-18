@@ -14,4 +14,4 @@ export {
   LineItemHeader,
   type LineItemHeaderProps,
   lineItemHeaderVariants,
-} from '@/components/ui/line-item-header'
+} from '@/components/_internal/line-item-header'

@@ -12,4 +12,4 @@
  * toast.success('Operation completed!')
  * ```
  */
-export { Toaster } from '@/components/ui/sonner'
+export { Toaster } from '@/components/_internal/sonner'

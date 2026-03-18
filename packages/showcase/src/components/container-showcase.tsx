@@ -1,6 +1,6 @@
-import { Container } from '@/components/ui/container'
-import { VStack } from '@/components/ui/stack'
-import { Typography } from '@/components/ui/typography'
+import { Container } from '@/components/_internal/container'
+import { VStack } from '@/components/_internal/stack'
+import { Typography } from '@/components/_internal/typography'
 import { ShowcaseSection } from './showcase-section'
 
 export function ContainerShowcase() {

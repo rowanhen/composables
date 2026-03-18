@@ -8,4 +8,4 @@ export {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui/table'
+} from '@/components/_internal/table'

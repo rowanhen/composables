@@ -1,6 +1,6 @@
-import { AspectRatio } from '@/components/ui/aspect-ratio'
-import { HStack, VStack } from '@/components/ui/stack'
-import { Typography } from '@/components/ui/typography'
+import { AspectRatio } from '@/components/_internal/aspect-ratio'
+import { HStack, VStack } from '@/components/_internal/stack'
+import { Typography } from '@/components/_internal/typography'
 import { ShowcaseSection } from './showcase-section'
 
 export function AspectRatioShowcase() {

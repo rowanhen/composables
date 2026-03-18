@@ -1,6 +1,6 @@
 import { FileTextIcon, MoreHorizontalIcon, SettingsIcon, UserIcon } from 'lucide-react'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
+import { Badge } from '@/components/_internal/badge'
+import { Button } from '@/components/_internal/button'
 import {
   Item,
   ItemActions,
@@ -9,8 +9,8 @@ import {
   ItemGroup,
   ItemMedia,
   ItemTitle,
-} from '@/components/ui/item'
-import { VStack } from '@/components/ui/stack'
+} from '@/components/_internal/item'
+import { VStack } from '@/components/_internal/stack'
 import { ShowcaseGroup, ShowcaseSection } from './showcase-section'
 
 export function ItemShowcase() {

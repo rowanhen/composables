@@ -10,9 +10,9 @@ import {
   SearchIcon,
   XIcon,
 } from 'lucide-react'
-import { Checkbox } from '@/components/ui/checkbox'
-import { Grid } from '@/components/ui/grid'
-import { Input } from '@/components/ui/input'
+import { Checkbox } from '@/components/_internal/checkbox'
+import { Grid } from '@/components/_internal/grid'
+import { Input } from '@/components/_internal/input'
 import {
   InputGroup,
   InputGroupAddon,
@@ -20,13 +20,13 @@ import {
   InputGroupInput,
   InputGroupText,
   InputGroupTextarea,
-} from '@/components/ui/input-group'
-import { Label } from '@/components/ui/label'
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
-import { HStack, VStack } from '@/components/ui/stack'
-import { Switch } from '@/components/ui/switch'
-import { Textarea } from '@/components/ui/textarea'
-import { Typography } from '@/components/ui/typography'
+} from '@/components/_internal/input-group'
+import { Label } from '@/components/_internal/label'
+import { RadioGroup, RadioGroupItem } from '@/components/_internal/radio-group'
+import { HStack, VStack } from '@/components/_internal/stack'
+import { Switch } from '@/components/_internal/switch'
+import { Textarea } from '@/components/_internal/textarea'
+import { Typography } from '@/components/_internal/typography'
 import { ShowcaseGroup, ShowcaseSection } from './showcase-section'
 
 export function FormControlsShowcase() {

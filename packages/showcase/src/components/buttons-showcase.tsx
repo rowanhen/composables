@@ -7,8 +7,8 @@ import {
   PlusIcon,
   TrashIcon,
 } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { HStack, VStack } from '@/components/ui/stack'
+import { Button } from '@/components/_internal/button'
+import { HStack, VStack } from '@/components/_internal/stack'
 import { ShowcaseGroup, ShowcaseSection } from './showcase-section'
 
 export function ButtonsShowcase() {

@@ -1,5 +1,5 @@
-import { Badge } from '@/components/ui/badge'
-import { HStack, VStack } from '@/components/ui/stack'
+import { Badge } from '@/components/_internal/badge'
+import { HStack, VStack } from '@/components/_internal/stack'
 import { ShowcaseGroup, ShowcaseSection } from './showcase-section'
 
 export function BadgesShowcase() {

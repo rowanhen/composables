@@ -9,4 +9,4 @@
  * </Container>
  * ```
  */
-export { Container, type ContainerProps, containerVariants } from '@/components/ui/container'
+export { Container, type ContainerProps, containerVariants } from '@/components/_internal/container'

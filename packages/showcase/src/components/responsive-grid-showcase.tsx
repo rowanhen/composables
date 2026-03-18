@@ -1,4 +1,4 @@
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/_internal/button'
 import {
   Card,
   CardContent,
@@ -6,9 +6,9 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card'
-import { Grid } from '@/components/ui/grid'
-import { Skeleton } from '@/components/ui/skeleton'
+} from '@/components/_internal/card'
+import { Grid } from '@/components/_internal/grid'
+import { Skeleton } from '@/components/_internal/skeleton'
 import { ShowcaseGroup, ShowcaseSection } from './showcase-section'
 
 export function ResponsiveGridShowcase() {

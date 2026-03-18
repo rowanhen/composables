@@ -1,7 +1,7 @@
 import type React from 'react'
-import { Spacer } from '@/components/ui/spacer'
-import { VStack } from '@/components/ui/stack'
-import { Typography } from '@/components/ui/typography'
+import { Spacer } from '@/components/_internal/spacer'
+import { VStack } from '@/components/_internal/stack'
+import { Typography } from '@/components/_internal/typography'
 
 export function ShowcaseSection({
   title,

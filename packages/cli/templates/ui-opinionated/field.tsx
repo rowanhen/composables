@@ -23,4 +23,4 @@ export {
   FieldSet,
   FieldContent,
   FieldTitle,
-} from '@/components/ui/field'
+} from '@/components/_internal/field'

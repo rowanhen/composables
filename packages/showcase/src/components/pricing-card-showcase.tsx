@@ -1,5 +1,5 @@
 import { PricingCard } from '@/components/ui-opinionated/pricing-card'
-import { HStack } from '@/components/ui/stack'
+import { HStack } from '@/components/_internal/stack'
 import { ShowcaseSection } from './showcase-section'
 import type { PricingProduct } from '@/components/ui-opinionated/pricing-card'
 

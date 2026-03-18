@@ -4,9 +4,9 @@
  * Demonstrates all Glyph variants and sizes.
  */
 
-import { Glyph } from '@/components/ui/glyph'
-import { HStack, VStack } from '@/components/ui/stack'
-import { Typography } from '@/components/ui/typography'
+import { Glyph } from '@/components/_internal/glyph'
+import { HStack, VStack } from '@/components/_internal/stack'
+import { Typography } from '@/components/_internal/typography'
 import { ShowcaseSection } from './showcase-section'
 
 export function GlyphShowcase() {

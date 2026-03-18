@@ -6,7 +6,7 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from '@/components/ui/pagination'
+} from '@/components/_internal/pagination'
 import { ShowcaseSection } from './showcase-section'
 
 export function PaginationShowcase() {

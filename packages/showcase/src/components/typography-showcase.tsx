@@ -1,6 +1,6 @@
-import { Separator } from '@/components/ui/separator'
-import { VStack } from '@/components/ui/stack'
-import { Typography } from '@/components/ui/typography'
+import { Separator } from '@/components/_internal/separator'
+import { VStack } from '@/components/_internal/stack'
+import { Typography } from '@/components/_internal/typography'
 import { ShowcaseSection } from './showcase-section'
 
 export function TypographyShowcase() {

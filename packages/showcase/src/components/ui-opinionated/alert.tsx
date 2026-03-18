@@ -6,7 +6,7 @@ import {
   AlertDescription,
   Alert as AlertPrimitive,
   AlertTitle,
-} from '@/components/ui/alert'
+} from '@/components/_internal/alert'
 
 export type AlertType = 'notice' | 'negative' | 'positive' | 'default' | 'warning'
 

@@ -7,7 +7,7 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from '@/components/ui/carousel'
+} from '@/components/_internal/carousel'
 
 type CarouselOptions = Parameters<typeof CarouselPrimitive>[0]['opts']
 

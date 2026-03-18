@@ -7,8 +7,8 @@ import {
   FieldDescription,
   FieldError,
   FieldLabel,
-} from '@/components/ui/field'
-import { Switch } from '@/components/ui/switch'
+} from '@/components/_internal/field'
+import { Switch } from '@/components/_internal/switch'
 
 export interface FormSwitchProps
   extends Omit<SwitchPrimitive.Root.Props, 'checked' | 'onCheckedChange'> {

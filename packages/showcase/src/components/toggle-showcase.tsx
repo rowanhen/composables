@@ -1,6 +1,6 @@
 import { BoldIcon, ItalicIcon, UnderlineIcon } from 'lucide-react'
-import { HStack, VStack } from '@/components/ui/stack'
-import { Toggle } from '@/components/ui/toggle'
+import { HStack, VStack } from '@/components/_internal/stack'
+import { Toggle } from '@/components/_internal/toggle'
 import { ShowcaseSection } from './showcase-section'
 
 export function ToggleShowcase() {

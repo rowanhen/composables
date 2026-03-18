@@ -13,14 +13,14 @@ import {
   DropZoneInput,
   type FileRejection,
   getRejectionMessage,
-} from '@/components/ui/dropzone'
+} from '@/components/_internal/dropzone'
 import {
   Field,
   FieldContent,
   FieldDescription,
   FieldError,
   FieldLabel,
-} from '@/components/ui/field'
+} from '@/components/_internal/field'
 
 export interface FormDropZoneProps {
   ref?: React.Ref<HTMLDivElement>

@@ -8,7 +8,7 @@ import {
   PaginationNext,
   PaginationPrevious,
   Pagination as PaginationPrimitive,
-} from '@/components/ui/pagination'
+} from '@/components/_internal/pagination'
 
 export interface PaginationProps
   extends Omit<React.ComponentProps<typeof PaginationPrimitive>, 'children'> {

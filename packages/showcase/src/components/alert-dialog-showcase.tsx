@@ -10,9 +10,9 @@ import {
   AlertDialogMedia,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from '@/components/ui/alert-dialog'
-import { Button } from '@/components/ui/button'
-import { HStack } from '@/components/ui/stack'
+} from '@/components/_internal/alert-dialog'
+import { Button } from '@/components/_internal/button'
+import { HStack } from '@/components/_internal/stack'
 import { ShowcaseSection } from './showcase-section'
 
 export function AlertDialogShowcase() {

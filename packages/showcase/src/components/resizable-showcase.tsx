@@ -2,8 +2,8 @@ import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
-} from '@/components/ui/resizable'
-import { Typography } from '@/components/ui/typography'
+} from '@/components/_internal/resizable'
+import { Typography } from '@/components/_internal/typography'
 import { ShowcaseSection } from './showcase-section'
 
 export function ResizableShowcase() {

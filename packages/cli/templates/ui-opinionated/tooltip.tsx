@@ -5,7 +5,7 @@ import {
   TooltipContent,
   Tooltip as TooltipPrimitive,
   TooltipTrigger,
-} from '@/components/ui/tooltip'
+} from '@/components/_internal/tooltip'
 
 export interface TooltipProps extends Omit<TooltipPrimitiveBase.Root.Props, 'children'> {
   content: React.ReactNode

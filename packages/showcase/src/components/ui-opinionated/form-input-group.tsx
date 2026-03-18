@@ -7,7 +7,7 @@ import {
   FieldDescription,
   FieldError,
   FieldLabel,
-} from '@/components/ui/field'
+} from '@/components/_internal/field'
 import {
   InputGroup,
   InputGroupAddon,
@@ -15,7 +15,7 @@ import {
   InputGroupInput,
   InputGroupText,
   InputGroupTextarea,
-} from '@/components/ui/input-group'
+} from '@/components/_internal/input-group'
 import { type NumericInputOptions, useNumericInput } from '@/hooks/use-numeric-input'
 
 export interface FormInputGroupInputProps

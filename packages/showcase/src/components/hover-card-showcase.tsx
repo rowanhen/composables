@@ -1,8 +1,8 @@
 import { CalendarDaysIcon, MapPinIcon } from 'lucide-react'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card'
-import { HStack, VStack } from '@/components/ui/stack'
-import { Typography } from '@/components/ui/typography'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/_internal/avatar'
+import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/_internal/hover-card'
+import { HStack, VStack } from '@/components/_internal/stack'
+import { Typography } from '@/components/_internal/typography'
 import { ShowcaseGroup, ShowcaseSection } from './showcase-section'
 
 export function HoverCardShowcase() {

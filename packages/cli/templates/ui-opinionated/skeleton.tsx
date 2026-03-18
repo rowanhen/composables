@@ -1,6 +1,6 @@
 import type * as React from 'react'
 
-import { Skeleton as SkeletonPrimitive } from '@/components/ui/skeleton'
+import { Skeleton as SkeletonPrimitive } from '@/components/_internal/skeleton'
 import { cn } from '@/lib/utils'
 
 export interface SkeletonProps extends React.ComponentProps<typeof SkeletonPrimitive> {

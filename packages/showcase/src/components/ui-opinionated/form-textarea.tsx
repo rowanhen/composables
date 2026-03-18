@@ -7,8 +7,8 @@ import {
   FieldDescription,
   FieldError,
   FieldLabel,
-} from '@/components/ui/field'
-import { Textarea } from '@/components/ui/textarea'
+} from '@/components/_internal/field'
+import { Textarea } from '@/components/_internal/textarea'
 
 export interface FormTextareaProps extends Omit<React.ComponentProps<'textarea'>, 'size'> {
   label?: string

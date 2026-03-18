@@ -1,14 +1,14 @@
 import type { Checkbox as CheckboxPrimitive } from '@base-ui/react/checkbox'
 import type { VariantProps } from 'class-variance-authority'
 import * as React from 'react'
-import { Checkbox } from '@/components/ui/checkbox'
+import { Checkbox } from '@/components/_internal/checkbox'
 import {
   Field,
   FieldContent,
   FieldDescription,
   FieldError,
   FieldLabel,
-} from '@/components/ui/field'
+} from '@/components/_internal/field'
 
 export interface FormCheckboxProps
   extends Omit<CheckboxPrimitive.Root.Props, 'checked' | 'onCheckedChange'> {

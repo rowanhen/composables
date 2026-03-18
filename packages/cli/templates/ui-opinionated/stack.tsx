@@ -15,4 +15,4 @@
  * </Stack>
  * ```
  */
-export { Stack, type StackProps, stackVariants } from '@/components/ui/stack'
+export { Stack, type StackProps, stackVariants } from '@/components/_internal/stack'
