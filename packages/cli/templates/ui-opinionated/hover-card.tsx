@@ -5,7 +5,7 @@ import {
   HoverCardContent,
   HoverCard as HoverCardPrimitive,
   HoverCardTrigger,
-} from '@/components/ui/hover-card'
+} from '@/components/_internal/hover-card'
 
 export interface HoverCardProps extends Omit<HoverCardPrimitiveBase.Root.Props, 'children'> {
   /** Element that triggers the hover card */

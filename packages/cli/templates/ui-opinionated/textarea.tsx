@@ -8,4 +8,4 @@
  * <Textarea rows={5} autoSize />
  * ```
  */
-export { Textarea } from '@/components/ui/textarea'
+export { Textarea } from '@/components/_internal/textarea'

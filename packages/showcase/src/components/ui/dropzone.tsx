@@ -1,3 +1,5 @@
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
 import { FileIcon, UploadIcon, XIcon } from "lucide-react";
 import * as React from "react";
 import {
@@ -7,7 +9,7 @@ import {
 	useDropzone,
 } from "react-dropzone";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/_internal/button";
 import { cn } from "@/lib/utils";
 
 const DEFAULT_MAX_SIZE = 10 * 1024 * 1024; // 10MB

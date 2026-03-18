@@ -9,4 +9,4 @@
  * <Glyph variant="circle" size="lg">1</Glyph>
  * ```
  */
-export { Glyph, type GlyphProps, glyphVariants } from '@/components/ui/glyph'
+export { Glyph, type GlyphProps, glyphVariants } from '@/components/_internal/glyph'

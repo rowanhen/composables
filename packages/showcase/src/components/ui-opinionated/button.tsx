@@ -1,8 +1,10 @@
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
 import type { VariantProps } from 'class-variance-authority'
 import { Loader2Icon } from 'lucide-react'
 import type * as React from 'react'
 
-import { Button as ButtonPrimitive, type buttonVariants } from '@/components/ui/button'
+import { Button as ButtonPrimitive, type buttonVariants } from '@/components/_internal/button'
 
 export interface ButtonProps extends Omit<React.ComponentProps<'button'>, 'size'> {
   variant?: VariantProps<typeof buttonVariants>['variant']

@@ -1,6 +1,8 @@
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
 import * as React from 'react'
-import { TreeView } from '@/components/ui/tree-view'
-import { VStack } from '@/components/ui/stack'
+import { TreeView } from '@/components/_internal/tree-view'
+import { VStack } from '@/components/_internal/stack'
 import { ShowcaseGroup, ShowcaseSection } from './showcase-section'
 
 export function TreeViewShowcase() {

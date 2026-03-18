@@ -4,7 +4,7 @@ import {
   Progress as ProgressPrimitive,
   ProgressTrack,
   ProgressValue,
-} from '@/components/ui/progress'
+} from '@/components/_internal/progress'
 
 export interface ProgressProps {
   /** Progress value (0-100) */

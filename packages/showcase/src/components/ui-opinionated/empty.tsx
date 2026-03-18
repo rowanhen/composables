@@ -1,3 +1,5 @@
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
 import type * as React from 'react'
 
 import {
@@ -7,7 +9,7 @@ import {
   EmptyMedia,
   Empty as EmptyPrimitive,
   EmptyTitle,
-} from '@/components/ui/empty'
+} from '@/components/_internal/empty'
 import { TableCell, TableRow } from '@/components/ui-opinionated/table'
 import { Typography } from '@/components/ui-opinionated/typography'
 

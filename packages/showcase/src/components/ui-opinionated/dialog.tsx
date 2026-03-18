@@ -1,3 +1,5 @@
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
 import type { Dialog as DialogPrimitiveBase } from '@base-ui/react/dialog'
 import type * as React from 'react'
 
@@ -12,7 +14,7 @@ import {
   Dialog as DialogPrimitive,
   DialogTitle,
   DialogTrigger,
-} from '@/components/ui/dialog'
+} from '@/components/_internal/dialog'
 
 export interface DialogProps extends Omit<DialogPrimitiveBase.Root.Props, 'children'> {
   // Opinionated API props

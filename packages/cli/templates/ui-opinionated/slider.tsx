@@ -8,4 +8,4 @@
  * <Slider defaultValue={50} step={10} />
  * ```
  */
-export { Slider } from '@/components/ui/slider'
+export { Slider } from '@/components/_internal/slider'

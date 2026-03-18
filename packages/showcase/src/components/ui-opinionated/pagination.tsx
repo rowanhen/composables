@@ -1,3 +1,5 @@
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
 import type * as React from 'react'
 
 import {
@@ -8,7 +10,7 @@ import {
   PaginationNext,
   PaginationPrevious,
   Pagination as PaginationPrimitive,
-} from '@/components/ui/pagination'
+} from '@/components/_internal/pagination'
 
 export interface PaginationProps
   extends Omit<React.ComponentProps<typeof PaginationPrimitive>, 'children'> {

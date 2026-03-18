@@ -1,3 +1,5 @@
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
 import type { VariantProps } from 'class-variance-authority'
 import type * as React from 'react'
 import {
@@ -12,7 +14,7 @@ import {
   ItemSeparator,
   ItemTitle,
   type itemVariants,
-} from '@/components/ui/item'
+} from '@/components/_internal/item'
 import { Typography } from '@/components/ui-opinionated/typography'
 
 export type ItemVariants = typeof itemVariants

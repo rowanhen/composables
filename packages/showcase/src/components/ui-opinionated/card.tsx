@@ -1,3 +1,5 @@
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
 import type * as React from 'react'
 import {
   CardAction,
@@ -7,7 +9,7 @@ import {
   CardHeader,
   Card as CardPrimitive,
   CardTitle,
-} from '@/components/ui/card'
+} from '@/components/_internal/card'
 
 export interface CardProps
   extends Omit<React.ComponentProps<typeof CardPrimitive>, 'size' | 'children' | 'title'> {
@@ -54,4 +56,4 @@ export {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card'
+} from '@/components/_internal/card'

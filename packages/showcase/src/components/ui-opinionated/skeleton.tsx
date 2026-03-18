@@ -1,6 +1,8 @@
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
 import type * as React from 'react'
 
-import { Skeleton as SkeletonPrimitive } from '@/components/ui/skeleton'
+import { Skeleton as SkeletonPrimitive } from '@/components/_internal/skeleton'
 import { cn } from '@/lib/utils'
 
 export interface SkeletonProps extends React.ComponentProps<typeof SkeletonPrimitive> {

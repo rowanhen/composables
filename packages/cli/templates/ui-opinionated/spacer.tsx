@@ -8,4 +8,4 @@
  * <Spacer size="lg" axis="horizontal" />
  * ```
  */
-export { Spacer, type SpacerProps, spacerVariants } from '@/components/ui/spacer'
+export { Spacer, type SpacerProps, spacerVariants } from '@/components/_internal/spacer'

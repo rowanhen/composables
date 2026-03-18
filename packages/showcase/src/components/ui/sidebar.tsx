@@ -1,3 +1,5 @@
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
 "use client";
 
 import { mergeProps } from "@base-ui/react/merge-props";
@@ -5,22 +7,22 @@ import { useRender } from "@base-ui/react/use-render";
 import { cva, type VariantProps } from "class-variance-authority";
 import { PanelLeftIcon } from "lucide-react";
 import * as React from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Separator } from "@/components/ui/separator";
+import { Button } from "@/components/_internal/button";
+import { Input } from "@/components/_internal/input";
+import { Separator } from "@/components/_internal/separator";
 import {
 	Sheet,
 	SheetContent,
 	SheetDescription,
 	SheetHeader,
 	SheetTitle,
-} from "@/components/ui/sheet";
-import { Skeleton } from "@/components/ui/skeleton";
+} from "@/components/_internal/sheet";
+import { Skeleton } from "@/components/_internal/skeleton";
 import {
 	Tooltip,
 	TooltipContent,
 	TooltipTrigger,
-} from "@/components/ui/tooltip";
+} from "@/components/_internal/tooltip";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { cn, FOCUS_RING } from "@/lib/utils";
 

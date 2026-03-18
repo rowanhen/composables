@@ -1,5 +1,7 @@
-import { Grid, GridItem } from '@/components/ui/grid'
-import { VStack } from '@/components/ui/stack'
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
+import { Grid, GridItem } from '@/components/_internal/grid'
+import { VStack } from '@/components/_internal/stack'
 import { DemoBox, ShowcaseGroup, ShowcaseSection } from './showcase-section'
 
 export function GridShowcase() {

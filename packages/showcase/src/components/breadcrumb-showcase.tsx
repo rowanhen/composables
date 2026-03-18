@@ -1,3 +1,5 @@
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -5,7 +7,7 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from '@/components/ui/breadcrumb'
+} from '@/components/_internal/breadcrumb'
 import { ShowcaseSection } from './showcase-section'
 
 export function BreadcrumbShowcase() {

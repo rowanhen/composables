@@ -8,7 +8,7 @@ import {
   Popover as PopoverPrimitive,
   PopoverTitle,
   PopoverTrigger,
-} from '@/components/ui/popover'
+} from '@/components/_internal/popover'
 
 export interface PopoverProps extends Omit<PopoverPrimitiveBase.Root.Props, 'children'> {
   /** Element that triggers the popover */

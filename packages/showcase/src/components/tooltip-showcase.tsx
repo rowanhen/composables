@@ -1,8 +1,10 @@
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
 import { MailIcon } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { HStack } from '@/components/ui/stack'
-import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
-import { Typography } from '@/components/ui/typography'
+import { Button } from '@/components/_internal/button'
+import { HStack } from '@/components/_internal/stack'
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/_internal/tooltip'
+import { Typography } from '@/components/_internal/typography'
 import { ShowcaseSection } from './showcase-section'
 
 export function TooltipShowcase() {

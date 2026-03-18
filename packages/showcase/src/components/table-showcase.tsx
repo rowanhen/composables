@@ -1,4 +1,6 @@
-import { Badge } from '@/components/ui/badge'
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
+import { Badge } from '@/components/_internal/badge'
 import {
   Table,
   TableBody,
@@ -6,7 +8,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui/table'
+} from '@/components/_internal/table'
 import { ShowcaseSection } from './showcase-section'
 
 export function TableShowcase() {

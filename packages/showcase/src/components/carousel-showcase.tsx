@@ -1,13 +1,15 @@
-import { Card } from '@/components/ui/card'
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
+import { Card } from '@/components/_internal/card'
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from '@/components/ui/carousel'
-import { VStack } from '@/components/ui/stack'
-import { Typography } from '@/components/ui/typography'
+} from '@/components/_internal/carousel'
+import { VStack } from '@/components/_internal/stack'
+import { Typography } from '@/components/_internal/typography'
 import { ShowcaseGroup, ShowcaseSection } from './showcase-section'
 
 export function CarouselShowcase() {

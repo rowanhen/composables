@@ -1,5 +1,5 @@
 import type { Tabs as TabsPrimitiveBase } from '@base-ui/react/tabs'
-import { TabsList, Tabs as TabsPrimitive, TabsTrigger } from '@/components/ui/tabs'
+import { TabsList, Tabs as TabsPrimitive, TabsTrigger } from '@/components/_internal/tabs'
 
 export type TabItem = {
   value: string
@@ -36,4 +36,4 @@ export const Tabs = ({
 }
 
 // Re-export sub-components for advanced usage
-export { TabsContent } from '@/components/ui/tabs'
+export { TabsContent } from '@/components/_internal/tabs'

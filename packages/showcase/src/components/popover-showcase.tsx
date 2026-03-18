@@ -1,7 +1,9 @@
-import { Button } from '@/components/ui/button'
-import { Grid } from '@/components/ui/grid'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
+import { Button } from '@/components/_internal/button'
+import { Grid } from '@/components/_internal/grid'
+import { Input } from '@/components/_internal/input'
+import { Label } from '@/components/_internal/label'
 import {
   Popover,
   PopoverContent,
@@ -9,8 +11,8 @@ import {
   PopoverHeader,
   PopoverTitle,
   PopoverTrigger,
-} from '@/components/ui/popover'
-import { VStack } from '@/components/ui/stack'
+} from '@/components/_internal/popover'
+import { VStack } from '@/components/_internal/stack'
 import { ShowcaseSection } from './showcase-section'
 
 export function PopoverShowcase() {

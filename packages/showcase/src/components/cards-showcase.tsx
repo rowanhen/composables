@@ -1,4 +1,6 @@
-import { Button } from '@/components/ui/button'
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
+import { Button } from '@/components/_internal/button'
 import {
   Card,
   CardContent,
@@ -6,10 +8,10 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card'
-import { Grid } from '@/components/ui/grid'
-import { HStack } from '@/components/ui/stack'
-import { Typography } from '@/components/ui/typography'
+} from '@/components/_internal/card'
+import { Grid } from '@/components/_internal/grid'
+import { HStack } from '@/components/_internal/stack'
+import { Typography } from '@/components/_internal/typography'
 import { ShowcaseSection } from './showcase-section'
 
 export function CardsShowcase() {

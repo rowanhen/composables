@@ -12,7 +12,7 @@ import {
   ItemSeparator,
   ItemTitle,
   type itemVariants,
-} from '@/components/ui/item'
+} from '@/components/_internal/item'
 import { Typography } from '@/components/ui-opinionated/typography'
 
 export type ItemVariants = typeof itemVariants

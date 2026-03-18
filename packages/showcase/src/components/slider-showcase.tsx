@@ -1,6 +1,8 @@
-import { Label } from '@/components/ui/label'
-import { Slider } from '@/components/ui/slider'
-import { VStack } from '@/components/ui/stack'
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
+import { Label } from '@/components/_internal/label'
+import { Slider } from '@/components/_internal/slider'
+import { VStack } from '@/components/_internal/stack'
 import { ShowcaseSection } from './showcase-section'
 
 export function SliderShowcase() {

@@ -8,7 +8,8 @@
 		"build": "bun run --filter '@leitware/composables-cli' build",
 		"dev": "bun run --cwd packages/showcase dev",
 		"test": "bun run --filter '@leitware/composables-cli' test",
-		"prepare": "git config core.hooksPath .githooks"
+		"prepare": "git config core.hooksPath .githooks",
+		"generate:css": "bun scripts/generate-css.ts"
 	},
 	"devDependencies": {
 		"typescript": "^5.7.0"

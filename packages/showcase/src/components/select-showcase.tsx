@@ -1,11 +1,13 @@
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select'
-import { HStack } from '@/components/ui/stack'
+} from '@/components/_internal/select'
+import { HStack } from '@/components/_internal/stack'
 import { ShowcaseSection } from './showcase-section'
 
 export function SelectShowcase() {

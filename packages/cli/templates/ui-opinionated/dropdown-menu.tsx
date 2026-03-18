@@ -16,7 +16,7 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
+} from '@/components/_internal/dropdown-menu'
 
 export interface DropdownMenuItemData {
   /** Display label for the menu item */

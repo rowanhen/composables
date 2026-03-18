@@ -1,3 +1,5 @@
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
 import type { Slider as SliderPrimitiveBase } from '@base-ui/react/slider'
 import type { VariantProps } from 'class-variance-authority'
 import * as React from 'react'
@@ -7,8 +9,8 @@ import {
   FieldDescription,
   FieldError,
   FieldLabel,
-} from '@/components/ui/field'
-import { Slider as SliderPrimitive } from '@/components/ui/slider'
+} from '@/components/_internal/field'
+import { Slider as SliderPrimitive } from '@/components/_internal/slider'
 
 export interface FormSliderProps
   extends Omit<SliderPrimitiveBase.Root.Props, 'children' | 'orientation'> {

@@ -1,3 +1,5 @@
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
 import type { Dialog as SheetPrimitiveBase } from '@base-ui/react/dialog'
 import type * as React from 'react'
 
@@ -10,7 +12,7 @@ import {
   Sheet as SheetPrimitive,
   SheetTitle,
   SheetTrigger,
-} from '@/components/ui/sheet'
+} from '@/components/_internal/sheet'
 
 export interface SheetProps extends Omit<SheetPrimitiveBase.Root.Props, 'children'> {
   // Opinionated API props

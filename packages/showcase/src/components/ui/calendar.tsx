@@ -1,3 +1,5 @@
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
 import {
 	ChevronDownIcon,
 	ChevronLeftIcon,
@@ -9,7 +11,7 @@ import {
 	DayPicker,
 	getDefaultClassNames,
 } from "react-day-picker";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/_internal/button";
 import { cn } from "@/lib/utils";
 
 function Calendar({

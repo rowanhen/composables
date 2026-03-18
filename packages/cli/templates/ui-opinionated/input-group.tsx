@@ -17,4 +17,4 @@ export {
   InputGroupButton,
   InputGroupInput,
   InputGroupTextarea,
-} from '@/components/ui/input-group'
+} from '@/components/_internal/input-group'

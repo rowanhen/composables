@@ -1,3 +1,5 @@
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
 import type { Switch as SwitchPrimitive } from '@base-ui/react/switch'
 import type { VariantProps } from 'class-variance-authority'
 import * as React from 'react'
@@ -7,8 +9,8 @@ import {
   FieldDescription,
   FieldError,
   FieldLabel,
-} from '@/components/ui/field'
-import { Switch } from '@/components/ui/switch'
+} from '@/components/_internal/field'
+import { Switch } from '@/components/_internal/switch'
 
 export interface FormSwitchProps
   extends Omit<SwitchPrimitive.Root.Props, 'checked' | 'onCheckedChange'> {

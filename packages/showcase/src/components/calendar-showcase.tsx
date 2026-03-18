@@ -1,7 +1,9 @@
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
 import React from 'react'
-import { Calendar } from '@/components/ui/calendar'
-import { Grid } from '@/components/ui/grid'
-import { HStack, VStack } from '@/components/ui/stack'
+import { Calendar } from '@/components/_internal/calendar'
+import { Grid } from '@/components/_internal/grid'
+import { HStack, VStack } from '@/components/_internal/stack'
 import { FormCalendarPopover } from '@/components/ui-opinionated/form-calendar-popover'
 import { FormDateOfBirth } from '@/components/ui-opinionated/form-date-of-birth'
 import { ShowcaseGroup, ShowcaseSection } from './showcase-section'

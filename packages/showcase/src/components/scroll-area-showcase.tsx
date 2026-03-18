@@ -1,7 +1,9 @@
-import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area'
-import { Separator } from '@/components/ui/separator'
-import { HStack } from '@/components/ui/stack'
-import { Typography } from '@/components/ui/typography'
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
+import { ScrollArea, ScrollBar } from '@/components/_internal/scroll-area'
+import { Separator } from '@/components/_internal/separator'
+import { HStack } from '@/components/_internal/stack'
+import { Typography } from '@/components/_internal/typography'
 import { ShowcaseGroup, ShowcaseSection } from './showcase-section'
 
 export function ScrollAreaShowcase() {

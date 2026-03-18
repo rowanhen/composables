@@ -8,4 +8,4 @@
  * <Switch defaultChecked />
  * ```
  */
-export { Switch } from '@/components/ui/switch'
+export { Switch } from '@/components/_internal/switch'

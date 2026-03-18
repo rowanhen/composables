@@ -1,6 +1,8 @@
-import { Divider } from "@/components/ui/divider";
-import { HStack, VStack } from "@/components/ui/stack";
-import { Typography } from "@/components/ui/typography";
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
+import { Divider } from "@/components/_internal/divider";
+import { HStack, VStack } from "@/components/_internal/stack";
+import { Typography } from "@/components/_internal/typography";
 import { ShowcaseGroup, ShowcaseSection } from "./showcase-section";
 
 const HORIZONTAL_VARIANTS = [

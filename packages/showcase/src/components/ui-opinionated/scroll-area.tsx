@@ -1,5 +1,7 @@
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
 import { ScrollArea as ScrollAreaPrimitive } from '@base-ui/react/scroll-area'
-import { ScrollBar } from '@/components/ui/scroll-area'
+import { ScrollBar } from '@/components/_internal/scroll-area'
 import { cn, FOCUS_RING } from '@/lib/utils'
 
 export interface ScrollAreaProps extends ScrollAreaPrimitive.Root.Props {
@@ -77,6 +79,6 @@ function ScrollArea({
 }
 
 // Re-export sub-components for advanced usage
-export { ScrollBar } from '@/components/ui/scroll-area'
+export { ScrollBar } from '@/components/_internal/scroll-area'
 
 export { ScrollArea }

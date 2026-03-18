@@ -1,5 +1,7 @@
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
 import { InboxIcon } from 'lucide-react'
-import { Empty, EmptyDescription, EmptyHeader, EmptyTitle } from '@/components/ui/empty'
+import { Empty, EmptyDescription, EmptyHeader, EmptyTitle } from '@/components/_internal/empty'
 import { ShowcaseSection } from './showcase-section'
 
 export function EmptyShowcase() {

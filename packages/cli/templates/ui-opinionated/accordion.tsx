@@ -6,7 +6,7 @@ import {
   AccordionItem,
   Accordion as AccordionPrimitive,
   AccordionTrigger,
-} from '@/components/ui/accordion'
+} from '@/components/_internal/accordion'
 
 export interface AccordionItemData {
   value: string

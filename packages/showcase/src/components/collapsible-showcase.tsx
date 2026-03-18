@@ -1,13 +1,15 @@
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
 import { ChevronDownIcon } from 'lucide-react'
 import React from 'react'
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/_internal/button'
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from '@/components/ui/collapsible'
-import { HStack, VStack } from '@/components/ui/stack'
-import { Typography } from '@/components/ui/typography'
+} from '@/components/_internal/collapsible'
+import { HStack, VStack } from '@/components/_internal/stack'
+import { Typography } from '@/components/_internal/typography'
 import { ShowcaseSection } from './showcase-section'
 
 export function CollapsibleShowcase() {

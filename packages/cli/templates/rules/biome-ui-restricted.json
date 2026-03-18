@@ -7,8 +7,8 @@
 					"options": {
 						"patterns": [
 							{
-								"group": ["@/components/ui/*"],
-								"message": "Do not import directly from 'components/ui/'. Import from 'components/ui-opinionated/' instead."
+								"group": ["@/components/_internal/*"],
+								"message": "Do not import directly from 'components/_internal/'. Import from 'components/ui-opinionated/' instead."
 							}
 						]
 					}

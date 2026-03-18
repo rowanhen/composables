@@ -1,3 +1,5 @@
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
 /**
  * LineItem
  * ─────────────────────────────────────────────────────────────────────────────
@@ -21,7 +23,7 @@
 import * as React from "react"
 import { cva } from "class-variance-authority"
 import { cn } from "@/lib/utils"
-import { Divider } from "@/components/ui/divider"
+import { Divider } from "@/components/_internal/divider"
 
 const lineItemVariants = cva("flex items-center text-sm gap-1", {
 	variants: {

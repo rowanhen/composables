@@ -22,5 +22,5 @@ export {
   newspaperGridVariants,
   Section,
   sectionVariants,
-} from '@/components/ui/layout'
-export type { SectionProps, NewspaperGridProps, NewspaperCellProps } from '@/components/ui/layout'
+} from '@/components/_internal/layout'
+export type { SectionProps, NewspaperGridProps, NewspaperCellProps } from '@/components/_internal/layout'

@@ -12,7 +12,7 @@ import {
   Dialog as DialogPrimitive,
   DialogTitle,
   DialogTrigger,
-} from '@/components/ui/dialog'
+} from '@/components/_internal/dialog'
 
 export interface DialogProps extends Omit<DialogPrimitiveBase.Root.Props, 'children'> {
   // Opinionated API props

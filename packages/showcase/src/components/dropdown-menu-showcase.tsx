@@ -1,4 +1,6 @@
-import { Button } from '@/components/ui/button'
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
+import { Button } from '@/components/_internal/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -7,7 +9,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
+} from '@/components/_internal/dropdown-menu'
 import { ShowcaseSection } from './showcase-section'
 
 export function DropdownMenuShowcase() {

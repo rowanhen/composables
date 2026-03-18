@@ -1,3 +1,5 @@
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
 import type { VariantProps } from 'class-variance-authority'
 import * as React from 'react'
 
@@ -13,14 +15,14 @@ import {
   DropZoneInput,
   type FileRejection,
   getRejectionMessage,
-} from '@/components/ui/dropzone'
+} from '@/components/_internal/dropzone'
 import {
   Field,
   FieldContent,
   FieldDescription,
   FieldError,
   FieldLabel,
-} from '@/components/ui/field'
+} from '@/components/_internal/field'
 
 export interface FormMultiDropZoneProps {
   value: File[]

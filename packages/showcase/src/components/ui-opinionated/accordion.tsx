@@ -1,3 +1,5 @@
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
 import type { Accordion as AccordionPrimitiveBase } from '@base-ui/react/accordion'
 import type * as React from 'react'
 
@@ -6,7 +8,7 @@ import {
   AccordionItem,
   Accordion as AccordionPrimitive,
   AccordionTrigger,
-} from '@/components/ui/accordion'
+} from '@/components/_internal/accordion'
 
 export interface AccordionItemData {
   value: string

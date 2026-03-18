@@ -1,8 +1,10 @@
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
 import type { Toggle as TogglePrimitiveType } from '@base-ui/react/toggle'
 import type { VariantProps } from 'class-variance-authority'
 import type * as React from 'react'
 
-import { Toggle as TogglePrimitive, type toggleVariants } from '@/components/ui/toggle'
+import { Toggle as TogglePrimitive, type toggleVariants } from '@/components/_internal/toggle'
 
 export interface ToggleProps extends Omit<TogglePrimitiveType.Props, 'size' | 'variant'> {
   /**

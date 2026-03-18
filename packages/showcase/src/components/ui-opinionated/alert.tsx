@@ -1,3 +1,5 @@
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
 import { AlertTriangleIcon, CircleCheckIcon, InfoIcon, TriangleAlertIcon } from 'lucide-react'
 import type * as React from 'react'
 
@@ -6,7 +8,7 @@ import {
   AlertDescription,
   Alert as AlertPrimitive,
   AlertTitle,
-} from '@/components/ui/alert'
+} from '@/components/_internal/alert'
 
 export type AlertType = 'notice' | 'negative' | 'positive' | 'default' | 'warning'
 

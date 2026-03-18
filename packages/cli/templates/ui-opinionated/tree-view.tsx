@@ -13,4 +13,4 @@
  * </TreeView>
  * ```
  */
-export { TreeView, type TreeViewProps } from '@/components/ui/tree-view'
+export { TreeView, type TreeViewProps } from '@/components/_internal/tree-view'

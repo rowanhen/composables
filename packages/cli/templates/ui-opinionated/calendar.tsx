@@ -17,4 +17,4 @@
  * />
  * ```
  */
-export { Calendar, CalendarDayButton } from '@/components/ui/calendar'
+export { Calendar, CalendarDayButton } from '@/components/_internal/calendar'

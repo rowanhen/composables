@@ -35,5 +35,5 @@ export {
   DEFAULT_MAX_SIZE,
   DEFAULT_ACCEPT,
   ACCEPT_PRESETS,
-} from '@/components/ui/dropzone'
-export type { DropZoneProps, DropZoneFileProps, Accept, FileRejection } from '@/components/ui/dropzone'
+} from '@/components/_internal/dropzone'
+export type { DropZoneProps, DropZoneFileProps, Accept, FileRejection } from '@/components/_internal/dropzone'

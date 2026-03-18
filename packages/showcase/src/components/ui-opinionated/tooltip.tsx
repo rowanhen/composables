@@ -1,3 +1,5 @@
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
 import type { Tooltip as TooltipPrimitiveBase } from '@base-ui/react/tooltip'
 import type * as React from 'react'
 
@@ -5,7 +7,7 @@ import {
   TooltipContent,
   Tooltip as TooltipPrimitive,
   TooltipTrigger,
-} from '@/components/ui/tooltip'
+} from '@/components/_internal/tooltip'
 
 export interface TooltipProps extends Omit<TooltipPrimitiveBase.Root.Props, 'children'> {
   content: React.ReactNode

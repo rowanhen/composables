@@ -1,3 +1,5 @@
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
 /**
  * PricingCard (opinionated)
  * ─────────────────────────────────────────────────────────────────────────────
@@ -11,10 +13,10 @@
  *   <PricingCard product={myProduct} />
  */
 
-import { Divider } from '@/components/ui/divider'
-import { LineItemHeader } from '@/components/ui/line-item-header'
-import { Typography } from '@/components/ui/typography'
-import { Button } from '@/components/ui/button'
+import { Divider } from '@/components/_internal/divider'
+import { LineItemHeader } from '@/components/_internal/line-item-header'
+import { Typography } from '@/components/_internal/typography'
+import { Button } from '@/components/_internal/button'
 import { cn } from '@/lib/utils'
 
 export interface PricingProduct {

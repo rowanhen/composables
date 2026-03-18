@@ -8,7 +8,7 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from '@/components/ui/breadcrumb'
+} from '@/components/_internal/breadcrumb'
 
 export interface BreadcrumbItemData {
   /** Display label for the breadcrumb item */

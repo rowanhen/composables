@@ -1,5 +1,7 @@
-import { Badge } from '@/components/ui/badge'
-import { HStack, VStack } from '@/components/ui/stack'
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
+import { Badge } from '@/components/_internal/badge'
+import { HStack, VStack } from '@/components/_internal/stack'
 import { ShowcaseGroup, ShowcaseSection } from './showcase-section'
 
 export function BadgesShowcase() {

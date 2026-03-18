@@ -1,10 +1,12 @@
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
 import { ChevronDownIcon, ChevronUpIcon } from 'lucide-react'
 import type * as React from 'react'
 import {
   CollapsibleContent,
   Collapsible as CollapsiblePrimitive,
   CollapsibleTrigger,
-} from '@/components/ui/collapsible'
+} from '@/components/_internal/collapsible'
 import { FOCUS_RING } from '@/lib/utils'
 
 export interface CollapsibleProps

@@ -6,7 +6,7 @@ import {
   Avatar as AvatarPrimitive,
   AvatarImage,
   avatarVariants,
-} from '@/components/ui/avatar'
+} from '@/components/_internal/avatar'
 
 /**
  * Get initials from a name string.

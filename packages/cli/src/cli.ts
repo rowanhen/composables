@@ -4,6 +4,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { Command } from "commander";
 import { addCommand } from "./commands/add.js";
+import { initCommand } from "./commands/init.js";
 import { listCommand } from "./commands/list.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -17,6 +18,7 @@ program
 	.version(pkg.version);
 
 program.addCommand(addCommand);
+program.addCommand(initCommand);
 program.addCommand(listCommand);
 
 program.parse();

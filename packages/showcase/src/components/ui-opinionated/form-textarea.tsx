@@ -1,3 +1,5 @@
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
 import type { VariantProps } from 'class-variance-authority'
 import * as React from 'react'
 
@@ -7,8 +9,8 @@ import {
   FieldDescription,
   FieldError,
   FieldLabel,
-} from '@/components/ui/field'
-import { Textarea } from '@/components/ui/textarea'
+} from '@/components/_internal/field'
+import { Textarea } from '@/components/_internal/textarea'
 
 export interface FormTextareaProps extends Omit<React.ComponentProps<'textarea'>, 'size'> {
   label?: string

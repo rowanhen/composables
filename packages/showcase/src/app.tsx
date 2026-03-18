@@ -1,10 +1,13 @@
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
+
 /* ---- Layout primitives ---- */
-import { Container } from "@/components/ui/container";
-import { Separator } from "@/components/ui/separator";
-import { Toaster } from "@/components/ui/sonner";
-import { Spacer } from "@/components/ui/spacer";
-import { HStack, VStack } from "@/components/ui/stack";
-import { Typography } from "@/components/ui/typography";
+import { Container } from "@/components/_internal/container";
+import { Separator } from "@/components/_internal/separator";
+import { Toaster } from "@/components/_internal/sonner";
+import { Spacer } from "@/components/_internal/spacer";
+import { HStack, VStack } from "@/components/_internal/stack";
+import { Typography } from "@/components/_internal/typography";
 
 
 /* ---- Showcase components ---- */

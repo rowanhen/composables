@@ -8,4 +8,4 @@
  * <Input type="email" disabled />
  * ```
  */
-export { Input } from '@/components/ui/input'
+export { Input } from '@/components/_internal/input'

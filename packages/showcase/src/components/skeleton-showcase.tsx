@@ -1,5 +1,7 @@
-import { Skeleton } from '@/components/ui/skeleton'
-import { HStack, VStack } from '@/components/ui/stack'
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
+import { Skeleton } from '@/components/_internal/skeleton'
+import { HStack, VStack } from '@/components/_internal/stack'
 import { ShowcaseSection } from './showcase-section'
 
 export function SkeletonShowcase() {

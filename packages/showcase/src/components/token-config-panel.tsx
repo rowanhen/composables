@@ -1,22 +1,24 @@
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
 import React from 'react'
 import { HexColorPicker } from 'react-colorful'
 
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { ScrollArea } from '@/components/ui/scroll-area'
-import { Separator } from '@/components/ui/separator'
+import { Button } from '@/components/_internal/button'
+import { Input } from '@/components/_internal/input'
+import { ScrollArea } from '@/components/_internal/scroll-area'
+import { Separator } from '@/components/_internal/separator'
 import {
   Sheet,
   SheetContent,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from '@/components/ui/sheet'
-import { HStack, VStack } from '@/components/ui/stack'
-import { Switch } from '@/components/ui/switch'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { Textarea } from '@/components/ui/textarea'
-import { Typography } from '@/components/ui/typography'
+} from '@/components/_internal/sheet'
+import { HStack, VStack } from '@/components/_internal/stack'
+import { Switch } from '@/components/_internal/switch'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/_internal/tabs'
+import { Textarea } from '@/components/_internal/textarea'
+import { Typography } from '@/components/_internal/typography'
 import { FormInput } from '@/components/ui-opinionated/form-input'
 import { FormSlider } from '@/components/ui-opinionated/form-slider'
 
