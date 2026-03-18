@@ -2,4 +2,4 @@
 # Run biome lint on staged files (warnings only, errors block commit)
 bunx biome lint --staged --no-errors-on-unmatched --diagnostic-level=warn
 # Run no-arbitrary-tailwind lint (advisory)
-bun packages/cli/templates/scripts/lint-no-arbitrary.ts packages/cli/templates packages/showcase/src || true
+bun packages/ui/src/scripts/lint-no-arbitrary.ts packages/ui/src packages/showcase/src || true

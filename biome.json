@@ -1,6 +1,6 @@
 {
 	"$schema": "https://biomejs.dev/schemas/2.0.0/schema.json",
-	"extends": ["./packages/cli/templates/rules/biome-ui-restricted.json"],
+	"extends": ["./packages/ui/src/rules/biome-ui-restricted.json"],
 	"formatter": {
 		"enabled": true,
 		"indentStyle": "tab",
@@ -54,8 +54,8 @@
 	"overrides": [
 		{
 			"includes": [
-				"packages/cli/templates/ui-opinionated/**",
-				"packages/cli/templates/_internal/**",
+				"packages/ui/src/opinionated/**",
+				"packages/ui/src/_internal/**",
 				"packages/showcase/src/**"
 			],
 			"linter": {

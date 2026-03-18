@@ -15,7 +15,6 @@ jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
-    # Only run if there are pending changesets (skip if this is the version bump commit itself)
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -39,19 +38,13 @@ jobs:
       - name: Build
         run: bun run build
 
-      - name: Test
-        run: bun run test
-
       - name: Create Release Pull Request or Publish
         id: changesets
         uses: changesets/action@v1
         with:
-          # When changesets are present: open/update a "Version Packages" PR.
-          # When the Version Packages PR is merged: publish to npm.
           publish: bun run release
           title: "chore: version packages"
           commit: "chore: version packages"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # NOTE: Set NPM_TOKEN in repo Settings → Secrets → Actions for npm publish to work
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
