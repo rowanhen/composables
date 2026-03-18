@@ -1,3 +1,5 @@
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
 import type { Dialog as DialogPrimitiveBase } from '@base-ui/react/dialog'
 import type * as React from 'react'
 

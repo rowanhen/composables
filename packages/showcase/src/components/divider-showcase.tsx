@@ -1,3 +1,5 @@
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
 import { Divider } from "@/components/_internal/divider";
 import { HStack, VStack } from "@/components/_internal/stack";
 import { Typography } from "@/components/_internal/typography";

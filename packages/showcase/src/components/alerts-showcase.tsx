@@ -1,3 +1,5 @@
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
 import { AlertCircleIcon, AlertTriangleIcon, CheckCircleIcon, InfoIcon } from 'lucide-react'
 import { Alert, AlertDescription, AlertTitle } from '@/components/_internal/alert'
 import { VStack } from '@/components/_internal/stack'

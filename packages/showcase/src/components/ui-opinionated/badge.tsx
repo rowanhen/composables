@@ -1,3 +1,5 @@
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
 import type { useRender } from '@base-ui/react/use-render'
 import type { VariantProps } from 'class-variance-authority'
 import type * as React from 'react'

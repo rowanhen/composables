@@ -1,3 +1,5 @@
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
 import { Button } from '@/components/_internal/button'
 import { Input } from '@/components/_internal/input'
 import { Label } from '@/components/_internal/label'

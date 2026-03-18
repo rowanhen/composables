@@ -1,3 +1,5 @@
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
 import { ChevronDownIcon } from 'lucide-react'
 import React from 'react'
 import { Button } from '@/components/_internal/button'

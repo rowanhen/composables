@@ -16,4 +16,6 @@ jobs:
           bun-version: latest
       - run: bun install
       - run: bun run build
+      - name: Verify generated CSS
+        run: bun scripts/generate-css.ts --check
       - run: bun run test

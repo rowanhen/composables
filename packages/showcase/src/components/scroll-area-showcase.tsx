@@ -1,3 +1,5 @@
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
 import { ScrollArea, ScrollBar } from '@/components/_internal/scroll-area'
 import { Separator } from '@/components/_internal/separator'
 import { HStack } from '@/components/_internal/stack'

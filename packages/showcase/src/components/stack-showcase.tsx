@@ -1,3 +1,5 @@
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
 import { Badge } from '@/components/_internal/badge'
 import { Button } from '@/components/_internal/button'
 import { Grid, GridItem } from '@/components/_internal/grid'

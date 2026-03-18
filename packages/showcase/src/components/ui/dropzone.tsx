@@ -1,3 +1,5 @@
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
 import { FileIcon, UploadIcon, XIcon } from "lucide-react";
 import * as React from "react";
 import {

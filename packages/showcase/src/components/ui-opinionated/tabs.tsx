@@ -1,3 +1,5 @@
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
 import type { Tabs as TabsPrimitiveBase } from '@base-ui/react/tabs'
 import { TabsList, Tabs as TabsPrimitive, TabsTrigger } from '@/components/_internal/tabs'
 

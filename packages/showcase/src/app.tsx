@@ -1,3 +1,6 @@
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
+
 /* ---- Layout primitives ---- */
 import { Container } from "@/components/_internal/container";
 import { Separator } from "@/components/_internal/separator";

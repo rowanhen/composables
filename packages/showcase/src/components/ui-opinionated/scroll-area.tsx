@@ -1,3 +1,5 @@
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
 import { ScrollArea as ScrollAreaPrimitive } from '@base-ui/react/scroll-area'
 import { ScrollBar } from '@/components/_internal/scroll-area'
 import { cn, FOCUS_RING } from '@/lib/utils'

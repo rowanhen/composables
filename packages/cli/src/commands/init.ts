@@ -39,7 +39,13 @@ function copyRegistryEntry(name: string, dest: string, overwrite: boolean, alias
 
 	let written = 0;
 	for (const file of entry.files) {
-		const src = join(templatesDir, file.src.replace("templates/", ""));
+		let srcRelative = file.src;
+		if (srcRelative.startsWith("templates/")) {
+			srcRelative = srcRelative.slice("templates/".length);
+		} else {
+			console.log(pc.yellow(`  ⚠ file.src "${file.src}" does not start with "templates/" — using as-is`));
+		}
+		const src = join(templatesDir, srcRelative);
 		const destPath = join(dest, file.dest);
 		const fullDest = resolve(destPath);
 

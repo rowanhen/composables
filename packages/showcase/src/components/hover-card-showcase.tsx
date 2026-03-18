@@ -1,3 +1,5 @@
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
 import { CalendarDaysIcon, MapPinIcon } from 'lucide-react'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/_internal/avatar'
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/_internal/hover-card'

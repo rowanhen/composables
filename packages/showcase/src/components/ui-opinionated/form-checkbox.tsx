@@ -1,3 +1,5 @@
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
 import type { Checkbox as CheckboxPrimitive } from '@base-ui/react/checkbox'
 import type { VariantProps } from 'class-variance-authority'
 import * as React from 'react'

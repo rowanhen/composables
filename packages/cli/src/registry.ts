@@ -1199,6 +1199,7 @@ export const registry: Record<string, ComponentEntry> = {
 			{ src: "templates/ui-opinionated/token-config-panel/typography-editor.tsx", dest: "components/ui-opinionated/token-config-panel/typography-editor.tsx" },
 			{ src: "templates/ui-opinionated/token-config-panel/spacing-editor.tsx", dest: "components/ui-opinionated/token-config-panel/spacing-editor.tsx" },
 			{ src: "templates/ui-opinionated/token-config-panel/preset-manager.ts", dest: "components/ui-opinionated/token-config-panel/preset-manager.ts" },
+			{ src: "templates/ui-opinionated/token-config-panel/presets-data.ts", dest: "components/ui-opinionated/token-config-panel/presets-data.ts" },
 			{ src: "templates/ui-opinionated/token-config-panel/json-import-export.tsx", dest: "components/ui-opinionated/token-config-panel/json-import-export.tsx" },
 		],
 		deps: ["react-colorful"],

@@ -1,3 +1,5 @@
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
 import { BoldIcon, ItalicIcon, UnderlineIcon } from 'lucide-react'
 import { HStack, VStack } from '@/components/_internal/stack'
 import { Toggle } from '@/components/_internal/toggle'

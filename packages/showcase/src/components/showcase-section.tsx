@@ -1,3 +1,5 @@
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
 import type React from 'react'
 import { Spacer } from '@/components/_internal/spacer'
 import { VStack } from '@/components/_internal/stack'

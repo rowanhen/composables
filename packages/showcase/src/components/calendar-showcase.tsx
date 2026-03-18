@@ -1,3 +1,5 @@
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
 import React from 'react'
 import { Calendar } from '@/components/_internal/calendar'
 import { Grid } from '@/components/_internal/grid'

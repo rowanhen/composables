@@ -1,3 +1,5 @@
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
 import * as React from 'react'
 import { BlockLoader, SEQUENCES, type BlockLoaderMode } from '@/components/_internal/block-loader'
 import { VStack } from '@/components/_internal/stack'

@@ -1,3 +1,5 @@
+// Showcase imports from _internal/ to demonstrate primitive components.
+// In your app, always import from @/components/ui-opinionated/ instead.
 import { LineItem } from "@/components/_internal/line-item"
 import { LineItemHeader } from "@/components/_internal/line-item-header"
 import { Divider } from "@/components/_internal/divider"
