@@ -78,7 +78,7 @@ function FormRadioGroup({
       {label && (
         <FieldLabel id={`${radioGroupId}-label`}>
           {label}
-          {required && <span className="text-destructive">*</span>}
+          {required && <span className="text-danger">*</span>}
         </FieldLabel>
       )}
       <FieldContent>

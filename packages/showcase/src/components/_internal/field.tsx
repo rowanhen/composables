@@ -51,7 +51,7 @@ function FieldGroup({ className, ...props }: React.ComponentProps<"div">) {
 }
 
 const fieldVariants = cva(
-	"data-[invalid=true]:text-destructive gap-2 group/field flex w-full",
+	"data-[invalid=true]:text-danger gap-2 group/field flex w-full",
 	{
 		variants: {
 			orientation: {
@@ -162,7 +162,7 @@ function FieldSeparator({
 			<Separator className="absolute inset-0 top-1/2" />
 			{children && (
 				<span
-					className="text-muted-foreground px-2 bg-background relative mx-auto block w-fit"
+					className="text-muted-foreground px-2 bg-page relative mx-auto block w-fit"
 					data-slot="field-separator-content"
 				>
 					{children}
@@ -216,7 +216,7 @@ function FieldError({
 			role="alert"
 			data-slot="field-error"
 			className={cn(
-				"text-destructive text-xs/relaxed font-normal break-all",
+				"text-danger text-xs/relaxed font-normal break-all",
 				className,
 			)}
 			{...props}

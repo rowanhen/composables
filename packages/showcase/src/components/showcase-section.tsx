@@ -44,7 +44,7 @@ export function Swatch({
   return (
     <VStack gap={1} align="center">
       <div
-        className="size-10 rounded-md border border-border/40"
+        className="size-10 rounded-md border border-stroke/40"
         style={{
           backgroundColor: bg ? `var(${bg})` : undefined,
           borderColor: borderColor ? `var(${borderColor})` : undefined,

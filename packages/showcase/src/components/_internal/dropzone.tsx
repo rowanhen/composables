@@ -371,7 +371,7 @@ function DropZoneArea({ children, className }: DropZoneAreaProps) {
 				"rounded-[var(--radius-xl)] border p-8 transition-[opacity,box-shadow]",
 				disabled ? "cursor-not-allowed opacity-50" : "cursor-pointer",
 				isDragActive && "border-primary bg-accent",
-				isDragReject && "border-stroke-critical bg-destructive/10",
+				isDragReject && "border-stroke-critical bg-danger/10",
 				hasError && "border-stroke-critical",
 				hasFiles && "p-4",
 				className,
@@ -420,7 +420,7 @@ function DropZoneContent({
 				className={cn(
 					"text-muted-foreground mb-3 flex size-10 items-center justify-center rounded-[var(--radius)] border transition-[opacity,box-shadow]",
 					isDragAccept && "border-primary text-primary",
-					isDragReject && "border-stroke-critical text-destructive",
+					isDragReject && "border-stroke-critical text-danger",
 				)}
 			>
 				<UploadIcon className="size-5" />
@@ -429,7 +429,7 @@ function DropZoneContent({
 			<span
 				className={cn(
 					"text-muted-foreground text-xs",
-					isDragReject && "text-destructive",
+					isDragReject && "text-danger",
 				)}
 			>
 				{getDragMessage()}

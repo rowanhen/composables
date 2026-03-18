@@ -10,12 +10,12 @@ const buttonVariants = cva(
 				default:
 					"bg-primary text-primary-foreground hover:bg-primary-hover active:bg-primary-active",
 				outline:
-					"border-border dark:bg-input/30 hover:bg-input/50 hover:text-foreground active:bg-accent aria-expanded:bg-muted aria-expanded:text-foreground",
+					"border-stroke dark:bg-field/30 hover:bg-field/50 hover:text-foreground active:bg-accent aria-expanded:bg-muted aria-expanded:text-foreground",
 				secondary:
 					"bg-secondary text-secondary-foreground hover:bg-secondary/(--opacity-hover) active:bg-secondary/(--opacity-active) aria-expanded:bg-secondary aria-expanded:text-secondary-foreground",
 				ghost:
 					"hover:bg-muted hover:text-foreground dark:hover:bg-muted/50 active:bg-muted/(--opacity-hover) aria-expanded:bg-muted aria-expanded:text-foreground",
-				destructive: `bg-destructive/10 hover:bg-destructive/20 ${FOCUS_RING_DESTRUCTIVE} dark:bg-destructive/20 text-destructive dark:hover:bg-destructive/30 active:bg-destructive/30 dark:active:bg-destructive/40 border-stroke-critical`,
+				destructive: `bg-danger/10 hover:bg-danger/20 ${FOCUS_RING_DESTRUCTIVE} dark:bg-danger/20 text-danger dark:hover:bg-danger/30 active:bg-danger/30 dark:active:bg-danger/40 border-stroke-critical`,
 				success:
 					"bg-surface-success text-success border-stroke-success hover:bg-surface-success/(--opacity-hover) active:bg-surface-success/(--opacity-active)",
 				warning:

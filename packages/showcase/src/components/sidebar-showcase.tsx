@@ -62,7 +62,7 @@ function SidebarDemo({
 }) {
   return (
     <div
-      className="relative overflow-hidden rounded-lg border border-border"
+      className="relative overflow-hidden rounded-lg border border-stroke"
       style={{ height, transform: 'translateZ(0)' }}
     >
       {children}

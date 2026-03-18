@@ -88,19 +88,19 @@ function BentoSplitDemo() {
 							Revenue up 24% quarter-over-quarter. All major targets exceeded.
 						</div>
 						<div className="flex gap-2 flex-wrap">
-							<span className="text-xs border border-border px-2 py-0.5">Growth ↑</span>
-							<span className="text-xs border border-border px-2 py-0.5">On Track</span>
-							<span className="text-xs border border-border px-2 py-0.5">Q3 Ready</span>
+							<span className="text-xs border border-stroke px-2 py-0.5">Growth ↑</span>
+							<span className="text-xs border border-stroke px-2 py-0.5">On Track</span>
+							<span className="text-xs border border-stroke px-2 py-0.5">Q3 Ready</span>
 						</div>
 					</div>
 				}
 				stats={
 					<div className="grid grid-cols-1 sm:grid-cols-3 gap-0">
-						<div className="p-3 border-b sm:border-b-0 sm:border-r border-border">
+						<div className="p-3 border-b sm:border-b-0 sm:border-r border-stroke">
 							<div className="text-[10px] text-muted-foreground uppercase mb-0.5">Revenue</div>
 							<div className="text-sm font-bold">$124k</div>
 						</div>
-						<div className="p-3 border-b sm:border-b-0 sm:border-r border-border">
+						<div className="p-3 border-b sm:border-b-0 sm:border-r border-stroke">
 							<div className="text-[10px] text-muted-foreground uppercase mb-0.5">Users</div>
 							<div className="text-sm font-bold">3,891</div>
 						</div>
@@ -208,8 +208,8 @@ function BentoTripleDemo() {
 							<div className="text-xs text-muted-foreground">Week of 3–9 Jun 2024</div>
 						</div>
 						<div className="flex gap-2">
-							<span className="text-xs border border-border px-2 py-0.5">Export</span>
-							<span className="text-xs border border-border px-2 py-0.5">Share</span>
+							<span className="text-xs border border-stroke px-2 py-0.5">Export</span>
+							<span className="text-xs border border-stroke px-2 py-0.5">Share</span>
 						</div>
 					</div>
 				}

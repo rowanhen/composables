@@ -97,7 +97,7 @@ function FormCheckbox({
           {label && (
             <FieldLabel htmlFor={checkboxId}>
               {label}
-              {required && <span className="text-destructive">*</span>}
+              {required && <span className="text-danger">*</span>}
             </FieldLabel>
           )}
         </div>

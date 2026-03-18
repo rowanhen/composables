@@ -2,7 +2,7 @@
  * CodeBlock
  * ─────────────────────────────────────────────────────────────────────────────
  * Monospace code display with line numbers and overflow scrolling.
- * Uses composables semantic tokens (bg-muted / bg-background) rather than
+ * Uses composables semantic tokens (bg-muted / bg-page) rather than
  * raw CSS variable references.
  *
  * Usage:
@@ -23,7 +23,7 @@ const CodeBlock = React.forwardRef<HTMLPreElement, CodeBlockProps>(
 				data-slot="code-block"
 				ref={ref}
 				className={cn(
-					'block font-mono text-sm font-normal overflow-auto bg-muted scrollbar-none rounded-lg border border-[length:var(--border-width)] border-border',
+					'block font-mono text-sm font-normal overflow-auto bg-muted scrollbar-none rounded-lg border border-[length:var(--border-width)] border-stroke',
 					className,
 				)}
 				{...props}
@@ -34,7 +34,7 @@ const CodeBlock = React.forwardRef<HTMLPreElement, CodeBlockProps>(
 						<div key={index} className="flex justify-between items-start">
 							<span
 								aria-hidden="true"
-								className="inline-flex w-[3ch] text-right pr-[1ch] select-none bg-background text-muted-foreground"
+								className="inline-flex w-[3ch] text-right pr-[1ch] select-none bg-page text-muted-foreground"
 							>
 								{leftPad(String(index + 1), 3)}
 							</span>

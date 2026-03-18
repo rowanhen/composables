@@ -25,7 +25,7 @@ const CodeBlock = React.forwardRef<HTMLPreElement, CodeBlockProps>(
 				data-slot="code-block"
 				ref={ref}
 				className={cn(
-					'block font-mono text-xs leading-5 font-normal overflow-auto rounded-md border border-border bg-muted scrollbar-none',
+					'block font-mono text-xs leading-5 font-normal overflow-auto rounded-md border border-stroke bg-muted scrollbar-none',
 					className,
 				)}
 				{...props}
@@ -34,7 +34,7 @@ const CodeBlock = React.forwardRef<HTMLPreElement, CodeBlockProps>(
 					<div key={index} className="flex items-start">
 						<span
 							aria-hidden="true"
-							className="inline-flex shrink-0 select-none border-r border-border bg-background text-right tabular-nums text-muted-foreground/60"
+							className="inline-flex shrink-0 select-none border-r border-stroke bg-page text-right tabular-nums text-muted-foreground/60"
 							// 1ch left pad + number width + 2ch right pad = comfortable gutter
 							style={{ width: `${lineNumWidth + 3}ch`, paddingRight: '1ch' }}
 						>

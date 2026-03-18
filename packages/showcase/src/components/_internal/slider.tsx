@@ -52,7 +52,7 @@ function Slider({
 						data-slot="slider-thumb"
 						key={index}
 						className={cn(
-							"border-primary size-5 rounded-full border bg-background hover:ring-4 hover:ring-ring/30 active:ring-4 active:ring-ring/50 focus-visible:outline-none block shrink-0 select-none disabled:pointer-events-none disabled:opacity-disabled",
+							"border-primary size-5 rounded-full border bg-page hover:ring-4 hover:ring-focus/30 active:ring-4 active:ring-focus/50 focus-visible:outline-none block shrink-0 select-none disabled:pointer-events-none disabled:opacity-disabled",
 							FOCUS_RING,
 						)}
 					/>

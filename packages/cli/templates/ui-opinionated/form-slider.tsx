@@ -74,7 +74,7 @@ function FormSlider({
       {(label || showValue) && (
         <FieldLabel htmlFor={sliderId}>
           {label}
-          {required && <span className="text-destructive">*</span>}
+          {required && <span className="text-danger">*</span>}
           {showValue && displayValue && (
             <span className="ml-auto text-muted-foreground font-normal">{displayValue}</span>
           )}

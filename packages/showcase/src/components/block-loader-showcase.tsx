@@ -17,7 +17,7 @@ export function BlockLoaderShowcase() {
           <div className="flex flex-wrap gap-x-6 gap-y-4">
             {SEQUENCES.map((_, i) => (
               <div key={i} className="flex flex-col items-center gap-1">
-                <div className="flex items-center justify-center w-10 h-10 border border-border rounded-md bg-muted/30">
+                <div className="flex items-center justify-center w-10 h-10 border border-stroke rounded-md bg-muted/30">
                   <BlockLoader mode={i as BlockLoaderMode} className="text-lg text-foreground" />
                 </div>
                 <Typography variant="caption-100" className="text-muted-foreground">

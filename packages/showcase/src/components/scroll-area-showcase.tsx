@@ -14,7 +14,7 @@ export function ScrollAreaShowcase() {
     >
       <HStack gap={6} wrap>
         <ShowcaseGroup label="Vertical">
-          <ScrollArea className="h-48 w-64 rounded-md border border-border">
+          <ScrollArea className="h-48 w-64 rounded-md border border-stroke">
             <div className="p-4">
               {Array.from({ length: 20 }, (_, i) => (
                 // biome-ignore lint/suspicious/noArrayIndexKey: static demo list
@@ -29,7 +29,7 @@ export function ScrollAreaShowcase() {
           </ScrollArea>
         </ShowcaseGroup>
         <ShowcaseGroup label="Horizontal">
-          <ScrollArea className="w-64 rounded-md border border-border">
+          <ScrollArea className="w-64 rounded-md border border-stroke">
             <div className="flex gap-4 p-4">
               {Array.from({ length: 10 }, (_, i) => (
                 <div

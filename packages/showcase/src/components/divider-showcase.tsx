@@ -63,7 +63,7 @@ export function DividerShowcase() {
 										<Typography variant="caption-100" className="text-muted-foreground text-xs">
 											{align}
 										</Typography>
-										<div className="flex items-center h-6 border border-border/40 rounded px-2">
+										<div className="flex items-center h-6 border border-stroke/40 rounded px-2">
 											<Divider variant={variant} align={align} />
 										</div>
 									</VStack>
@@ -74,7 +74,7 @@ export function DividerShowcase() {
 				</VStack>
 
 				{/* Token reactivity callout */}
-				<div className="rounded-[var(--radius)] border border-border bg-muted/40 p-4">
+				<div className="rounded-[var(--radius)] border border-stroke bg-muted/40 p-4">
 					<Typography variant="caption-100" className="text-muted-foreground">
 						Switch presets using the token panel — all variants morph with the tokens.{" "}
 						<strong>Solid</strong> gains border-radius (becoming a long pill at max),{" "}

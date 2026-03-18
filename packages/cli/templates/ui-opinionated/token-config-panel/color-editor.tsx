@@ -127,7 +127,7 @@ export function ColorTokenRow({
         className="flex w-full items-center gap-3 rounded-md px-2 py-1 hover:bg-[var(--bg-surface-hover)] transition-colors"
       >
         <div
-          className="size-6 rounded border border-border/60 shrink-0"
+          className="size-6 rounded border border-stroke/60 shrink-0"
           style={{ backgroundColor: color }}
         />
         <Typography variant="caption-100" className="text-foreground truncate text-left flex-1">

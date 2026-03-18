@@ -57,7 +57,7 @@ export function IconShowcase() {
                 <HeartIcon />
               </Icon>
             </span>
-            <span className="text-destructive">
+            <span className="text-danger">
               <Icon size="lg">
                 <AlertCircleIcon />
               </Icon>

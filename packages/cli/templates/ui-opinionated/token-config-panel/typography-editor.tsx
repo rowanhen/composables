@@ -135,7 +135,7 @@ export function FontSelectRow({
       <select
         value={value}
         onChange={handleChange}
-        className="w-full h-7 rounded-md border border-border bg-transparent px-2 text-xs text-foreground outline-none focus:ring-[length:var(--border-width)] focus:ring-ring"
+        className="w-full h-7 rounded-md border border-stroke bg-transparent px-2 text-xs text-foreground outline-none focus:ring-[length:var(--border-width)] focus:ring-focus"
       >
         {FONT_GROUPS.map((group) => (
           <optgroup key={group.label} label={group.label}>

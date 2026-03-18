@@ -14,7 +14,7 @@ import { ShowcaseSection } from './showcase-section'
 export function TableShowcase() {
   return (
     <ShowcaseSection title="Table" description="Structured data display.">
-      <div className="rounded-lg border border-border overflow-hidden">
+      <div className="rounded-lg border border-stroke overflow-hidden">
         <Table>
           <TableHeader>
             <TableRow>

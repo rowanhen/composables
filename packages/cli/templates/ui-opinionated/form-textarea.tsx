@@ -63,7 +63,7 @@ function FormTextarea({
       {label && (
         <FieldLabel htmlFor={textareaId}>
           {label}
-          {required && <span className="text-destructive">*</span>}
+          {required && <span className="text-danger">*</span>}
         </FieldLabel>
       )}
       <FieldContent>
