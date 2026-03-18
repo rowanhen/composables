@@ -9,7 +9,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const templatesDir = join(__dirname, "..", "..", "templates");
 
 /** Recursively collect all internal deps for a set of components */
-function collectDeps(
+export function collectDeps(
 	names: string[],
 	visited = new Set<string>(),
 ): string[] {
