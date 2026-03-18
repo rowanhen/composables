@@ -56,9 +56,11 @@ jobs:
       - name: Sync version from npm registry
         working-directory: packages/ui
         run: |
-          NPM_VERSION=$(npm view @leitware/composables version 2>/dev/null || echo "0.0.0")
+          NPM_VERSION=$(npm view @leitware/composables version 2>/dev/null || echo "")
           LOCAL_VERSION=$(node -p "require('./package.json').version")
-          if [ "$NPM_VERSION" != "$LOCAL_VERSION" ]; then
+          if [ -z "$NPM_VERSION" ]; then
+            echo "Package not yet published — using local version $LOCAL_VERSION"
+          elif [ "$NPM_VERSION" != "$LOCAL_VERSION" ]; then
             echo "Version desync detected: local=$LOCAL_VERSION npm=$NPM_VERSION — syncing to npm version"
             npm version "$NPM_VERSION" --no-git-tag-version --allow-same-version > /dev/null 2>&1
           fi
