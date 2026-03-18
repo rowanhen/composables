@@ -1191,7 +1191,16 @@ export const registry: Record<string, ComponentEntry> = {
 	"token-config-panel": {
 		name: "token-config-panel",
 		description: "Live token editor — color picker, dimension sliders, font selector, JSON export/import, and 6 built-in presets. Edits CSS custom properties on the document root in real time.",
-		files: [{ src: "templates/ui-opinionated/token-config-panel.tsx", dest: "components/ui-opinionated/token-config-panel.tsx" }],
+		files: [
+			{ src: "templates/ui-opinionated/token-config-panel/index.tsx", dest: "components/ui-opinionated/token-config-panel/index.tsx" },
+			{ src: "templates/ui-opinionated/token-config-panel/types.ts", dest: "components/ui-opinionated/token-config-panel/types.ts" },
+			{ src: "templates/ui-opinionated/token-config-panel/helpers.ts", dest: "components/ui-opinionated/token-config-panel/helpers.ts" },
+			{ src: "templates/ui-opinionated/token-config-panel/color-editor.tsx", dest: "components/ui-opinionated/token-config-panel/color-editor.tsx" },
+			{ src: "templates/ui-opinionated/token-config-panel/typography-editor.tsx", dest: "components/ui-opinionated/token-config-panel/typography-editor.tsx" },
+			{ src: "templates/ui-opinionated/token-config-panel/spacing-editor.tsx", dest: "components/ui-opinionated/token-config-panel/spacing-editor.tsx" },
+			{ src: "templates/ui-opinionated/token-config-panel/preset-manager.ts", dest: "components/ui-opinionated/token-config-panel/preset-manager.ts" },
+			{ src: "templates/ui-opinionated/token-config-panel/json-import-export.tsx", dest: "components/ui-opinionated/token-config-panel/json-import-export.tsx" },
+		],
 		deps: ["react-colorful"],
 		internalDeps: [
 			"button",
