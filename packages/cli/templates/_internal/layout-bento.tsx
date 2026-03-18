@@ -10,7 +10,7 @@
  *   --bento-gap           Gap between cells (default: var(--border-width, 1px))
  *
  * Base tokens used directly:
- *   --border              Grid line color (via bg-border)
+ *   --border              Grid line color (via bg-stroke)
  *   --radius              Corner radius (via rounded-lg)
  *   --border-style        Border style on all components (default: solid)
  *
@@ -36,7 +36,7 @@ import { cn } from "@/lib/utils"
 
 /** Background IS the border color — gap exposes it as lines. */
 const BENTO_CONTAINER =
-	"bg-border gap-[var(--bento-gap,var(--border-width,1px))] p-[var(--bento-gap,var(--border-width,1px))] rounded-lg"
+	"bg-stroke gap-[var(--bento-gap,var(--border-width,1px))] p-[var(--bento-gap,var(--border-width,1px))] rounded-lg"
 
 /** Every direct cell child gets card background — it sits on top of the border bg. */
 const BENTO_CELL = "bg-card rounded-lg overflow-hidden"
@@ -327,8 +327,8 @@ function CellGrid({ cols, subtle = false, className, ...props }: CellGridProps) 
 				CELL_GRID_COLS[cols],
 				"gap-[var(--bento-gap,var(--border-width,1px))]",
 				subtle
-					? "bg-[var(--border-secondary,var(--border))]"
-					: "bg-border",
+					? "bg-field"
+					: "bg-stroke",
 				className,
 			)}
 			{...props}
@@ -346,7 +346,7 @@ function CellRow({ className, ...props }: React.ComponentProps<"div">) {
 		<div
 			data-slot="bento-cell-row"
 			className={cn(
-				"bg-border",
+				"bg-stroke",
 				"flex flex-col md:flex-row",
 				"gap-[var(--bento-gap,var(--border-width,1px))]",
 				className,
