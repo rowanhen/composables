@@ -8,10 +8,14 @@
 		"build": "bun run --filter '@leitware/composables-cli' build",
 		"dev": "bun run --cwd packages/showcase dev",
 		"test": "bun run --filter '@leitware/composables-cli' test",
+		"release": "bun run build && changeset publish",
+		"changeset": "changeset",
+		"version-packages": "changeset version",
 		"prepare": "git config core.hooksPath .githooks",
 		"generate:css": "bun scripts/generate-css.ts"
 	},
 	"devDependencies": {
+		"@changesets/cli": "^2.30.0",
 		"typescript": "^5.7.0"
 	}
 }
