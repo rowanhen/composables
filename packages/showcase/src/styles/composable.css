@@ -1279,7 +1279,7 @@
 		/* ── Bento layout tokens ───────────────────────────────────────────
 		   Used by the layout-bento.tsx primitive. Override in a preset or :root.
 		   --bento-gap: gap width = visual border width. Defaults to --border-width-base.
-		   Border color derives from bg-border (base token). Radius from rounded-lg.
+		   Border color derives from bg-stroke (base token). Radius from rounded-lg.
 		   Cell content is clipped to radius via overflow-hidden on each cell. */
 		--bento-gap: var(--border-width-base, 0.0625rem);
 

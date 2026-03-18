@@ -23,12 +23,12 @@ const dividerVariants = cva("shrink-0", {
 		{
 			variant: "solid",
 			orientation: "horizontal",
-			class: "h-[var(--border-width-base)] bg-border",
+			class: "h-[var(--border-width-base)] bg-stroke",
 		},
 		{
 			variant: "solid",
 			orientation: "vertical",
-			class: "w-[var(--border-width-base)] bg-border",
+			class: "w-[var(--border-width-base)] bg-stroke",
 		},
 		{
 			variant: "dots",

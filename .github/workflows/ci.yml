@@ -16,6 +16,11 @@ jobs:
           bun-version: latest
       - run: bun install
       - run: bun run build
+      - name: Lint (restricted imports)
+        run: bunx @biomejs/biome lint --diagnostic-level=error packages/cli/src packages/cli/templates packages/showcase/src
+      - name: Check arbitrary Tailwind values
+        continue-on-error: true
+        run: bun packages/cli/templates/scripts/lint-no-arbitrary.ts packages/cli/templates packages/showcase/src
       - name: Verify generated CSS
         run: bun scripts/generate-css.ts --check
       - run: bun run test

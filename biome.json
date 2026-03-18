@@ -1,6 +1,6 @@
 {
 	"$schema": "https://biomejs.dev/schemas/2.0.0/schema.json",
-	"organizeImports": { "enabled": true },
+	"extends": ["./packages/cli/templates/rules/biome-ui-restricted.json"],
 	"formatter": {
 		"enabled": true,
 		"indentStyle": "tab",
@@ -11,14 +11,60 @@
 		"rules": {
 			"recommended": true,
 			"suspicious": {
-				"noDoubleEquals": "error"
+				"noDoubleEquals": "error",
+				"noArrayIndexKey": "warn",
+				"noAssignInExpressions": "warn",
+				"noDuplicateCustomProperties": "warn"
 			},
 			"style": {
 				"noNonNullAssertion": "warn"
+			},
+			"a11y": {
+				"useFocusableInteractive": "warn",
+				"useSemanticElements": "warn",
+				"useAriaPropsForRole": "warn",
+				"noLabelWithoutControl": "warn",
+				"useKeyWithClickEvents": "warn",
+				"useAnchorContent": "warn",
+				"useAriaPropsSupportedByRole": "warn"
+			},
+			"correctness": {
+				"useHookAtTopLevel": "warn"
 			}
 		}
 	},
+	"assist": {
+		"actions": {
+			"source": {
+				"organizeImports": "on"
+			}
+		}
+	},
+	"css": {
+		"parser": {
+			"cssModules": true
+		},
+		"linter": {
+			"enabled": false
+		}
+	},
 	"files": {
-		"ignore": ["node_modules", "dist", "packages/showcase"]
-	}
+		"includes": ["**", "!**/node_modules", "!**/dist", "!**/*.css"]
+	},
+	"overrides": [
+		{
+			"includes": [
+				"packages/cli/templates/ui-opinionated/**",
+				"packages/cli/templates/_internal/**",
+				"packages/showcase/src/**"
+			],
+			"linter": {
+				"rules": {
+					"style": {
+						"noRestrictedImports": "off"
+					}
+				}
+			}
+		}
+	]
 }

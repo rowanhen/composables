@@ -168,7 +168,7 @@ function BentoQuadDemo() {
 											<span>{name}</span>
 											<span className="text-muted-foreground">{pct}</span>
 										</div>
-										<div className="h-1 bg-border rounded-full overflow-hidden">
+										<div className="h-1 bg-stroke rounded-full overflow-hidden">
 											<div
 												className="h-full bg-foreground"
 												style={{ width: pct }}
