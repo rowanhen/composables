@@ -17,7 +17,7 @@ import { join, dirname } from "node:path";
 import { palettes, steps, baseColors, overlaysBlackAlpha } from "./palette.ts";
 
 const ROOT = dirname(dirname(import.meta.path));
-const CSS_PATH = join(ROOT, "packages/cli/templates/styles/composable.css");
+const CSS_PATH = join(ROOT, "packages/ui/src/styles/composable.css");
 const CHECK_MODE = process.argv.includes("--check");
 
 /* ── Generate @theme inline palette block ─────────────────────────── */

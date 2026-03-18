@@ -1,13 +1,13 @@
 {
-	"name": "@leitware/composables",
+	"name": "@leitware/composables-monorepo",
 	"private": true,
 	"workspaces": [
 		"packages/*"
 	],
 	"scripts": {
-		"build": "bun run --filter '@leitware/composables-cli' build",
+		"build": "bun run --cwd packages/ui build",
 		"dev": "bun run --cwd packages/showcase dev",
-		"test": "bun run --filter '@leitware/composables-cli' test",
+		"typecheck": "bun run --cwd packages/ui typecheck",
 		"release": "bun run build && changeset publish",
 		"changeset": "changeset",
 		"version-packages": "changeset version",
