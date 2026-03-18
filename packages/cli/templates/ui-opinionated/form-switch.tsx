@@ -10,19 +10,41 @@ import {
 } from '@/components/_internal/field'
 import { Switch } from '@/components/_internal/switch'
 
+/**
+ * Props for the opinionated FormSwitch component.
+ *
+ * @example
+ * ```tsx
+ * <FormSwitch label="Email notifications" checked={enabled} onCheckedChange={setEnabled} />
+ * <FormSwitch
+ *   label="Dark mode"
+ *   description="Applies immediately across the app"
+ *   checked={darkMode}
+ *   onCheckedChange={setDarkMode}
+ * />
+ * ```
+ */
 export interface FormSwitchProps
   extends Omit<SwitchPrimitive.Root.Props, 'checked' | 'onCheckedChange'> {
+  /** Label text rendered beside the switch. */
   label?: string
+  /** Helper text rendered below the label. */
   description?: string
+  /** Error message(s). Accepts a string, array, or react-hook-form error array. */
   error?: string | string[] | Array<{ message?: string } | undefined>
+  /** Controlled checked state. @default false */
   checked?: boolean
+  /** Called when the user toggles the switch. */
   onCheckedChange?: (checked: boolean) => void
+  /** Disables the switch. @default false */
   disabled?: boolean
+  /** Marks the field as required. @default false */
   required?: boolean
+  /** Label/switch layout direction. @default 'horizontal' */
   orientation?: VariantProps<typeof Field>['orientation']
+  /** Switch size variant. @default 'default' */
   size?: 'sm' | 'default'
   className?: string
-  // Additional props
   id?: string
   name?: string
   'aria-label'?: string

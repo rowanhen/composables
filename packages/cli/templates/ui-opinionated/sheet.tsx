@@ -12,15 +12,43 @@ import {
   SheetTrigger,
 } from '@/components/_internal/sheet'
 
+/**
+ * Props for the opinionated Sheet component.
+ *
+ * A slide-out panel that animates in from a screen edge. Works like Dialog
+ * but is anchored to an edge and typically used for forms or side panels.
+ *
+ * @example
+ * ```tsx
+ * <Sheet
+ *   trigger={<Button>Open panel</Button>}
+ *   title="Edit record"
+ *   footer={<Button type="submit">Save</Button>}
+ * >
+ *   <FormInput label="Name" />
+ * </Sheet>
+ *
+ * // From left edge
+ * <Sheet side="left" trigger={<Button>Menu</Button>} title="Navigation">
+ *   <nav>...</nav>
+ * </Sheet>
+ * ```
+ */
 export interface SheetProps extends Omit<SheetPrimitiveBase.Root.Props, 'children'> {
-  // Opinionated API props
+  /** Element that opens the sheet when clicked. */
   trigger?: React.ReactNode
+  /** Sheet heading rendered in the header. */
   title?: React.ReactNode
+  /** Subtitle text rendered below the title. */
   description?: React.ReactNode
+  /** Sheet body content. */
   children?: React.ReactNode
+  /** Content rendered in the sheet footer. */
   footer?: React.ReactNode
+  /** Whether to show the built-in close (×) button. @default true */
   showCloseButton?: boolean
   className?: string
+  /** Which edge the sheet slides in from. @default 'right' */
   side?: 'top' | 'right' | 'bottom' | 'left'
 }
 

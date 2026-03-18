@@ -7,15 +7,38 @@ import {
 } from '@/components/_internal/collapsible'
 import { FOCUS_RING } from '@/lib/utils'
 
+/**
+ * Props for the opinionated Collapsible component.
+ *
+ * Pass `trigger` to use the opinionated API (styled trigger row with chevron icon).
+ * Pass `children` directly for full manual control over the trigger/content structure.
+ *
+ * @example
+ * ```tsx
+ * <Collapsible trigger="Advanced settings" defaultOpen>
+ *   <FormInput label="API key" />
+ * </Collapsible>
+ *
+ * // Controlled
+ * <Collapsible trigger="Details" open={open} onOpenChange={setOpen}>
+ *   <p>Some content here</p>
+ * </Collapsible>
+ * ```
+ */
 export interface CollapsibleProps
   extends Omit<React.ComponentProps<typeof CollapsiblePrimitive>, 'children'> {
-  // Opinionated API props
+  /** Content rendered in the clickable trigger row. */
   trigger?: React.ReactNode
+  /** Content revealed when the collapsible is open. */
   children?: React.ReactNode
+  /** Whether the collapsible starts open (uncontrolled). */
   defaultOpen?: boolean
+  /** Controlled open state. */
   open?: boolean
+  /** Called when the open state changes. */
   onOpenChange?: (open: boolean) => void
   className?: string
+  /** Whether to render the chevron expand/collapse icon in the trigger. @default true */
   showIcon?: boolean
 }
 

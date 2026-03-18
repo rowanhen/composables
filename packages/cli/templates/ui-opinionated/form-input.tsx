@@ -11,14 +11,44 @@ import {
 import { Input } from '@/components/_internal/input'
 import { type NumericInputOptions, useNumericInput } from '@/hooks/use-numeric-input'
 
+/**
+ * Props for the opinionated FormInput component.
+ *
+ * Wraps an HTML input with a Field (label + description + error), handles
+ * accessibility wiring, and supports a numeric mode for formatted number entry.
+ *
+ * @example
+ * ```tsx
+ * // Basic text input
+ * <FormInput label="Email" type="email" placeholder="you@example.com" />
+ *
+ * // With validation error
+ * <FormInput label="Name" error="Name is required" required />
+ *
+ * // Numeric mode (formatted currency input)
+ * <FormInput
+ *   label="Amount"
+ *   numericMode="decimal"
+ *   numericValue={amount}
+ *   onNumericChange={setAmount}
+ *   maxDecimalPlaces={2}
+ * />
+ * ```
+ */
 export interface FormInputProps
   extends Omit<React.ComponentProps<'input'>, 'size'>,
     NumericInputOptions {
+  /** Label text rendered above the input. */
   label?: string
+  /** Helper text rendered below the input. */
   description?: string
+  /** Error message(s). Accepts a string, array of strings, or react-hook-form error array. */
   error?: string | string[] | Array<{ message?: string } | undefined>
+  /** Disables the input. @default false */
   disabled?: boolean
+  /** Marks the field as required (shows asterisk + aria-required). @default false */
   required?: boolean
+  /** Label/input layout direction. @default 'vertical' */
   orientation?: VariantProps<typeof Field>['orientation']
   className?: string
 }
