@@ -69,7 +69,7 @@ jobs:
         id: version
         working-directory: packages/ui
         run: |
-          npm version ${{ steps.bump.outputs.type }} --no-git-tag-version > /dev/null 2>&1
+          npm version ${{ steps.bump.outputs.type }} --no-git-tag-version --force > /dev/null 2>&1
           NEW_VERSION=$(node -p "require('./package.json').version")
           echo "version=${NEW_VERSION}" >> $GITHUB_OUTPUT
           echo "tag=v${NEW_VERSION}" >> $GITHUB_OUTPUT
