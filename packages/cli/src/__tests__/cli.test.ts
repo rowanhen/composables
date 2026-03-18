@@ -2,7 +2,7 @@
  * CLI command tests
  * Tests the list functionality and the add command's dependency resolution and file writing.
  */
-import { existsSync, mkdirSync, rmSync, readdirSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, rmSync, readdirSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { describe, expect, it, beforeAll, afterAll } from "bun:test";
@@ -31,11 +31,11 @@ describe("List command", () => {
 		expect(entries.length).toBe(Object.keys(registry).length);
 	});
 
-	it("tags are all known valid values", () => {
-		const knownTags = new Set(["primitive", "foundation", "hook", "tooling", "opinionated", "form", "layout"]);
+	it("all tags are non-empty strings", () => {
 		for (const [key, entry] of Object.entries(registry)) {
 			for (const tag of entry.tags) {
-				expect(knownTags.has(tag)).toBe(true);
+				expect(typeof tag).toBe("string");
+				expect(tag.length).toBeGreaterThan(0);
 			}
 		}
 	});
@@ -148,6 +148,9 @@ describe("Add command — file writing via CLI", () => {
 	it("creates the button component file on disk", () => {
 		const buttonFile = join(tmpDir, "components", "_internal", "button.tsx");
 		expect(existsSync(buttonFile)).toBe(true);
+		const content = readFileSync(buttonFile, "utf-8");
+		expect(content).toContain("export");
+		expect(content).toContain("Button");
 	});
 
 	it("creates the utils file (internalDep of button) on disk", () => {

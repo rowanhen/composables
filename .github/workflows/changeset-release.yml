@@ -53,4 +53,5 @@ jobs:
           commit: "chore: version packages"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # NOTE: Set NPM_TOKEN in repo Settings → Secrets → Actions for npm publish to work
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

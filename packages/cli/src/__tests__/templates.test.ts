@@ -34,7 +34,7 @@ function extractUiImports(content: string): string[] {
 	// Matches: from "@/components/_internal/button" or from '@/components/_internal/input-group'
 	const importRe = /from\s+['"]@\/components\/_internal\/([^'"]+)['"]/g;
 	let match: RegExpExecArray | null;
-	// biome-ignore lint: while loop needed for regex
+	// biome-ignore lint/suspicious/noAssignInExpressions: while loop needed for regex exec
 	while ((match = importRe.exec(content)) !== null) {
 		results.push(match[1]);
 	}

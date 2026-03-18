@@ -8,6 +8,7 @@ import { type ComponentEntry, registry } from "../registry.js";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const templatesDir = join(__dirname, "..", "..", "templates");
 
+/** @internal — exported for testing only */
 /** Recursively collect all internal deps for a set of components */
 export function collectDeps(
 	names: string[],
