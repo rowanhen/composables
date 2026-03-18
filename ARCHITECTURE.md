@@ -51,8 +51,8 @@ The internal layer can evolve — Base UI updates, API changes, internal refacto
           "options": {
             "patterns": [
               {
-                "group": ["@/components/ui/*"],
-                "message": "Do not import directly from 'components/ui/'. Import from 'components/ui-opinionated/' instead."
+                "group": ["@/components/_internal/*"],
+                "message": "Do not import directly from 'components/_internal/'. Import from 'components/ui-opinionated/' instead."
               }
             ]
           }
@@ -355,7 +355,7 @@ composables/
 │   │       ├── lib/
 │   │       ├── hooks/
 │   │       ├── rules/
-│   │       ├── ui/             ← Internal primitive templates
+│   │       ├── _internal/      ← Internal primitive templates
 │   │       └── ui-opinionated/ ← Opinionated component templates
 │   └── showcase/               ← Demo site (deployed to GitHub Pages)
 ├── biome.json                  ← Root Biome config

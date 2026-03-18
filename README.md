@@ -26,6 +26,7 @@ The library ships ~76 components across forms, layout, data display, feedback, a
 ```bash
 # Scaffold directories and install the foundation (CSS tokens, utilities)
 bunx @leitware/composables-cli init
+# Note: `init` is coming soon. For now, `add` handles dependency resolution automatically.
 
 # Add individual components
 bunx @leitware/composables-cli add button
