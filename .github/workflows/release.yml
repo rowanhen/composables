@@ -69,7 +69,17 @@ jobs:
         id: version
         working-directory: packages/ui
         run: |
-          npm version ${{ steps.bump.outputs.type }} --no-git-tag-version --force > /dev/null 2>&1
+          BUMP_TYPE="${{ steps.bump.outputs.type }}"
+          node -e "
+            const fs = require('fs');
+            const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+            const [major, minor, patch] = pkg.version.split('.').map(Number);
+            if ('$BUMP_TYPE' === 'major') pkg.version = \`\${major+1}.0.0\`;
+            else if ('$BUMP_TYPE' === 'minor') pkg.version = \`\${major}.\${minor+1}.0\`;
+            else pkg.version = \`\${major}.\${minor}.\${patch+1}\`;
+            fs.writeFileSync('package.json', JSON.stringify(pkg, null, 2) + '\n');
+            console.log(pkg.version);
+          "
           NEW_VERSION=$(node -p "require('./package.json').version")
           echo "version=${NEW_VERSION}" >> $GITHUB_OUTPUT
           echo "tag=v${NEW_VERSION}" >> $GITHUB_OUTPUT
