@@ -5,8 +5,7 @@
  * @example
  * ```tsx
  * <Divider />
- * <Divider variant="dots" />
  * <Divider orientation="vertical" />
  * ```
  */
-export { Divider, type DividerProps, dividerVariants } from '@/components/_internal/divider'
+export { Divider, type DividerProps } from '@/components/_internal/divider'
