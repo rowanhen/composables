@@ -252,9 +252,9 @@ export const registry: Record<string, ComponentEntry> = {
 	},
 	divider: {
 		name: "divider",
-		description: "Horizontal or vertical divider line",
+		description: "Horizontal or vertical divider with solid, dots, and pills variants",
 		files: [{ src: "templates/_internal/divider.tsx", dest: "components/_internal/divider.tsx" }],
-		deps: [],
+		deps: ["class-variance-authority"],
 		internalDeps: ["utils"],
 		tags: ["primitive"],
 	},
