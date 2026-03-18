@@ -90,6 +90,21 @@ export const registry: Record<string, ComponentEntry> = {
 			'Add to your biome.json to activate:\n  "extends": ["./src/rules/biome-a11y.json"]',
 	},
 
+	"tailwind-preset": {
+		name: "tailwind-preset",
+		description: "Tailwind CSS preset mapping all Composables design tokens (colours, spacing, radius, typography, shadows, z-index, motion) to utility classes",
+		files: [
+			{
+				src: "templates/tailwind/composables-preset.ts",
+				dest: "tailwind/composables-preset.ts",
+			},
+		],
+		deps: ["tailwindcss"],
+		internalDeps: ["styles"],
+		tags: ["foundation"],
+		postInstallNote:
+			'Add to your tailwind.config.ts:\n  import composablesPreset from "@/tailwind/composables-preset";\n  export default { presets: [composablesPreset] }',
+	},
 	"lint-no-arbitrary": {
 		name: "lint-no-arbitrary",
 		description: "Script that detects arbitrary Tailwind CSS values in TSX/TS files and exits non-zero if found",
