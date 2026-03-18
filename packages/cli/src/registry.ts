@@ -90,6 +90,22 @@ export const registry: Record<string, ComponentEntry> = {
 			'Add to your biome.json to activate:\n  "extends": ["./src/rules/biome-a11y.json"]',
 	},
 
+	"lint-no-arbitrary": {
+		name: "lint-no-arbitrary",
+		description: "Script that detects arbitrary Tailwind CSS values in TSX/TS files and exits non-zero if found",
+		files: [
+			{
+				src: "templates/scripts/lint-no-arbitrary.ts",
+				dest: "scripts/lint-no-arbitrary.ts",
+			},
+		],
+		deps: [],
+		internalDeps: [],
+		tags: ["tooling"],
+		postInstallNote:
+			'Run with: bun scripts/lint-no-arbitrary.ts [dir]\nAdd to CI: bun scripts/lint-no-arbitrary.ts src',
+	},
+
 	// ─── Primitive UI Components ─────────────────────────────────────────
 	accordion: {
 		name: "accordion",
