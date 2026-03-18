@@ -123,7 +123,7 @@ function FormMultiCombobox({
       {label && (
         <FieldLabel htmlFor={inputId}>
           {label}
-          {required && <span className="text-destructive">*</span>}
+          {required && <span className="text-danger">*</span>}
         </FieldLabel>
       )}
       <FieldContent>

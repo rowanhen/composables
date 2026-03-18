@@ -22,7 +22,7 @@ const lineItemHeaderVariants = cva(
 			variant: {
 				default: "bg-primary text-primary-foreground",
 				bordered:
-					"bg-transparent text-foreground border-[length:var(--border-width)] border-border",
+					"bg-transparent text-foreground border-[length:var(--border-width)] border-stroke",
 			},
 		},
 		defaultVariants: {

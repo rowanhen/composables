@@ -12,7 +12,7 @@ export function ResizableShowcase() {
   return (
     <ShowcaseSection title="Resizable" description="Resizable panel groups with draggable handles.">
       <div className="max-w-2xl">
-        <ResizablePanelGroup orientation="horizontal" className="rounded-lg border border-border">
+        <ResizablePanelGroup orientation="horizontal" className="rounded-lg border border-stroke">
           <ResizablePanel defaultSize={50}>
             <div className="flex h-32 items-center justify-center p-4">
               <Typography variant="body-100">Panel A</Typography>

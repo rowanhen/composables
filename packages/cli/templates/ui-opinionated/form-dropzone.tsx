@@ -101,7 +101,7 @@ function FormDropZone({
       {label && (
         <FieldLabel>
           {label}
-          {required && <span className="text-destructive">*</span>}
+          {required && <span className="text-danger">*</span>}
         </FieldLabel>
       )}
       <FieldContent>

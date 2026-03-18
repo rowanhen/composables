@@ -34,9 +34,9 @@ const glyphVariants = cva(
 	{
 		variants: {
 			variant: {
-				default: "bg-card text-foreground border-border rounded-lg",
+				default: "bg-card text-foreground border-stroke rounded-lg",
 				filled: "bg-foreground text-background border-foreground rounded-lg",
-				circle: "bg-card border-border rounded-lg",
+				circle: "bg-card border-stroke rounded-lg",
 				"circle-inverted": "bg-foreground border-foreground rounded-lg",
 			},
 		},

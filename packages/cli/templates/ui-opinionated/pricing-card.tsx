@@ -39,7 +39,7 @@ export function PricingCard({ product, className }: PricingCardProps) {
 		<div
 			data-slot="pricing-card"
 			className={cn(
-				'bg-card border border-border rounded-lg w-full flex-1 p-6 leading-tight font-mono',
+				'bg-card border border-stroke rounded-lg w-full flex-1 p-6 leading-tight font-mono',
 				className,
 			)}
 		>

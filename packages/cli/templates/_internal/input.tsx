@@ -10,7 +10,7 @@ function Input({ className, type, ...props }: React.ComponentProps<"input">) {
 			data-slot="input"
 			className={cn(
 				FOCUS_RING,
-				"bg-input/20 dark:bg-input/30 border-input hover:border-foreground/50 h-7 rounded-md border px-2 py-0.5 text-sm file:h-6 file:text-xs/relaxed file:font-medium md:text-xs/relaxed file:text-foreground placeholder:text-muted-foreground w-full min-w-0 outline-none file:inline-flex file:border-0 file:bg-transparent disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-disabled",
+				"bg-field/20 dark:bg-field/30 border-field hover:border-foreground/50 h-7 rounded-md border px-2 py-0.5 text-sm file:h-6 file:text-xs/relaxed file:font-medium md:text-xs/relaxed file:text-foreground placeholder:text-muted-foreground w-full min-w-0 outline-none file:inline-flex file:border-0 file:bg-transparent disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-disabled",
 				className,
 			)}
 			{...props}

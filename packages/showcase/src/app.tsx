@@ -72,7 +72,7 @@ import {
 /* ---- APP ---- */
 export function App() {
 	return (
-		<div className="min-h-screen bg-background text-foreground">
+		<div className="min-h-screen bg-page text-foreground">
 			<Toaster />
 
 			{/* Floating theme injector — fixed top-right */}

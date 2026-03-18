@@ -17,7 +17,7 @@ function DemoCard({
 	className?: string
 }) {
 	return (
-		<div className={cn("w-full border border-border p-4 font-mono text-xs min-w-[240px] max-w-xs", className)}>
+		<div className={cn("w-full border border-stroke p-4 font-mono text-xs min-w-[240px] max-w-xs", className)}>
 			{title && (
 				<div className="text-muted-foreground mb-2 text-[10px] uppercase tracking-wider">
 					{title}
@@ -124,7 +124,7 @@ function LineItemHeaderVariants() {
 function LineItemComposition() {
 	return (
 		<ShowcaseGroup label="Composition">
-			<div className="w-full border border-border p-4 font-mono text-xs max-w-sm">
+			<div className="w-full border border-stroke p-4 font-mono text-xs max-w-sm">
 				<LineItemHeader>Services</LineItemHeader>
 				<div className="py-1 space-y-px">
 					<LineItem label="Brand Identity" value="$3,200" variant="fill" />
