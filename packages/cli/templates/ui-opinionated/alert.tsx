@@ -10,12 +10,40 @@ import {
 
 export type AlertType = 'notice' | 'negative' | 'positive' | 'default' | 'warning'
 
+/**
+ * Props for the opinionated Alert component.
+ *
+ * Maps a semantic `type` prop to the appropriate icon and visual variant,
+ * so you don't need to handle that mapping yourself.
+ *
+ * @example
+ * ```tsx
+ * <Alert type="positive" title="Payment successful" message="Your invoice has been sent." />
+ * <Alert type="negative" title="Something went wrong" message={error.message} />
+ * <Alert type="notice" message="Your session expires in 5 minutes." />
+ * <Alert type="warning" title="Storage almost full">
+ *   <Button size="sm">Upgrade plan</Button>
+ * </Alert>
+ * ```
+ */
 export interface AlertProps
   extends Omit<React.ComponentProps<typeof AlertPrimitive>, 'variant' | 'title'> {
+  /**
+   * Semantic type that controls the icon and colour variant.
+   * - `default` — no icon, neutral styling
+   * - `notice` — info icon (ℹ), neutral styling
+   * - `positive` — check icon, green styling
+   * - `warning` — triangle icon, amber styling
+   * - `negative` — alert triangle icon, red/destructive styling
+   * @default 'default'
+   */
   type?: AlertType
+  /** Alert heading rendered in bold. */
   title?: React.ReactNode
+  /** Alert body text. Alternatively pass `children`. */
   message?: React.ReactNode
   children?: React.ReactNode
+  /** Content rendered at the trailing edge of the alert (e.g. a dismiss button). */
   action?: React.ReactNode
   className?: string
 }

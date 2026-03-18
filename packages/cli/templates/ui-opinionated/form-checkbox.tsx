@@ -10,18 +10,39 @@ import {
   FieldLabel,
 } from '@/components/_internal/field'
 
+/**
+ * Props for the opinionated FormCheckbox component.
+ *
+ * @example
+ * ```tsx
+ * <FormCheckbox label="I agree to the terms" checked={agreed} onCheckedChange={setAgreed} />
+ * <FormCheckbox
+ *   label="Subscribe to newsletter"
+ *   description="We'll send you updates once a week."
+ *   checked={subscribed}
+ *   onCheckedChange={setSubscribed}
+ * />
+ * ```
+ */
 export interface FormCheckboxProps
   extends Omit<CheckboxPrimitive.Root.Props, 'checked' | 'onCheckedChange'> {
+  /** Label text rendered beside the checkbox. */
   label?: string
+  /** Helper text rendered below the label. */
   description?: string
+  /** Error message(s). Accepts a string, array, or react-hook-form error array. */
   error?: string | string[] | Array<{ message?: string } | undefined>
+  /** Controlled checked state. @default false */
   checked?: boolean
+  /** Called when the user toggles the checkbox. */
   onCheckedChange?: (checked: boolean) => void
+  /** Disables the checkbox. @default false */
   disabled?: boolean
+  /** Marks the field as required. @default false */
   required?: boolean
+  /** Label/checkbox layout direction. @default 'horizontal' */
   orientation?: VariantProps<typeof Field>['orientation']
   className?: string
-  // Additional props
   id?: string
   name?: string
   'aria-label'?: string

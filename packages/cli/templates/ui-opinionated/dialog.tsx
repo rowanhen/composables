@@ -14,13 +14,43 @@ import {
   DialogTrigger,
 } from '@/components/_internal/dialog'
 
+/**
+ * Props for the opinionated Dialog component.
+ *
+ * Provides a high-level API for common modal patterns. When `trigger`, `title`,
+ * `description`, or `footer` are provided, the component assembles the full dialog
+ * structure automatically. Pass only `children` for full manual control.
+ *
+ * @example
+ * ```tsx
+ * // Opinionated API
+ * <Dialog
+ *   trigger={<Button>Open</Button>}
+ *   title="Confirm deletion"
+ *   description="This action cannot be undone."
+ *   footer={<Button variant="destructive">Delete</Button>}
+ * >
+ *   <p>Are you sure you want to delete this item?</p>
+ * </Dialog>
+ *
+ * // Controlled
+ * <Dialog open={open} onOpenChange={setOpen} title="Settings">
+ *   <FormInput label="Name" />
+ * </Dialog>
+ * ```
+ */
 export interface DialogProps extends Omit<DialogPrimitiveBase.Root.Props, 'children'> {
-  // Opinionated API props
+  /** Element that opens the dialog when clicked (rendered as a `DialogTrigger`). */
   trigger?: React.ReactNode
+  /** Dialog heading rendered in the header. */
   title?: React.ReactNode
+  /** Subtitle text rendered below the title. */
   description?: React.ReactNode
+  /** Dialog body content. */
   children?: React.ReactNode
+  /** Content rendered in the dialog footer. */
   footer?: React.ReactNode
+  /** Whether to show the built-in close (×) button. @default true */
   showCloseButton?: boolean
   className?: string
 }

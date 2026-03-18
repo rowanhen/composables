@@ -9,13 +9,37 @@ import {
   CardTitle,
 } from '@/components/_internal/card'
 
+/**
+ * Props for the opinionated Card component.
+ *
+ * @example
+ * ```tsx
+ * <Card title="Revenue" description="This month">
+ *   <p>$12,400</p>
+ * </Card>
+ *
+ * <Card
+ *   title="Settings"
+ *   action={<Button size="sm">Edit</Button>}
+ *   footer={<Button variant="outline">Cancel</Button>}
+ * >
+ *   <FormInput label="Name" />
+ * </Card>
+ * ```
+ */
 export interface CardProps
   extends Omit<React.ComponentProps<typeof CardPrimitive>, 'size' | 'children' | 'title'> {
+  /** Card heading displayed in the header. */
   title?: React.ReactNode
+  /** Subtitle text displayed below the title. */
   description?: React.ReactNode
+  /** Content placed in the top-right of the header (e.g. a button or badge). */
   action?: React.ReactNode
+  /** Main card body content. */
   children?: React.ReactNode
+  /** Content rendered in the card footer. */
   footer?: React.ReactNode
+  /** Size variant affecting padding. @default 'default' */
   size?: 'default' | 'sm'
 }
 

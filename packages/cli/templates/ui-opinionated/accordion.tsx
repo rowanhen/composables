@@ -8,15 +8,35 @@ import {
   AccordionTrigger,
 } from '@/components/_internal/accordion'
 
+/** A single panel in an Accordion. */
 export interface AccordionItemData {
+  /** Unique identifier for this panel (used for controlled open state). */
   value: string
+  /** Content rendered in the clickable trigger/header row. */
   trigger: React.ReactNode
+  /** Content revealed when this panel is open. */
   content: React.ReactNode
+  /** Whether this panel is open by default. @default false */
   defaultOpen?: boolean
 }
 
+/**
+ * Props for the opinionated Accordion component.
+ *
+ * Pass `items` for the convenience array API, or use `children`
+ * with `AccordionItem` / `AccordionTrigger` / `AccordionContent` for full control.
+ *
+ * @example
+ * ```tsx
+ * <Accordion items={[
+ *   { value: 'faq-1', trigger: 'What is this?', content: 'A component library.' },
+ *   { value: 'faq-2', trigger: 'How do I install it?', content: '...', defaultOpen: true },
+ * ]} />
+ * ```
+ */
 export interface AccordionProps extends Omit<AccordionPrimitiveBase.Root.Props, 'children'> {
   className?: string
+  /** Panels to render. When provided, `children` is ignored. */
   items?: AccordionItemData[]
   children?: React.ReactNode
 }

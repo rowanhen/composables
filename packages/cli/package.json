@@ -24,6 +24,7 @@
 	"engines": {
 		"node": ">=18.0.0"
 	},
+	"homepage": "https://rowanhen.github.io/composables/",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/rowanhen/composables"

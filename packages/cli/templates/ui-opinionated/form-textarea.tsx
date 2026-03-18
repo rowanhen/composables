@@ -10,12 +10,27 @@ import {
 } from '@/components/_internal/field'
 import { Textarea } from '@/components/_internal/textarea'
 
+/**
+ * Props for the opinionated FormTextarea component.
+ *
+ * @example
+ * ```tsx
+ * <FormTextarea label="Message" placeholder="Write something..." rows={5} />
+ * <FormTextarea label="Bio" description="Max 300 characters" error={errors.bio?.message} />
+ * ```
+ */
 export interface FormTextareaProps extends Omit<React.ComponentProps<'textarea'>, 'size'> {
+  /** Label text rendered above the textarea. */
   label?: string
+  /** Helper text rendered below the textarea. */
   description?: string
+  /** Error message(s). Accepts a string, array, or react-hook-form error array. */
   error?: string | string[] | Array<{ message?: string } | undefined>
+  /** Disables the textarea. @default false */
   disabled?: boolean
+  /** Marks the field as required. @default false */
   required?: boolean
+  /** Label/textarea layout direction. @default 'vertical' */
   orientation?: VariantProps<typeof Field>['orientation']
   className?: string
 }

@@ -10,17 +10,40 @@ import {
   Pagination as PaginationPrimitive,
 } from '@/components/_internal/pagination'
 
+/**
+ * Props for the opinionated Pagination component.
+ *
+ * Renders a smart pagination bar that automatically shows ellipsis for large
+ * page counts and keeps a consistent number of visible page buttons.
+ *
+ * @example
+ * ```tsx
+ * <Pagination
+ *   currentPage={page}
+ *   totalPages={totalPages}
+ *   onPageChange={setPage}
+ * />
+ *
+ * // Hide previous/next arrows
+ * <Pagination currentPage={3} totalPages={10} onPageChange={setPage} showPreviousNext={false} />
+ * ```
+ */
 export interface PaginationProps
   extends Omit<React.ComponentProps<typeof PaginationPrimitive>, 'children'> {
   className?: string
-  // Opinionated API props
+  /** Currently active page number (1-indexed). */
   currentPage?: number
+  /** Total number of pages. */
   totalPages?: number
+  /** Called when the user clicks a page number or previous/next. */
   onPageChange?: (page: number) => void
+  /** Whether to render Previous / Next navigation buttons. @default true */
   showPreviousNext?: boolean
+  /** Override whether the previous button is enabled (default: `currentPage > 1`). */
   canGoPrevious?: boolean
+  /** Override whether the next button is enabled (default: `currentPage < totalPages`). */
   canGoNext?: boolean
-  // Fallback for advanced use cases
+  /** Use children for a fully custom pagination layout. */
   children?: React.ReactNode
 }
 

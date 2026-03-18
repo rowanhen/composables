@@ -18,33 +18,75 @@ import {
   SelectValue,
 } from '@/components/_internal/select'
 
+/** A single option in a FormSelect. */
 export interface FormSelectOption {
+  /** Display label shown in the dropdown. */
   label: string
+  /** Value submitted when this option is selected. */
   value: string
+  /** Prevents this option from being selected. */
   disabled?: boolean
 }
 
+/**
+ * Props for the opinionated FormSelect component.
+ *
+ * Wraps a Select dropdown with a Field (label + description + error) and
+ * accepts a flat `options` array rather than requiring manual `SelectItem` assembly.
+ *
+ * @example
+ * ```tsx
+ * <FormSelect
+ *   label="Country"
+ *   options={[
+ *     { label: 'United Kingdom', value: 'gb' },
+ *     { label: 'United States', value: 'us' },
+ *   ]}
+ *   value={country}
+ *   onValueChange={setCountry}
+ * />
+ *
+ * // With error and placeholder
+ * <FormSelect
+ *   label="Status"
+ *   placeholder="Choose a status..."
+ *   options={statusOptions}
+ *   error={errors.status?.message}
+ *   required
+ * />
+ * ```
+ */
 export interface FormSelectProps {
   ref?: React.Ref<HTMLButtonElement>
+  /** Label text rendered above the select. */
   label?: string
+  /** Helper text rendered below the select. */
   description?: string
+  /** Error message(s). Accepts a string, array, or react-hook-form error array. */
   error?: string | string[] | Array<{ message?: string } | undefined>
+  /** Placeholder text shown when no value is selected. @default 'Select an option...' */
   placeholder?: string
+  /** Array of selectable options. */
   options: FormSelectOption[]
+  /** Controlled selected value. Pass `null` to clear selection. */
   value?: string | null
+  /** Called when the user selects an option. Passes `null` when cleared. */
   onValueChange?: (value: string | null) => void
+  /** Disables the select. @default false */
   disabled?: boolean
+  /** Marks the field as required. @default false */
   required?: boolean
+  /** Label/select layout direction. @default 'vertical' */
   orientation?: VariantProps<typeof Field>['orientation']
+  /** Trigger size variant. @default 'default' */
   size?: 'sm' | 'default'
   className?: string
-  // SelectContent props
+  /** Which side of the trigger the dropdown opens on. @default 'bottom' */
   side?: 'top' | 'bottom' | 'left' | 'right'
   sideOffset?: number
   align?: 'start' | 'center' | 'end'
   alignOffset?: number
   alignItemWithTrigger?: boolean
-  // Additional Select props
   id?: string
   name?: string
 }
