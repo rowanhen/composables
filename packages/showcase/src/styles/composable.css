@@ -12,7 +12,8 @@
 @import "@fontsource/ibm-plex-mono";
 @import "@fontsource/ibm-plex-sans";
 
-@source "./**/*.{ts,tsx}";
+@source "../**/*.{ts,tsx}";
+@source "../../../../packages/ui/src/**/*.{ts,tsx}";
 
 @custom-variant dark (&:is(.dark *));
 
