@@ -1,6 +1,6 @@
 {
-  "name": "@leitware/composables",
-  "version": "1.0.0",
+  "name": "@leitware/composables-cli",
+  "version": "0.20.0",
   "description": "Opinionated React component library — extended shadcn/ui-style components with design tokens",
   "type": "module",
   "main": "./dist/index.js",

@@ -59,7 +59,7 @@ jobs:
       - name: Sync version from npm registry
         working-directory: packages/ui
         run: |
-          NPM_VERSION=$(npm view @leitware/composables version 2>/dev/null || echo "")
+          NPM_VERSION=$(npm view @leitware/composables-cli version 2>/dev/null || echo "")
           LOCAL_VERSION=$(node -p "require('./package.json').version")
           if [ -z "$NPM_VERSION" ]; then
             echo "Package not yet published — using local version $LOCAL_VERSION"
@@ -93,7 +93,7 @@ jobs:
       - name: Publish to npm
         working-directory: packages/ui
         run: |
-          PUBLISHED=$(npm view "@leitware/composables@${{ steps.version.outputs.version }}" version 2>/dev/null || echo "")
+          PUBLISHED=$(npm view "@leitware/composables-cli@${{ steps.version.outputs.version }}" version 2>/dev/null || echo "")
           if [ "$PUBLISHED" = "${{ steps.version.outputs.version }}" ]; then
             echo "Version ${{ steps.version.outputs.version }} already published — skipping"
           else
