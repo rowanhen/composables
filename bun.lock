@@ -24,7 +24,7 @@
         "@fontsource-variable/space-grotesk": "^5.2.10",
         "@fontsource/ibm-plex-mono": "^5.2.7",
         "@fontsource/ibm-plex-sans": "^5.2.8",
-        "@leitware/composables": "workspace:*",
+        "@leitware/composables-cli": "workspace:*",
         "class-variance-authority": "^0.7.1",
         "clsx": "^2.1.1",
         "embla-carousel-react": "^8.6.0",
@@ -51,8 +51,8 @@
       },
     },
     "packages/ui": {
-      "name": "@leitware/composables",
-      "version": "1.0.0",
+      "name": "@leitware/composables-cli",
+      "version": "0.21.0",
       "dependencies": {
         "@base-ui/react": "^1.2.0",
         "class-variance-authority": "^0.7.1",
@@ -311,7 +311,7 @@
 
     "@jridgewell/trace-mapping": ["@jridgewell/trace-mapping@0.3.31", "", { "dependencies": { "@jridgewell/resolve-uri": "^3.1.0", "@jridgewell/sourcemap-codec": "^1.4.14" } }, "sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw=="],
 
-    "@leitware/composables": ["@leitware/composables@workspace:packages/ui"],
+    "@leitware/composables-cli": ["@leitware/composables-cli@workspace:packages/ui"],
 
     "@leitware/composables-showcase": ["@leitware/composables-showcase@workspace:packages/showcase"],
 

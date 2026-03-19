@@ -65,7 +65,12 @@ jobs:
             echo "Package not yet published — using local version $LOCAL_VERSION"
           elif [ "$NPM_VERSION" != "$LOCAL_VERSION" ]; then
             echo "Version desync detected: local=$LOCAL_VERSION npm=$NPM_VERSION — syncing to npm version"
-            npm version "$NPM_VERSION" --no-git-tag-version --allow-same-version > /dev/null 2>&1
+            node -e "
+              const fs = require('fs');
+              const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+              pkg.version = '$NPM_VERSION';
+              fs.writeFileSync('package.json', JSON.stringify(pkg, null, 2) + '\n');
+            "
           fi
 
       - name: Bump version
