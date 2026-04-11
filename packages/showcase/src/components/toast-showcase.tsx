@@ -107,7 +107,7 @@ export function ToastShowcase() {
                 icon: <Loader2Icon className="size-4 animate-spin text-muted-foreground" />,
               })
               setTimeout(() => {
-                toast.success('Operation complete', { id })
+                toast.success('Operation complete', { id, icon: undefined })
               }, 2000)
             }}
           >
