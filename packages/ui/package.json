@@ -11,6 +11,8 @@
       "types": "./dist/index.d.ts"
     },
     "./styles.css": "./src/styles/composable.css",
+    "./tokens.css": "./src/styles/tokens.css",
+    "./presets/*": "./src/styles/presets/*",
     "./tailwind-preset": "./src/tailwind/composables-preset.ts",
     "./rules/*": "./src/rules/*",
     "./scripts/*": "./src/scripts/*"
@@ -18,6 +20,8 @@
   "files": [
     "dist",
     "src/styles",
+    "src/styles/tokens",
+    "src/styles/presets",
     "src/tailwind",
     "src/rules",
     "src/scripts"

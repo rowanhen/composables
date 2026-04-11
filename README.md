@@ -1,6 +1,6 @@
 # Composables
 
-**A shadcn-style React component library for Leitware projects — install code directly into your project.**
+**An opinionated React component library with a semantic design token system — built on Base UI and Tailwind CSS v4.**
 
 [![npm version](https://img.shields.io/npm/v/@leitware/composables-cli)](https://www.npmjs.com/package/@leitware/composables-cli)
 [![CI](https://github.com/rowanhen/composables/actions/workflows/ci.yml/badge.svg)](https://github.com/rowanhen/composables/actions/workflows/ci.yml)
@@ -10,123 +10,40 @@
 
 ## What is this?
 
-Composables is a **shadcn-style component library**: instead of installing a package that renders components, you use a CLI to copy component source files directly into your project. You own the code. You can read it, modify it, and adapt it to your needs.
+Composables is a React component library with ~76 components across forms, layout, data display, feedback, and navigation — all built on [Base UI](https://base-ui.com/) primitives with a CSS custom property token system and 6 built-in design presets.
 
 It uses a **two-tier architecture**:
 
-- **`components/ui-opinionated/`** — your API surface. These are the components you import and use day-to-day. They have clean, convenient props and sensible defaults.
-- **`components/_internal/`** — low-level primitives. These are what the opinionated layer is built on. Biome lint rules block you from importing from here directly so that internal refactors don't break your app.
-
-The library ships ~76 components across forms, layout, data display, feedback, and navigation — all built on [Base UI](https://base-ui.com/) primitives with a CSS custom property token system and 6 built-in design presets.
+- **`opinionated/`** — your API surface. These are the components you import and use day-to-day. They have clean, convenient props and sensible defaults.
+- **`_internal/`** — low-level primitives. These are what the opinionated layer is built on. Biome lint rules block you from importing from here directly so that internal refactors don't break your app.
 
 ---
 
 ## Quick Start
 
 ```bash
-# Scaffold directories and install the foundation (CSS tokens, utilities)
-bunx @leitware/composables-cli init
-# Note: `init` is coming soon. For now, `add` handles dependency resolution automatically.
-
-# Add individual components
-bunx @leitware/composables-cli add button
-bunx @leitware/composables-cli add form-input
-
-# Add everything at once
-bunx @leitware/composables-cli add all
-
-# See what's available
-bunx @leitware/composables-cli list
+npm install @leitware/composables-cli
 ```
 
-Then import from the opinionated layer:
+Import the styles in your root CSS file:
+
+```css
+/* Option A: Full system (with Tailwind v4) */
+@import "@leitware/composables-cli/styles.css";
+
+/* Option B: Just the semantic tokens (no Tailwind, standalone) */
+@import "@leitware/composables-cli/tokens.css";
+
+/* Option C: A specific preset (standalone, pasteable) */
+@import "@leitware/composables-cli/presets/brutalist.css";
+```
+
+Then import components:
 
 ```tsx
-import { Button } from '@/components/ui-opinionated/button'
-import { FormInput } from '@/components/ui-opinionated/form-input'
-import { Card } from '@/components/ui-opinionated/card'
-```
-
----
-
-## Architecture
-
-### Two-Tier Component Model
-
-```
-your-project/
-└── src/
-    └── components/
-        ├── ui-opinionated/     ← Import from here
-        │   ├── button.tsx
-        │   ├── form-input.tsx
-        │   └── ...
-        └── _internal/          ← Don't import from here directly
-            ├── button.tsx
-            ├── input.tsx
-            └── ...
-```
-
-**`ui-opinionated/`** components wrap the internal primitives with:
-- Simplified, consolidated prop APIs (e.g. `options={[]}` instead of building `<SelectItem>` trees)
-- Loading states, error handling, and label/description wiring
-- Sensible defaults so you can drop a `<FormInput label="Email" />` and get a working field
-
-**`_internal/`** components are the building blocks. They're flexible and composable, but their APIs can change. The opinionated layer is your stable surface.
-
-Biome lint rules enforce the boundary — if you accidentally import from `_internal/`, you'll get an error.
-
-### Why this approach?
-
-You get full control (it's your code) with the stability guarantees of an abstraction layer. If we change how the internal `select` primitive works, your `form-select` keeps working because the opinionated layer mediates the change.
-
----
-
-## CLI Commands
-
-### `init`
-
-Scaffolds the required directory structure and installs the CSS foundation:
-
-```bash
-bunx @leitware/composables-cli init
-```
-
-Installs:
-- `styles/composable.css` — CSS tokens, Tailwind v4 theme, dark mode
-- `lib/utils.ts` — className merge utilities (`cn`, `focusRing`)
-
-### `add <component>`
-
-Copies a component (and all its internal dependencies) into your project:
-
-```bash
-bunx @leitware/composables-cli add button
-bunx @leitware/composables-cli add form-input
-bunx @leitware/composables-cli add sidebar
-```
-
-Dependencies are resolved automatically. Adding `sidebar` will also install `button`, `input`, `separator`, `sheet`, `skeleton`, `tooltip`, and `use-mobile`.
-
-**Options:**
-- `-d, --dest <path>` — destination directory (default: `.`)
-- `-y, --yes` — overwrite existing files without prompting
-- `--alias <prefix>` — rewrite `@/` imports to a custom alias
-
-### `add all`
-
-Installs every component in the registry:
-
-```bash
-bunx @leitware/composables-cli add all
-```
-
-### `list`
-
-Lists all available components with their tags and descriptions:
-
-```bash
-bunx @leitware/composables-cli list
+import { Button } from '@leitware/composables-cli'
+import { FormInput } from '@leitware/composables-cli'
+import { Card } from '@leitware/composables-cli'
 ```
 
 ---
@@ -135,14 +52,37 @@ bunx @leitware/composables-cli list
 
 The token system is built on CSS custom properties. Everything — colours, spacing, typography, radius, borders, shadows — is expressed as a token that you can override.
 
-After running `init`, your `styles/composable.css` contains the full token set. To customise, override tokens in your `:root`:
+### Token Files
+
+```
+styles/
+├── composable.css              ← Full system (Tailwind + all tokens)
+├── tokens.css                  ← Standalone semantic tokens (no Tailwind)
+├── tokens/
+│   ├── palette.css             ← Primitive color scales
+│   ├── semantic.css            ← Semantic tokens (light + dark)
+│   ├── components.css          ← Component-level tunables
+│   ├── tailwind-theme.css      ← Tailwind utility registrations
+│   └── base.css                ← Global base styles
+└── presets/
+    ├── default.css             ← Each preset is a standalone CSS file
+    ├── brutalist.css
+    ├── editorial.css
+    ├── midnight.css
+    ├── soft.css
+    └── swiss.css
+```
+
+### Customising Tokens
+
+Override tokens in your own CSS:
 
 ```css
 :root {
   --font-size-base: 15px;
-  --radius-base: 0.5rem;
-  --primary: var(--blue-800);
-  --primary-foreground: white;
+  --radius: 0.75rem;
+  --bg-fill-primary: var(--blue-800);
+  --font-heading: "Fraunces Variable", serif;
 }
 ```
 
@@ -151,27 +91,23 @@ Key token groups:
 | Group | Example tokens |
 |-------|----------------|
 | Colour palette | `--neutral-100`, `--blue-800`, `--red-950` |
-| Semantic colours | `--primary`, `--secondary`, `--muted`, `--destructive` |
+| Background | `--bg-default`, `--bg-fill-primary`, `--bg-surface-success` |
+| Text | `--text-default`, `--text-secondary`, `--text-critical` |
+| Border | `--border-default`, `--border-focus`, `--border-brand` |
+| Icon | `--icon-default`, `--icon-success`, `--icon-critical` |
 | Typography | `--font-size-base`, `--leading-base`, `--font-heading` |
 | Spacing | `--spacing` (base unit, used in `calc()`) |
-| Shape | `--radius-base`, `--radius-sm`, `--radius-lg` |
-| Border | `--border-width-base`, `--border` |
+| Shape | `--radius`, `--radius-sm`, `--radius-lg` |
 | Motion | `--duration-fast`, `--ease-default` |
-| Feedback | `--text-success`, `--bg-surface-critical`, `--border-warning` |
 
 The entire type scale derives from `--font-size-base` and `--leading-base` — adjust those two tokens to scale all text globally.
 
 ### Live Token Editor
 
-Install the `token-config-panel` or `theme-injector` components for a floating palette button that opens a live token editor in your running app:
-
-```bash
-bunx @leitware/composables-cli add theme-injector
-```
+Use the `ThemeInjector` component for a floating palette button that opens a live token editor:
 
 ```tsx
-// In your root layout
-import { ThemeInjector } from '@/components/ui-opinionated/theme-injector'
+import { ThemeInjector } from '@leitware/composables-cli'
 
 export default function RootLayout({ children }) {
   return (
@@ -189,16 +125,21 @@ export default function RootLayout({ children }) {
 
 ## Presets
 
-Six built-in design presets override the default token set. Apply one by copying its token overrides into your `:root` (or use the `TokenConfigPanel` to switch presets live).
+Six built-in design presets are available as standalone CSS files you can paste into your `index.css`:
 
 | Preset | Vibe | Fonts |
 |--------|------|-------|
 | **Default** | Clean neutral system, works everywhere | Inter |
-| **Brutalist** | Bold, high-contrast, raw aesthetic | Space Grotesk |
+| **Brutalist** | Bold, high-contrast, raw aesthetic | Space Grotesk + JetBrains Mono |
 | **Editorial** | Elegant serif-driven editorial layout | Fraunces + Source Serif 4 |
-| **Midnight** | Dark-first design with deep surfaces | Space Grotesk |
+| **Midnight** | Dark-first design with deep surfaces | Space Grotesk + Inter |
 | **Soft** | Rounded, friendly, warm neutrals | Plus Jakarta Sans + DM Sans |
 | **Swiss** | Minimal, grid-disciplined, typographic | Helvetica Neue / system |
+
+```css
+/* Use a preset by importing it */
+@import "@leitware/composables-cli/presets/midnight.css";
+```
 
 Font imports for non-default presets are commented out at the top of `composable.css` — uncomment the one you need.
 
@@ -206,63 +147,33 @@ Font imports for non-default presets are commented out at the top of `composable
 
 ## Lint Rules
 
-Three Biome rule files are available via the CLI:
+Three Biome rule files are shipped with the package:
 
 ### `biome-ui-restricted`
 
-Blocks direct imports from `components/_internal/`. Use this to enforce the two-tier boundary in your app code.
-
-```bash
-bunx @leitware/composables-cli add biome-ui-restricted
-```
+Blocks direct imports from `_internal/`. Enforces the two-tier boundary.
 
 ```json
 // biome.json
-{
-  "extends": ["./src/rules/biome-ui-restricted.json"]
-}
+{ "extends": ["./src/rules/biome-ui-restricted.json"] }
 ```
 
 ### `biome-no-direct-icons`
 
-Warns when you import icons directly from `lucide-react` in app code. Encourages you to use the `Icon` component instead, which applies sizing tokens consistently.
-
-```bash
-bunx @leitware/composables-cli add biome-no-direct-icons
-```
+Warns when importing icons directly from `lucide-react` instead of using the `Icon` component.
 
 ```json
 // biome.json
-{
-  "extends": ["./src/rules/biome-no-direct-icons.json"]
-}
+{ "extends": ["./src/rules/biome-no-direct-icons.json"] }
 ```
 
 ### `biome-a11y`
 
 Enhanced accessibility enforcement rules.
 
-```bash
-bunx @leitware/composables-cli add biome-a11y
-```
-
 ```json
 // biome.json
-{
-  "extends": ["./src/rules/biome-a11y.json"]
-}
-```
-
-You can extend multiple rule files:
-
-```json
-{
-  "extends": [
-    "./src/rules/biome-ui-restricted.json",
-    "./src/rules/biome-no-direct-icons.json",
-    "./src/rules/biome-a11y.json"
-  ]
-}
+{ "extends": ["./src/rules/biome-a11y.json"] }
 ```
 
 ---
@@ -289,14 +200,6 @@ Live component demo: **[https://rowanhen.github.io/composables/](https://rowanhe
 |-----------|-------------|
 | `use-mobile` | Hook to detect mobile viewport breakpoint |
 | `use-numeric-input` | Hook for numeric input handling with sanitization and parsing |
-
-### Tooling
-
-| Component | Description |
-|-----------|-------------|
-| `biome-ui-restricted` | Biome lint rule restricting direct `_internal` component imports |
-| `biome-no-direct-icons` | Biome lint rule discouraging direct lucide-react imports in app code |
-| `biome-a11y` | Biome lint rule set with enhanced accessibility enforcement |
 
 ### Layout
 
@@ -359,10 +262,10 @@ Live component demo: **[https://rowanhen.github.io/composables/](https://rowanhe
 | `item` | Flexible list item with title, description, icon, and actions |
 | `empty` | Empty state placeholder with icon, title, and description |
 | `carousel` | Horizontally scrollable content slider with items array API |
-| `line-item` | Key-value row with dot/solid/pills leader. Variants: default, fill, bold, compact |
+| `line-item` | Key-value row with dot/solid/pills leader |
 | `line-item-header` | Section header label for receipt/list layouts |
 | `code-block` | Monospace code display with line numbers |
-| `tree-view` | ASCII-art collapsible tree with keyboard navigation and ARIA semantics |
+| `tree-view` | ASCII-art collapsible tree with keyboard navigation |
 | `block-loader` | Animated Unicode spinner with 11 sequence modes |
 | `list` | Variant list renderer: arrow, bullet |
 | `pricing-card` | Pricing card with ledger-style layout and feature list |

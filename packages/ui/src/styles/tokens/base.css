@@ -1,0 +1,71 @@
+/* ============================================================================
+   Base Layer Rules
+   ============================================================================
+   Global styles applied via @layer base: selection styling, universal
+   border color, focus rings, iOS zoom prevention, body defaults, and
+   motion token wiring for interactive elements.
+   ============================================================================ */
+
+@layer base {
+  ::selection {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+  }
+
+  * {
+    @apply border-stroke;
+  }
+
+  /* Universal focus ring — bare anchors, links, summary, tabindex targets.
+     Components use the FOCUS_RING utility class instead. */
+  a:focus-visible,
+  [role="link"]:focus-visible,
+  summary:focus-visible,
+  [tabindex]:focus-visible:not([data-slot]) {
+    outline: var(--focus-ring-width) var(--focus-ring-style) var(--focus-ring-color);
+    outline-offset: var(--focus-ring-offset);
+  }
+
+  /* Native form controls used outside the component system */
+  button:not([class]):focus-visible,
+  input:not([class]):focus-visible,
+  select:not([class]):focus-visible,
+  textarea:not([class]):focus-visible {
+    outline: var(--focus-ring-width) var(--focus-ring-style) var(--focus-ring-color);
+    outline-offset: var(--focus-ring-offset);
+  }
+
+  /* Prevent iOS Safari auto-zoom on input focus */
+  @media (hover: none) and (pointer: coarse) {
+    input,
+    textarea,
+    select {
+      font-size: max(1em, 16px) !important;
+    }
+  }
+
+  body {
+    @apply font-sans bg-page text-foreground text-sm antialiased;
+  }
+
+  html {
+    @apply font-sans;
+  }
+
+  /* Wire --border-style into data-slot elements */
+  *:where([data-slot]) {
+    border-style: var(--border-style, solid);
+  }
+
+  /* Wire motion tokens into interactive elements */
+  button:not(:disabled):hover,
+  [role="button"]:not([aria-disabled="true"]):hover {
+    transform: var(--hover-transform, none);
+    box-shadow: var(--hover-shadow);
+  }
+
+  button:not(:disabled):active,
+  [role="button"]:not([aria-disabled="true"]):active {
+    transform: scale(var(--active-scale, 1));
+  }
+}
