@@ -10,21 +10,21 @@ const buttonVariants = cva(
 				default:
 					"bg-primary text-primary-foreground hover:bg-primary-hover active:bg-primary-active",
 				outline:
-					"border-stroke dark:bg-field/30 hover:bg-field/50 hover:text-foreground active:bg-accent aria-expanded:bg-muted aria-expanded:text-foreground",
+					"border-stroke hover:bg-muted-hover hover:text-foreground active:bg-muted-active aria-expanded:bg-muted aria-expanded:text-foreground",
 				secondary:
-					"bg-secondary text-secondary-foreground hover:bg-secondary/(--opacity-hover) active:bg-secondary/(--opacity-active) aria-expanded:bg-secondary aria-expanded:text-secondary-foreground",
+					"bg-secondary text-secondary-foreground hover:bg-secondary-hover active:bg-secondary-active aria-expanded:bg-secondary aria-expanded:text-secondary-foreground",
 				ghost:
-					"hover:bg-muted hover:text-foreground dark:hover:bg-muted/50 active:bg-muted/(--opacity-hover) aria-expanded:bg-muted aria-expanded:text-foreground",
-				destructive: `bg-danger/10 hover:bg-danger/20 ${FOCUS_RING_DESTRUCTIVE} dark:bg-danger/20 text-danger dark:hover:bg-danger/30 active:bg-danger/30 dark:active:bg-danger/40 border-stroke-critical`,
+					"hover:bg-muted-hover hover:text-foreground active:bg-muted-active aria-expanded:bg-muted aria-expanded:text-foreground",
+				destructive: `bg-surface-critical hover:bg-surface-critical-hover active:bg-surface-critical-active ${FOCUS_RING_DESTRUCTIVE} text-danger border-stroke-critical`,
 				success:
-					"bg-surface-success text-success border-stroke-success hover:bg-surface-success/(--opacity-hover) active:bg-surface-success/(--opacity-active)",
+					"bg-surface-success text-success border-stroke-success hover:bg-surface-success-hover active:bg-surface-success-active",
 				warning:
-					"bg-surface-warning text-warning border-stroke-warning hover:bg-surface-warning/(--opacity-hover) active:bg-surface-warning/(--opacity-active)",
-				info: "bg-surface-info text-info border-stroke-info hover:bg-surface-info/(--opacity-hover) active:bg-surface-info/(--opacity-active)",
+					"bg-surface-warning text-warning border-stroke-warning hover:bg-surface-warning-hover active:bg-surface-warning-active",
+				info: "bg-surface-info text-info border-stroke-info hover:bg-surface-info-hover active:bg-surface-info-active",
 				brand:
-					"bg-surface-brand text-brand border-stroke-brand hover:bg-surface-brand/(--opacity-hover) active:bg-surface-brand/(--opacity-active)",
+					"bg-surface-brand text-brand border-stroke-brand hover:bg-surface-brand-hover active:bg-surface-brand-active",
 				emphasis:
-					"bg-surface-emphasis text-emphasis border-stroke-emphasis hover:bg-surface-emphasis/(--opacity-hover) active:bg-surface-emphasis/(--opacity-active)",
+					"bg-surface-emphasis text-emphasis border-stroke-emphasis hover:bg-surface-emphasis-hover active:bg-surface-emphasis-active",
 				link: "text-primary underline-offset-4 hover:underline",
 			},
 			size: {

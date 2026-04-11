@@ -80,6 +80,25 @@ export const colorTokens: FlatToken[] = [
   { cssVar: '--chart-3', reference: '{violet.700}', category: 'chart', label: '3' },
   { cssVar: '--chart-4', reference: '{violet.800}', category: 'chart', label: '4' },
   { cssVar: '--chart-5', reference: '{violet.900}', category: 'chart', label: '5' },
+  // interactive
+  { cssVar: '--primary-hover', reference: '{neutral.~950}', category: 'interactive', label: 'primary-hover' },
+  { cssVar: '--primary-active', reference: '{neutral.~900}', category: 'interactive', label: 'primary-active' },
+  { cssVar: '--secondary-hover', reference: '{neutral.300}', category: 'interactive', label: 'secondary-hover' },
+  { cssVar: '--secondary-active', reference: '{neutral.400}', category: 'interactive', label: 'secondary-active' },
+  { cssVar: '--muted-hover', reference: '{neutral.300}', category: 'interactive', label: 'muted-hover' },
+  { cssVar: '--muted-active', reference: '{neutral.400}', category: 'interactive', label: 'muted-active' },
+  { cssVar: '--surface-success-hover', reference: '{green.200}', category: 'interactive', label: 'surface-success-hover' },
+  { cssVar: '--surface-success-active', reference: '{green.300}', category: 'interactive', label: 'surface-success-active' },
+  { cssVar: '--surface-warning-hover', reference: '{orange.200}', category: 'interactive', label: 'surface-warning-hover' },
+  { cssVar: '--surface-warning-active', reference: '{orange.300}', category: 'interactive', label: 'surface-warning-active' },
+  { cssVar: '--surface-info-hover', reference: '{sky.200}', category: 'interactive', label: 'surface-info-hover' },
+  { cssVar: '--surface-info-active', reference: '{sky.300}', category: 'interactive', label: 'surface-info-active' },
+  { cssVar: '--surface-brand-hover', reference: '{pink.200}', category: 'interactive', label: 'surface-brand-hover' },
+  { cssVar: '--surface-brand-active', reference: '{pink.300}', category: 'interactive', label: 'surface-brand-active' },
+  { cssVar: '--surface-emphasis-hover', reference: '{blue.200}', category: 'interactive', label: 'surface-emphasis-hover' },
+  { cssVar: '--surface-emphasis-active', reference: '{blue.300}', category: 'interactive', label: 'surface-emphasis-active' },
+  { cssVar: '--surface-critical-hover', reference: '{red.200}', category: 'interactive', label: 'surface-critical-hover' },
+  { cssVar: '--surface-critical-active', reference: '{red.300}', category: 'interactive', label: 'surface-critical-active' },
 ]
 
 export const colorCategories = [...new Set(colorTokens.map((t) => t.category))]

@@ -369,7 +369,7 @@ function DropZoneArea({ children, className }: DropZoneAreaProps) {
 				"rounded-xl border p-8 transition-[opacity,box-shadow]",
 				disabled ? "cursor-not-allowed opacity-50" : "cursor-pointer",
 				isDragActive && "border-primary bg-accent",
-				isDragReject && "border-stroke-critical bg-danger/10",
+				isDragReject && "border-stroke-critical bg-surface-critical",
 				hasError && "border-stroke-critical",
 				hasFiles && "p-4",
 				className,

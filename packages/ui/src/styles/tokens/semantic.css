@@ -375,6 +375,26 @@
   --sidebar-accent-foreground: var(--text-default);
   --sidebar-border: var(--border-default);
   --sidebar-ring: var(--border-focus);
+
+  /* ── Interactive state colors ──────────────────────────────────────── */
+  --primary-hover: #2C2B27FF;
+  --primary-active: #373632FF;
+  --secondary-hover: #E9E8E6FF;
+  --secondary-active: #E2E1DEFF;
+  --muted-hover: #E9E8E6FF;
+  --muted-active: #E2E1DEFF;
+  --surface-success-hover: #E9F6E9FF;
+  --surface-success-active: #DAF1DBFF;
+  --surface-warning-hover: #FFEFD6FF;
+  --surface-warning-active: #FFDFB5FF;
+  --surface-info-hover: #E1F6FDFF;
+  --surface-info-active: #D1F0FAFF;
+  --surface-brand-hover: #FEE9F5FF;
+  --surface-brand-active: #FBDCEFFF;
+  --surface-emphasis-hover: #E6F4FEFF;
+  --surface-emphasis-active: #D5EFFFFF;
+  --surface-critical-hover: #FEEBECFF;
+  --surface-critical-active: #FFDBDCFF;
 }
 
 /* ── Dark mode ─────────────────────────────────────────────────────────── */
@@ -727,4 +747,24 @@
   --sidebar-accent-foreground: var(--text-default);
   --sidebar-border: var(--border-default);
   --sidebar-ring: var(--border-focus);
+
+  /* ── Interactive state colors ──────────────────────────────────────── */
+  --primary-hover: #E3E3E1FF;
+  --primary-active: #D9D9D7FF;
+  --secondary-hover: #31312EFF;
+  --secondary-active: #3B3A37FF;
+  --muted-hover: #31312EFF;
+  --muted-active: #3B3A37FF;
+  --surface-success-hover: #1B2A1EFF;
+  --surface-success-active: #1D3A24FF;
+  --surface-warning-hover: #331E0BFF;
+  --surface-warning-active: #462100FF;
+  --surface-info-hover: #112840FF;
+  --surface-info-active: #113555FF;
+  --surface-brand-hover: #37172FFF;
+  --surface-brand-active: #4B143DFF;
+  --surface-emphasis-hover: #0D2847FF;
+  --surface-emphasis-active: #003362FF;
+  --surface-critical-hover: #3B1219FF;
+  --surface-critical-active: #500F1CFF;
 }

@@ -38,8 +38,6 @@ export const letterSpacingTokens: DimensionToken[] = [
 ]
 
 export const opacityTokens: DimensionToken[] = [
-  { cssVar: '--opacity-hover', label: 'Hover opacity', defaultValue: 0.8, min: 0, max: 1, step: 0.05, unit: '' },
-  { cssVar: '--opacity-active', label: 'Active opacity', defaultValue: 0.7, min: 0, max: 1, step: 0.05, unit: '' },
   { cssVar: '--opacity-disabled', label: 'Disabled opacity', defaultValue: 0.5, min: 0, max: 1, step: 0.05, unit: '' },
 ]
 

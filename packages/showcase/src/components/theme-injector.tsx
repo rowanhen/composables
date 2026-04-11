@@ -1,5 +1,5 @@
 import React from 'react'
-import { TokenConfigPanel } from './token-config-panel'
+import { TokenConfigPanel } from '@/components/ui-opinionated/token-config-panel'
 
 const GRID_OVERLAY_STYLE: React.CSSProperties = {
   position: 'fixed',
