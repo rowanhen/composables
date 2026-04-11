@@ -105,6 +105,8 @@
   --font-size-base: 1rem;
   --leading-base: 1.33;
   --letter-spacing-base: 0.025em;
+  --opacity-hover: 0.8;
+  --opacity-active: 0.7;
   --opacity-disabled: 0.5;
   --shadow-offset-y: 1px;
   --shadow-blur: 2px;

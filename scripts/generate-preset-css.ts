@@ -15,6 +15,9 @@ import { editorial, editorialDark } from "../packages/showcase/src/presets/edito
 import { soft, softDark } from "../packages/showcase/src/presets/soft"
 import { swiss, swissDark } from "../packages/showcase/src/presets/swiss"
 import { midnight, midnightDark } from "../packages/showcase/src/presets/midnight"
+import { retro, retroDark } from "../packages/showcase/src/presets/retro"
+import { vapor, vaporDark } from "../packages/showcase/src/presets/vapor"
+import { nature, natureDark } from "../packages/showcase/src/presets/nature"
 
 const OUT_DIR = join(import.meta.dir, "../packages/ui/src/styles/presets")
 
@@ -68,6 +71,27 @@ const presets: PresetDef[] = [
 		description: "Dark-first premium theme. Deep blue-black backgrounds with an electric indigo accent.",
 		light: midnight,
 		dark: midnightDark,
+	},
+	{
+		fileName: "retro",
+		displayName: "Retro",
+		description: "Warm CRT nostalgia. Amber phosphor glow, monospace everything, terminal-inspired.",
+		light: retro,
+		dark: retroDark,
+	},
+	{
+		fileName: "vapor",
+		displayName: "Vapor",
+		description: "Dreamy vaporwave. Neon pink meets cool cyan on deep purple-black.",
+		light: vapor,
+		dark: vaporDark,
+	},
+	{
+		fileName: "nature",
+		displayName: "Nature",
+		description: "Organic and earthy. Warm greens, rich browns, serif typography, forest-cabin warmth.",
+		light: nature,
+		dark: natureDark,
 	},
 ]
 
