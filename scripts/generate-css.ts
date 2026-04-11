@@ -2,14 +2,14 @@
 /**
  * generate-css.ts
  *
- * Reads palette.ts and regenerates the colour section of composable.css.
- * Only the palette colours within `@theme inline { ... }` and the
- * `:root { ... }` / `.dark { ... }` blocks are affected; non-colour
- * content is preserved.
+ * Reads palette.ts and regenerates the colour sections of the token CSS files.
+ * Only the palette colours within `@theme inline { ... }` (palette.css) and the
+ * `:root { ... }` / `.dark { ... }` blocks (semantic.css) are affected;
+ * non-colour content is preserved.
  *
  * Usage:
- *   bun scripts/generate-css.ts           # overwrites composable.css in-place
- *   bun scripts/generate-css.ts --check   # exits non-zero if file would change
+ *   bun scripts/generate-css.ts           # overwrites token files in-place
+ *   bun scripts/generate-css.ts --check   # exits non-zero if files would change
  */
 
 import { readFileSync, writeFileSync } from "node:fs";
@@ -17,7 +17,9 @@ import { join, dirname } from "node:path";
 import { palettes, steps, baseColors, overlaysBlackAlpha } from "./palette.ts";
 
 const ROOT = dirname(dirname(import.meta.path));
-const CSS_PATH = join(ROOT, "packages/ui/src/styles/composable.css");
+const TOKENS_DIR = join(ROOT, "packages/ui/src/styles/tokens");
+const PALETTE_CSS_PATH = join(TOKENS_DIR, "palette.css");
+const SEMANTIC_CSS_PATH = join(TOKENS_DIR, "semantic.css");
 const CHECK_MODE = process.argv.includes("--check");
 
 /* ── Generate @theme inline palette block ─────────────────────────── */
@@ -164,20 +166,26 @@ function replacePaletteInRoot(css: string): string {
 
 /* ── Main ─────────────────────────────────────────────────────────── */
 
-const original = readFileSync(CSS_PATH, "utf-8");
+const originalPalette = readFileSync(PALETTE_CSS_PATH, "utf-8");
+const originalSemantic = readFileSync(SEMANTIC_CSS_PATH, "utf-8");
 
-let result = replacePaletteInTheme(original);
-result = replacePaletteInRoot(result);
+const resultPalette = replacePaletteInTheme(originalPalette);
+const resultSemantic = replacePaletteInRoot(originalSemantic);
 
 if (CHECK_MODE) {
-  if (result !== original) {
-    console.error("✗ composable.css is out of sync with palette.ts");
+  const paletteChanged = resultPalette !== originalPalette;
+  const semanticChanged = resultSemantic !== originalSemantic;
+  if (paletteChanged || semanticChanged) {
+    console.error("✗ CSS token files are out of sync with palette.ts");
+    if (paletteChanged) console.error("  - tokens/palette.css needs updating");
+    if (semanticChanged) console.error("  - tokens/semantic.css needs updating");
     console.error("  Run: bun scripts/generate-css.ts");
     process.exit(1);
   }
-  console.log("✓ composable.css is in sync with palette.ts");
+  console.log("✓ CSS token files are in sync with palette.ts");
   process.exit(0);
 }
 
-writeFileSync(CSS_PATH, result, "utf-8");
-console.log("✓ Regenerated colour section of composable.css from palette.ts");
+writeFileSync(PALETTE_CSS_PATH, resultPalette, "utf-8");
+writeFileSync(SEMANTIC_CSS_PATH, resultSemantic, "utf-8");
+console.log("✓ Regenerated colour sections in tokens/palette.css and tokens/semantic.css from palette.ts");
