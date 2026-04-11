@@ -63,7 +63,7 @@ function Collapsible({
         {...collapsibleProps}
       >
         <CollapsibleTrigger
-          className={`group/collapsible-trigger flex w-full items-center justify-between gap-2 rounded-md border border-transparent px-2 py-1.5 text-left text-xs/relaxed font-medium transition-[opacity,box-shadow] outline-none hover:bg-muted/50 ${FOCUS_RING} disabled:pointer-events-none disabled:opacity-50 aria-expanded:bg-muted/50`}
+          className={`group/collapsible-trigger flex w-full items-center justify-between gap-2 rounded-md border border-transparent px-2 py-1.5 text-left text-xs/relaxed font-medium transition-[opacity,box-shadow] outline-none hover:bg-muted/50 ${FOCUS_RING} disabled:pointer-events-none disabled:opacity-50 aria-expanded:bg-muted/50 [--active-scale:1]`}
         >
           <span className="flex-1">{trigger}</span>
           {showIcon && (

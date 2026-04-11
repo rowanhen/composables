@@ -83,7 +83,7 @@ export const colorTokens: FlatToken[] = [
 ]
 
 export const colorCategories = [...new Set(colorTokens.map((t) => t.category))]
-export const colorTokensByCategory = Object.groupBy(colorTokens, (t) => t.category)
+export const colorTokensByCategory = Object.groupBy(colorTokens, (t: FlatToken) => t.category)
 
 /* ------------------------------------------------------------------ */
 /*  ColorTokenRow                                                       */

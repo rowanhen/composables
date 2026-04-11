@@ -55,7 +55,7 @@ function AccordionTrigger({
 			<AccordionPrimitive.Trigger
 				data-slot="accordion-trigger"
 				className={cn(
-					"**:data-[slot=accordion-trigger-icon]:text-muted-foreground gap-6 p-2 text-left text-xs/relaxed font-medium hover:underline active:opacity-active **:data-[slot=accordion-trigger-icon]:ml-auto **:data-[slot=accordion-trigger-icon]:size-4 group/accordion-trigger relative flex flex-1 items-start justify-between rounded-sm border border-transparent transition-[opacity,box-shadow] outline-none disabled:pointer-events-none disabled:opacity-disabled",
+					"**:data-[slot=accordion-trigger-icon]:text-muted-foreground gap-6 p-2 text-left text-xs/relaxed font-medium hover:underline active:opacity-active **:data-[slot=accordion-trigger-icon]:ml-auto **:data-[slot=accordion-trigger-icon]:size-4 group/accordion-trigger relative flex flex-1 items-start justify-between rounded-sm border border-transparent transition-[opacity,box-shadow] outline-none disabled:pointer-events-none disabled:opacity-disabled [--active-scale:1]",
 					FOCUS_RING,
 					className,
 				)}
