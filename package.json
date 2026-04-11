@@ -11,12 +11,16 @@
 		"release": "bun run build && changeset publish",
 		"changeset": "changeset",
 		"version-packages": "changeset version",
-		"prepare": "git config core.hooksPath .githooks",
-		"generate:css": "bun scripts/generate-css.ts"
+		"prepare": "husky",
+		"generate:css": "bun scripts/generate-css.ts",
+		"knip": "knip",
+		"knip:fix": "knip --fix"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^2.4.8",
 		"@changesets/cli": "^2.30.0",
+		"husky": "^9.1.7",
+		"knip": "^6.4.0",
 		"typescript": "^5.7.0"
 	}
 }
