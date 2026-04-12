@@ -45,9 +45,6 @@ jobs:
         with:
           node-version: 22
 
-      - name: Configure npm registry
-        run: npm config set registry https://registry.npmjs.org/
-
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
         with:
@@ -102,5 +99,5 @@ jobs:
           if [ "$PUBLISHED" = "${{ steps.version.outputs.version }}" ]; then
             echo "Version ${{ steps.version.outputs.version }} already published — skipping"
           else
-            npm publish --provenance --access public
+            npx -y npm@latest publish --provenance --access public
           fi
