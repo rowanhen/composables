@@ -223,10 +223,14 @@
 }
 
 /* ── Container max-widths ──────────────────────────────────────────────── */
-@theme inline {
-  --container-sm: 672px;
-  --container-md: 816px;
-  --container-lg: 1104px;
-  --container-xl: 1392px;
-  --container-2xl: 1536px;
+/* Each width = spacing × 12 × (odd number) so that when centered,
+   both edges land on a grid line (grid cell = spacing × 12).
+   Using @theme (not inline) so values scale at runtime with --spacing.
+     sm  = 13 cells, md = 17, lg = 23, xl = 29, 2xl = 31              */
+@theme {
+  --container-sm: calc(var(--spacing) * 156);
+  --container-md: calc(var(--spacing) * 204);
+  --container-lg: calc(var(--spacing) * 276);
+  --container-xl: calc(var(--spacing) * 348);
+  --container-2xl: calc(var(--spacing) * 372);
 }

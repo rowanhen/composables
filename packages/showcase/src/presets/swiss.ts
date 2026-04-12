@@ -124,7 +124,7 @@ export const swiss: Record<string, string> = {
 	"--container-md": "720px",
 	"--container-lg": "960px",
 	"--container-xl": "1200px",
-	"--container-2xl": "1296px",
+	"--container-2xl": "1248px",
 	"--dropdown-offset": "2",
 	"--overlay-offset": "2",
 

@@ -119,7 +119,7 @@ export const editorial: Record<string, string> = {
 	"--shadow-blur": "8px",
 	"--shadow-spread": "0px",
 	"--shadow-base-color": "rgba(60, 40, 20, 0.08)",
-	"--container-sm": "624px",
+	"--container-sm": "576px",
 	"--container-md": "768px",
 	"--container-lg": "1056px",
 	"--container-xl": "1200px",

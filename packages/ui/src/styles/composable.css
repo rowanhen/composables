@@ -43,6 +43,19 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* ── Layout utility ────────────────────────────────────────────────── */
+/* Centered content wrapper that snaps to the spacing grid.
+   max-width = spacing × 384 (32 grid cells). With half-cell padding
+   (spacing × 6) the content area = spacing × 372 = container-2xl,
+   so content edges land on grid lines.
+
+   Usage:  <div class="wrap"> … </div>                                */
+@utility wrap {
+  max-width: calc(var(--spacing) * 384);
+  margin-inline: auto;
+  padding-inline: calc(var(--spacing) * 6);
+}
+
 /* ── Token layers ──────────────────────────────────────────────��───────── */
 @import "./tokens/palette.css";
 @import "./tokens/tailwind-theme.css";

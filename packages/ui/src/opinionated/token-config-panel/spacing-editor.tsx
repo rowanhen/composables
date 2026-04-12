@@ -56,11 +56,11 @@ export const overlayOffsetTokens: DimensionToken[] = [
 ]
 
 export const containerTokens: DimensionToken[] = [
-  { cssVar: '--container-sm', label: 'sm', defaultValue: 624, min: 336, max: 1056, step: 48, unit: 'px' },
-  { cssVar: '--container-md', label: 'md', defaultValue: 768, min: 480, max: 1296, step: 48, unit: 'px' },
-  { cssVar: '--container-lg', label: 'lg', defaultValue: 1056, min: 624, max: 1536, step: 48, unit: 'px' },
-  { cssVar: '--container-xl', label: 'xl', defaultValue: 1296, min: 768, max: 1920, step: 48, unit: 'px' },
-  { cssVar: '--container-2xl', label: '2xl', defaultValue: 1440, min: 960, max: 2064, step: 48, unit: 'px' },
+  { cssVar: '--container-sm', label: 'sm', defaultValue: 624, min: 336, max: 1104, step: 96, unit: 'px' },
+  { cssVar: '--container-md', label: 'md', defaultValue: 816, min: 432, max: 1296, step: 96, unit: 'px' },
+  { cssVar: '--container-lg', label: 'lg', defaultValue: 1104, min: 624, max: 1584, step: 96, unit: 'px' },
+  { cssVar: '--container-xl', label: 'xl', defaultValue: 1392, min: 816, max: 1968, step: 96, unit: 'px' },
+  { cssVar: '--container-2xl', label: '2xl', defaultValue: 1488, min: 1008, max: 2064, step: 96, unit: 'px' },
 ]
 
 export const shadowColorToken: StringToken = {

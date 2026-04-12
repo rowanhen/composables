@@ -112,10 +112,10 @@
   --shadow-blur: 12px;
   --shadow-spread: 2px;
   --shadow-base-color: rgba(212, 160, 32, 0.15);
-  --container-sm: 624px;
+  --container-sm: 576px;
   --container-md: 768px;
   --container-lg: 1056px;
-  --container-xl: 1296px;
+  --container-xl: 1248px;
   --container-2xl: 1440px;
   --dropdown-offset: 4;
   --overlay-offset: 4;

@@ -210,6 +210,7 @@ export { FormTextarea, type FormTextareaProps } from './opinionated/form-textare
 
 export { Glyph } from './opinionated/glyph'
 export { Grid } from './opinionated/grid'
+export { GridOverlay, type GridOverlayProps } from './opinionated/grid-overlay'
 
 export {
   HoverCard,

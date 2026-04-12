@@ -2,7 +2,6 @@
 // In your app, always import from @/components/ui-opinionated/ instead.
 
 /* ---- Layout primitives ---- */
-import { Container } from "@/components/_internal/container";
 import { Separator } from "@/components/_internal/separator";
 import { Toaster } from "@/components/_internal/sonner";
 import { Spacer } from "@/components/_internal/spacer";
@@ -78,7 +77,7 @@ export function App() {
 			{/* Floating theme injector — fixed top-right */}
 			<ThemeInjector />
 
-			<Container>
+			<div className="wrap">
 				<Spacer size={10} />
 
 				<VStack gap={16}>
@@ -164,7 +163,7 @@ export function App() {
 					<Typography variant="caption-100">@leitware/composables</Typography>
 					<Typography variant="caption-100">Composables Design System</Typography>
 				</HStack>
-			</Container>
+			</div>
 		</div>
 	);
 }
