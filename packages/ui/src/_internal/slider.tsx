@@ -52,8 +52,8 @@ function Slider({
 						data-slot="slider-thumb"
 						key={index}
 						className={cn(
-							"border-primary size-5 rounded-full border bg-page hover:ring-4 hover:ring-focus/30 active:ring-4 active:ring-focus/50 focus-visible:outline-none block shrink-0 select-none disabled:pointer-events-none disabled:opacity-disabled",
-							FOCUS_RING,
+							"border-primary size-5 rounded-full border bg-page hover:ring-4 hover:ring-focus/30 active:ring-4 active:ring-focus/50 block shrink-0 select-none disabled:pointer-events-none disabled:opacity-disabled",
+							"has-[:focus-visible]:border-[var(--focus-ring-color)] has-[:focus-visible]:ring-[color:var(--focus-ring-color)]/30 has-[:focus-visible]:ring-[length:var(--focus-ring-width)]",
 						)}
 					/>
 				))}

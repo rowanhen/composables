@@ -8,7 +8,7 @@ import {
 } from "react-dropzone";
 
 import { Button } from './button';
-import { cn } from '../lib/utils';
+import { cn, FOCUS_RING } from '../lib/utils';
 
 const DEFAULT_MAX_SIZE = 10 * 1024 * 1024; // 10MB
 const DEFAULT_ACCEPT: Accept = { "application/pdf": [".pdf"] };
@@ -366,7 +366,8 @@ function DropZoneArea({ children, className }: DropZoneAreaProps) {
 			data-drag-accept={isDragAccept || undefined}
 			data-drag-reject={isDragReject || undefined}
 			className={cn(
-				"rounded-xl border p-8 transition-[opacity,box-shadow]",
+				"rounded-xl border p-8 transition-[opacity,box-shadow] focus-visible:outline-none",
+				FOCUS_RING,
 				disabled ? "cursor-not-allowed opacity-50" : "cursor-pointer",
 				isDragActive && "border-primary bg-accent",
 				isDragReject && "border-stroke-critical bg-surface-critical",

@@ -64,8 +64,8 @@
     box-shadow: var(--hover-shadow);
   }
 
-  button:not(:disabled):active,
-  [role="button"]:not([aria-disabled="true"]):active {
+  button:not(:disabled):not([data-slot$="-trigger"]):active,
+  [role="button"]:not([aria-disabled="true"]):not([data-slot$="-trigger"]):active {
     transform: scale(var(--active-scale, 1));
   }
 }

@@ -10,7 +10,7 @@
  */
 
 import * as React from 'react'
-import { cn, leftPad } from '../lib/utils'
+import { cn, FOCUS_RING, leftPad } from '../lib/utils'
 
 export interface CodeBlockProps extends Omit<React.HTMLAttributes<HTMLPreElement>, 'children'> {
 	children: string | number
@@ -23,7 +23,8 @@ const CodeBlock = React.forwardRef<HTMLPreElement, CodeBlockProps>(
 				data-slot="code-block"
 				ref={ref}
 				className={cn(
-					'block font-mono text-sm font-normal overflow-auto bg-muted scrollbar-none rounded-lg border border-[length:var(--border-width)] border-stroke',
+					'block font-mono text-sm font-normal overflow-auto bg-muted scrollbar-none rounded-lg border border-[length:var(--border-width)] border-stroke focus-visible:outline-none',
+					FOCUS_RING,
 					className,
 				)}
 				{...props}
