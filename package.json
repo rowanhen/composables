@@ -17,10 +17,10 @@
 		"knip:fix": "knip --fix"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "^2.4.8",
+		"@biomejs/biome": "^2.4.11",
 		"@changesets/cli": "^2.30.0",
 		"husky": "^9.1.7",
-		"knip": "^6.4.0",
-		"typescript": "^5.7.0"
+		"knip": "^6.4.1",
+		"typescript": "^6.0.2"
 	}
 }

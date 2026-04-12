@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "ignoreDeprecations": "6.0",
     "target": "ES2020",
     "module": "ESNext",
     "moduleResolution": "bundler",
@@ -11,7 +12,8 @@
     "declarationMap": true,
     "outDir": "dist",
     "rootDir": "src",
-    "lib": ["ES2024", "DOM", "DOM.Iterable"]
+    "lib": ["ES2024", "DOM", "DOM.Iterable"],
+    "types": ["node"]
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"]
