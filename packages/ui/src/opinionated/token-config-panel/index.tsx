@@ -93,24 +93,9 @@ interface TokenConfigPanelProps {
 
 export function TokenConfigPanel({ dark, onDarkChange, grid, onGridChange }: TokenConfigPanelProps = {}) {
   const [overrides, setOverrides] = React.useState<Record<string, string>>({})
-  const [activePreset, setActivePreset] = React.useState<string>('leitware')
+  const [activePreset, setActivePreset] = React.useState<string>('default')
   const [jsonText, setJsonText] = React.useState('')
 
-  React.useEffect(() => {
-    const preset = presets.leitware
-    if (preset) {
-      for (const v of fontCssVars) {
-        const fontValue = preset.overrides[v]
-        if (fontValue) {
-          const match = fontValue.match(/^"([^"]+)"/)
-          if (match) loadGoogleFont(match[1])
-        }
-      }
-      injectPresetStyle(preset)
-      setOverrides(preset.overrides)
-    }
-    return () => removePresetStyle()
-  }, [])
 
   function applyOverride(cssVar: string, value: string) {
     document.documentElement.style.setProperty(cssVar, value)
