@@ -67,6 +67,8 @@ interface DividerProps extends React.HTMLAttributes<HTMLDivElement> {
 	align?: "start" | "center" | "end";
 	/** Width multiplier for pills. Controls pill width as calc(var(--border-width-base) * n). @default 4 */
 	pillsMultiplier?: number;
+	/** CSS color value for dots/pills patterns. Sets --divider-color. @default "var(--border-default)" */
+	color?: string;
 }
 
 function getPatternStyle(
@@ -80,7 +82,7 @@ function getPatternStyle(
 		return orientation === "horizontal"
 			? {
 					backgroundImage:
-						"radial-gradient(circle, var(--border-default) calc(var(--border-width-base) / 2), transparent 0)",
+						"radial-gradient(circle, var(--divider-color, var(--border-default)) calc(var(--border-width-base) / 2), transparent 0)",
 					backgroundSize:
 						"calc(var(--border-width-base) + var(--spacing) * 1) var(--border-width-base)",
 					backgroundRepeat: "repeat-x",
@@ -88,7 +90,7 @@ function getPatternStyle(
 				}
 			: {
 					backgroundImage:
-						"radial-gradient(circle, var(--border-default) calc(var(--border-width-base) / 2), transparent 0)",
+						"radial-gradient(circle, var(--divider-color, var(--border-default)) calc(var(--border-width-base) / 2), transparent 0)",
 					backgroundSize:
 						"var(--border-width-base) calc(var(--border-width-base) + var(--spacing) * 1)",
 					backgroundRepeat: "repeat-y",
@@ -102,14 +104,14 @@ function getPatternStyle(
 
 	return orientation === "horizontal"
 		? {
-				backgroundImage: `repeating-linear-gradient(to right, var(--border-default) 0, var(--border-default) ${pillLen}, transparent ${pillLen}, transparent ${unit})`,
+				backgroundImage: `repeating-linear-gradient(to right, var(--divider-color, var(--border-default)) 0, var(--divider-color, var(--border-default)) ${pillLen}, transparent ${pillLen}, transparent ${unit})`,
 				backgroundSize: `${unit} var(--border-width-base)`,
 				backgroundRepeat: "repeat-x",
 				backgroundPosition: "left center",
 				borderRadius: "var(--radius)",
 			}
 		: {
-				backgroundImage: `repeating-linear-gradient(to bottom, var(--border-default) 0, var(--border-default) ${pillLen}, transparent ${pillLen}, transparent ${unit})`,
+				backgroundImage: `repeating-linear-gradient(to bottom, var(--divider-color, var(--border-default)) 0, var(--divider-color, var(--border-default)) ${pillLen}, transparent ${pillLen}, transparent ${unit})`,
 				backgroundSize: `var(--border-width-base) ${unit}`,
 				backgroundRepeat: "repeat-y",
 				backgroundPosition: "center top",
@@ -128,6 +130,7 @@ function Divider({
 	orientation = "horizontal",
 	align = "center",
 	pillsMultiplier = 4,
+	color,
 	className,
 	style,
 	...props
@@ -137,6 +140,8 @@ function Divider({
 			? getPatternStyle(variant, orientation, pillsMultiplier)
 			: { borderRadius: "var(--radius)" };
 
+	const colorStyle = color ? { "--divider-color": color } as React.CSSProperties : {};
+
 	return (
 		<div
 			role="separator"
@@ -144,6 +149,7 @@ function Divider({
 			className={cn(dividerVariants({ variant, orientation, align }), className)}
 			style={{
 				alignSelf: alignSelfMap[align],
+				...colorStyle,
 				...patternStyle,
 				...style,
 			}}
