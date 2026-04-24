@@ -15,10 +15,7 @@
 	},
 	"overrides": [
 		{
-			"includes": [
-				"src/components/_internal/**",
-				"src/components/ui-opinionated/**"
-			],
+			"includes": ["src/components/_internal/**", "src/components/ui-opinionated/**"],
 			"linter": {
 				"rules": {
 					"style": {

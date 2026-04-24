@@ -17,230 +17,228 @@
 
    ============================================================================ */
 
-
 /* ── Light Mode ────────────────────────────────────────────────────────── */
 :root {
-  /* Scale foundations */
-  --radius: 0.5rem;
-  --font-size-base: 1rem;
-  --leading-base: 1.33;
-  --letter-spacing-base: 0.025em;
-  --spacing: 0.25rem;
-  --border-width-base: 0.0625rem;
-  --shadow-base-color: rgba(0, 0, 0, 0.1);
-  --shadow-offset-y: 1px;
-  --shadow-blur: 2px;
-  --shadow-spread: 1px;
-  --opacity-disabled: 0.5;
+	/* Scale foundations */
+	--radius: 0.5rem;
+	--font-size-base: 1rem;
+	--leading-base: 1.33;
+	--letter-spacing-base: 0.025em;
+	--spacing: 0.25rem;
+	--border-width-base: 0.0625rem;
+	--shadow-base-color: rgba(0, 0, 0, 0.1);
+	--shadow-offset-y: 1px;
+	--shadow-blur: 2px;
+	--shadow-spread: 1px;
+	--opacity-disabled: 0.5;
 
-  /* Fonts */
-  --font-sans: "Inter Variable", sans-serif;
-  --font-heading: "Inter Variable", sans-serif;
-  --font-brand: "Inter Variable", sans-serif;
+	/* Fonts */
+	--font-sans: 'Inter Variable', sans-serif;
+	--font-heading: 'Inter Variable', sans-serif;
+	--font-brand: 'Inter Variable', sans-serif;
 
-  /* ── Background ──────────────────────────────────────────────────────── */
-  --bg-default: #F9F9F8FF;
-  --bg-inverse: #21201CFF;
-  --bg-muted: #F1F0EFFF;
-  --bg-surface-default: #F9F9F8FF;
-  --bg-surface-info: #F1FAFDFF;
-  --bg-surface-success: #F5FBF5FF;
-  --bg-surface-warning: #FFF7EDFF;
-  --bg-surface-critical: #FFF7F7FF;
-  --bg-surface-emphasis: #F4FAFFFF;
-  --bg-surface-inverse: #63635EFF;
-  --bg-surface-transparent: #0000000D;
-  --bg-surface-brand: #FEF7FBFF;
-  --bg-surface-hover: #F1F0EFFF;
-  --bg-fill-default: #F9F9F8FF;
-  --bg-fill-primary: #21201CFF;
-  --bg-fill-brand: #D6409FFF;
-  --bg-fill-info: #7CE2FEFF;
-  --bg-fill-success: #46A758FF;
-  --bg-fill-warning: #F76B15FF;
-  --bg-fill-critical: #E5484DFF;
-  --bg-fill-emphasis: #0090FFFF;
-  --bg-fill-transparent: #0000000D;
-  --bg-fill-secondary: #21201CFF;
-  --bg-fill-secondary-inverse: #FFFFFFFF;
+	/* ── Background ──────────────────────────────────────────────────────── */
+	--bg-default: #f9f9f8ff;
+	--bg-inverse: #21201cff;
+	--bg-muted: #f1f0efff;
+	--bg-surface-default: #f9f9f8ff;
+	--bg-surface-info: #f1fafdff;
+	--bg-surface-success: #f5fbf5ff;
+	--bg-surface-warning: #fff7edff;
+	--bg-surface-critical: #fff7f7ff;
+	--bg-surface-emphasis: #f4faffff;
+	--bg-surface-inverse: #63635eff;
+	--bg-surface-transparent: #0000000d;
+	--bg-surface-brand: #fef7fbff;
+	--bg-surface-hover: #f1f0efff;
+	--bg-fill-default: #f9f9f8ff;
+	--bg-fill-primary: #21201cff;
+	--bg-fill-brand: #d6409fff;
+	--bg-fill-info: #7ce2feff;
+	--bg-fill-success: #46a758ff;
+	--bg-fill-warning: #f76b15ff;
+	--bg-fill-critical: #e5484dff;
+	--bg-fill-emphasis: #0090ffff;
+	--bg-fill-transparent: #0000000d;
+	--bg-fill-secondary: #21201cff;
+	--bg-fill-secondary-inverse: #ffffffff;
 
-  /* ── Text ─────────────────────────────────────────────────────────────── */
-  --text-default: #21201CFF;
-  --text-secondary: #63635EFF;
-  --text-muted: #8D8D86FF;
-  --text-disabled: #CFCECAFF;
-  --text-inverse: #FFFFFFFF;
-  --text-info: #1D3E56FF;
-  --text-success: #203C25FF;
-  --text-warning: #582D1DFF;
-  --text-critical: #641723FF;
-  --text-emphasis: #113264FF;
-  --text-brand: #651249FF;
-  --text-link: #113264FF;
+	/* ── Text ─────────────────────────────────────────────────────────────── */
+	--text-default: #21201cff;
+	--text-secondary: #63635eff;
+	--text-muted: #8d8d86ff;
+	--text-disabled: #cfcecaff;
+	--text-inverse: #ffffffff;
+	--text-info: #1d3e56ff;
+	--text-success: #203c25ff;
+	--text-warning: #582d1dff;
+	--text-critical: #641723ff;
+	--text-emphasis: #113264ff;
+	--text-brand: #651249ff;
+	--text-link: #113264ff;
 
-  /* ── Icon ──────────────────────────────────────────────────────────────── */
-  --icon-default: #21201CFF;
-  --icon-secondary: #63635EFF;
-  --icon-disabled: #E9E8E6FF;
-  --icon-inverse: #F9F9F8FF;
-  --icon-info: #00749EFF;
-  --icon-success: #2A7E3BFF;
-  --icon-warning: #CC4E00FF;
-  --icon-critical: #CE2C31FF;
-  --icon-emphasis: #0D74CEFF;
-  --icon-brand: #C2298AFF;
+	/* ── Icon ──────────────────────────────────────────────────────────────── */
+	--icon-default: #21201cff;
+	--icon-secondary: #63635eff;
+	--icon-disabled: #e9e8e6ff;
+	--icon-inverse: #f9f9f8ff;
+	--icon-info: #00749eff;
+	--icon-success: #2a7e3bff;
+	--icon-warning: #cc4e00ff;
+	--icon-critical: #ce2c31ff;
+	--icon-emphasis: #0d74ceff;
+	--icon-brand: #c2298aff;
 
-  /* ── Border ────────────────────────────────────────────────────────────── */
-  --border-default: #CFCECAFF;
-  --border-secondary: #DAD9D6FF;
-  --border-tertiary: #BCBBB5FF;
-  --border-disabled: #DAD9D6FF;
-  --border-inverse: #63635EFF;
-  --border-focus: #0D74CEFF;
-  --border-brand: #E7ACD0FF;
-  --border-info: #8DCAE3FF;
-  --border-success: #94CE9AFF;
-  --border-warning: #F5AE73FF;
-  --border-critical: #F4A9AAFF;
-  --border-emphasis: #5EB1EFFF;
+	/* ── Border ────────────────────────────────────────────────────────────── */
+	--border-default: #cfcecaff;
+	--border-secondary: #dad9d6ff;
+	--border-tertiary: #bcbbb5ff;
+	--border-disabled: #dad9d6ff;
+	--border-inverse: #63635eff;
+	--border-focus: #0d74ceff;
+	--border-brand: #e7acd0ff;
+	--border-info: #8dcae3ff;
+	--border-success: #94ce9aff;
+	--border-warning: #f5ae73ff;
+	--border-critical: #f4a9aaff;
+	--border-emphasis: #5eb1efff;
 
-  /* ── Chart ──────────────────────────────────────────────────────────────── */
-  --chart-1: #5EB1EFFF;
-  --chart-2: #0090FFFF;
-  --chart-3: #AA99ECFF;
-  --chart-4: #6E56CFFF;
-  --chart-5: #654DC4FF;
+	/* ── Chart ──────────────────────────────────────────────────────────────── */
+	--chart-1: #5eb1efff;
+	--chart-2: #0090ffff;
+	--chart-3: #aa99ecff;
+	--chart-4: #6e56cfff;
+	--chart-5: #654dc4ff;
 
-  /* ── shadcn / ui compatibility ──────────────────────────────────────── */
-  --background: var(--bg-default);
-  --foreground: var(--text-default);
-  --card: var(--bg-surface-default);
-  --card-foreground: var(--text-default);
-  --popover: var(--bg-surface-default);
-  --popover-foreground: var(--text-default);
-  --primary: var(--bg-fill-primary);
-  --primary-foreground: var(--text-inverse);
-  --secondary: var(--bg-muted);
-  --secondary-foreground: var(--text-default);
-  --muted: var(--bg-muted);
-  --muted-foreground: var(--text-muted);
-  --accent: var(--bg-muted);
-  --accent-foreground: var(--text-default);
-  --destructive: var(--bg-fill-critical);
-  --border: var(--border-default);
-  --input: var(--border-secondary);
-  --ring: var(--border-focus);
-  --sidebar-background: var(--bg-default);
-  --sidebar-foreground: var(--text-default);
-  --sidebar-primary: var(--bg-fill-primary);
-  --sidebar-primary-foreground: var(--text-inverse);
-  --sidebar-accent: var(--bg-muted);
-  --sidebar-accent-foreground: var(--text-default);
-  --sidebar-border: var(--border-default);
-  --sidebar-ring: var(--border-focus);
+	/* ── shadcn / ui compatibility ──────────────────────────────────────── */
+	--background: var(--bg-default);
+	--foreground: var(--text-default);
+	--card: var(--bg-surface-default);
+	--card-foreground: var(--text-default);
+	--popover: var(--bg-surface-default);
+	--popover-foreground: var(--text-default);
+	--primary: var(--bg-fill-primary);
+	--primary-foreground: var(--text-inverse);
+	--secondary: var(--bg-muted);
+	--secondary-foreground: var(--text-default);
+	--muted: var(--bg-muted);
+	--muted-foreground: var(--text-muted);
+	--accent: var(--bg-muted);
+	--accent-foreground: var(--text-default);
+	--destructive: var(--bg-fill-critical);
+	--border: var(--border-default);
+	--input: var(--border-secondary);
+	--ring: var(--border-focus);
+	--sidebar-background: var(--bg-default);
+	--sidebar-foreground: var(--text-default);
+	--sidebar-primary: var(--bg-fill-primary);
+	--sidebar-primary-foreground: var(--text-inverse);
+	--sidebar-accent: var(--bg-muted);
+	--sidebar-accent-foreground: var(--text-default);
+	--sidebar-border: var(--border-default);
+	--sidebar-ring: var(--border-focus);
 }
-
 
 /* ── Dark Mode ─────────────────────────────────────────────────────────── */
 .dark {
-  /* Background */
-  --bg-default: #191918FF;
-  --bg-inverse: #EEEEECFF;
-  --bg-muted: #222221FF;
-  --bg-surface-default: #191918FF;
-  --bg-surface-info: #111A27FF;
-  --bg-surface-success: #141A15FF;
-  --bg-surface-warning: #1E160FFF;
-  --bg-surface-critical: #201314FF;
-  --bg-surface-emphasis: #111927FF;
-  --bg-surface-inverse: #B5B3ADFF;
-  --bg-surface-transparent: #0000000D;
-  --bg-surface-brand: #21121DFF;
-  --bg-surface-hover: #222221FF;
-  --bg-fill-default: #191918FF;
-  --bg-fill-primary: #EEEEECFF;
-  --bg-fill-brand: #D6409FFF;
-  --bg-fill-info: #7CE2FEFF;
-  --bg-fill-success: #46A758FF;
-  --bg-fill-warning: #F76B15FF;
-  --bg-fill-critical: #E5484DFF;
-  --bg-fill-emphasis: #0090FFFF;
-  --bg-fill-transparent: #0000000D;
-  --bg-fill-secondary: #EEEEECFF;
-  --bg-fill-secondary-inverse: #000000FF;
+	/* Background */
+	--bg-default: #191918ff;
+	--bg-inverse: #eeeeecff;
+	--bg-muted: #222221ff;
+	--bg-surface-default: #191918ff;
+	--bg-surface-info: #111a27ff;
+	--bg-surface-success: #141a15ff;
+	--bg-surface-warning: #1e160fff;
+	--bg-surface-critical: #201314ff;
+	--bg-surface-emphasis: #111927ff;
+	--bg-surface-inverse: #b5b3adff;
+	--bg-surface-transparent: #0000000d;
+	--bg-surface-brand: #21121dff;
+	--bg-surface-hover: #222221ff;
+	--bg-fill-default: #191918ff;
+	--bg-fill-primary: #eeeeecff;
+	--bg-fill-brand: #d6409fff;
+	--bg-fill-info: #7ce2feff;
+	--bg-fill-success: #46a758ff;
+	--bg-fill-warning: #f76b15ff;
+	--bg-fill-critical: #e5484dff;
+	--bg-fill-emphasis: #0090ffff;
+	--bg-fill-transparent: #0000000d;
+	--bg-fill-secondary: #eeeeecff;
+	--bg-fill-secondary-inverse: #000000ff;
 
-  /* Text */
-  --text-default: #EEEEECFF;
-  --text-secondary: #B5B3ADFF;
-  --text-muted: #6F6D66FF;
-  --text-disabled: #494844FF;
-  --text-inverse: #000000FF;
-  --text-info: #C2F3FFFF;
-  --text-success: #C2F0C2FF;
-  --text-warning: #FFE0C2FF;
-  --text-critical: #FFD1D9FF;
-  --text-emphasis: #C2E6FFFF;
-  --text-brand: #FDD1EAFF;
-  --text-link: #C2E6FFFF;
+	/* Text */
+	--text-default: #eeeeecff;
+	--text-secondary: #b5b3adff;
+	--text-muted: #6f6d66ff;
+	--text-disabled: #494844ff;
+	--text-inverse: #000000ff;
+	--text-info: #c2f3ffff;
+	--text-success: #c2f0c2ff;
+	--text-warning: #ffe0c2ff;
+	--text-critical: #ffd1d9ff;
+	--text-emphasis: #c2e6ffff;
+	--text-brand: #fdd1eaff;
+	--text-link: #c2e6ffff;
 
-  /* Icon */
-  --icon-default: #EEEEECFF;
-  --icon-secondary: #B5B3ADFF;
-  --icon-disabled: #31312EFF;
-  --icon-inverse: #191918FF;
-  --icon-info: #75C7F0FF;
-  --icon-success: #71D083FF;
-  --icon-warning: #FFA057FF;
-  --icon-critical: #FF9592FF;
-  --icon-emphasis: #70B8FFFF;
-  --icon-brand: #FF8DCCFF;
+	/* Icon */
+	--icon-default: #eeeeecff;
+	--icon-secondary: #b5b3adff;
+	--icon-disabled: #31312eff;
+	--icon-inverse: #191918ff;
+	--icon-info: #75c7f0ff;
+	--icon-success: #71d083ff;
+	--icon-warning: #ffa057ff;
+	--icon-critical: #ff9592ff;
+	--icon-emphasis: #70b8ffff;
+	--icon-brand: #ff8dccff;
 
-  /* Border */
-  --border-default: #494844FF;
-  --border-secondary: #494844FF;
-  --border-tertiary: #62605BFF;
-  --border-disabled: #494844FF;
-  --border-inverse: #B5B3ADFF;
-  --border-focus: #70B8FFFF;
-  --border-brand: #833869FF;
-  --border-info: #1F6692FF;
-  --border-success: #366740FF;
-  --border-warning: #7E451DFF;
-  --border-critical: #8C333AFF;
-  --border-emphasis: #2870BDFF;
+	/* Border */
+	--border-default: #494844ff;
+	--border-secondary: #494844ff;
+	--border-tertiary: #62605bff;
+	--border-disabled: #494844ff;
+	--border-inverse: #b5b3adff;
+	--border-focus: #70b8ffff;
+	--border-brand: #833869ff;
+	--border-info: #1f6692ff;
+	--border-success: #366740ff;
+	--border-warning: #7e451dff;
+	--border-critical: #8c333aff;
+	--border-emphasis: #2870bdff;
 
-  /* Chart */
-  --chart-1: #2870BDFF;
-  --chart-2: #0090FFFF;
-  --chart-3: #6958ADFF;
-  --chart-4: #6E56CFFF;
-  --chart-5: #7D66D9FF;
+	/* Chart */
+	--chart-1: #2870bdff;
+	--chart-2: #0090ffff;
+	--chart-3: #6958adff;
+	--chart-4: #6e56cfff;
+	--chart-5: #7d66d9ff;
 
-  /* shadcn / ui compatibility */
-  --background: var(--bg-default);
-  --foreground: var(--text-default);
-  --card: var(--bg-surface-default);
-  --card-foreground: var(--text-default);
-  --popover: var(--bg-surface-default);
-  --popover-foreground: var(--text-default);
-  --primary: var(--bg-fill-primary);
-  --primary-foreground: var(--text-inverse);
-  --secondary: var(--bg-muted);
-  --secondary-foreground: var(--text-default);
-  --muted: var(--bg-muted);
-  --muted-foreground: var(--text-muted);
-  --accent: var(--bg-muted);
-  --accent-foreground: var(--text-default);
-  --destructive: var(--bg-fill-critical);
-  --border: var(--border-default);
-  --input: var(--border-secondary);
-  --ring: var(--border-focus);
-  --sidebar-background: var(--bg-default);
-  --sidebar-foreground: var(--text-default);
-  --sidebar-primary: var(--bg-fill-primary);
-  --sidebar-primary-foreground: var(--text-inverse);
-  --sidebar-accent: var(--bg-muted);
-  --sidebar-accent-foreground: var(--text-default);
-  --sidebar-border: var(--border-default);
-  --sidebar-ring: var(--border-focus);
+	/* shadcn / ui compatibility */
+	--background: var(--bg-default);
+	--foreground: var(--text-default);
+	--card: var(--bg-surface-default);
+	--card-foreground: var(--text-default);
+	--popover: var(--bg-surface-default);
+	--popover-foreground: var(--text-default);
+	--primary: var(--bg-fill-primary);
+	--primary-foreground: var(--text-inverse);
+	--secondary: var(--bg-muted);
+	--secondary-foreground: var(--text-default);
+	--muted: var(--bg-muted);
+	--muted-foreground: var(--text-muted);
+	--accent: var(--bg-muted);
+	--accent-foreground: var(--text-default);
+	--destructive: var(--bg-fill-critical);
+	--border: var(--border-default);
+	--input: var(--border-secondary);
+	--ring: var(--border-focus);
+	--sidebar-background: var(--bg-default);
+	--sidebar-foreground: var(--text-default);
+	--sidebar-primary: var(--bg-fill-primary);
+	--sidebar-primary-foreground: var(--text-inverse);
+	--sidebar-accent: var(--bg-muted);
+	--sidebar-accent-foreground: var(--text-default);
+	--sidebar-border: var(--border-default);
+	--sidebar-ring: var(--border-focus);
 }

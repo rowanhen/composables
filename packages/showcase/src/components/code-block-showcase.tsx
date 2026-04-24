@@ -37,30 +37,30 @@ const JSON_EXAMPLE = `{
 }`
 
 export function CodeBlockShowcase() {
-  return (
-    <ShowcaseSection
-      title="Code Block"
-      description="Monospace code display with line numbers and horizontal overflow scrolling."
-    >
-      <VStack gap={6}>
-        <ShowcaseGroup label="TypeScript">
-          <div className="max-w-2xl">
-            <CodeBlock>{TYPESCRIPT_EXAMPLE}</CodeBlock>
-          </div>
-        </ShowcaseGroup>
+	return (
+		<ShowcaseSection
+			title="Code Block"
+			description="Monospace code display with line numbers and horizontal overflow scrolling."
+		>
+			<VStack gap={6}>
+				<ShowcaseGroup label="TypeScript">
+					<div className="max-w-2xl">
+						<CodeBlock>{TYPESCRIPT_EXAMPLE}</CodeBlock>
+					</div>
+				</ShowcaseGroup>
 
-        <ShowcaseGroup label="JSON">
-          <div className="max-w-lg">
-            <CodeBlock>{JSON_EXAMPLE}</CodeBlock>
-          </div>
-        </ShowcaseGroup>
+				<ShowcaseGroup label="JSON">
+					<div className="max-w-lg">
+						<CodeBlock>{JSON_EXAMPLE}</CodeBlock>
+					</div>
+				</ShowcaseGroup>
 
-        <ShowcaseGroup label="Inline / short snippet">
-          <div className="max-w-xs">
-            <CodeBlock>{`npm install @leitware/composables`}</CodeBlock>
-          </div>
-        </ShowcaseGroup>
-      </VStack>
-    </ShowcaseSection>
-  )
+				<ShowcaseGroup label="Inline / short snippet">
+					<div className="max-w-xs">
+						<CodeBlock>{`npm install @leitware/composables`}</CodeBlock>
+					</div>
+				</ShowcaseGroup>
+			</VStack>
+		</ShowcaseSection>
+	)
 }

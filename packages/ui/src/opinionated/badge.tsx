@@ -16,18 +16,18 @@ import { Badge as BadgePrimitive, type badgeVariants } from '../_internal/badge'
  * ```
  */
 export interface BadgeProps extends Omit<useRender.ComponentProps<'span'>, 'size'> {
-  /** Visual style variant. @default 'default' */
-  variant?: VariantProps<typeof badgeVariants>['variant']
-  className?: string
-  children: React.ReactNode
+	/** Visual style variant. @default 'default' */
+	variant?: VariantProps<typeof badgeVariants>['variant']
+	className?: string
+	children: React.ReactNode
 }
 
 function Badge({ variant = 'default', className, children, render, ...badgeProps }: BadgeProps) {
-  return (
-    <BadgePrimitive variant={variant} className={className} render={render} {...badgeProps}>
-      {children}
-    </BadgePrimitive>
-  )
+	return (
+		<BadgePrimitive variant={variant} className={className} render={render} {...badgeProps}>
+			{children}
+		</BadgePrimitive>
+	)
 }
 
 export { Badge }

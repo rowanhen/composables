@@ -28,7 +28,7 @@
  *   />
  */
 
-import * as React from "react"
+import * as React from 'react'
 
 import { cn } from '../lib/utils'
 
@@ -36,10 +36,10 @@ import { cn } from '../lib/utils'
 
 /** Background IS the border color — gap exposes it as lines. */
 const BENTO_CONTAINER =
-	"bg-stroke gap-[var(--bento-gap,var(--border-width,1px))] p-[var(--bento-gap,var(--border-width,1px))] rounded-lg"
+	'bg-stroke gap-[var(--bento-gap,var(--border-width,1px))] p-[var(--bento-gap,var(--border-width,1px))] rounded-lg'
 
 /** Every direct cell child gets card background — it sits on top of the border bg. */
-const BENTO_CELL = "bg-card rounded-lg overflow-hidden"
+const BENTO_CELL = 'bg-card rounded-lg overflow-hidden'
 
 // ─── STAT CELL ────────────────────────────────────────────────────────────────
 //
@@ -47,7 +47,7 @@ const BENTO_CELL = "bg-card rounded-lg overflow-hidden"
 // direct child of BentoGrid, CellGrid, or the stats slot of any Bento layout.
 // Padding is internal; the outer gap provides the grid line.
 
-interface StatCellProps extends React.ComponentProps<"div"> {
+interface StatCellProps extends React.ComponentProps<'div'> {
 	label: string
 	value: string
 	/** Render value at a larger text size */
@@ -56,9 +56,9 @@ interface StatCellProps extends React.ComponentProps<"div"> {
 
 function StatCell({ label, value, large = false, className, ...props }: StatCellProps) {
 	return (
-		<div data-slot="bento-stat-cell" className={cn(BENTO_CELL, "p-4", className)} {...props}>
+		<div data-slot="bento-stat-cell" className={cn(BENTO_CELL, 'p-4', className)} {...props}>
 			<div className="text-[10px] uppercase text-muted-foreground mb-1">{label}</div>
-			<div className={cn("font-bold", large ? "text-xl" : "text-xs")}>{value}</div>
+			<div className={cn('font-bold', large ? 'text-xl' : 'text-xs')}>{value}</div>
 		</div>
 	)
 }
@@ -69,22 +69,22 @@ function StatCell({ label, value, large = false, className, ...props }: StatCell
 // BentoCell components (or anything that provides its own bg-card padding).
 // The gap-as-border pattern means you must NOT add separate borders to cells.
 
-interface BentoGridProps extends React.ComponentProps<"div"> {
+interface BentoGridProps extends React.ComponentProps<'div'> {
 	cols?: 1 | 2 | 3 | 4
 }
 
 const BENTO_GRID_COLS: Record<1 | 2 | 3 | 4, string> = {
-	1: "grid-cols-1",
-	2: "grid-cols-2",
-	3: "grid-cols-3",
-	4: "grid-cols-4",
+	1: 'grid-cols-1',
+	2: 'grid-cols-2',
+	3: 'grid-cols-3',
+	4: 'grid-cols-4',
 }
 
 function BentoGrid({ cols = 3, className, ...props }: BentoGridProps) {
 	return (
 		<div
 			data-slot="bento-grid"
-			className={cn("grid", BENTO_GRID_COLS[cols], BENTO_CONTAINER, className)}
+			className={cn('grid', BENTO_GRID_COLS[cols], BENTO_CONTAINER, className)}
 			{...props}
 		/>
 	)
@@ -94,7 +94,7 @@ function BentoGrid({ cols = 3, className, ...props }: BentoGridProps) {
 //
 // A single cell within BentoGrid. Controls column/row span.
 
-interface BentoCellProps extends React.ComponentProps<"div"> {
+interface BentoCellProps extends React.ComponentProps<'div'> {
 	/** Number of columns to span */
 	colSpan?: 1 | 2 | 3 | 4
 	/** Number of rows to span */
@@ -102,23 +102,23 @@ interface BentoCellProps extends React.ComponentProps<"div"> {
 }
 
 const COL_SPANS: Record<1 | 2 | 3 | 4, string> = {
-	1: "col-span-1",
-	2: "col-span-2",
-	3: "col-span-3",
-	4: "col-span-4",
+	1: 'col-span-1',
+	2: 'col-span-2',
+	3: 'col-span-3',
+	4: 'col-span-4',
 }
 
 const ROW_SPANS: Record<1 | 2 | 3, string> = {
-	1: "row-span-1",
-	2: "row-span-2",
-	3: "row-span-3",
+	1: 'row-span-1',
+	2: 'row-span-2',
+	3: 'row-span-3',
 }
 
 function BentoCell({ colSpan = 1, rowSpan = 1, className, ...props }: BentoCellProps) {
 	return (
 		<div
 			data-slot="bento-cell"
-			className={cn(BENTO_CELL, COL_SPANS[colSpan], ROW_SPANS[rowSpan], "p-4", className)}
+			className={cn(BENTO_CELL, COL_SPANS[colSpan], ROW_SPANS[rowSpan], 'p-4', className)}
 			{...props}
 		/>
 	)
@@ -132,7 +132,7 @@ function BentoCell({ colSpan = 1, rowSpan = 1, className, ...props }: BentoCellP
 // Mobile: single column — icon, then content, then stats.
 // Desktop: [200px icon (row-span-2)] | [content / stats]
 
-interface BentoSplitProps extends Omit<React.ComponentProps<"div">, "content"> {
+interface BentoSplitProps extends Omit<React.ComponentProps<'div'>, 'content'> {
 	icon: React.ReactNode
 	content: React.ReactNode
 	stats: React.ReactNode
@@ -142,26 +142,22 @@ function BentoSplit({ icon, content, stats, className, ...props }: BentoSplitPro
 	return (
 		<div
 			data-slot="bento-split"
-			className={cn(
-				"grid grid-cols-1 md:grid-cols-[200px_1fr]",
-				BENTO_CONTAINER,
-				className,
-			)}
+			className={cn('grid grid-cols-1 md:grid-cols-[200px_1fr]', BENTO_CONTAINER, className)}
 			{...props}
 		>
 			{/* Icon — spans both rows on desktop */}
 			<div
 				data-slot="bento-split-icon"
-				className={cn(BENTO_CELL, "flex items-center justify-center p-10 md:row-span-2")}
+				className={cn(BENTO_CELL, 'flex items-center justify-center p-10 md:row-span-2')}
 			>
 				{icon}
 			</div>
 			{/* Content — auto-places into col 2, row 1 */}
-			<div data-slot="bento-split-content" className={cn(BENTO_CELL, "p-4")}>
+			<div data-slot="bento-split-content" className={cn(BENTO_CELL, 'p-4')}>
 				{content}
 			</div>
 			{/* Stats — auto-places into col 2, row 2 */}
-			<div data-slot="bento-split-stats" className={cn(BENTO_CELL, "p-4")}>
+			<div data-slot="bento-split-stats" className={cn(BENTO_CELL, 'p-4')}>
 				{stats}
 			</div>
 		</div>
@@ -177,13 +173,13 @@ function BentoSplit({ icon, content, stats, className, ...props }: BentoSplitPro
 // Desktop: header (full width) | N equal columns.
 
 const LEADER_COLS: Record<1 | 2 | 3 | 4, string> = {
-	1: "md:grid-cols-1",
-	2: "md:grid-cols-2",
-	3: "md:grid-cols-3",
-	4: "md:grid-cols-4",
+	1: 'md:grid-cols-1',
+	2: 'md:grid-cols-2',
+	3: 'md:grid-cols-3',
+	4: 'md:grid-cols-4',
 }
 
-interface BentoLeaderProps extends React.ComponentProps<"div"> {
+interface BentoLeaderProps extends React.ComponentProps<'div'> {
 	header: React.ReactNode
 	columns: React.ReactNode[]
 }
@@ -195,11 +191,11 @@ function BentoLeader({ header, columns, className, ...props }: BentoLeaderProps)
 	return (
 		<div
 			data-slot="bento-leader"
-			className={cn("grid grid-cols-1", LEADER_COLS[n], BENTO_CONTAINER, className)}
+			className={cn('grid grid-cols-1', LEADER_COLS[n], BENTO_CONTAINER, className)}
 			{...props}
 		>
 			{/* Header spans all columns */}
-			<div data-slot="bento-leader-header" className={cn(BENTO_CELL, "md:[grid-column:1/-1]")}>
+			<div data-slot="bento-leader-header" className={cn(BENTO_CELL, 'md:[grid-column:1/-1]')}>
 				{header}
 			</div>
 			{columns.map((col, i) => (
@@ -217,22 +213,25 @@ function BentoLeader({ header, columns, className, ...props }: BentoLeaderProps)
 // Mobile: all four areas stacked.
 // Desktop: 2-column, 2-row layout.
 
-interface BentoQuadProps extends React.ComponentProps<"div"> {
+interface BentoQuadProps extends React.ComponentProps<'div'> {
 	topLeft: React.ReactNode
 	topRight: React.ReactNode
 	bottomLeft: React.ReactNode
 	bottomRight: React.ReactNode
 }
 
-function BentoQuad({ topLeft, topRight, bottomLeft, bottomRight, className, ...props }: BentoQuadProps) {
+function BentoQuad({
+	topLeft,
+	topRight,
+	bottomLeft,
+	bottomRight,
+	className,
+	...props
+}: BentoQuadProps) {
 	return (
 		<div
 			data-slot="bento-quad"
-			className={cn(
-				"grid grid-cols-1 md:grid-cols-[2fr_1fr]",
-				BENTO_CONTAINER,
-				className,
-			)}
+			className={cn('grid grid-cols-1 md:grid-cols-[2fr_1fr]', BENTO_CONTAINER, className)}
 			{...props}
 		>
 			<div data-slot="bento-quad-top-left" className={BENTO_CELL}>
@@ -257,7 +256,7 @@ function BentoQuad({ topLeft, topRight, bottomLeft, bottomRight, className, ...p
 // Desktop: [1fr aside | 2fr body]. Header and footer span both columns.
 // Mobile: header → aside → body → footer (natural DOM order).
 
-interface BentoTripleProps extends React.ComponentProps<"div"> {
+interface BentoTripleProps extends React.ComponentProps<'div'> {
 	header: React.ReactNode
 	aside: React.ReactNode
 	body: React.ReactNode
@@ -268,19 +267,18 @@ function BentoTriple({ header, aside, body, footer, className, ...props }: Bento
 	return (
 		<div
 			data-slot="bento-triple"
-			className={cn(
-				"grid grid-cols-1 md:grid-cols-[1fr_2fr]",
-				BENTO_CONTAINER,
-				className,
-			)}
+			className={cn('grid grid-cols-1 md:grid-cols-[1fr_2fr]', BENTO_CONTAINER, className)}
 			{...props}
 		>
 			{/* Header spans both columns */}
-			<div data-slot="bento-triple-header" className={cn(BENTO_CELL, "md:[grid-column:1/-1]")}>
+			<div data-slot="bento-triple-header" className={cn(BENTO_CELL, 'md:[grid-column:1/-1]')}>
 				{header}
 			</div>
 			{/* Aside — col 1, row 2 */}
-			<div data-slot="bento-triple-aside" className={cn(BENTO_CELL, "flex items-center justify-center")}>
+			<div
+				data-slot="bento-triple-aside"
+				className={cn(BENTO_CELL, 'flex items-center justify-center')}
+			>
 				{aside}
 			</div>
 			{/* Body — col 2, row 2 */}
@@ -288,10 +286,7 @@ function BentoTriple({ header, aside, body, footer, className, ...props }: Bento
 				{body}
 			</div>
 			{/* Footer spans both columns */}
-			<div
-				data-slot="bento-triple-footer"
-				className={cn(BENTO_CELL, "md:[grid-column:1/-1]")}
-			>
+			<div data-slot="bento-triple-footer" className={cn(BENTO_CELL, 'md:[grid-column:1/-1]')}>
 				{footer}
 			</div>
 		</div>
@@ -306,13 +301,13 @@ function BentoTriple({ header, aside, body, footer, className, ...props }: Bento
 // `subtle` uses the secondary border color for a lighter grid line.
 
 const CELL_GRID_COLS: Record<2 | 3 | 4 | 5, string> = {
-	2: "md:grid-cols-2",
-	3: "md:grid-cols-3",
-	4: "md:grid-cols-4",
-	5: "md:grid-cols-5",
+	2: 'md:grid-cols-2',
+	3: 'md:grid-cols-3',
+	4: 'md:grid-cols-4',
+	5: 'md:grid-cols-5',
 }
 
-interface CellGridProps extends React.ComponentProps<"div"> {
+interface CellGridProps extends React.ComponentProps<'div'> {
 	cols: 2 | 3 | 4 | 5
 	/** Use a lighter (secondary) border color for the grid lines */
 	subtle?: boolean
@@ -323,12 +318,10 @@ function CellGrid({ cols, subtle = false, className, ...props }: CellGridProps) 
 		<div
 			data-slot="bento-cell-grid"
 			className={cn(
-				"grid grid-cols-1",
+				'grid grid-cols-1',
 				CELL_GRID_COLS[cols],
-				"gap-[var(--bento-gap,var(--border-width,1px))]",
-				subtle
-					? "bg-field"
-					: "bg-stroke",
+				'gap-[var(--bento-gap,var(--border-width,1px))]',
+				subtle ? 'bg-field' : 'bg-stroke',
 				className,
 			)}
 			{...props}
@@ -341,14 +334,14 @@ function CellGrid({ cols, subtle = false, className, ...props }: CellGridProps) 
 // Flex direction flip with gap-as-divider. Mobile: stacked. Desktop: side-by-side.
 // Children control their own widths (e.g. `md:w-48 md:shrink-0`).
 
-function CellRow({ className, ...props }: React.ComponentProps<"div">) {
+function CellRow({ className, ...props }: React.ComponentProps<'div'>) {
 	return (
 		<div
 			data-slot="bento-cell-row"
 			className={cn(
-				"bg-stroke",
-				"flex flex-col md:flex-row",
-				"gap-[var(--bento-gap,var(--border-width,1px))]",
+				'bg-stroke',
+				'flex flex-col md:flex-row',
+				'gap-[var(--bento-gap,var(--border-width,1px))]',
 				className,
 			)}
 			{...props}

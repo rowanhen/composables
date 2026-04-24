@@ -2,12 +2,11 @@
 // In your app, always import from @/components/ui-opinionated/ instead.
 
 /* ---- Layout primitives ---- */
-import { Separator } from "@/components/_internal/separator";
-import { Toaster } from "@/components/_internal/sonner";
-import { Spacer } from "@/components/_internal/spacer";
-import { HStack, VStack } from "@/components/_internal/stack";
-import { Typography } from "@/components/_internal/typography";
-
+import { Separator } from '@/components/_internal/separator'
+import { Toaster } from '@/components/_internal/sonner'
+import { Spacer } from '@/components/_internal/spacer'
+import { HStack, VStack } from '@/components/_internal/stack'
+import { Typography } from '@/components/_internal/typography'
 
 /* ---- Showcase components ---- */
 import {
@@ -64,9 +63,7 @@ import {
 	TooltipShowcase,
 	TreeViewShowcase,
 	TypographyShowcase,
-} from "./components";
-
-
+} from './components'
 
 /* ---- APP ---- */
 export function App() {
@@ -165,5 +162,5 @@ export function App() {
 				</HStack>
 			</div>
 		</div>
-	);
+	)
 }

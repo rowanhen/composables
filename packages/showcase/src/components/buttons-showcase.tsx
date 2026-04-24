@@ -1,101 +1,101 @@
 // Showcase imports from _internal/ to demonstrate primitive components.
 // In your app, always import from @/components/ui-opinionated/ instead.
 import {
-  AlertTriangleIcon,
-  CheckCircleIcon,
-  DownloadIcon,
-  InfoIcon,
-  MailIcon,
-  PlusIcon,
-  TrashIcon,
+	AlertTriangleIcon,
+	CheckCircleIcon,
+	DownloadIcon,
+	InfoIcon,
+	MailIcon,
+	PlusIcon,
+	TrashIcon,
 } from 'lucide-react'
 import { Button } from '@/components/_internal/button'
 import { HStack, VStack } from '@/components/_internal/stack'
 import { ShowcaseGroup, ShowcaseSection } from './showcase-section'
 
 export function ButtonsShowcase() {
-  return (
-    <ShowcaseSection title="Buttons" description="Button variants and sizes with icon support.">
-      <VStack gap={6}>
-        <ShowcaseGroup label="Variants">
-          <HStack gap={3} wrap align="center">
-            <Button variant="default">Default</Button>
-            <Button variant="secondary">Secondary</Button>
-            <Button variant="outline">Outline</Button>
-            <Button variant="ghost">Ghost</Button>
-            <Button variant="destructive">Destructive</Button>
-            <Button variant="success">Success</Button>
-            <Button variant="warning">Warning</Button>
-            <Button variant="info">Info</Button>
-            <Button variant="brand">Brand</Button>
-            <Button variant="emphasis">Emphasis</Button>
-            <Button variant="link">Link</Button>
-          </HStack>
-        </ShowcaseGroup>
-        <ShowcaseGroup label="Sizes">
-          <HStack gap={3} wrap align="center">
-            <Button size="xs">Extra Small</Button>
-            <Button size="sm">Small</Button>
-            <Button size="default">Default</Button>
-            <Button size="lg">Large</Button>
-          </HStack>
-        </ShowcaseGroup>
-        <ShowcaseGroup label="Icon sizes">
-          <HStack gap={3} wrap align="center">
-            <Button size="icon-xs">
-              <PlusIcon />
-            </Button>
-            <Button size="icon-sm">
-              <PlusIcon />
-            </Button>
-            <Button size="icon">
-              <PlusIcon />
-            </Button>
-            <Button size="icon-lg">
-              <PlusIcon />
-            </Button>
-          </HStack>
-        </ShowcaseGroup>
-        <ShowcaseGroup label="With icons">
-          <HStack gap={3} wrap align="center">
-            <Button>
-              <MailIcon data-icon="inline-start" />
-              Send Email
-            </Button>
-            <Button variant="outline">
-              <DownloadIcon data-icon="inline-start" />
-              Download
-            </Button>
-            <Button variant="destructive">
-              <TrashIcon data-icon="inline-start" />
-              Delete
-            </Button>
-            <Button variant="success">
-              <CheckCircleIcon data-icon="inline-start" />
-              Approve
-            </Button>
-            <Button variant="warning">
-              <AlertTriangleIcon data-icon="inline-start" />
-              Caution
-            </Button>
-            <Button variant="info">
-              <InfoIcon data-icon="inline-start" />
-              Details
-            </Button>
-          </HStack>
-        </ShowcaseGroup>
-        <ShowcaseGroup label="Disabled">
-          <HStack gap={3} wrap align="center">
-            <Button disabled>Disabled</Button>
-            <Button variant="outline" disabled>
-              Disabled Outline
-            </Button>
-            <Button variant="destructive" disabled>
-              Disabled Destructive
-            </Button>
-          </HStack>
-        </ShowcaseGroup>
-      </VStack>
-    </ShowcaseSection>
-  )
+	return (
+		<ShowcaseSection title="Buttons" description="Button variants and sizes with icon support.">
+			<VStack gap={6}>
+				<ShowcaseGroup label="Variants">
+					<HStack gap={3} wrap align="center">
+						<Button variant="default">Default</Button>
+						<Button variant="secondary">Secondary</Button>
+						<Button variant="outline">Outline</Button>
+						<Button variant="ghost">Ghost</Button>
+						<Button variant="destructive">Destructive</Button>
+						<Button variant="success">Success</Button>
+						<Button variant="warning">Warning</Button>
+						<Button variant="info">Info</Button>
+						<Button variant="brand">Brand</Button>
+						<Button variant="emphasis">Emphasis</Button>
+						<Button variant="link">Link</Button>
+					</HStack>
+				</ShowcaseGroup>
+				<ShowcaseGroup label="Sizes">
+					<HStack gap={3} wrap align="center">
+						<Button size="xs">Extra Small</Button>
+						<Button size="sm">Small</Button>
+						<Button size="default">Default</Button>
+						<Button size="lg">Large</Button>
+					</HStack>
+				</ShowcaseGroup>
+				<ShowcaseGroup label="Icon sizes">
+					<HStack gap={3} wrap align="center">
+						<Button size="icon-xs">
+							<PlusIcon />
+						</Button>
+						<Button size="icon-sm">
+							<PlusIcon />
+						</Button>
+						<Button size="icon">
+							<PlusIcon />
+						</Button>
+						<Button size="icon-lg">
+							<PlusIcon />
+						</Button>
+					</HStack>
+				</ShowcaseGroup>
+				<ShowcaseGroup label="With icons">
+					<HStack gap={3} wrap align="center">
+						<Button>
+							<MailIcon data-icon="inline-start" />
+							Send Email
+						</Button>
+						<Button variant="outline">
+							<DownloadIcon data-icon="inline-start" />
+							Download
+						</Button>
+						<Button variant="destructive">
+							<TrashIcon data-icon="inline-start" />
+							Delete
+						</Button>
+						<Button variant="success">
+							<CheckCircleIcon data-icon="inline-start" />
+							Approve
+						</Button>
+						<Button variant="warning">
+							<AlertTriangleIcon data-icon="inline-start" />
+							Caution
+						</Button>
+						<Button variant="info">
+							<InfoIcon data-icon="inline-start" />
+							Details
+						</Button>
+					</HStack>
+				</ShowcaseGroup>
+				<ShowcaseGroup label="Disabled">
+					<HStack gap={3} wrap align="center">
+						<Button disabled>Disabled</Button>
+						<Button variant="outline" disabled>
+							Disabled Outline
+						</Button>
+						<Button variant="destructive" disabled>
+							Disabled Destructive
+						</Button>
+					</HStack>
+				</ShowcaseGroup>
+			</VStack>
+		</ShowcaseSection>
+	)
 }

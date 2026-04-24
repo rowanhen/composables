@@ -1,37 +1,37 @@
 import type * as React from 'react'
 
 import {
-  EmptyContent,
-  EmptyDescription,
-  EmptyHeader,
-  EmptyMedia,
-  Empty as EmptyPrimitive,
-  EmptyTitle,
+	EmptyContent,
+	EmptyDescription,
+	EmptyHeader,
+	EmptyMedia,
+	Empty as EmptyPrimitive,
+	EmptyTitle,
 } from '../_internal/empty'
 import { TableCell, TableRow } from './table'
 import { Typography } from './typography'
 
 export interface EmptyProps {
-  /**
-   * Title text for the empty state
-   */
-  title?: React.ReactNode
-  /**
-   * Description text for the empty state
-   */
-  description?: React.ReactNode
-  /**
-   * Icon or media content to display
-   */
-  icon?: React.ReactNode
-  /**
-   * Additional content to display below the description
-   */
-  children?: React.ReactNode
-  /**
-   * Additional className
-   */
-  className?: string
+	/**
+	 * Title text for the empty state
+	 */
+	title?: React.ReactNode
+	/**
+	 * Description text for the empty state
+	 */
+	description?: React.ReactNode
+	/**
+	 * Icon or media content to display
+	 */
+	icon?: React.ReactNode
+	/**
+	 * Additional content to display below the description
+	 */
+	children?: React.ReactNode
+	/**
+	 * Additional className
+	 */
+	className?: string
 }
 
 /**
@@ -56,70 +56,70 @@ export interface EmptyProps {
  * ```
  */
 function Empty({
-  title,
-  description,
-  icon,
-  children,
-  className,
-  ...props
+	title,
+	description,
+	icon,
+	children,
+	className,
+	...props
 }: EmptyProps & Omit<React.ComponentProps<typeof EmptyPrimitive>, 'children'>) {
-  return (
-    <EmptyPrimitive className={className} {...props}>
-      {icon && <EmptyMedia variant="icon">{icon}</EmptyMedia>}
-      {(title || description) && (
-        <EmptyHeader>
-          {title && (
-            <EmptyTitle>
-              {typeof title === 'string' ? (
-                <Typography variant="heading-100">{title}</Typography>
-              ) : (
-                title
-              )}
-            </EmptyTitle>
-          )}
-          {description && (
-            <EmptyDescription>
-              {typeof description === 'string' ? (
-                <Typography variant="body-100" className="text-muted-foreground">
-                  {description}
-                </Typography>
-              ) : (
-                description
-              )}
-            </EmptyDescription>
-          )}
-        </EmptyHeader>
-      )}
-      {children && <EmptyContent>{children}</EmptyContent>}
-    </EmptyPrimitive>
-  )
+	return (
+		<EmptyPrimitive className={className} {...props}>
+			{icon && <EmptyMedia variant="icon">{icon}</EmptyMedia>}
+			{(title || description) && (
+				<EmptyHeader>
+					{title && (
+						<EmptyTitle>
+							{typeof title === 'string' ? (
+								<Typography variant="heading-100">{title}</Typography>
+							) : (
+								title
+							)}
+						</EmptyTitle>
+					)}
+					{description && (
+						<EmptyDescription>
+							{typeof description === 'string' ? (
+								<Typography variant="body-100" className="text-muted-foreground">
+									{description}
+								</Typography>
+							) : (
+								description
+							)}
+						</EmptyDescription>
+					)}
+				</EmptyHeader>
+			)}
+			{children && <EmptyContent>{children}</EmptyContent>}
+		</EmptyPrimitive>
+	)
 }
 
 export interface EmptyTableStateProps {
-  /**
-   * Number of columns to span
-   */
-  colSpan: number
-  /**
-   * Title text for the empty state
-   */
-  title?: React.ReactNode
-  /**
-   * Subtitle/description text for the empty state
-   */
-  subtitle?: React.ReactNode
-  /**
-   * Icon or media content to display
-   */
-  icon?: React.ReactNode
-  /**
-   * Additional content to display below the description
-   */
-  children?: React.ReactNode
-  /**
-   * Additional className
-   */
-  className?: string
+	/**
+	 * Number of columns to span
+	 */
+	colSpan: number
+	/**
+	 * Title text for the empty state
+	 */
+	title?: React.ReactNode
+	/**
+	 * Subtitle/description text for the empty state
+	 */
+	subtitle?: React.ReactNode
+	/**
+	 * Icon or media content to display
+	 */
+	icon?: React.ReactNode
+	/**
+	 * Additional content to display below the description
+	 */
+	children?: React.ReactNode
+	/**
+	 * Additional className
+	 */
+	className?: string
 }
 
 /**
@@ -142,47 +142,47 @@ export interface EmptyTableStateProps {
  * ```
  */
 function EmptyTableState({
-  colSpan,
-  title,
-  subtitle,
-  icon,
-  children,
-  className,
+	colSpan,
+	title,
+	subtitle,
+	icon,
+	children,
+	className,
 }: EmptyTableStateProps) {
-  return (
-    <TableRow>
-      <TableCell colSpan={colSpan} className={className}>
-        <EmptyPrimitive>
-          {icon && <EmptyMedia variant="icon">{icon}</EmptyMedia>}
-          {(title || subtitle) && (
-            <EmptyHeader>
-              {title && (
-                <EmptyTitle>
-                  {typeof title === 'string' ? (
-                    <Typography variant="heading-100">{title}</Typography>
-                  ) : (
-                    title
-                  )}
-                </EmptyTitle>
-              )}
-              {subtitle && (
-                <EmptyDescription>
-                  {typeof subtitle === 'string' ? (
-                    <Typography variant="body-100" className="text-muted-foreground">
-                      {subtitle}
-                    </Typography>
-                  ) : (
-                    subtitle
-                  )}
-                </EmptyDescription>
-              )}
-            </EmptyHeader>
-          )}
-          {children && <EmptyContent>{children}</EmptyContent>}
-        </EmptyPrimitive>
-      </TableCell>
-    </TableRow>
-  )
+	return (
+		<TableRow>
+			<TableCell colSpan={colSpan} className={className}>
+				<EmptyPrimitive>
+					{icon && <EmptyMedia variant="icon">{icon}</EmptyMedia>}
+					{(title || subtitle) && (
+						<EmptyHeader>
+							{title && (
+								<EmptyTitle>
+									{typeof title === 'string' ? (
+										<Typography variant="heading-100">{title}</Typography>
+									) : (
+										title
+									)}
+								</EmptyTitle>
+							)}
+							{subtitle && (
+								<EmptyDescription>
+									{typeof subtitle === 'string' ? (
+										<Typography variant="body-100" className="text-muted-foreground">
+											{subtitle}
+										</Typography>
+									) : (
+										subtitle
+									)}
+								</EmptyDescription>
+							)}
+						</EmptyHeader>
+					)}
+					{children && <EmptyContent>{children}</EmptyContent>}
+				</EmptyPrimitive>
+			</TableCell>
+		</TableRow>
+	)
 }
 
 // Export individual components for advanced usage

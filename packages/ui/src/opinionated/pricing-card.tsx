@@ -83,17 +83,17 @@ export function PricingCard({ product, className }: PricingCardProps) {
 				</Typography>
 			</div>
 
-			<Button
-				variant="default"
-				size="lg"
-				className="w-full"
-				render={<a href={product.link} />}
-			>
+			<Button variant="default" size="lg" className="w-full" render={<a href={product.link} />}>
 				{product.cta}
 			</Button>
 
 			<div className="text-center pt-4">
-				<Typography variant="caption-100" as="a" href={product.learnMoreLink ?? product.link} className="no-underline hover:text-foreground transition-colors">
+				<Typography
+					variant="caption-100"
+					as="a"
+					href={product.learnMoreLink ?? product.link}
+					className="no-underline hover:text-foreground transition-colors"
+				>
 					learn more
 				</Typography>
 			</div>

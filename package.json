@@ -8,19 +8,24 @@
 		"build": "bun run --cwd packages/ui build",
 		"dev": "bun run --cwd packages/showcase dev",
 		"typecheck": "bun run --cwd packages/ui typecheck",
+		"lint": "oxlint",
+		"format": "prettier --write .",
+		"format:check": "prettier --check .",
 		"release": "bun run build && changeset publish",
 		"changeset": "changeset",
 		"version-packages": "changeset version",
 		"prepare": "husky",
 		"generate:css": "bun scripts/generate-css.ts",
 		"knip": "knip",
-		"knip:fix": "knip --fix"
+		"knip:fix": "knip --fix",
+		"deploy:showcase": "./scripts/deploy-showcase.sh"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "^2.4.11",
 		"@changesets/cli": "^2.30.0",
 		"husky": "^9.1.7",
 		"knip": "^6.4.1",
+		"oxlint": "^1.61.0",
+		"prettier": "^3.8.3",
 		"typescript": "^6.0.2",
 		"wrangler": "^4.85.0"
 	}

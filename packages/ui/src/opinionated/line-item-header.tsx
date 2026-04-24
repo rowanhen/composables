@@ -11,7 +11,7 @@
  * ```
  */
 export {
-  LineItemHeader,
-  type LineItemHeaderProps,
-  lineItemHeaderVariants,
+	LineItemHeader,
+	type LineItemHeaderProps,
+	lineItemHeaderVariants,
 } from '../_internal/line-item-header'

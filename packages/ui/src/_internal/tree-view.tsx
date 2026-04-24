@@ -123,7 +123,8 @@ const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
 					onKeyDown={handleKeyDown}
 					className={cn(
 						'flex items-center gap-0 rounded-sm px-0 py-px outline-none',
-						isFolder && 'cursor-pointer hover:bg-muted focus-visible:ring-[length:var(--border-width)] focus-visible:ring-focus/30',
+						isFolder &&
+							'cursor-pointer hover:bg-muted focus-visible:ring-[length:var(--border-width)] focus-visible:ring-focus/30',
 					)}
 					aria-label={`${isFolder ? (open ? 'collapse' : 'expand') : ''} ${title}`}
 				>

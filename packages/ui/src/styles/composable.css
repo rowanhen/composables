@@ -15,10 +15,10 @@
      tokens/base.css           — Global base styles (@layer base)
    ============================================================================ */
 
-@import "tailwindcss";
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
-@import "@fontsource-variable/inter";
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+@import '@fontsource-variable/inter';
 
 /* ── Preset font imports ──────────────────────────────────────────────────
    Uncomment the @import(s) for the preset you are using. Inter is already
@@ -51,14 +51,14 @@
 
    Usage:  <div class="wrap"> … </div>                                */
 @utility wrap {
-  max-width: calc(var(--spacing) * 384);
-  margin-inline: auto;
-  padding-inline: calc(var(--spacing) * 6);
+	max-width: calc(var(--spacing) * 384);
+	margin-inline: auto;
+	padding-inline: calc(var(--spacing) * 6);
 }
 
 /* ── Token layers ──────────────────────────────────────────────��───────── */
-@import "./tokens/palette.css";
-@import "./tokens/tailwind-theme.css";
-@import "./tokens/semantic.css";
-@import "./tokens/components.css";
-@import "./tokens/base.css";
+@import './tokens/palette.css';
+@import './tokens/tailwind-theme.css';
+@import './tokens/semantic.css';
+@import './tokens/components.css';
+@import './tokens/base.css';

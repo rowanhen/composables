@@ -1,7 +1,7 @@
-import { Slider as SliderPrimitive } from "@base-ui/react/slider";
-import * as React from "react";
+import { Slider as SliderPrimitive } from '@base-ui/react/slider'
+import * as React from 'react'
 
-import { cn, FOCUS_RING } from '../lib/utils';
+import { cn, FOCUS_RING } from '../lib/utils'
 
 function Slider({
 	className,
@@ -12,14 +12,9 @@ function Slider({
 	...props
 }: SliderPrimitive.Root.Props) {
 	const _values = React.useMemo(
-		() =>
-			Array.isArray(value)
-				? value
-				: Array.isArray(defaultValue)
-					? defaultValue
-					: [min, max],
+		() => (Array.isArray(value) ? value : Array.isArray(defaultValue) ? defaultValue : [min, max]),
 		[value, defaultValue, min, max],
-	);
+	)
 
 	return (
 		<SliderPrimitive.Root
@@ -34,7 +29,7 @@ function Slider({
 		>
 			<SliderPrimitive.Control
 				className={cn(
-					"data-vertical:min-h-40 relative flex w-full touch-none items-center select-none data-disabled:opacity-disabled data-vertical:h-full data-vertical:w-auto data-vertical:flex-col",
+					'data-vertical:min-h-40 relative flex w-full touch-none items-center select-none data-disabled:opacity-disabled data-vertical:h-full data-vertical:w-auto data-vertical:flex-col',
 					className,
 				)}
 			>
@@ -52,14 +47,14 @@ function Slider({
 						data-slot="slider-thumb"
 						key={index}
 						className={cn(
-							"border-primary size-5 rounded-full border bg-page hover:ring-4 hover:ring-focus/30 active:ring-4 active:ring-focus/50 block shrink-0 select-none disabled:pointer-events-none disabled:opacity-disabled",
-							"has-[:focus-visible]:border-[var(--focus-ring-color)] has-[:focus-visible]:ring-[color:var(--focus-ring-color)]/30 has-[:focus-visible]:ring-[length:var(--focus-ring-width)]",
+							'border-primary size-5 rounded-full border bg-page hover:ring-4 hover:ring-focus/30 active:ring-4 active:ring-focus/50 block shrink-0 select-none disabled:pointer-events-none disabled:opacity-disabled',
+							'has-[:focus-visible]:border-[var(--focus-ring-color)] has-[:focus-visible]:ring-[color:var(--focus-ring-color)]/30 has-[:focus-visible]:ring-[length:var(--focus-ring-width)]',
 						)}
 					/>
 				))}
 			</SliderPrimitive.Control>
 		</SliderPrimitive.Root>
-	);
+	)
 }
 
-export { Slider };
+export { Slider }

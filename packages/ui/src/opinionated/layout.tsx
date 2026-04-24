@@ -16,11 +16,11 @@
  * ```
  */
 export {
-  FlexSpacer,
-  NewspaperCell,
-  NewspaperGrid,
-  newspaperGridVariants,
-  Section,
-  sectionVariants,
+	FlexSpacer,
+	NewspaperCell,
+	NewspaperGrid,
+	newspaperGridVariants,
+	Section,
+	sectionVariants,
 } from '../_internal/layout'
 export type { SectionProps, NewspaperGridProps, NewspaperCellProps } from '../_internal/layout'

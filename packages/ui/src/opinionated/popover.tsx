@@ -2,25 +2,25 @@ import type { Popover as PopoverPrimitiveBase } from '@base-ui/react/popover'
 import type * as React from 'react'
 
 import {
-  PopoverContent,
-  PopoverDescription,
-  PopoverHeader,
-  Popover as PopoverPrimitive,
-  PopoverTitle,
-  PopoverTrigger,
+	PopoverContent,
+	PopoverDescription,
+	PopoverHeader,
+	Popover as PopoverPrimitive,
+	PopoverTitle,
+	PopoverTrigger,
 } from '../_internal/popover'
 
 export interface PopoverProps extends Omit<PopoverPrimitiveBase.Root.Props, 'children'> {
-  /** Element that triggers the popover */
-  trigger: React.ReactNode
-  /** Content to display in the popover */
-  children: React.ReactNode
-  /** Additional class names for the content */
-  className?: string
-  /** Alignment of the content relative to trigger */
-  align?: 'start' | 'center' | 'end'
-  /** Side to position the content */
-  side?: 'top' | 'right' | 'bottom' | 'left'
+	/** Element that triggers the popover */
+	trigger: React.ReactNode
+	/** Content to display in the popover */
+	children: React.ReactNode
+	/** Additional class names for the content */
+	className?: string
+	/** Alignment of the content relative to trigger */
+	align?: 'start' | 'center' | 'end'
+	/** Side to position the content */
+	side?: 'top' | 'right' | 'bottom' | 'left'
 }
 
 /**
@@ -46,21 +46,21 @@ export interface PopoverProps extends Omit<PopoverPrimitiveBase.Root.Props, 'chi
  * ```
  */
 function Popover({
-  trigger,
-  children,
-  className,
-  align = 'center',
-  side = 'bottom',
-  ...popoverProps
+	trigger,
+	children,
+	className,
+	align = 'center',
+	side = 'bottom',
+	...popoverProps
 }: PopoverProps) {
-  return (
-    <PopoverPrimitive {...popoverProps}>
-      <PopoverTrigger render={<>{trigger}</>} />
-      <PopoverContent className={className} align={align} side={side}>
-        {children}
-      </PopoverContent>
-    </PopoverPrimitive>
-  )
+	return (
+		<PopoverPrimitive {...popoverProps}>
+			<PopoverTrigger render={<>{trigger}</>} />
+			<PopoverContent className={className} align={align} side={side}>
+				{children}
+			</PopoverContent>
+		</PopoverPrimitive>
+	)
 }
 
 // Re-export sub-components for advanced usage

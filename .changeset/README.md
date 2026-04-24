@@ -11,6 +11,7 @@ bun changeset
 ```
 
 This will prompt you to:
+
 1. Select which packages were changed
 2. Choose the bump type: `patch`, `minor`, or `major`
 3. Write a summary of the change
@@ -19,10 +20,10 @@ A new `.md` file is created in this folder. Commit it alongside your code change
 
 ## Bump Types
 
-| Type | When to use |
-|------|-------------|
-| `patch` | Bug fixes, typo corrections, non-breaking tweaks |
-| `minor` | New components, new features, backward-compatible additions |
+| Type    | When to use                                                             |
+| ------- | ----------------------------------------------------------------------- |
+| `patch` | Bug fixes, typo corrections, non-breaking tweaks                        |
+| `minor` | New components, new features, backward-compatible additions             |
 | `major` | Breaking changes (renamed props, removed components, changed CLI flags) |
 
 ## Release Flow
@@ -36,7 +37,7 @@ A new `.md` file is created in this folder. Commit it alongside your code change
 
 ```md
 ---
-"@leitware/composables-cli": minor
+'@leitware/composables-cli': minor
 ---
 
 Added `form-slider` and `form-switch` opinionated form components.

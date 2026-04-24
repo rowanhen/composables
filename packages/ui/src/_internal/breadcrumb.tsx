@@ -1,54 +1,43 @@
-import { mergeProps } from "@base-ui/react/merge-props";
-import { useRender } from "@base-ui/react/use-render";
-import { ChevronRightIcon, MoreHorizontalIcon } from "lucide-react";
-import type * as React from "react";
-import { cn, FOCUS_RING } from '../lib/utils';
+import { mergeProps } from '@base-ui/react/merge-props'
+import { useRender } from '@base-ui/react/use-render'
+import { ChevronRightIcon, MoreHorizontalIcon } from 'lucide-react'
+import type * as React from 'react'
+import { cn, FOCUS_RING } from '../lib/utils'
 
-function Breadcrumb({ className, ...props }: React.ComponentProps<"nav">) {
-	return (
-		<nav
-			aria-label="breadcrumb"
-			data-slot="breadcrumb"
-			className={cn(className)}
-			{...props}
-		/>
-	);
+function Breadcrumb({ className, ...props }: React.ComponentProps<'nav'>) {
+	return <nav aria-label="breadcrumb" data-slot="breadcrumb" className={cn(className)} {...props} />
 }
 
-function BreadcrumbList({ className, ...props }: React.ComponentProps<"ol">) {
+function BreadcrumbList({ className, ...props }: React.ComponentProps<'ol'>) {
 	return (
 		<ol
 			data-slot="breadcrumb-list"
 			className={cn(
-				"text-muted-foreground gap-1.5 text-xs/relaxed flex flex-wrap items-center break-words",
+				'text-muted-foreground gap-1.5 text-xs/relaxed flex flex-wrap items-center break-words',
 				className,
 			)}
 			{...props}
 		/>
-	);
+	)
 }
 
-function BreadcrumbItem({ className, ...props }: React.ComponentProps<"li">) {
+function BreadcrumbItem({ className, ...props }: React.ComponentProps<'li'>) {
 	return (
 		<li
 			data-slot="breadcrumb-item"
-			className={cn("gap-1 inline-flex items-center", className)}
+			className={cn('gap-1 inline-flex items-center', className)}
 			{...props}
 		/>
-	);
+	)
 }
 
-function BreadcrumbLink({
-	className,
-	render,
-	...props
-}: useRender.ComponentProps<"a">) {
+function BreadcrumbLink({ className, render, ...props }: useRender.ComponentProps<'a'>) {
 	return useRender({
-		defaultTagName: "a",
-		props: mergeProps<"a">(
+		defaultTagName: 'a',
+		props: mergeProps<'a'>(
 			{
 				className: cn(
-					"hover:text-foreground active:text-foreground/70 rounded-sm outline-none transition-[opacity,box-shadow]",
+					'hover:text-foreground active:text-foreground/70 rounded-sm outline-none transition-[opacity,box-shadow]',
 					FOCUS_RING,
 					className,
 				),
@@ -57,61 +46,51 @@ function BreadcrumbLink({
 		),
 		render,
 		state: {
-			slot: "breadcrumb-link",
+			slot: 'breadcrumb-link',
 		},
-	});
+	})
 }
 
-function BreadcrumbPage({ className, ...props }: React.ComponentProps<"span">) {
+function BreadcrumbPage({ className, ...props }: React.ComponentProps<'span'>) {
 	return (
 		<span
 			data-slot="breadcrumb-page"
 			role="link"
 			aria-disabled="true"
 			aria-current="page"
-			className={cn("text-foreground font-normal", className)}
+			className={cn('text-foreground font-normal', className)}
 			{...props}
 		/>
-	);
+	)
 }
 
-function BreadcrumbSeparator({
-	children,
-	className,
-	...props
-}: React.ComponentProps<"li">) {
+function BreadcrumbSeparator({ children, className, ...props }: React.ComponentProps<'li'>) {
 	return (
 		<li
 			data-slot="breadcrumb-separator"
 			role="presentation"
 			aria-hidden="true"
-			className={cn("[&>svg]:size-3.5", className)}
+			className={cn('[&>svg]:size-3.5', className)}
 			{...props}
 		>
 			{children ?? <ChevronRightIcon />}
 		</li>
-	);
+	)
 }
 
-function BreadcrumbEllipsis({
-	className,
-	...props
-}: React.ComponentProps<"span">) {
+function BreadcrumbEllipsis({ className, ...props }: React.ComponentProps<'span'>) {
 	return (
 		<span
 			data-slot="breadcrumb-ellipsis"
 			role="presentation"
 			aria-hidden="true"
-			className={cn(
-				"size-4 [&>svg]:size-3.5 flex items-center justify-center",
-				className,
-			)}
+			className={cn('size-4 [&>svg]:size-3.5 flex items-center justify-center', className)}
 			{...props}
 		>
 			<MoreHorizontalIcon />
 			<span className="sr-only">More</span>
 		</span>
-	);
+	)
 }
 
 export {
@@ -122,4 +101,4 @@ export {
 	BreadcrumbPage,
 	BreadcrumbSeparator,
 	BreadcrumbEllipsis,
-};
+}

@@ -17,13 +17,13 @@
  * ```
  */
 export {
-  BentoCell,
-  BentoGrid,
-  BentoLeader,
-  BentoQuad,
-  BentoSplit,
-  BentoTriple,
-  CellGrid,
-  CellRow,
-  StatCell,
+	BentoCell,
+	BentoGrid,
+	BentoLeader,
+	BentoQuad,
+	BentoSplit,
+	BentoTriple,
+	CellGrid,
+	CellRow,
+	StatCell,
 } from '../_internal/layout-bento'

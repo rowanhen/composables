@@ -17,21 +17,15 @@ import {
 	CellGrid,
 	CellRow,
 	StatCell,
-} from "@/components/_internal/layout-bento"
-import { Glyph } from "@/components/_internal/glyph"
-import { VStack } from "@/components/_internal/stack"
-import { Typography } from "@/components/_internal/typography"
-import { ShowcaseGroup, ShowcaseSection } from "./showcase-section"
+} from '@/components/_internal/layout-bento'
+import { Glyph } from '@/components/_internal/glyph'
+import { VStack } from '@/components/_internal/stack'
+import { Typography } from '@/components/_internal/typography'
+import { ShowcaseGroup, ShowcaseSection } from './showcase-section'
 
 // ── Demo content helpers ──────────────────────────────────────────────────────
 
-function ContentBlock({
-	label,
-	className = "",
-}: {
-	label: string
-	className?: string
-}) {
+function ContentBlock({ label, className = '' }: { label: string; className?: string }) {
 	return (
 		<div className={`p-4 h-full flex flex-col gap-1 ${className}`}>
 			<div className="text-[10px] text-muted-foreground uppercase tracking-wider">{label}</div>
@@ -55,11 +49,7 @@ function ChartPlaceholder({ label }: { label: string }) {
 			<div className="text-xs font-medium">{label}</div>
 			<div className="flex items-end gap-1 h-16">
 				{[40, 65, 45, 80, 55, 90, 70, 85, 60, 95, 75, 88].map((h, i) => (
-					<div
-						key={i}
-						className="flex-1 bg-foreground/20 rounded-sm"
-						style={{ height: `${h}%` }}
-					/>
+					<div key={i} className="flex-1 bg-foreground/20 rounded-sm" style={{ height: `${h}%` }} />
 				))}
 			</div>
 		</div>
@@ -77,7 +67,9 @@ function BentoSplitDemo() {
 			<BentoSplit
 				icon={
 					<VStack gap={2} align="center">
-						<Glyph size={64} variant="filled">◆</Glyph>
+						<Glyph size={64} variant="filled">
+							◆
+						</Glyph>
 						<div className="text-xs font-bold text-center">ACME</div>
 					</VStack>
 				}
@@ -122,9 +114,7 @@ function BentoLeaderDemo() {
 				Full-width header spanning all columns, then N equal columns below.
 			</Typography>
 			<BentoLeader
-				header={
-					<ChartPlaceholder label="Monthly Revenue — Jan to Dec 2024" />
-				}
+				header={<ChartPlaceholder label="Monthly Revenue — Jan to Dec 2024" />}
 				columns={[
 					<MetricContent key="r" label="Total Revenue" value="$487k" trend="↑ 24% vs last year" />,
 					<MetricContent key="o" label="Orders" value="2,341" trend="↑ 18% vs last year" />,
@@ -160,8 +150,8 @@ function BentoQuadDemo() {
 					<div className="p-4">
 						<div className="text-sm font-bold mb-2">Active Projects</div>
 						<div className="space-y-2">
-							{["Redesign — 80%", "API v2 — 45%", "Dashboard — 92%"].map((p) => {
-								const [name, pct] = p.split(" — ")
+							{['Redesign — 80%', 'API v2 — 45%', 'Dashboard — 92%'].map((p) => {
+								const [name, pct] = p.split(' — ')
 								return (
 									<div key={name}>
 										<div className="flex justify-between text-xs mb-0.5">
@@ -169,10 +159,7 @@ function BentoQuadDemo() {
 											<span className="text-muted-foreground">{pct}</span>
 										</div>
 										<div className="h-1 bg-stroke rounded-full overflow-hidden">
-											<div
-												className="h-full bg-foreground"
-												style={{ width: pct }}
-											/>
+											<div className="h-full bg-foreground" style={{ width: pct }} />
 										</div>
 									</div>
 								)
@@ -180,15 +167,9 @@ function BentoQuadDemo() {
 						</div>
 					</div>
 				}
-				topRight={
-					<MetricContent label="Sprint Velocity" value="42pts" trend="↑ from 36" />
-				}
-				bottomLeft={
-					<ChartPlaceholder label="Commits — Last 30 days" />
-				}
-				bottomRight={
-					<MetricContent label="Open PRs" value="7" trend="3 awaiting review" />
-				}
+				topRight={<MetricContent label="Sprint Velocity" value="42pts" trend="↑ from 36" />}
+				bottomLeft={<ChartPlaceholder label="Commits — Last 30 days" />}
+				bottomRight={<MetricContent label="Open PRs" value="7" trend="3 awaiting review" />}
 			/>
 		</ShowcaseGroup>
 	)
@@ -221,14 +202,18 @@ function BentoTripleDemo() {
 						<StatCell label="Retention D30" value="28%" />
 					</VStack>
 				}
-				body={
-					<ChartPlaceholder label="Daily Active Users — past 30 days" />
-				}
+				body={<ChartPlaceholder label="Daily Active Users — past 30 days" />}
 				footer={
 					<div className="p-3 flex gap-8">
-						<div className="text-xs"><span className="text-muted-foreground">Top feature: </span>Dashboard</div>
-						<div className="text-xs"><span className="text-muted-foreground">Top source: </span>Organic</div>
-						<div className="text-xs"><span className="text-muted-foreground">Avg session: </span>4m 22s</div>
+						<div className="text-xs">
+							<span className="text-muted-foreground">Top feature: </span>Dashboard
+						</div>
+						<div className="text-xs">
+							<span className="text-muted-foreground">Top source: </span>Organic
+						</div>
+						<div className="text-xs">
+							<span className="text-muted-foreground">Avg session: </span>4m 22s
+						</div>
 					</div>
 				}
 			/>
@@ -306,7 +291,9 @@ function CellRowDemo() {
 				<CellRow>
 					<div className="bg-card p-4 md:w-48 md:shrink-0">
 						<div className="text-[10px] text-muted-foreground uppercase mb-1">Stats</div>
-						<Glyph size={32} variant="filled">▲</Glyph>
+						<Glyph size={32} variant="filled">
+							▲
+						</Glyph>
 					</div>
 					<div className="bg-card p-4 flex-1">
 						<StatCell label="This week" value="+$4,200" large />
@@ -327,7 +314,8 @@ function BentoGridDemo() {
 	return (
 		<ShowcaseGroup label="BentoGrid + BentoCell">
 			<Typography variant="body-100" className="text-muted-foreground">
-				General-purpose grid with col/row span control. Background = border color; gap exposes it as lines.
+				General-purpose grid with col/row span control. Background = border color; gap exposes it as
+				lines.
 			</Typography>
 			<BentoGrid cols={3}>
 				<BentoCell colSpan={2}>

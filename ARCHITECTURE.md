@@ -75,11 +75,11 @@ styles/
 Raw colour values from a fixed scale. These don't change between light/dark mode — they're reference values.
 
 ```css
---neutral-50: #FDFDFDFF;
---neutral-100: #F9F9F8FF;
+--neutral-50: #fdfdfdff;
+--neutral-100: #f9f9f8ff;
 /* ... 12 stops per colour × 10 colour families + alpha variants */
---blue-800: #0090FFFF;
---red-950: #CE2C31FF;
+--blue-800: #0090ffff;
+--red-950: #ce2c31ff;
 ```
 
 Colour families: `neutral`, `red`, `amber`, `green`, `blue`, `orange`, `jade`, `sky`, `violet`, `pink` — each with 12 stops (50–1000) and alpha variants.
@@ -92,21 +92,21 @@ Context-aware tokens that reference the primitive palette. These _do_ change bet
 
 ```css
 :root {
-  --bg-default: #F9F9F8FF;
-  --text-default: #21201CFF;
-  --bg-fill-primary: #21201CFF;
-  --text-inverse: #FFFFFFFF;
-  --bg-fill-critical: #E5484DFF;
-  --border-default: #CFCECAFF;
-  --border-focus: #0D74CEFF;
-  --text-success: #203C25FF;
-  --bg-surface-critical: #FFF7F7FF;
+	--bg-default: #f9f9f8ff;
+	--text-default: #21201cff;
+	--bg-fill-primary: #21201cff;
+	--text-inverse: #ffffffff;
+	--bg-fill-critical: #e5484dff;
+	--border-default: #cfcecaff;
+	--border-focus: #0d74ceff;
+	--text-success: #203c25ff;
+	--bg-surface-critical: #fff7f7ff;
 }
 
 .dark {
-  --bg-default: #191918FF;
-  --text-default: #EEEEECFF;
-  /* ... all semantic tokens remapped for dark */
+	--bg-default: #191918ff;
+	--text-default: #eeeeecff;
+	/* ... all semantic tokens remapped for dark */
 }
 ```
 
@@ -116,31 +116,34 @@ Per-component tunables exposed in `:root` for preset override support:
 
 ```css
 :root {
-  --radius: 0.5rem;
-  --border-width-base: 0.0625rem;
-  --font-size-base: 1rem;
-  --leading-base: 1.33;
-  --font-sans: "Inter Variable", sans-serif;
-  --focus-ring-style: solid;
-  --bento-gap: var(--border-width-base);
+	--radius: 0.5rem;
+	--border-width-base: 0.0625rem;
+	--font-size-base: 1rem;
+	--leading-base: 1.33;
+	--font-sans: 'Inter Variable', sans-serif;
+	--focus-ring-style: solid;
+	--bento-gap: var(--border-width-base);
 }
 ```
 
 ### Using Tokens
 
 **Full system (with Tailwind):**
+
 ```css
-@import "@leitware/composables-cli/styles.css";
+@import '@leitware/composables-cli/styles.css';
 ```
 
 **Just the semantic tokens (no Tailwind, standalone):**
+
 ```css
-@import "@leitware/composables-cli/tokens.css";
+@import '@leitware/composables-cli/tokens.css';
 ```
 
 **A specific preset (standalone, pasteable):**
+
 ```css
-@import "@leitware/composables-cli/presets/brutalist.css";
+@import '@leitware/composables-cli/presets/brutalist.css';
 ```
 
 ### Customising Tokens
@@ -150,10 +153,10 @@ Override any token in your own CSS:
 ```css
 /* globals.css or your app's root stylesheet */
 :root {
-  --font-size-base: 15px;
-  --radius: 0.75rem;
-  --bg-fill-primary: var(--blue-800);
-  --font-heading: "Fraunces Variable", serif;
+	--font-size-base: 15px;
+	--radius: 0.75rem;
+	--bg-fill-primary: var(--blue-800);
+	--font-heading: 'Fraunces Variable', serif;
 }
 ```
 
@@ -163,9 +166,9 @@ The tokens are registered into Tailwind's theme via `@theme` blocks in `tokens/t
 
 ```css
 @theme {
-  --text-sm: calc(var(--font-size-base) * 0.875);
-  --font-sans: "Inter Variable", sans-serif;
-  --radius-lg: var(--radius);
+	--text-sm: calc(var(--font-size-base) * 0.875);
+	--font-sans: 'Inter Variable', sans-serif;
+	--radius-lg: var(--radius);
 }
 ```
 
@@ -191,14 +194,14 @@ A preset typically overrides:
 
 ### Built-in Presets
 
-| Preset | Key overrides |
-|--------|---------------|
-| **Default** | Inter, 1rem, 0.5rem radius, neutral primary |
+| Preset        | Key overrides                                                         |
+| ------------- | --------------------------------------------------------------------- |
+| **Default**   | Inter, 1rem, 0.5rem radius, neutral primary                           |
 | **Brutalist** | Space Grotesk + JetBrains Mono, 0 radius, high contrast, hard shadows |
 | **Editorial** | Fraunces (headings) + Source Serif 4, generous leading, subtle radius |
-| **Midnight** | Space Grotesk + Inter, dark-first, indigo accent, glow shadows |
-| **Soft** | Plus Jakarta Sans + DM Sans, 0.75rem radius, lavender tones |
-| **Swiss** | Helvetica Neue system stack, 0 radius, 0 shadow, tight leading |
+| **Midnight**  | Space Grotesk + Inter, dark-first, indigo accent, glow shadows        |
+| **Soft**      | Plus Jakarta Sans + DM Sans, 0.75rem radius, lavender tones           |
+| **Swiss**     | Helvetica Neue system stack, 0 radius, 0 shadow, tight leading        |
 
 ### Creating a Custom Preset
 
@@ -206,12 +209,12 @@ A preset is just CSS. Override tokens in `:root` and `.dark`:
 
 ```css
 :root {
-  --font-heading: "DM Sans", sans-serif;
-  --font-sans: "DM Sans", sans-serif;
-  --font-size-base: 14px;
-  --radius: 0.25rem;
-  --bg-fill-primary: #1e40af;
-  --text-inverse: white;
+	--font-heading: 'DM Sans', sans-serif;
+	--font-sans: 'DM Sans', sans-serif;
+	--font-size-base: 14px;
+	--radius: 0.25rem;
+	--bg-fill-primary: #1e40af;
+	--text-inverse: white;
 }
 ```
 

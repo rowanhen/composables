@@ -6,18 +6,18 @@
    extra font imports needed to demo all presets.
    ============================================================================ */
 
-@import "@leitware/composables-cli/styles.css";
+@import '@leitware/composables-cli/styles.css';
 
 /* ── Preset font imports (Inter is already bundled by the package) ────────── */
-@import "@fontsource-variable/dm-sans";
-@import "@fontsource-variable/fraunces";
-@import "@fontsource-variable/source-serif-4";
-@import "@fontsource-variable/space-grotesk";
-@import "@fontsource-variable/plus-jakarta-sans";
-@import "@fontsource-variable/bricolage-grotesque";
-@import "@fontsource-variable/jetbrains-mono";
-@import "@fontsource/ibm-plex-mono";
-@import "@fontsource/ibm-plex-sans";
+@import '@fontsource-variable/dm-sans';
+@import '@fontsource-variable/fraunces';
+@import '@fontsource-variable/source-serif-4';
+@import '@fontsource-variable/space-grotesk';
+@import '@fontsource-variable/plus-jakarta-sans';
+@import '@fontsource-variable/bricolage-grotesque';
+@import '@fontsource-variable/jetbrains-mono';
+@import '@fontsource/ibm-plex-mono';
+@import '@fontsource/ibm-plex-sans';
 
 /* ── Scan showcase + UI package components for Tailwind class usage ───────
      The package's @source is relative to its own directory and doesn't resolve

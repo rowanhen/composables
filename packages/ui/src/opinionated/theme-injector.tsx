@@ -16,16 +16,16 @@ import { TokenConfigPanel } from './token-config-panel'
  *   <ThemeInjector />
  */
 export function ThemeInjector() {
-  return (
-    <div
-      style={{
-        position: 'fixed',
-        top: '1rem',
-        right: '1rem',
-        zIndex: 9999,
-      }}
-    >
-      <TokenConfigPanel />
-    </div>
-  )
+	return (
+		<div
+			style={{
+				position: 'fixed',
+				top: '1rem',
+				right: '1rem',
+				zIndex: 9999,
+			}}
+		>
+			<TokenConfigPanel />
+		</div>
+	)
 }

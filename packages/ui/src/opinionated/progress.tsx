@@ -1,20 +1,20 @@
 import {
-  ProgressIndicator,
-  ProgressLabel,
-  Progress as ProgressPrimitive,
-  ProgressTrack,
-  ProgressValue,
+	ProgressIndicator,
+	ProgressLabel,
+	Progress as ProgressPrimitive,
+	ProgressTrack,
+	ProgressValue,
 } from '../_internal/progress'
 
 export interface ProgressProps {
-  /** Progress value (0-100) */
-  value: number
-  /** Optional label text */
-  label?: string
-  /** Whether to display the numeric value */
-  showValue?: boolean
-  /** Additional class names */
-  className?: string
+	/** Progress value (0-100) */
+	value: number
+	/** Optional label text */
+	label?: string
+	/** Whether to display the numeric value */
+	showValue?: boolean
+	/** Additional class names */
+	className?: string
 }
 
 /**
@@ -28,19 +28,19 @@ export interface ProgressProps {
  * ```
  */
 function Progress({ value, label, showValue = false, className }: ProgressProps) {
-  return (
-    <ProgressPrimitive value={value} className={className}>
-      {(label || showValue) && (
-        <div className="flex items-center justify-between">
-          {label && <ProgressLabel>{label}</ProgressLabel>}
-          {showValue && <ProgressValue />}
-        </div>
-      )}
-      <ProgressTrack>
-        <ProgressIndicator />
-      </ProgressTrack>
-    </ProgressPrimitive>
-  )
+	return (
+		<ProgressPrimitive value={value} className={className}>
+			{(label || showValue) && (
+				<div className="flex items-center justify-between">
+					{label && <ProgressLabel>{label}</ProgressLabel>}
+					{showValue && <ProgressValue />}
+				</div>
+			)}
+			<ProgressTrack>
+				<ProgressIndicator />
+			</ProgressTrack>
+		</ProgressPrimitive>
+	)
 }
 
 // Re-export sub-components for advanced usage

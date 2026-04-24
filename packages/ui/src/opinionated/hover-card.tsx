@@ -2,22 +2,22 @@ import type { PreviewCard as HoverCardPrimitiveBase } from '@base-ui/react/previ
 import type * as React from 'react'
 
 import {
-  HoverCardContent,
-  HoverCard as HoverCardPrimitive,
-  HoverCardTrigger,
+	HoverCardContent,
+	HoverCard as HoverCardPrimitive,
+	HoverCardTrigger,
 } from '../_internal/hover-card'
 
 export interface HoverCardProps extends Omit<HoverCardPrimitiveBase.Root.Props, 'children'> {
-  /** Element that triggers the hover card */
-  trigger: React.ReactNode
-  /** Content to display in the hover card */
-  children: React.ReactNode
-  /** Additional class names for the content */
-  className?: string
-  /** Alignment of the content relative to trigger */
-  align?: 'start' | 'center' | 'end'
-  /** Side to position the content */
-  side?: 'top' | 'right' | 'bottom' | 'left'
+	/** Element that triggers the hover card */
+	trigger: React.ReactNode
+	/** Content to display in the hover card */
+	children: React.ReactNode
+	/** Additional class names for the content */
+	className?: string
+	/** Alignment of the content relative to trigger */
+	align?: 'start' | 'center' | 'end'
+	/** Side to position the content */
+	side?: 'top' | 'right' | 'bottom' | 'left'
 }
 
 /**
@@ -37,21 +37,21 @@ export interface HoverCardProps extends Omit<HoverCardPrimitiveBase.Root.Props, 
  * ```
  */
 function HoverCard({
-  trigger,
-  children,
-  className,
-  align = 'center',
-  side = 'bottom',
-  ...hoverCardProps
+	trigger,
+	children,
+	className,
+	align = 'center',
+	side = 'bottom',
+	...hoverCardProps
 }: HoverCardProps) {
-  return (
-    <HoverCardPrimitive {...hoverCardProps}>
-      <HoverCardTrigger render={<>{trigger}</>} />
-      <HoverCardContent className={className} align={align} side={side}>
-        {children}
-      </HoverCardContent>
-    </HoverCardPrimitive>
-  )
+	return (
+		<HoverCardPrimitive {...hoverCardProps}>
+			<HoverCardTrigger render={<>{trigger}</>} />
+			<HoverCardContent className={className} align={align} side={side}>
+				{children}
+			</HoverCardContent>
+		</HoverCardPrimitive>
+	)
 }
 
 // Re-export sub-components for advanced usage

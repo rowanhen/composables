@@ -1,30 +1,25 @@
-import { PreviewCard as HoverCardPrimitive } from "@base-ui/react/preview-card";
+import { PreviewCard as HoverCardPrimitive } from '@base-ui/react/preview-card'
 
-import { cn } from '../lib/utils';
+import { cn } from '../lib/utils'
 
 function HoverCard({ ...props }: HoverCardPrimitive.Root.Props) {
-	return <HoverCardPrimitive.Root data-slot="hover-card" {...props} />;
+	return <HoverCardPrimitive.Root data-slot="hover-card" {...props} />
 }
 
 function HoverCardTrigger({ ...props }: HoverCardPrimitive.Trigger.Props) {
-	return (
-		<HoverCardPrimitive.Trigger data-slot="hover-card-trigger" {...props} />
-	);
+	return <HoverCardPrimitive.Trigger data-slot="hover-card-trigger" {...props} />
 }
 
 function HoverCardContent({
 	className,
-	align = "center",
+	align = 'center',
 	alignOffset = 0,
-	side = "bottom",
+	side = 'bottom',
 	sideOffset = 4,
 	children,
 	...props
 }: HoverCardPrimitive.Popup.Props &
-	Pick<
-		HoverCardPrimitive.Positioner.Props,
-		"align" | "alignOffset" | "side" | "sideOffset"
-	>) {
+	Pick<HoverCardPrimitive.Positioner.Props, 'align' | 'alignOffset' | 'side' | 'sideOffset'>) {
 	return (
 		<HoverCardPrimitive.Portal>
 			<HoverCardPrimitive.Positioner
@@ -37,7 +32,7 @@ function HoverCardContent({
 				<HoverCardPrimitive.Popup
 					data-slot="hover-card-content"
 					className={cn(
-						"bg-popover text-popover-foreground data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 ring-foreground/10 rounded-lg p-4 text-xs shadow-md ring-[length:var(--border-width)] duration-fast z-popover w-80 origin-(--transform-origin) outline-hidden",
+						'bg-popover text-popover-foreground data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 ring-foreground/10 rounded-lg p-4 text-xs shadow-md ring-[length:var(--border-width)] duration-fast z-popover w-80 origin-(--transform-origin) outline-hidden',
 						className,
 					)}
 					{...props}
@@ -46,7 +41,7 @@ function HoverCardContent({
 				</HoverCardPrimitive.Popup>
 			</HoverCardPrimitive.Positioner>
 		</HoverCardPrimitive.Portal>
-	);
+	)
 }
 
-export { HoverCard, HoverCardTrigger, HoverCardContent };
+export { HoverCard, HoverCardTrigger, HoverCardContent }

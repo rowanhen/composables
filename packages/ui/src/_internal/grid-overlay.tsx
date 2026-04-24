@@ -1,10 +1,10 @@
-import * as React from "react";
+import * as React from 'react'
 
-import { cn } from "../lib/utils";
+import { cn } from '../lib/utils'
 
-interface GridOverlayProps extends React.ComponentProps<"div"> {
-  /** Grid line color. Defaults to a subtle black/white depending on context. */
-  color?: string;
+interface GridOverlayProps extends React.ComponentProps<'div'> {
+	/** Grid line color. Defaults to a subtle black/white depending on context. */
+	color?: string
 }
 
 /**
@@ -23,26 +23,26 @@ interface GridOverlayProps extends React.ComponentProps<"div"> {
  * ```
  */
 function GridOverlay({ color, className, style, ...props }: GridOverlayProps) {
-  const lineColor = color ?? "var(--grid-overlay-color, rgba(0, 0, 0, 0.06))";
+	const lineColor = color ?? 'var(--grid-overlay-color, rgba(0, 0, 0, 0.06))'
 
-  return (
-    <div
-      data-slot="grid-overlay"
-      aria-hidden="true"
-      className={cn("pointer-events-none fixed inset-0 z-[9999]", className)}
-      style={{
-        backgroundImage: `
+	return (
+		<div
+			data-slot="grid-overlay"
+			aria-hidden="true"
+			className={cn('pointer-events-none fixed inset-0 z-[9999]', className)}
+			style={{
+				backgroundImage: `
           linear-gradient(to right, ${lineColor} 1px, transparent 1px),
           linear-gradient(to bottom, ${lineColor} 1px, transparent 1px)
         `,
-        backgroundSize: "calc(var(--spacing) * 12) calc(var(--spacing) * 12)",
-        backgroundPosition: "center center",
-        ...style,
-      }}
-      {...props}
-    />
-  );
+				backgroundSize: 'calc(var(--spacing) * 12) calc(var(--spacing) * 12)',
+				backgroundPosition: 'center center',
+				...style,
+			}}
+			{...props}
+		/>
+	)
 }
 
-export { GridOverlay };
-export type { GridOverlayProps };
+export { GridOverlay }
+export type { GridOverlayProps }

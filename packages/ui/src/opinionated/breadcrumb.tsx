@@ -1,33 +1,33 @@
 import * as React from 'react'
 
 import {
-  Breadcrumb as BreadcrumbPrimitive,
-  BreadcrumbEllipsis,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
+	Breadcrumb as BreadcrumbPrimitive,
+	BreadcrumbEllipsis,
+	BreadcrumbItem,
+	BreadcrumbLink,
+	BreadcrumbList,
+	BreadcrumbPage,
+	BreadcrumbSeparator,
 } from '../_internal/breadcrumb'
 
 export interface BreadcrumbItemData {
-  /** Display label for the breadcrumb item */
-  label: React.ReactNode
-  /** URL to navigate to (omit for current page) */
-  href?: string
-  /** Click handler (alternative to href) */
-  onClick?: () => void
+	/** Display label for the breadcrumb item */
+	label: React.ReactNode
+	/** URL to navigate to (omit for current page) */
+	href?: string
+	/** Click handler (alternative to href) */
+	onClick?: () => void
 }
 
 export interface BreadcrumbProps {
-  /** Array of breadcrumb items. Last item is treated as current page. */
-  items: BreadcrumbItemData[]
-  /** Custom separator element */
-  separator?: React.ReactNode
-  /** Additional class names */
-  className?: string
-  /** Children for advanced usage (overrides items) */
-  children?: React.ReactNode
+	/** Array of breadcrumb items. Last item is treated as current page. */
+	items: BreadcrumbItemData[]
+	/** Custom separator element */
+	separator?: React.ReactNode
+	/** Additional class names */
+	className?: string
+	/** Children for advanced usage (overrides items) */
+	children?: React.ReactNode
 }
 
 /**
@@ -47,53 +47,53 @@ export interface BreadcrumbProps {
  * ```
  */
 function Breadcrumb({ items, separator, className, children }: BreadcrumbProps) {
-  // If children provided, use primitive API
-  if (children) {
-    return <BreadcrumbPrimitive className={className}>{children}</BreadcrumbPrimitive>
-  }
+	// If children provided, use primitive API
+	if (children) {
+		return <BreadcrumbPrimitive className={className}>{children}</BreadcrumbPrimitive>
+	}
 
-  return (
-    <BreadcrumbPrimitive className={className}>
-      <BreadcrumbList>
-        {items.map((item, index) => {
-          const isLast = index === items.length - 1
-          const isFirst = index === 0
+	return (
+		<BreadcrumbPrimitive className={className}>
+			<BreadcrumbList>
+				{items.map((item, index) => {
+					const isLast = index === items.length - 1
+					const isFirst = index === 0
 
-          return (
-            <React.Fragment key={index}>
-              {!isFirst && <BreadcrumbSeparator>{separator}</BreadcrumbSeparator>}
-              <BreadcrumbItem>
-                {isLast ? (
-                  <BreadcrumbPage>{item.label}</BreadcrumbPage>
-                ) : item.href ? (
-                  <BreadcrumbLink href={item.href}>{item.label}</BreadcrumbLink>
-                ) : item.onClick ? (
-                  <BreadcrumbLink
-                    render={
-                      <button type="button" onClick={item.onClick}>
-                        {item.label}
-                      </button>
-                    }
-                  />
-                ) : (
-                  <BreadcrumbPage>{item.label}</BreadcrumbPage>
-                )}
-              </BreadcrumbItem>
-            </React.Fragment>
-          )
-        })}
-      </BreadcrumbList>
-    </BreadcrumbPrimitive>
-  )
+					return (
+						<React.Fragment key={index}>
+							{!isFirst && <BreadcrumbSeparator>{separator}</BreadcrumbSeparator>}
+							<BreadcrumbItem>
+								{isLast ? (
+									<BreadcrumbPage>{item.label}</BreadcrumbPage>
+								) : item.href ? (
+									<BreadcrumbLink href={item.href}>{item.label}</BreadcrumbLink>
+								) : item.onClick ? (
+									<BreadcrumbLink
+										render={
+											<button type="button" onClick={item.onClick}>
+												{item.label}
+											</button>
+										}
+									/>
+								) : (
+									<BreadcrumbPage>{item.label}</BreadcrumbPage>
+								)}
+							</BreadcrumbItem>
+						</React.Fragment>
+					)
+				})}
+			</BreadcrumbList>
+		</BreadcrumbPrimitive>
+	)
 }
 
 // Re-export sub-components for advanced usage
 export {
-  BreadcrumbEllipsis,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
+	BreadcrumbEllipsis,
+	BreadcrumbItem,
+	BreadcrumbLink,
+	BreadcrumbList,
+	BreadcrumbPage,
+	BreadcrumbSeparator,
 }
 export { Breadcrumb }

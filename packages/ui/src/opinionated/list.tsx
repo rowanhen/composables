@@ -33,7 +33,9 @@ export type ListVariant = 'arrow' | 'bullet'
 function ArrowItem({ content }: ListItemData) {
 	return (
 		<li className="flex items-start gap-3">
-			<span className="text-primary text-sm select-none" aria-hidden="true">→</span>
+			<span className="text-primary text-sm select-none" aria-hidden="true">
+				→
+			</span>
 			<span className="text-muted-foreground text-sm">{content}</span>
 		</li>
 	)
@@ -84,17 +86,9 @@ function List({ items, variant, className, children }: ListProps) {
 		)
 	}
 
-	return (
-		<ul className={cn(listVariants({ variant: safeVariant }), className)}>
-			{children}
-		</ul>
-	)
+	return <ul className={cn(listVariants({ variant: safeVariant }), className)}>{children}</ul>
 }
 
 /* ─── Named item exports for compositional use ─── */
 
-export {
-	List,
-	ArrowItem as ListArrowItem,
-	BulletItem as ListBulletItem,
-}
+export { List, ArrowItem as ListArrowItem, BulletItem as ListBulletItem }
