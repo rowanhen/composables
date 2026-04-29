@@ -1,12 +1,12 @@
 /* ============================================================================
-   Showcase CSS — imports the package design system and adds preset fonts
+   Showcase CSS — imports the design system and adds preset fonts
    ============================================================================
    The full token system (palette, semantic, components, base) plus Tailwind v4
-   is provided by @leitware/composables-cli/styles.css. The showcase only adds
-   extra font imports needed to demo all presets.
+   is provided by the composable.css entrypoint. The showcase only adds extra
+   font imports needed to demo all presets.
    ============================================================================ */
 
-@import '@leitware/composables-cli/styles.css';
+@import '../../../src/styles/composable.css';
 
 /* ── Preset font imports (Inter is already bundled by the package) ────────── */
 @import '@fontsource-variable/dm-sans';
@@ -19,8 +19,6 @@
 @import '@fontsource/ibm-plex-mono';
 @import '@fontsource/ibm-plex-sans';
 
-/* ── Scan showcase + UI package components for Tailwind class usage ───────
-     The package's @source is relative to its own directory and doesn't resolve
-     when imported transitively, so we re-declare it here. ────────────────── */
+/* ── Scan showcase + library source for Tailwind class usage ────────────── */
 @source "../**/*.{ts,tsx}";
-@source "../../../../packages/ui/src/**/*.{ts,tsx}";
+@source "../../../src/**/*.{ts,tsx}";

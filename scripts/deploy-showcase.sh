@@ -45,11 +45,11 @@ echo "━━━━━━━━━━━━━━━━━━━━━━━━�
 echo ""
 
 echo "→ Building showcase..."
-(cd "$ROOT_DIR" && bun run --cwd packages/showcase build)
+(cd "$ROOT_DIR" && bunx vite build showcase)
 
 echo ""
 echo "→ Deploying to Cloudflare Pages..."
-npx wrangler pages deploy "$ROOT_DIR/packages/showcase/dist" \
+npx wrangler pages deploy "$ROOT_DIR/showcase/dist" \
   --project-name "composables-showcase" \
   --branch "$BRANCH"
 

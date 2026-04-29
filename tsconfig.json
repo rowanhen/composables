@@ -1,9 +1,25 @@
 {
 	"compilerOptions": {
+		"ignoreDeprecations": "6.0",
 		"target": "ES2022",
+		"module": "ESNext",
+		"moduleResolution": "bundler",
+		"jsx": "react-jsx",
 		"strict": true,
 		"esModuleInterop": true,
 		"skipLibCheck": true,
-		"forceConsistentCasingInFileNames": true
-	}
+		"forceConsistentCasingInFileNames": true,
+		"noEmit": true,
+		"lib": ["ES2024", "DOM", "DOM.Iterable"],
+		"types": ["node"],
+		"baseUrl": ".",
+		"paths": {
+			"@/components/_internal/*": ["src/_internal/*"],
+			"@/components/ui-opinionated/*": ["src/opinionated/*"],
+			"@/lib/*": ["src/lib/*"],
+			"@/hooks/*": ["src/hooks/*"],
+			"@/*": ["showcase/src/*"]
+		}
+	},
+	"include": ["src", "showcase/src"]
 }

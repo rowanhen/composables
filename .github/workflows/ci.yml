@@ -16,13 +16,16 @@ jobs:
         with:
           bun-version: latest
       - run: bun install
-      - run: bun run build
-      - name: Lint (restricted imports)
-        run: bunx @biomejs/biome lint --diagnostic-level=error packages/ui/src packages/showcase/src
+      - name: Lint
+        run: bun run lint
+      - name: Format check
+        run: bun run format:check
+      - name: Typecheck
+        run: bun run typecheck
       - name: Check arbitrary Tailwind values
         continue-on-error: true
-        run: bun packages/ui/src/scripts/lint-no-arbitrary.ts packages/ui/src packages/showcase/src
+        run: bun src/scripts/lint-no-arbitrary.ts src showcase/src
       - name: Verify generated CSS
         run: bun scripts/generate-css.ts --check
       - name: Build showcase
-        run: bun run --cwd packages/showcase build
+        run: bunx vite build showcase

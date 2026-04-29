@@ -25,12 +25,12 @@ jobs:
         with:
           bun-version: latest
       - run: bun install
-      - run: bun run --cwd packages/showcase build
+      - run: bunx vite build showcase
         env:
           GITHUB_PAGES: 'true'
       - uses: actions/configure-pages@v4
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: packages/showcase/dist
+          path: showcase/dist
       - id: deployment
         uses: actions/deploy-pages@v4

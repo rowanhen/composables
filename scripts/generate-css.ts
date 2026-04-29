@@ -17,7 +17,7 @@ import { join, dirname } from 'node:path'
 import { palettes, steps, baseColors, overlaysBlackAlpha } from './palette.ts'
 
 const ROOT = dirname(dirname(import.meta.path))
-const TOKENS_DIR = join(ROOT, 'packages/ui/src/styles/tokens')
+const TOKENS_DIR = join(ROOT, 'src/styles/tokens')
 const PALETTE_CSS_PATH = join(TOKENS_DIR, 'palette.css')
 const SEMANTIC_CSS_PATH = join(TOKENS_DIR, 'semantic.css')
 const CHECK_MODE = process.argv.includes('--check')

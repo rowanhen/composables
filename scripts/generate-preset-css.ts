@@ -1,25 +1,25 @@
 /**
  * generate-preset-css.ts
  *
- * Reads the TypeScript preset source files from packages/showcase/src/presets/
- * and generates standalone CSS files in packages/ui/src/styles/presets/.
+ * Reads the TypeScript preset source files from showcase/src/presets/
+ * and generates standalone CSS files in src/styles/presets/.
  *
  * Usage: bun scripts/generate-preset-css.ts
  */
 import { mkdirSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 
-import { defaultPreset, defaultPresetDark } from '../packages/showcase/src/presets/default'
-import { brutalist, brutalistDark } from '../packages/showcase/src/presets/brutalist'
-import { editorial, editorialDark } from '../packages/showcase/src/presets/editorial'
-import { soft, softDark } from '../packages/showcase/src/presets/soft'
-import { swiss, swissDark } from '../packages/showcase/src/presets/swiss'
-import { midnight, midnightDark } from '../packages/showcase/src/presets/midnight'
-import { retro, retroDark } from '../packages/showcase/src/presets/retro'
-import { vapor, vaporDark } from '../packages/showcase/src/presets/vapor'
-import { nature, natureDark } from '../packages/showcase/src/presets/nature'
+import { defaultPreset, defaultPresetDark } from '../showcase/src/presets/default'
+import { brutalist, brutalistDark } from '../showcase/src/presets/brutalist'
+import { editorial, editorialDark } from '../showcase/src/presets/editorial'
+import { soft, softDark } from '../showcase/src/presets/soft'
+import { swiss, swissDark } from '../showcase/src/presets/swiss'
+import { midnight, midnightDark } from '../showcase/src/presets/midnight'
+import { retro, retroDark } from '../showcase/src/presets/retro'
+import { vapor, vaporDark } from '../showcase/src/presets/vapor'
+import { nature, natureDark } from '../showcase/src/presets/nature'
 
-const OUT_DIR = join(import.meta.dir, '../packages/ui/src/styles/presets')
+const OUT_DIR = join(import.meta.dir, '../src/styles/presets')
 
 interface PresetDef {
 	fileName: string
@@ -114,7 +114,7 @@ function generateCSS(preset: PresetDef): string {
 
    HOW TO USE:
    1. Copy this file into your project's global CSS (e.g. index.css)
-   2. Or import: @import "@leitware/composables-cli/presets/${preset.fileName}.css";
+   2. Or import from the styles directory: @import "src/styles/presets/${preset.fileName}.css";
    3. Add class="dark" to <html> for dark mode.
    ============================================================================ */`
 

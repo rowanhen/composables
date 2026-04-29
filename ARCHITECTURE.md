@@ -47,7 +47,7 @@ The internal layer can evolve — Base UI updates, API changes, internal refacto
 
 ### File Structure
 
-The design system's tokens live in `packages/ui/src/styles/`:
+The design system's tokens live in `src/styles/`:
 
 ```
 styles/
@@ -131,19 +131,19 @@ Per-component tunables exposed in `:root` for preset override support:
 **Full system (with Tailwind):**
 
 ```css
-@import '@leitware/composables-cli/styles.css';
+@import 'src/styles/composable.css';
 ```
 
 **Just the semantic tokens (no Tailwind, standalone):**
 
 ```css
-@import '@leitware/composables-cli/tokens.css';
+@import 'src/styles/tokens.css';
 ```
 
 **A specific preset (standalone, pasteable):**
 
 ```css
-@import '@leitware/composables-cli/presets/brutalist.css';
+@import 'src/styles/presets/brutalist.css';
 ```
 
 ### Customising Tokens
@@ -220,23 +220,20 @@ A preset is just CSS. Override tokens in `:root` and `.dark`:
 
 ---
 
-## Monorepo Structure
+## Project Structure
 
 ```
 composables/
-├── packages/
-│   ├── ui/                     ← Component library (@leitware/composables-cli)
-│   │   ├── src/
-│   │   │   ├── _internal/      ← Low-level primitives
-│   │   │   ├── opinionated/    ← Opinionated wrappers (public API)
-│   │   │   ├── styles/         ← Design tokens, presets, CSS
-│   │   │   ├── tailwind/       ← Tailwind v4 preset
-│   │   │   ├── lib/            ← Utilities (cn, numeric-input)
-│   │   │   ├── hooks/          ← React hooks
-│   │   │   └── rules/          ← Biome lint rules
-│   │   └── tsup.config.ts
-│   └── showcase/               ← Demo site (deployed to GitHub Pages)
+├── src/
+│   ├── _internal/              ← Low-level primitives
+│   ├── opinionated/            ← Opinionated wrappers (public API)
+│   ├── styles/                 ← Design tokens, presets, CSS
+│   ├── tailwind/               ← Tailwind v4 preset
+│   ├── lib/                    ← Utilities (cn, numeric-input)
+│   ├── hooks/                  ← React hooks
+│   └── index.ts                ← Barrel exports
+├── showcase/                   ← Demo site (deployed to Cloudflare Pages)
 ├── scripts/                    ← Token generation & palette management
-├── biome.json                  ← Root Biome config
+├── .oxlintrc.json              ← Oxlint config
 └── tsconfig.json               ← Root TypeScript config
 ```
