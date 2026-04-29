@@ -10,12 +10,12 @@
 
 ## What is this?
 
-Composables is a React component library with ~76 components across forms, layout, data display, feedback, and navigation — all built on [Base UI](https://base-ui.com/) primitives with a CSS custom property token system and 6 built-in design presets.
+Composables is a React component library with ~70 components across forms, layout, data display, feedback, and navigation — all built on [Base UI](https://base-ui.com/) primitives with a CSS custom property token system and 9 built-in design presets.
 
 It uses a **two-tier architecture**:
 
 - **`opinionated/`** — your API surface. These are the components you import and use day-to-day. They have clean, convenient props and sensible defaults.
-- **`_internal/`** — low-level primitives. These are what the opinionated layer is built on. Biome lint rules block you from importing from here directly so that internal refactors don't break your app.
+- **`_internal/`** — low-level primitives. These are what the opinionated layer is built on. Lint rules block you from importing from here directly so that internal refactors don't break your app.
 
 ---
 
@@ -28,13 +28,10 @@ npm install @leitware/composables-cli
 Import the styles in your root CSS file:
 
 ```css
-/* Option A: Full system (with Tailwind v4) */
+/* Full system (with Tailwind v4) */
 @import '@leitware/composables-cli/styles.css';
 
-/* Option B: Just the semantic tokens (no Tailwind, standalone) */
-@import '@leitware/composables-cli/tokens.css';
-
-/* Option C: A specific preset (standalone, pasteable) */
+/* Optionally apply a preset */
 @import '@leitware/composables-cli/presets/brutalist.css';
 ```
 
@@ -56,21 +53,24 @@ The token system is built on CSS custom properties. Everything — colours, spac
 
 ```
 styles/
-├── composable.css              ← Full system (Tailwind + all tokens)
-├── tokens.css                  ← Standalone semantic tokens (no Tailwind)
+├── composable.css              ← Main entry point (composes all layers)
 ├── tokens/
-│   ├── palette.css             ← Primitive color scales
-│   ├── semantic.css            ← Semantic tokens (light + dark)
+│   ├── palette.css             ← Primitive color scales (@theme inline)
+│   ├── semantic.css            ← Semantic tokens (:root + .dark)
 │   ├── components.css          ← Component-level tunables
-│   ├── tailwind-theme.css      ← Tailwind utility registrations
+│   ├── tailwind-theme.css      ← Tailwind utility registrations (@theme)
 │   └── base.css                ← Global base styles
-└── presets/
-    ├── default.css             ← Each preset is a standalone CSS file
-    ├── brutalist.css
-    ├── editorial.css
-    ├── midnight.css
-    ├── soft.css
-    └── swiss.css
+├── presets/                    ← Generated standalone preset CSS files
+│   ├── default.css
+│   ├── brutalist.css
+│   ├── editorial.css
+│   ├── midnight.css
+│   ├── soft.css
+│   ├── swiss.css
+│   ├── retro.css
+│   ├── vapor.css
+│   └── nature.css
+└── presets-data/               ← Source of truth for preset token values (TS)
 ```
 
 ### Customising Tokens
@@ -125,16 +125,19 @@ export default function RootLayout({ children }) {
 
 ## Presets
 
-Six built-in design presets are available as standalone CSS files you can paste into your `index.css`:
+Nine built-in design presets are available as standalone CSS files you can paste into your `index.css`:
 
-| Preset        | Vibe                                   | Fonts                          |
-| ------------- | -------------------------------------- | ------------------------------ |
-| **Default**   | Clean neutral system, works everywhere | Inter                          |
-| **Brutalist** | Bold, high-contrast, raw aesthetic     | Space Grotesk + JetBrains Mono |
-| **Editorial** | Elegant serif-driven editorial layout  | Fraunces + Source Serif 4      |
-| **Midnight**  | Dark-first design with deep surfaces   | Space Grotesk + Inter          |
-| **Soft**      | Rounded, friendly, warm neutrals       | Plus Jakarta Sans + DM Sans    |
-| **Swiss**     | Minimal, grid-disciplined, typographic | Helvetica Neue / system        |
+| Preset        | Vibe                                    | Fonts                          |
+| ------------- | --------------------------------------- | ------------------------------ |
+| **Default**   | Clean neutral system, works everywhere  | Inter                          |
+| **Brutalist** | Bold, high-contrast, raw aesthetic      | Space Grotesk + JetBrains Mono |
+| **Editorial** | Elegant serif-driven editorial layout   | Fraunces + Source Serif 4      |
+| **Midnight**  | Dark-first design with deep surfaces    | Space Grotesk + Inter          |
+| **Soft**      | Rounded, friendly, warm neutrals        | Plus Jakarta Sans + DM Sans    |
+| **Swiss**     | Minimal, grid-disciplined, typographic  | Helvetica Neue / system        |
+| **Retro**     | Warm CRT nostalgia, terminal-inspired   | Monospace                      |
+| **Vapor**     | Dreamy vaporwave, neon pink + cyan      | Space Grotesk                  |
+| **Nature**    | Organic and earthy, forest-cabin warmth | Serif                          |
 
 ```css
 /* Use a preset by importing it */
@@ -145,35 +148,12 @@ Font imports for non-default presets are commented out at the top of `composable
 
 ---
 
-## Lint Rules
+## Linting
 
-Three Biome rule files are shipped with the package:
+The project uses [oxlint](https://oxc-project.github.io/docs/guide/usage/linter.html) for linting and [prettier](https://prettier.io/) for formatting. A custom script checks for arbitrary Tailwind values to enforce design token usage:
 
-### `biome-ui-restricted`
-
-Blocks direct imports from `_internal/`. Enforces the two-tier boundary.
-
-```json
-// biome.json
-{ "extends": ["./src/rules/biome-ui-restricted.json"] }
-```
-
-### `biome-no-direct-icons`
-
-Warns when importing icons directly from `lucide-react` instead of using the `Icon` component.
-
-```json
-// biome.json
-{ "extends": ["./src/rules/biome-no-direct-icons.json"] }
-```
-
-### `biome-a11y`
-
-Enhanced accessibility enforcement rules.
-
-```json
-// biome.json
-{ "extends": ["./src/rules/biome-a11y.json"] }
+```bash
+bun src/scripts/lint-no-arbitrary.ts src showcase/src
 ```
 
 ---
@@ -223,7 +203,6 @@ Live component demo: **[https://rowanhen.github.io/composables/](https://rowanhe
 | `badge`      | Small status label with color variants                              |
 | `avatar`     | Circular image element with automatic initials fallback             |
 | `icon`       | Icon wrapper with size and color variants                           |
-| `glyph`      | Fixed-size square containing a centred character or symbol          |
 | `skeleton`   | Animated placeholder for loading content                            |
 | `progress`   | Horizontal progress bar indicator                                   |
 | `divider`    | Horizontal or vertical divider with solid, dots, and pills variants |
@@ -253,22 +232,17 @@ Live component demo: **[https://rowanhen.github.io/composables/](https://rowanhe
 
 ### Data Display
 
-| Component          | Description                                                                  |
-| ------------------ | ---------------------------------------------------------------------------- |
-| `table`            | Semantic HTML table with styled rows and cells                               |
-| `card`             | Bordered content container with title, description, action, and footer props |
-| `accordion`        | Vertically collapsible content sections with items array API                 |
-| `collapsible`      | Expandable and collapsible content panel with trigger prop                   |
-| `item`             | Flexible list item with title, description, icon, and actions                |
-| `empty`            | Empty state placeholder with icon, title, and description                    |
-| `carousel`         | Horizontally scrollable content slider with items array API                  |
-| `line-item`        | Key-value row with dot/solid/pills leader                                    |
-| `line-item-header` | Section header label for receipt/list layouts                                |
-| `code-block`       | Monospace code display with line numbers                                     |
-| `tree-view`        | ASCII-art collapsible tree with keyboard navigation                          |
-| `block-loader`     | Animated Unicode spinner with 11 sequence modes                              |
-| `list`             | Variant list renderer: arrow, bullet                                         |
-| `pricing-card`     | Pricing card with ledger-style layout and feature list                       |
+| Component     | Description                                                                  |
+| ------------- | ---------------------------------------------------------------------------- |
+| `table`       | Semantic HTML table with styled rows and cells                               |
+| `card`        | Bordered content container with title, description, action, and footer props |
+| `accordion`   | Vertically collapsible content sections with items array API                 |
+| `collapsible` | Expandable and collapsible content panel with trigger prop                   |
+| `item`        | Flexible list item with title, description, icon, and actions                |
+| `empty`       | Empty state placeholder with icon, title, and description                    |
+| `carousel`    | Horizontally scrollable content slider with items array API                  |
+| `code-block`  | Monospace code display with line numbers                                     |
+| `list`        | Variant list renderer: arrow, bullet                                         |
 
 ### Form Components
 

@@ -4,7 +4,6 @@
    This is the entry point that composes all token layers together.
    Import this in your app to get the full design system with Tailwind v4.
 
-   For just the semantic tokens (no Tailwind), use tokens.css instead.
    For a specific preset, use presets/[name].css instead.
 
    File structure:

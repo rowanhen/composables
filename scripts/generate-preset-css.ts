@@ -9,15 +9,15 @@
 import { mkdirSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 
-import { defaultPreset, defaultPresetDark } from '../showcase/src/presets/default'
-import { brutalist, brutalistDark } from '../showcase/src/presets/brutalist'
-import { editorial, editorialDark } from '../showcase/src/presets/editorial'
-import { soft, softDark } from '../showcase/src/presets/soft'
-import { swiss, swissDark } from '../showcase/src/presets/swiss'
-import { midnight, midnightDark } from '../showcase/src/presets/midnight'
-import { retro, retroDark } from '../showcase/src/presets/retro'
-import { vapor, vaporDark } from '../showcase/src/presets/vapor'
-import { nature, natureDark } from '../showcase/src/presets/nature'
+import { defaultPreset, defaultPresetDark } from '../src/styles/presets-data/default'
+import { brutalist, brutalistDark } from '../src/styles/presets-data/brutalist'
+import { editorial, editorialDark } from '../src/styles/presets-data/editorial'
+import { soft, softDark } from '../src/styles/presets-data/soft'
+import { swiss, swissDark } from '../src/styles/presets-data/swiss'
+import { midnight, midnightDark } from '../src/styles/presets-data/midnight'
+import { retro, retroDark } from '../src/styles/presets-data/retro'
+import { vapor, vaporDark } from '../src/styles/presets-data/vapor'
+import { nature, natureDark } from '../src/styles/presets-data/nature'
 
 const OUT_DIR = join(import.meta.dir, '../src/styles/presets')
 

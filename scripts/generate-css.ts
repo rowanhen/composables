@@ -30,22 +30,22 @@ function generateThemePaletteLines(): string[] {
 	for (const palette of palettes) {
 		// Solid scale
 		for (const step of steps) {
-			lines.push(`  --${palette.name}-${step}: ${palette.solid[step]};`)
+			lines.push(`\t--${palette.name}-${step}: ${palette.solid[step].toLowerCase()};`)
 		}
 		// Alpha scale
 		for (const step of steps) {
-			lines.push(`  --${palette.name}-alpha-${step}: ${palette.alpha[step]};`)
+			lines.push(`\t--${palette.name}-alpha-${step}: ${palette.alpha[step].toLowerCase()};`)
 		}
 	}
 
 	// Base colours
-	lines.push(`  --base-white: ${baseColors.white};`)
-	lines.push(`  --base-black: ${baseColors.black};`)
+	lines.push(`\t--base-white: ${baseColors.white.toLowerCase()};`)
+	lines.push(`\t--base-black: ${baseColors.black.toLowerCase()};`)
 
 	// Overlays
 	for (const step of steps) {
 		const val = overlaysBlackAlpha[step]
-		if (val) lines.push(`  --overlays-black-alpha-${step}: ${val};`)
+		if (val) lines.push(`\t--overlays-black-alpha-${step}: ${val.toLowerCase()};`)
 	}
 
 	return lines

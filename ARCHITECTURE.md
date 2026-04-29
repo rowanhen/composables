@@ -39,7 +39,7 @@ The internal layer can evolve — Base UI updates, API changes, internal refacto
 
 ### The Lint Boundary
 
-`biome-ui-restricted.json` configures Biome's `noRestrictedImports` rule to error on any import from `@/components/_internal/*` in app code. The rule has an override that allows the opinionated layer itself to import from internal (that's its job).
+The opinionated layer imports from `_internal/` — app code should not. This boundary keeps internal refactors from breaking your app.
 
 ---
 
@@ -52,20 +52,23 @@ The design system's tokens live in `src/styles/`:
 ```
 styles/
 ├── composable.css              ← Main entry point (composes all layers)
-├── tokens.css                  ← Standalone semantic tokens (no Tailwind needed)
 ├── tokens/
 │   ├── palette.css             ← Primitive color scales (@theme inline)
 │   ├── semantic.css            ← Semantic tokens (:root + .dark)
 │   ├── components.css          ← Component-level tunables
-│   ├── tailwind-theme.css      ← Tailwind utility registrations
+│   ├── tailwind-theme.css      ← Tailwind utility registrations (@theme)
 │   └── base.css                ← Global base styles
-└── presets/
-    ├── default.css             ← Standalone preset CSS files
-    ├── brutalist.css
-    ├── editorial.css
-    ├── midnight.css
-    ├── soft.css
-    └── swiss.css
+├── presets/                    ← Generated standalone preset CSS files
+│   ├── default.css
+│   ├── brutalist.css
+│   ├── editorial.css
+│   ├── midnight.css
+│   ├── soft.css
+│   ├── swiss.css
+│   ├── retro.css
+│   ├── vapor.css
+│   └── nature.css
+└── presets-data/               ← Source of truth for preset token values (TS)
 ```
 
 ### Three Tiers of Tokens
@@ -134,12 +137,6 @@ Per-component tunables exposed in `:root` for preset override support:
 @import 'src/styles/composable.css';
 ```
 
-**Just the semantic tokens (no Tailwind, standalone):**
-
-```css
-@import 'src/styles/tokens.css';
-```
-
 **A specific preset (standalone, pasteable):**
 
 ```css
@@ -202,6 +199,9 @@ A preset typically overrides:
 | **Midnight**  | Space Grotesk + Inter, dark-first, indigo accent, glow shadows        |
 | **Soft**      | Plus Jakarta Sans + DM Sans, 0.75rem radius, lavender tones           |
 | **Swiss**     | Helvetica Neue system stack, 0 radius, 0 shadow, tight leading        |
+| **Retro**     | Monospace, amber phosphor glow, terminal-inspired CRT nostalgia       |
+| **Vapor**     | Space Grotesk, neon pink + cyan, deep purple-black vaporwave          |
+| **Nature**    | Serif typography, warm greens, rich browns, organic earthy feel       |
 
 ### Creating a Custom Preset
 
@@ -228,12 +228,17 @@ composables/
 │   ├── _internal/              ← Low-level primitives
 │   ├── opinionated/            ← Opinionated wrappers (public API)
 │   ├── styles/                 ← Design tokens, presets, CSS
-│   ├── tailwind/               ← Tailwind v4 preset
+│   │   ├── tokens/             ← Token CSS layers
+│   │   ├── presets/            ← Generated preset CSS files
+│   │   └── presets-data/       ← Source of truth for preset values (TS)
 │   ├── lib/                    ← Utilities (cn, numeric-input)
 │   ├── hooks/                  ← React hooks
 │   └── index.ts                ← Barrel exports
 ├── showcase/                   ← Demo site (deployed to Cloudflare Pages)
 ├── scripts/                    ← Token generation & palette management
+│   ├── palette.ts              ← Source of truth for color scales
+│   ├── generate-css.ts         ← Regenerates palette.css + semantic.css
+│   └── generate-preset-css.ts  ← Regenerates presets/*.css from presets-data/
 ├── .oxlintrc.json              ← Oxlint config
 └── tsconfig.json               ← Root TypeScript config
 ```

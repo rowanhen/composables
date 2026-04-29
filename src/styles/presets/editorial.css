@@ -5,7 +5,7 @@
 
    HOW TO USE:
    1. Copy this file into your project's global CSS (e.g. index.css)
-   2. Or import: @import "@leitware/composables-cli/presets/editorial.css";
+   2. Or import from the styles directory: @import "src/styles/presets/editorial.css";
    3. Add class="dark" to <html> for dark mode.
    ============================================================================ */
 
