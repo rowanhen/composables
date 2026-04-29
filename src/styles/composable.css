@@ -7,9 +7,9 @@
    For a specific preset, use presets/[name].css instead.
 
    File structure:
-     tokens/palette.css        — Primitive color scales (@theme inline)
+     tokens/palette.css        — Primitive color scales (build-time + runtime)
      tokens/tailwind-theme.css — Tailwind utility registrations (@theme)
-     tokens/semantic.css       — Semantic tokens (:root + .dark)
+     tokens/semantic.css       — Semantic role tokens (:root + .dark)
      tokens/components.css     — Component-level tunables
      tokens/base.css           — Global base styles (@layer base)
    ============================================================================ */

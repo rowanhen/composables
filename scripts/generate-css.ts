@@ -2,192 +2,125 @@
 /**
  * generate-css.ts
  *
- * Reads palette.ts and regenerates the colour sections of the token CSS files.
- * Only the palette colours within `@theme inline { ... }` (palette.css) and the
- * `:root { ... }` / `.dark { ... }` blocks (semantic.css) are affected;
- * non-colour content is preserved.
+ * Reads palette.ts and regenerates tokens/palette.css with:
+ *   1. @theme inline  — build-time values for Tailwind utility generation
+ *   2. :root           — runtime CSS custom properties (light mode)
+ *   3. .dark           — runtime CSS custom properties (dark mode)
+ *
+ * semantic.css is NOT touched — it contains only semantic token mappings.
  *
  * Usage:
- *   bun scripts/generate-css.ts           # overwrites token files in-place
- *   bun scripts/generate-css.ts --check   # exits non-zero if files would change
+ *   bun scripts/generate-css.ts           # overwrites palette.css in-place
+ *   bun scripts/generate-css.ts --check   # exits non-zero if file would change
  */
 
 import { readFileSync, writeFileSync } from 'node:fs'
 import { join, dirname } from 'node:path'
-import { palettes, steps, baseColors, overlaysBlackAlpha } from './palette.ts'
+import {
+	palettes,
+	darkPalettes,
+	steps,
+	baseColors,
+	darkBaseColors,
+	overlaysBlackAlpha,
+	darkOverlaysBlackAlpha,
+} from './palette.ts'
+import type { PaletteScale, Step } from './palette.ts'
 
 const ROOT = dirname(dirname(import.meta.path))
 const TOKENS_DIR = join(ROOT, 'src/styles/tokens')
 const PALETTE_CSS_PATH = join(TOKENS_DIR, 'palette.css')
-const SEMANTIC_CSS_PATH = join(TOKENS_DIR, 'semantic.css')
 const CHECK_MODE = process.argv.includes('--check')
 
-/* ── Generate @theme inline palette block ─────────────────────────── */
+/* ── Helpers ─────────────────────────────────────────────────────────── */
 
-function generateThemePaletteLines(): string[] {
+function generatePaletteLines(
+	scales: PaletteScale[],
+	base: { white: string; black: string },
+	overlays: Record<Step, string>,
+	indent: string,
+): string[] {
 	const lines: string[] = []
 
-	for (const palette of palettes) {
-		// Solid scale
+	for (const palette of scales) {
 		for (const step of steps) {
-			lines.push(`\t--${palette.name}-${step}: ${palette.solid[step].toLowerCase()};`)
+			lines.push(`${indent}--${palette.name}-${step}: ${palette.solid[step].toLowerCase()};`)
 		}
-		// Alpha scale
 		for (const step of steps) {
-			lines.push(`\t--${palette.name}-alpha-${step}: ${palette.alpha[step].toLowerCase()};`)
+			lines.push(`${indent}--${palette.name}-alpha-${step}: ${palette.alpha[step].toLowerCase()};`)
 		}
 	}
 
-	// Base colours
-	lines.push(`\t--base-white: ${baseColors.white.toLowerCase()};`)
-	lines.push(`\t--base-black: ${baseColors.black.toLowerCase()};`)
+	lines.push(`${indent}--base-white: ${base.white.toLowerCase()};`)
+	lines.push(`${indent}--base-black: ${base.black.toLowerCase()};`)
 
-	// Overlays
 	for (const step of steps) {
-		const val = overlaysBlackAlpha[step]
-		if (val) lines.push(`\t--overlays-black-alpha-${step}: ${val.toLowerCase()};`)
+		const val = overlays[step]
+		if (val) lines.push(`${indent}--overlays-black-alpha-${step}: ${val.toLowerCase()};`)
 	}
 
 	return lines
 }
 
-/* ── Replace palette section in @theme inline ─────────────────────── */
+/* ── Generate full palette.css ───────────────────────────────────────── */
 
-function replacePaletteInTheme(css: string): string {
-	const newPaletteLines = generateThemePaletteLines()
+function generatePaletteCSS(): string {
+	const lightLines = generatePaletteLines(palettes, baseColors, overlaysBlackAlpha, '\t')
+	const darkLines = generatePaletteLines(darkPalettes, darkBaseColors, darkOverlaysBlackAlpha, '\t')
 
-	// Find the first @theme inline block and replace palette lines within it
-	const themeStart = css.indexOf('@theme inline {')
-	if (themeStart === -1) {
-		console.error("Could not find '@theme inline {' in CSS")
-		process.exit(1)
-	}
+	return `/* ============================================================================
+   Primitive Color Palette
+   ============================================================================
+   Raw color values from a fixed scale. 10 families × 12 stops (50–1000)
+   plus alpha variants, base colors, and overlay alphas.
 
-	// Find the closing brace for this theme block
-	let braceCount = 0
-	let themeEnd = -1
-	for (let i = themeStart; i < css.length; i++) {
-		if (css[i] === '{') braceCount++
-		if (css[i] === '}') {
-			braceCount--
-			if (braceCount === 0) {
-				themeEnd = i
-				break
-			}
-		}
-	}
+   This file serves TWO purposes from the same data:
 
-	if (themeEnd === -1) {
-		console.error('Could not find closing brace for @theme inline')
-		process.exit(1)
-	}
+   1. @theme inline  — Resolved at BUILD TIME by Tailwind so it can generate
+      utility classes (e.g. bg-blue-800, text-neutral-950). These values are
+      baked into the compiled CSS and cannot change at runtime.
 
-	const themeContent = css.substring(themeStart, themeEnd + 1)
-	const lines = themeContent.split('\n')
+   2. :root / .dark  — Standard CSS custom properties available at RUNTIME.
+      These power var(--blue-800) references in component code and can be
+      swapped by presets or dark mode.
 
-	// Identify which lines are palette colour lines (to be replaced)
-	const paletteNames = palettes.map((p) => p.name)
-	const palettePattern = new RegExp(
-		`^\\s+--(${paletteNames.join('|')})-(?:alpha-)?\\d+:|^\\s+--base-(white|black):|^\\s+--overlays-black-alpha-\\d+:`,
-	)
+   Both sections are generated from the same source of truth:
+     scripts/palette.ts → scripts/generate-css.ts
 
-	// Find first and last palette line indices
-	let firstPaletteIdx = -1
-	let lastPaletteIdx = -1
-	for (let i = 0; i < lines.length; i++) {
-		if (palettePattern.test(lines[i])) {
-			if (firstPaletteIdx === -1) firstPaletteIdx = i
-			lastPaletteIdx = i
-		}
-	}
+   To regenerate:  bun scripts/generate-css.ts
+   ============================================================================ */
 
-	if (firstPaletteIdx === -1) {
-		console.error('Could not find palette lines in @theme inline block')
-		process.exit(1)
-	}
-
-	// Replace palette lines
-	const before = lines.slice(0, firstPaletteIdx)
-	const after = lines.slice(lastPaletteIdx + 1)
-	const newThemeContent = [...before, ...newPaletteLines, ...after].join('\n')
-
-	return css.substring(0, themeStart) + newThemeContent + css.substring(themeEnd + 1)
+/* ── Build-time: Tailwind utility class generation ────────────────────── */
+@theme inline {
+${lightLines.join('\n')}
 }
 
-/* ── Replace palette section in :root ─────────────────────────────── */
-
-function replacePaletteInRoot(css: string): string {
-	const newPaletteLines = generateThemePaletteLines()
-
-	// Find :root {
-	const rootStart = css.indexOf(':root {')
-	if (rootStart === -1) return css
-
-	let braceCount = 0
-	let rootEnd = -1
-	for (let i = rootStart; i < css.length; i++) {
-		if (css[i] === '{') braceCount++
-		if (css[i] === '}') {
-			braceCount--
-			if (braceCount === 0) {
-				rootEnd = i
-				break
-			}
-		}
-	}
-
-	if (rootEnd === -1) return css
-
-	const rootContent = css.substring(rootStart, rootEnd + 1)
-	const lines = rootContent.split('\n')
-
-	const paletteNames = palettes.map((p) => p.name)
-	const palettePattern = new RegExp(
-		`^\\s+--(${paletteNames.join('|')})-(?:alpha-)?\\d+:|^\\s+--base-(white|black):|^\\s+--overlays-black-alpha-\\d+:`,
-	)
-
-	let firstPaletteIdx = -1
-	let lastPaletteIdx = -1
-	for (let i = 0; i < lines.length; i++) {
-		if (palettePattern.test(lines[i])) {
-			if (firstPaletteIdx === -1) firstPaletteIdx = i
-			lastPaletteIdx = i
-		}
-	}
-
-	if (firstPaletteIdx === -1) return css
-
-	const before = lines.slice(0, firstPaletteIdx)
-	const after = lines.slice(lastPaletteIdx + 1)
-	const newRootContent = [...before, ...newPaletteLines, ...after].join('\n')
-
-	return css.substring(0, rootStart) + newRootContent + css.substring(rootEnd + 1)
+/* ── Runtime: CSS custom properties (light) ───────────────────────────── */
+:root {
+${lightLines.join('\n')}
 }
 
-/* ── Main ─────────────────────────────────────────────────────────── */
+/* ── Runtime: CSS custom properties (dark) ────────────────────────────── */
+.dark {
+${darkLines.join('\n')}
+}
+`
+}
 
-const originalPalette = readFileSync(PALETTE_CSS_PATH, 'utf-8')
-const originalSemantic = readFileSync(SEMANTIC_CSS_PATH, 'utf-8')
+/* ── Main ─────────────────────────────────────────────────────────────── */
 
-const resultPalette = replacePaletteInTheme(originalPalette)
-const resultSemantic = replacePaletteInRoot(originalSemantic)
+const original = readFileSync(PALETTE_CSS_PATH, 'utf-8')
+const result = generatePaletteCSS()
 
 if (CHECK_MODE) {
-	const paletteChanged = resultPalette !== originalPalette
-	const semanticChanged = resultSemantic !== originalSemantic
-	if (paletteChanged || semanticChanged) {
-		console.error('✗ CSS token files are out of sync with palette.ts')
-		if (paletteChanged) console.error('  - tokens/palette.css needs updating')
-		if (semanticChanged) console.error('  - tokens/semantic.css needs updating')
+	if (result !== original) {
+		console.error('✗ tokens/palette.css is out of sync with palette.ts')
 		console.error('  Run: bun scripts/generate-css.ts')
 		process.exit(1)
 	}
-	console.log('✓ CSS token files are in sync with palette.ts')
+	console.log('✓ tokens/palette.css is in sync with palette.ts')
 	process.exit(0)
 }
 
-writeFileSync(PALETTE_CSS_PATH, resultPalette, 'utf-8')
-writeFileSync(SEMANTIC_CSS_PATH, resultSemantic, 'utf-8')
-console.log(
-	'✓ Regenerated colour sections in tokens/palette.css and tokens/semantic.css from palette.ts',
-)
+writeFileSync(PALETTE_CSS_PATH, result, 'utf-8')
+console.log('✓ Regenerated tokens/palette.css from palette.ts')

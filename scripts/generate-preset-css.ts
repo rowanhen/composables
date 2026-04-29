@@ -118,8 +118,8 @@ function generateCSS(preset: PresetDef): string {
    3. Add class="dark" to <html> for dark mode.
    ============================================================================ */`
 
-	const rootBlock = `:root {\n${tokensToCSS(preset.light, '  ')}\n}`
-	const darkBlock = `.dark {\n${tokensToCSS(preset.dark, '  ')}\n}`
+	const rootBlock = `:root {\n${tokensToCSS(preset.light, '\t')}\n}`
+	const darkBlock = `.dark {\n${tokensToCSS(preset.dark, '\t')}\n}`
 
 	return `${header}\n\n${rootBlock}\n\n${darkBlock}\n`
 }

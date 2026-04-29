@@ -53,8 +53,8 @@ The design system's tokens live in `src/styles/`:
 styles/
 ├── composable.css              ← Main entry point (composes all layers)
 ├── tokens/
-│   ├── palette.css             ← Primitive color scales (@theme inline)
-│   ├── semantic.css            ← Semantic tokens (:root + .dark)
+│   ├── palette.css             ← Primitive color scales (build-time + runtime)
+│   ├── semantic.css            ← Semantic role tokens (:root + .dark)
 │   ├── components.css          ← Component-level tunables
 │   ├── tailwind-theme.css      ← Tailwind utility registrations (@theme)
 │   └── base.css                ← Global base styles
@@ -75,7 +75,7 @@ styles/
 
 #### 1. Primitive Palette
 
-Raw colour values from a fixed scale. These don't change between light/dark mode — they're reference values.
+Raw colour values from a fixed scale. `palette.css` contains three blocks from the same data: `@theme inline` (build-time, for Tailwind utilities), `:root` (runtime light), and `.dark` (runtime dark). The build-time block lets Tailwind generate utility classes; the runtime blocks let component code use `var(--blue-800)` etc. and have them swap in dark mode.
 
 ```css
 --neutral-50: #fdfdfdff;
@@ -87,7 +87,7 @@ Raw colour values from a fixed scale. These don't change between light/dark mode
 
 Colour families: `neutral`, `red`, `amber`, `green`, `blue`, `orange`, `jade`, `sky`, `violet`, `pink` — each with 12 stops (50–1000) and alpha variants.
 
-Source of truth: `scripts/palette.ts` → `scripts/generate-css.ts`.
+Source of truth: `scripts/palette.ts` (light + dark) → `scripts/generate-css.ts` → `tokens/palette.css`.
 
 #### 2. Semantic Tokens
 
@@ -237,7 +237,7 @@ composables/
 ├── showcase/                   ← Demo site (deployed to Cloudflare Pages)
 ├── scripts/                    ← Token generation & palette management
 │   ├── palette.ts              ← Source of truth for color scales
-│   ├── generate-css.ts         ← Regenerates palette.css + semantic.css
+│   ├── generate-css.ts         ← Regenerates palette.css from palette.ts
 │   └── generate-preset-css.ts  ← Regenerates presets/*.css from presets-data/
 ├── .oxlintrc.json              ← Oxlint config
 └── tsconfig.json               ← Root TypeScript config

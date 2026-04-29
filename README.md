@@ -55,8 +55,8 @@ The token system is built on CSS custom properties. Everything — colours, spac
 styles/
 ├── composable.css              ← Main entry point (composes all layers)
 ├── tokens/
-│   ├── palette.css             ← Primitive color scales (@theme inline)
-│   ├── semantic.css            ← Semantic tokens (:root + .dark)
+│   ├── palette.css             ← Primitive color scales (build-time + runtime)
+│   ├── semantic.css            ← Semantic role tokens (:root + .dark)
 │   ├── components.css          ← Component-level tunables
 │   ├── tailwind-theme.css      ← Tailwind utility registrations (@theme)
 │   └── base.css                ← Global base styles
