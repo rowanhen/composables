@@ -18,7 +18,6 @@ import {
 	CellRow,
 	StatCell,
 } from '@/components/_internal/layout-bento'
-import { Glyph } from '@/components/_internal/glyph'
 import { VStack } from '@/components/_internal/stack'
 import { Typography } from '@/components/_internal/typography'
 import { ShowcaseGroup, ShowcaseSection } from './showcase-section'
@@ -67,9 +66,9 @@ function BentoSplitDemo() {
 			<BentoSplit
 				icon={
 					<VStack gap={2} align="center">
-						<Glyph size={64} variant="filled">
+						<div className="size-16 rounded-md bg-primary text-primary-foreground flex items-center justify-center text-2xl font-bold">
 							◆
-						</Glyph>
+						</div>
 						<div className="text-xs font-bold text-center">ACME</div>
 					</VStack>
 				}
@@ -291,9 +290,9 @@ function CellRowDemo() {
 				<CellRow>
 					<div className="bg-card p-4 md:w-48 md:shrink-0">
 						<div className="text-[10px] text-muted-foreground uppercase mb-1">Stats</div>
-						<Glyph size={32} variant="filled">
+						<div className="size-8 rounded-md bg-primary text-primary-foreground flex items-center justify-center text-sm font-bold">
 							▲
-						</Glyph>
+						</div>
 					</div>
 					<div className="bg-card p-4 flex-1">
 						<StatCell label="This week" value="+$4,200" large />

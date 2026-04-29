@@ -57,7 +57,6 @@ export { AspectRatio } from './opinionated/aspect-ratio'
 export { Avatar, AvatarFallback, AvatarImage, type AvatarProps } from './opinionated/avatar'
 
 export { Badge, type BadgeProps } from './opinionated/badge'
-export { BlockLoader, type BlockLoaderProps } from './opinionated/block-loader'
 
 export {
 	Breadcrumb,
@@ -223,7 +222,6 @@ export { FormSlider, type FormSliderProps } from './opinionated/form-slider'
 export { FormSwitch, type FormSwitchProps } from './opinionated/form-switch'
 export { FormTextarea, type FormTextareaProps } from './opinionated/form-textarea'
 
-export { Glyph } from './opinionated/glyph'
 export { Grid } from './opinionated/grid'
 export { GridOverlay, type GridOverlayProps } from './opinionated/grid-overlay'
 
@@ -265,9 +263,6 @@ export { Section, NewspaperGrid, NewspaperCell } from './opinionated/layout'
 
 export { BentoGrid, BentoCell } from './opinionated/layout-bento'
 
-export { LineItem } from './opinionated/line-item'
-export { LineItemHeader } from './opinionated/line-item-header'
-
 export {
 	List,
 	ListArrowItem,
@@ -297,8 +292,6 @@ export {
 	PopoverTrigger,
 	type PopoverProps,
 } from './opinionated/popover'
-
-export { PricingCard, type PricingProduct, type PricingCardProps } from './opinionated/pricing-card'
 
 export {
 	Progress,
@@ -401,8 +394,6 @@ export { ThemeInjector } from './opinionated/theme-injector'
 export { Toggle, type ToggleProps } from './opinionated/toggle'
 
 export { Tooltip, TooltipContent, TooltipTrigger, type TooltipProps } from './opinionated/tooltip'
-
-export { TreeView } from './opinionated/tree-view'
 
 export { Typography } from './opinionated/typography'
 

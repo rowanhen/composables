@@ -17,7 +17,6 @@ import {
 	AvatarShowcase,
 	BadgesShowcase,
 	BentoShowcase,
-	BlockLoaderShowcase,
 	BreadcrumbShowcase,
 	ButtonsShowcase,
 	CalendarShowcase,
@@ -40,9 +39,6 @@ import {
 	ListShowcase,
 	PaginationShowcase,
 	PopoverShowcase,
-	GlyphShowcase,
-	LineItemShowcase,
-	PricingCardShowcase,
 	ProgressShowcase,
 	ResizableShowcase,
 	ResponsiveGridShowcase,
@@ -61,7 +57,6 @@ import {
 	ToggleShowcase,
 	ThemeInjector,
 	TooltipShowcase,
-	TreeViewShowcase,
 	TypographyShowcase,
 } from './components'
 
@@ -124,7 +119,6 @@ export function App() {
 					<TableShowcase />
 					<CarouselShowcase />
 					<ProgressShowcase />
-					<TreeViewShowcase />
 					<CodeBlockShowcase />
 
 					{/* Form Controls */}
@@ -143,12 +137,6 @@ export function App() {
 					<SkeletonShowcase />
 					<SeparatorShowcase />
 					<DividerShowcase />
-					<BlockLoaderShowcase />
-
-					{/* LineItem, Glyph & Pricing */}
-					<LineItemShowcase />
-					<GlyphShowcase />
-					<PricingCardShowcase />
 				</VStack>
 
 				<Spacer size={24} />
