@@ -1,0 +1,16 @@
+export {
+	Confirmation as AIConfirmation,
+	ConfirmationTitle as AIConfirmationTitle,
+	ConfirmationRequest as AIConfirmationRequest,
+	ConfirmationAccepted as AIConfirmationAccepted,
+	ConfirmationRejected as AIConfirmationRejected,
+	ConfirmationActions as AIConfirmationActions,
+	ConfirmationAction as AIConfirmationAction,
+	type ConfirmationProps as AIConfirmationProps,
+	type ConfirmationTitleProps as AIConfirmationTitleProps,
+	type ConfirmationRequestProps as AIConfirmationRequestProps,
+	type ConfirmationAcceptedProps as AIConfirmationAcceptedProps,
+	type ConfirmationRejectedProps as AIConfirmationRejectedProps,
+	type ConfirmationActionsProps as AIConfirmationActionsProps,
+	type ConfirmationActionProps as AIConfirmationActionProps,
+} from '../_internal/ai-elements/confirmation'

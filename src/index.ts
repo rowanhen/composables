@@ -399,3 +399,21 @@ export { Typography } from './opinionated/typography'
 
 // Token config panel (advanced)
 export { TokenConfigPanel } from './opinionated/token-config-panel'
+
+// ── AI Elements (chatbot components) ───────────────────────────────────
+
+export * from './opinionated/ai-message'
+export * from './opinionated/ai-conversation'
+export * from './opinionated/ai-prompt-input'
+export * from './opinionated/ai-reasoning'
+export * from './opinionated/ai-suggestion'
+export * from './opinionated/ai-tool'
+export * from './opinionated/ai-plan'
+export * from './opinionated/ai-task'
+export * from './opinionated/ai-chain-of-thought'
+export * from './opinionated/ai-sources'
+export * from './opinionated/ai-confirmation'
+export * from './opinionated/ai-attachments'
+export * from './opinionated/ai-inline-citation'
+export * from './opinionated/ai-shimmer'
+export * from './opinionated/ai-code-block'

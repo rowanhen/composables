@@ -10,6 +10,7 @@ import { Typography } from '@/components/_internal/typography'
 
 /* ---- Showcase components ---- */
 import {
+	AIElementsShowcase,
 	AccordionShowcase,
 	AlertDialogShowcase,
 	AlertsShowcase,
@@ -128,6 +129,9 @@ export function App() {
 					<SliderShowcase />
 					<CalendarShowcase />
 					<DropzoneShowcase />
+
+					{/* AI Elements */}
+					<AIElementsShowcase />
 
 					{/* Utilities */}
 					<ScrollAreaShowcase />

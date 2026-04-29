@@ -1,0 +1,18 @@
+export {
+	Plan as AIPlan,
+	PlanHeader as AIPlanHeader,
+	PlanTitle as AIPlanTitle,
+	PlanDescription as AIPlanDescription,
+	PlanAction as AIPlanAction,
+	PlanContent as AIPlanContent,
+	PlanFooter as AIPlanFooter,
+	PlanTrigger as AIPlanTrigger,
+	type PlanProps as AIPlanProps,
+	type PlanHeaderProps as AIPlanHeaderProps,
+	type PlanTitleProps as AIPlanTitleProps,
+	type PlanDescriptionProps as AIPlanDescriptionProps,
+	type PlanActionProps as AIPlanActionProps,
+	type PlanContentProps as AIPlanContentProps,
+	type PlanFooterProps as AIPlanFooterProps,
+	type PlanTriggerProps as AIPlanTriggerProps,
+} from '../_internal/ai-elements/plan'

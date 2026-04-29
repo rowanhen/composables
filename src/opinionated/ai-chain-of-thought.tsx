@@ -1,0 +1,16 @@
+export {
+	ChainOfThought as AIChainOfThought,
+	ChainOfThoughtHeader as AIChainOfThoughtHeader,
+	ChainOfThoughtStep as AIChainOfThoughtStep,
+	ChainOfThoughtContent as AIChainOfThoughtContent,
+	ChainOfThoughtSearchResults as AIChainOfThoughtSearchResults,
+	ChainOfThoughtSearchResult as AIChainOfThoughtSearchResult,
+	ChainOfThoughtImage as AIChainOfThoughtImage,
+	type ChainOfThoughtProps as AIChainOfThoughtProps,
+	type ChainOfThoughtHeaderProps as AIChainOfThoughtHeaderProps,
+	type ChainOfThoughtStepProps as AIChainOfThoughtStepProps,
+	type ChainOfThoughtContentProps as AIChainOfThoughtContentProps,
+	type ChainOfThoughtSearchResultsProps as AIChainOfThoughtSearchResultsProps,
+	type ChainOfThoughtSearchResultProps as AIChainOfThoughtSearchResultProps,
+	type ChainOfThoughtImageProps as AIChainOfThoughtImageProps,
+} from '../_internal/ai-elements/chain-of-thought'

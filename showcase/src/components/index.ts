@@ -1,3 +1,4 @@
+export { AIElementsShowcase } from './ai-elements-showcase'
 export { AccordionShowcase } from './accordion-showcase'
 export { AlertDialogShowcase } from './alert-dialog-showcase'
 export { AlertsShowcase } from './alerts-showcase'
