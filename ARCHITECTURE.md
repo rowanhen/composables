@@ -119,11 +119,11 @@ Per-component tunables exposed in `:root` for preset override support:
 
 ```css
 :root {
-	--radius: 0.5rem;
-	--border-width-base: 0.0625rem;
-	--font-size-base: 1rem;
-	--leading-base: 1.33;
-	--font-sans: 'Inter Variable', sans-serif;
+	--radius: 0rem;
+	--border-width-base: 0.125rem;
+	--font-size-base: 1.15rem;
+	--leading-base: 1.3;
+	--font-sans: 'IBM Plex Mono', sans-serif;
 	--focus-ring-style: solid;
 	--bento-gap: var(--border-width-base);
 }
@@ -131,17 +131,21 @@ Per-component tunables exposed in `:root` for preset override support:
 
 ### Using Tokens
 
-**Full system (with Tailwind):**
+The package ships pre-compiled CSS (`dist/styles.css`) that includes all design tokens and Tailwind utility classes. Downstream consumers don't need Tailwind installed.
 
 ```css
-@import 'src/styles/composable.css';
+@import '@leitware/composables-cli/styles.css';
 ```
 
 **A specific preset (standalone, pasteable):**
 
 ```css
-@import 'src/styles/presets/brutalist.css';
+@import '@leitware/composables-cli/presets/brutalist.css';
 ```
+
+### Build Pipeline
+
+The source CSS (`src/styles/composable.css`) is compiled at build time via `bun run build:css`, which wraps it with `@import 'tailwindcss'` and `@source` directives, then runs `@tailwindcss/cli` to produce `dist/styles.css`. This bakes in all tokens, base styles, and utility classes used by the components.
 
 ### Customising Tokens
 
@@ -164,7 +168,7 @@ The tokens are registered into Tailwind's theme via `@theme` blocks in `tokens/t
 ```css
 @theme {
 	--text-sm: calc(var(--font-size-base) * 0.875);
-	--font-sans: 'Inter Variable', sans-serif;
+	--font-sans: 'IBM Plex Mono', sans-serif;
 	--radius-lg: var(--radius);
 }
 ```
@@ -193,7 +197,7 @@ A preset typically overrides:
 
 | Preset        | Key overrides                                                         |
 | ------------- | --------------------------------------------------------------------- |
-| **Default**   | Inter, 1rem, 0.5rem radius, neutral primary                           |
+| **Default**   | IBM Plex Mono, 1.15rem, 0 radius, neutral primary                     |
 | **Brutalist** | Space Grotesk + JetBrains Mono, 0 radius, high contrast, hard shadows |
 | **Editorial** | Fraunces (headings) + Source Serif 4, generous leading, subtle radius |
 | **Midnight**  | Space Grotesk + Inter, dark-first, indigo accent, glow shadows        |

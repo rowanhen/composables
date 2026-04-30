@@ -1,7 +1,12 @@
 {
-	"name": "@leitware/composables",
+	"name": "@leitware/composables-cli",
 	"private": true,
 	"type": "module",
+	"exports": {
+		".": "./src/index.ts",
+		"./styles.css": "./dist/styles.css",
+		"./presets/*": "./dist/presets/*"
+	},
 	"scripts": {
 		"dev": "vite showcase",
 		"lint": "oxlint",
@@ -10,10 +15,140 @@
 		"typecheck": "tsc --noEmit",
 		"prepare": "husky",
 		"generate:css": "bun scripts/generate-css.ts",
+		"build:css": "bun scripts/build-css.ts",
+		"test:css": "bun scripts/test-downstream-css.ts",
 		"deploy:showcase": "./scripts/deploy-showcase.sh"
 	},
 	"dependencies": {
 		"@base-ui/react": "^1.3.0",
+		"class-variance-authority": "^0.7.1",
+		"clsx": "^2.1.1",
+		"lucide-react": "^1.14.0",
+		"tailwind-merge": "^3.5.0"
+	},
+	"peerDependencies": {
+		"react": "^18.0.0 || ^19.0.0",
+		"react-dom": "^18.0.0 || ^19.0.0",
+		"@fontsource-variable/inter": "^5.0.0",
+		"@fontsource-variable/bricolage-grotesque": "^5.0.0",
+		"@fontsource-variable/dm-sans": "^5.0.0",
+		"@fontsource-variable/fraunces": "^5.0.0",
+		"@fontsource-variable/source-serif-4": "^5.0.0",
+		"@fontsource-variable/space-grotesk": "^5.0.0",
+		"@fontsource-variable/plus-jakarta-sans": "^5.0.0",
+		"@fontsource-variable/jetbrains-mono": "^5.0.0",
+		"@fontsource/ibm-plex-mono": "^5.0.0",
+		"@fontsource/ibm-plex-sans": "^5.0.0",
+		"ai": "^6.0.0",
+		"shiki": "^4.0.0",
+		"streamdown": "^2.0.0",
+		"@streamdown/cjk": "^1.0.0",
+		"@streamdown/code": "^1.0.0",
+		"@streamdown/math": "^1.0.0",
+		"@streamdown/mermaid": "^1.0.0",
+		"use-stick-to-bottom": "^1.0.0",
+		"nanoid": "^5.0.0",
+		"@radix-ui/react-use-controllable-state": "^1.0.0",
+		"react-day-picker": "^9.0.0",
+		"react-dropzone": "^15.0.0",
+		"embla-carousel-react": "^8.0.0",
+		"react-resizable-panels": "^4.0.0",
+		"sonner": "^2.0.0",
+		"cmdk": "^1.0.0",
+		"react-colorful": "^5.0.0",
+		"motion": "^12.0.0",
+		"radix-ui": "^1.0.0"
+	},
+	"peerDependenciesMeta": {
+		"@fontsource-variable/inter": {
+			"optional": true
+		},
+		"@fontsource-variable/bricolage-grotesque": {
+			"optional": true
+		},
+		"@fontsource-variable/dm-sans": {
+			"optional": true
+		},
+		"@fontsource-variable/fraunces": {
+			"optional": true
+		},
+		"@fontsource-variable/source-serif-4": {
+			"optional": true
+		},
+		"@fontsource-variable/space-grotesk": {
+			"optional": true
+		},
+		"@fontsource-variable/plus-jakarta-sans": {
+			"optional": true
+		},
+		"@fontsource-variable/jetbrains-mono": {
+			"optional": true
+		},
+		"@fontsource/ibm-plex-mono": {
+			"optional": true
+		},
+		"@fontsource/ibm-plex-sans": {
+			"optional": true
+		},
+		"ai": {
+			"optional": true
+		},
+		"shiki": {
+			"optional": true
+		},
+		"streamdown": {
+			"optional": true
+		},
+		"@streamdown/cjk": {
+			"optional": true
+		},
+		"@streamdown/code": {
+			"optional": true
+		},
+		"@streamdown/math": {
+			"optional": true
+		},
+		"@streamdown/mermaid": {
+			"optional": true
+		},
+		"use-stick-to-bottom": {
+			"optional": true
+		},
+		"nanoid": {
+			"optional": true
+		},
+		"@radix-ui/react-use-controllable-state": {
+			"optional": true
+		},
+		"react-day-picker": {
+			"optional": true
+		},
+		"react-dropzone": {
+			"optional": true
+		},
+		"embla-carousel-react": {
+			"optional": true
+		},
+		"react-resizable-panels": {
+			"optional": true
+		},
+		"sonner": {
+			"optional": true
+		},
+		"cmdk": {
+			"optional": true
+		},
+		"react-colorful": {
+			"optional": true
+		},
+		"motion": {
+			"optional": true
+		},
+		"radix-ui": {
+			"optional": true
+		}
+	},
+	"devDependencies": {
 		"@fontsource-variable/bricolage-grotesque": "^5.2.10",
 		"@fontsource-variable/dm-sans": "^5.2.8",
 		"@fontsource-variable/fraunces": "^5.2.9",
@@ -29,14 +164,20 @@
 		"@streamdown/code": "^1.1.1",
 		"@streamdown/math": "^1.0.2",
 		"@streamdown/mermaid": "^1.0.2",
+		"@tailwindcss/cli": "^4.2.2",
+		"@tailwindcss/vite": "^4.2.2",
+		"@types/node": "^25.6.0",
+		"@types/react": "^19.2.14",
+		"@types/react-dom": "^19.2.3",
+		"@vitejs/plugin-react": "^6.0.1",
 		"ai": "^6.0.169",
-		"class-variance-authority": "^0.7.1",
-		"clsx": "^2.1.1",
 		"cmdk": "^1.1.1",
 		"embla-carousel-react": "^8.6.0",
-		"lucide-react": "^1.14.0",
+		"husky": "^9.1.7",
 		"motion": "^12.38.0",
 		"nanoid": "^5.1.9",
+		"oxlint": "^1.61.0",
+		"prettier": "^3.8.3",
 		"radix-ui": "^1.4.3",
 		"react": "^19.2.5",
 		"react-colorful": "^5.6.1",
@@ -48,21 +189,10 @@
 		"shiki": "^4.0.2",
 		"sonner": "^2.0.7",
 		"streamdown": "^2.5.0",
-		"tailwind-merge": "^3.5.0",
-		"tw-animate-css": "^1.4.0",
-		"use-stick-to-bottom": "^1.1.3"
-	},
-	"devDependencies": {
-		"@tailwindcss/vite": "^4.2.2",
-		"@types/node": "^25.6.0",
-		"@types/react": "^19.2.14",
-		"@types/react-dom": "^19.2.3",
-		"@vitejs/plugin-react": "^6.0.1",
-		"husky": "^9.1.7",
-		"oxlint": "^1.61.0",
-		"prettier": "^3.8.3",
 		"tailwindcss": "^4.2.2",
+		"tw-animate-css": "^1.4.0",
 		"typescript": "^6.0.2",
+		"use-stick-to-bottom": "^1.1.3",
 		"vite": "^8.0.8",
 		"wrangler": "^4.85.0"
 	}

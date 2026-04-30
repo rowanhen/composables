@@ -6,9 +6,12 @@
    font imports needed to demo all presets.
    ============================================================================ */
 
+@import 'tailwindcss';
+@import 'tw-animate-css';
 @import '../../../src/styles/composable.css';
 
-/* ── Preset font imports (Inter is already bundled by the package) ────────── */
+/* ── Font imports ─────────────────────────────────────────────────────────── */
+@import '@fontsource-variable/inter';
 @import '@fontsource-variable/dm-sans';
 @import '@fontsource-variable/fraunces';
 @import '@fontsource-variable/source-serif-4';

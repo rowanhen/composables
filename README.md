@@ -28,12 +28,13 @@ npm install @leitware/composables-cli
 Import the styles in your root CSS file:
 
 ```css
-/* Full system (with Tailwind v4) */
 @import '@leitware/composables-cli/styles.css';
 
 /* Optionally apply a preset */
 @import '@leitware/composables-cli/presets/brutalist.css';
 ```
+
+The CSS is pre-compiled — no Tailwind installation or configuration needed downstream.
 
 Then import components:
 
@@ -42,6 +43,28 @@ import { Button } from '@leitware/composables-cli'
 import { FormInput } from '@leitware/composables-cli'
 import { Card } from '@leitware/composables-cli'
 ```
+
+---
+
+## Optional Dependencies
+
+Only the core (layout, forms, typography, feedback) is installed by default. Components that depend on heavier libraries require you to install the relevant package:
+
+| Install when using…                                           | Package                                                                                                                                                                                  |
+| ------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Calendar`, `FormCalendarPopover`                             | `react-day-picker`                                                                                                                                                                       |
+| `Carousel`                                                    | `embla-carousel-react`                                                                                                                                                                   |
+| `Dropzone`, `FormDropzone`, `FormMultiDropzone`               | `react-dropzone`                                                                                                                                                                         |
+| `ResizablePanels`                                             | `react-resizable-panels`                                                                                                                                                                 |
+| `Sonner` (toasts)                                             | `sonner`                                                                                                                                                                                 |
+| AI elements (`AIMessage`, `AIConversation`, `AIPromptInput…`) | `ai`, `shiki`, `streamdown`, `@streamdown/cjk`, `@streamdown/code`, `@streamdown/math`, `@streamdown/mermaid`, `use-stick-to-bottom`, `nanoid`, `@radix-ui/react-use-controllable-state` |
+| `ThemeInjector` / `TokenConfigPanel`                          | `react-colorful`                                                                                                                                                                         |
+| Default preset fonts                                          | `@fontsource-variable/inter`                                                                                                                                                             |
+| Brutalist / Midnight / Vapor preset fonts                     | `@fontsource-variable/space-grotesk`                                                                                                                                                     |
+| Editorial preset fonts                                        | `@fontsource-variable/fraunces`, `@fontsource-variable/source-serif-4`                                                                                                                   |
+| Soft preset fonts                                             | `@fontsource-variable/plus-jakarta-sans`, `@fontsource-variable/dm-sans`                                                                                                                 |
+
+If you use a component without its optional dependency installed, you'll get a clear module-not-found error at build time telling you exactly what to add.
 
 ---
 
@@ -129,7 +152,7 @@ Nine built-in design presets are available as standalone CSS files you can paste
 
 | Preset        | Vibe                                    | Fonts                          |
 | ------------- | --------------------------------------- | ------------------------------ |
-| **Default**   | Clean neutral system, works everywhere  | Inter                          |
+| **Default**   | Clean neutral system, works everywhere  | Inter + Bricolage Grotesque    |
 | **Brutalist** | Bold, high-contrast, raw aesthetic      | Space Grotesk + JetBrains Mono |
 | **Editorial** | Elegant serif-driven editorial layout   | Fraunces + Source Serif 4      |
 | **Midnight**  | Dark-first design with deep surfaces    | Space Grotesk + Inter          |

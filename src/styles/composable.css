@@ -1,10 +1,9 @@
 /* ============================================================================
-   @leitware/composables — Main Stylesheet
+   @leitware/composables-cli — Main Stylesheet
    ============================================================================
-   This is the entry point that composes all token layers together.
-   Import this in your app to get the full design system with Tailwind v4.
-
-   For a specific preset, use presets/[name].css instead.
+   Design tokens, theme registration, and base styles for the component system.
+   This file does NOT include Tailwind itself — the downstream app owns that.
+   See README.md "Quick Start" for the full import pattern.
 
    File structure:
      tokens/palette.css        — Primitive color scales (build-time + runtime)
@@ -14,31 +13,7 @@
      tokens/base.css           — Global base styles (@layer base)
    ============================================================================ */
 
-@import 'tailwindcss';
-@import 'tw-animate-css';
 @import 'shadcn/tailwind.css';
-@import '@fontsource-variable/inter';
-
-/* ── Preset font imports ──────────────────────────────────────────────────
-   Uncomment the @import(s) for the preset you are using. Inter is already
-   bundled above (default preset). For other presets:
-
-   Editorial  — Fraunces (heading) + Source Serif 4 (body):
-     @import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,100..900&family=Source+Serif+4:opsz,wght@8..60,200..900&display=swap");
-
-   Midnight   — Space Grotesk (heading, already used by Brutalist too):
-     @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap");
-
-   Soft       — Plus Jakarta Sans (heading) + DM Sans (body):
-     @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200..800&family=DM+Sans:opsz,wght@9..40,100..900&display=swap");
-
-   Brutalist  — Space Grotesk (heading + body):
-     @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap");
-
-   Swiss      — Helvetica Neue / Arial — system fonts, no import needed.
-──────────────────────────────────────────────────────────────────────────── */
-
-@source "./**/*.{ts,tsx}";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -55,7 +30,7 @@
 	padding-inline: calc(var(--spacing) * 6);
 }
 
-/* ── Token layers ──────────────────────────────────────────────��───────── */
+/* ── Token layers ─────────────────────────────────────────────────────── */
 @import './tokens/palette.css';
 @import './tokens/tailwind-theme.css';
 @import './tokens/semantic.css';

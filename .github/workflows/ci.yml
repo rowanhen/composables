@@ -27,5 +27,9 @@ jobs:
         run: bun src/scripts/lint-no-arbitrary.ts src showcase/src
       - name: Verify generated CSS
         run: bun scripts/generate-css.ts --check
+      - name: Build CSS
+        run: bun run build:css
+      - name: Test downstream CSS
+        run: bun run test:css
       - name: Build showcase
         run: bunx vite build showcase

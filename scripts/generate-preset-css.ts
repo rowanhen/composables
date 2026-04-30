@@ -108,13 +108,13 @@ function tokensToCSS(tokens: Record<string, string>, indent: string): string {
 
 function generateCSS(preset: PresetDef): string {
 	const header = `/* ============================================================================
-   @leitware/composables — ${preset.displayName} Preset
+   @leitware/composables-cli — ${preset.displayName} Preset
    ============================================================================
    ${preset.description}
 
    HOW TO USE:
    1. Copy this file into your project's global CSS (e.g. index.css)
-   2. Or import from the styles directory: @import "src/styles/presets/${preset.fileName}.css";
+   2. Or import the preset: @import "@leitware/composables-cli/presets/${preset.fileName}.css";
    3. Add class="dark" to <html> for dark mode.
    ============================================================================ */`
 

@@ -1,11 +1,11 @@
 /* ============================================================================
-   @leitware/composables — Midnight Preset
+   @leitware/composables-cli — Midnight Preset
    ============================================================================
    Dark-first premium theme. Deep blue-black backgrounds with an electric indigo accent.
 
    HOW TO USE:
    1. Copy this file into your project's global CSS (e.g. index.css)
-   2. Or import from the styles directory: @import "src/styles/presets/midnight.css";
+   2. Or import the preset: @import "@leitware/composables-cli/presets/midnight.css";
    3. Add class="dark" to <html> for dark mode.
    ============================================================================ */
 

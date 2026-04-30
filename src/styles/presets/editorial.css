@@ -1,11 +1,11 @@
 /* ============================================================================
-   @leitware/composables — Editorial Preset
+   @leitware/composables-cli — Editorial Preset
    ============================================================================
    Sophisticated editorial/magazine aesthetic. Warm, refined, unhurried.
 
    HOW TO USE:
    1. Copy this file into your project's global CSS (e.g. index.css)
-   2. Or import from the styles directory: @import "src/styles/presets/editorial.css";
+   2. Or import the preset: @import "@leitware/composables-cli/presets/editorial.css";
    3. Add class="dark" to <html> for dark mode.
    ============================================================================ */
 

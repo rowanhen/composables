@@ -1,11 +1,11 @@
 /* ============================================================================
-   @leitware/composables — Retro Preset
+   @leitware/composables-cli — Retro Preset
    ============================================================================
    Warm CRT nostalgia. Amber phosphor glow, monospace everything, terminal-inspired.
 
    HOW TO USE:
    1. Copy this file into your project's global CSS (e.g. index.css)
-   2. Or import from the styles directory: @import "src/styles/presets/retro.css";
+   2. Or import the preset: @import "@leitware/composables-cli/presets/retro.css";
    3. Add class="dark" to <html> for dark mode.
    ============================================================================ */
 

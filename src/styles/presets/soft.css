@@ -1,11 +1,11 @@
 /* ============================================================================
-   @leitware/composables — Soft Preset
+   @leitware/composables-cli — Soft Preset
    ============================================================================
    Warm, approachable, rounded. Modern SaaS at its most inviting.
 
    HOW TO USE:
    1. Copy this file into your project's global CSS (e.g. index.css)
-   2. Or import from the styles directory: @import "src/styles/presets/soft.css";
+   2. Or import the preset: @import "@leitware/composables-cli/presets/soft.css";
    3. Add class="dark" to <html> for dark mode.
    ============================================================================ */
 

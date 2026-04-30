@@ -4,3 +4,5 @@ dist
 *.log
 coverage
 .vite
+.test-downstream
+.build-css-input.css
