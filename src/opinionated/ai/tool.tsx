@@ -11,4 +11,4 @@ export {
 	type ToolInputProps as AIToolInputProps,
 	type ToolOutputProps as AIToolOutputProps,
 	type ToolPart,
-} from '../_internal/ai-elements/tool'
+} from '../../_internal/ai-elements/tool'

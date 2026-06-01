@@ -10,4 +10,4 @@ export {
 	type ConversationEmptyStateProps as AIConversationEmptyStateProps,
 	type ConversationScrollButtonProps as AIConversationScrollButtonProps,
 	type ConversationDownloadProps as AIConversationDownloadProps,
-} from '../_internal/ai-elements/conversation'
+} from '../../_internal/ai-elements/conversation'

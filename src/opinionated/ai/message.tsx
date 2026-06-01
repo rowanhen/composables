@@ -23,4 +23,4 @@ export {
 	type MessageBranchPreviousProps as AIMessageBranchPreviousProps,
 	type MessageBranchNextProps as AIMessageBranchNextProps,
 	type MessageBranchPageProps as AIMessageBranchPageProps,
-} from '../_internal/ai-elements/message'
+} from '../../_internal/ai-elements/message'

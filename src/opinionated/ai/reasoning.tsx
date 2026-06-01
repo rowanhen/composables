@@ -6,4 +6,4 @@ export {
 	type ReasoningProps as AIReasoningProps,
 	type ReasoningTriggerProps as AIReasoningTriggerProps,
 	type ReasoningContentProps as AIReasoningContentProps,
-} from '../_internal/ai-elements/reasoning'
+} from '../../_internal/ai-elements/reasoning'

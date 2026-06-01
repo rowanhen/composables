@@ -19,4 +19,4 @@ export {
 	type CodeBlockLanguageSelectorValueProps as AICodeBlockLanguageSelectorValueProps,
 	type CodeBlockLanguageSelectorContentProps as AICodeBlockLanguageSelectorContentProps,
 	type CodeBlockLanguageSelectorItemProps as AICodeBlockLanguageSelectorItemProps,
-} from '../_internal/ai-elements/code-block'
+} from '../../_internal/ai-elements/code-block'

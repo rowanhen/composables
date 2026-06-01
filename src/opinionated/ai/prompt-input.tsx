@@ -26,4 +26,4 @@ export {
 	type PromptInputProps as AIPromptInputProps,
 	type PromptInputSubmitProps as AIPromptInputSubmitProps,
 	type PromptInputMessage,
-} from '../_internal/ai-elements/prompt-input'
+} from '../../_internal/ai-elements/prompt-input'

@@ -7,4 +7,4 @@ export {
 	type SourcesTriggerProps as AISourcesTriggerProps,
 	type SourcesContentProps as AISourcesContentProps,
 	type SourceProps as AISourceProps,
-} from '../_internal/ai-elements/sources'
+} from '../../_internal/ai-elements/sources'

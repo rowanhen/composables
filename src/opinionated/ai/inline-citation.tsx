@@ -27,4 +27,4 @@ export {
 	type InlineCitationCarouselNextProps as AIInlineCitationCarouselNextProps,
 	type InlineCitationSourceProps as AIInlineCitationSourceProps,
 	type InlineCitationQuoteProps as AIInlineCitationQuoteProps,
-} from '../_internal/ai-elements/inline-citation'
+} from '../../_internal/ai-elements/inline-citation'

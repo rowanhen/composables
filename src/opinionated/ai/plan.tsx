@@ -15,4 +15,4 @@ export {
 	type PlanContentProps as AIPlanContentProps,
 	type PlanFooterProps as AIPlanFooterProps,
 	type PlanTriggerProps as AIPlanTriggerProps,
-} from '../_internal/ai-elements/plan'
+} from '../../_internal/ai-elements/plan'

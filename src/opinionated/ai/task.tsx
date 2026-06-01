@@ -9,4 +9,4 @@ export {
 	type TaskContentProps as AITaskContentProps,
 	type TaskItemProps as AITaskItemProps,
 	type TaskItemFileProps as AITaskItemFileProps,
-} from '../_internal/ai-elements/task'
+} from '../../_internal/ai-elements/task'

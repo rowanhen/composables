@@ -13,4 +13,4 @@ export {
 	type ChainOfThoughtSearchResultsProps as AIChainOfThoughtSearchResultsProps,
 	type ChainOfThoughtSearchResultProps as AIChainOfThoughtSearchResultProps,
 	type ChainOfThoughtImageProps as AIChainOfThoughtImageProps,
-} from '../_internal/ai-elements/chain-of-thought'
+} from '../../_internal/ai-elements/chain-of-thought'

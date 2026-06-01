@@ -13,4 +13,4 @@ export {
 	type ConfirmationRejectedProps as AIConfirmationRejectedProps,
 	type ConfirmationActionsProps as AIConfirmationActionsProps,
 	type ConfirmationActionProps as AIConfirmationActionProps,
-} from '../_internal/ai-elements/confirmation'
+} from '../../_internal/ai-elements/confirmation'

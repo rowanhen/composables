@@ -4,6 +4,7 @@
 	"type": "module",
 	"exports": {
 		".": "./src/index.ts",
+		"./ai": "./src/opinionated/ai/index.ts",
 		"./styles.css": "./dist/styles.css",
 		"./presets/*": "./dist/presets/*"
 	},

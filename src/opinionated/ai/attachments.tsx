@@ -24,4 +24,4 @@ export {
 	type AttachmentData,
 	type AttachmentMediaCategory,
 	type AttachmentVariant,
-} from '../_internal/ai-elements/attachments'
+} from '../../_internal/ai-elements/attachments'

@@ -44,23 +44,29 @@ import { FormInput } from '@leitware/composables-cli'
 import { Card } from '@leitware/composables-cli'
 ```
 
+Optional AI components are exposed from their own entrypoint:
+
+```tsx
+import { AIMessage, AIPromptInput } from '@leitware/composables-cli/ai'
+```
+
 ---
 
 ## Optional Dependencies
 
 Only the core (layout, forms, typography, feedback) is installed by default. Components that depend on heavier libraries require you to install the relevant package:
 
-| Install when using…                                           | Package                                                                                                                                                                                  |
-| ------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Calendar`, `FormCalendarPopover`                             | `react-day-picker`                                                                                                                                                                       |
-| `Carousel`                                                    | `embla-carousel-react`                                                                                                                                                                   |
-| `Dropzone`, `FormDropzone`, `FormMultiDropzone`               | `react-dropzone`                                                                                                                                                                         |
-| `ResizablePanels`                                             | `react-resizable-panels`                                                                                                                                                                 |
-| `Sonner` (toasts)                                             | `sonner`                                                                                                                                                                                 |
-| AI elements (`AIMessage`, `AIConversation`, `AIPromptInput…`) | `ai`, `shiki`, `streamdown`, `@streamdown/cjk`, `@streamdown/code`, `@streamdown/math`, `@streamdown/mermaid`, `use-stick-to-bottom`, `nanoid`, `@radix-ui/react-use-controllable-state` |
-| `ThemeInjector` / `TokenConfigPanel`                          | `react-colorful`                                                                                                                                                                         |
-| Default preset fonts                                          | `@fontsource-variable/inter`                                                                                                                                                             |
-| Brutalist preset fonts                                        | `@fontsource-variable/space-grotesk`, `@fontsource-variable/jetbrains-mono`                                                                                                              |
+| Install when using…                             | Package                                                                                                                                                                                  |
+| ----------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Calendar`, `FormCalendarPopover`               | `react-day-picker`                                                                                                                                                                       |
+| `Carousel`                                      | `embla-carousel-react`                                                                                                                                                                   |
+| `Dropzone`, `FormDropzone`, `FormMultiDropzone` | `react-dropzone`                                                                                                                                                                         |
+| `ResizablePanels`                               | `react-resizable-panels`                                                                                                                                                                 |
+| `Sonner` (toasts)                               | `sonner`                                                                                                                                                                                 |
+| AI elements from `@leitware/composables-cli/ai` | `ai`, `shiki`, `streamdown`, `@streamdown/cjk`, `@streamdown/code`, `@streamdown/math`, `@streamdown/mermaid`, `use-stick-to-bottom`, `nanoid`, `@radix-ui/react-use-controllable-state` |
+| `ThemeInjector` / `TokenConfigPanel`            | `react-colorful`                                                                                                                                                                         |
+| Default preset fonts                            | `@fontsource-variable/inter`                                                                                                                                                             |
+| Brutalist preset fonts                          | `@fontsource-variable/space-grotesk`, `@fontsource-variable/jetbrains-mono`                                                                                                              |
 
 If you use a component without its optional dependency installed, you'll get a clear module-not-found error at build time telling you exactly what to add.
 
