@@ -75,7 +75,7 @@ export const ConversationScrollButton = ({
 		!isAtBottom && (
 			<Button
 				className={cn(
-					'absolute bottom-4 left-[50%] translate-x-[-50%] rounded-full dark:bg-page dark:hover:bg-muted-hover',
+					'absolute bottom-4 left-[50%] translate-x-[-50%] rounded-full dark:bg-page',
 					className,
 				)}
 				onClick={handleScrollToBottom}
@@ -135,10 +135,7 @@ export const ConversationDownload = ({
 
 	return (
 		<Button
-			className={cn(
-				'absolute top-4 right-4 rounded-full dark:bg-page dark:hover:bg-muted-hover',
-				className,
-			)}
+			className={cn('absolute top-4 right-4 rounded-full dark:bg-page', className)}
 			onClick={handleDownload}
 			size="icon"
 			type="button"

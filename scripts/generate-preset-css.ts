@@ -11,13 +11,6 @@ import { join } from 'node:path'
 
 import { defaultPreset, defaultPresetDark } from '../src/styles/presets-data/default'
 import { brutalist, brutalistDark } from '../src/styles/presets-data/brutalist'
-import { editorial, editorialDark } from '../src/styles/presets-data/editorial'
-import { soft, softDark } from '../src/styles/presets-data/soft'
-import { swiss, swissDark } from '../src/styles/presets-data/swiss'
-import { midnight, midnightDark } from '../src/styles/presets-data/midnight'
-import { retro, retroDark } from '../src/styles/presets-data/retro'
-import { vapor, vaporDark } from '../src/styles/presets-data/vapor'
-import { nature, natureDark } from '../src/styles/presets-data/nature'
 
 const OUT_DIR = join(import.meta.dir, '../src/styles/presets')
 
@@ -44,59 +37,6 @@ const presets: PresetDef[] = [
 			'Raw, architectural, uncompromising. Structural honesty: things look exactly like what they are.',
 		light: brutalist,
 		dark: brutalistDark,
-	},
-	{
-		fileName: 'editorial',
-		displayName: 'Editorial',
-		description: 'Sophisticated editorial/magazine aesthetic. Warm, refined, unhurried.',
-		light: editorial,
-		dark: editorialDark,
-	},
-	{
-		fileName: 'soft',
-		displayName: 'Soft',
-		description: 'Warm, approachable, rounded. Modern SaaS at its most inviting.',
-		light: soft,
-		dark: softDark,
-	},
-	{
-		fileName: 'swiss',
-		displayName: 'Swiss',
-		description:
-			'International Typographic Style. Absolute grid discipline, zero radius, zero shadow.',
-		light: swiss,
-		dark: swissDark,
-	},
-	{
-		fileName: 'midnight',
-		displayName: 'Midnight',
-		description:
-			'Dark-first premium theme. Deep blue-black backgrounds with an electric indigo accent.',
-		light: midnight,
-		dark: midnightDark,
-	},
-	{
-		fileName: 'retro',
-		displayName: 'Retro',
-		description:
-			'Warm CRT nostalgia. Amber phosphor glow, monospace everything, terminal-inspired.',
-		light: retro,
-		dark: retroDark,
-	},
-	{
-		fileName: 'vapor',
-		displayName: 'Vapor',
-		description: 'Dreamy vaporwave. Neon pink meets cool cyan on deep purple-black.',
-		light: vapor,
-		dark: vaporDark,
-	},
-	{
-		fileName: 'nature',
-		displayName: 'Nature',
-		description:
-			'Organic and earthy. Warm greens, rich browns, serif typography, forest-cabin warmth.',
-		light: nature,
-		dark: natureDark,
 	},
 ]
 

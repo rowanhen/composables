@@ -1,31 +1,29 @@
 import { Button as ButtonPrimitive } from '@base-ui/react/button'
 import { cva, type VariantProps } from 'class-variance-authority'
-import { cn, FOCUS_RING, FOCUS_RING_DESTRUCTIVE } from '../lib/utils'
+import { cn, FOCUS_RING, FOCUS_RING_DESTRUCTIVE, HOVER_RING } from '../lib/utils'
 
 const buttonVariants = cva(
-	`${FOCUS_RING} rounded-md border border-transparent bg-clip-padding text-xs/relaxed font-medium [&_svg:not([class*='size-'])]:size-4 inline-flex items-center justify-center whitespace-nowrap transition-[opacity,box-shadow] disabled:pointer-events-none disabled:opacity-disabled [&_svg]:pointer-events-none shrink-0 [&_svg]:shrink-0 outline-none group/button select-none`,
+	`${FOCUS_RING} ${HOVER_RING} rounded-md border border-transparent bg-clip-padding text-xs/relaxed font-medium [&_svg:not([class*='size-'])]:size-4 inline-flex items-center justify-center whitespace-nowrap transition-[opacity,box-shadow,transform] active:scale-[var(--active-scale)] disabled:pointer-events-none disabled:opacity-disabled [&_svg]:pointer-events-none shrink-0 [&_svg]:shrink-0 outline-none group/button select-none`,
 	{
 		variants: {
 			variant: {
-				default:
-					'bg-primary text-primary-foreground hover:bg-primary-hover active:bg-primary-active',
+				default: 'bg-primary text-primary-foreground',
 				outline:
-					'border-stroke hover:bg-muted-hover hover:text-foreground active:bg-muted-active aria-expanded:bg-muted aria-expanded:text-foreground',
+					'border-stroke hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground',
 				secondary:
-					'bg-secondary text-secondary-foreground hover:bg-secondary-hover active:bg-secondary-active aria-expanded:bg-secondary aria-expanded:text-secondary-foreground',
-				ghost:
-					'hover:bg-muted-hover hover:text-foreground active:bg-muted-active aria-expanded:bg-muted aria-expanded:text-foreground',
-				destructive: `bg-surface-critical hover:bg-surface-critical-hover active:bg-surface-critical-active ${FOCUS_RING_DESTRUCTIVE} text-danger border-stroke-critical`,
-				success:
-					'bg-surface-success text-success border-stroke-success hover:bg-surface-success-hover active:bg-surface-success-active',
-				warning:
-					'bg-surface-warning text-warning border-stroke-warning hover:bg-surface-warning-hover active:bg-surface-warning-active',
-				info: 'bg-surface-info text-info border-stroke-info hover:bg-surface-info-hover active:bg-surface-info-active',
-				brand:
-					'bg-surface-brand text-brand border-stroke-brand hover:bg-surface-brand-hover active:bg-surface-brand-active',
-				emphasis:
-					'bg-surface-emphasis text-emphasis border-stroke-emphasis hover:bg-surface-emphasis-hover active:bg-surface-emphasis-active',
-				link: 'text-primary underline-offset-4 hover:underline',
+					'bg-secondary text-secondary-foreground aria-expanded:bg-secondary aria-expanded:text-secondary-foreground',
+				ghost: 'hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground',
+				destructive: `bg-surface-critical ${FOCUS_RING_DESTRUCTIVE} text-danger border-stroke-critical`,
+				success: 'bg-surface-success text-success border-stroke-success',
+				warning: 'bg-surface-warning text-warning border-stroke-warning',
+				info: 'bg-surface-info text-info border-stroke-info',
+				brand: 'bg-surface-brand text-brand border-stroke-brand',
+				'brand-2': 'bg-surface-brand-2 text-brand-2 border-stroke-brand-2',
+				'brand-3': 'bg-surface-brand-3 text-brand-3 border-stroke-brand-3',
+				'brand-4': 'bg-surface-brand-4 text-brand-4 border-stroke-brand-4',
+				'brand-5': 'bg-surface-brand-5 text-brand-5 border-stroke-brand-5',
+				emphasis: 'bg-surface-emphasis text-emphasis border-stroke-emphasis',
+				link: 'text-primary underline-offset-4 hover:underline hover:ring-0',
 			},
 			size: {
 				default:

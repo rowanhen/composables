@@ -16,6 +16,16 @@ const alertVariants = cva(
 				success:
 					'bg-surface-success border-stroke-success text-success *:data-[slot=alert-description]:text-success *:[svg]:text-icon-success',
 				info: 'bg-surface-info border-stroke-info text-info *:data-[slot=alert-description]:text-info *:[svg]:text-icon-info',
+				brand:
+					'bg-surface-brand border-stroke-brand text-brand *:data-[slot=alert-description]:text-brand/90 *:[svg]:text-icon-brand',
+				'brand-2':
+					'bg-surface-brand-2 border-stroke-brand-2 text-brand-2 *:data-[slot=alert-description]:text-brand-2/90 *:[svg]:text-icon-brand-2',
+				'brand-3':
+					'bg-surface-brand-3 border-stroke-brand-3 text-brand-3 *:data-[slot=alert-description]:text-brand-3/90 *:[svg]:text-icon-brand-3',
+				'brand-4':
+					'bg-surface-brand-4 border-stroke-brand-4 text-brand-4 *:data-[slot=alert-description]:text-brand-4/90 *:[svg]:text-icon-brand-4',
+				'brand-5':
+					'bg-surface-brand-5 border-stroke-brand-5 text-brand-5 *:data-[slot=alert-description]:text-brand-5/90 *:[svg]:text-icon-brand-5',
 			},
 		},
 		defaultVariants: {

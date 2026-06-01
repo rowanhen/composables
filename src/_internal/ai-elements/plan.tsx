@@ -114,7 +114,7 @@ export type PlanTriggerProps = ComponentProps<typeof CollapsibleTrigger>
 export const PlanTrigger = ({ className, ...props }: PlanTriggerProps) => (
 	<CollapsibleTrigger
 		className={cn(
-			'inline-flex items-center justify-center rounded-md hover:bg-muted-hover size-8',
+			'inline-flex items-center justify-center rounded-md hover:ring-[length:var(--hover-ring-width)] hover:ring-[color:var(--hover-ring-color)]/30 size-8',
 			className,
 		)}
 		data-slot="plan-trigger"

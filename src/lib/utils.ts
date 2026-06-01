@@ -12,6 +12,14 @@ export function cn(...inputs: ClassValue[]) {
 export const FOCUS_RING =
 	'focus-visible:border-[var(--focus-ring-color)] focus-visible:ring-[color:var(--focus-ring-color)]/30 focus-visible:ring-[length:var(--focus-ring-width)] aria-invalid:ring-stroke-critical/20 dark:aria-invalid:ring-stroke-critical/40 aria-invalid:border-stroke-critical dark:aria-invalid:border-stroke-critical/50 aria-invalid:ring-[length:var(--focus-ring-width)]'
 
+/**
+ * Centralised hover ring style for all interactive elements.
+ * Uses the same accent color as focus but thinner — creates a clear
+ * escalation: hover = hint of accent, focus = full accent border + wider ring.
+ */
+export const HOVER_RING =
+	'hover:ring-[length:var(--hover-ring-width)] hover:ring-[color:var(--hover-ring-color)]/30'
+
 /** Destructive-variant focus override – layer on top of FOCUS_RING. */
 export const FOCUS_RING_DESTRUCTIVE =
 	'focus-visible:ring-stroke-critical/20 dark:focus-visible:ring-stroke-critical/40 focus-visible:border-stroke-critical/40'

@@ -36,6 +36,26 @@ export function AlertsShowcase() {
 						<AlertTitle>Destructive Alert</AlertTitle>
 						<AlertDescription>Something went wrong. Please try again.</AlertDescription>
 					</Alert>
+					<Alert variant="brand">
+						<AlertTitle>Brand Alert</AlertTitle>
+						<AlertDescription>Primary brand identity messaging.</AlertDescription>
+					</Alert>
+					<Alert variant="brand-2">
+						<AlertTitle>Brand 2 Alert</AlertTitle>
+						<AlertDescription>Secondary brand identity messaging.</AlertDescription>
+					</Alert>
+					<Alert variant="brand-3">
+						<AlertTitle>Brand 3 Alert</AlertTitle>
+						<AlertDescription>Tertiary brand identity messaging.</AlertDescription>
+					</Alert>
+					<Alert variant="brand-4">
+						<AlertTitle>Brand 4 Alert</AlertTitle>
+						<AlertDescription>Fourth brand identity messaging.</AlertDescription>
+					</Alert>
+					<Alert variant="brand-5">
+						<AlertTitle>Brand 5 Alert</AlertTitle>
+						<AlertDescription>Fifth brand identity messaging.</AlertDescription>
+					</Alert>
 				</ShowcaseGroup>
 				<ShowcaseGroup label="Without icons">
 					<Alert variant="info">

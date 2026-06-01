@@ -19,6 +19,10 @@ export function BadgesShowcase() {
 						<Badge variant="warning">Warning</Badge>
 						<Badge variant="info">Info</Badge>
 						<Badge variant="brand">Brand</Badge>
+						<Badge variant="brand-2">Brand 2</Badge>
+						<Badge variant="brand-3">Brand 3</Badge>
+						<Badge variant="brand-4">Brand 4</Badge>
+						<Badge variant="brand-5">Brand 5</Badge>
 						<Badge variant="emphasis">Emphasis</Badge>
 						<Badge variant="link">Link</Badge>
 					</HStack>

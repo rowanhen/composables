@@ -67,6 +67,10 @@
 		--focus-ring-offset: 0px;
 		--focus-ring-style: solid;
 
+		/* ── Hover ring ────────────────────────────────────────────────────── */
+		--hover-ring-color: var(--ring);
+		--hover-ring-width: var(--border-width-base);
+
 		/* ── Bento layout ──────────────────────────────────────────────────── */
 		--bento-gap: var(--border-width-base, 0.0625rem);
 
