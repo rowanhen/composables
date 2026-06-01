@@ -19,7 +19,7 @@
  */
 
 import { readdirSync, readFileSync, statSync } from 'node:fs'
-import { join, extname, basename } from 'node:path'
+import { join, extname } from 'node:path'
 
 const TARGET_EXTENSIONS = new Set(['.tsx', '.ts', '.jsx', '.js'])
 const SKIP_DIRS = new Set(['node_modules', '.next', 'dist', 'build', '.git'])

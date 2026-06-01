@@ -1,0 +1,20 @@
+#!/usr/bin/env sh
+set -e
+
+echo "Running oxlint..."
+bunx oxlint
+
+echo "Running prettier check..."
+bunx prettier --check .
+
+echo "Running typecheck..."
+bun run typecheck
+
+echo "Verifying generated palette CSS..."
+bun scripts/generate-css.ts --check
+
+echo "Verifying generated preset CSS..."
+bun scripts/generate-preset-css.ts --check
+
+echo "Checking semantic token system..."
+bun run test:tokens

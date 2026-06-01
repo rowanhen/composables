@@ -60,14 +60,7 @@ styles/
 │   └── base.css                ← Global base styles
 ├── presets/                    ← Generated standalone preset CSS files
 │   ├── default.css
-│   ├── brutalist.css
-│   ├── editorial.css
-│   ├── midnight.css
-│   ├── soft.css
-│   ├── swiss.css
-│   ├── retro.css
-│   ├── vapor.css
-│   └── nature.css
+│   └── brutalist.css
 └── presets-data/               ← Source of truth for preset token values (TS)
 ```
 
@@ -147,6 +140,13 @@ The package ships pre-compiled CSS (`dist/styles.css`) that includes all design 
 
 The source CSS (`src/styles/composable.css`) is compiled at build time via `bun run build:css`, which wraps it with `@import 'tailwindcss'` and `@source` directives, then runs `@tailwindcss/cli` to produce `dist/styles.css`. This bakes in all tokens, base styles, and utility classes used by the components.
 
+Token system drift is checked in CI:
+
+- `bun scripts/generate-css.ts --check` verifies `tokens/palette.css` matches `scripts/palette.ts`.
+- `bun scripts/generate-preset-css.ts --check` verifies `styles/presets/*.css` matches `styles/presets-data/*.ts`.
+- `bun run test:tokens` verifies semantic token registry coverage, Tailwind aliases, preset keys, and semantic Tailwind class usage.
+- `bun run test:css` verifies the compiled downstream CSS contains required tokens and utilities.
+
 ### Customising Tokens
 
 Override any token in your own CSS:
@@ -197,15 +197,8 @@ A preset typically overrides:
 
 | Preset        | Key overrides                                                         |
 | ------------- | --------------------------------------------------------------------- |
-| **Default**   | IBM Plex Mono, 1.15rem, 0 radius, neutral primary                     |
+| **Default**   | Inter + Bricolage Grotesque, 1rem base, soft radius, neutral primary  |
 | **Brutalist** | Space Grotesk + JetBrains Mono, 0 radius, high contrast, hard shadows |
-| **Editorial** | Fraunces (headings) + Source Serif 4, generous leading, subtle radius |
-| **Midnight**  | Space Grotesk + Inter, dark-first, indigo accent, glow shadows        |
-| **Soft**      | Plus Jakarta Sans + DM Sans, 0.75rem radius, lavender tones           |
-| **Swiss**     | Helvetica Neue system stack, 0 radius, 0 shadow, tight leading        |
-| **Retro**     | Monospace, amber phosphor glow, terminal-inspired CRT nostalgia       |
-| **Vapor**     | Space Grotesk, neon pink + cyan, deep purple-black vaporwave          |
-| **Nature**    | Serif typography, warm greens, rich browns, organic earthy feel       |
 
 ### Creating a Custom Preset
 

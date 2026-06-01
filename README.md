@@ -10,7 +10,7 @@
 
 ## What is this?
 
-Composables is a React component library with ~70 components across forms, layout, data display, feedback, and navigation — all built on [Base UI](https://base-ui.com/) primitives with a CSS custom property token system and 9 built-in design presets.
+Composables is a React component library with ~70 components across forms, layout, data display, feedback, and navigation — all built on [Base UI](https://base-ui.com/) primitives with a CSS custom property token system and 2 built-in design presets.
 
 It uses a **two-tier architecture**:
 
@@ -60,9 +60,7 @@ Only the core (layout, forms, typography, feedback) is installed by default. Com
 | AI elements (`AIMessage`, `AIConversation`, `AIPromptInput…`) | `ai`, `shiki`, `streamdown`, `@streamdown/cjk`, `@streamdown/code`, `@streamdown/math`, `@streamdown/mermaid`, `use-stick-to-bottom`, `nanoid`, `@radix-ui/react-use-controllable-state` |
 | `ThemeInjector` / `TokenConfigPanel`                          | `react-colorful`                                                                                                                                                                         |
 | Default preset fonts                                          | `@fontsource-variable/inter`                                                                                                                                                             |
-| Brutalist / Midnight / Vapor preset fonts                     | `@fontsource-variable/space-grotesk`                                                                                                                                                     |
-| Editorial preset fonts                                        | `@fontsource-variable/fraunces`, `@fontsource-variable/source-serif-4`                                                                                                                   |
-| Soft preset fonts                                             | `@fontsource-variable/plus-jakarta-sans`, `@fontsource-variable/dm-sans`                                                                                                                 |
+| Brutalist preset fonts                                        | `@fontsource-variable/space-grotesk`, `@fontsource-variable/jetbrains-mono`                                                                                                              |
 
 If you use a component without its optional dependency installed, you'll get a clear module-not-found error at build time telling you exactly what to add.
 
@@ -85,14 +83,7 @@ styles/
 │   └── base.css                ← Global base styles
 ├── presets/                    ← Generated standalone preset CSS files
 │   ├── default.css
-│   ├── brutalist.css
-│   ├── editorial.css
-│   ├── midnight.css
-│   ├── soft.css
-│   ├── swiss.css
-│   ├── retro.css
-│   ├── vapor.css
-│   └── nature.css
+│   └── brutalist.css
 └── presets-data/               ← Source of truth for preset token values (TS)
 ```
 
@@ -148,26 +139,36 @@ export default function RootLayout({ children }) {
 
 ## Presets
 
-Nine built-in design presets are available as standalone CSS files you can paste into your `index.css`:
+Two built-in design presets are available as standalone CSS files you can paste into your `index.css`:
 
-| Preset        | Vibe                                    | Fonts                          |
-| ------------- | --------------------------------------- | ------------------------------ |
-| **Default**   | Clean neutral system, works everywhere  | Inter + Bricolage Grotesque    |
-| **Brutalist** | Bold, high-contrast, raw aesthetic      | Space Grotesk + JetBrains Mono |
-| **Editorial** | Elegant serif-driven editorial layout   | Fraunces + Source Serif 4      |
-| **Midnight**  | Dark-first design with deep surfaces    | Space Grotesk + Inter          |
-| **Soft**      | Rounded, friendly, warm neutrals        | Plus Jakarta Sans + DM Sans    |
-| **Swiss**     | Minimal, grid-disciplined, typographic  | Helvetica Neue / system        |
-| **Retro**     | Warm CRT nostalgia, terminal-inspired   | Monospace                      |
-| **Vapor**     | Dreamy vaporwave, neon pink + cyan      | Space Grotesk                  |
-| **Nature**    | Organic and earthy, forest-cabin warmth | Serif                          |
+| Preset        | Vibe                                   | Fonts                          |
+| ------------- | -------------------------------------- | ------------------------------ |
+| **Default**   | Clean neutral system, works everywhere | Inter + Bricolage Grotesque    |
+| **Brutalist** | Bold, high-contrast, raw aesthetic     | Space Grotesk + JetBrains Mono |
 
 ```css
 /* Use a preset by importing it */
-@import '@leitware/composables-cli/presets/midnight.css';
+@import '@leitware/composables-cli/presets/brutalist.css';
 ```
 
 Font imports for non-default presets are commented out at the top of `composable.css` — uncomment the one you need.
+
+### Token System Checks
+
+The token system self-regulates through CI checks:
+
+- `bun scripts/generate-css.ts --check` verifies generated palette CSS.
+- `bun scripts/generate-preset-css.ts --check` verifies generated preset CSS.
+- `bun run test:tokens` verifies semantic token registry coverage, Tailwind aliases, preset keys, and semantic class usage.
+- `bun run test:css` verifies the compiled downstream CSS contains required tokens and utilities.
+
+Install local Git hooks to run the same checks before commits:
+
+```bash
+bun run hooks:install
+```
+
+The repo-owned `.githooks/pre-commit` hook runs linting, formatting, typechecking, generated CSS drift checks, and semantic token checks. `.githooks/commit-msg` enforces Conventional Commits.
 
 ---
 

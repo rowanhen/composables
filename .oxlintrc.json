@@ -1,9 +1,8 @@
 {
-	"plugins": ["react", "typescript", "jsx-a11y"],
+	"plugins": ["react", "typescript"],
 	"rules": {
-		"no-unused-vars": "warn",
-		"react/no-unknown-property": "off",
-		"jsx-a11y/no-autofocus": "warn"
+		"no-unused-vars": "error",
+		"react/no-unknown-property": "off"
 	},
 	"ignorePatterns": ["dist", "node_modules"]
 }

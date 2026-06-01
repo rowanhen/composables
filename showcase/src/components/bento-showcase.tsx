@@ -24,14 +24,6 @@ import { ShowcaseGroup, ShowcaseSection } from './showcase-section'
 
 // ── Demo content helpers ──────────────────────────────────────────────────────
 
-function ContentBlock({ label, className = '' }: { label: string; className?: string }) {
-	return (
-		<div className={`p-4 h-full flex flex-col gap-1 ${className}`}>
-			<div className="text-[10px] text-muted-foreground uppercase tracking-wider">{label}</div>
-		</div>
-	)
-}
-
 function MetricContent({ label, value, trend }: { label: string; value: string; trend?: string }) {
 	return (
 		<div className="p-4 h-full">
