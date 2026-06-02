@@ -29,14 +29,26 @@ const inputCSS = `@import 'tailwindcss';
 
 console.log('Building CSS...\n')
 
-// 1. Prepare directories
+// 1. Regenerate source-owned CSS so dist never bakes stale token output.
+execSync('bun scripts/generate-css.ts', {
+	cwd: ROOT,
+	stdio: 'inherit',
+	timeout: 60_000,
+})
+execSync('bun scripts/generate-preset-css.ts', {
+	cwd: ROOT,
+	stdio: 'inherit',
+	timeout: 60_000,
+})
+
+// 2. Prepare directories
 mkdirSync(DIST_DIR, { recursive: true })
 mkdirSync(PRESETS_DIST, { recursive: true })
 
-// 2. Write temp input file
+// 3. Write temp input file
 writeFileSync(INPUT_FILE, inputCSS)
 
-// 3. Compile with Tailwind CLI
+// 4. Compile with Tailwind CLI
 try {
 	execSync(`npx @tailwindcss/cli -i ${INPUT_FILE} -o ${OUTPUT_FILE} --minify`, {
 		cwd: ROOT,
@@ -49,16 +61,16 @@ try {
 	process.exit(1)
 }
 
-// 4. Clean up temp input
+// 5. Clean up temp input
 rmSync(INPUT_FILE, { force: true })
 
-// 5. Copy preset files
+// 6. Copy preset files
 const presetFiles = readdirSync(PRESETS_SRC).filter((f) => f.endsWith('.css'))
 for (const file of presetFiles) {
 	copyFileSync(join(PRESETS_SRC, file), join(PRESETS_DIST, file))
 }
 
-// 6. Report
+// 7. Report
 const size = statSync(OUTPUT_FILE).size
 const sizeKB = (size / 1024).toFixed(1)
 console.log(`\n  dist/styles.css          ${sizeKB} KB`)

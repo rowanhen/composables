@@ -1,18 +1,23 @@
 import type { Preset } from './types'
 
-import { brutalist, brutalistDark } from '../../styles/presets-data/brutalist'
+import { presetDefinitions } from '../../styles/presets-data'
 
 /* ------------------------------------------------------------------ */
 /*  Exported presets map                                                 */
 /* ------------------------------------------------------------------ */
 
 export const presets: Record<string, Preset | null> = {
-	default: null,
-	brutalist: {
-		label: 'Brutalist',
-		description:
-			'Architectural restraint — zero radius, hard shadows, JetBrains Mono body, editorial red',
-		overrides: brutalist,
-		darkOverrides: brutalistDark,
-	},
+	...Object.fromEntries(
+		presetDefinitions.map((preset) => [
+			preset.name,
+			preset.name === 'default'
+				? null
+				: {
+						label: preset.label,
+						description: preset.description,
+						overrides: preset.light,
+						darkOverrides: preset.dark,
+					},
+		]),
+	),
 }

@@ -16,19 +16,13 @@ import {
 	tailwindColorAliases,
 	tailwindColorCssVars,
 } from '../src/styles/tokens/registry'
-import { defaultPreset, defaultPresetDark } from '../src/styles/presets-data/default'
-import { brutalist, brutalistDark } from '../src/styles/presets-data/brutalist'
+import { presetDefinitions } from '../src/styles/presets-data'
 
 const ROOT = join(import.meta.dir, '..')
 
 const SEMANTIC_CSS = join(ROOT, 'src/styles/tokens/semantic.css')
 const COMPONENTS_CSS = join(ROOT, 'src/styles/tokens/components.css')
 const TAILWIND_THEME_CSS = join(ROOT, 'src/styles/tokens/tailwind-theme.css')
-
-const presets = [
-	{ name: 'default', light: defaultPreset, dark: defaultPresetDark },
-	{ name: 'brutalist', light: brutalist, dark: brutalistDark },
-]
 
 let failed = false
 
@@ -167,7 +161,7 @@ function checkPresets() {
 	])
 	const requiredSemantic = [...semanticColorCssVars, ...shadcnCompatCssVars]
 
-	for (const preset of presets) {
+	for (const preset of presetDefinitions) {
 		const lightKeys = Object.keys(preset.light)
 		const darkKeys = Object.keys(preset.dark)
 		const lightUnknown = lightKeys.filter((key) => !knownTokenVars.has(key))

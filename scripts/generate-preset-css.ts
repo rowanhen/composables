@@ -1,45 +1,18 @@
 /**
  * generate-preset-css.ts
  *
- * Reads the TypeScript preset source files from showcase/src/presets/
+ * Reads the central preset registry from src/styles/presets-data/
  * and generates standalone CSS files in src/styles/presets/.
  *
  * Usage: bun scripts/generate-preset-css.ts
  */
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 
-import { defaultPreset, defaultPresetDark } from '../src/styles/presets-data/default'
-import { brutalist, brutalistDark } from '../src/styles/presets-data/brutalist'
+import { presetDefinitions } from '../src/styles/presets-data'
 
 const OUT_DIR = join(import.meta.dir, '../src/styles/presets')
 const CHECK_MODE = process.argv.includes('--check')
-
-interface PresetDef {
-	fileName: string
-	displayName: string
-	description: string
-	light: Record<string, string>
-	dark: Record<string, string>
-}
-
-const presets: PresetDef[] = [
-	{
-		fileName: 'default',
-		displayName: 'Default',
-		description: 'Clean, neutral, Inter-based. The "no opinion" starting point.',
-		light: defaultPreset,
-		dark: defaultPresetDark,
-	},
-	{
-		fileName: 'brutalist',
-		displayName: 'Brutalist',
-		description:
-			'Raw, architectural, uncompromising. Structural honesty: things look exactly like what they are.',
-		light: brutalist,
-		dark: brutalistDark,
-	},
-]
 
 function tokensToCSS(tokens: Record<string, string>, indent: string): string {
 	return Object.entries(tokens)
@@ -53,15 +26,15 @@ function normalizeTokenValue(value: string): string {
 		.replace(/"([^"]+)"/g, "'$1'")
 }
 
-function generateCSS(preset: PresetDef): string {
+function generateCSS(preset: (typeof presetDefinitions)[number]): string {
 	const header = `/* ============================================================================
-   @leitware/composables-cli — ${preset.displayName} Preset
+   @leitware/composables-cli — ${preset.label} Preset
    ============================================================================
    ${preset.description}
 
    HOW TO USE:
    1. Copy this file into your project's global CSS (e.g. index.css)
-   2. Or import the preset: @import "@leitware/composables-cli/presets/${preset.fileName}.css";
+   2. Or import the preset: @import "@leitware/composables-cli/presets/${preset.name}.css";
    3. Add class="dark" to <html> for dark mode.
    ============================================================================ */`
 
@@ -75,10 +48,24 @@ function generateCSS(preset: PresetDef): string {
 mkdirSync(OUT_DIR, { recursive: true })
 
 let failed = false
+const expectedFiles = new Set(presetDefinitions.map((preset) => `${preset.name}.css`))
+const currentFiles = readdirSync(OUT_DIR).filter((file) => file.endsWith('.css'))
 
-for (const preset of presets) {
+for (const file of currentFiles) {
+	if (expectedFiles.has(file)) continue
+	const stalePath = join(OUT_DIR, file)
+	if (CHECK_MODE) {
+		console.error(`  stale generated file ${stalePath}`)
+		failed = true
+		continue
+	}
+	rmSync(stalePath)
+	console.log(`  removed stale ${stalePath}`)
+}
+
+for (const preset of presetDefinitions) {
 	const css = generateCSS(preset)
-	const outPath = join(OUT_DIR, `${preset.fileName}.css`)
+	const outPath = join(OUT_DIR, `${preset.name}.css`)
 	if (CHECK_MODE) {
 		const current = existsSync(outPath) ? readFileSync(outPath, 'utf-8') : ''
 		if (current !== css) {
@@ -97,8 +84,8 @@ if (CHECK_MODE) {
 		console.error('Run: bun scripts/generate-preset-css.ts')
 		process.exit(1)
 	}
-	console.log(`✓ ${presets.length} preset CSS files are in sync with presets-data.`)
+	console.log(`✓ ${presetDefinitions.length} preset CSS files are in sync with presets-data.`)
 	process.exit(0)
 }
 
-console.log(`\nDone — ${presets.length} preset CSS files generated.`)
+console.log(`\nDone — ${presetDefinitions.length} preset CSS files generated.`)

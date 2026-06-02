@@ -59,7 +59,7 @@ Other Tailwind theme utilities in `tailwind-theme.css` include tokenized type si
 
 ## Presets
 
-Current presets are `default` and `brutalist`. Preset CSS is generated; update `src/styles/presets-data/` and run `bun scripts/generate-preset-css.ts` instead of hand-editing `src/styles/presets/*.css`.
+Current presets are registered in `src/styles/presets-data/index.ts`. Preset CSS is generated; add or update preset data in `src/styles/presets-data/`, register it once in `presetDefinitions`, and run `bun run generate:presets` instead of hand-editing `src/styles/presets/*.css`.
 
 ## Notes
 

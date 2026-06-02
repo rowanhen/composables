@@ -140,6 +140,17 @@ The package ships pre-compiled CSS (`dist/styles.css`) that includes all design 
 
 The source CSS (`src/styles/composable.css`) is compiled at build time via `bun run build:css`, which wraps it with `@import 'tailwindcss'` and `@source` directives, then runs `@tailwindcss/cli` to produce `dist/styles.css`. This bakes in all tokens, base styles, and utility classes used by the components.
 
+`bun run build:css` also regenerates source-owned generated CSS first:
+
+| Generated file                  | Source of truth                     |
+| ------------------------------- | ----------------------------------- |
+| `src/styles/tokens/palette.css` | `scripts/palette.ts`                |
+| `src/styles/presets/*.css`      | `src/styles/presets-data/index.ts`  |
+| `dist/styles.css`               | `src/styles/composable.css` + `src` |
+| `dist/presets/*.css`            | `src/styles/presets/*.css`          |
+
+`src/styles/tokens/semantic.css` and `src/styles/tokens/tailwind-theme.css` are source-owned CSS. They are not generated, but `bun run test:tokens` validates them against `src/styles/tokens/registry.ts`.
+
 Token system drift is checked in CI:
 
 - `bun scripts/generate-css.ts --check` verifies `tokens/palette.css` matches `scripts/palette.ts`.
@@ -202,7 +213,7 @@ A preset typically overrides:
 
 ### Creating a Custom Preset
 
-A preset is just CSS. Override tokens in `:root` and `.dark`:
+For app-only use, a preset is just CSS. Override tokens in `:root` and `.dark` after importing `styles.css`:
 
 ```css
 :root {
@@ -213,6 +224,20 @@ A preset is just CSS. Override tokens in `:root` and `.dark`:
 	--bg-fill-primary: #1e40af;
 	--text-inverse: white;
 }
+```
+
+For a shipped package preset, add it to the registry:
+
+1. Create `src/styles/presets-data/<name>.ts` with `<name>` and `<name>Dark` token records.
+2. Add one `presetDefinitions` entry in `src/styles/presets-data/index.ts`.
+3. Run `bun run generate:presets`.
+4. Run `bun run test:tokens`.
+
+The registry entry automatically drives `src/styles/presets/<name>.css`, `dist/presets/<name>.css` during build, and the `TokenConfigPanel` dropdown. Downstream consumers use a different shipped preset by swapping the second import:
+
+```css
+@import '@leitware/composables-cli/styles.css';
+@import '@leitware/composables-cli/presets/<name>.css';
 ```
 
 ---
