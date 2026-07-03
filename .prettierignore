@@ -1,5 +1,0 @@
-dist
-node_modules
-packages/ui/dist
-packages/showcase/dist
-bun.lock

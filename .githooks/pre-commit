@@ -4,8 +4,8 @@ set -e
 echo "Running oxlint..."
 bunx oxlint
 
-echo "Running prettier check..."
-bunx prettier --check .
+echo "Running oxfmt check..."
+bunx oxfmt --check .
 
 echo "Running typecheck..."
 bun run typecheck

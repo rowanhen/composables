@@ -210,7 +210,7 @@ The repo-owned `.githooks/pre-commit` hook runs linting, formatting, typecheckin
 
 ## Linting
 
-The project uses [oxlint](https://oxc-project.github.io/docs/guide/usage/linter.html) for linting and [prettier](https://prettier.io/) for formatting. A custom script checks for arbitrary Tailwind values to enforce design token usage:
+The project uses [Oxlint](https://oxc.rs/docs/guide/usage/linter.html) for linting and [Oxc Formatter](https://oxc.rs/docs/guide/usage/formatter.html) for formatting. A custom script checks for arbitrary Tailwind values to enforce design token usage:
 
 ```bash
 bun src/scripts/lint-no-arbitrary.ts src showcase/src
