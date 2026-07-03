@@ -15,7 +15,7 @@ export function ShowcaseSection({
 	children: React.ReactNode
 }) {
 	return (
-		<section className="scroll-mt-24" id={title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}>
+		<section className="min-w-0 scroll-mt-24" id={title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}>
 			<VStack gap={2}>
 				<Typography variant="heading-400" as="h2">
 					{title}
@@ -60,7 +60,7 @@ export function Swatch({
 
 export function ShowcaseGroup({ label, children }: { label?: string; children: React.ReactNode }) {
 	return (
-		<VStack gap={2}>
+		<VStack gap={2} className="min-w-0">
 			{label && <Typography variant="heading-200">{label}</Typography>}
 			{children}
 		</VStack>

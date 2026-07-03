@@ -3,7 +3,7 @@ import * as React from 'react'
 
 import { cn } from '../lib/utils'
 
-const stackVariants = cva('flex', {
+const stackVariants = cva('flex min-w-0', {
 	variants: {
 		direction: {
 			vertical: 'flex-col',

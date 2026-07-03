@@ -1,9 +1,11 @@
 // Showcase imports from _internal/ to demonstrate primitive components.
 // In your app, always import from @/components/ui-opinionated/ instead.
+import { Link } from '@tanstack/react-router'
 import { useState, useCallback } from 'react'
 import { Grid } from '@/components/_internal/grid'
 import { HStack, VStack } from '@/components/_internal/stack'
 import { Typography } from '@/components/_internal/typography'
+import { aiElementPageMeta } from '../ai-elements-pages'
 
 import {
 	Message,
@@ -86,7 +88,7 @@ import { ShowcaseGroup, ShowcaseSection } from './showcase-section'
 
 // ── Message Showcase ──────────────────────────────────────────────────────
 
-function MessageShowcase() {
+export function AIMessageShowcase() {
 	return (
 		<ShowcaseGroup label="Message">
 			<div className="max-w-2xl rounded-lg border border-stroke/40 p-4">
@@ -128,7 +130,7 @@ function MessageShowcase() {
 
 // ── Conversation Showcase ─────────────────────────────────────────────────
 
-function ConversationShowcase() {
+export function AIConversationShowcase() {
 	return (
 		<ShowcaseGroup label="Conversation">
 			<div
@@ -151,7 +153,7 @@ function ConversationShowcase() {
 
 // ── Prompt Input Showcase ─────────────────────────────────────────────────
 
-function PromptInputShowcase() {
+export function AIPromptInputShowcase() {
 	const handleSubmit = useCallback(() => {
 		// no-op for demo
 	}, [])
@@ -177,7 +179,7 @@ function PromptInputShowcase() {
 
 // ── Suggestion Showcase ───────────────────────────────────────────────────
 
-function SuggestionShowcase() {
+export function AISuggestionShowcase() {
 	return (
 		<ShowcaseGroup label="Suggestions">
 			<div className="max-w-2xl">
@@ -194,7 +196,7 @@ function SuggestionShowcase() {
 
 // ── Reasoning Showcase ────────────────────────────────────────────────────
 
-function ReasoningShowcase() {
+export function AIReasoningShowcase() {
 	return (
 		<ShowcaseGroup label="Reasoning">
 			<div className="max-w-2xl">
@@ -226,7 +228,7 @@ function ReasoningShowcase() {
 
 // ── Tool Showcase ─────────────────────────────────────────────────────────
 
-function ToolShowcase() {
+export function AIToolShowcase() {
 	return (
 		<ShowcaseGroup label="Tool Invocation">
 			<div className="max-w-2xl">
@@ -257,7 +259,7 @@ function ToolShowcase() {
 
 // ── Plan Showcase ─────────────────────────────────────────────────────────
 
-function PlanShowcase() {
+export function AIPlanShowcase() {
 	return (
 		<ShowcaseGroup label="Plan">
 			<div className="max-w-2xl">
@@ -286,7 +288,7 @@ function PlanShowcase() {
 
 // ── Task Showcase ─────────────────────────────────────────────────────────
 
-function TaskShowcase() {
+export function AITaskShowcase() {
 	return (
 		<ShowcaseGroup label="Task">
 			<div className="max-w-2xl">
@@ -317,7 +319,7 @@ function TaskShowcase() {
 
 // ── Chain of Thought Showcase ─────────────────────────────────────────────
 
-function ChainOfThoughtShowcase() {
+export function AIChainOfThoughtShowcase() {
 	return (
 		<ShowcaseGroup label="Chain of Thought">
 			<div className="max-w-2xl">
@@ -342,7 +344,7 @@ function ChainOfThoughtShowcase() {
 
 // ── Sources Showcase ──────────────────────────────────────────────────────
 
-function SourcesShowcase() {
+export function AISourcesShowcase() {
 	return (
 		<ShowcaseGroup label="Sources">
 			<div className="max-w-2xl">
@@ -361,7 +363,7 @@ function SourcesShowcase() {
 
 // ── Confirmation Showcase ─────────────────────────────────────────────────
 
-function ConfirmationShowcase() {
+export function AIConfirmationShowcase() {
 	const [approval1, setApproval1] = useState<{ id: string; approved?: boolean } | undefined>({
 		id: 'demo-1',
 	})
@@ -431,7 +433,7 @@ function ConfirmationShowcase() {
 
 // ── Shimmer Showcase ──────────────────────────────────────────────────────
 
-function ShimmerShowcase() {
+export function AIShimmerShowcase() {
 	return (
 		<ShowcaseGroup label="Shimmer">
 			<div className="max-w-2xl">
@@ -447,7 +449,7 @@ function ShimmerShowcase() {
 
 // ── Full Chat Demo ────────────────────────────────────────────────────────
 
-function FullChatDemo() {
+export function AIFullChatShowcase() {
 	const handleSubmit = useCallback(() => {
 		// no-op for demo
 	}, [])
@@ -524,6 +526,25 @@ function FullChatDemo() {
 
 // ── Main Export ────────────────────────────────────────────────────────────
 
+function AIElementsRouteIndex() {
+	return (
+		<div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+			{aiElementPageMeta.map((page) => (
+				<Link
+					key={page.slug}
+					to={page.path}
+					className="min-h-28 rounded-md border border-stroke/50 bg-background p-4 motion-colors hover:border-stroke hover:bg-muted"
+				>
+					<Typography variant="heading-200">{page.title}</Typography>
+					<Typography variant="body-100" className="mt-2 text-muted-foreground">
+						{page.description}
+					</Typography>
+				</Link>
+			))}
+		</div>
+	)
+}
+
 export function AIElementsShowcase() {
 	return (
 		<ShowcaseSection
@@ -531,25 +552,26 @@ export function AIElementsShowcase() {
 			description="Chatbot and AI-native components powered by Vercel AI SDK integration."
 		>
 			<VStack gap={10}>
+				<AIElementsRouteIndex />
 				<Grid columns={1} gap={10} className="lg:grid-cols-2">
-					<MessageShowcase />
-					<ConversationShowcase />
+					<AIMessageShowcase />
+					<AIConversationShowcase />
 				</Grid>
-				<PromptInputShowcase />
-				<SuggestionShowcase />
-				<ShimmerShowcase />
+				<AIPromptInputShowcase />
+				<AISuggestionShowcase />
+				<AIShimmerShowcase />
 				<Grid columns={1} gap={10} className="lg:grid-cols-2">
-					<ReasoningShowcase />
-					<SourcesShowcase />
+					<AIReasoningShowcase />
+					<AISourcesShowcase />
 				</Grid>
 				<Grid columns={1} gap={10} className="lg:grid-cols-2">
-					<PlanShowcase />
-					<TaskShowcase />
+					<AIPlanShowcase />
+					<AITaskShowcase />
 				</Grid>
-				<ToolShowcase />
-				<ChainOfThoughtShowcase />
-				<ConfirmationShowcase />
-				<FullChatDemo />
+				<AIToolShowcase />
+				<AIChainOfThoughtShowcase />
+				<AIConfirmationShowcase />
+				<AIFullChatShowcase />
 			</VStack>
 		</ShowcaseSection>
 	)

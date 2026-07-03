@@ -201,6 +201,7 @@ A preset typically overrides:
 - `--radius` — corner rounding
 - `--border-width-base` — stroke weight
 - `--bg-fill-primary` / `--bg-fill-brand` — brand colours
+- `--motion-duration-overlay` / `--motion-duration-disclosure` — semantic motion roles
 - `--focus-ring-style` — solid, dashed, etc.
 - All semantic colour tokens (background, text, border, icon, chart)
 
@@ -222,6 +223,7 @@ For app-only use, a preset is just CSS. Override tokens in `:root` and `.dark` a
 	--font-size-base: 14px;
 	--radius: 0.25rem;
 	--bg-fill-primary: #1e40af;
+	--motion-duration-overlay: 0ms;
 	--text-inverse: white;
 }
 ```

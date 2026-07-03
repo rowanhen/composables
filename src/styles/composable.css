@@ -30,6 +30,36 @@
 	padding-inline: calc(var(--spacing) * 6);
 }
 
+/* ── Motion utilities ───────────────────────────────────────────────── */
+/* Small semantic utilities for app code and new components. Existing
+   duration-fast/normal/slow utilities also resolve through the motion tokens. */
+@utility motion-colors {
+	transition-property:
+		color, background-color, border-color, outline-color, text-decoration-color, fill, stroke;
+	transition-duration: var(--motion-duration-color);
+	transition-timing-function: var(--motion-ease-standard);
+}
+
+@utility motion-interaction {
+	transition-property: opacity, box-shadow, transform;
+	transition-duration: var(--motion-duration-interaction);
+	transition-timing-function: var(--motion-ease-standard);
+}
+
+@utility motion-disclosure {
+	transition-duration: var(--motion-duration-disclosure);
+	transition-timing-function: var(--motion-ease-decelerate);
+	animation-duration: var(--motion-duration-disclosure);
+	animation-timing-function: var(--motion-ease-decelerate);
+}
+
+@utility motion-overlay {
+	transition-duration: var(--motion-duration-overlay);
+	transition-timing-function: var(--motion-ease-decelerate);
+	animation-duration: var(--motion-duration-overlay);
+	animation-timing-function: var(--motion-ease-decelerate);
+}
+
 /* ── Token layers ─────────────────────────────────────────────────────── */
 @import './tokens/palette.css';
 @import './tokens/tailwind-theme.css';

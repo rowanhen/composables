@@ -215,13 +215,19 @@
 	--z-tooltip: 600;
 
 	/* Motion tokens */
-	--duration-fast: 100ms;
-	--duration-normal: 200ms;
-	--duration-slow: 300ms;
-	--ease-default: cubic-bezier(0.4, 0, 0.2, 1);
-	--ease-in: cubic-bezier(0.4, 0, 1, 1);
-	--ease-out: cubic-bezier(0, 0, 0.2, 1);
-	--ease-linear: linear;
+	--duration-fast: var(--motion-duration-fast);
+	--duration-normal: var(--motion-duration-normal);
+	--duration-slow: var(--motion-duration-slow);
+	--ease-default: var(--motion-ease-standard);
+	--ease-in: var(--motion-ease-accelerate);
+	--ease-out: var(--motion-ease-decelerate);
+	--ease-linear: var(--motion-ease-linear);
+	--default-transition-duration: var(--motion-duration-interaction);
+	--default-transition-timing-function: var(--motion-ease-standard);
+	--animate-accordion-down: accordion-down var(--motion-duration-disclosure)
+		var(--motion-ease-decelerate);
+	--animate-accordion-up: accordion-up var(--motion-duration-disclosure)
+		var(--motion-ease-accelerate);
 
 	/* Opacity tokens */
 	--opacity-disabled: 0.5;

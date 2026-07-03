@@ -45,6 +45,8 @@ const requiredTokens: Record<string, string> = {
 	'Component: border-width-base': '--border-width-base',
 	'Component: button-radius': '--button-radius',
 	'Component: transition-default': '--transition-default',
+	'Component: motion-duration-overlay': '--motion-duration-overlay',
+	'Component: motion-duration-disclosure': '--motion-duration-disclosure',
 	'Component: focus-ring-style': '--focus-ring-style',
 
 	// Dark mode tokens (from semantic.css .dark)
@@ -65,6 +67,8 @@ const requiredUtilities: Record<string, string> = {
 	'Utility: rounded': 'rounded-',
 	'Utility: font-medium': 'font-medium',
 	'Utility: transition': 'transition',
+	'Utility: motion-colors': 'motion-colors',
+	'Utility: motion-overlay': 'motion-overlay',
 	'Utility: bg-primary': 'bg-primary',
 	'Utility: text-foreground': 'text-foreground',
 	'Utility: border-stroke': 'border-stroke',

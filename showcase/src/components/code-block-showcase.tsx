@@ -44,19 +44,19 @@ export function CodeBlockShowcase() {
 		>
 			<VStack gap={6}>
 				<ShowcaseGroup label="TypeScript">
-					<div className="max-w-2xl">
+					<div className="w-full min-w-0 max-w-2xl">
 						<CodeBlock>{TYPESCRIPT_EXAMPLE}</CodeBlock>
 					</div>
 				</ShowcaseGroup>
 
 				<ShowcaseGroup label="JSON">
-					<div className="max-w-lg">
+					<div className="w-full min-w-0 max-w-lg">
 						<CodeBlock>{JSON_EXAMPLE}</CodeBlock>
 					</div>
 				</ShowcaseGroup>
 
 				<ShowcaseGroup label="Inline / short snippet">
-					<div className="max-w-xs">
+					<div className="w-full min-w-0 max-w-xs">
 						<CodeBlock>{`npm install @leitware/composables`}</CodeBlock>
 					</div>
 				</ShowcaseGroup>

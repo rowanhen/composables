@@ -290,7 +290,7 @@ function SidebarInset({ className, ...props }: React.ComponentProps<'main'>) {
 		<main
 			data-slot="sidebar-inset"
 			className={cn(
-				'bg-page md:peer-data-[variant=inset]:m-2 md:peer-data-[variant=inset]:ml-0 md:peer-data-[variant=inset]:rounded-xl md:peer-data-[variant=inset]:shadow-sm md:peer-data-[variant=inset]:peer-data-[state=collapsed]:ml-2 relative flex w-full flex-1 flex-col',
+				'bg-page md:peer-data-[variant=inset]:m-2 md:peer-data-[variant=inset]:ml-0 md:peer-data-[variant=inset]:rounded-xl md:peer-data-[variant=inset]:shadow-sm md:peer-data-[variant=inset]:peer-data-[state=collapsed]:ml-2 relative flex w-full min-w-0 flex-1 flex-col',
 				className,
 			)}
 			{...props}
@@ -484,6 +484,7 @@ function SidebarMenuButton({
 		tooltip?: string | React.ComponentProps<typeof TooltipContent>
 	} & VariantProps<typeof sidebarMenuButtonVariants>) {
 	const { isMobile, state } = useSidebar()
+	const triggerRender = tooltip ? <TooltipTrigger render={render} /> : render
 	const comp = useRender({
 		defaultTagName: 'button',
 		props: mergeProps<'button'>(
@@ -492,7 +493,7 @@ function SidebarMenuButton({
 			},
 			props,
 		),
-		render: !tooltip ? render : TooltipTrigger,
+		render: triggerRender,
 		state: {
 			slot: 'sidebar-menu-button',
 			sidebar: 'menu-button',

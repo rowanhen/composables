@@ -4,5 +4,5 @@
 		"no-unused-vars": "error",
 		"react/no-unknown-property": "off"
 	},
-	"ignorePatterns": ["dist", "node_modules"]
+	"ignorePatterns": ["dist", "node_modules", "showcase/src/routeTree.gen.ts"]
 }

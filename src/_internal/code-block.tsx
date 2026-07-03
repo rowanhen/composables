@@ -23,7 +23,7 @@ const CodeBlock = React.forwardRef<HTMLPreElement, CodeBlockProps>(
 				data-slot="code-block"
 				ref={ref}
 				className={cn(
-					'block font-mono text-sm font-normal overflow-auto bg-muted scrollbar-none rounded-lg border border-[length:var(--border-width)] border-stroke focus-visible:outline-none',
+					'block w-full max-w-full min-w-0 overflow-auto bg-muted font-mono text-sm font-normal scrollbar-none rounded-lg border border-[length:var(--border-width)] border-stroke focus-visible:outline-none',
 					FOCUS_RING,
 					className,
 				)}
@@ -32,14 +32,14 @@ const CodeBlock = React.forwardRef<HTMLPreElement, CodeBlockProps>(
 				{String(children)
 					.split('\n')
 					.map((line, index) => (
-						<div key={index} className="flex justify-between items-start">
+						<div key={index} className="flex min-w-max items-start">
 							<span
 								aria-hidden="true"
-								className="inline-flex w-[3ch] text-right pr-[1ch] select-none bg-page text-muted-foreground"
+								className="inline-flex w-[3ch] shrink-0 select-none bg-page pr-[1ch] text-right text-muted-foreground"
 							>
 								{leftPad(String(index + 1), 3)}
 							</span>
-							<span className="min-w-[10%] w-full whitespace-pre bg-muted pl-[2ch] text-foreground">
+							<span className="min-w-[10%] whitespace-pre bg-muted pl-[2ch] text-foreground">
 								{line}
 							</span>
 						</div>

@@ -3,10 +3,10 @@
 
 /* ---- Layout primitives ---- */
 import { Separator } from '@/components/_internal/separator'
-import { Toaster } from '@/components/_internal/sonner'
 import { Spacer } from '@/components/_internal/spacer'
 import { HStack, VStack } from '@/components/_internal/stack'
 import { Typography } from '@/components/_internal/typography'
+import { Container } from '@/components/ui-opinionated/container'
 
 /* ---- Showcase components ---- */
 import {
@@ -19,6 +19,7 @@ import {
 	BadgesShowcase,
 	BentoShowcase,
 	BreadcrumbShowcase,
+	BubbleShowcase,
 	ButtonsShowcase,
 	CalendarShowcase,
 	CardsShowcase,
@@ -28,6 +29,7 @@ import {
 	ColorTokensShowcase,
 	ContainerShowcase,
 	DialogShowcase,
+	DirectionShowcase,
 	DividerShowcase,
 	DropdownMenuShowcase,
 	DropzoneShowcase,
@@ -37,7 +39,11 @@ import {
 	HoverCardShowcase,
 	IconShowcase,
 	ItemShowcase,
+	KbdShowcase,
 	ListShowcase,
+	MarkerShowcase,
+	MessageShowcase,
+	NativeSelectShowcase,
 	PaginationShowcase,
 	PopoverShowcase,
 	ProgressShowcase,
@@ -55,8 +61,8 @@ import {
 	TableShowcase,
 	TabsShowcase,
 	ToastShowcase,
+	ToggleGroupShowcase,
 	ToggleShowcase,
-	ThemeInjector,
 	TooltipShowcase,
 	TypographyShowcase,
 } from './components'
@@ -64,95 +70,93 @@ import {
 /* ---- APP ---- */
 export function App() {
 	return (
-		<div className="min-h-screen bg-page text-foreground">
-			<Toaster />
+		<Container maxWidth="2xl" className="py-10">
+			<VStack gap={16}>
+				{/* Foundations */}
+				<ColorTokensShowcase />
+				<TypographyShowcase />
 
-			{/* Floating theme injector — fixed top-right */}
-			<ThemeInjector />
+				{/* Layout & Spacing */}
+				<SpacingShowcase />
+				<ContainerShowcase />
+				<GridShowcase />
+				<StackShowcase />
+				<ResponsiveGridShowcase />
+				<BentoShowcase />
 
-			<div className="wrap">
-				<Spacer size={10} />
+				{/* Actions */}
+				<ButtonsShowcase />
+				<BadgesShowcase />
+				<IconShowcase />
+				<AvatarShowcase />
+				<KbdShowcase />
 
-				<VStack gap={16}>
-					{/* Foundations */}
-					<ColorTokensShowcase />
-					<TypographyShowcase />
+				{/* Content */}
+				<CardsShowcase />
+				<AlertsShowcase />
+				<AccordionShowcase />
+				<CollapsibleShowcase />
+				<ItemShowcase />
+				<MessageShowcase />
+				<BubbleShowcase />
+				<MarkerShowcase />
+				<ListShowcase />
 
-					{/* Layout & Spacing */}
-					<SpacingShowcase />
-					<ContainerShowcase />
-					<GridShowcase />
-					<StackShowcase />
-					<ResponsiveGridShowcase />
-					<BentoShowcase />
+				{/* Overlays */}
+				<DialogShowcase />
+				<AlertDialogShowcase />
+				<SheetShowcase />
+				<DropdownMenuShowcase />
+				<PopoverShowcase />
+				<TooltipShowcase />
+				<HoverCardShowcase />
+				<ToastShowcase />
 
-					{/* Actions */}
-					<ButtonsShowcase />
-					<BadgesShowcase />
-					<IconShowcase />
-					<AvatarShowcase />
+				{/* Navigation */}
+				<SidebarShowcase />
+				<TabsShowcase />
+				<BreadcrumbShowcase />
+				<PaginationShowcase />
 
-					{/* Content */}
-					<CardsShowcase />
-					<AlertsShowcase />
-					<AccordionShowcase />
-					<CollapsibleShowcase />
-					<ItemShowcase />
-					<ListShowcase />
+				{/* Data Display */}
+				<TableShowcase />
+				<CarouselShowcase />
+				<ProgressShowcase />
+				<CodeBlockShowcase />
 
-					{/* Overlays */}
-					<DialogShowcase />
-					<AlertDialogShowcase />
-					<SheetShowcase />
-					<DropdownMenuShowcase />
-					<PopoverShowcase />
-					<TooltipShowcase />
-					<HoverCardShowcase />
-					<ToastShowcase />
+				{/* Form Controls */}
+				<FormControlsShowcase />
+				<NativeSelectShowcase />
+				<SelectShowcase />
+				<ToggleShowcase />
+				<ToggleGroupShowcase />
+				<SliderShowcase />
+				<CalendarShowcase />
+				<DropzoneShowcase />
 
-					{/* Navigation */}
-					<SidebarShowcase />
-					<TabsShowcase />
-					<BreadcrumbShowcase />
-					<PaginationShowcase />
+				{/* AI Elements */}
+				<AIElementsShowcase />
 
-					{/* Data Display */}
-					<TableShowcase />
-					<CarouselShowcase />
-					<ProgressShowcase />
-					<CodeBlockShowcase />
+				{/* Utilities */}
+				<ScrollAreaShowcase />
+				<ResizableShowcase />
+				<DirectionShowcase />
+				<AspectRatioShowcase />
+				<EmptyShowcase />
+				<SkeletonShowcase />
+				<SeparatorShowcase />
+				<DividerShowcase />
+			</VStack>
 
-					{/* Form Controls */}
-					<FormControlsShowcase />
-					<SelectShowcase />
-					<ToggleShowcase />
-					<SliderShowcase />
-					<CalendarShowcase />
-					<DropzoneShowcase />
+			<Spacer size={24} />
 
-					{/* AI Elements */}
-					<AIElementsShowcase />
-
-					{/* Utilities */}
-					<ScrollAreaShowcase />
-					<ResizableShowcase />
-					<AspectRatioShowcase />
-					<EmptyShowcase />
-					<SkeletonShowcase />
-					<SeparatorShowcase />
-					<DividerShowcase />
-				</VStack>
-
-				<Spacer size={24} />
-
-				{/* Footer */}
-				<Separator />
-				<Spacer size={6} />
-				<HStack justify="between" align="center" className="pb-8">
-					<Typography variant="caption-100">@leitware/composables</Typography>
-					<Typography variant="caption-100">Composables Design System</Typography>
-				</HStack>
-			</div>
-		</div>
+			{/* Footer */}
+			<Separator />
+			<Spacer size={6} />
+			<HStack justify="between" align="center" className="pb-8">
+				<Typography variant="caption-100">@leitware/composables</Typography>
+				<Typography variant="caption-100">Composables Design System</Typography>
+			</HStack>
+		</Container>
 	)
 }

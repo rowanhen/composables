@@ -70,6 +70,14 @@ export {
 	type BreadcrumbProps,
 } from './opinionated/breadcrumb'
 
+export {
+	Bubble,
+	BubbleContent,
+	BubbleGroup,
+	BubbleReactions,
+	type BubbleProps,
+} from './opinionated/bubble'
+
 export { Button, type ButtonProps } from './opinionated/button'
 export { Calendar, CalendarDayButton } from './opinionated/calendar'
 
@@ -138,6 +146,13 @@ export {
 } from './opinionated/dialog'
 
 export { Divider } from './opinionated/divider'
+
+export {
+	DirectionProvider,
+	useDirection,
+	type DirectionProviderProps,
+	type TextDirection,
+} from './opinionated/direction'
 
 export {
 	DropdownMenu,
@@ -235,6 +250,8 @@ export {
 export { Icon } from './opinionated/icon'
 export { Input } from './opinionated/input'
 
+export { Kbd, KbdGroup, type KbdGroupProps, type KbdProps } from './opinionated/kbd'
+
 export {
 	InputGroup,
 	InputGroupAddon,
@@ -271,6 +288,25 @@ export {
 	type ListVariant,
 	type ListProps,
 } from './opinionated/list'
+
+export { Marker, MarkerContent, MarkerIcon, type MarkerProps } from './opinionated/marker'
+
+export {
+	Message,
+	MessageAvatar,
+	MessageContent,
+	MessageFooter,
+	MessageGroup,
+	MessageHeader,
+} from './opinionated/message'
+
+export {
+	NativeSelect,
+	NativeSelectOptGroup,
+	NativeSelectOption,
+	type NativeSelectOptionData,
+	type NativeSelectProps,
+} from './opinionated/native-select'
 
 export {
 	Pagination,
@@ -392,6 +428,12 @@ export { Tabs, TabsContent, type TabItem } from './opinionated/tabs'
 export { Textarea } from './opinionated/textarea'
 export { ThemeInjector } from './opinionated/theme-injector'
 export { Toggle, type ToggleProps } from './opinionated/toggle'
+export {
+	ToggleGroup,
+	ToggleGroupItem,
+	type ToggleGroupOption,
+	type ToggleGroupProps,
+} from './opinionated/toggle-group'
 
 export { Tooltip, TooltipContent, TooltipTrigger, type TooltipProps } from './opinionated/tooltip'
 

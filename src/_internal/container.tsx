@@ -3,7 +3,7 @@ import * as React from 'react'
 
 import { cn } from '../lib/utils'
 
-const containerVariants = cva('mx-auto w-full px-4 sm:px-6 lg:px-8', {
+const containerVariants = cva('mx-auto w-full min-w-0 px-4 sm:px-6 lg:px-8', {
 	variants: {
 		maxWidth: {
 			sm: 'max-w-[var(--container-sm)]',

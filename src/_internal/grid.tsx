@@ -3,7 +3,7 @@ import * as React from 'react'
 
 import { cn } from '../lib/utils'
 
-const gridVariants = cva('grid', {
+const gridVariants = cva('grid min-w-0', {
 	variants: {
 		columns: {
 			1: 'grid-cols-1',
@@ -54,7 +54,7 @@ function Grid({ className, columns, gap, align, ...props }: GridProps) {
 
 /* ---- GridItem ---- */
 
-const gridItemVariants = cva('', {
+const gridItemVariants = cva('min-w-0', {
 	variants: {
 		colSpan: {
 			1: 'col-span-1',

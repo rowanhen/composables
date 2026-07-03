@@ -1,11 +1,20 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
+import { createRouter, RouterProvider } from '@tanstack/react-router'
 import '@/styles/composable.css'
-import { App } from './app'
+import { routeTree } from './routeTree.gen'
+
+const router = createRouter({ routeTree })
+
+declare module '@tanstack/react-router' {
+	interface Register {
+		router: typeof router
+	}
+}
 
 // biome-ignore lint/style/noNonNullAssertion: root element always exists
 createRoot(document.getElementById('root')!).render(
 	<React.StrictMode>
-		<App />
+		<RouterProvider router={router} />
 	</React.StrictMode>,
 )

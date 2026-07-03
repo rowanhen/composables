@@ -266,7 +266,7 @@ function CellRowDemo() {
 			</Typography>
 			<VStack gap={3}>
 				<CellRow>
-					<div className="bg-card p-4 md:w-48 md:shrink-0">
+					<div className="bg-card p-4 xl:w-48 xl:shrink-0">
 						<div className="text-[10px] text-muted-foreground uppercase mb-1">Label / Icon</div>
 						<div className="text-sm font-bold">Profile</div>
 					</div>
@@ -280,7 +280,7 @@ function CellRowDemo() {
 					</div>
 				</CellRow>
 				<CellRow>
-					<div className="bg-card p-4 md:w-48 md:shrink-0">
+					<div className="bg-card p-4 xl:w-48 xl:shrink-0">
 						<div className="text-[10px] text-muted-foreground uppercase mb-1">Stats</div>
 						<div className="size-8 rounded-md bg-primary text-primary-foreground flex items-center justify-center text-sm font-bold">
 							▲

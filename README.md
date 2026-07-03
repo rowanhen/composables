@@ -119,19 +119,45 @@ Override tokens in your own CSS:
 
 Key token groups:
 
-| Group          | Example tokens                                              |
-| -------------- | ----------------------------------------------------------- |
-| Colour palette | `--neutral-100`, `--blue-800`, `--red-950`                  |
-| Background     | `--bg-default`, `--bg-fill-primary`, `--bg-surface-success` |
-| Text           | `--text-default`, `--text-secondary`, `--text-critical`     |
-| Border         | `--border-default`, `--border-focus`, `--border-brand`      |
-| Icon           | `--icon-default`, `--icon-success`, `--icon-critical`       |
-| Typography     | `--font-size-base`, `--leading-base`, `--font-heading`      |
-| Spacing        | `--spacing` (base unit, used in `calc()`)                   |
-| Shape          | `--radius`, `--radius-sm`, `--radius-lg`                    |
-| Motion         | `--duration-fast`, `--ease-default`                         |
+| Group          | Example tokens                                                                        |
+| -------------- | ------------------------------------------------------------------------------------- |
+| Colour palette | `--neutral-100`, `--blue-800`, `--red-950`                                            |
+| Background     | `--bg-default`, `--bg-fill-primary`, `--bg-surface-success`                           |
+| Text           | `--text-default`, `--text-secondary`, `--text-critical`                               |
+| Border         | `--border-default`, `--border-focus`, `--border-brand`                                |
+| Icon           | `--icon-default`, `--icon-success`, `--icon-critical`                                 |
+| Typography     | `--font-size-base`, `--leading-base`, `--font-heading`                                |
+| Spacing        | `--spacing` (base unit, used in `calc()`)                                             |
+| Shape          | `--radius`, `--radius-sm`, `--radius-lg`                                              |
+| Motion         | `--motion-duration-overlay`, `--motion-duration-disclosure`, `--motion-ease-standard` |
 
 The entire type scale derives from `--font-size-base` and `--leading-base` — adjust those two tokens to scale all text globally.
+
+### Motion Modes
+
+Set a motion mode on `html`, `body`, or any subtree:
+
+```html
+<html data-motion="none"></html>
+```
+
+Supported modes:
+
+| Mode    | Behaviour                                                       |
+| ------- | --------------------------------------------------------------- |
+| `none`  | Removes transition and overlay/disclosure animation durations   |
+| `color` | Keeps short color transitions, disables movement and overlays   |
+| `full`  | Enables the default semantic durations even with reduced motion |
+
+For custom tuning, override the role tokens after importing styles:
+
+```css
+:root {
+	--motion-duration-color: 120ms;
+	--motion-duration-disclosure: 180ms;
+	--motion-duration-overlay: 120ms;
+}
+```
 
 ### Live Token Editor
 
@@ -236,10 +262,11 @@ Live component demo: **[https://rowanhen.github.io/composables/](https://rowanhe
 
 ### Hooks
 
-| Component           | Description                                                   |
-| ------------------- | ------------------------------------------------------------- |
-| `use-mobile`        | Hook to detect mobile viewport breakpoint                     |
-| `use-numeric-input` | Hook for numeric input handling with sanitization and parsing |
+| Component            | Description                                                   |
+| -------------------- | ------------------------------------------------------------- |
+| `use-mobile`         | Hook to detect mobile viewport breakpoint                     |
+| `use-numeric-input`  | Hook for numeric input handling with sanitization and parsing |
+| `direction-provider` | Base UI reading-direction provider with `useDirection`        |
 
 ### Layout
 
@@ -263,6 +290,7 @@ Live component demo: **[https://rowanhen.github.io/composables/](https://rowanhe
 | `badge`      | Small status label with color variants                              |
 | `avatar`     | Circular image element with automatic initials fallback             |
 | `icon`       | Icon wrapper with size and color variants                           |
+| `kbd`        | Keyboard shortcut key and key group display                         |
 | `skeleton`   | Animated placeholder for loading content                            |
 | `progress`   | Horizontal progress bar indicator                                   |
 | `divider`    | Horizontal or vertical divider with solid, dots, and pills variants |
@@ -299,6 +327,9 @@ Live component demo: **[https://rowanhen.github.io/composables/](https://rowanhe
 | `accordion`   | Vertically collapsible content sections with items array API                 |
 | `collapsible` | Expandable and collapsible content panel with trigger prop                   |
 | `item`        | Flexible list item with title, description, icon, and actions                |
+| `message`     | Message row primitives for chat, activity, and assistant UIs                 |
+| `bubble`      | Message bubble primitives with semantic variants                             |
+| `marker`      | Inline metadata marker with icon, separator, and border variants             |
 | `empty`       | Empty state placeholder with icon, title, and description                    |
 | `carousel`    | Horizontally scrollable content slider with items array API                  |
 | `code-block`  | Monospace code display with line numbers                                     |
@@ -310,6 +341,7 @@ Live component demo: **[https://rowanhen.github.io/composables/](https://rowanhe
 | ----------------------- | ------------------------------------------------------------ |
 | `form-input`            | Text input field with label, error, and numeric mode support |
 | `form-select`           | Select dropdown field with options array API                 |
+| `native-select`         | Native HTML select with the design-system field treatment    |
 | `form-combobox`         | Searchable select field with options array API               |
 | `form-multi-combobox`   | Multi-select combobox field with chip display                |
 | `form-textarea`         | Textarea field with label, description, and error handling   |
@@ -325,18 +357,19 @@ Live component demo: **[https://rowanhen.github.io/composables/](https://rowanhe
 
 ### Interactive
 
-| Component     | Description                                            |
-| ------------- | ------------------------------------------------------ |
-| `button`      | Clickable button with loading spinner support          |
-| `toggle`      | Pressable toggle button with left and right icon slots |
-| `switch`      | Toggle switch for on/off states                        |
-| `slider`      | Draggable range slider input                           |
-| `checkbox`    | Toggle checkbox input with checked state               |
-| `radio-group` | Group of mutually exclusive radio options              |
-| `combobox`    | Searchable select dropdown with autocomplete           |
-| `select`      | Dropdown select menu with scrollable options           |
-| `calendar`    | Date picker calendar powered by react-day-picker       |
-| `dropzone`    | Drag-and-drop file upload area                         |
+| Component      | Description                                             |
+| -------------- | ------------------------------------------------------- |
+| `button`       | Clickable button with loading spinner support           |
+| `toggle`       | Pressable toggle button with left and right icon slots  |
+| `toggle-group` | Grouped toggle buttons for single or multiple selection |
+| `switch`       | Toggle switch for on/off states                         |
+| `slider`       | Draggable range slider input                            |
+| `checkbox`     | Toggle checkbox input with checked state                |
+| `radio-group`  | Group of mutually exclusive radio options               |
+| `combobox`     | Searchable select dropdown with autocomplete            |
+| `select`       | Dropdown select menu with scrollable options            |
+| `calendar`     | Date picker calendar powered by react-day-picker        |
+| `dropzone`     | Drag-and-drop file upload area                          |
 
 ### Tooling Components
 
