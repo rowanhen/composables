@@ -1,8 +1,10 @@
 import { defaultPreset, defaultPresetDark } from './default'
 import { brutalist, brutalistDark } from './brutalist'
+import { signalPop, signalPopDark } from './signal-pop'
 
 export { defaultPreset, defaultPresetDark } from './default'
 export { brutalist, brutalistDark } from './brutalist'
+export { signalPop, signalPopDark } from './signal-pop'
 
 export interface PresetDefinition {
 	name: string
@@ -27,6 +29,14 @@ export const presetDefinitions = [
 			'Raw, architectural, uncompromising. Structural honesty: things look exactly like what they are.',
 		light: brutalist,
 		dark: brutalistDark,
+	},
+	{
+		name: 'signal-pop',
+		label: 'Signal Pop',
+		description:
+			'Bright consumer-tech energy: electric modules, capsule controls, hard outlines, and codey labels.',
+		light: signalPop,
+		dark: signalPopDark,
 	},
 ] satisfies PresetDefinition[]
 
