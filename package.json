@@ -19,8 +19,10 @@
 		"generate:presets": "bun scripts/generate-preset-css.ts",
 		"generate:css": "bun run generate:palette && bun run generate:presets",
 		"generate:showcase-routes": "bun scripts/generate-showcase-routes.ts",
+		"generate:rules": "bun scripts/generate-rules.ts",
 		"build:css": "bun scripts/build-css.ts",
 		"test:tokens": "bun scripts/check-token-system.ts",
+		"test:rules": "bun scripts/generate-rules.ts --check",
 		"test:css": "bun scripts/test-downstream-css.ts",
 		"deploy:showcase": "./scripts/deploy-showcase.sh"
 	},

@@ -12,6 +12,7 @@ Composables is a React component library built on Base UI and Tailwind CSS v4. P
 - Dev showcase: `bun run dev`
 - Lint / format / typecheck: `bun run lint`, `bun run format:check`, `bun run typecheck`
 - CSS checks: `bun scripts/generate-css.ts --check`, `bun scripts/generate-preset-css.ts --check`
+- AI rules check: `bun scripts/generate-rules.ts --check`
 - Token drift check: `bun run test:tokens`
 - CSS build/output check: `bun run build:css && bun run test:css`
 - Install native Git hooks: `bun run hooks:install`
@@ -60,6 +61,10 @@ Other Tailwind theme utilities in `tailwind-theme.css` include tokenized type si
 ## Presets
 
 Current presets are registered in `src/styles/presets-data/index.ts`. Preset CSS is generated; add or update preset data in `src/styles/presets-data/`, register it once in `presetDefinitions`, and run `bun run generate:presets` instead of hand-editing `src/styles/presets/*.css`.
+
+## AI Rules
+
+`rules/composables.md` is generated for AI assistants and rule-file workflows. It summarizes package import rules, optional dependencies, public component exports, and the `/ai` entrypoint. Regenerate it with `bun run generate:rules` after changing `README.md`, `package.json`, `src/index.ts`, or `src/opinionated/ai/*`.
 
 ## Notes
 
