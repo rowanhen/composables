@@ -28,13 +28,13 @@ function normalizeTokenValue(value: string): string {
 
 function generateCSS(preset: (typeof presetDefinitions)[number]): string {
 	const header = `/* ============================================================================
-   @leitware/composables-cli — ${preset.label} Preset
+   @leitware/composables — ${preset.label} Preset
    ============================================================================
    ${preset.description}
 
    HOW TO USE:
    1. Copy this file into your project's global CSS (e.g. index.css)
-   2. Or import the preset: @import "@leitware/composables-cli/presets/${preset.name}.css";
+   2. Or import the preset: @import "@leitware/composables/presets/${preset.name}.css";
    3. Add class="dark" to <html> for dark mode.
    ============================================================================ */`
 

@@ -1,11 +1,11 @@
 /* ============================================================================
-   @leitware/composables-cli — Default Preset
+   @leitware/composables — Default Preset
    ============================================================================
    Clean, neutral, Inter-based. The "no opinion" starting point.
 
    HOW TO USE:
    1. Copy this file into your project's global CSS (e.g. index.css)
-   2. Or import the preset: @import "@leitware/composables-cli/presets/default.css";
+   2. Or import the preset: @import "@leitware/composables/presets/default.css";
    3. Add class="dark" to <html> for dark mode.
    ============================================================================ */
 

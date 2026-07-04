@@ -124,7 +124,7 @@ if (/@import ['"]tailwindcss['"]/.test(packageCSS)) {
 if (failed) {
 	console.error(
 		'\nFAIL: dist/styles.css is missing expected tokens or utilities.\n' +
-			'This means a consumer importing @leitware/composables-cli/styles.css\n' +
+			'This means a consumer importing @leitware/composables/styles.css\n' +
 			'will get broken styling. Check the build:css output.',
 	)
 	process.exit(1)

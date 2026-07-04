@@ -294,7 +294,7 @@ function buildAiRows(): string[] {
 		rows.push(
 			[
 				`| \`${module}\``,
-				' `@leitware/composables-cli/ai`',
+				' `@leitware/composables/ai`',
 				` ${formatCodeList(exports.values)}`,
 				` ${formatCodeList(exports.types)}`,
 				` ${escapeTableCell(aiDescription(module))} |`,
@@ -394,7 +394,7 @@ function buildMarkdown(): string {
 	lines.push('## AI Entrypoint Catalog')
 	lines.push('')
 	lines.push(
-		'AI exports are prefixed with `AI` where they wrap shared primitives. Import these from `@leitware/composables-cli/ai`.',
+		'AI exports are prefixed with `AI` where they wrap shared primitives. Import these from `@leitware/composables/ai`.',
 	)
 	lines.push('')
 	lines.push('| Module | Import from | Public values | Public types | Description |')

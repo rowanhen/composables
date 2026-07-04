@@ -1,5 +1,5 @@
 /* ============================================================================
-   @leitware/composables-cli — Main Stylesheet
+   @leitware/composables — Main Stylesheet
    ============================================================================
    Design tokens, theme registration, and base styles for the component system.
    This file does NOT include Tailwind itself — the downstream app owns that.

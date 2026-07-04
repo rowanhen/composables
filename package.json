@@ -1,7 +1,15 @@
 {
-	"name": "@leitware/composables-cli",
-	"private": true,
+	"name": "@leitware/composables",
+	"version": "0.1.0",
 	"type": "module",
+	"publishConfig": {
+		"access": "public"
+	},
+	"files": [
+		"dist",
+		"rules",
+		"src"
+	],
 	"exports": {
 		".": "./src/index.ts",
 		"./ai": "./src/opinionated/ai/index.ts",
@@ -21,6 +29,7 @@
 		"generate:showcase-routes": "bun scripts/generate-showcase-routes.ts",
 		"generate:rules": "bun scripts/generate-rules.ts",
 		"build:css": "bun scripts/build-css.ts",
+		"prepack": "bun run build:css",
 		"test:tokens": "bun scripts/check-token-system.ts",
 		"test:rules": "bun scripts/generate-rules.ts --check",
 		"test:css": "bun scripts/test-downstream-css.ts",

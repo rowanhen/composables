@@ -2,7 +2,7 @@
 
 **An opinionated React component library with a semantic design token system — built on Base UI and Tailwind CSS v4.**
 
-[![npm version](https://img.shields.io/npm/v/@leitware/composables-cli)](https://www.npmjs.com/package/@leitware/composables-cli)
+[![npm version](https://img.shields.io/npm/v/@leitware/composables)](https://www.npmjs.com/package/@leitware/composables)
 [![CI](https://github.com/rowanhen/composables/actions/workflows/ci.yml/badge.svg)](https://github.com/rowanhen/composables/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
@@ -22,16 +22,16 @@ It uses a **two-tier architecture**:
 ## Quick Start
 
 ```bash
-npm install @leitware/composables-cli
+npm install @leitware/composables
 ```
 
 Import the styles in your root CSS file:
 
 ```css
-@import '@leitware/composables-cli/styles.css';
+@import '@leitware/composables/styles.css';
 
 /* Optional: apply one preset after the base styles */
-@import '@leitware/composables-cli/presets/brutalist.css';
+@import '@leitware/composables/presets/brutalist.css';
 ```
 
 The CSS is pre-compiled — no Tailwind installation or configuration needed downstream.
@@ -39,15 +39,15 @@ The CSS is pre-compiled — no Tailwind installation or configuration needed dow
 Then import components:
 
 ```tsx
-import { Button } from '@leitware/composables-cli'
-import { FormInput } from '@leitware/composables-cli'
-import { Card } from '@leitware/composables-cli'
+import { Button } from '@leitware/composables'
+import { FormInput } from '@leitware/composables'
+import { Card } from '@leitware/composables'
 ```
 
 Optional AI components are exposed from their own entrypoint:
 
 ```tsx
-import { AIMessage, AIPromptInput } from '@leitware/composables-cli/ai'
+import { AIMessage, AIPromptInput } from '@leitware/composables/ai'
 ```
 
 ---
@@ -63,7 +63,7 @@ Only the core (layout, forms, typography, feedback) is installed by default. Com
 | `Dropzone`, `FormDropzone`, `FormMultiDropzone` | `react-dropzone`                                                                                                                                                                         |
 | `ResizablePanels`                               | `react-resizable-panels`                                                                                                                                                                 |
 | `Sonner` (toasts)                               | `sonner`                                                                                                                                                                                 |
-| AI elements from `@leitware/composables-cli/ai` | `ai`, `shiki`, `streamdown`, `@streamdown/cjk`, `@streamdown/code`, `@streamdown/math`, `@streamdown/mermaid`, `use-stick-to-bottom`, `nanoid`, `@radix-ui/react-use-controllable-state` |
+| AI elements from `@leitware/composables/ai`     | `ai`, `shiki`, `streamdown`, `@streamdown/cjk`, `@streamdown/code`, `@streamdown/math`, `@streamdown/mermaid`, `use-stick-to-bottom`, `nanoid`, `@radix-ui/react-use-controllable-state` |
 | `ThemeInjector` / `TokenConfigPanel`            | `react-colorful`                                                                                                                                                                         |
 | Default preset fonts                            | `@fontsource-variable/inter`                                                                                                                                                             |
 | Brutalist preset fonts                          | `@fontsource-variable/space-grotesk`, `@fontsource-variable/jetbrains-mono`                                                                                                              |
@@ -165,7 +165,7 @@ For custom tuning, override the role tokens after importing styles:
 Use the `ThemeInjector` component for a floating palette button that opens a live token editor:
 
 ```tsx
-import { ThemeInjector } from '@leitware/composables-cli'
+import { ThemeInjector } from '@leitware/composables'
 
 export default function RootLayout({ children }) {
 	return (
@@ -192,7 +192,7 @@ Two built-in design presets are available as standalone CSS files you can paste 
 
 ```css
 /* Use exactly one shipped preset by importing it after styles.css */
-@import '@leitware/composables-cli/presets/brutalist.css';
+@import '@leitware/composables/presets/brutalist.css';
 ```
 
 Font imports for non-default presets are commented out at the top of `composable.css` — uncomment the one you need.
@@ -210,8 +210,8 @@ Add one preset data file, then register it once:
 That single registry entry feeds the generated CSS files, the downstream package export, and the `TokenConfigPanel` preset dropdown. During `bun run build:css`, the preset is copied to `dist/presets/<name>.css`, so downstream apps can switch presets by changing the import:
 
 ```css
-@import '@leitware/composables-cli/styles.css';
-@import '@leitware/composables-cli/presets/<name>.css';
+@import '@leitware/composables/styles.css';
+@import '@leitware/composables/presets/<name>.css';
 ```
 
 App-level overrides should come after the preset import.

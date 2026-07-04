@@ -43,6 +43,7 @@ execSync('bun scripts/generate-preset-css.ts', {
 
 // 2. Prepare directories
 mkdirSync(DIST_DIR, { recursive: true })
+rmSync(PRESETS_DIST, { recursive: true, force: true })
 mkdirSync(PRESETS_DIST, { recursive: true })
 
 // 3. Write temp input file

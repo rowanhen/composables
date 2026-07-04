@@ -16,7 +16,7 @@ const faqItems = [
 	},
 	{
 		q: 'How do I install components?',
-		a: 'Install the package: npm install @leitware/composables-cli. Then import components directly.',
+		a: 'Install the package: npm install @leitware/composables. Then import components directly.',
 	},
 	{
 		q: 'Does it support dark mode?',

@@ -1,11 +1,11 @@
 /* ============================================================================
-   @leitware/composables-cli — Brutalist Preset
+   @leitware/composables — Brutalist Preset
    ============================================================================
    Raw, architectural, uncompromising. Structural honesty: things look exactly like what they are.
 
    HOW TO USE:
    1. Copy this file into your project's global CSS (e.g. index.css)
-   2. Or import the preset: @import "@leitware/composables-cli/presets/brutalist.css";
+   2. Or import the preset: @import "@leitware/composables/presets/brutalist.css";
    3. Add class="dark" to <html> for dark mode.
    ============================================================================ */
 

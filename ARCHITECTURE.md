@@ -127,13 +127,13 @@ Per-component tunables exposed in `:root` for preset override support:
 The package ships pre-compiled CSS (`dist/styles.css`) that includes all design tokens and Tailwind utility classes. Downstream consumers don't need Tailwind installed.
 
 ```css
-@import '@leitware/composables-cli/styles.css';
+@import '@leitware/composables/styles.css';
 ```
 
 **A specific preset (standalone, pasteable):**
 
 ```css
-@import '@leitware/composables-cli/presets/brutalist.css';
+@import '@leitware/composables/presets/brutalist.css';
 ```
 
 ### Build Pipeline
@@ -238,8 +238,8 @@ For a shipped package preset, add it to the registry:
 The registry entry automatically drives `src/styles/presets/<name>.css`, `dist/presets/<name>.css` during build, and the `TokenConfigPanel` dropdown. Downstream consumers use a different shipped preset by swapping the second import:
 
 ```css
-@import '@leitware/composables-cli/styles.css';
-@import '@leitware/composables-cli/presets/<name>.css';
+@import '@leitware/composables/styles.css';
+@import '@leitware/composables/presets/<name>.css';
 ```
 
 ---

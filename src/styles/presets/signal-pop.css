@@ -1,11 +1,11 @@
 /* ============================================================================
-   @leitware/composables-cli — Signal Pop Preset
+   @leitware/composables — Signal Pop Preset
    ============================================================================
    Bright consumer-tech energy: electric modules, capsule controls, hard outlines, and codey labels.
 
    HOW TO USE:
    1. Copy this file into your project's global CSS (e.g. index.css)
-   2. Or import the preset: @import "@leitware/composables-cli/presets/signal-pop.css";
+   2. Or import the preset: @import "@leitware/composables/presets/signal-pop.css";
    3. Add class="dark" to <html> for dark mode.
    ============================================================================ */
 
