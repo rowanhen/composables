@@ -11,7 +11,15 @@ import { getResolvedColor } from './helpers'
 export const colorTokens: FlatToken[] = semanticColorTokens
 
 export const colorCategories = [...new Set(colorTokens.map((t) => t.category))]
-export const colorTokensByCategory = Object.groupBy(colorTokens, (t: FlatToken) => t.category)
+export const colorTokensByCategory = colorTokens.reduce<Record<string, FlatToken[]>>(
+	(groups, token) => {
+		const group = groups[token.category] ?? []
+		group.push(token)
+		groups[token.category] = group
+		return groups
+	},
+	{},
+)
 
 /* ------------------------------------------------------------------ */
 /*  ColorTokenRow                                                       */

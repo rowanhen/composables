@@ -1,5 +1,3 @@
-import * as React from 'react'
-
 import {
 	Combobox as ComboboxPrimitive,
 	ComboboxChip,
