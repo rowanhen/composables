@@ -3,7 +3,7 @@ import { CheckIcon, ChevronDownIcon, XIcon } from 'lucide-react'
 import * as React from 'react'
 import { Button } from './button'
 import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput } from './input-group'
-import { cn, FOCUS_RING } from '../lib/utils'
+import { cn, FOCUS_RING, GROUP_FOCUS_RING, HOVER_RING } from '../lib/utils'
 
 const Combobox = ComboboxPrimitive.Root
 
@@ -191,7 +191,9 @@ function ComboboxChips({
 		<ComboboxPrimitive.Chips
 			data-slot="combobox-chips"
 			className={cn(
-				'bg-field/20 dark:bg-field/30 border-field focus-within:border-ring focus-within:ring-focus/30 has-aria-invalid:ring-stroke-critical/20 dark:has-aria-invalid:ring-stroke-critical/40 has-aria-invalid:border-stroke-critical dark:has-aria-invalid:border-stroke-critical/50 flex min-h-7 flex-wrap items-center gap-1 rounded-md border bg-clip-padding px-2 py-0.5 text-xs/relaxed focus-within:ring-[length:calc(var(--border-width)*2)] has-aria-invalid:ring-[length:calc(var(--border-width)*2)] has-data-[slot=combobox-chip]:px-1',
+				GROUP_FOCUS_RING,
+				HOVER_RING,
+				'bg-field/20 dark:bg-field/30 border-field flex min-h-7 flex-wrap items-center gap-1 rounded-md border bg-clip-padding px-2 py-0.5 text-xs/relaxed has-data-[slot=combobox-chip]:px-1',
 				className,
 			)}
 			{...props}

@@ -14,11 +14,18 @@ export const FOCUS_RING =
 
 /**
  * Centralised hover ring style for all interactive elements.
- * Uses the same accent color as focus but thinner — creates a clear
- * escalation: hover = hint of accent, focus = full accent border + wider ring.
+ * Uses a thinner accent treatment than focus, with a border color and ring
+ * so presets with zero base border width still have a visible hover affordance.
  */
 export const HOVER_RING =
-	'hover:ring-[length:var(--hover-ring-width)] hover:ring-[color:var(--hover-ring-color)]/30'
+	'hover:border-[var(--hover-ring-color)] hover:ring-[length:var(--hover-ring-width)] hover:ring-[color:var(--hover-ring-color)]/30'
+
+/**
+ * Focus treatment for grouped controls whose focusable element is nested
+ * inside a wrapper, such as InputGroup and chip inputs.
+ */
+export const GROUP_FOCUS_RING =
+	'has-[:focus-visible]:border-[var(--focus-ring-color)] has-[:focus-visible]:ring-[color:var(--focus-ring-color)]/30 has-[:focus-visible]:ring-[length:var(--focus-ring-width)] has-aria-invalid:ring-stroke-critical/20 dark:has-aria-invalid:ring-stroke-critical/40 has-aria-invalid:border-stroke-critical dark:has-aria-invalid:border-stroke-critical/50 has-aria-invalid:ring-[length:var(--focus-ring-width)]'
 
 /** Destructive-variant focus override – layer on top of FOCUS_RING. */
 export const FOCUS_RING_DESTRUCTIVE =

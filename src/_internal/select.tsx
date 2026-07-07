@@ -1,7 +1,7 @@
 import { Select as SelectPrimitive } from '@base-ui/react/select'
 import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from 'lucide-react'
 import type * as React from 'react'
-import { cn, FOCUS_RING } from '../lib/utils'
+import { cn, FOCUS_RING, HOVER_RING } from '../lib/utils'
 
 const Select = SelectPrimitive.Root
 
@@ -39,7 +39,8 @@ function SelectTrigger({
 			data-size={size}
 			className={cn(
 				FOCUS_RING,
-				"border-field data-[placeholder]:text-muted-foreground bg-field/20 dark:bg-field/30 hover:border-foreground/50 dark:hover:bg-field/50 gap-1.5 rounded-md border px-2 py-1.5 text-xs/relaxed data-[size=default]:h-7 data-[size=sm]:h-6 *:data-[slot=select-value]:flex *:data-[slot=select-value]:gap-1.5 [&_svg:not([class*='size-'])]:size-3.5 flex w-fit items-center justify-between whitespace-nowrap outline-none disabled:cursor-not-allowed disabled:opacity-disabled *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center [&_svg]:pointer-events-none [&_svg]:shrink-0",
+				HOVER_RING,
+				"border-field data-[placeholder]:text-muted-foreground bg-field/20 dark:bg-field/30 dark:hover:bg-field/50 gap-1.5 rounded-md border px-2 py-1.5 text-xs/relaxed data-[size=default]:h-7 data-[size=sm]:h-6 *:data-[slot=select-value]:flex *:data-[slot=select-value]:gap-1.5 [&_svg:not([class*='size-'])]:size-3.5 flex w-fit items-center justify-between whitespace-nowrap outline-none disabled:cursor-not-allowed disabled:opacity-disabled *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center [&_svg]:pointer-events-none [&_svg]:shrink-0",
 				className,
 			)}
 			{...props}

@@ -1,7 +1,7 @@
 import type * as React from 'react'
 import { ChevronDownIcon } from 'lucide-react'
 
-import { cn, FOCUS_RING } from '../lib/utils'
+import { cn, FOCUS_RING, HOVER_RING } from '../lib/utils'
 
 export type NativeSelectSize = 'sm' | 'default'
 
@@ -25,7 +25,9 @@ function NativeSelect({
 				data-slot="native-select"
 				data-size={size}
 				className={cn(
-					`${FOCUS_RING} border-field bg-page h-(--input-height) w-full appearance-none rounded-(--input-radius) border px-3 py-2 pr-9 text-xs/relaxed shadow-xs outline-none motion-colors disabled:pointer-events-none disabled:cursor-not-allowed data-[size=sm]:h-8 data-[size=sm]:py-1`,
+					FOCUS_RING,
+					HOVER_RING,
+					'border-field bg-page h-(--input-height) w-full appearance-none rounded-(--input-radius) border px-3 py-2 pr-9 text-xs/relaxed shadow-xs outline-none motion-colors disabled:pointer-events-none disabled:cursor-not-allowed data-[size=sm]:h-8 data-[size=sm]:py-1',
 					className,
 				)}
 				{...props}

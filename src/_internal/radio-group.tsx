@@ -1,6 +1,6 @@
 import { Radio as RadioPrimitive } from '@base-ui/react/radio'
 import { RadioGroup as RadioGroupPrimitive } from '@base-ui/react/radio-group'
-import { cn, FOCUS_RING } from '../lib/utils'
+import { cn, FOCUS_RING, HOVER_RING } from '../lib/utils'
 
 function RadioGroup({ className, ...props }: RadioGroupPrimitive.Props) {
 	return (
@@ -18,7 +18,8 @@ function RadioGroupItem({ className, ...props }: RadioPrimitive.Root.Props) {
 			data-slot="radio-group-item"
 			className={cn(
 				FOCUS_RING,
-				'border-field dark:bg-field/30 data-checked:bg-primary data-checked:text-primary-foreground dark:data-checked:bg-primary data-checked:border-primary hover:border-foreground/50 flex size-4 rounded-[var(--radius)] transition-shadow group/radio-group-item peer relative aspect-square shrink-0 border outline-none after:absolute after:-inset-x-3 after:-inset-y-2 disabled:cursor-not-allowed disabled:opacity-disabled',
+				HOVER_RING,
+				'border-field dark:bg-field/30 data-checked:bg-primary data-checked:text-primary-foreground dark:data-checked:bg-primary data-checked:border-primary flex size-4 rounded-[var(--radius)] transition-shadow group/radio-group-item peer relative aspect-square shrink-0 border outline-none after:absolute after:-inset-x-3 after:-inset-y-2 disabled:cursor-not-allowed disabled:opacity-disabled',
 				className,
 			)}
 			{...props}
