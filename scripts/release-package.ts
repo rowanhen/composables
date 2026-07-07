@@ -107,6 +107,12 @@ function tagCommit(version: string) {
 	return result.ok && result.stdout ? result.stdout : undefined
 }
 
+function isAncestor(commit: string) {
+	return read('git', ['merge-base', '--is-ancestor', commit, 'HEAD'], {
+		allowFailure: true,
+	}).ok
+}
+
 function npmViewJson<T>(specifier: string, field: string) {
 	const result = read('npm', ['view', specifier, field, '--json'], { allowFailure: true })
 	if (!result.ok || !result.stdout) return undefined
@@ -118,19 +124,16 @@ const packageJson = parseJson<{ name: string; version: string }>(
 	readFileSync(packageJsonPath, 'utf-8'),
 )
 const publishedVersion = npmViewJson<string>(packageJson.name, 'version') ?? packageJson.version
+const publishedTagCommit = tagCommit(publishedVersion)
 const publishedGitHead = npmViewJson<string>(`${packageJson.name}@${publishedVersion}`, 'gitHead')
-const baseCommit = tagCommit(publishedVersion) ?? publishedGitHead
+const baseCommit = [publishedTagCommit, publishedGitHead].find(
+	(commit): commit is string => Boolean(commit) && isAncestor(commit),
+)
 
 if (!baseCommit) {
-	throw new Error(`Could not find a release baseline for ${packageJson.name}@${publishedVersion}`)
-}
-
-const ancestor = read('git', ['merge-base', '--is-ancestor', baseCommit, 'HEAD'], {
-	allowFailure: true,
-})
-
-if (!ancestor.ok) {
-	throw new Error(`Release baseline ${baseCommit} is not an ancestor of HEAD`)
+	throw new Error(
+		`Could not find an ancestor release baseline for ${packageJson.name}@${publishedVersion}`,
+	)
 }
 
 const logRange = `${baseCommit}..HEAD`
@@ -174,9 +177,12 @@ if (DRY_RUN) {
 run('npm', ['version', nextVersion, '--no-git-tag-version'])
 run('npm', ['publish', '--access', 'public', '--provenance'])
 
-if (!tagCommit(nextVersion)) {
-	run('git', ['tag', `v${nextVersion}`])
-	run('git', ['push', 'origin', `refs/tags/v${nextVersion}`])
+const headCommit = read('git', ['rev-parse', 'HEAD']).stdout
+const nextTagCommit = tagCommit(nextVersion)
+
+if (nextTagCommit !== headCommit) {
+	run('git', ['tag', '-f', `v${nextVersion}`, headCommit])
+	run('git', ['push', '--force', 'origin', `refs/tags/v${nextVersion}`])
 }
 
 console.log(`Published ${packageJson.name}@${nextVersion}.`)
