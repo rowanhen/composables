@@ -5,10 +5,12 @@ on:
   push:
     branches: [main]
     paths:
+      - README.md
       - package.json
       - bun.lock
       - src/**
       - rules/**
+      - skills/**
       - scripts/**
       - .github/workflows/release.yml
 

@@ -10,7 +10,10 @@ import { existsSync, readdirSync, readFileSync } from 'node:fs'
 import { join, relative } from 'node:path'
 
 import {
+	publicSemanticUtilities,
+	publicSemanticUtilityClassNames,
 	semanticColorCssVars,
+	sidebarColorCssVars,
 	shadcnCompatAliases,
 	shadcnCompatCssVars,
 	tailwindColorAliases,
@@ -23,6 +26,9 @@ const ROOT = join(import.meta.dir, '..')
 const SEMANTIC_CSS = join(ROOT, 'src/styles/tokens/semantic.css')
 const COMPONENTS_CSS = join(ROOT, 'src/styles/tokens/components.css')
 const TAILWIND_THEME_CSS = join(ROOT, 'src/styles/tokens/tailwind-theme.css')
+const TAILWIND_COLOR_ADAPTER_CSS = join(ROOT, 'src/styles/tokens/tailwind-color-adapter.css')
+const SEMANTIC_UTILITIES_CSS = join(ROOT, 'src/styles/tokens/semantic-utilities.css')
+const PRESETS_CSS_DIR = join(ROOT, 'src/styles/presets')
 
 let failed = false
 
@@ -95,7 +101,7 @@ function checkSemanticCss() {
 	const css = read(SEMANTIC_CSS)
 	const root = declarationMap(extractCssBlock(css, ':root'))
 	const dark = declarationMap(extractCssBlock(css, '.dark'))
-	const required = [...semanticColorCssVars, ...shadcnCompatCssVars]
+	const required = [...semanticColorCssVars, ...shadcnCompatCssVars, ...sidebarColorCssVars]
 
 	assertSetContains(new Set(root.keys()), required, 'semantic.css :root')
 	assertSetContains(
@@ -122,7 +128,7 @@ function checkSemanticCss() {
 }
 
 function checkTailwindAliases() {
-	const css = read(TAILWIND_THEME_CSS)
+	const css = read(TAILWIND_COLOR_ADAPTER_CSS)
 	const inlineTheme = extractCssBlock(css, '@theme inline')
 	const actual = declarationMap(inlineTheme)
 	const expected = new Map(
@@ -133,24 +139,83 @@ function checkTailwindAliases() {
 	assertSetContains(
 		new Set(actual.keys()),
 		tailwindColorCssVars,
-		'tailwind-theme.css @theme inline',
+		'tailwind-color-adapter.css @theme inline',
 	)
 
 	const extras = [...actual.keys()].filter(
 		(key) => key.startsWith('--color-') && !expected.has(key),
 	)
 	if (extras.length > 0) {
-		fail(`tailwind-theme.css has unregistered color aliases: ${extras.sort().join(', ')}`)
+		fail(`tailwind color adapter has unregistered color aliases: ${extras.sort().join(', ')}`)
 	}
 
 	for (const [key, value] of expected) {
 		const actualValue = actual.get(key)
 		if (actualValue !== value) {
-			fail(`tailwind-theme.css ${key} should be ${value}, got ${actualValue ?? 'missing'}`)
+			fail(`tailwind color adapter ${key} should be ${value}, got ${actualValue ?? 'missing'}`)
 		}
 	}
 
+	for (const { cssVar, target } of tailwindColorAliases) {
+		if (cssVar === target) fail(`tailwind color adapter ${cssVar} must not reference itself`)
+	}
+
 	if (!failed) ok('tailwind color aliases match registry')
+}
+
+function checkPublicTailwindCollisions() {
+	const derivedAliases = new Map(shadcnCompatAliases.map(({ cssVar, target }) => [cssVar, target]))
+	const colorAliases = new Map(
+		tailwindColorAliases.map(({ cssVar, target }) => [cssVar.replace('--color-', ''), target]),
+	)
+	const resolveTarget = (target: string): string => {
+		const seen = new Set<string>()
+		while (derivedAliases.has(target)) {
+			if (seen.has(target)) {
+				fail(`compatibility alias cycle includes ${target}`)
+				return target
+			}
+			seen.add(target)
+			target = derivedAliases.get(target) ?? target
+		}
+		return target
+	}
+
+	for (const utility of publicSemanticUtilities) {
+		const match = utility.className.match(/^(?:bg|text|border|ring|outline|fill|stroke)-(.+)$/)
+		if (!match) continue
+		const aliasTarget = colorAliases.get(match[1])
+		if (!aliasTarget) continue
+		const resolvedTarget = resolveTarget(aliasTarget)
+		if (resolvedTarget !== utility.token) {
+			fail(
+				`.${utility.className} targets ${utility.token}, but --color-${match[1]} resolves to ${resolvedTarget}`,
+			)
+		}
+	}
+
+	if (!failed) ok('public utilities and internal Tailwind aliases have no semantic collisions')
+}
+
+function checkPublicSemanticUtilities() {
+	const css = read(SEMANTIC_UTILITIES_CSS)
+
+	assertNoDuplicates(publicSemanticUtilityClassNames, 'public semantic utility registry')
+
+	for (const { className, declarations } of publicSemanticUtilities) {
+		const block = extractCssBlock(css, `.${className}`)
+		if (!block) {
+			fail(`semantic-utilities.css is missing .${className}`)
+			continue
+		}
+		for (const [property, value] of declarations) {
+			if (!block.includes(`${property}: ${value};`)) {
+				fail(`semantic-utilities.css .${className} should set ${property}: ${value}`)
+			}
+		}
+	}
+
+	if (!failed) ok('public semantic utilities match the registry')
 }
 
 function checkPresets() {
@@ -159,21 +224,34 @@ function checkPresets() {
 		...cssVars(read(COMPONENTS_CSS)),
 		...cssVars(read(TAILWIND_THEME_CSS)),
 	])
-	const requiredSemantic = [...semanticColorCssVars, ...shadcnCompatCssVars]
+	const requiredPresetTokens = [...semanticColorCssVars, ...sidebarColorCssVars]
+	const derivedCompatTokens = new Set(shadcnCompatCssVars)
 
 	for (const preset of presetDefinitions) {
 		const lightKeys = Object.keys(preset.light)
 		const darkKeys = Object.keys(preset.dark)
 		const lightUnknown = lightKeys.filter((key) => !knownTokenVars.has(key))
 		const darkUnknown = darkKeys.filter((key) => !knownTokenVars.has(key))
-		const lightMissing = requiredSemantic.filter((key) => !(key in preset.light))
-		const darkMissing = requiredSemantic.filter((key) => !(key in preset.dark))
+		const lightMissing = requiredPresetTokens.filter((key) => !(key in preset.light))
+		const darkMissing = requiredPresetTokens.filter((key) => !(key in preset.dark))
+		const lightDerivedAliases = lightKeys.filter((key) => derivedCompatTokens.has(key))
+		const darkDerivedAliases = darkKeys.filter((key) => derivedCompatTokens.has(key))
 
 		if (lightUnknown.length > 0) {
 			fail(`${preset.name} light preset has unknown tokens: ${lightUnknown.sort().join(', ')}`)
 		}
 		if (darkUnknown.length > 0) {
 			fail(`${preset.name} dark preset has unknown tokens: ${darkUnknown.sort().join(', ')}`)
+		}
+		if (lightDerivedAliases.length > 0) {
+			fail(
+				`${preset.name} light preset independently owns derived compatibility aliases: ${lightDerivedAliases.sort().join(', ')}`,
+			)
+		}
+		if (darkDerivedAliases.length > 0) {
+			fail(
+				`${preset.name} dark preset independently owns derived compatibility aliases: ${darkDerivedAliases.sort().join(', ')}`,
+			)
 		}
 		if (lightMissing.length > 0) {
 			fail(
@@ -185,9 +263,31 @@ function checkPresets() {
 				`${preset.name} dark preset is missing semantic tokens: ${darkMissing.sort().join(', ')}`,
 			)
 		}
+
+		for (const mode of ['light', 'dark'] as const) {
+			for (const cssVar of sidebarColorCssVars) {
+				const value = preset[mode][cssVar]
+				if (!value || value.includes('var(')) {
+					fail(`${preset.name} ${mode} ${cssVar} must be an independent concrete value`)
+				}
+			}
+		}
+
+		const generatedCss = read(join(PRESETS_CSS_DIR, `${preset.name}.css`))
+		const generatedRoot = declarationMap(extractCssBlock(generatedCss, ':root'))
+		const generatedDark = declarationMap(extractCssBlock(generatedCss, '.dark'))
+		for (const { cssVar, target } of shadcnCompatAliases) {
+			const expected = `var(${target})`
+			if (generatedRoot.get(cssVar) !== expected) {
+				fail(`${preset.name}.css :root ${cssVar} should be generated as ${expected}`)
+			}
+			if (generatedDark.get(cssVar) !== expected) {
+				fail(`${preset.name}.css .dark ${cssVar} should be generated as ${expected}`)
+			}
+		}
 	}
 
-	if (!failed) ok('preset token keys are known and cover required semantic tokens')
+	if (!failed) ok('presets own canonical and sidebar roles, never derived compatibility aliases')
 }
 
 function listFiles(dir: string): string[] {
@@ -220,7 +320,7 @@ function finalClassSegment(token: string): string {
 
 function baseColorClass(token: string): { prefix: string; suffix: string } | null {
 	const segment = finalClassSegment(token).replace(/^!/, '').replace(/!$/, '')
-	if (segment.includes('[')) return null
+	if (segment.includes('[') || segment.includes('${')) return null
 	const match = segment.match(/^(bg|text|border|ring|outline|fill|stroke)-(.+)$/)
 	if (!match) return null
 	const suffix = match[2].split('/')[0]
@@ -275,6 +375,8 @@ console.log('Checking semantic token system...\n')
 assertNoDuplicates(semanticColorCssVars, 'semantic color registry')
 checkSemanticCss()
 checkTailwindAliases()
+checkPublicSemanticUtilities()
+checkPublicTailwindCollisions()
 checkPresets()
 checkSemanticClassUsage()
 

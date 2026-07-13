@@ -16,5 +16,8 @@ bun scripts/generate-css.ts --check
 echo "Verifying generated preset CSS..."
 bun scripts/generate-preset-css.ts --check
 
+echo "Verifying generated AI rules and skill manifests..."
+bun run test:rules
+
 echo "Checking semantic token system..."
 bun run test:tokens

@@ -10,6 +10,7 @@ import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync
 import { join } from 'node:path'
 
 import { presetDefinitions } from '../src/styles/presets-data'
+import { shadcnCompatAliases } from '../src/styles/tokens/registry'
 
 const OUT_DIR = join(import.meta.dir, '../src/styles/presets')
 const CHECK_MODE = process.argv.includes('--check')
@@ -38,8 +39,11 @@ function generateCSS(preset: (typeof presetDefinitions)[number]): string {
    3. Add class="dark" to <html> for dark mode.
    ============================================================================ */`
 
-	const rootBlock = `:root {\n${tokensToCSS(preset.light, '\t')}\n}`
-	const darkBlock = `.dark {\n${tokensToCSS(preset.dark, '\t')}\n}`
+	const aliases = Object.fromEntries(
+		shadcnCompatAliases.map(({ cssVar, target }) => [cssVar, `var(${target})`]),
+	)
+	const rootBlock = `:root {\n${tokensToCSS({ ...preset.light, ...aliases }, '\t')}\n}`
+	const darkBlock = `.dark {\n${tokensToCSS({ ...preset.dark, ...aliases }, '\t')}\n}`
 
 	return `${header}\n\n${rootBlock}\n\n${darkBlock}\n`
 }

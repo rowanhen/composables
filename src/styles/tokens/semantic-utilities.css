@@ -1,0 +1,503 @@
+/* ============================================================================
+   Generated Public Semantic Utilities
+   ============================================================================
+   Guaranteed framework-independent classes generated from registry.ts.
+   These rules intentionally map only semantically compatible token categories
+   to CSS properties; Tailwind is not required in downstream applications.
+
+   To regenerate:  bun scripts/generate-css.ts
+   ============================================================================ */
+
+@layer utilities {
+	.bg-default {
+		background-color: var(--bg-default);
+	}
+
+	.bg-inverse {
+		background-color: var(--bg-inverse);
+	}
+
+	.bg-muted {
+		background-color: var(--bg-muted);
+	}
+
+	.bg-surface-default {
+		background-color: var(--bg-surface-default);
+	}
+
+	.bg-surface-popover {
+		background-color: var(--bg-surface-popover);
+	}
+
+	.bg-surface-accent {
+		background-color: var(--bg-surface-accent);
+	}
+
+	.bg-surface-info {
+		background-color: var(--bg-surface-info);
+	}
+
+	.bg-surface-success {
+		background-color: var(--bg-surface-success);
+	}
+
+	.bg-surface-warning {
+		background-color: var(--bg-surface-warning);
+	}
+
+	.bg-surface-critical {
+		background-color: var(--bg-surface-critical);
+	}
+
+	.bg-surface-emphasis {
+		background-color: var(--bg-surface-emphasis);
+	}
+
+	.bg-surface-inverse {
+		background-color: var(--bg-surface-inverse);
+	}
+
+	.bg-surface-transparent {
+		background-color: var(--bg-surface-transparent);
+	}
+
+	.bg-overlay {
+		background-color: var(--bg-overlay);
+	}
+
+	.bg-surface-brand {
+		background-color: var(--bg-surface-brand);
+	}
+
+	.bg-surface-brand-2 {
+		background-color: var(--bg-surface-brand-2);
+	}
+
+	.bg-surface-brand-3 {
+		background-color: var(--bg-surface-brand-3);
+	}
+
+	.bg-surface-brand-4 {
+		background-color: var(--bg-surface-brand-4);
+	}
+
+	.bg-surface-brand-5 {
+		background-color: var(--bg-surface-brand-5);
+	}
+
+	.bg-surface-hover {
+		background-color: var(--bg-surface-hover);
+	}
+
+	.bg-fill-default {
+		background-color: var(--bg-fill-default);
+	}
+
+	.bg-fill-primary {
+		background-color: var(--bg-fill-primary);
+	}
+
+	.bg-fill-brand {
+		background-color: var(--bg-fill-brand);
+	}
+
+	.bg-fill-brand-2 {
+		background-color: var(--bg-fill-brand-2);
+	}
+
+	.bg-fill-brand-3 {
+		background-color: var(--bg-fill-brand-3);
+	}
+
+	.bg-fill-brand-4 {
+		background-color: var(--bg-fill-brand-4);
+	}
+
+	.bg-fill-brand-5 {
+		background-color: var(--bg-fill-brand-5);
+	}
+
+	.bg-fill-info {
+		background-color: var(--bg-fill-info);
+	}
+
+	.bg-fill-success {
+		background-color: var(--bg-fill-success);
+	}
+
+	.bg-fill-warning {
+		background-color: var(--bg-fill-warning);
+	}
+
+	.bg-fill-critical {
+		background-color: var(--bg-fill-critical);
+	}
+
+	.bg-fill-emphasis {
+		background-color: var(--bg-fill-emphasis);
+	}
+
+	.bg-fill-transparent {
+		background-color: var(--bg-fill-transparent);
+	}
+
+	.bg-fill-secondary {
+		background-color: var(--bg-fill-secondary);
+	}
+
+	.bg-fill-secondary-inverse {
+		background-color: var(--bg-fill-secondary-inverse);
+	}
+
+	.text-default {
+		color: var(--text-default);
+	}
+
+	.text-content-secondary {
+		color: var(--text-secondary);
+	}
+
+	.text-content-muted {
+		color: var(--text-muted);
+	}
+
+	.text-disabled {
+		color: var(--text-disabled);
+	}
+
+	.text-inverse {
+		color: var(--text-inverse);
+	}
+
+	.text-on-fill-primary {
+		color: var(--text-on-fill-primary);
+	}
+
+	.text-on-fill-secondary {
+		color: var(--text-on-fill-secondary);
+	}
+
+	.text-on-surface-accent {
+		color: var(--text-on-surface-accent);
+	}
+
+	.text-info {
+		color: var(--text-info);
+	}
+
+	.text-success {
+		color: var(--text-success);
+	}
+
+	.text-warning {
+		color: var(--text-warning);
+	}
+
+	.text-critical {
+		color: var(--text-critical);
+	}
+
+	.text-emphasis {
+		color: var(--text-emphasis);
+	}
+
+	.text-brand {
+		color: var(--text-brand);
+	}
+
+	.text-brand-2 {
+		color: var(--text-brand-2);
+	}
+
+	.text-brand-3 {
+		color: var(--text-brand-3);
+	}
+
+	.text-brand-4 {
+		color: var(--text-brand-4);
+	}
+
+	.text-brand-5 {
+		color: var(--text-brand-5);
+	}
+
+	.text-link {
+		color: var(--text-link);
+	}
+
+	.text-icon-default {
+		color: var(--icon-default);
+	}
+
+	.fill-icon-default {
+		fill: var(--icon-default);
+	}
+
+	.stroke-icon-default {
+		stroke: var(--icon-default);
+	}
+
+	.text-icon-secondary {
+		color: var(--icon-secondary);
+	}
+
+	.fill-icon-secondary {
+		fill: var(--icon-secondary);
+	}
+
+	.stroke-icon-secondary {
+		stroke: var(--icon-secondary);
+	}
+
+	.text-icon-disabled {
+		color: var(--icon-disabled);
+	}
+
+	.fill-icon-disabled {
+		fill: var(--icon-disabled);
+	}
+
+	.stroke-icon-disabled {
+		stroke: var(--icon-disabled);
+	}
+
+	.text-icon-inverse {
+		color: var(--icon-inverse);
+	}
+
+	.fill-icon-inverse {
+		fill: var(--icon-inverse);
+	}
+
+	.stroke-icon-inverse {
+		stroke: var(--icon-inverse);
+	}
+
+	.text-icon-info {
+		color: var(--icon-info);
+	}
+
+	.fill-icon-info {
+		fill: var(--icon-info);
+	}
+
+	.stroke-icon-info {
+		stroke: var(--icon-info);
+	}
+
+	.text-icon-success {
+		color: var(--icon-success);
+	}
+
+	.fill-icon-success {
+		fill: var(--icon-success);
+	}
+
+	.stroke-icon-success {
+		stroke: var(--icon-success);
+	}
+
+	.text-icon-warning {
+		color: var(--icon-warning);
+	}
+
+	.fill-icon-warning {
+		fill: var(--icon-warning);
+	}
+
+	.stroke-icon-warning {
+		stroke: var(--icon-warning);
+	}
+
+	.text-icon-critical {
+		color: var(--icon-critical);
+	}
+
+	.fill-icon-critical {
+		fill: var(--icon-critical);
+	}
+
+	.stroke-icon-critical {
+		stroke: var(--icon-critical);
+	}
+
+	.text-icon-emphasis {
+		color: var(--icon-emphasis);
+	}
+
+	.fill-icon-emphasis {
+		fill: var(--icon-emphasis);
+	}
+
+	.stroke-icon-emphasis {
+		stroke: var(--icon-emphasis);
+	}
+
+	.text-icon-brand {
+		color: var(--icon-brand);
+	}
+
+	.fill-icon-brand {
+		fill: var(--icon-brand);
+	}
+
+	.stroke-icon-brand {
+		stroke: var(--icon-brand);
+	}
+
+	.text-icon-brand-2 {
+		color: var(--icon-brand-2);
+	}
+
+	.fill-icon-brand-2 {
+		fill: var(--icon-brand-2);
+	}
+
+	.stroke-icon-brand-2 {
+		stroke: var(--icon-brand-2);
+	}
+
+	.text-icon-brand-3 {
+		color: var(--icon-brand-3);
+	}
+
+	.fill-icon-brand-3 {
+		fill: var(--icon-brand-3);
+	}
+
+	.stroke-icon-brand-3 {
+		stroke: var(--icon-brand-3);
+	}
+
+	.text-icon-brand-4 {
+		color: var(--icon-brand-4);
+	}
+
+	.fill-icon-brand-4 {
+		fill: var(--icon-brand-4);
+	}
+
+	.stroke-icon-brand-4 {
+		stroke: var(--icon-brand-4);
+	}
+
+	.text-icon-brand-5 {
+		color: var(--icon-brand-5);
+	}
+
+	.fill-icon-brand-5 {
+		fill: var(--icon-brand-5);
+	}
+
+	.stroke-icon-brand-5 {
+		stroke: var(--icon-brand-5);
+	}
+
+	.border-stroke-default {
+		border-color: var(--border-default);
+	}
+
+	.border-stroke-secondary {
+		border-color: var(--border-secondary);
+	}
+
+	.border-stroke-input {
+		border-color: var(--border-input);
+	}
+
+	.border-stroke-tertiary {
+		border-color: var(--border-tertiary);
+	}
+
+	.border-stroke-disabled {
+		border-color: var(--border-disabled);
+	}
+
+	.border-stroke-inverse {
+		border-color: var(--border-inverse);
+	}
+
+	.border-stroke-focus {
+		border-color: var(--border-focus);
+	}
+
+	.border-stroke-brand {
+		border-color: var(--border-brand);
+	}
+
+	.border-stroke-brand-2 {
+		border-color: var(--border-brand-2);
+	}
+
+	.border-stroke-brand-3 {
+		border-color: var(--border-brand-3);
+	}
+
+	.border-stroke-brand-4 {
+		border-color: var(--border-brand-4);
+	}
+
+	.border-stroke-brand-5 {
+		border-color: var(--border-brand-5);
+	}
+
+	.border-stroke-info {
+		border-color: var(--border-info);
+	}
+
+	.border-stroke-success {
+		border-color: var(--border-success);
+	}
+
+	.border-stroke-warning {
+		border-color: var(--border-warning);
+	}
+
+	.border-stroke-critical {
+		border-color: var(--border-critical);
+	}
+
+	.border-stroke-emphasis {
+		border-color: var(--border-emphasis);
+	}
+
+	.fill-chart-1 {
+		fill: var(--chart-1);
+	}
+
+	.stroke-chart-1 {
+		stroke: var(--chart-1);
+	}
+
+	.fill-chart-2 {
+		fill: var(--chart-2);
+	}
+
+	.stroke-chart-2 {
+		stroke: var(--chart-2);
+	}
+
+	.fill-chart-3 {
+		fill: var(--chart-3);
+	}
+
+	.stroke-chart-3 {
+		stroke: var(--chart-3);
+	}
+
+	.fill-chart-4 {
+		fill: var(--chart-4);
+	}
+
+	.stroke-chart-4 {
+		stroke: var(--chart-4);
+	}
+
+	.fill-chart-5 {
+		fill: var(--chart-5);
+	}
+
+	.stroke-chart-5 {
+		stroke: var(--chart-5);
+	}
+}

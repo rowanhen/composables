@@ -17,7 +17,7 @@ Composables is a React component library built on Base UI and Tailwind CSS v4. P
 - CSS build/output check: `bun run build:css && bun run test:css`
 - Install native Git hooks: `bun run hooks:install`
 
-Hooks live in `.githooks/`, not Husky. Pre-commit runs lint, formatting, typecheck, generated CSS checks, and token drift checks. Commit messages must follow Conventional Commits.
+Hooks live in `.githooks/`, not Husky. Pre-commit runs lint, formatting, typecheck, generated CSS/rules checks, and token drift checks. Commit messages must follow Conventional Commits.
 
 ## Tokens
 
@@ -26,35 +26,36 @@ Core token files:
 - Palette source: `scripts/palette.ts` -> `src/styles/tokens/palette.css`
 - Semantic registry: `src/styles/tokens/registry.ts`
 - Semantic runtime CSS: `src/styles/tokens/semantic.css`
-- Tailwind aliases/theme: `src/styles/tokens/tailwind-theme.css`
+- Internal Tailwind colour aliases (generated): `src/styles/tokens/tailwind-color-adapter.css`
+- Public Tailwind utilities (generated): `src/styles/tokens/tailwind-public-utilities.css`
+- Framework-independent public utilities (generated): `src/styles/tokens/semantic-utilities.css`
+- Non-colour Tailwind theme: `src/styles/tokens/tailwind-theme.css`
 - Component tokens: `src/styles/tokens/components.css`
 - Preset data: `src/styles/presets-data/*.ts` -> `src/styles/presets/*.css`
 
-`src/styles/tokens/registry.ts` is the metadata hub for semantic colors, shadcn compatibility aliases, and Tailwind color aliases. The token editor and `scripts/check-token-system.ts` both depend on it.
+`src/styles/tokens/registry.ts` is the metadata hub for semantic colours, derived shadcn compatibility aliases, internal Tailwind colour aliases, and the exact category-safe `publicSemanticUtilities` contract. The token editor, CSS generators, skill manifest, and `scripts/check-token-system.ts` depend on it.
 
-When adding or renaming a semantic color token, update the registry, `semantic.css`, every preset data file, and `tailwind-theme.css` if a Tailwind class should exist. Then run:
+When adding or renaming a semantic colour token, update the registry, `semantic.css`, and every preset data file. Then regenerate both token and preset outputs and run their checks:
 
 ```bash
+bun scripts/generate-css.ts
 bun scripts/generate-preset-css.ts
+bun scripts/generate-css.ts --check
+bun scripts/generate-preset-css.ts --check
 bun run test:tokens
 ```
 
-Do not add one-off `--color-*` aliases directly to `tailwind-theme.css`; register them in `registry.ts` so drift checks can validate them.
+Never hand-edit generated token utilities, adapters, manifests, or `src/styles/presets/*.css`. Do not add one-off `--color-*` aliases to `tailwind-theme.css`; register justified internal aliases in `registry.ts` so generation and drift checks remain authoritative.
+
+Preset data owns canonical semantic tokens and independent `--sidebar-*` component roles. shadcn compatibility aliases are derived references only: do not define or override them independently in preset data.
 
 ## Tailwind Utilities
 
-Tailwind color utilities come from `--color-*` variables. A registered suffix such as `success` is valid with color prefixes like `bg-success`, `text-success`, `border-success`, `ring-success`, `outline-success`, `fill-success`, and `stroke-success`.
+Internal library code can use the `--color-*` aliases in `tailwindColorAliases` with Tailwind colour property combinations. That adapter exists for local component authoring and shadcn compatibility; it is not the downstream semantic utility contract.
 
-Important semantic suffix groups are:
+The public contract is the exact `publicSemanticUtilities` allowlist in `registry.ts`, also generated into the consumer skill manifest. It deliberately maps categories only to suitable properties: backgrounds to `bg-*`, text to `text-*`, icons to `text-icon-*`/`fill-icon-*`/`stroke-icon-*`, borders to `border-stroke-*`, and charts to `fill-chart-*`/`stroke-chart-*`. Do not infer other public token/property combinations.
 
-- Status: `success`, `warning`, `critical`, `info`, `emphasis`
-- Brands: `brand`, `brand-2`, `brand-3`, `brand-4`, `brand-5`
-- Surfaces: `surface-success`, `surface-warning`, `surface-critical`, `surface-info`, `surface-emphasis`, `surface-brand`, `surface-brand-2` through `surface-brand-5`
-- Icons: `icon-success`, `icon-warning`, `icon-critical`, `icon-info`, `icon-emphasis`, `icon-brand`, `icon-brand-2` through `icon-brand-5`
-- Borders: `stroke-critical`, `stroke-success`, `stroke-warning`, `stroke-info`, `stroke-emphasis`, `stroke-brand`, `stroke-brand-2` through `stroke-brand-5`
-- Layout/compat: `page`, `stroke`, `field`, `focus`, `danger`, `sidebar`, `sidebar-*`, shadcn-compatible aliases, and `chart-1` through `chart-5`
-
-For the exact current list, inspect `tailwindColorAliases` in `src/styles/tokens/registry.ts`. `bun run test:tokens` scans `src/` and `showcase/src/` for semantic-looking color utilities and fails on unregistered aliases.
+Downstream consumers import `@leitware/composables/styles.css`; no Tailwind setup is required. Tailwind v4 consumers may additionally import `@leitware/composables/tailwind.css` after Tailwind to generate state or responsive variants of those exact public utilities.
 
 Other Tailwind theme utilities in `tailwind-theme.css` include tokenized type sizes, tracking, fonts, radius, shadows, z-index, motion, opacity, and container widths. Prefer these over arbitrary Tailwind values.
 
@@ -62,9 +63,13 @@ Other Tailwind theme utilities in `tailwind-theme.css` include tokenized type si
 
 Current presets are registered in `src/styles/presets-data/index.ts`. Preset CSS is generated; add or update preset data in `src/styles/presets-data/`, register it once in `presetDefinitions`, and run `bun run generate:presets` instead of hand-editing `src/styles/presets/*.css`.
 
-## AI Rules
+## Package Boundary
 
-`rules/composables.md` is generated for AI assistants and rule-file workflows. It summarizes package import rules, optional dependencies, public component exports, and the `/ai` entrypoint. Regenerate it with `bun run generate:rules` after changing `README.md`, `package.json`, `src/index.ts`, or `src/opinionated/ai/*`.
+All non-AI opinionated components are exported from the package root. Their runtime integrations are regular dependencies so consumers have one component entrypoint. AI components remain isolated behind `/ai` with optional peers.
+
+## AI Rules and Skill Manifests
+
+`bun run generate:rules` generates both `rules/composables.md` and `skills/use-composables/references/public-api.md`. They cover package imports, optional dependencies, public exports, and the `/ai` entrypoint. Regenerate them after changing `README.md`, `package.json` exports, `src/index.ts`, or `src/opinionated/ai/*`. The semantic utility skill manifest is generated separately by `bun scripts/generate-css.ts` from `publicSemanticUtilities`.
 
 ## Notes
 

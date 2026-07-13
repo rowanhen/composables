@@ -7,9 +7,12 @@
 
    File structure:
      tokens/palette.css        — Primitive color scales (build-time + runtime)
-     tokens/tailwind-theme.css — Tailwind utility registrations (@theme)
+     tokens/tailwind-color-adapter.css — Generated Tailwind color aliases
+     tokens/tailwind-theme.css — Non-color Tailwind theme registrations
      tokens/semantic.css       — Semantic role tokens (:root + .dark)
      tokens/components.css     — Component-level tunables
+     presets/default.css       — The canonical default light/dark preset
+     tokens/semantic-utilities.css — Generated public semantic classes
      tokens/base.css           — Global base styles (@layer base)
    ============================================================================ */
 
@@ -62,7 +65,10 @@
 
 /* ── Token layers ─────────────────────────────────────────────────────── */
 @import './tokens/palette.css';
+@import './tokens/tailwind-color-adapter.css';
 @import './tokens/tailwind-theme.css';
 @import './tokens/semantic.css';
 @import './tokens/components.css';
+@import './presets/default.css';
+@import './tokens/semantic-utilities.css';
 @import './tokens/base.css';

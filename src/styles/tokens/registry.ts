@@ -15,6 +15,13 @@ export interface TailwindColorAlias {
 	target: string
 }
 
+export interface PublicSemanticUtility {
+	className: string
+	declarations: ReadonlyArray<readonly [property: string, value: string]>
+	category: SemanticColorToken['category']
+	token: string
+}
+
 export const semanticColorTokens: SemanticColorToken[] = [
 	// Background
 	{ cssVar: '--bg-default', reference: '{neutral.100}', category: 'bg', label: 'default' },
@@ -25,6 +32,18 @@ export const semanticColorTokens: SemanticColorToken[] = [
 		reference: '{neutral.100}',
 		category: 'bg',
 		label: 'surface-default',
+	},
+	{
+		cssVar: '--bg-surface-popover',
+		reference: '{neutral.100}',
+		category: 'bg',
+		label: 'surface-popover',
+	},
+	{
+		cssVar: '--bg-surface-accent',
+		reference: '{neutral.200}',
+		category: 'bg',
+		label: 'surface-accent',
 	},
 	{ cssVar: '--bg-surface-info', reference: '{sky.100}', category: 'bg', label: 'surface-info' },
 	{
@@ -62,6 +81,12 @@ export const semanticColorTokens: SemanticColorToken[] = [
 		reference: '{Overlays.Black-Alpha.50}',
 		category: 'bg',
 		label: 'surface-transparent',
+	},
+	{
+		cssVar: '--bg-overlay',
+		reference: '{Overlays.Black-Alpha.800}',
+		category: 'bg',
+		label: 'overlay',
 	},
 	{ cssVar: '--bg-surface-brand', reference: '{pink.100}', category: 'bg', label: 'surface-brand' },
 	{
@@ -157,10 +182,38 @@ export const semanticColorTokens: SemanticColorToken[] = [
 
 	// Text
 	{ cssVar: '--text-default', reference: '{neutral.1000}', category: 'text', label: 'default' },
-	{ cssVar: '--text-secondary', reference: '{neutral.950}', category: 'text', label: 'secondary' },
-	{ cssVar: '--text-muted', reference: '{neutral.800}', category: 'text', label: 'muted' },
+	{
+		cssVar: '--text-secondary',
+		reference: '{neutral.950}',
+		category: 'text',
+		label: 'content-secondary',
+	},
+	{
+		cssVar: '--text-muted',
+		reference: '{neutral.800}',
+		category: 'text',
+		label: 'content-muted',
+	},
 	{ cssVar: '--text-disabled', reference: '{neutral.600}', category: 'text', label: 'disabled' },
 	{ cssVar: '--text-inverse', reference: '{base.white}', category: 'text', label: 'inverse' },
+	{
+		cssVar: '--text-on-fill-primary',
+		reference: '{base.white}',
+		category: 'text',
+		label: 'on-fill-primary',
+	},
+	{
+		cssVar: '--text-on-fill-secondary',
+		reference: '{neutral.1000}',
+		category: 'text',
+		label: 'on-fill-secondary',
+	},
+	{
+		cssVar: '--text-on-surface-accent',
+		reference: '{neutral.1000}',
+		category: 'text',
+		label: 'on-surface-accent',
+	},
 	{ cssVar: '--text-info', reference: '{sky.1000}', category: 'text', label: 'info' },
 	{ cssVar: '--text-success', reference: '{green.1000}', category: 'text', label: 'success' },
 	{ cssVar: '--text-warning', reference: '{orange.1000}', category: 'text', label: 'warning' },
@@ -197,6 +250,7 @@ export const semanticColorTokens: SemanticColorToken[] = [
 		category: 'border',
 		label: 'secondary',
 	},
+	{ cssVar: '--border-input', reference: '{neutral.500}', category: 'border', label: 'input' },
 	{
 		cssVar: '--border-tertiary',
 		reference: '{neutral.700}',
@@ -235,36 +289,44 @@ export const shadcnCompatAliases: CssAlias[] = [
 	{ cssVar: '--foreground', target: '--text-default' },
 	{ cssVar: '--card', target: '--bg-surface-default' },
 	{ cssVar: '--card-foreground', target: '--text-default' },
-	{ cssVar: '--popover', target: '--bg-surface-default' },
+	{ cssVar: '--popover', target: '--bg-surface-popover' },
 	{ cssVar: '--popover-foreground', target: '--text-default' },
 	{ cssVar: '--primary', target: '--bg-fill-primary' },
-	{ cssVar: '--primary-foreground', target: '--text-inverse' },
-	{ cssVar: '--secondary', target: '--bg-muted' },
-	{ cssVar: '--secondary-foreground', target: '--text-default' },
+	{ cssVar: '--primary-foreground', target: '--text-on-fill-primary' },
+	{ cssVar: '--secondary', target: '--bg-fill-secondary' },
+	{ cssVar: '--secondary-foreground', target: '--text-on-fill-secondary' },
 	{ cssVar: '--muted', target: '--bg-muted' },
 	{ cssVar: '--muted-foreground', target: '--text-muted' },
-	{ cssVar: '--accent', target: '--bg-muted' },
-	{ cssVar: '--accent-foreground', target: '--text-default' },
+	{ cssVar: '--accent', target: '--bg-surface-accent' },
+	{ cssVar: '--accent-foreground', target: '--text-on-surface-accent' },
 	{ cssVar: '--destructive', target: '--bg-fill-critical' },
 	{ cssVar: '--border', target: '--border-default' },
-	{ cssVar: '--input', target: '--border-secondary' },
+	{ cssVar: '--input', target: '--border-input' },
 	{ cssVar: '--ring', target: '--border-focus' },
-	{ cssVar: '--sidebar-background', target: '--bg-default' },
-	{ cssVar: '--sidebar-foreground', target: '--text-default' },
-	{ cssVar: '--sidebar-primary', target: '--bg-fill-primary' },
-	{ cssVar: '--sidebar-primary-foreground', target: '--text-inverse' },
-	{ cssVar: '--sidebar-accent', target: '--bg-muted' },
-	{ cssVar: '--sidebar-accent-foreground', target: '--text-default' },
-	{ cssVar: '--sidebar-border', target: '--border-default' },
-	{ cssVar: '--sidebar-ring', target: '--border-focus' },
 ]
+
+/** Independent component roles: presets own these values directly. */
+export const sidebarColorCssVars = [
+	'--sidebar-background',
+	'--sidebar-foreground',
+	'--sidebar-primary',
+	'--sidebar-primary-foreground',
+	'--sidebar-accent',
+	'--sidebar-accent-foreground',
+	'--sidebar-border',
+	'--sidebar-ring',
+] as const
 
 export const tailwindColorAliases: TailwindColorAlias[] = [
 	...shadcnCompatAliases.map(({ cssVar }) => ({
 		cssVar: `--color-${cssVar.slice(2)}`,
 		target: cssVar,
 	})),
-	{ cssVar: '--color-overlay', target: '--color-overlay' },
+	...sidebarColorCssVars.map((cssVar) => ({
+		cssVar: `--color-${cssVar.slice(2)}`,
+		target: cssVar,
+	})),
+	{ cssVar: '--color-overlay', target: '--bg-overlay' },
 	{ cssVar: '--color-sidebar', target: '--sidebar-background' },
 	{ cssVar: '--color-page', target: '--bg-default' },
 	{ cssVar: '--color-stroke', target: '--border-default' },
@@ -319,6 +381,52 @@ export const tailwindColorAliases: TailwindColorAlias[] = [
 	{ cssVar: '--color-stroke-brand-5', target: '--border-brand-5' },
 ]
 
+/**
+ * The guaranteed, framework-independent semantic color utility contract.
+ *
+ * Keep this matrix intentionally narrow: each token category only generates
+ * utilities for CSS properties that match its semantic role. Tailwind's color
+ * adapter remains available internally for richer variant composition, but
+ * consumers can rely on every class below existing in the precompiled CSS.
+ */
+export const publicSemanticUtilities: PublicSemanticUtility[] = semanticColorTokens.flatMap(
+	(token): PublicSemanticUtility[] => {
+		const value = `var(${token.cssVar})`
+		const utility = (
+			className: string,
+			declarations: PublicSemanticUtility['declarations'],
+		): PublicSemanticUtility => ({
+			className,
+			declarations,
+			category: token.category,
+			token: token.cssVar,
+		})
+
+		switch (token.category) {
+			case 'bg':
+				return [utility(`bg-${token.label}`, [['background-color', value]])]
+			case 'text':
+				return [utility(`text-${token.label}`, [['color', value]])]
+			case 'icon':
+				return [
+					utility(`text-icon-${token.label}`, [['color', value]]),
+					utility(`fill-icon-${token.label}`, [['fill', value]]),
+					utility(`stroke-icon-${token.label}`, [['stroke', value]]),
+				]
+			case 'border':
+				return [utility(`border-stroke-${token.label}`, [['border-color', value]])]
+			case 'chart':
+				return [
+					utility(`fill-chart-${token.label}`, [['fill', value]]),
+					utility(`stroke-chart-${token.label}`, [['stroke', value]]),
+				]
+		}
+	},
+)
+
 export const semanticColorCssVars = semanticColorTokens.map((token) => token.cssVar)
 export const shadcnCompatCssVars = shadcnCompatAliases.map((alias) => alias.cssVar)
 export const tailwindColorCssVars = tailwindColorAliases.map((alias) => alias.cssVar)
+export const publicSemanticUtilityClassNames = publicSemanticUtilities.map(
+	(utility) => utility.className,
+)

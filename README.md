@@ -10,12 +10,16 @@
 
 ## What is this?
 
-Composables is a React component library with ~70 components across forms, layout, data display, feedback, and navigation — all built on [Base UI](https://base-ui.com/) primitives with a CSS custom property token system and 2 built-in design presets.
+Composables is a React component library with ~70 components across forms, layout, data display, feedback, and navigation. Components are built on [Base UI](https://base-ui.com/) and styled through semantic CSS custom properties, so an application can change its visual language without rewriting component styles.
 
-It uses a **two-tier architecture**:
+The downstream contract is deliberately small:
 
-- **`opinionated/`** — your API surface. These are the components you import and use day-to-day. They have clean, convenient props and sensible defaults.
-- **`_internal/`** — low-level primitives. These are what the opinionated layer is built on. Lint rules block you from importing from here directly so that internal refactors don't break your app.
+1. Import one stylesheet.
+2. Optionally import one alternative preset.
+3. Override known semantic tokens when your product needs a local decision.
+4. Use public components and documented semantic utility classes.
+
+There is no required `ThemeProvider`, Tailwind installation, or Tailwind configuration.
 
 ---
 
@@ -25,16 +29,22 @@ It uses a **two-tier architecture**:
 npm install @leitware/composables
 ```
 
-Import the styles in your root CSS file:
+Import the package stylesheet once in your application's root stylesheet (`app.css`, `globals.css`, or equivalent):
 
 ```css
 @import '@leitware/composables/styles.css';
+```
 
-/* Optional: apply one preset after the base styles */
+`styles.css` includes the default theme, component styles, and the documented semantic utilities. That is all a default setup needs.
+
+To use a different shipped preset, import exactly one after `styles.css`:
+
+```css
+@import '@leitware/composables/styles.css';
 @import '@leitware/composables/presets/brutalist.css';
 ```
 
-The CSS is pre-compiled — no Tailwind installation or configuration needed downstream.
+The order matters: base styles first, optional preset second, application overrides last.
 
 Then import components:
 
@@ -44,37 +54,148 @@ import { FormInput } from '@leitware/composables'
 import { Card } from '@leitware/composables'
 ```
 
-Optional AI components are exposed from their own entrypoint:
+### Override the theme
+
+Override known semantic variables after the imports. Define both modes when a colour decision should change with the theme:
+
+```css
+@import '@leitware/composables/styles.css';
+@import '@leitware/composables/presets/signal-pop.css';
+
+:root {
+	--bg-fill-brand: #6d28d9;
+	--border-brand: #8b5cf6;
+	--radius: 0.75rem;
+}
+
+.dark {
+	--bg-fill-brand: #a78bfa;
+	--border-brand: #8b5cf6;
+}
+```
+
+Add `class="dark"` to `<html>` (or a subtree) to activate the dark values. A provider is not required.
+
+### Use semantic styling
+
+Documented semantic utility classes are a guaranteed public API and resolve through the same variables as the components:
+
+```tsx
+<Card className="bg-surface-success text-success border-stroke-success">Saved successfully</Card>
+```
+
+These classes are shipped as ordinary CSS, so they work whether or not the consuming application uses Tailwind. Consumers may use their own Tailwind setup, CSS Modules, plain CSS, or another styling system for layout and composition.
+
+The registry generates only property combinations that match each token's role:
+
+| Semantic token family | Guaranteed class family                       |
+| --------------------- | --------------------------------------------- |
+| `--bg-*`              | `bg-*`                                        |
+| `--text-*`            | `text-*`                                      |
+| `--icon-*`            | `text-icon-*`, `fill-icon-*`, `stroke-icon-*` |
+| `--border-*`          | `border-stroke-*`                             |
+| `--chart-*`           | `fill-chart-*`, `stroke-chart-*`              |
+
+Only the documented semantic utilities are a package API. Layout utilities that happen to appear in the compiled stylesheet because library components use them internally are incidental and may change; do not rely on them as a downstream Tailwind bundle.
+
+### Optional Tailwind v4 adapter
+
+`styles.css` is sufficient for components and the guaranteed semantic class families above. If the consuming application already builds with Tailwind v4 and wants state or responsive variants of those exact public classes, include the optional adapter in its Tailwind CSS entrypoint:
+
+```css
+@import 'tailwindcss';
+@import '@leitware/composables/tailwind.css';
+@import '@leitware/composables/styles.css';
+@import '@leitware/composables/presets/signal-pop.css'; /* Optional */
+```
+
+`tailwind.css` contains exact generated `@utility` definitions for the public semantic class contract. With that adapter imported, variant-prefixed forms such as `hover:bg-surface-hover`, `md:text-success`, and `group-hover:border-stroke-success` are supported when the suffix is an exact documented class. Without it, only the shipped unprefixed semantic classes are guaranteed. The adapter does not expose internal shadcn compatibility aliases, include Tailwind itself, replace `styles.css`, or turn incidental layout classes from the package build into public API.
+
+### One component entrypoint
+
+All non-AI components and their integrations are available from the package root. The package owns those runtime dependencies, so consumers do not need to choose feature packages or remember component-specific import paths:
+
+```tsx
+import {
+	Button,
+	Calendar,
+	Carousel,
+	FormDropZone,
+	ThemeInjector,
+	Toaster,
+} from '@leitware/composables'
+```
+
+AI components are exposed from their own entrypoint:
 
 ```tsx
 import { AIMessage, AIPromptInput } from '@leitware/composables/ai'
 ```
 
+The AI libraries remain optional peer dependencies because they are a materially larger, specialised integration surface. Applications that do not import `@leitware/composables/ai` do not need to install or configure them. If you use that entrypoint, install its optional peers; see the table below.
+
+### Consumer agent skill
+
+The npm package includes a `use-composables` agent skill at `skills/use-composables/SKILL.md`. Install or point your coding agent at that directory to give it the package workflow, semantic-styling rules, exact public entrypoints, and optional-dependency guidance. Its utility manifest is generated from the token registry by `bun scripts/generate-css.ts`; its public API manifest is generated from package metadata and public barrels by `bun scripts/generate-rules.ts`. Both generators support `--check`, keeping agent guidance aligned with the shipped contract.
+
 ---
 
 ## Optional Dependencies
 
-Only the core (layout, forms, typography, feedback) is installed by default. Components that depend on heavier libraries require you to install the relevant package:
+React remains a peer dependency. Normal component integrations such as calendars, carousels, drop zones, resizable panels, toasts, and the token editor are regular dependencies installed with Composables. Only the AI entrypoint and preset fonts require optional packages:
 
-| Install when using…                             | Package                                                                                                                                                                                  |
-| ----------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Calendar`, `FormCalendarPopover`               | `react-day-picker`                                                                                                                                                                       |
-| `Carousel`                                      | `embla-carousel-react`                                                                                                                                                                   |
-| `Dropzone`, `FormDropzone`, `FormMultiDropzone` | `react-dropzone`                                                                                                                                                                         |
-| `ResizablePanels`                               | `react-resizable-panels`                                                                                                                                                                 |
-| `Sonner` (toasts)                               | `sonner`                                                                                                                                                                                 |
-| AI elements from `@leitware/composables/ai`     | `ai`, `shiki`, `streamdown`, `@streamdown/cjk`, `@streamdown/code`, `@streamdown/math`, `@streamdown/mermaid`, `use-stick-to-bottom`, `nanoid`, `@radix-ui/react-use-controllable-state` |
-| `ThemeInjector` / `TokenConfigPanel`            | `react-colorful`                                                                                                                                                                         |
-| Default preset fonts                            | `@fontsource-variable/inter`                                                                                                                                                             |
-| Brutalist preset fonts                          | `@fontsource-variable/space-grotesk`, `@fontsource-variable/jetbrains-mono`                                                                                                              |
+| Install when using… | Import from                   | Optional packages                                                                                                                                                                                          |
+| ------------------- | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| AI elements         | `@leitware/composables/ai`    | `ai`, `shiki`, `streamdown`, `@streamdown/cjk`, `@streamdown/code`, `@streamdown/math`, `@streamdown/mermaid`, `use-stick-to-bottom`, `nanoid`, `@radix-ui/react-use-controllable-state`, `cmdk`, `motion` |
+| Preset typography   | CSS or application entrypoint | The Fontsource packages listed below                                                                                                                                                                       |
 
-If you use a component without its optional dependency installed, you'll get a clear module-not-found error at build time telling you exactly what to add.
+These packages are declared as optional peers. Exact missing-peer diagnostics depend on the consuming package manager and bundler.
+
+### Load preset fonts
+
+Fonts are optional peers too. Components and presets still work with their CSS fallback stacks when fonts are not loaded. To reproduce the intended preset typography, install the matching packages and place these imports before `styles.css`.
+
+Default:
+
+```css
+@import '@fontsource-variable/inter';
+@import '@fontsource-variable/bricolage-grotesque';
+@import '@leitware/composables/styles.css';
+```
+
+Brutalist:
+
+```css
+@import '@fontsource-variable/space-grotesk';
+@import '@fontsource-variable/jetbrains-mono';
+@import '@leitware/composables/styles.css';
+@import '@leitware/composables/presets/brutalist.css';
+```
+
+Signal Pop:
+
+```css
+@import '@fontsource/ibm-plex-sans/400.css';
+@import '@fontsource/ibm-plex-sans/500.css';
+@import '@fontsource/ibm-plex-sans/600.css';
+@import '@fontsource/ibm-plex-sans/700.css';
+@import '@fontsource-variable/space-grotesk';
+@import '@fontsource-variable/jetbrains-mono';
+@import '@fontsource/ibm-plex-mono/400.css';
+@import '@fontsource/ibm-plex-mono/500.css';
+@import '@fontsource/ibm-plex-mono/600.css';
+@import '@fontsource/ibm-plex-mono/700.css';
+@import '@leitware/composables/styles.css';
+@import '@leitware/composables/presets/signal-pop.css';
+```
+
+The variable entrypoints include their preset weight ranges. The explicit IBM Plex files load normal weights 400–700; add italic entrypoints only if your interface uses them. The same package paths can instead be loaded as side-effect imports from an application entry file, for example `import '@fontsource-variable/inter'` or `import '@fontsource/ibm-plex-sans/600.css'`.
 
 ---
 
 ## Design Tokens
 
-The token system is built on CSS custom properties. Everything — colours, spacing, typography, radius, borders, shadows — is expressed as a token that you can override.
+The token system is built on CSS custom properties. Colours, spacing, typography, radius, borders, shadows, and motion are expressed as semantic or component tokens that presets and applications can override.
 
 ### Token Files
 
@@ -85,36 +206,50 @@ styles/
 │   ├── palette.css             ← Primitive color scales (build-time + runtime)
 │   ├── semantic.css            ← Semantic role tokens (:root + .dark)
 │   ├── components.css          ← Component-level tunables
-│   ├── tailwind-theme.css      ← Tailwind utility registrations (@theme)
+│   ├── tailwind-color-adapter.css ← Generated Tailwind colour aliases
+│   ├── tailwind-public-utilities.css ← Generated optional public Tailwind variants
+│   ├── tailwind-theme.css      ← Non-colour Tailwind registrations (@theme)
+│   ├── semantic-utilities.css  ← Generated public semantic classes
 │   └── base.css                ← Global base styles
 ├── presets/                    ← Generated standalone preset CSS files
 │   ├── default.css
-│   └── brutalist.css
+│   ├── brutalist.css
+│   └── signal-pop.css
 └── presets-data/               ← Source of truth for preset token values (TS)
 ```
 
 Generated CSS ownership:
 
-| File                        | Source of truth                      | Generated by                     |
-| --------------------------- | ------------------------------------ | -------------------------------- |
-| `tokens/palette.css`        | `scripts/palette.ts`                 | `bun run generate:palette`       |
-| `presets/*.css`             | `src/styles/presets-data/index.ts`   | `bun run generate:presets`       |
-| `rules/composables.md`      | `README.md` + package barrel exports | `bun run generate:rules`         |
-| `dist/styles.css`           | `src/styles/composable.css` + `src`  | `bun run build:css`              |
-| `dist/presets/*.css`        | `src/styles/presets/*.css`           | `bun run build:css`              |
-| `tokens/semantic.css`       | Hand-authored semantic mappings      | Checked by `bun run test:tokens` |
-| `tokens/tailwind-theme.css` | Hand-authored Tailwind aliases       | Checked by `bun run test:tokens` |
+| File                                                      | Source of truth                        | Generated by                     |
+| --------------------------------------------------------- | -------------------------------------- | -------------------------------- |
+| `tokens/palette.css`                                      | `scripts/palette.ts`                   | `bun scripts/generate-css.ts`    |
+| `tokens/tailwind-color-adapter.css`                       | `src/styles/tokens/registry.ts`        | `bun scripts/generate-css.ts`    |
+| `tokens/tailwind-public-utilities.css`                    | `src/styles/tokens/registry.ts`        | `bun scripts/generate-css.ts`    |
+| `tokens/semantic-utilities.css`                           | `src/styles/tokens/registry.ts`        | `bun scripts/generate-css.ts`    |
+| `skills/use-composables/references/semantic-utilities.md` | `src/styles/tokens/registry.ts`        | `bun scripts/generate-css.ts`    |
+| `skills/use-composables/references/public-api.md`         | `package.json` + public barrels        | `bun scripts/generate-rules.ts`  |
+| `presets/*.css`                                           | `src/styles/presets-data/index.ts`     | `bun run generate:presets`       |
+| `rules/composables.md`                                    | `README.md` + package barrel exports   | `bun run generate:rules`         |
+| `dist/styles.css`                                         | `src/styles/composable.css` + `src`    | `bun run build:css`              |
+| `dist/tailwind.css`                                       | `tokens/tailwind-public-utilities.css` | `bun run build:css`              |
+| `dist/presets/*.css`                                      | `src/styles/presets/*.css`             | `bun run build:css`              |
+| `tokens/semantic.css`                                     | Hand-authored baseline semantic values | Checked by `bun run test:tokens` |
+| `tokens/tailwind-theme.css`                               | Hand-authored non-colour theme aliases | Checked by `bun run test:tokens` |
 
 ### Customising Tokens
 
-Override tokens in your own CSS:
+Override public tokens after the package and preset imports. Prefer semantic roles such as `--bg-fill-brand` over palette primitives such as `--violet-800`; this keeps application intent stable when a preset changes.
 
 ```css
 :root {
 	--font-size-base: 15px;
 	--radius: 0.75rem;
-	--bg-fill-primary: var(--blue-800);
+	--bg-fill-primary: #1e40af;
 	--font-heading: 'Fraunces Variable', serif;
+}
+
+.dark {
+	--bg-fill-primary: #93c5fd;
 }
 ```
 
@@ -122,10 +257,10 @@ Key token groups:
 
 | Group          | Example tokens                                                                        |
 | -------------- | ------------------------------------------------------------------------------------- |
-| Colour palette | `--neutral-100`, `--blue-800`, `--red-950`                                            |
-| Background     | `--bg-default`, `--bg-fill-primary`, `--bg-surface-success`                           |
-| Text           | `--text-default`, `--text-secondary`, `--text-critical`                               |
-| Border         | `--border-default`, `--border-focus`, `--border-brand`                                |
+| Colour palette | `--neutral-100`, `--blue-800`, `--red-950` (package/preset implementation)            |
+| Background     | `--bg-default`, `--bg-fill-primary`, `--bg-surface-popover`, `--bg-surface-success`   |
+| Text           | `--text-default`, `--text-on-fill-primary`, `--text-secondary`, `--text-critical`     |
+| Border         | `--border-default`, `--border-input`, `--border-focus`, `--border-brand`              |
 | Icon           | `--icon-default`, `--icon-success`, `--icon-critical`                                 |
 | Typography     | `--font-size-base`, `--leading-base`, `--font-heading`                                |
 | Spacing        | `--spacing` (base unit, used in `calc()`)                                             |
@@ -183,19 +318,19 @@ export default function RootLayout({ children }) {
 
 ## Presets
 
-Two built-in design presets are available as standalone CSS files you can paste into your `index.css`:
+The default theme is included in `styles.css`. Alternative presets are available as standalone CSS files:
 
-| Preset        | Vibe                                   | Fonts                          |
-| ------------- | -------------------------------------- | ------------------------------ |
-| **Default**   | Clean neutral system, works everywhere | Inter + Bricolage Grotesque    |
-| **Brutalist** | Bold, high-contrast, raw aesthetic     | Space Grotesk + JetBrains Mono |
+| Preset         | Vibe                                      | Fonts                                          |
+| -------------- | ----------------------------------------- | ---------------------------------------------- |
+| **Default**    | Clean neutral system, works everywhere    | Inter + Bricolage Grotesque                    |
+| **Brutalist**  | Bold, high-contrast, raw aesthetic        | Space Grotesk + JetBrains Mono                 |
+| **Signal Pop** | Bright consumer-tech, modular and graphic | IBM Plex Sans + Space Grotesk + JetBrains Mono |
 
 ```css
-/* Use exactly one shipped preset by importing it after styles.css */
+/* Optional: use exactly one alternative preset after styles.css */
+@import '@leitware/composables/styles.css';
 @import '@leitware/composables/presets/brutalist.css';
 ```
-
-Font imports for non-default presets are commented out at the top of `composable.css` — uncomment the one you need.
 
 ### Creating a Preset
 
@@ -220,9 +355,9 @@ App-level overrides should come after the preset import.
 
 The token system self-regulates through CI checks:
 
-- `bun scripts/generate-css.ts --check` verifies generated palette CSS.
+- `bun scripts/generate-css.ts --check` verifies the generated palette, Tailwind colour adapter, and public semantic utilities.
 - `bun scripts/generate-preset-css.ts --check` verifies generated preset CSS.
-- `bun scripts/generate-rules.ts --check` verifies generated AI usage rules.
+- `bun scripts/generate-rules.ts --check` verifies generated AI usage rules and the consumer skill's public API manifest.
 - `bun run test:tokens` verifies semantic token registry coverage, Tailwind aliases, preset keys, and semantic class usage.
 - `bun run test:css` verifies the compiled downstream CSS contains required tokens and utilities.
 
@@ -253,6 +388,8 @@ Live component demo: **[https://rowanhen.github.io/composables/](https://rowanhe
 ---
 
 ## Components
+
+All normal components import from `@leitware/composables`; AI components import from `/ai`. The packaged `use-composables` skill includes a generated, exact entrypoint/export manifest.
 
 ### Foundation
 

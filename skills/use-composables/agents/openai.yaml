@@ -1,0 +1,4 @@
+interface:
+  display_name: 'Use Composables'
+  short_description: 'Build interfaces with Composables correctly'
+  default_prompt: 'Use $use-composables to build this interface with public components and semantic styling.'

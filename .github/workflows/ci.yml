@@ -29,6 +29,8 @@ jobs:
         run: bun scripts/generate-css.ts --check
       - name: Verify generated preset CSS
         run: bun scripts/generate-preset-css.ts --check
+      - name: Verify generated AI rules and skill manifests
+        run: bun run test:rules
       - name: Test token system
         run: bun run test:tokens
       - name: Build CSS

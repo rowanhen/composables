@@ -1,0 +1,500 @@
+/* ============================================================================
+   Generated Public Tailwind Utilities
+   ============================================================================
+   Optional Tailwind v4 adapter for variants of every guaranteed public class.
+   Import this after Tailwind in a consuming application's CSS entrypoint.
+
+   To regenerate:  bun scripts/generate-css.ts
+   ============================================================================ */
+
+@utility bg-default {
+	background-color: var(--bg-default);
+}
+
+@utility bg-inverse {
+	background-color: var(--bg-inverse);
+}
+
+@utility bg-muted {
+	background-color: var(--bg-muted);
+}
+
+@utility bg-surface-default {
+	background-color: var(--bg-surface-default);
+}
+
+@utility bg-surface-popover {
+	background-color: var(--bg-surface-popover);
+}
+
+@utility bg-surface-accent {
+	background-color: var(--bg-surface-accent);
+}
+
+@utility bg-surface-info {
+	background-color: var(--bg-surface-info);
+}
+
+@utility bg-surface-success {
+	background-color: var(--bg-surface-success);
+}
+
+@utility bg-surface-warning {
+	background-color: var(--bg-surface-warning);
+}
+
+@utility bg-surface-critical {
+	background-color: var(--bg-surface-critical);
+}
+
+@utility bg-surface-emphasis {
+	background-color: var(--bg-surface-emphasis);
+}
+
+@utility bg-surface-inverse {
+	background-color: var(--bg-surface-inverse);
+}
+
+@utility bg-surface-transparent {
+	background-color: var(--bg-surface-transparent);
+}
+
+@utility bg-overlay {
+	background-color: var(--bg-overlay);
+}
+
+@utility bg-surface-brand {
+	background-color: var(--bg-surface-brand);
+}
+
+@utility bg-surface-brand-2 {
+	background-color: var(--bg-surface-brand-2);
+}
+
+@utility bg-surface-brand-3 {
+	background-color: var(--bg-surface-brand-3);
+}
+
+@utility bg-surface-brand-4 {
+	background-color: var(--bg-surface-brand-4);
+}
+
+@utility bg-surface-brand-5 {
+	background-color: var(--bg-surface-brand-5);
+}
+
+@utility bg-surface-hover {
+	background-color: var(--bg-surface-hover);
+}
+
+@utility bg-fill-default {
+	background-color: var(--bg-fill-default);
+}
+
+@utility bg-fill-primary {
+	background-color: var(--bg-fill-primary);
+}
+
+@utility bg-fill-brand {
+	background-color: var(--bg-fill-brand);
+}
+
+@utility bg-fill-brand-2 {
+	background-color: var(--bg-fill-brand-2);
+}
+
+@utility bg-fill-brand-3 {
+	background-color: var(--bg-fill-brand-3);
+}
+
+@utility bg-fill-brand-4 {
+	background-color: var(--bg-fill-brand-4);
+}
+
+@utility bg-fill-brand-5 {
+	background-color: var(--bg-fill-brand-5);
+}
+
+@utility bg-fill-info {
+	background-color: var(--bg-fill-info);
+}
+
+@utility bg-fill-success {
+	background-color: var(--bg-fill-success);
+}
+
+@utility bg-fill-warning {
+	background-color: var(--bg-fill-warning);
+}
+
+@utility bg-fill-critical {
+	background-color: var(--bg-fill-critical);
+}
+
+@utility bg-fill-emphasis {
+	background-color: var(--bg-fill-emphasis);
+}
+
+@utility bg-fill-transparent {
+	background-color: var(--bg-fill-transparent);
+}
+
+@utility bg-fill-secondary {
+	background-color: var(--bg-fill-secondary);
+}
+
+@utility bg-fill-secondary-inverse {
+	background-color: var(--bg-fill-secondary-inverse);
+}
+
+@utility text-default {
+	color: var(--text-default);
+}
+
+@utility text-content-secondary {
+	color: var(--text-secondary);
+}
+
+@utility text-content-muted {
+	color: var(--text-muted);
+}
+
+@utility text-disabled {
+	color: var(--text-disabled);
+}
+
+@utility text-inverse {
+	color: var(--text-inverse);
+}
+
+@utility text-on-fill-primary {
+	color: var(--text-on-fill-primary);
+}
+
+@utility text-on-fill-secondary {
+	color: var(--text-on-fill-secondary);
+}
+
+@utility text-on-surface-accent {
+	color: var(--text-on-surface-accent);
+}
+
+@utility text-info {
+	color: var(--text-info);
+}
+
+@utility text-success {
+	color: var(--text-success);
+}
+
+@utility text-warning {
+	color: var(--text-warning);
+}
+
+@utility text-critical {
+	color: var(--text-critical);
+}
+
+@utility text-emphasis {
+	color: var(--text-emphasis);
+}
+
+@utility text-brand {
+	color: var(--text-brand);
+}
+
+@utility text-brand-2 {
+	color: var(--text-brand-2);
+}
+
+@utility text-brand-3 {
+	color: var(--text-brand-3);
+}
+
+@utility text-brand-4 {
+	color: var(--text-brand-4);
+}
+
+@utility text-brand-5 {
+	color: var(--text-brand-5);
+}
+
+@utility text-link {
+	color: var(--text-link);
+}
+
+@utility text-icon-default {
+	color: var(--icon-default);
+}
+
+@utility fill-icon-default {
+	fill: var(--icon-default);
+}
+
+@utility stroke-icon-default {
+	stroke: var(--icon-default);
+}
+
+@utility text-icon-secondary {
+	color: var(--icon-secondary);
+}
+
+@utility fill-icon-secondary {
+	fill: var(--icon-secondary);
+}
+
+@utility stroke-icon-secondary {
+	stroke: var(--icon-secondary);
+}
+
+@utility text-icon-disabled {
+	color: var(--icon-disabled);
+}
+
+@utility fill-icon-disabled {
+	fill: var(--icon-disabled);
+}
+
+@utility stroke-icon-disabled {
+	stroke: var(--icon-disabled);
+}
+
+@utility text-icon-inverse {
+	color: var(--icon-inverse);
+}
+
+@utility fill-icon-inverse {
+	fill: var(--icon-inverse);
+}
+
+@utility stroke-icon-inverse {
+	stroke: var(--icon-inverse);
+}
+
+@utility text-icon-info {
+	color: var(--icon-info);
+}
+
+@utility fill-icon-info {
+	fill: var(--icon-info);
+}
+
+@utility stroke-icon-info {
+	stroke: var(--icon-info);
+}
+
+@utility text-icon-success {
+	color: var(--icon-success);
+}
+
+@utility fill-icon-success {
+	fill: var(--icon-success);
+}
+
+@utility stroke-icon-success {
+	stroke: var(--icon-success);
+}
+
+@utility text-icon-warning {
+	color: var(--icon-warning);
+}
+
+@utility fill-icon-warning {
+	fill: var(--icon-warning);
+}
+
+@utility stroke-icon-warning {
+	stroke: var(--icon-warning);
+}
+
+@utility text-icon-critical {
+	color: var(--icon-critical);
+}
+
+@utility fill-icon-critical {
+	fill: var(--icon-critical);
+}
+
+@utility stroke-icon-critical {
+	stroke: var(--icon-critical);
+}
+
+@utility text-icon-emphasis {
+	color: var(--icon-emphasis);
+}
+
+@utility fill-icon-emphasis {
+	fill: var(--icon-emphasis);
+}
+
+@utility stroke-icon-emphasis {
+	stroke: var(--icon-emphasis);
+}
+
+@utility text-icon-brand {
+	color: var(--icon-brand);
+}
+
+@utility fill-icon-brand {
+	fill: var(--icon-brand);
+}
+
+@utility stroke-icon-brand {
+	stroke: var(--icon-brand);
+}
+
+@utility text-icon-brand-2 {
+	color: var(--icon-brand-2);
+}
+
+@utility fill-icon-brand-2 {
+	fill: var(--icon-brand-2);
+}
+
+@utility stroke-icon-brand-2 {
+	stroke: var(--icon-brand-2);
+}
+
+@utility text-icon-brand-3 {
+	color: var(--icon-brand-3);
+}
+
+@utility fill-icon-brand-3 {
+	fill: var(--icon-brand-3);
+}
+
+@utility stroke-icon-brand-3 {
+	stroke: var(--icon-brand-3);
+}
+
+@utility text-icon-brand-4 {
+	color: var(--icon-brand-4);
+}
+
+@utility fill-icon-brand-4 {
+	fill: var(--icon-brand-4);
+}
+
+@utility stroke-icon-brand-4 {
+	stroke: var(--icon-brand-4);
+}
+
+@utility text-icon-brand-5 {
+	color: var(--icon-brand-5);
+}
+
+@utility fill-icon-brand-5 {
+	fill: var(--icon-brand-5);
+}
+
+@utility stroke-icon-brand-5 {
+	stroke: var(--icon-brand-5);
+}
+
+@utility border-stroke-default {
+	border-color: var(--border-default);
+}
+
+@utility border-stroke-secondary {
+	border-color: var(--border-secondary);
+}
+
+@utility border-stroke-input {
+	border-color: var(--border-input);
+}
+
+@utility border-stroke-tertiary {
+	border-color: var(--border-tertiary);
+}
+
+@utility border-stroke-disabled {
+	border-color: var(--border-disabled);
+}
+
+@utility border-stroke-inverse {
+	border-color: var(--border-inverse);
+}
+
+@utility border-stroke-focus {
+	border-color: var(--border-focus);
+}
+
+@utility border-stroke-brand {
+	border-color: var(--border-brand);
+}
+
+@utility border-stroke-brand-2 {
+	border-color: var(--border-brand-2);
+}
+
+@utility border-stroke-brand-3 {
+	border-color: var(--border-brand-3);
+}
+
+@utility border-stroke-brand-4 {
+	border-color: var(--border-brand-4);
+}
+
+@utility border-stroke-brand-5 {
+	border-color: var(--border-brand-5);
+}
+
+@utility border-stroke-info {
+	border-color: var(--border-info);
+}
+
+@utility border-stroke-success {
+	border-color: var(--border-success);
+}
+
+@utility border-stroke-warning {
+	border-color: var(--border-warning);
+}
+
+@utility border-stroke-critical {
+	border-color: var(--border-critical);
+}
+
+@utility border-stroke-emphasis {
+	border-color: var(--border-emphasis);
+}
+
+@utility fill-chart-1 {
+	fill: var(--chart-1);
+}
+
+@utility stroke-chart-1 {
+	stroke: var(--chart-1);
+}
+
+@utility fill-chart-2 {
+	fill: var(--chart-2);
+}
+
+@utility stroke-chart-2 {
+	stroke: var(--chart-2);
+}
+
+@utility fill-chart-3 {
+	fill: var(--chart-3);
+}
+
+@utility stroke-chart-3 {
+	stroke: var(--chart-3);
+}
+
+@utility fill-chart-4 {
+	fill: var(--chart-4);
+}
+
+@utility stroke-chart-4 {
+	stroke: var(--chart-4);
+}
+
+@utility fill-chart-5 {
+	fill: var(--chart-5);
+}
+
+@utility stroke-chart-5 {
+	stroke: var(--chart-5);
+}
