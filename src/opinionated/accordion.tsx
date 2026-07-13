@@ -1,4 +1,5 @@
 import type { Accordion as AccordionPrimitiveBase } from '@base-ui/react/accordion'
+import type { VariantProps } from 'class-variance-authority'
 import type * as React from 'react'
 
 import {
@@ -6,7 +7,11 @@ import {
 	AccordionItem,
 	Accordion as AccordionPrimitive,
 	AccordionTrigger,
+	type accordionVariants,
 } from '../_internal/accordion'
+
+/** Visual style variants available for the Accordion. */
+export type AccordionVariant = NonNullable<VariantProps<typeof accordionVariants>['variant']>
 
 /** A single panel in an Accordion. */
 export interface AccordionItemData {
@@ -31,11 +36,13 @@ export interface AccordionItemData {
  * <Accordion items={[
  *   { value: 'faq-1', trigger: 'What is this?', content: 'A component library.' },
  *   { value: 'faq-2', trigger: 'How do I install it?', content: '...', defaultOpen: true },
- * ]} />
+ * ]} variant="separated" />
  * ```
  */
 export interface AccordionProps extends Omit<AccordionPrimitiveBase.Root.Props, 'children'> {
 	className?: string
+	/** Visual style of the accordion. @default 'default' */
+	variant?: AccordionVariant
 	/** Panels to render. When provided, `children` is ignored. */
 	items?: AccordionItemData[]
 	children?: React.ReactNode
@@ -46,6 +53,7 @@ function Accordion({
 	items,
 	children,
 	defaultValue,
+	variant = 'default',
 	...accordionProps
 }: AccordionProps) {
 	// If items prop is provided, use opinionated API
@@ -59,6 +67,7 @@ function Accordion({
 			<AccordionPrimitive
 				className={className}
 				defaultValue={computedDefaultValue}
+				variant={variant}
 				{...accordionProps}
 			>
 				{items.map((item) => (
@@ -74,7 +83,12 @@ function Accordion({
 	// Fallback to children-based API for advanced use cases
 	if (children) {
 		return (
-			<AccordionPrimitive className={className} defaultValue={defaultValue} {...accordionProps}>
+			<AccordionPrimitive
+				className={className}
+				defaultValue={defaultValue}
+				variant={variant}
+				{...accordionProps}
+			>
 				{children}
 			</AccordionPrimitive>
 		)
@@ -82,7 +96,12 @@ function Accordion({
 
 	// If neither items nor children provided, return empty accordion
 	return (
-		<AccordionPrimitive className={className} defaultValue={defaultValue} {...accordionProps}>
+		<AccordionPrimitive
+			className={className}
+			defaultValue={defaultValue}
+			variant={variant}
+			{...accordionProps}
+		>
 			{null}
 		</AccordionPrimitive>
 	)

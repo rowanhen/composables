@@ -1,5 +1,12 @@
 import type { Tabs as TabsPrimitiveBase } from '@base-ui/react/tabs'
-import { TabsList, Tabs as TabsPrimitive, TabsTrigger } from '../_internal/tabs'
+import type { VariantProps } from 'class-variance-authority'
+
+import {
+	TabsList,
+	Tabs as TabsPrimitive,
+	TabsTrigger,
+	type tabsListVariants,
+} from '../_internal/tabs'
 
 /** A single tab in the Tabs navigation bar. */
 export type TabItem = {
@@ -8,6 +15,9 @@ export type TabItem = {
 	/** Display label rendered in the tab trigger. */
 	label: string
 }
+
+/** Visual style variants available for the Tabs navigation bar. */
+export type TabsVariant = NonNullable<VariantProps<typeof tabsListVariants>['variant']>
 
 /**
  * Props for the opinionated Tabs component.
@@ -31,7 +41,7 @@ export type TabItem = {
  * <TabsContent value="settings">...</TabsContent>
  * ```
  */
-type TabsProps = Omit<TabsPrimitiveBase.Root.Props, 'children'> & {
+export type TabsProps = Omit<TabsPrimitiveBase.Root.Props, 'children'> & {
 	/** Tab definitions to render in the navigation bar. */
 	items: TabItem[]
 	/** Currently active tab value. */
@@ -40,6 +50,8 @@ type TabsProps = Omit<TabsPrimitiveBase.Root.Props, 'children'> & {
 	onValueChange: (value: string) => void
 	/** Accessible label for the tab list (for screen readers). */
 	ariaLabel?: string
+	/** Visual style of the tab list. @default 'line' */
+	variant?: TabsVariant
 	className?: string
 }
 
@@ -48,12 +60,13 @@ export const Tabs = ({
 	value,
 	onValueChange,
 	ariaLabel,
+	variant = 'line',
 	className,
 	...tabsProps
 }: TabsProps) => {
 	return (
 		<TabsPrimitive value={value} onValueChange={onValueChange} className={className} {...tabsProps}>
-			<TabsList variant="line" aria-label={ariaLabel}>
+			<TabsList variant={variant} aria-label={ariaLabel}>
 				{items.map((item) => (
 					<TabsTrigger key={item.value} value={item.value}>
 						{item.label}

@@ -1,4 +1,5 @@
 import { AlertTriangleIcon, CircleCheckIcon, InfoIcon, TriangleAlertIcon } from 'lucide-react'
+import type { VariantProps } from 'class-variance-authority'
 import type * as React from 'react'
 
 import {
@@ -6,9 +7,13 @@ import {
 	AlertDescription,
 	Alert as AlertPrimitive,
 	AlertTitle,
+	type alertVariants,
 } from '../_internal/alert'
 
 export type AlertType = 'notice' | 'negative' | 'positive' | 'default' | 'warning'
+
+/** Visual style variants available for the Alert. */
+export type AlertVariant = NonNullable<VariantProps<typeof alertVariants>['variant']>
 
 /**
  * Props for the opinionated Alert component.
@@ -21,15 +26,13 @@ export type AlertType = 'notice' | 'negative' | 'positive' | 'default' | 'warnin
  * <Alert type="positive" title="Payment successful" message="Your invoice has been sent." />
  * <Alert type="negative" title="Something went wrong" message={error.message} />
  * <Alert type="notice" message="Your session expires in 5 minutes." />
+ * <Alert variant="brand" title="New feature" message="Try it today." />
  * <Alert type="warning" title="Storage almost full">
  *   <Button size="sm">Upgrade plan</Button>
  * </Alert>
  * ```
  */
-export interface AlertProps extends Omit<
-	React.ComponentProps<typeof AlertPrimitive>,
-	'variant' | 'title'
-> {
+export interface AlertProps extends Omit<React.ComponentProps<typeof AlertPrimitive>, 'title'> {
 	/**
 	 * Semantic type that controls the icon and colour variant.
 	 * - `default` — no icon, neutral styling
@@ -40,6 +43,10 @@ export interface AlertProps extends Omit<
 	 * @default 'default'
 	 */
 	type?: AlertType
+	/**
+	 * Visual style override. When omitted, the variant is derived from `type`.
+	 */
+	variant?: AlertVariant
 	/** Alert heading rendered in bold. */
 	title?: React.ReactNode
 	/** Alert body text. Alternatively pass `children`. */
@@ -57,10 +64,17 @@ function Alert({
 	children,
 	action,
 	className,
+	variant,
 	...alertProps
 }: AlertProps) {
-	// Map alert types to variants
-	const variant = type === 'negative' ? 'destructive' : type === 'warning' ? 'warning' : 'default'
+	const typeVariants: Record<AlertType, AlertVariant> = {
+		default: 'default',
+		negative: 'destructive',
+		notice: 'info',
+		positive: 'success',
+		warning: 'warning',
+	}
+	const resolvedVariant = variant ?? typeVariants[type]
 
 	// Get icon based on type
 	const getIcon = () => {
@@ -82,7 +96,7 @@ function Alert({
 	const content = message || children
 
 	return (
-		<AlertPrimitive variant={variant} className={className} {...alertProps}>
+		<AlertPrimitive variant={resolvedVariant} className={className} {...alertProps}>
 			{icon}
 			<div className="flex-1">
 				{title && <AlertTitle>{title}</AlertTitle>}

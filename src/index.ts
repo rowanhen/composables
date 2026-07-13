@@ -30,6 +30,7 @@ export {
 	AccordionTrigger,
 	type AccordionItemData,
 	type AccordionProps,
+	type AccordionVariant,
 } from './opinionated/accordion'
 
 export {
@@ -48,6 +49,7 @@ export {
 	AlertAction,
 	AlertDescription,
 	AlertTitle,
+	type AlertVariant,
 	type AlertType,
 	type AlertProps,
 } from './opinionated/alert'
@@ -102,7 +104,7 @@ export {
 } from './opinionated/carousel'
 
 export { Checkbox } from './opinionated/checkbox'
-export { CodeBlock } from './opinionated/code-block'
+export { CodeBlock, type CodeBlockProps } from './opinionated/code-block'
 
 export {
 	Collapsible,
@@ -131,7 +133,7 @@ export {
 	type ComboboxProps,
 } from './opinionated/combobox'
 
-export { Container } from './opinionated/container'
+export { Container, type ContainerProps } from './opinionated/container'
 
 export {
 	Dialog,
@@ -145,7 +147,7 @@ export {
 	type DialogProps,
 } from './opinionated/dialog'
 
-export { Divider } from './opinionated/divider'
+export { Divider, type DividerProps } from './opinionated/divider'
 
 export {
 	DirectionProvider,
@@ -172,7 +174,14 @@ export {
 	type DropdownMenuProps,
 } from './opinionated/dropdown-menu'
 
-export { DropZone, DropZoneFile } from './opinionated/dropzone'
+export {
+	DropZone,
+	DropZoneFile,
+	type Accept,
+	type DropZoneFileProps,
+	type DropZoneProps,
+	type FileRejection,
+} from './opinionated/dropzone'
 
 export {
 	Empty,
@@ -237,7 +246,7 @@ export { FormSlider, type FormSliderProps } from './opinionated/form-slider'
 export { FormSwitch, type FormSwitchProps } from './opinionated/form-switch'
 export { FormTextarea, type FormTextareaProps } from './opinionated/form-textarea'
 
-export { Grid } from './opinionated/grid'
+export { Grid, type GridProps } from './opinionated/grid'
 export { GridOverlay, type GridOverlayProps } from './opinionated/grid-overlay'
 
 export {
@@ -272,11 +281,19 @@ export {
 	ItemSeparator,
 	ItemTitle,
 	type ItemProps,
+	type ItemVariants,
 } from './opinionated/item'
 
 export { Label } from './opinionated/label'
 
-export { Section, NewspaperGrid, NewspaperCell } from './opinionated/layout'
+export {
+	Section,
+	NewspaperGrid,
+	NewspaperCell,
+	type NewspaperCellProps,
+	type NewspaperGridProps,
+	type SectionProps,
+} from './opinionated/layout'
 
 export { BentoGrid, BentoCell } from './opinionated/layout-bento'
 
@@ -408,8 +425,8 @@ export {
 
 export { Slider } from './opinionated/slider'
 export { Toaster } from './opinionated/sonner'
-export { Spacer } from './opinionated/spacer'
-export { Stack } from './opinionated/stack'
+export { Spacer, type SpacerProps } from './opinionated/spacer'
+export { Stack, type StackProps } from './opinionated/stack'
 export { Switch } from './opinionated/switch'
 
 export {
@@ -423,7 +440,13 @@ export {
 	TableRow,
 } from './opinionated/table'
 
-export { Tabs, TabsContent, type TabItem } from './opinionated/tabs'
+export {
+	Tabs,
+	TabsContent,
+	type TabItem,
+	type TabsProps,
+	type TabsVariant,
+} from './opinionated/tabs'
 
 export { Textarea } from './opinionated/textarea'
 export { ThemeInjector } from './opinionated/theme-injector'
@@ -437,7 +460,7 @@ export {
 
 export { Tooltip, TooltipContent, TooltipTrigger, type TooltipProps } from './opinionated/tooltip'
 
-export { Typography } from './opinionated/typography'
+export { Typography, type TypographyProps, type TypographyVariant } from './opinionated/typography'
 
 // Token config panel (advanced)
 export { TokenConfigPanel } from './opinionated/token-config-panel'
