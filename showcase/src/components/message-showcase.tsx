@@ -1,4 +1,5 @@
 import { UserIcon } from 'lucide-react'
+import { Bubble, BubbleContent } from '@/components/ui-opinionated/bubble'
 import {
 	Message,
 	MessageAvatar,
@@ -22,18 +23,20 @@ export function MessageShowcase() {
 							</MessageAvatar>
 							<MessageContent>
 								<MessageHeader>Rowan · 10:24</MessageHeader>
-								<div className="rounded-xl border border-stroke bg-muted px-3 py-2">
-									Can we make this workflow feel a bit less manual?
-								</div>
+								<Bubble variant="muted">
+									<BubbleContent>Can we make this workflow feel a bit less manual?</BubbleContent>
+								</Bubble>
 								<MessageFooter>Edited</MessageFooter>
 							</MessageContent>
 						</Message>
 						<Message align="end">
 							<MessageContent>
 								<MessageHeader>Composables</MessageHeader>
-								<div className="rounded-xl border border-stroke bg-surface-brand px-3 py-2 text-brand">
-									Yes. A grouped primitive plus a tighter preset path should get us there.
-								</div>
+								<Bubble align="end">
+									<BubbleContent>
+										Yes. A grouped primitive plus a tighter preset path should get us there.
+									</BubbleContent>
+								</Bubble>
 								<MessageFooter>Delivered</MessageFooter>
 							</MessageContent>
 						</Message>

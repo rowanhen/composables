@@ -4,6 +4,7 @@ import type React from 'react'
 import { Spacer } from '@/components/_internal/spacer'
 import { VStack } from '@/components/_internal/stack'
 import { Typography } from '@/components/_internal/typography'
+import { cn } from '@/lib/utils'
 
 export function ShowcaseSection({
 	title,
@@ -64,6 +65,20 @@ export function ShowcaseGroup({ label, children }: { label?: string; children: R
 			{label && <Typography variant="heading-200">{label}</Typography>}
 			{children}
 		</VStack>
+	)
+}
+
+export function Placeholder({
+	children,
+	className,
+}: {
+	children?: React.ReactNode
+	className?: string
+}) {
+	return (
+		<div className={cn('flex items-center justify-center rounded-lg bg-muted', className)}>
+			{children}
+		</div>
 	)
 }
 

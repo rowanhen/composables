@@ -2,6 +2,7 @@
 // In your app, always import from @/components/ui-opinionated/ instead.
 import { Link } from '@tanstack/react-router'
 import { useState, useCallback } from 'react'
+import { Card } from '@/components/_internal/card'
 import { Grid } from '@/components/_internal/grid'
 import { HStack, VStack } from '@/components/_internal/stack'
 import { Typography } from '@/components/_internal/typography'
@@ -91,7 +92,7 @@ import { ShowcaseGroup, ShowcaseSection } from './showcase-section'
 export function AIMessageShowcase() {
 	return (
 		<ShowcaseGroup label="Message">
-			<div className="max-w-2xl rounded-lg border border-stroke/40 p-4">
+			<Card className="max-w-2xl border-stroke/40 p-4">
 				<VStack gap={6}>
 					<Message from="user">
 						<MessageContent>
@@ -123,7 +124,7 @@ export function AIMessageShowcase() {
 						</MessageToolbar>
 					</Message>
 				</VStack>
-			</div>
+			</Card>
 		</ShowcaseGroup>
 	)
 }
@@ -133,10 +134,7 @@ export function AIMessageShowcase() {
 export function AIConversationShowcase() {
 	return (
 		<ShowcaseGroup label="Conversation">
-			<div
-				className="max-w-2xl rounded-lg border border-stroke/40 overflow-hidden"
-				style={{ height: 280 }}
-			>
+			<Card className="max-w-2xl border-stroke/40 p-0" style={{ height: 280 }}>
 				<Conversation>
 					<ConversationContent>
 						<ConversationEmptyState
@@ -146,7 +144,7 @@ export function AIConversationShowcase() {
 					</ConversationContent>
 					<ConversationScrollButton />
 				</Conversation>
-			</div>
+			</Card>
 		</ShowcaseGroup>
 	)
 }
@@ -456,10 +454,7 @@ export function AIFullChatShowcase() {
 
 	return (
 		<ShowcaseGroup label="Full Chat Example">
-			<div
-				className="max-w-2xl rounded-lg border border-stroke/40 overflow-hidden flex flex-col"
-				style={{ height: 520 }}
-			>
+			<Card className="max-w-2xl gap-0 border-stroke/40 p-0" style={{ height: 520 }}>
 				<Conversation>
 					<ConversationContent>
 						<Message from="user">
@@ -519,7 +514,7 @@ export function AIFullChatShowcase() {
 						</PromptInputFooter>
 					</PromptInput>
 				</div>
-			</div>
+			</Card>
 		</ShowcaseGroup>
 	)
 }

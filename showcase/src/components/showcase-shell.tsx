@@ -42,6 +42,7 @@ export function ShowcaseShell() {
 					<SidebarMenu>
 						<SidebarMenuItem>
 							<SidebarMenuButton size="lg" tooltip="@leitware/composables" render={<Link to="/" />}>
+								{/* Intentional icon tile (product logo mark), not an Avatar — semantic classes only. */}
 								<div className="flex size-8 shrink-0 items-center justify-center rounded-md bg-sidebar-accent text-sidebar-accent-foreground">
 									<LayersIcon className="size-4" />
 								</div>

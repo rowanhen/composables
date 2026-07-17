@@ -4,7 +4,7 @@ import { ScrollArea, ScrollBar } from '@/components/_internal/scroll-area'
 import { Separator } from '@/components/_internal/separator'
 import { HStack } from '@/components/_internal/stack'
 import { Typography } from '@/components/_internal/typography'
-import { ShowcaseGroup, ShowcaseSection } from './showcase-section'
+import { Placeholder, ShowcaseGroup, ShowcaseSection } from './showcase-section'
 
 export function ScrollAreaShowcase() {
 	return (
@@ -32,13 +32,13 @@ export function ScrollAreaShowcase() {
 					<ScrollArea className="w-64 rounded-md border border-stroke">
 						<div className="flex gap-4 p-4">
 							{Array.from({ length: 10 }, (_, i) => (
-								<div
+								<Placeholder
 									// biome-ignore lint/suspicious/noArrayIndexKey: static demo list
 									key={i}
-									className="flex h-20 w-32 shrink-0 items-center justify-center rounded-md bg-muted"
+									className="h-20 w-32 shrink-0 rounded-md"
 								>
 									<Typography variant="body-100">Card {i + 1}</Typography>
-								</div>
+								</Placeholder>
 							))}
 						</div>
 						<ScrollBar orientation="horizontal" />

@@ -12,6 +12,7 @@ import {
 	UsersIcon,
 } from 'lucide-react'
 import type React from 'react'
+import { Avatar, AvatarFallback } from '@/components/_internal/avatar'
 import {
 	Sidebar,
 	SidebarContent,
@@ -69,9 +70,11 @@ function DemoSidebarContent() {
 		<>
 			<SidebarHeader>
 				<HStack gap={2} align="center" className="px-1 py-0.5">
-					<div className="size-7 rounded-md bg-sidebar-accent shrink-0 flex items-center justify-center">
-						<span className="text-xs font-bold text-sidebar-accent-foreground">A</span>
-					</div>
+					<Avatar size="md" className="rounded-md">
+						<AvatarFallback className="rounded-md bg-sidebar-accent text-xs font-bold text-sidebar-accent-foreground">
+							A
+						</AvatarFallback>
+					</Avatar>
 					<span className="text-sm font-semibold text-sidebar-foreground truncate">Acme Corp</span>
 				</HStack>
 			</SidebarHeader>
@@ -117,9 +120,11 @@ function DemoSidebarContent() {
 				<SidebarMenu>
 					<SidebarMenuItem>
 						<SidebarMenuButton size="lg">
-							<div className="size-8 rounded-full bg-sidebar-accent shrink-0 flex items-center justify-center">
-								<span className="text-xs font-bold text-sidebar-accent-foreground">R</span>
-							</div>
+							<Avatar size="md">
+								<AvatarFallback className="bg-sidebar-accent text-xs font-bold text-sidebar-accent-foreground">
+									R
+								</AvatarFallback>
+							</Avatar>
 							<div className="flex flex-col min-w-0">
 								<span className="text-xs font-medium truncate">Rowan H.</span>
 								<span className="text-xs text-sidebar-foreground/60 truncate">rowan@acme.com</span>

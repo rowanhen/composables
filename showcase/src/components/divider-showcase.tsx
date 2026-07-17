@@ -1,5 +1,6 @@
 // Showcase imports from _internal/ to demonstrate primitive components.
 // In your app, always import from @/components/ui-opinionated/ instead.
+import { Card } from '@/components/_internal/card'
 import { Divider } from '@/components/_internal/divider'
 import { HStack, VStack } from '@/components/_internal/stack'
 import { Typography } from '@/components/_internal/typography'
@@ -74,7 +75,7 @@ export function DividerShowcase() {
 				</VStack>
 
 				{/* Token reactivity callout */}
-				<div className="rounded-[var(--radius)] border border-stroke bg-muted/40 p-4">
+				<Card className="bg-muted/40 p-4">
 					<Typography variant="caption-100" className="text-muted-foreground">
 						Switch presets using the token panel — all variants morph with the tokens.{' '}
 						<strong>Solid</strong> gains border-radius (becoming a long pill at max),{' '}
@@ -85,7 +86,7 @@ export function DividerShowcase() {
 						<code className="font-mono text-xs">--spacing</code>, and corner rounding by{' '}
 						<code className="font-mono text-xs">--radius</code>.
 					</Typography>
-				</div>
+				</Card>
 			</VStack>
 		</ShowcaseSection>
 	)

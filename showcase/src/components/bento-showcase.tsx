@@ -7,6 +7,8 @@
  * BentoSplit, BentoLeader, BentoQuad, BentoTriple, CellGrid, CellRow, StatCell
  */
 
+import { Avatar, AvatarFallback } from '@/components/_internal/avatar'
+import { Badge } from '@/components/_internal/badge'
 import {
 	BentoCell,
 	BentoGrid,
@@ -27,7 +29,12 @@ import { ShowcaseGroup, ShowcaseSection } from './showcase-section'
 function MetricContent({ label, value, trend }: { label: string; value: string; trend?: string }) {
 	return (
 		<div className="p-4 h-full">
-			<div className="text-[10px] text-muted-foreground uppercase tracking-wider mb-1">{label}</div>
+			<Typography
+				variant="caption-100"
+				className="text-muted-foreground uppercase tracking-wider mb-1"
+			>
+				{label}
+			</Typography>
 			<div className="text-2xl font-bold">{value}</div>
 			{trend && <div className="text-xs text-muted-foreground mt-1">{trend}</div>}
 		</div>
@@ -58,9 +65,11 @@ function BentoSplitDemo() {
 			<BentoSplit
 				icon={
 					<VStack gap={2} align="center">
-						<div className="size-16 rounded-md bg-primary text-primary-foreground flex items-center justify-center text-2xl font-bold">
-							◆
-						</div>
+						<Avatar size="xl" className="rounded-md">
+							<AvatarFallback className="rounded-md bg-primary text-primary-foreground text-2xl font-bold">
+								AC
+							</AvatarFallback>
+						</Avatar>
 						<div className="text-xs font-bold text-center">ACME</div>
 					</VStack>
 				}
@@ -71,24 +80,30 @@ function BentoSplitDemo() {
 							Revenue up 24% quarter-over-quarter. All major targets exceeded.
 						</div>
 						<div className="flex gap-2 flex-wrap">
-							<span className="text-xs border border-stroke px-2 py-0.5">Growth ↑</span>
-							<span className="text-xs border border-stroke px-2 py-0.5">On Track</span>
-							<span className="text-xs border border-stroke px-2 py-0.5">Q3 Ready</span>
+							<Badge variant="outline">Growth ↑</Badge>
+							<Badge variant="outline">On Track</Badge>
+							<Badge variant="outline">Q3 Ready</Badge>
 						</div>
 					</div>
 				}
 				stats={
 					<div className="grid grid-cols-1 sm:grid-cols-3 gap-0">
 						<div className="p-3 border-b sm:border-b-0 sm:border-r border-stroke">
-							<div className="text-[10px] text-muted-foreground uppercase mb-0.5">Revenue</div>
+							<Typography variant="caption-100" className="text-muted-foreground uppercase mb-0.5">
+								Revenue
+							</Typography>
 							<div className="text-sm font-bold">$124k</div>
 						</div>
 						<div className="p-3 border-b sm:border-b-0 sm:border-r border-stroke">
-							<div className="text-[10px] text-muted-foreground uppercase mb-0.5">Users</div>
+							<Typography variant="caption-100" className="text-muted-foreground uppercase mb-0.5">
+								Users
+							</Typography>
 							<div className="text-sm font-bold">3,891</div>
 						</div>
 						<div className="p-3">
-							<div className="text-[10px] text-muted-foreground uppercase mb-0.5">NPS</div>
+							<Typography variant="caption-100" className="text-muted-foreground uppercase mb-0.5">
+								NPS
+							</Typography>
 							<div className="text-sm font-bold">+68</div>
 						</div>
 					</div>
@@ -180,8 +195,8 @@ function BentoTripleDemo() {
 							<div className="text-xs text-muted-foreground">Week of 3–9 Jun 2024</div>
 						</div>
 						<div className="flex gap-2">
-							<span className="text-xs border border-stroke px-2 py-0.5">Export</span>
-							<span className="text-xs border border-stroke px-2 py-0.5">Share</span>
+							<Badge variant="outline">Export</Badge>
+							<Badge variant="outline">Share</Badge>
 						</div>
 					</div>
 				}
@@ -267,7 +282,9 @@ function CellRowDemo() {
 			<VStack gap={3}>
 				<CellRow>
 					<div className="bg-card p-4 xl:w-48 xl:shrink-0">
-						<div className="text-[10px] text-muted-foreground uppercase mb-1">Label / Icon</div>
+						<Typography variant="caption-100" className="text-muted-foreground uppercase mb-1">
+							Label / Icon
+						</Typography>
 						<div className="text-sm font-bold">Profile</div>
 					</div>
 					<div className="bg-card p-4 flex-1">
@@ -281,7 +298,9 @@ function CellRowDemo() {
 				</CellRow>
 				<CellRow>
 					<div className="bg-card p-4 xl:w-48 xl:shrink-0">
-						<div className="text-[10px] text-muted-foreground uppercase mb-1">Stats</div>
+						<Typography variant="caption-100" className="text-muted-foreground uppercase mb-1">
+							Stats
+						</Typography>
 						<div className="size-8 rounded-md bg-primary text-primary-foreground flex items-center justify-center text-sm font-bold">
 							▲
 						</div>

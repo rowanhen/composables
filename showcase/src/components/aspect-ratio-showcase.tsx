@@ -3,7 +3,7 @@
 import { AspectRatio } from '@/components/_internal/aspect-ratio'
 import { HStack, VStack } from '@/components/_internal/stack'
 import { Typography } from '@/components/_internal/typography'
-import { ShowcaseSection } from './showcase-section'
+import { Placeholder, ShowcaseSection } from './showcase-section'
 
 export function AspectRatioShowcase() {
 	return (
@@ -18,11 +18,11 @@ export function AspectRatioShowcase() {
 					<HStack gap={4} wrap>
 						<VStack gap={1} className="w-48">
 							<AspectRatio ratio={16 / 9}>
-								<div className="flex size-full items-center justify-center rounded-lg bg-muted">
+								<Placeholder className="size-full">
 									<Typography variant="caption-100" className="text-muted-foreground">
 										16:9
 									</Typography>
-								</div>
+								</Placeholder>
 							</AspectRatio>
 							<Typography variant="caption-100" className="text-muted-foreground">
 								Widescreen
@@ -30,11 +30,11 @@ export function AspectRatioShowcase() {
 						</VStack>
 						<VStack gap={1} className="w-48">
 							<AspectRatio ratio={4 / 3}>
-								<div className="flex size-full items-center justify-center rounded-lg bg-muted">
+								<Placeholder className="size-full">
 									<Typography variant="caption-100" className="text-muted-foreground">
 										4:3
 									</Typography>
-								</div>
+								</Placeholder>
 							</AspectRatio>
 							<Typography variant="caption-100" className="text-muted-foreground">
 								Standard
@@ -42,11 +42,11 @@ export function AspectRatioShowcase() {
 						</VStack>
 						<VStack gap={1} className="w-48">
 							<AspectRatio ratio={1}>
-								<div className="flex size-full items-center justify-center rounded-lg bg-muted">
+								<Placeholder className="size-full">
 									<Typography variant="caption-100" className="text-muted-foreground">
 										1:1
 									</Typography>
-								</div>
+								</Placeholder>
 							</AspectRatio>
 							<Typography variant="caption-100" className="text-muted-foreground">
 								Square
@@ -54,11 +54,11 @@ export function AspectRatioShowcase() {
 						</VStack>
 						<VStack gap={1} className="w-32">
 							<AspectRatio ratio={3 / 4}>
-								<div className="flex size-full items-center justify-center rounded-lg bg-muted">
+								<Placeholder className="size-full">
 									<Typography variant="caption-100" className="text-muted-foreground">
 										3:4
 									</Typography>
-								</div>
+								</Placeholder>
 							</AspectRatio>
 							<Typography variant="caption-100" className="text-muted-foreground">
 								Portrait
