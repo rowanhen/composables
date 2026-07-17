@@ -134,15 +134,10 @@ export const defaultPreset: Record<string, string> = {
 
 	// ── Phase 1a: Component tokens ────────────────────────────────────────
 	'--button-radius': 'var(--radius-md)',
-	'--button-padding-x': 'calc(var(--spacing) * 4)',
-	'--button-padding-y': 'calc(var(--spacing) * 2)',
 	'--card-radius': 'var(--radius-lg)',
-	'--card-padding': 'calc(var(--spacing) * 6)',
-	'--nav-height': 'calc(var(--spacing) * 16)',
-	'--section-padding-y': 'calc(var(--spacing) * 24)',
-	'--hero-padding-y': 'calc(var(--spacing) * 40)',
+	'--card-padding': 'calc(var(--spacing) * 4)',
 	'--input-radius': 'var(--radius-md)',
-	'--input-height': 'calc(var(--spacing) * 10)',
+	'--input-height': 'calc(var(--spacing) * 7)',
 	'--badge-radius': 'var(--radius-4xl)',
 
 	// ── Phase 1b: Motion tokens ────────────────────────────────────────────

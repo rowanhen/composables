@@ -130,15 +130,10 @@
 	--font-heading: 'Inter Variable', sans-serif;
 	--font-brand: 'Bricolage Grotesque Variable', sans-serif;
 	--button-radius: var(--radius-md);
-	--button-padding-x: calc(var(--spacing) * 4);
-	--button-padding-y: calc(var(--spacing) * 2);
 	--card-radius: var(--radius-lg);
-	--card-padding: calc(var(--spacing) * 6);
-	--nav-height: calc(var(--spacing) * 16);
-	--section-padding-y: calc(var(--spacing) * 24);
-	--hero-padding-y: calc(var(--spacing) * 40);
+	--card-padding: calc(var(--spacing) * 4);
 	--input-radius: var(--radius-md);
-	--input-height: calc(var(--spacing) * 10);
+	--input-height: calc(var(--spacing) * 7);
 	--badge-radius: var(--radius-4xl);
 	--motion-duration-fast: 100ms;
 	--motion-duration-normal: 200ms;

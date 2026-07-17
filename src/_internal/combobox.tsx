@@ -193,7 +193,7 @@ function ComboboxChips({
 			className={cn(
 				GROUP_FOCUS_RING,
 				HOVER_RING,
-				'bg-field/20 dark:bg-field/30 border-field flex min-h-7 flex-wrap items-center gap-1 rounded-md border bg-clip-padding px-2 py-0.5 text-xs/relaxed has-data-[slot=combobox-chip]:px-1',
+				'bg-field/20 dark:bg-field/30 border-field flex min-h-(--input-height) flex-wrap items-center gap-1 rounded-(--input-radius) border bg-clip-padding px-2 py-0.5 text-xs/relaxed has-data-[slot=combobox-chip]:px-1',
 				className,
 			)}
 			{...props}

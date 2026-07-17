@@ -138,13 +138,8 @@ export const signalPop: Record<string, string> = {
 
 	// Component tokens
 	'--button-radius': 'var(--radius-4xl)',
-	'--button-padding-x': 'calc(var(--spacing) * 6)',
-	'--button-padding-y': 'calc(var(--spacing) * 2.5)',
 	'--card-radius': 'var(--radius-2xl)',
 	'--card-padding': 'calc(var(--spacing) * 7)',
-	'--nav-height': 'calc(var(--spacing) * 16)',
-	'--section-padding-y': 'calc(var(--spacing) * 28)',
-	'--hero-padding-y': 'calc(var(--spacing) * 40)',
 	'--input-radius': 'var(--radius-xl)',
 	'--input-height': 'calc(var(--spacing) * 12)',
 	'--badge-radius': 'var(--radius-4xl)',
@@ -318,13 +313,8 @@ export const signalPopDark: Record<string, string> = {
 
 	// Component tokens
 	'--button-radius': 'var(--radius-4xl)',
-	'--button-padding-x': 'calc(var(--spacing) * 6)',
-	'--button-padding-y': 'calc(var(--spacing) * 2.5)',
 	'--card-radius': 'var(--radius-2xl)',
 	'--card-padding': 'calc(var(--spacing) * 7)',
-	'--nav-height': 'calc(var(--spacing) * 16)',
-	'--section-padding-y': 'calc(var(--spacing) * 28)',
-	'--hero-padding-y': 'calc(var(--spacing) * 40)',
 	'--input-radius': 'var(--radius-xl)',
 	'--input-height': 'calc(var(--spacing) * 12)',
 	'--badge-radius': 'var(--radius-4xl)',

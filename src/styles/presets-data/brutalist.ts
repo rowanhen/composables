@@ -148,13 +148,8 @@ export const brutalist: Record<string, string> = {
 	// ── Phase 1a: Component tokens ────────────────────────────────────────
 	// Zero radius everywhere — things are what they are
 	'--button-radius': '0px',
-	'--button-padding-x': 'calc(var(--spacing) * 5)',
-	'--button-padding-y': 'calc(var(--spacing) * 2)',
 	'--card-radius': '0px',
 	'--card-padding': 'calc(var(--spacing) * 6)',
-	'--nav-height': 'calc(var(--spacing) * 14)',
-	'--section-padding-y': 'calc(var(--spacing) * 20)',
-	'--hero-padding-y': 'calc(var(--spacing) * 32)',
 	'--input-radius': '0px',
 	'--input-height': 'calc(var(--spacing) * 10)',
 	'--badge-radius': '0px',

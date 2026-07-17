@@ -18,6 +18,8 @@ import { Badge as BadgePrimitive, type badgeVariants } from '../_internal/badge'
 export interface BadgeProps extends Omit<useRender.ComponentProps<'span'>, 'size'> {
 	/** Visual style variant. @default 'default' */
 	variant?: VariantProps<typeof badgeVariants>['variant']
+	/** Size variant. @default 'default' */
+	size?: VariantProps<typeof badgeVariants>['size']
 	/** Corner shape. 'pill' forces full rounding regardless of theme. @default 'default' */
 	shape?: VariantProps<typeof badgeVariants>['shape']
 	className?: string
@@ -26,6 +28,7 @@ export interface BadgeProps extends Omit<useRender.ComponentProps<'span'>, 'size
 
 function Badge({
 	variant = 'default',
+	size = 'default',
 	shape = 'default',
 	className,
 	children,
@@ -35,6 +38,7 @@ function Badge({
 	return (
 		<BadgePrimitive
 			variant={variant}
+			size={size}
 			shape={shape}
 			className={className}
 			render={render}

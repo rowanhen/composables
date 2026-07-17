@@ -370,6 +370,85 @@ function checkSemanticClassUsage() {
 	ok('semantic Tailwind utility usage matches registered color aliases')
 }
 
+// ── WCAG contrast validation ────────────────────────────────────────────────
+// Guards the core readable pairings in every preset. Hard-fails below 4.5:1
+// for primary text-on-surface/fill pairs; warns for the muted/secondary tiers
+// (non-essential text) below their thresholds.
+
+function relativeLuminance(hex: string): number | null {
+	const match = /^#([0-9a-f]{6})([0-9a-f]{2})?$/i.exec(hex.trim())
+	if (!match) return null
+	const [r, g, b] = [0, 2, 4].map((offset) => {
+		const channel = parseInt(match[1].slice(offset, offset + 2), 16) / 255
+		return channel <= 0.03928 ? channel / 12.92 : ((channel + 0.055) / 1.055) ** 2.4
+	})
+	return 0.2126 * r + 0.7152 * g + 0.0722 * b
+}
+
+function contrastRatio(a: string, b: string): number | null {
+	const la = relativeLuminance(a)
+	const lb = relativeLuminance(b)
+	if (la === null || lb === null) return null
+	const [light, dark] = la > lb ? [la, lb] : [lb, la]
+	return (light + 0.05) / (dark + 0.05)
+}
+
+function resolvePresetValue(
+	tokens: Record<string, string>,
+	name: string,
+	depth = 0,
+): string | null {
+	if (depth > 4) return null
+	const value = tokens[name]
+	if (!value) return null
+	const varRef = /^var\((--[a-z0-9-]+)\)$/i.exec(value.trim())
+	if (varRef) return resolvePresetValue(tokens, varRef[1], depth + 1)
+	return value
+}
+
+function checkPresetContrast() {
+	// [background, foreground, minimum ratio, hard failure?]
+	const pairs: Array<[string, string, number, boolean]> = [
+		['--bg-default', '--text-default', 4.5, true],
+		['--bg-surface-default', '--text-default', 4.5, true],
+		['--bg-muted', '--text-default', 4.5, true],
+		['--bg-surface-accent', '--text-on-surface-accent', 4.5, true],
+		['--bg-fill-primary', '--text-on-fill-primary', 4.5, true],
+		['--bg-fill-secondary', '--text-on-fill-secondary', 4.5, true],
+		['--bg-default', '--text-secondary', 4.5, false],
+		['--bg-default', '--text-muted', 3, false],
+	]
+	let contrastIssues = 0
+	for (const preset of presetDefinitions) {
+		for (const [mode, tokens] of [
+			['light', preset.light],
+			['dark', preset.dark],
+		] as const) {
+			for (const [bgToken, fgToken, minimum, hard] of pairs) {
+				const bg = resolvePresetValue(tokens, bgToken)
+				const fg = resolvePresetValue(tokens, fgToken)
+				if (!bg || !fg) continue
+				const ratio = contrastRatio(bg, fg)
+				if (ratio === null) continue
+				if (ratio < minimum) {
+					const message = `${preset.name} (${mode}): ${fgToken} on ${bgToken} is ${ratio.toFixed(2)}:1 (needs ${minimum}:1)`
+					if (hard) {
+						fail(message)
+					} else {
+						console.warn(`  WARN  ${message}`)
+					}
+					contrastIssues += 1
+				}
+			}
+		}
+	}
+	if (contrastIssues === 0) {
+		ok('preset text/surface pairings meet WCAG contrast thresholds')
+	} else if (!failed) {
+		ok('preset contrast hard requirements met (warnings above are advisory)')
+	}
+}
+
 console.log('Checking semantic token system...\n')
 
 assertNoDuplicates(semanticColorCssVars, 'semantic color registry')
@@ -378,6 +457,7 @@ checkTailwindAliases()
 checkPublicSemanticUtilities()
 checkPublicTailwindCollisions()
 checkPresets()
+checkPresetContrast()
 checkSemanticClassUsage()
 
 if (failed) {

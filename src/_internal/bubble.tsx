@@ -27,8 +27,16 @@ const bubbleVariants = cva(
 				outline: '*:data-[slot=bubble-content]:border-stroke *:data-[slot=bubble-content]:bg-page',
 				ghost:
 					'border-none *:data-[slot=bubble-content]:rounded-none *:data-[slot=bubble-content]:bg-transparent *:data-[slot=bubble-content]:p-0',
+				destructive:
+					'*:data-[slot=bubble-content]:bg-surface-critical *:data-[slot=bubble-content]:text-critical *:data-[slot=bubble-content]:border-stroke-critical',
+				/** @deprecated Use `destructive` — kept for backwards compatibility. */
 				critical:
 					'*:data-[slot=bubble-content]:bg-surface-critical *:data-[slot=bubble-content]:text-critical *:data-[slot=bubble-content]:border-stroke-critical',
+				success:
+					'*:data-[slot=bubble-content]:bg-surface-success *:data-[slot=bubble-content]:text-success *:data-[slot=bubble-content]:border-stroke-success',
+				warning:
+					'*:data-[slot=bubble-content]:bg-surface-warning *:data-[slot=bubble-content]:text-warning *:data-[slot=bubble-content]:border-stroke-warning',
+				info: '*:data-[slot=bubble-content]:bg-surface-info *:data-[slot=bubble-content]:text-info *:data-[slot=bubble-content]:border-stroke-info',
 			},
 		},
 		defaultVariants: {
