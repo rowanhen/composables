@@ -44,6 +44,23 @@ export function ButtonsShowcase() {
 						<Button size="lg">Large</Button>
 					</HStack>
 				</ShowcaseGroup>
+				<ShowcaseGroup label="Shape">
+					<HStack gap={3} wrap align="center">
+						<Button shape="pill">Pill</Button>
+						<Button variant="secondary" shape="pill">
+							Pill secondary
+						</Button>
+						<Button variant="outline" shape="pill">
+							Pill outline
+						</Button>
+						<Button size="icon" shape="pill">
+							<PlusIcon />
+						</Button>
+						<Button size="icon-lg" shape="pill" variant="secondary">
+							<PlusIcon />
+						</Button>
+					</HStack>
+				</ShowcaseGroup>
 				<ShowcaseGroup label="Icon sizes">
 					<HStack gap={3} wrap align="center">
 						<Button size="icon-xs">

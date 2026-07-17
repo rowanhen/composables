@@ -8,7 +8,7 @@ const BADGE_LINK_HOVER =
 	'[a]:hover:ring-[length:var(--hover-ring-width)] [a]:hover:ring-[color:var(--hover-ring-color)]/30'
 
 const badgeVariants = cva(
-	`${FOCUS_RING} h-5 gap-1 rounded-full border border-transparent px-2 py-0.5 text-2xs font-medium transition-[opacity,box-shadow] has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&>svg]:size-2.5! inline-flex items-center justify-center w-fit whitespace-nowrap shrink-0 [&>svg]:pointer-events-none overflow-hidden group/badge`,
+	`${FOCUS_RING} h-5 gap-1 rounded-(--badge-radius) border border-transparent px-2 py-0.5 text-2xs font-medium transition-[opacity,box-shadow] has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&>svg]:size-2.5! inline-flex items-center justify-center w-fit whitespace-nowrap shrink-0 [&>svg]:pointer-events-none overflow-hidden group/badge`,
 	{
 		variants: {
 			variant: {
@@ -28,9 +28,16 @@ const badgeVariants = cva(
 				emphasis: 'bg-surface-emphasis text-emphasis border-stroke-emphasis',
 				link: 'text-primary underline-offset-4 hover:underline',
 			},
+			// Declared after `variant` so the pill class wins when tailwind-merge
+			// resolves conflicts.
+			shape: {
+				default: '',
+				pill: 'rounded-full',
+			},
 		},
 		defaultVariants: {
 			variant: 'default',
+			shape: 'default',
 		},
 	},
 )
@@ -38,6 +45,7 @@ const badgeVariants = cva(
 function Badge({
 	className,
 	variant = 'default',
+	shape = 'default',
 	render,
 	...props
 }: useRender.ComponentProps<'span'> & VariantProps<typeof badgeVariants>) {
@@ -45,7 +53,7 @@ function Badge({
 		defaultTagName: 'span',
 		props: mergeProps<'span'>(
 			{
-				className: cn(badgeVariants({ className, variant })),
+				className: cn(badgeVariants({ className, variant, shape })),
 			},
 			props,
 		),
