@@ -533,7 +533,7 @@ function AIElementsRouteIndex() {
 				<Link
 					key={page.slug}
 					to={page.path}
-					className="min-h-28 rounded-md border border-stroke/50 bg-background p-4 motion-colors hover:border-stroke hover:bg-muted"
+					className="min-h-28 rounded-md border border-stroke/50 bg-background p-4 hover:border-stroke hover:bg-muted"
 				>
 					<Typography variant="heading-200">{page.title}</Typography>
 					<Typography variant="body-100" className="mt-2 text-muted-foreground">

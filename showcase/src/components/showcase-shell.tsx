@@ -116,10 +116,7 @@ export function ShowcaseShell() {
 					<Container maxWidth="full">
 						<HStack align="center" gap={3} className="h-12">
 							<SidebarTrigger />
-							<Link
-								to="/"
-								className="min-w-0 font-medium motion-colors hover:text-muted-foreground"
-							>
+							<Link to="/" className="min-w-0 font-medium hover:text-muted-foreground">
 								@leitware/composables
 							</Link>
 						</HStack>

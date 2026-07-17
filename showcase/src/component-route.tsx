@@ -19,7 +19,7 @@ export function ComponentRoute({ slug }: { slug: ShowcaseSlug }) {
 			<VStack gap={8}>
 				<header className="max-w-3xl">
 					<HStack gap={2} align="center" className="mb-4 text-muted-foreground">
-						<Link to="/" className="text-sm font-medium hover:text-foreground motion-colors">
+						<Link to="/" className="text-sm font-medium hover:text-foreground">
 							Components
 						</Link>
 						<span aria-hidden="true">/</span>
@@ -62,7 +62,7 @@ function RoutePager({
 		<Link
 			to={page.path}
 			className={cn(
-				'rounded-md border border-stroke/50 bg-background p-4 motion-colors hover:border-stroke hover:bg-muted',
+				'rounded-md border border-stroke/50 bg-background p-4 hover:border-stroke hover:bg-muted',
 				className,
 			)}
 		>

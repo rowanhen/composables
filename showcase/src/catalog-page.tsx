@@ -19,7 +19,7 @@ export function CatalogPage() {
 					<HStack gap={3} className="mt-6 flex-wrap">
 						<Link
 							to="/showcase"
-							className="rounded-md border border-stroke bg-background px-3 py-2 text-sm font-medium motion-colors hover:bg-muted"
+							className="rounded-md border border-stroke bg-background px-3 py-2 text-sm font-medium hover:bg-muted"
 						>
 							Full showcase
 						</Link>
@@ -36,7 +36,7 @@ export function CatalogPage() {
 								<Link
 									key={page.slug}
 									to={page.path}
-									className="min-h-32 rounded-md border border-stroke/50 bg-background p-4 motion-colors hover:border-stroke hover:bg-muted"
+									className="min-h-32 rounded-md border border-stroke/50 bg-background p-4 hover:border-stroke hover:bg-muted"
 								>
 									<Typography variant="heading-200">{page.title}</Typography>
 									<Typography variant="body-100" className="mt-2 text-muted-foreground">
