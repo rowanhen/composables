@@ -47,7 +47,7 @@ Adding `class="dark"` to `<html>` or a subtree activates dark values. No runtime
 The supported styling API consists of:
 
 - Public semantic CSS variables such as `--bg-surface-success`, `--text-success`, and `--border-success`.
-- Public component and system variables such as `--radius`, `--font-size-base`, and the semantic motion roles.
+- Public component and system variables such as `--radius`, `--button-radius`, `--badge-radius`, `--font-size-base`, and the semantic motion roles.
 - Documented semantic classes such as `bg-surface-success`, `text-success`, and `border-stroke-success`.
 - Precompiled styles required by public components.
 

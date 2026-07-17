@@ -50,7 +50,9 @@ function ToggleGroup<Value extends string = string>({
 			data-orientation={orientation}
 			orientation={orientation}
 			className={cn(
-				'inline-flex w-fit items-center data-[orientation=vertical]:flex-col',
+				// Vertical groups stretch items so every toggle matches the width
+				// of the widest item instead of hugging its own content.
+				'inline-flex w-fit items-center data-[orientation=vertical]:flex-col data-[orientation=vertical]:items-stretch',
 				spacingClassName[spacing],
 				className,
 			)}
@@ -86,7 +88,7 @@ function ToggleGroupItem<Value extends string = string>({
 			variant={resolvedVariant}
 			size={resolvedSize}
 			className={cn(
-				'shrink-0 focus:z-10 focus-visible:z-10',
+				'shrink-0 focus:z-10 focus-visible:z-10 data-[orientation=vertical]:w-full',
 				context.spacing === 'none' &&
 					'rounded-none data-[orientation=horizontal]:first:rounded-l-md data-[orientation=horizontal]:last:rounded-r-md data-[orientation=horizontal]:data-[variant=outline]:border-l-0 data-[orientation=horizontal]:first:data-[variant=outline]:border-l data-[orientation=vertical]:first:rounded-t-md data-[orientation=vertical]:last:rounded-b-md data-[orientation=vertical]:data-[variant=outline]:border-t-0 data-[orientation=vertical]:first:data-[variant=outline]:border-t',
 				className,

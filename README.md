@@ -265,9 +265,12 @@ Key token groups:
 | Typography     | `--font-size-base`, `--leading-base`, `--font-heading`                                |
 | Spacing        | `--spacing` (base unit, used in `calc()`)                                             |
 | Shape          | `--radius`, `--radius-sm`, `--radius-lg`                                              |
+| Control shape  | `--button-radius`, `--badge-radius`, `--input-radius`, `--card-radius`                |
 | Motion         | `--motion-duration-overlay`, `--motion-duration-disclosure`, `--motion-ease-standard` |
 
 The entire type scale derives from `--font-size-base` and `--leading-base` — adjust those two tokens to scale all text globally.
+
+Control rounding is deliberately two-level. `--radius` drives the shared scale (`--radius-sm` … `--radius-4xl`) used by surfaces such as cards, dialogs, and alerts, while the component tokens `--button-radius` and `--badge-radius` decide button and badge corners independently — set `--button-radius: 9999px` for a pill-button theme without distorting anything else. For one-off exceptions, `Button` and `Badge` also accept `shape="pill"` (fully rounded; icon-size buttons become circles).
 
 ### Motion Modes
 
