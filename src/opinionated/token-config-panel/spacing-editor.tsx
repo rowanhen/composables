@@ -5,8 +5,9 @@ import { HStack } from '../../_internal/stack'
 import { Typography } from '../../_internal/typography'
 import { FormInput } from '../form-input'
 import { FormSlider } from '../form-slider'
+import { FormSwitch } from '../form-switch'
 
-import type { DimensionToken, StringToken } from './types'
+import type { DimensionToken, FactorToken, StringToken } from './types'
 import { getResolvedDimension, parseNumericValue } from './helpers'
 
 /* ------------------------------------------------------------------ */
@@ -46,6 +47,71 @@ export const radiusTokens: DimensionToken[] = [
 		max: 1.5,
 		step: 0.0625,
 		unit: 'rem',
+	},
+]
+
+/* Component dimensions are edited as multipliers of their base token so they
+   track --radius/--spacing by default; the override is written as a calc()
+   expression, never a detached absolute value (except the pill escape hatch). */
+export const controlShapeTokens: FactorToken[] = [
+	{
+		cssVar: '--button-radius',
+		label: 'Button radius',
+		base: '--radius',
+		defaultFactor: 0.8,
+		min: 0,
+		max: 3,
+		step: 0.1,
+		allowPill: true,
+	},
+	{
+		cssVar: '--badge-radius',
+		label: 'Badge radius',
+		base: '--radius',
+		defaultFactor: 2.6,
+		min: 0,
+		max: 3,
+		step: 0.1,
+		allowPill: true,
+	},
+	{
+		cssVar: '--input-radius',
+		label: 'Input radius',
+		base: '--radius',
+		defaultFactor: 0.8,
+		min: 0,
+		max: 3,
+		step: 0.1,
+	},
+	{
+		cssVar: '--card-radius',
+		label: 'Card radius',
+		base: '--radius',
+		defaultFactor: 1,
+		min: 0,
+		max: 3,
+		step: 0.1,
+	},
+]
+
+export const controlSizeTokens: FactorToken[] = [
+	{
+		cssVar: '--input-height',
+		label: 'Input height',
+		base: '--spacing',
+		defaultFactor: 7,
+		min: 5,
+		max: 14,
+		step: 0.5,
+	},
+	{
+		cssVar: '--card-padding',
+		label: 'Card padding',
+		base: '--spacing',
+		defaultFactor: 4,
+		min: 2,
+		max: 10,
+		step: 0.5,
 	},
 ]
 
@@ -280,6 +346,95 @@ export function DimensionSliderRow({
 				min={token.min}
 				max={token.max}
 			/>
+		</HStack>
+	)
+}
+
+/* ------------------------------------------------------------------ */
+/*  FactorSliderRow — edits calc(var(base) * factor) component tokens    */
+/* ------------------------------------------------------------------ */
+
+export function FactorSliderRow({
+	token,
+	onApply,
+}: {
+	token: FactorToken
+	onApply: (cssVar: string, value: string) => void
+}) {
+	const [state, setState] = React.useState(() => {
+		const resolved = getResolvedDimension(token.cssVar)
+		if (token.allowPill && resolved.includes('9999')) {
+			return { factor: token.defaultFactor, pill: true }
+		}
+		const own = parseNumericValue(resolved)
+		const base = parseNumericValue(getResolvedDimension(token.base))
+		const factor = own > 0 && base > 0 ? Math.round((own / base) * 100) / 100 : token.defaultFactor
+		return { factor, pill: false }
+	})
+
+	function applyFactor(factor: number) {
+		setState({ factor, pill: false })
+		onApply(token.cssVar, `calc(var(${token.base}) * ${factor})`)
+	}
+
+	function handleChange(newVal: number | readonly number[]) {
+		applyFactor(Array.isArray(newVal) ? newVal[0] : newVal)
+	}
+
+	function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
+		const num = Number.parseFloat(e.target.value)
+		if (!Number.isNaN(num)) {
+			applyFactor(Math.min(token.max, Math.max(token.min, num)))
+		}
+	}
+
+	function handlePillChange(pill: boolean) {
+		setState((previous) => ({ ...previous, pill }))
+		if (pill) {
+			onApply(token.cssVar, '9999px')
+		} else {
+			onApply(token.cssVar, `calc(var(${token.base}) * ${state.factor})`)
+		}
+	}
+
+	return (
+		<HStack gap={3} align="end" className="py-1">
+			<div className="flex-1">
+				<FormSlider
+					label={`${token.label} (× ${token.base})`}
+					orientation="vertical"
+					value={[state.factor]}
+					onValueChange={handleChange}
+					min={token.min}
+					max={token.max}
+					step={token.step}
+					disabled={state.pill}
+					showValue
+					valueFormatter={(v) => {
+						if (state.pill) return 'pill'
+						const n = Array.isArray(v) ? v[0] : v
+						return `× ${n}`
+					}}
+				/>
+			</div>
+			<FormInput
+				className="w-20 shrink-0"
+				type="number"
+				value={state.factor}
+				onChange={handleInputChange}
+				step={token.step}
+				min={token.min}
+				max={token.max}
+				disabled={state.pill}
+			/>
+			{token.allowPill && (
+				<FormSwitch
+					className="shrink-0 pb-1"
+					label="Pill"
+					checked={state.pill}
+					onCheckedChange={handlePillChange}
+				/>
+			)}
 		</HStack>
 	)
 }

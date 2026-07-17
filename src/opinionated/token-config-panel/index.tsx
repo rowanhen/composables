@@ -11,6 +11,9 @@ import { Typography } from '../../_internal/typography'
 
 import { colorTokens, colorCategories, colorTokensByCategory, ColorTokenRow } from './color-editor'
 import {
+	controlShapeTokens,
+	controlSizeTokens,
+	FactorSliderRow,
 	spacingTokens,
 	borderWidthTokens,
 	radiusTokens,
@@ -265,6 +268,26 @@ export function TokenConfigPanel({
 									<VStack gap={1}>
 										{radiusTokens.map((t) => (
 											<DimensionSliderRow key={t.cssVar} token={t} onApply={applyOverride} />
+										))}
+									</VStack>
+								</div>
+								<Separator className="my-3" />
+
+								<div className="mb-4">
+									<SectionHeader>Control Shape</SectionHeader>
+									<VStack gap={1}>
+										{controlShapeTokens.map((t) => (
+											<FactorSliderRow key={t.cssVar} token={t} onApply={applyOverride} />
+										))}
+									</VStack>
+								</div>
+								<Separator className="my-3" />
+
+								<div className="mb-4">
+									<SectionHeader>Control Size</SectionHeader>
+									<VStack gap={1}>
+										{controlSizeTokens.map((t) => (
+											<FactorSliderRow key={t.cssVar} token={t} onApply={applyOverride} />
 										))}
 									</VStack>
 								</div>

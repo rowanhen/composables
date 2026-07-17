@@ -19,6 +19,19 @@ export interface DimensionToken {
 	unit: string
 }
 
+export interface FactorToken {
+	cssVar: string
+	label: string
+	/** Base token the factor multiplies — the override is written as calc(var(base) * factor). */
+	base: '--radius' | '--spacing'
+	defaultFactor: number
+	min: number
+	max: number
+	step: number
+	/** Offers a "Pill" toggle that writes 9999px instead of a factor. */
+	allowPill?: boolean
+}
+
 export interface StringToken {
 	cssVar: string
 	label: string
