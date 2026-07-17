@@ -5,7 +5,7 @@ import { HStack } from '../../_internal/stack'
 import { Typography } from '../../_internal/typography'
 import { FormInput } from '../form-input'
 import { FormSlider } from '../form-slider'
-import { FormSwitch } from '../form-switch'
+import { Toggle } from '../toggle'
 
 import type { DimensionToken, FactorToken, StringToken } from './types'
 import { getResolvedDimension, parseNumericValue } from './helpers'
@@ -381,13 +381,6 @@ export function FactorSliderRow({
 		applyFactor(Array.isArray(newVal) ? newVal[0] : newVal)
 	}
 
-	function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
-		const num = Number.parseFloat(e.target.value)
-		if (!Number.isNaN(num)) {
-			applyFactor(Math.min(token.max, Math.max(token.min, num)))
-		}
-	}
-
 	function handlePillChange(pill: boolean) {
 		setState((previous) => ({ ...previous, pill }))
 		if (pill) {
@@ -398,8 +391,8 @@ export function FactorSliderRow({
 	}
 
 	return (
-		<HStack gap={3} align="end" className="py-1">
-			<div className="flex-1">
+		<HStack gap={2} align="end" className="min-w-0 py-1">
+			<div className="min-w-0 flex-1">
 				<FormSlider
 					label={`${token.label} (× ${token.base})`}
 					orientation="vertical"
@@ -417,23 +410,16 @@ export function FactorSliderRow({
 					}}
 				/>
 			</div>
-			<FormInput
-				className="w-20 shrink-0"
-				type="number"
-				value={state.factor}
-				onChange={handleInputChange}
-				step={token.step}
-				min={token.min}
-				max={token.max}
-				disabled={state.pill}
-			/>
 			{token.allowPill && (
-				<FormSwitch
-					className="shrink-0 pb-1"
-					label="Pill"
-					checked={state.pill}
-					onCheckedChange={handlePillChange}
-				/>
+				<Toggle
+					variant="outline"
+					size="sm"
+					pressed={state.pill}
+					onPressedChange={handlePillChange}
+					className="shrink-0"
+				>
+					Pill
+				</Toggle>
 			)}
 		</HStack>
 	)
