@@ -420,6 +420,8 @@ export {
 	SkeletonAvatar,
 	SkeletonButton,
 	SkeletonInput,
+	SkeletonCard,
+	SkeletonTableRow,
 	type SkeletonProps,
 } from './opinionated/skeleton'
 
@@ -464,3 +466,56 @@ export { Typography, type TypographyProps, type TypographyVariant } from './opin
 
 // Token config panel (advanced)
 export { TokenConfigPanel } from './opinionated/token-config-panel'
+
+// ── Supplementary exports ───────────────────────────────────────────────────
+// Everything publicly exported by an opinionated module is reachable from the
+// root barrel. (v3 subpath imports exposed whole modules; the root entrypoint
+// must offer the same surface.)
+
+export {
+	AlertDialogFooter,
+	AlertDialogHeader,
+	AlertDialogMedia,
+	AlertDialogOverlay,
+	AlertDialogPortal,
+} from './opinionated/alert-dialog'
+export { avatarVariants } from './opinionated/avatar'
+export { bubbleReactionsVariants, bubbleVariants } from './opinionated/bubble'
+export { useComboboxAnchor } from './opinionated/combobox'
+export { containerVariants } from './opinionated/container'
+export { DialogOverlay, DialogPortal } from './opinionated/dialog'
+export { dividerVariants } from './opinionated/divider'
+export { DropdownMenuPortal, DropdownMenuShortcut } from './opinionated/dropdown-menu'
+export {
+	DEFAULT_ACCEPT,
+	DEFAULT_MAX_SIZE,
+	DropZoneArea,
+	DropZoneContent,
+	DropZoneFileList,
+	DropZoneInput,
+	Dropzone,
+	DropzoneContent,
+	DropzoneInput,
+	DropzoneLabel,
+	formatFileSize,
+	getAcceptDescription,
+	getRejectionMessage,
+	useDropZoneContext,
+} from './opinionated/dropzone'
+export { gridVariants } from './opinionated/grid'
+export { iconVariants } from './opinionated/icon'
+export {
+	BentoLeader,
+	BentoQuad,
+	BentoSplit,
+	BentoTriple,
+	CellGrid,
+	CellRow,
+	StatCell,
+} from './opinionated/layout-bento'
+export { FlexSpacer, newspaperGridVariants, sectionVariants } from './opinionated/layout'
+export { markerVariants } from './opinionated/marker'
+export { SelectScrollDownButton, SelectScrollUpButton, SelectSeparator } from './opinionated/select'
+export { spacerVariants } from './opinionated/spacer'
+export { stackVariants } from './opinionated/stack'
+export { typographyVariants } from './opinionated/typography'
