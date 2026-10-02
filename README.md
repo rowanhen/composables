@@ -226,6 +226,15 @@ Signal Pop:
 @import '@leitware/composables/presets/signal-pop.css';
 ```
 
+Editorial Grid:
+
+```css
+@import '@fontsource-variable/inter';
+@import '@fontsource-variable/bricolage-grotesque';
+@import '@leitware/composables/styles.css';
+@import '@leitware/composables/presets/editorial-grid.css';
+```
+
 The variable entrypoints include their preset weight ranges. The explicit IBM Plex files load normal weights 400–700; add italic entrypoints only if your interface uses them. The same package paths can instead be loaded as side-effect imports from an application entry file, for example `import '@fontsource-variable/inter'` or `import '@fontsource/ibm-plex-sans/600.css'`.
 
 ---
@@ -251,7 +260,8 @@ styles/
 ├── presets/                    ← Generated standalone preset CSS files
 │   ├── default.css
 │   ├── brutalist.css
-│   └── signal-pop.css
+│   ├── signal-pop.css
+│   └── editorial-grid.css
 └── presets-data/               ← Source of truth for preset token values (TS)
 ```
 
@@ -360,11 +370,12 @@ export default function RootLayout({ children }) {
 
 The default theme is included in `styles.css`. Alternative presets are available as standalone CSS files:
 
-| Preset         | Vibe                                      | Fonts                                          |
-| -------------- | ----------------------------------------- | ---------------------------------------------- |
-| **Default**    | Clean neutral system, works everywhere    | Inter + Bricolage Grotesque                    |
-| **Brutalist**  | Bold, high-contrast, raw aesthetic        | Space Grotesk + JetBrains Mono                 |
-| **Signal Pop** | Bright consumer-tech, modular and graphic | IBM Plex Sans + Space Grotesk + JetBrains Mono |
+| Preset             | Vibe                                        | Fonts                                          |
+| ------------------ | ------------------------------------------- | ---------------------------------------------- |
+| **Default**        | Clean neutral system, works everywhere      | Inter + Bricolage Grotesque                    |
+| **Brutalist**      | Bold, high-contrast, raw aesthetic          | Space Grotesk + JetBrains Mono                 |
+| **Signal Pop**     | Bright consumer-tech, modular and graphic   | IBM Plex Sans + Space Grotesk + JetBrains Mono |
+| **Editorial Grid** | Flat technical catalogue with vivid signals | Inter + Bricolage Grotesque                    |
 
 ```css
 /* Optional: use exactly one alternative preset after styles.css */
