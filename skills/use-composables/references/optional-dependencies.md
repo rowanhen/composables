@@ -4,7 +4,7 @@ Use this reference before adding AI components, loading preset fonts, or resolvi
 
 ## Component dependencies
 
-All non-AI components—including Calendar, Carousel, DropZone, Resizable, Toaster, ThemeInjector, and TokenConfigPanel—are imported from `@leitware/composables`. Their runtime integrations are installed with the package and require no feature subpath or separate peer installation.
+All non-AI components, including Calendar, Carousel, DropZone, Resizable, Toaster, ThemeInjector, and TokenConfigPanel, are imported from `@leitware/composables`. Their runtime integrations are installed with the package and require no feature subpath or separate peer installation.
 
 AI components are the deliberate exception. Import them from `@leitware/composables/ai` and install the optional peers required by that entrypoint: `ai`, `shiki`, `streamdown`, `@streamdown/cjk`, `@streamdown/code`, `@streamdown/math`, `@streamdown/mermaid`, `use-stick-to-bottom`, `nanoid`, `@radix-ui/react-use-controllable-state`, `cmdk`, and `motion`. Do not install this dependency set in applications that do not import AI components.
 

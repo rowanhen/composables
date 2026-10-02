@@ -52,30 +52,30 @@ export function TypographyShowcase() {
 				<Typography variant="brand-heading-100">Brand Heading 100</Typography>
 				<Separator />
 				<Typography variant="body-300">
-					Body 300 — The quick brown fox jumps over the lazy dog.
+					Body 300: The quick brown fox jumps over the lazy dog.
 				</Typography>
 				<Typography variant="body-200">
-					Body 200 — The quick brown fox jumps over the lazy dog.
+					Body 200: The quick brown fox jumps over the lazy dog.
 				</Typography>
 				<Typography variant="body-100">
-					Body 100 — The quick brown fox jumps over the lazy dog.
+					Body 100: The quick brown fox jumps over the lazy dog.
 				</Typography>
 				<Separator />
 				<Typography variant="brand-body-300">
-					Brand Body 300 — The quick brown fox jumps over the lazy dog.
+					Brand Body 300: The quick brown fox jumps over the lazy dog.
 				</Typography>
 				<Typography variant="brand-body-200">
-					Brand Body 200 — The quick brown fox jumps over the lazy dog.
+					Brand Body 200: The quick brown fox jumps over the lazy dog.
 				</Typography>
 				<Typography variant="brand-body-100">
-					Brand Body 100 — The quick brown fox jumps over the lazy dog.
+					Brand Body 100: The quick brown fox jumps over the lazy dog.
 				</Typography>
 				<Separator />
 				<Typography variant="label-200">LABEL 200</Typography>
 				<Typography variant="label-100">LABEL 100</Typography>
 				<Typography variant="brand-label-200">BRAND LABEL 200</Typography>
 				<Typography variant="brand-label-100">BRAND LABEL 100</Typography>
-				<Typography variant="caption-100">Caption 100 — supporting text</Typography>
+				<Typography variant="caption-100">Caption 100: supporting text</Typography>
 				<Typography variant="link-200" as="a">
 					Link 200
 				</Typography>

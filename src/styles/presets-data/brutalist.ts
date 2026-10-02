@@ -1,5 +1,5 @@
 /**
- * Brutalist — Raw, architectural, uncompromising.
+ * Brutalist - Raw, architectural, uncompromising.
  * Studied references: Bloomberg Terminal aesthetic, Balenciaga.com restraint,
  * Ssense editorial rigour. High contrast without being garish.
  *
@@ -7,9 +7,9 @@
  * about structural honesty: things look exactly like what they are.
  *
  * Fonts:
- *   Heading — Space Grotesk Variable: constructed, slightly mechanical,
+ *   Heading - Space Grotesk Variable: constructed, slightly mechanical,
  *             pairs well with mono body without feeling like a joke.
- *   Body    — Space Grotesk Variable: the Bloomberg terminal aesthetic. Readable,
+ *   Body    - Space Grotesk Variable: the Bloomberg terminal aesthetic. Readable,
  *             functional, carries authority. Uncompromising.
  *
  * Character: zero border-radius, heavy borders, hard offset shadows,
@@ -126,7 +126,7 @@ export const brutalist: Record<string, string> = {
 	'--leading-base': '1.4',
 	'--letter-spacing-base': '0.04em',
 	'--opacity-disabled': '0.5',
-	// Hard offset shadow — structural, no blur (that's the brutalist shadow)
+	// Hard offset shadow - structural, no blur (that's the brutalist shadow)
 	'--shadow-offset-y': '4px',
 	'--shadow-blur': '0px',
 	'--shadow-spread': '0px',
@@ -146,7 +146,7 @@ export const brutalist: Record<string, string> = {
 	'--font-brand': '"Space Grotesk Variable", "Arial", sans-serif',
 
 	// ── Phase 1a: Component tokens ────────────────────────────────────────
-	// Zero radius everywhere — things are what they are
+	// Zero radius everywhere - things are what they are
 	'--button-radius': '0px',
 	'--card-radius': '0px',
 	'--card-padding': 'calc(var(--spacing) * 6)',
@@ -154,7 +154,7 @@ export const brutalist: Record<string, string> = {
 	'--input-height': 'calc(var(--spacing) * 10)',
 	'--badge-radius': '0px',
 
-	// ── Phase 1b: Motion — instant. No decorative animation. ─────────────
+	// ── Phase 1b: Motion - instant. No decorative animation. ─────────────
 	'--motion-duration-fast': '0ms',
 	'--motion-duration-normal': '0ms',
 	'--motion-duration-slow': '50ms',
@@ -173,7 +173,7 @@ export const brutalist: Record<string, string> = {
 	'--hover-shadow': 'none',
 	'--active-scale': '1',
 
-	// ── Phase 1c: Typography — heavy, structural ──────────────────────────
+	// ── Phase 1c: Typography - heavy, structural ──────────────────────────
 	'--heading-font-weight': '700',
 	'--heading-letter-spacing': 'var(--tracking-tight)',
 	'--body-letter-spacing': 'var(--tracking-normal)',
@@ -189,7 +189,7 @@ export const brutalist: Record<string, string> = {
 }
 
 export const brutalistDark: Record<string, string> = {
-	// ── Dark: inverted — paper becomes black, ink becomes off-white ───────
+	// ── Dark: inverted - paper becomes black, ink becomes off-white ───────
 	'--bg-default': '#0A0A0AFF',
 	'--bg-inverse': '#F8F8F8FF',
 	'--bg-muted': '#1A1A1AFF',

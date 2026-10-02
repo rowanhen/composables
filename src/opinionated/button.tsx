@@ -20,7 +20,7 @@ export interface ButtonProps extends Omit<React.ComponentProps<'button'>, 'size'
 	variant?: VariantProps<typeof buttonVariants>['variant']
 	/** Size variant. @default 'default' */
 	size?: VariantProps<typeof buttonVariants>['size']
-	/** Corner shape. 'pill' is fully rounded — circular for icon sizes. @default 'default' */
+	/** Corner shape. 'pill' is fully rounded - circular for icon sizes. @default 'default' */
 	shape?: VariantProps<typeof buttonVariants>['shape']
 	className?: string
 	/** Disables the button and prevents interaction. @default false */

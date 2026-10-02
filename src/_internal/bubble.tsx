@@ -29,7 +29,7 @@ const bubbleVariants = cva(
 					'border-none *:data-[slot=bubble-content]:rounded-none *:data-[slot=bubble-content]:bg-transparent *:data-[slot=bubble-content]:p-0',
 				destructive:
 					'*:data-[slot=bubble-content]:bg-surface-critical *:data-[slot=bubble-content]:text-critical *:data-[slot=bubble-content]:border-stroke-critical',
-				/** @deprecated Use `destructive` — kept for backwards compatibility. */
+				/** @deprecated Use `destructive` - kept for backwards compatibility. */
 				critical:
 					'*:data-[slot=bubble-content]:bg-surface-critical *:data-[slot=bubble-content]:text-critical *:data-[slot=bubble-content]:border-stroke-critical',
 				success:

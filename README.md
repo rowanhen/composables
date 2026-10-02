@@ -1,6 +1,6 @@
 # Composables
 
-**An opinionated React component library with a semantic design token system — built on Base UI and Tailwind CSS v4.**
+**An opinionated React component library with a semantic design token system, built on Base UI and Tailwind CSS v4.**
 
 [![npm version](https://img.shields.io/npm/v/@leitware/composables)](https://www.npmjs.com/package/@leitware/composables)
 [![CI](https://github.com/rowanhen/composables/actions/workflows/ci.yml/badge.svg)](https://github.com/rowanhen/composables/actions/workflows/ci.yml)
@@ -268,9 +268,9 @@ Key token groups:
 | Control shape  | `--button-radius`, `--badge-radius`, `--input-radius`, `--card-radius`                |
 | Motion         | `--motion-duration-overlay`, `--motion-duration-disclosure`, `--motion-ease-standard` |
 
-The entire type scale derives from `--font-size-base` and `--leading-base` — adjust those two tokens to scale all text globally.
+The entire type scale derives from `--font-size-base` and `--leading-base`. Adjust those two tokens to scale all text globally.
 
-Control rounding is deliberately two-level. `--radius` drives the shared scale (`--radius-sm` … `--radius-4xl`) used by surfaces such as cards, dialogs, and alerts, while the component tokens `--button-radius` and `--badge-radius` decide button and badge corners independently — set `--button-radius: 9999px` for a pill-button theme without distorting anything else. For one-off exceptions, `Button` and `Badge` also accept `shape="pill"` (fully rounded; icon-size buttons become circles).
+Control rounding is deliberately two-level. `--radius` drives the shared scale (`--radius-sm` … `--radius-4xl`) used by surfaces such as cards, dialogs, and alerts, while the component tokens `--button-radius` and `--badge-radius` decide button and badge corners independently. Set `--button-radius: 9999px` for a pill-button theme without distorting anything else. For one-off exceptions, `Button` and `Badge` also accept `shape="pill"` (fully rounded; icon-size buttons become circles).
 
 ### Motion Modes
 
@@ -524,4 +524,4 @@ All normal components import from `@leitware/composables`; AI components import 
 
 ## License
 
-MIT — see [LICENSE](LICENSE) for details.
+MIT. See [LICENSE](LICENSE) for details.

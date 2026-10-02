@@ -43,7 +43,7 @@ export function Swatch({
 	borderColor?: string
 }) {
 	return (
-		<VStack gap={1} align="center">
+		<VStack gap={1} align="center" className="w-28 shrink-0">
 			<div
 				className="size-10 rounded-md border border-stroke/40"
 				style={{
@@ -52,7 +52,7 @@ export function Swatch({
 					borderWidth: borderColor ? 2 : undefined,
 				}}
 			/>
-			<Typography variant="caption-100" className="text-center truncate max-w-20 text-foreground">
+			<Typography variant="caption-100" className="w-full break-words text-center text-foreground">
 				{label}
 			</Typography>
 		</VStack>

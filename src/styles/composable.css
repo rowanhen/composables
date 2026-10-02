@@ -1,19 +1,19 @@
 /* ============================================================================
-   @leitware/composables — Main Stylesheet
+   @leitware/composables - Main Stylesheet
    ============================================================================
    Design tokens, theme registration, and base styles for the component system.
-   This file does NOT include Tailwind itself — the downstream app owns that.
+   This file does NOT include Tailwind itself - the downstream app owns that.
    See README.md "Quick Start" for the full import pattern.
 
    File structure:
-     tokens/palette.css        — Primitive color scales (build-time + runtime)
-     tokens/tailwind-color-adapter.css — Generated Tailwind color aliases
-     tokens/tailwind-theme.css — Non-color Tailwind theme registrations
-     tokens/semantic.css       — Semantic role tokens (:root + .dark)
-     tokens/components.css     — Component-level tunables
-     presets/default.css       — The canonical default light/dark preset
-     tokens/semantic-utilities.css — Generated public semantic classes
-     tokens/base.css           — Global base styles (@layer base)
+     tokens/palette.css        - Primitive color scales (build-time + runtime)
+     tokens/tailwind-color-adapter.css - Generated Tailwind color aliases
+     tokens/tailwind-theme.css - Non-color Tailwind theme registrations
+     tokens/semantic.css       - Semantic role tokens (:root + .dark)
+     tokens/components.css     - Component-level tunables
+     presets/default.css       - The canonical default light/dark preset
+     tokens/semantic-utilities.css - Generated public semantic classes
+     tokens/base.css           - Global base styles (@layer base)
    ============================================================================ */
 
 @import 'shadcn/tailwind.css';

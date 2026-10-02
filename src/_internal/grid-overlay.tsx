@@ -8,7 +8,7 @@ interface GridOverlayProps extends React.ComponentProps<'div'> {
 }
 
 /**
- * GridOverlay — renders a full-viewport grid background aligned to the
+ * GridOverlay - renders a full-viewport grid background aligned to the
  * spacing system. Grid cells are `calc(var(--spacing) * 12)` wide/tall
  * and the pattern is horizontally centered so that containers whose
  * widths are multiples of 96 px snap exactly to the lines.

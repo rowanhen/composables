@@ -6,11 +6,11 @@
 
    This file serves TWO purposes from the same data:
 
-   1. @theme inline  — Resolved at BUILD TIME by Tailwind so it can generate
+   1. @theme inline  - Resolved at BUILD TIME by Tailwind so it can generate
       utility classes (e.g. bg-blue-800, text-neutral-950). These values are
       baked into the compiled CSS and cannot change at runtime.
 
-   2. :root / .dark  — Standard CSS custom properties available at RUNTIME.
+   2. :root / .dark  - Standard CSS custom properties available at RUNTIME.
       These power var(--blue-800) references in component code and can be
       swapped by presets or dark mode.
 

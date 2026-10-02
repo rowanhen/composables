@@ -29,7 +29,7 @@ function normalizeTokenValue(value: string): string {
 
 function generateCSS(preset: (typeof presetDefinitions)[number]): string {
 	const header = `/* ============================================================================
-   @leitware/composables — ${preset.label} Preset
+   @leitware/composables - ${preset.label} Preset
    ============================================================================
    ${preset.description}
 
@@ -92,4 +92,4 @@ if (CHECK_MODE) {
 	process.exit(0)
 }
 
-console.log(`\nDone — ${presetDefinitions.length} preset CSS files generated.`)
+console.log(`\nDone - ${presetDefinitions.length} preset CSS files generated.`)

@@ -16,7 +16,7 @@
 		@apply border-stroke;
 	}
 
-	/* Universal focus ring — bare anchors, links, summary, tabindex targets.
+	/* Universal focus ring - bare anchors, links, summary, tabindex targets.
      Components use the FOCUS_RING utility class instead. */
 	a:focus-visible,
 	[role='link']:focus-visible,

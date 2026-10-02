@@ -1,8 +1,8 @@
 /**
- * Default — Clean, neutral, Inter-based. The "no opinion" starting point.
+ * Default - Clean, neutral, Inter-based. The "no opinion" starting point.
  * Think Linear, Vercel. A solid foundation that stays out of the way.
  *
- * Fonts: Inter Variable (all) — the most carefully crafted neutral sans-serif.
+ * Fonts: Inter Variable (all) - the most carefully crafted neutral sans-serif.
  */
 export const defaultPreset: Record<string, string> = {
 	// ── Semantic color tokens ─────────────────────────────────────────────
@@ -175,7 +175,7 @@ export const defaultPreset: Record<string, string> = {
 }
 
 export const defaultPresetDark: Record<string, string> = {
-	// Full dark-mode token set — mirrors tokens.css .dark values so that the
+	// Full dark-mode token set - mirrors tokens.css .dark values so that the
 	// injected :root overrides from the light preset are fully superseded when
 	// dark mode is toggled.
 

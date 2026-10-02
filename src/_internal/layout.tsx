@@ -5,7 +5,7 @@
  * Enforces the spacing and border system.
  *
  * BORDERS NEVER STACK RULES:
- *   • Stack/Row gaps use margin (not padding) — items never double-border.
+ *   • Stack/Row gaps use margin (not padding) - items never double-border.
  *   • NewspaperGrid: container holds border-t + border-l.
  *     NewspaperCell adds border-b + border-r → each edge drawn exactly once.
  *   • Use `border-[length:var(--border-width)]` throughout, never hardcoded 1px.
@@ -33,7 +33,7 @@ import { cn } from '../lib/utils'
 // ─── SECTION ──────────────────────────────────────────────────────────────────
 //
 // Page-level section wrapper with macro spacing tokens.
-// Spacing drives py (vertical padding) — sm=spacing*6, md=spacing*12, lg=spacing*24.
+// Spacing drives py (vertical padding) - sm=spacing*6, md=spacing*12, lg=spacing*24.
 
 const sectionVariants = cva('w-full', {
 	variants: {
@@ -63,7 +63,7 @@ function Section({ className, spacing, ...props }: SectionProps) {
 // ─── SPACER ───────────────────────────────────────────────────────────────────
 //
 // Flex-grow spacer for pushing content apart inside flex containers.
-// aria-hidden: decorative — not meaningful to assistive tech.
+// aria-hidden: decorative - not meaningful to assistive tech.
 
 function FlexSpacer({ className, ...props }: React.ComponentProps<'div'>) {
 	return (
@@ -82,12 +82,12 @@ function FlexSpacer({ className, ...props }: React.ComponentProps<'div'>) {
 // (Named NewspaperGrid to distinguish from layout-bento's BentoGrid, which uses
 // gap-as-border rather than this edge-sharing approach.)
 //
-// Border rule — "each edge drawn exactly once":
-//   Container: border-t + border-l  (outer frame — top and left)
-//   NewspaperCell: border-b + border-r  (completes each cell — bottom and right)
+// Border rule - "each edge drawn exactly once":
+//   Container: border-t + border-l  (outer frame - top and left)
+//   NewspaperCell: border-b + border-r  (completes each cell - bottom and right)
 //
 // Result: every grid line is a single border, never doubled.
-// Use `border-[length:var(--border-width)]` throughout — never hardcoded px.
+// Use `border-[length:var(--border-width)]` throughout - never hardcoded px.
 
 const newspaperGridVariants = cva(
 	[
@@ -127,10 +127,10 @@ function NewspaperGrid({ className, cols, ...props }: NewspaperGridProps) {
 // ─── NEWSPAPER CELL ───────────────────────────────────────────────────────────
 //
 // A single cell within NewspaperGrid. Provides the bottom + right border edges
-// (newspaper rule — completes the grid line each container started).
+// (newspaper rule - completes the grid line each container started).
 //
-// span    — column span (1–4)
-// rowSpan — row span (1–3)
+// span    - column span (1–4)
+// rowSpan - row span (1–3)
 
 const COL_SPANS: Record<1 | 2 | 3 | 4, string> = {
 	1: 'col-span-1',
@@ -145,7 +145,7 @@ const ROW_SPANS: Record<1 | 2 | 3, string> = {
 	3: 'row-span-3',
 }
 
-// Cell border classes — bottom + right complete the newspaper grid rule
+// Cell border classes - bottom + right complete the newspaper grid rule
 const CELL_BORDERS = [
 	'border-b-[length:var(--border-width,var(--border-width-base,0.0625rem))]',
 	'border-r-[length:var(--border-width,var(--border-width-base,0.0625rem))]',

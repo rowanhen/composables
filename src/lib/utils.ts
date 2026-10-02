@@ -27,11 +27,11 @@ export const HOVER_RING =
 export const GROUP_FOCUS_RING =
 	'has-[:focus-visible]:border-[var(--focus-ring-color)] has-[:focus-visible]:ring-[color:var(--focus-ring-color)]/30 has-[:focus-visible]:ring-[length:var(--focus-ring-width)] has-aria-invalid:ring-stroke-critical/20 dark:has-aria-invalid:ring-stroke-critical/40 has-aria-invalid:border-stroke-critical dark:has-aria-invalid:border-stroke-critical/50 has-aria-invalid:ring-[length:var(--focus-ring-width)]'
 
-/** Destructive-variant focus override – layer on top of FOCUS_RING. */
+/** Destructive-variant focus override layered on top of FOCUS_RING. */
 export const FOCUS_RING_DESTRUCTIVE =
 	'focus-visible:ring-stroke-critical/20 dark:focus-visible:ring-stroke-critical/40 focus-visible:border-stroke-critical/40'
 
-/** Disabled state opacity — single source of truth for all disabled elements. */
+/** Disabled state opacity - single source of truth for all disabled elements. */
 export const DISABLED_OPACITY = 'disabled:opacity-disabled'
 
 /**

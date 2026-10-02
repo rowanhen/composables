@@ -77,12 +77,12 @@ export function DividerShowcase() {
 				{/* Token reactivity callout */}
 				<Card className="bg-muted/40 p-4">
 					<Typography variant="caption-100" className="text-muted-foreground">
-						Switch presets using the token panel — all variants morph with the tokens.{' '}
+						Switch presets using the token panel; all variants morph with the tokens.{' '}
 						<strong>Solid</strong> gains border-radius (becoming a long pill at max),{' '}
 						<strong>dots</strong> shift from squares to circles, and <strong>pills</strong> go from
 						rectangular dashes to capsules. <strong>Dots and pills</strong> size their elements from{' '}
-						<code className="font-mono text-xs">--border-width-base</code> — increase it for
-						chunkier dots/pills. Gaps between elements are controlled by{' '}
+						<code className="font-mono text-xs">--border-width-base</code>. Increase it for chunkier
+						dots/pills. Gaps between elements are controlled by{' '}
 						<code className="font-mono text-xs">--spacing</code>, and corner rounding by{' '}
 						<code className="font-mono text-xs">--radius</code>.
 					</Typography>

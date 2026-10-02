@@ -35,11 +35,11 @@ export type AlertVariant = NonNullable<VariantProps<typeof alertVariants>['varia
 export interface AlertProps extends Omit<React.ComponentProps<typeof AlertPrimitive>, 'title'> {
 	/**
 	 * Semantic type that controls the icon and colour variant.
-	 * - `default` — no icon, neutral styling
-	 * - `notice` — info icon (ℹ), neutral styling
-	 * - `positive` — check icon, green styling
-	 * - `warning` — triangle icon, amber styling
-	 * - `negative` — alert triangle icon, red/destructive styling
+	 * - `default` - no icon, neutral styling
+	 * - `notice` - info icon (ℹ), neutral styling
+	 * - `positive` - check icon, green styling
+	 * - `warning` - triangle icon, amber styling
+	 * - `negative` - alert triangle icon, red/destructive styling
 	 * @default 'default'
 	 */
 	type?: AlertType

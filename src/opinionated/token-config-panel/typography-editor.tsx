@@ -6,7 +6,7 @@ import type { FontGroup } from './types'
 import { getResolvedDimension } from './helpers'
 
 /* ------------------------------------------------------------------ */
-/*  Google Fonts — grouped by style                                     */
+/*  Google Fonts - grouped by style                                     */
 /* ------------------------------------------------------------------ */
 
 const FONT_GROUPS: FontGroup[] = [

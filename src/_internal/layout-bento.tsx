@@ -16,8 +16,8 @@
  *
  * Layout philosophy:
  *   • Container background IS the border color
- *   • Gap exposes it as 1px lines — cells are never individually bordered
- *   • "Borders never stack" — each grid line is drawn exactly once
+ *   • Gap exposes it as 1px lines - cells are never individually bordered
+ *   • "Borders never stack" - each grid line is drawn exactly once
  *   • Mobile: single-column stack; Desktop: the designed layout
  *   • All sizing is responsive, all colors through semantic tokens
  *
@@ -34,16 +34,16 @@ import { cn } from '../lib/utils'
 
 // ─── INTERNAL CONSTANTS ───────────────────────────────────────────────────────
 
-/** Background IS the border color — gap exposes it as lines. */
+/** Background IS the border color - gap exposes it as lines. */
 const BENTO_CONTAINER =
 	'min-w-0 bg-stroke gap-[var(--bento-gap,var(--border-width,1px))] p-[var(--bento-gap,var(--border-width,1px))] rounded-lg'
 
-/** Every direct cell child gets card background — it sits on top of the border bg. */
+/** Every direct cell child gets card background - it sits on top of the border bg. */
 const BENTO_CELL = 'min-w-0 bg-card rounded-lg overflow-hidden'
 
 // ─── STAT CELL ────────────────────────────────────────────────────────────────
 //
-// Compact metric cell. Participates in the gap-border system — add it as a
+// Compact metric cell. Participates in the gap-border system - add it as a
 // direct child of BentoGrid, CellGrid, or the stats slot of any Bento layout.
 // Padding is internal; the outer gap provides the grid line.
 
@@ -129,7 +129,7 @@ function BentoCell({ colSpan = 1, rowSpan = 1, className, ...props }: BentoCellP
 // A 2-area layout: icon panel (fixed 200px on desktop, spans both rows) |
 // content area + stats area stacked in the second column.
 //
-// Mobile: single column — icon, then content, then stats.
+// Mobile: single column - icon, then content, then stats.
 // Desktop: [200px icon (row-span-2)] | [content / stats]
 
 interface BentoSplitProps extends Omit<React.ComponentProps<'div'>, 'content'> {
@@ -149,18 +149,18 @@ function BentoSplit({ icon, content, stats, className, ...props }: BentoSplitPro
 			)}
 			{...props}
 		>
-			{/* Icon — spans both rows on desktop */}
+			{/* Icon - spans both rows on desktop */}
 			<div
 				data-slot="bento-split-icon"
 				className={cn(BENTO_CELL, 'flex items-center justify-center p-10 lg:row-span-2')}
 			>
 				{icon}
 			</div>
-			{/* Content — auto-places into col 2, row 1 */}
+			{/* Content - auto-places into col 2, row 1 */}
 			<div data-slot="bento-split-content" className={cn(BENTO_CELL, 'p-4')}>
 				{content}
 			</div>
-			{/* Stats — auto-places into col 2, row 2 */}
+			{/* Stats - auto-places into col 2, row 2 */}
 			<div data-slot="bento-split-stats" className={cn(BENTO_CELL, 'p-4')}>
 				{stats}
 			</div>
@@ -286,14 +286,14 @@ function BentoTriple({ header, aside, body, footer, className, ...props }: Bento
 			<div data-slot="bento-triple-header" className={cn(BENTO_CELL, 'lg:[grid-column:1/-1]')}>
 				{header}
 			</div>
-			{/* Aside — col 1, row 2 */}
+			{/* Aside - col 1, row 2 */}
 			<div
 				data-slot="bento-triple-aside"
 				className={cn(BENTO_CELL, 'flex items-center justify-center')}
 			>
 				{aside}
 			</div>
-			{/* Body — col 2, row 2 */}
+			{/* Body - col 2, row 2 */}
 			<div data-slot="bento-triple-body" className={BENTO_CELL}>
 				{body}
 			</div>

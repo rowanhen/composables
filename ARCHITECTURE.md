@@ -61,7 +61,7 @@ The library uses a deliberate separation between two layers of components.
 
 ### Layer 1: `_internal/`
 
-These are **low-level primitives** — close-to-the-metal wrappers around [Base UI](https://base-ui.com/) components, with Tailwind styling applied. They're composable and flexible, but their APIs can change.
+These **low-level primitives** wrap [Base UI](https://base-ui.com/) components with Tailwind styling. They're composable and flexible, but their APIs can change.
 
 Examples: `button`, `input`, `select`, `combobox`, `field`, `card`, `dialog`.
 
@@ -82,7 +82,7 @@ Examples: `FormInput` (wraps `field` + `input` + `useNumericInput`), `FormSelect
 
 ### Why separate them?
 
-The internal layer can evolve — Base UI updates, API changes, internal refactors — without breaking your app. The opinionated layer mediates those changes. You get:
+The internal layer can evolve through Base UI updates, API changes, and internal refactors without breaking your app. The opinionated layer mediates those changes. You get:
 
 - **Stability**: your `<FormInput>` won't break if the underlying `input` primitive changes
 - **Convenience**: form fields come pre-wired with labels, errors, and accessibility attributes
@@ -90,7 +90,7 @@ The internal layer can evolve — Base UI updates, API changes, internal refacto
 
 ### The Lint Boundary
 
-The opinionated layer imports from `_internal/` — app code should not. This boundary keeps internal refactors from breaking your app.
+The opinionated layer imports from `_internal/`. App code should not. This boundary keeps internal refactors from breaking your app.
 
 ### Package Boundary
 
@@ -141,7 +141,7 @@ Raw colour values from a fixed scale. `palette.css` contains three blocks from t
 --red-950: #ce2c31ff;
 ```
 
-Colour families: `neutral`, `red`, `amber`, `green`, `blue`, `orange`, `jade`, `sky`, `violet`, `pink` — each with 12 stops (50–1000) and alpha variants.
+Colour families: `neutral`, `red`, `amber`, `green`, `blue`, `orange`, `jade`, `sky`, `violet`, and `pink`. Each has 12 stops (50–1000) and alpha variants.
 
 Source of truth: `scripts/palette.ts` (light + dark) → `scripts/generate-css.ts` → `tokens/palette.css`.
 
@@ -295,13 +295,13 @@ Presets are named sets of token overrides. They're available as standalone CSS f
 
 A preset typically overrides:
 
-- `--font-sans` / `--font-heading` — typography
-- `--font-size-base` / `--leading-base` — scale
-- `--radius` — corner rounding
-- `--border-width-base` — stroke weight
-- `--bg-fill-primary` / `--bg-fill-brand` — brand colours
-- `--motion-duration-overlay` / `--motion-duration-disclosure` — semantic motion roles
-- `--focus-ring-style` — solid, dashed, etc.
+- `--font-sans` / `--font-heading` - typography
+- `--font-size-base` / `--leading-base` - scale
+- `--radius` - corner rounding
+- `--border-width-base` - stroke weight
+- `--bg-fill-primary` / `--bg-fill-brand` - brand colours
+- `--motion-duration-overlay` / `--motion-duration-disclosure` - semantic motion roles
+- `--focus-ring-style` - solid, dashed, etc.
 - All semantic colour tokens (background, text, border, icon, chart)
 
 ### Built-in Presets

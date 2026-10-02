@@ -3,7 +3,7 @@ import { GridOverlay } from '@/components/ui-opinionated/grid-overlay'
 import { TokenConfigPanel } from '@/components/ui-opinionated/token-config-panel'
 
 /**
- * ThemeInjector — drop this anywhere in your app to get a floating theme
+ * ThemeInjector - drop this anywhere in your app to get a floating theme
  * control panel. Manages dark mode, grid overlay, and the full token config
  * panel all in one place.
  */

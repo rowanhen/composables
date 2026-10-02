@@ -351,7 +351,7 @@ export function DimensionSliderRow({
 }
 
 /* ------------------------------------------------------------------ */
-/*  FactorSliderRow — edits calc(var(base) * factor) component tokens    */
+/*  FactorSliderRow - edits calc(var(base) * factor) component tokens    */
 /* ------------------------------------------------------------------ */
 
 export function FactorSliderRow({

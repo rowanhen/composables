@@ -3,15 +3,15 @@
  * generate-css.ts
  *
  * Regenerates the CSS outputs owned by the token registry:
- *   1. @theme inline  — build-time values for Tailwind utility generation
- *   2. :root           — runtime CSS custom properties (light mode)
- *   3. .dark           — runtime CSS custom properties (dark mode)
+ *   1. @theme inline  - build-time values for Tailwind utility generation
+ *   2. :root           - runtime CSS custom properties (light mode)
+ *   3. .dark           - runtime CSS custom properties (dark mode)
  *   4. Tailwind color adapter aliases
  *   5. Framework-independent public semantic utility classes
  *   6. Public Tailwind variant utilities
  *   7. Consumer skill semantic utility manifest
  *
- * semantic.css is NOT touched — it contains only semantic token mappings.
+ * semantic.css is NOT touched - it contains only semantic token mappings.
  *
  * Usage:
  *   bun scripts/generate-css.ts           # overwrites palette.css in-place
@@ -92,11 +92,11 @@ function generatePaletteCSS(): string {
 
    This file serves TWO purposes from the same data:
 
-   1. @theme inline  — Resolved at BUILD TIME by Tailwind so it can generate
+   1. @theme inline  - Resolved at BUILD TIME by Tailwind so it can generate
       utility classes (e.g. bg-blue-800, text-neutral-950). These values are
       baked into the compiled CSS and cannot change at runtime.
 
-   2. :root / .dark  — Standard CSS custom properties available at RUNTIME.
+   2. :root / .dark  - Standard CSS custom properties available at RUNTIME.
       These power var(--blue-800) references in component code and can be
       swapped by presets or dark mode.
 

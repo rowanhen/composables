@@ -103,7 +103,7 @@ export function AIMessageShowcase() {
 					<Message from="assistant">
 						<MessageContent>
 							<MessageResponse>
-								{`React Server Components (RSC) let you render components **on the server** without sending their JavaScript to the client.\n\nKey benefits:\n- **Smaller bundles** — server-only code never reaches the browser\n- **Direct data access** — query databases without API routes\n- **Streaming** — progressively send UI as data resolves`}
+								{`React Server Components (RSC) let you render components **on the server** without sending their JavaScript to the client.\n\nKey benefits:\n- **Smaller bundles**: server-only code never reaches the browser\n- **Direct data access**: query databases without API routes\n- **Streaming**: progressively send UI as data resolves`}
 							</MessageResponse>
 						</MessageContent>
 						<MessageToolbar>
@@ -419,7 +419,7 @@ export function AIConfirmationShowcase() {
 						<ConfirmationTitle>Delete temporary files?</ConfirmationTitle>
 						<ConfirmationAccepted>
 							<Typography variant="body-100" className="text-success">
-								Approved — files cleaned up.
+								Approved. Files cleaned up.
 							</Typography>
 						</ConfirmationAccepted>
 					</Confirmation>
@@ -472,7 +472,7 @@ export function AIFullChatShowcase() {
 							</Reasoning>
 							<MessageContent>
 								<MessageResponse>
-									{`Here's how to add dark mode using CSS custom properties:\n\n1. **Define tokens** for both light and dark themes\n2. **Toggle a class** (e.g. \`.dark\`) on the root element\n3. **Use semantic tokens** like \`bg-page\` and \`text-foreground\` that automatically switch\n\nYour design system already handles this — just add the \`.dark\` class to your \`<html>\` element.`}
+									{`Here's how to add dark mode using CSS custom properties:\n\n1. **Define tokens** for both light and dark themes\n2. **Toggle a class** (e.g. \`.dark\`) on the root element\n3. **Use semantic tokens** like \`bg-page\` and \`text-foreground\` that automatically switch\n\nYour design system already handles this. Just add the \`.dark\` class to your \`<html>\` element.`}
 								</MessageResponse>
 							</MessageContent>
 							<Sources>

@@ -120,7 +120,7 @@ function BentoLeaderDemo() {
 				Full-width header spanning all columns, then N equal columns below.
 			</Typography>
 			<BentoLeader
-				header={<ChartPlaceholder label="Monthly Revenue — Jan to Dec 2024" />}
+				header={<ChartPlaceholder label="Monthly Revenue (Jan to Dec 2024)" />}
 				columns={[
 					<MetricContent key="r" label="Total Revenue" value="$487k" trend="↑ 24% vs last year" />,
 					<MetricContent key="o" label="Orders" value="2,341" trend="↑ 18% vs last year" />,
@@ -156,8 +156,11 @@ function BentoQuadDemo() {
 					<div className="p-4">
 						<div className="text-sm font-bold mb-2">Active Projects</div>
 						<div className="space-y-2">
-							{['Redesign — 80%', 'API v2 — 45%', 'Dashboard — 92%'].map((p) => {
-								const [name, pct] = p.split(' — ')
+							{[
+								['Redesign', '80%'],
+								['API v2', '45%'],
+								['Dashboard', '92%'],
+							].map(([name, pct]) => {
 								return (
 									<div key={name}>
 										<div className="flex justify-between text-xs mb-0.5">
@@ -174,7 +177,7 @@ function BentoQuadDemo() {
 					</div>
 				}
 				topRight={<MetricContent label="Sprint Velocity" value="42pts" trend="↑ from 36" />}
-				bottomLeft={<ChartPlaceholder label="Commits — Last 30 days" />}
+				bottomLeft={<ChartPlaceholder label="Commits (last 30 days)" />}
 				bottomRight={<MetricContent label="Open PRs" value="7" trend="3 awaiting review" />}
 			/>
 		</ShowcaseGroup>
@@ -208,7 +211,7 @@ function BentoTripleDemo() {
 						<StatCell label="Retention D30" value="28%" />
 					</VStack>
 				}
-				body={<ChartPlaceholder label="Daily Active Users — past 30 days" />}
+				body={<ChartPlaceholder label="Daily Active Users (past 30 days)" />}
 				footer={
 					<div className="p-3 flex gap-8">
 						<div className="text-xs">
@@ -277,7 +280,7 @@ function CellRowDemo() {
 	return (
 		<ShowcaseGroup label="CellRow">
 			<Typography variant="body-100" className="text-muted-foreground">
-				Flex-direction flip — mobile: stacked, desktop: side-by-side. Uses gap-as-divider.
+				Flex-direction flip: stacked on mobile and side-by-side on desktop. Uses gap-as-divider.
 			</Typography>
 			<VStack gap={3}>
 				<CellRow>
@@ -352,7 +355,7 @@ export function BentoShowcase() {
 	return (
 		<ShowcaseSection
 			title="Bento Layout"
-			description="Gap-as-border grid layouts for information-dense dashboards. The container background IS the border color — gap exposes it as ruled lines."
+			description="Gap-as-border grid layouts for information-dense dashboards. The container background IS the border color; the gap exposes it as ruled lines."
 		>
 			<VStack gap={12}>
 				<BentoSplitDemo />

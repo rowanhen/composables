@@ -1,5 +1,5 @@
 /**
- * palette.ts — Single source of truth for all colour scales (light + dark).
+ * palette.ts - Single source of truth for all colour scales (light + dark).
  * Run `bun scripts/generate-css.ts` to regenerate tokens/palette.css.
  */
 
