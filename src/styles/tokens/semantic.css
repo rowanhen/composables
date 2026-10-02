@@ -26,6 +26,7 @@
 	--bg-surface-default: #f8f8f8ff;
 	--bg-surface-popover: #f8f8f8ff;
 	--bg-surface-accent: #efefefff;
+	--bg-surface-field: #2e2e2eff;
 	--bg-surface-info: #e8f0f8ff;
 	--bg-surface-success: #e8f4e8ff;
 	--bg-surface-warning: #fbf4e0ff;
@@ -63,6 +64,7 @@
 	--text-disabled: #aaaaaaff;
 	--text-inverse: #f8f8f8ff;
 	--text-on-fill-primary: #f8f8f8ff;
+	--text-on-fill-brand: #0a0a0aff;
 	--text-on-fill-secondary: #0a0a0aff;
 	--text-on-surface-accent: #0a0a0aff;
 	--text-info: #001e5eff;
@@ -157,12 +159,13 @@
 	--bg-surface-default: #0a0a0aff;
 	--bg-surface-popover: #0a0a0aff;
 	--bg-surface-accent: #141414ff;
+	--bg-surface-field: #888888ff;
 	--bg-surface-info: #0a1828ff;
 	--bg-surface-success: #0a180aff;
 	--bg-surface-warning: #1e1406ff;
 	--bg-surface-critical: #1e0a0aff;
 	--bg-surface-emphasis: #0a0a1eff;
-	--bg-surface-inverse: #606060ff;
+	--bg-surface-inverse: #888888ff;
 	--bg-surface-transparent: #ffffff10;
 	--bg-overlay: var(--overlays-black-alpha-800);
 	--bg-surface-brand: #0a1e08ff;
@@ -194,6 +197,7 @@
 	--text-disabled: #444444ff;
 	--text-inverse: #0a0a0aff;
 	--text-on-fill-primary: #0a0a0aff;
+	--text-on-fill-brand: #0a0a0aff;
 	--text-on-fill-secondary: #f0f0f0ff;
 	--text-on-surface-accent: #f0f0f0ff;
 	--text-info: #99bbffff;

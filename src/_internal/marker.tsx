@@ -11,7 +11,7 @@ const markerVariants = cva(
 			variant: {
 				default: '',
 				separator:
-					'before:bg-stroke after:bg-stroke before:mr-1 before:h-px before:min-w-0 before:flex-1 after:ml-1 after:h-px after:min-w-0 after:flex-1',
+					'before:bg-stroke after:bg-stroke before:mr-1 before:h-(--border-width-base) before:min-w-0 before:flex-1 after:ml-1 after:h-(--border-width-base) after:min-w-0 after:flex-1',
 				border: 'border-b border-stroke pb-2',
 			},
 		},

@@ -61,7 +61,7 @@ function CommandInput({
 			<CommandPrimitive.Input
 				data-slot="command-input"
 				className={cn(
-					'flex h-10 w-full rounded-md bg-transparent py-3 text-sm outline-hidden placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50',
+					'flex h-10 w-full rounded-md bg-transparent py-3 text-sm outline-hidden placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-disabled',
 					className,
 				)}
 				{...props}
@@ -113,7 +113,7 @@ function CommandSeparator({
 	return (
 		<CommandPrimitive.Separator
 			data-slot="command-separator"
-			className={cn('-mx-1 h-px bg-border', className)}
+			className={cn('-mx-1 h-(--border-width-base) bg-border', className)}
 			{...props}
 		/>
 	)
@@ -124,7 +124,7 @@ function CommandItem({ className, ...props }: React.ComponentProps<typeof Comman
 		<CommandPrimitive.Item
 			data-slot="command-item"
 			className={cn(
-				"relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 data-[selected=true]:bg-muted data-[selected=true]:text-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground",
+				"relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-disabled data-[selected=true]:bg-muted data-[selected=true]:text-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground",
 				className,
 			)}
 			{...props}

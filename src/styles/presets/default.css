@@ -16,6 +16,7 @@
 	--bg-surface-default: #f9f9f8ff;
 	--bg-surface-popover: #f9f9f8ff;
 	--bg-surface-accent: #f1f0efff;
+	--bg-surface-field: #dad9d6ff;
 	--bg-surface-info: #f1fafdff;
 	--bg-surface-success: #f5fbf5ff;
 	--bg-surface-warning: #fff7edff;
@@ -51,6 +52,7 @@
 	--text-disabled: #cfcecaff;
 	--text-inverse: #ffffffff;
 	--text-on-fill-primary: #ffffffff;
+	--text-on-fill-brand: #000000ff;
 	--text-on-fill-secondary: #21201cff;
 	--text-on-surface-accent: #21201cff;
 	--text-info: #1d3e56ff;
@@ -191,6 +193,7 @@
 	--bg-surface-default: #191918ff;
 	--bg-surface-popover: #191918ff;
 	--bg-surface-accent: #222221ff;
+	--bg-surface-field: #494844ff;
 	--bg-surface-info: #111a27ff;
 	--bg-surface-success: #141a15ff;
 	--bg-surface-warning: #1e160fff;
@@ -226,6 +229,7 @@
 	--text-disabled: #494844ff;
 	--text-inverse: #000000ff;
 	--text-on-fill-primary: #000000ff;
+	--text-on-fill-brand: #000000ff;
 	--text-on-fill-secondary: #eeeeecff;
 	--text-on-surface-accent: #eeeeecff;
 	--text-info: #c2f3ffff;

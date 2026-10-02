@@ -95,7 +95,7 @@ function FormInput({
 			{label && (
 				<FieldLabel htmlFor={inputId}>
 					{label}
-					{required && <span className="text-danger">*</span>}
+					{required && <span className="text-critical">*</span>}
 				</FieldLabel>
 			)}
 			<FieldContent>

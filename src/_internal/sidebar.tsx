@@ -272,7 +272,7 @@ function SidebarRail({ className, ...props }: React.ComponentProps<'button'>) {
 			onClick={toggleSidebar}
 			title="Toggle Sidebar"
 			className={cn(
-				'hover:after:bg-sidebar-border absolute inset-y-0 z-sticky hidden w-4 -translate-x-1/2 transition-[opacity,box-shadow] ease-linear group-data-[side=left]:-right-4 group-data-[side=right]:left-0 after:absolute after:inset-y-0 after:left-1/2 after:w-[2px] sm:flex',
+				'hover:after:bg-sidebar-border absolute inset-y-0 z-sticky hidden w-4 -translate-x-1/2 transition-[opacity,box-shadow] ease-linear group-data-[side=left]:-right-4 group-data-[side=right]:left-0 after:absolute after:inset-y-0 after:left-1/2 after:w-(--border-width-base) sm:flex',
 				'in-data-[side=left]:cursor-w-resize in-data-[side=right]:cursor-e-resize',
 				'[[data-side=left][data-state=collapsed]_&]:cursor-e-resize [[data-side=right][data-state=collapsed]_&]:cursor-w-resize',
 				'hover:group-data-[collapsible=offExamples]:bg-sidebar group-data-[collapsible=offExamples]:translate-x-0 group-data-[collapsible=offExamples]:after:left-full',
@@ -455,7 +455,7 @@ const sidebarMenuButtonVariants = cva(
 			variant: {
 				default: 'hover:bg-sidebar-accent hover:text-sidebar-accent-foreground',
 				outline:
-					'bg-page hover:bg-sidebar-accent hover:text-sidebar-accent-foreground shadow-[0_0_0_1px_hsl(var(--sidebar-border))] hover:shadow-[0_0_0_1px_hsl(var(--sidebar-accent))]',
+					'bg-page hover:bg-sidebar-accent hover:text-sidebar-accent-foreground shadow-[0_0_0_var(--border-width-base)_var(--sidebar-border)] hover:shadow-[0_0_0_var(--border-width-base)_var(--sidebar-accent)]',
 			},
 			size: {
 				default: 'h-8 text-xs',

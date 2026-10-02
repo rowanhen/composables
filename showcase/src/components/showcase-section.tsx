@@ -91,7 +91,7 @@ export function DemoBox({
 }) {
 	return (
 		<div
-			className={`rounded-md bg-[var(--bg-fill-brand)] text-white flex items-center justify-center px-2 py-3 text-xs font-medium ${className ?? ''}`}
+			className={`rounded-md bg-fill-brand text-on-fill-brand flex items-center justify-center px-2 py-3 text-xs font-medium ${className ?? ''}`}
 		>
 			{children}
 		</div>

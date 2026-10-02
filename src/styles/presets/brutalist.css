@@ -16,6 +16,7 @@
 	--bg-surface-default: #ffffffff;
 	--bg-surface-popover: #ffffffff;
 	--bg-surface-accent: #f0f0f0ff;
+	--bg-surface-field: #0a0a0aff;
 	--bg-surface-info: #e8f0f8ff;
 	--bg-surface-success: #e8f4e8ff;
 	--bg-surface-warning: #fbf4e0ff;
@@ -51,6 +52,7 @@
 	--text-disabled: #aaaaaaff;
 	--text-inverse: #f8f8f8ff;
 	--text-on-fill-primary: #ffffffff;
+	--text-on-fill-brand: #ffffffff;
 	--text-on-fill-secondary: #0a0a0aff;
 	--text-on-surface-accent: #0a0a0aff;
 	--text-info: #001e5eff;
@@ -191,12 +193,13 @@
 	--bg-surface-default: #0a0a0aff;
 	--bg-surface-popover: #141414ff;
 	--bg-surface-accent: #1a1a1aff;
+	--bg-surface-field: #c0c0c0ff;
 	--bg-surface-info: #0a1828ff;
 	--bg-surface-success: #0a180aff;
 	--bg-surface-warning: #1e1406ff;
 	--bg-surface-critical: #1e0a0aff;
 	--bg-surface-emphasis: #0a0a1eff;
-	--bg-surface-inverse: #606060ff;
+	--bg-surface-inverse: #888888ff;
 	--bg-surface-transparent: #ffffff10;
 	--bg-overlay: var(--overlays-black-alpha-800);
 	--bg-surface-brand: #1e0a08ff;
@@ -226,6 +229,7 @@
 	--text-disabled: #444444ff;
 	--text-inverse: #0a0a0aff;
 	--text-on-fill-primary: #0a0a0aff;
+	--text-on-fill-brand: #000000ff;
 	--text-on-fill-secondary: #f0f0f0ff;
 	--text-on-surface-accent: #f0f0f0ff;
 	--text-info: #99bbffff;

@@ -334,7 +334,7 @@ function CellGrid({ cols, subtle = false, className, ...props }: CellGridProps) 
 				CELL_GRID_COLS[cols],
 				'gap-[var(--bento-gap,var(--border-width,1px))]',
 				'min-w-0',
-				subtle ? 'bg-field' : 'bg-stroke',
+				subtle ? 'bg-stroke/50' : 'bg-stroke',
 				className,
 			)}
 			{...props}

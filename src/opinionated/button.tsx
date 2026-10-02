@@ -16,6 +16,8 @@ import { Button as ButtonPrimitive, type buttonVariants } from '../_internal/but
  * ```
  */
 export interface ButtonProps extends Omit<React.ComponentProps<'button'>, 'size'> {
+	/** Render the button as another element, such as a link. */
+	render?: React.ReactElement
 	/** Visual style variant. @default 'default' */
 	variant?: VariantProps<typeof buttonVariants>['variant']
 	/** Size variant. @default 'default' */

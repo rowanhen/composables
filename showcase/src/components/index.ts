@@ -62,6 +62,7 @@ export { TokenConfigPanel } from '@/components/ui-opinionated/token-config-panel
 export { ThemeInjector } from './theme-injector'
 export { TooltipShowcase } from './tooltip-showcase'
 export { TypographyShowcase } from './typography-showcase'
+export { WindowFrameShowcase } from './window-frame-showcase'
 export { CodeBlockShowcase } from './code-block-showcase'
 export { ListShowcase } from './list-showcase'
 export { MarkerShowcase } from './marker-showcase'

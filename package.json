@@ -18,6 +18,7 @@
 	"exports": {
 		".": "./src/index.ts",
 		"./ai": "./src/opinionated/ai/index.ts",
+		"./blocks": "./src/opinionated/blocks/index.ts",
 		"./styles.css": "./dist/styles.css",
 		"./tailwind.css": "./dist/tailwind.css",
 		"./presets/*": "./dist/presets/*"

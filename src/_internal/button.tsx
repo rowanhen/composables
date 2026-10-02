@@ -17,7 +17,7 @@ const buttonVariants = cva(
 				secondary:
 					'bg-secondary text-secondary-foreground aria-expanded:bg-secondary aria-expanded:text-secondary-foreground',
 				ghost: 'hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground',
-				destructive: `bg-surface-critical ${FOCUS_RING_DESTRUCTIVE} text-danger border-stroke-critical`,
+				destructive: `bg-surface-critical ${FOCUS_RING_DESTRUCTIVE} text-critical border-stroke-critical`,
 				success: 'bg-surface-success text-success border-stroke-success',
 				warning: 'bg-surface-warning text-warning border-stroke-warning',
 				info: 'bg-surface-info text-info border-stroke-info',

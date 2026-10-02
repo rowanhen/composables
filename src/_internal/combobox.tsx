@@ -96,7 +96,7 @@ function ComboboxContent({
 					data-slot="combobox-content"
 					data-chips={!!anchor}
 					className={cn(
-						'bg-popover text-popover-foreground data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 ring-foreground/10 *:data-[slot=input-group]:bg-field/20 dark:bg-popover max-h-72 min-w-32 overflow-hidden rounded-lg shadow-md ring-[length:var(--border-width)] duration-fast *:data-[slot=input-group]:m-1 *:data-[slot=input-group]:mb-0 *:data-[slot=input-group]:h-7 *:data-[slot=input-group]:border-none *:data-[slot=input-group]:shadow-none group/combobox-content relative max-h-(--available-height) w-(--anchor-width) max-w-(--available-width) min-w-[calc(var(--anchor-width)+--spacing(7))] origin-(--transform-origin) data-[chips=true]:min-w-(--anchor-width)',
+						'bg-popover text-popover-foreground data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 ring-foreground/10 *:data-[slot=input-group]:bg-surface-field/20 dark:bg-popover max-h-72 min-w-32 overflow-hidden rounded-lg shadow-md ring-[length:var(--border-width)] duration-fast *:data-[slot=input-group]:m-1 *:data-[slot=input-group]:mb-0 *:data-[slot=input-group]:h-7 *:data-[slot=input-group]:border-none *:data-[slot=input-group]:shadow-none group/combobox-content relative max-h-(--available-height) w-(--anchor-width) max-w-(--available-width) min-w-[calc(var(--anchor-width)+--spacing(7))] origin-(--transform-origin) data-[chips=true]:min-w-(--anchor-width)',
 						className,
 					)}
 					{...props}
@@ -177,7 +177,7 @@ function ComboboxSeparator({ className, ...props }: ComboboxPrimitive.Separator.
 	return (
 		<ComboboxPrimitive.Separator
 			data-slot="combobox-separator"
-			className={cn('bg-stroke/50 -mx-1 my-1 h-px', className)}
+			className={cn('bg-stroke/50 -mx-1 my-1 h-(--border-width-base)', className)}
 			{...props}
 		/>
 	)
@@ -193,7 +193,7 @@ function ComboboxChips({
 			className={cn(
 				GROUP_FOCUS_RING,
 				HOVER_RING,
-				'bg-field/20 dark:bg-field/30 border-field flex min-h-(--input-height) flex-wrap items-center gap-1 rounded-(--input-radius) border bg-clip-padding px-2 py-0.5 text-xs/relaxed has-data-[slot=combobox-chip]:px-1',
+				'bg-surface-field/20 dark:bg-surface-field/30 border-field flex min-h-(--input-height) flex-wrap items-center gap-1 rounded-(--input-radius) border bg-clip-padding px-2 py-0.5 text-xs/relaxed has-data-[slot=combobox-chip]:px-1',
 				className,
 			)}
 			{...props}

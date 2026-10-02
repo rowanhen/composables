@@ -129,7 +129,7 @@ function FormSelect({
 			{label && (
 				<FieldLabel id={`${selectId}-label`} htmlFor={selectId}>
 					{label}
-					{required && <span className="text-danger">*</span>}
+					{required && <span className="text-critical">*</span>}
 				</FieldLabel>
 			)}
 			<FieldContent>

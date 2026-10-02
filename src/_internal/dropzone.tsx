@@ -344,7 +344,7 @@ function DropZoneArea({ children, className }: DropZoneAreaProps) {
 			className={cn(
 				'rounded-xl border p-8 transition-[opacity,box-shadow] focus-visible:outline-none',
 				FOCUS_RING,
-				disabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer',
+				disabled ? 'cursor-not-allowed opacity-disabled' : 'cursor-pointer',
 				isDragActive && 'border-primary bg-accent',
 				isDragReject && 'border-stroke-critical bg-surface-critical',
 				hasError && 'border-stroke-critical',
@@ -388,13 +388,13 @@ function DropZoneContent({ title = 'Upload files', description, className }: Dro
 				className={cn(
 					'text-muted-foreground mb-3 flex size-10 items-center justify-center rounded-lg border transition-[opacity,box-shadow]',
 					isDragAccept && 'border-primary text-primary',
-					isDragReject && 'border-stroke-critical text-danger',
+					isDragReject && 'border-stroke-critical text-icon-critical',
 				)}
 			>
 				<UploadIcon className="size-5" />
 			</div>
 			<span className="text-sm font-medium">{title}</span>
-			<span className={cn('text-muted-foreground text-xs', isDragReject && 'text-danger')}>
+			<span className={cn('text-muted-foreground text-xs', isDragReject && 'text-critical')}>
 				{getDragMessage()}
 			</span>
 			<span className="text-muted-foreground mt-0.5 text-xs">

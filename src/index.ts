@@ -23,6 +23,10 @@ export {
 // ── Opinionated components ──────────────────────────────────────────────────
 // These are the recommended, higher-level wrappers that most users should use.
 
+// ── Page blocks ─────────────────────────────────────────────────────────────
+export * from './opinionated/blocks'
+export { WindowFrame, type WindowFrameProps } from './opinionated/window-frame'
+
 export {
 	Accordion,
 	AccordionContent,

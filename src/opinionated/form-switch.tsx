@@ -88,7 +88,7 @@ function FormSwitch({
 						{label && (
 							<FieldLabel htmlFor={switchId}>
 								{label}
-								{required && <span className="text-danger">*</span>}
+								{required && <span className="text-critical">*</span>}
 							</FieldLabel>
 						)}
 						{description && <FieldDescription>{description}</FieldDescription>}

@@ -16,9 +16,9 @@ export function ContainerShowcase() {
 					<Container
 						key={mw}
 						maxWidth={mw}
-						className="bg-[var(--bg-surface-emphasis)] rounded-lg py-3 text-center"
+						className="bg-surface-emphasis rounded-lg py-3 text-center"
 					>
-						<Typography variant="body-100" className="text-[var(--text-emphasis)]">
+						<Typography variant="body-100" className="text-emphasis">
 							maxWidth="{mw}"
 						</Typography>
 					</Container>

@@ -119,7 +119,7 @@ function FormDateOfBirth({
 			{label && (
 				<FieldLabel htmlFor={`${fieldId}-day`}>
 					{label}
-					{required && <span className="text-danger">*</span>}
+					{required && <span className="text-critical">*</span>}
 				</FieldLabel>
 			)}
 			<FieldContent>

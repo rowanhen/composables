@@ -16,7 +16,7 @@ function Switch({
 			className={cn(
 				FOCUS_RING,
 				HOVER_RING,
-				'data-checked:bg-primary data-unchecked:bg-field dark:data-unchecked:bg-field/80 shrink-0 rounded-[var(--radius)] p-0.5 data-[size=default]:h-4 data-[size=default]:w-7 data-[size=sm]:h-3.5 data-[size=sm]:w-6 peer group/switch relative inline-flex items-center transition-[opacity,box-shadow] outline-none after:absolute after:-inset-x-3 after:-inset-y-2 data-disabled:cursor-not-allowed data-disabled:opacity-disabled',
+				'data-checked:bg-primary data-unchecked:bg-surface-field dark:data-unchecked:bg-surface-field/80 shrink-0 rounded-[var(--radius)] p-0.5 data-[size=default]:h-4 data-[size=default]:w-7 data-[size=sm]:h-3.5 data-[size=sm]:w-6 peer group/switch relative inline-flex items-center transition-[opacity,box-shadow] outline-none after:absolute after:-inset-x-3 after:-inset-y-2 data-disabled:cursor-not-allowed data-disabled:opacity-disabled',
 				className,
 			)}
 			{...props}

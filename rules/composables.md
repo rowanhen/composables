@@ -28,13 +28,14 @@ Tailwind v4 consumers that need state or responsive variants of exact public sem
 
 ## Entrypoints
 
-| Import                               | Source                          |
-| ------------------------------------ | ------------------------------- |
-| `@leitware/composables`              | `./src/index.ts`                |
-| `@leitware/composables/ai`           | `./src/opinionated/ai/index.ts` |
-| `@leitware/composables/styles.css`   | `./dist/styles.css`             |
-| `@leitware/composables/tailwind.css` | `./dist/tailwind.css`           |
-| `@leitware/composables/presets/*`    | `./dist/presets/*`              |
+| Import                               | Source                              |
+| ------------------------------------ | ----------------------------------- |
+| `@leitware/composables`              | `./src/index.ts`                    |
+| `@leitware/composables/ai`           | `./src/opinionated/ai/index.ts`     |
+| `@leitware/composables/blocks`       | `./src/opinionated/blocks/index.ts` |
+| `@leitware/composables/styles.css`   | `./dist/styles.css`                 |
+| `@leitware/composables/tailwind.css` | `./dist/tailwind.css`               |
+| `@leitware/composables/presets/*`    | `./dist/presets/*`                  |
 
 ## Optional Dependencies
 
@@ -185,6 +186,7 @@ Use this catalog to choose public exports. The `Source module` column is for mai
 | `input`        | `./opinionated/input`        | `@leitware/composables` | `Input`                                                                                                                                          | -                                         | Public export not listed in the README component catalog. |
 | `label`        | `./opinionated/label`        | `@leitware/composables` | `Label`                                                                                                                                          | -                                         | Public export not listed in the README component catalog. |
 | `textarea`     | `./opinionated/textarea`     | `@leitware/composables` | `Textarea`                                                                                                                                       | -                                         | Public export not listed in the README component catalog. |
+| `window-frame` | `./opinionated/window-frame` | `@leitware/composables` | `WindowFrame`                                                                                                                                    | `WindowFrameProps`                        | Public export not listed in the README component catalog. |
 
 ## AI Entrypoint Catalog
 

@@ -65,6 +65,7 @@ import {
 	ToggleShowcase,
 	TooltipShowcase,
 	TypographyShowcase,
+	WindowFrameShowcase,
 } from './components'
 
 /* ---- APP ---- */
@@ -83,6 +84,7 @@ export function App() {
 				<StackShowcase />
 				<ResponsiveGridShowcase />
 				<BentoShowcase />
+				<WindowFrameShowcase />
 
 				{/* Actions */}
 				<ButtonsShowcase />

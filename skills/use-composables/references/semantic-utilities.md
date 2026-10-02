@@ -12,6 +12,7 @@ This is the exact allowlist of framework-independent semantic colour classes shi
 | `bg-surface-default`        | bg       | `--bg-surface-default`        | `background-color: var(--bg-surface-default)`        |
 | `bg-surface-popover`        | bg       | `--bg-surface-popover`        | `background-color: var(--bg-surface-popover)`        |
 | `bg-surface-accent`         | bg       | `--bg-surface-accent`         | `background-color: var(--bg-surface-accent)`         |
+| `bg-surface-field`          | bg       | `--bg-surface-field`          | `background-color: var(--bg-surface-field)`          |
 | `bg-surface-info`           | bg       | `--bg-surface-info`           | `background-color: var(--bg-surface-info)`           |
 | `bg-surface-success`        | bg       | `--bg-surface-success`        | `background-color: var(--bg-surface-success)`        |
 | `bg-surface-warning`        | bg       | `--bg-surface-warning`        | `background-color: var(--bg-surface-warning)`        |
@@ -47,6 +48,7 @@ This is the exact allowlist of framework-independent semantic colour classes shi
 | `text-disabled`             | text     | `--text-disabled`             | `color: var(--text-disabled)`                        |
 | `text-inverse`              | text     | `--text-inverse`              | `color: var(--text-inverse)`                         |
 | `text-on-fill-primary`      | text     | `--text-on-fill-primary`      | `color: var(--text-on-fill-primary)`                 |
+| `text-on-fill-brand`        | text     | `--text-on-fill-brand`        | `color: var(--text-on-fill-brand)`                   |
 | `text-on-fill-secondary`    | text     | `--text-on-fill-secondary`    | `color: var(--text-on-fill-secondary)`               |
 | `text-on-surface-accent`    | text     | `--text-on-surface-accent`    | `color: var(--text-on-surface-accent)`               |
 | `text-info`                 | text     | `--text-info`                 | `color: var(--text-info)`                            |

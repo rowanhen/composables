@@ -339,6 +339,7 @@ function checkSemanticClassUsage() {
 	const knownSuffixes = new Set(
 		tailwindColorCssVars.map((cssVar) => cssVar.replace('--color-', '')),
 	)
+	const publicClassNames = new Set(publicSemanticUtilityClassNames)
 	const files = [...listFiles(join(ROOT, 'src')), ...listFiles(join(ROOT, 'showcase/src'))]
 	const problems: string[] = []
 
@@ -350,6 +351,8 @@ function checkSemanticClassUsage() {
 			let match: RegExpExecArray | null
 			while ((match = stringRe.exec(line))) {
 				for (const token of match[2].split(/\s+/)) {
+					const className = finalClassSegment(token).replace(/^!/, '').replace(/!$/, '')
+					if (publicClassNames.has(className)) continue
 					const colorClass = baseColorClass(token)
 					if (!colorClass) continue
 					if (!isSemanticLikeSuffix(colorClass.suffix, knownSuffixes)) continue
@@ -413,7 +416,9 @@ function checkPresetContrast() {
 		['--bg-surface-default', '--text-default', 4.5, true],
 		['--bg-muted', '--text-default', 4.5, true],
 		['--bg-surface-accent', '--text-on-surface-accent', 4.5, true],
+		['--bg-surface-inverse', '--text-inverse', 4.5, true],
 		['--bg-fill-primary', '--text-on-fill-primary', 4.5, true],
+		['--bg-fill-brand', '--text-on-fill-brand', 4.5, true],
 		['--bg-fill-secondary', '--text-on-fill-secondary', 4.5, true],
 		['--bg-default', '--text-secondary', 4.5, false],
 		['--bg-default', '--text-muted', 3, false],

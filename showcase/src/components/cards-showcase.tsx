@@ -44,7 +44,7 @@ export function CardsShowcase() {
 						<Typography variant="body-100">Compact variant for dense UIs.</Typography>
 					</CardContent>
 				</Card>
-				<Card className="border-[var(--border-brand)]">
+				<Card className="border-stroke-brand">
 					<CardHeader>
 						<CardTitle>Branded Card</CardTitle>
 						<CardDescription>Using brand border token</CardDescription>

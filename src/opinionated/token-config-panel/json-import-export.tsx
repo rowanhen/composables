@@ -72,7 +72,7 @@ export function JsonImportExport({
 				onChange={(e) => setJsonText(e.target.value)}
 			/>
 			{jsonError && (
-				<Typography variant="caption-100" className="text-[var(--text-critical)]">
+				<Typography variant="caption-100" className="text-critical">
 					{jsonError}
 				</Typography>
 			)}

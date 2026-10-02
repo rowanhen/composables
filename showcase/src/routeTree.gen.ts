@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as WindowFrameIndexRouteImport } from './routes/window-frame/index'
 import { Route as TypographyIndexRouteImport } from './routes/typography/index'
 import { Route as TooltipIndexRouteImport } from './routes/tooltip/index'
 import { Route as ToggleIndexRouteImport } from './routes/toggle/index'
@@ -58,6 +59,7 @@ import { Route as CalendarIndexRouteImport } from './routes/calendar/index'
 import { Route as ButtonIndexRouteImport } from './routes/button/index'
 import { Route as BubbleIndexRouteImport } from './routes/bubble/index'
 import { Route as BreadcrumbIndexRouteImport } from './routes/breadcrumb/index'
+import { Route as BlocksIndexRouteImport } from './routes/blocks/index'
 import { Route as BentoIndexRouteImport } from './routes/bento/index'
 import { Route as BadgeIndexRouteImport } from './routes/badge/index'
 import { Route as AvatarIndexRouteImport } from './routes/avatar/index'
@@ -66,6 +68,7 @@ import { Route as AlertIndexRouteImport } from './routes/alert/index'
 import { Route as AlertDialogIndexRouteImport } from './routes/alert-dialog/index'
 import { Route as AiElementsIndexRouteImport } from './routes/ai-elements/index'
 import { Route as AccordionIndexRouteImport } from './routes/accordion/index'
+import { Route as BlocksSlugIndexRouteImport } from './routes/blocks/$slug/index'
 import { Route as AiElementsToolIndexRouteImport } from './routes/ai-elements/tool/index'
 import { Route as AiElementsTaskIndexRouteImport } from './routes/ai-elements/task/index'
 import { Route as AiElementsSuggestionsIndexRouteImport } from './routes/ai-elements/suggestions/index'
@@ -83,6 +86,11 @@ import { Route as AiElementsChainOfThoughtIndexRouteImport } from './routes/ai-e
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WindowFrameIndexRoute = WindowFrameIndexRouteImport.update({
+  id: '/window-frame/',
+  path: '/window-frame/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TypographyIndexRoute = TypographyIndexRouteImport.update({
@@ -325,6 +333,11 @@ const BreadcrumbIndexRoute = BreadcrumbIndexRouteImport.update({
   path: '/breadcrumb/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlocksIndexRoute = BlocksIndexRouteImport.update({
+  id: '/blocks/',
+  path: '/blocks/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BentoIndexRoute = BentoIndexRouteImport.update({
   id: '/bento/',
   path: '/bento/',
@@ -363,6 +376,11 @@ const AiElementsIndexRoute = AiElementsIndexRouteImport.update({
 const AccordionIndexRoute = AccordionIndexRouteImport.update({
   id: '/accordion/',
   path: '/accordion/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlocksSlugIndexRoute = BlocksSlugIndexRouteImport.update({
+  id: '/blocks/$slug/',
+  path: '/blocks/$slug/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AiElementsToolIndexRoute = AiElementsToolIndexRouteImport.update({
@@ -447,6 +465,7 @@ export interface FileRoutesByFullPath {
   '/avatar/': typeof AvatarIndexRoute
   '/badge/': typeof BadgeIndexRoute
   '/bento/': typeof BentoIndexRoute
+  '/blocks/': typeof BlocksIndexRoute
   '/breadcrumb/': typeof BreadcrumbIndexRoute
   '/bubble/': typeof BubbleIndexRoute
   '/button/': typeof ButtonIndexRoute
@@ -495,6 +514,7 @@ export interface FileRoutesByFullPath {
   '/toggle/': typeof ToggleIndexRoute
   '/tooltip/': typeof TooltipIndexRoute
   '/typography/': typeof TypographyIndexRoute
+  '/window-frame/': typeof WindowFrameIndexRoute
   '/ai-elements/chain-of-thought/': typeof AiElementsChainOfThoughtIndexRoute
   '/ai-elements/confirmation/': typeof AiElementsConfirmationIndexRoute
   '/ai-elements/conversation/': typeof AiElementsConversationIndexRoute
@@ -508,6 +528,7 @@ export interface FileRoutesByFullPath {
   '/ai-elements/suggestions/': typeof AiElementsSuggestionsIndexRoute
   '/ai-elements/task/': typeof AiElementsTaskIndexRoute
   '/ai-elements/tool/': typeof AiElementsToolIndexRoute
+  '/blocks/$slug/': typeof BlocksSlugIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -519,6 +540,7 @@ export interface FileRoutesByTo {
   '/avatar': typeof AvatarIndexRoute
   '/badge': typeof BadgeIndexRoute
   '/bento': typeof BentoIndexRoute
+  '/blocks': typeof BlocksIndexRoute
   '/breadcrumb': typeof BreadcrumbIndexRoute
   '/bubble': typeof BubbleIndexRoute
   '/button': typeof ButtonIndexRoute
@@ -567,6 +589,7 @@ export interface FileRoutesByTo {
   '/toggle': typeof ToggleIndexRoute
   '/tooltip': typeof TooltipIndexRoute
   '/typography': typeof TypographyIndexRoute
+  '/window-frame': typeof WindowFrameIndexRoute
   '/ai-elements/chain-of-thought': typeof AiElementsChainOfThoughtIndexRoute
   '/ai-elements/confirmation': typeof AiElementsConfirmationIndexRoute
   '/ai-elements/conversation': typeof AiElementsConversationIndexRoute
@@ -580,6 +603,7 @@ export interface FileRoutesByTo {
   '/ai-elements/suggestions': typeof AiElementsSuggestionsIndexRoute
   '/ai-elements/task': typeof AiElementsTaskIndexRoute
   '/ai-elements/tool': typeof AiElementsToolIndexRoute
+  '/blocks/$slug': typeof BlocksSlugIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -592,6 +616,7 @@ export interface FileRoutesById {
   '/avatar/': typeof AvatarIndexRoute
   '/badge/': typeof BadgeIndexRoute
   '/bento/': typeof BentoIndexRoute
+  '/blocks/': typeof BlocksIndexRoute
   '/breadcrumb/': typeof BreadcrumbIndexRoute
   '/bubble/': typeof BubbleIndexRoute
   '/button/': typeof ButtonIndexRoute
@@ -640,6 +665,7 @@ export interface FileRoutesById {
   '/toggle/': typeof ToggleIndexRoute
   '/tooltip/': typeof TooltipIndexRoute
   '/typography/': typeof TypographyIndexRoute
+  '/window-frame/': typeof WindowFrameIndexRoute
   '/ai-elements/chain-of-thought/': typeof AiElementsChainOfThoughtIndexRoute
   '/ai-elements/confirmation/': typeof AiElementsConfirmationIndexRoute
   '/ai-elements/conversation/': typeof AiElementsConversationIndexRoute
@@ -653,6 +679,7 @@ export interface FileRoutesById {
   '/ai-elements/suggestions/': typeof AiElementsSuggestionsIndexRoute
   '/ai-elements/task/': typeof AiElementsTaskIndexRoute
   '/ai-elements/tool/': typeof AiElementsToolIndexRoute
+  '/blocks/$slug/': typeof BlocksSlugIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -666,6 +693,7 @@ export interface FileRouteTypes {
     | '/avatar/'
     | '/badge/'
     | '/bento/'
+    | '/blocks/'
     | '/breadcrumb/'
     | '/bubble/'
     | '/button/'
@@ -714,6 +742,7 @@ export interface FileRouteTypes {
     | '/toggle/'
     | '/tooltip/'
     | '/typography/'
+    | '/window-frame/'
     | '/ai-elements/chain-of-thought/'
     | '/ai-elements/confirmation/'
     | '/ai-elements/conversation/'
@@ -727,6 +756,7 @@ export interface FileRouteTypes {
     | '/ai-elements/suggestions/'
     | '/ai-elements/task/'
     | '/ai-elements/tool/'
+    | '/blocks/$slug/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -738,6 +768,7 @@ export interface FileRouteTypes {
     | '/avatar'
     | '/badge'
     | '/bento'
+    | '/blocks'
     | '/breadcrumb'
     | '/bubble'
     | '/button'
@@ -786,6 +817,7 @@ export interface FileRouteTypes {
     | '/toggle'
     | '/tooltip'
     | '/typography'
+    | '/window-frame'
     | '/ai-elements/chain-of-thought'
     | '/ai-elements/confirmation'
     | '/ai-elements/conversation'
@@ -799,6 +831,7 @@ export interface FileRouteTypes {
     | '/ai-elements/suggestions'
     | '/ai-elements/task'
     | '/ai-elements/tool'
+    | '/blocks/$slug'
   id:
     | '__root__'
     | '/'
@@ -810,6 +843,7 @@ export interface FileRouteTypes {
     | '/avatar/'
     | '/badge/'
     | '/bento/'
+    | '/blocks/'
     | '/breadcrumb/'
     | '/bubble/'
     | '/button/'
@@ -858,6 +892,7 @@ export interface FileRouteTypes {
     | '/toggle/'
     | '/tooltip/'
     | '/typography/'
+    | '/window-frame/'
     | '/ai-elements/chain-of-thought/'
     | '/ai-elements/confirmation/'
     | '/ai-elements/conversation/'
@@ -871,6 +906,7 @@ export interface FileRouteTypes {
     | '/ai-elements/suggestions/'
     | '/ai-elements/task/'
     | '/ai-elements/tool/'
+    | '/blocks/$slug/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -883,6 +919,7 @@ export interface RootRouteChildren {
   AvatarIndexRoute: typeof AvatarIndexRoute
   BadgeIndexRoute: typeof BadgeIndexRoute
   BentoIndexRoute: typeof BentoIndexRoute
+  BlocksIndexRoute: typeof BlocksIndexRoute
   BreadcrumbIndexRoute: typeof BreadcrumbIndexRoute
   BubbleIndexRoute: typeof BubbleIndexRoute
   ButtonIndexRoute: typeof ButtonIndexRoute
@@ -931,6 +968,7 @@ export interface RootRouteChildren {
   ToggleIndexRoute: typeof ToggleIndexRoute
   TooltipIndexRoute: typeof TooltipIndexRoute
   TypographyIndexRoute: typeof TypographyIndexRoute
+  WindowFrameIndexRoute: typeof WindowFrameIndexRoute
   AiElementsChainOfThoughtIndexRoute: typeof AiElementsChainOfThoughtIndexRoute
   AiElementsConfirmationIndexRoute: typeof AiElementsConfirmationIndexRoute
   AiElementsConversationIndexRoute: typeof AiElementsConversationIndexRoute
@@ -944,6 +982,7 @@ export interface RootRouteChildren {
   AiElementsSuggestionsIndexRoute: typeof AiElementsSuggestionsIndexRoute
   AiElementsTaskIndexRoute: typeof AiElementsTaskIndexRoute
   AiElementsToolIndexRoute: typeof AiElementsToolIndexRoute
+  BlocksSlugIndexRoute: typeof BlocksSlugIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -953,6 +992,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/window-frame/': {
+      id: '/window-frame/'
+      path: '/window-frame'
+      fullPath: '/window-frame/'
+      preLoaderRoute: typeof WindowFrameIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/typography/': {
@@ -1291,6 +1337,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BreadcrumbIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blocks/': {
+      id: '/blocks/'
+      path: '/blocks'
+      fullPath: '/blocks/'
+      preLoaderRoute: typeof BlocksIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/bento/': {
       id: '/bento/'
       path: '/bento'
@@ -1345,6 +1398,13 @@ declare module '@tanstack/react-router' {
       path: '/accordion'
       fullPath: '/accordion/'
       preLoaderRoute: typeof AccordionIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blocks/$slug/': {
+      id: '/blocks/$slug/'
+      path: '/blocks/$slug'
+      fullPath: '/blocks/$slug/'
+      preLoaderRoute: typeof BlocksSlugIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/ai-elements/tool/': {
@@ -1451,6 +1511,7 @@ const rootRouteChildren: RootRouteChildren = {
   AvatarIndexRoute: AvatarIndexRoute,
   BadgeIndexRoute: BadgeIndexRoute,
   BentoIndexRoute: BentoIndexRoute,
+  BlocksIndexRoute: BlocksIndexRoute,
   BreadcrumbIndexRoute: BreadcrumbIndexRoute,
   BubbleIndexRoute: BubbleIndexRoute,
   ButtonIndexRoute: ButtonIndexRoute,
@@ -1499,6 +1560,7 @@ const rootRouteChildren: RootRouteChildren = {
   ToggleIndexRoute: ToggleIndexRoute,
   TooltipIndexRoute: TooltipIndexRoute,
   TypographyIndexRoute: TypographyIndexRoute,
+  WindowFrameIndexRoute: WindowFrameIndexRoute,
   AiElementsChainOfThoughtIndexRoute: AiElementsChainOfThoughtIndexRoute,
   AiElementsConfirmationIndexRoute: AiElementsConfirmationIndexRoute,
   AiElementsConversationIndexRoute: AiElementsConversationIndexRoute,
@@ -1512,6 +1574,7 @@ const rootRouteChildren: RootRouteChildren = {
   AiElementsSuggestionsIndexRoute: AiElementsSuggestionsIndexRoute,
   AiElementsTaskIndexRoute: AiElementsTaskIndexRoute,
   AiElementsToolIndexRoute: AiElementsToolIndexRoute,
+  BlocksSlugIndexRoute: BlocksSlugIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -134,6 +134,43 @@ import { AIMessage, AIPromptInput } from '@leitware/composables/ai'
 
 The AI libraries remain optional peer dependencies because they are a materially larger, specialised integration surface. Applications that do not import `@leitware/composables/ai` do not need to install or configure them. If you use that entrypoint, install its optional peers; see the table below.
 
+### Page blocks
+
+The 26 page blocks cover heroes, content, features, calls to action, a bento grid, and a testimonial. They are available from the root entrypoint or the focused `/blocks` entrypoint:
+
+```tsx
+import { Hero06, Cta01 } from '@leitware/composables/blocks'
+
+export function LandingPage() {
+	return (
+		<>
+			<Hero06
+				title="Build together,"
+				highlight="from one place."
+				description="A clear workspace for your team."
+				primaryCTA={{ text: 'Get started', link: '/start' }}
+			/>
+			<Cta01
+				title="Ready to begin?"
+				description="Make your next idea real."
+				cta={{ text: 'Start now', link: '/start' }}
+			/>
+		</>
+	)
+}
+```
+
+Each block accepts content as typed props and supports `className`; most also accept `variant` and `animation`. Run `bun run dev` and open `/blocks` for an individual preview of every block.
+
+The desktop-style preview chrome is also available on its own:
+
+```tsx
+import { WindowFrame } from '@leitware/composables'
+;<WindowFrame title="Project overview" toolbar={<span>Workspace</span>}>
+	<div>Dashboard content</div>
+</WindowFrame>
+```
+
 ### Consumer agent skill
 
 The npm package includes a `use-composables` agent skill at `skills/use-composables/SKILL.md`. Install or point your coding agent at that directory to give it the package workflow, semantic-styling rules, exact public entrypoints, and optional-dependency guidance. Its utility manifest is generated from the token registry by `bun scripts/generate-css.ts`; its public API manifest is generated from package metadata and public barrels by `bun scripts/generate-rules.ts`. Both generators support `--check`, keeping agent guidance aligned with the shipped contract.

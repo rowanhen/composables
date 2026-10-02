@@ -34,7 +34,7 @@ export function SpacingShowcase() {
 							{label}
 						</Typography>
 						<div
-							className="h-4 rounded-sm bg-[var(--bg-fill-brand)]"
+							className="h-4 rounded-sm bg-fill-brand"
 							style={{ width: `calc(var(--spacing) * ${multiplier})` }}
 						/>
 						<Typography variant="caption-100" className="text-muted-foreground font-mono">

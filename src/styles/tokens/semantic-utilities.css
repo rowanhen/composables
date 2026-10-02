@@ -33,6 +33,10 @@
 		background-color: var(--bg-surface-accent);
 	}
 
+	.bg-surface-field {
+		background-color: var(--bg-surface-field);
+	}
+
 	.bg-surface-info {
 		background-color: var(--bg-surface-info);
 	}
@@ -171,6 +175,10 @@
 
 	.text-on-fill-primary {
 		color: var(--text-on-fill-primary);
+	}
+
+	.text-on-fill-brand {
+		color: var(--text-on-fill-brand);
 	}
 
 	.text-on-fill-secondary {

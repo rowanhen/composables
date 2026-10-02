@@ -14,8 +14,8 @@ const badgeVariants = cva(
 			variant: {
 				default: `bg-primary text-primary-foreground ${BADGE_LINK_HOVER}`,
 				secondary: `bg-secondary text-secondary-foreground ${BADGE_LINK_HOVER}`,
-				destructive: `bg-surface-critical ${BADGE_LINK_HOVER} ${FOCUS_RING_DESTRUCTIVE} text-danger border-stroke-critical`,
-				outline: `border-stroke text-foreground ${BADGE_LINK_HOVER} bg-field/20 dark:bg-field/30`,
+				destructive: `bg-surface-critical ${BADGE_LINK_HOVER} ${FOCUS_RING_DESTRUCTIVE} text-critical border-stroke-critical`,
+				outline: `border-stroke text-foreground ${BADGE_LINK_HOVER} bg-surface-field/20 dark:bg-surface-field/30`,
 				ghost: `${HOVER_RING} hover:text-muted-foreground`,
 				success: 'bg-surface-success text-success border-stroke-success',
 				warning: 'bg-surface-warning text-warning border-stroke-warning',

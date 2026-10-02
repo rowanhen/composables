@@ -56,6 +56,13 @@ export const showcasePageMeta = [
 		description: 'Composed bento layouts for dashboard-style content blocks.',
 	},
 	{
+		slug: 'window-frame',
+		path: '/window-frame',
+		title: 'Window frame',
+		category: 'Layout',
+		description: 'Desktop window shell for product previews and embedded UI.',
+	},
+	{
 		slug: 'button',
 		path: '/button',
 		title: 'Button',

@@ -60,7 +60,7 @@ export function ColorTokenRow({
 			<button
 				type="button"
 				onClick={() => setExpanded(!expanded)}
-				className="flex w-full items-center gap-3 rounded-md px-2 py-1 hover:bg-[var(--bg-surface-hover)] transition-colors"
+				className="flex w-full items-center gap-3 rounded-md px-2 py-1 hover:bg-surface-hover transition-colors"
 			>
 				<div
 					className="size-6 rounded border border-stroke/60 shrink-0"

@@ -24,6 +24,7 @@ import {
 	SidebarTrigger,
 } from '@/components/ui-opinionated/sidebar'
 import { aiElementPageMeta, type AIElementPageMeta } from '../ai-elements-pages'
+import { blockPages } from '../block-pages'
 import { showcaseGroups, type ShowcasePageMeta } from '../showcase-pages'
 import { ThemeInjector } from './theme-injector'
 
@@ -78,6 +79,38 @@ export function ShowcaseShell() {
 										<GalleryVerticalEndIcon />
 										<span>Full showcase</span>
 									</SidebarMenuButton>
+								</SidebarMenuItem>
+							</SidebarMenu>
+						</SidebarGroupContent>
+					</SidebarGroup>
+
+					<SidebarSeparator />
+
+					<SidebarGroup>
+						<SidebarGroupLabel>Blocks</SidebarGroupLabel>
+						<SidebarGroupContent>
+							<SidebarMenu>
+								<SidebarMenuItem>
+									<SidebarMenuButton
+										tooltip="All blocks"
+										isActive={pathname === '/blocks'}
+										render={<Link to="/blocks" />}
+									>
+										<GalleryVerticalEndIcon />
+										<span>All blocks</span>
+									</SidebarMenuButton>
+									<SidebarMenuSub>
+										{blockPages.map((page) => (
+											<SidebarMenuSubItem key={page.slug}>
+												<SidebarMenuSubButton
+													isActive={pathname === page.path}
+													render={<Link to={page.path} />}
+												>
+													<span>{page.title}</span>
+												</SidebarMenuSubButton>
+											</SidebarMenuSubItem>
+										))}
+									</SidebarMenuSub>
 								</SidebarMenuItem>
 							</SidebarMenu>
 						</SidebarGroupContent>

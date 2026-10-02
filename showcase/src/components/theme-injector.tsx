@@ -21,7 +21,7 @@ export function ThemeInjector() {
 
 	return (
 		<>
-			{grid && <GridOverlay color={dark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.06)'} />}
+			{grid && <GridOverlay />}
 			<div
 				style={{
 					position: 'fixed',

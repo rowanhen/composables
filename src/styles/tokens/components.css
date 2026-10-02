@@ -30,6 +30,7 @@
 		--input-radius: var(--radius-md);
 		--input-height: calc(var(--spacing) * 7);
 		--badge-radius: var(--radius-4xl);
+		--grid-overlay-color: color-mix(in srgb, var(--text-default) 6%, transparent);
 
 		/* ── Motion ────────────────────────────────────────────────────────── */
 		--motion-duration-fast: 100ms;

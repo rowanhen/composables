@@ -55,6 +55,7 @@ import {
 	ToggleShowcase,
 	TooltipShowcase,
 	TypographyShowcase,
+	WindowFrameShowcase,
 } from './components'
 import { showcasePageMeta, type ShowcaseSlug } from './showcase-pages'
 
@@ -67,6 +68,7 @@ const showcaseComponents = {
 	stack: StackShowcase,
 	'responsive-grid': ResponsiveGridShowcase,
 	bento: BentoShowcase,
+	'window-frame': WindowFrameShowcase,
 	button: ButtonsShowcase,
 	badge: BadgesShowcase,
 	icon: IconShowcase,

@@ -74,7 +74,7 @@ export function ProgressShowcase() {
 								<ProgressValue />
 							</HStack>
 							<ProgressTrack>
-								<ProgressIndicator className="bg-[var(--bg-fill-success)]" />
+								<ProgressIndicator className="bg-fill-success" />
 							</ProgressTrack>
 						</Progress>
 					</VStack>
@@ -98,22 +98,22 @@ export function ProgressShowcase() {
 					<VStack gap={3} className="max-w-md">
 						<Progress value={80}>
 							<ProgressTrack>
-								<ProgressIndicator className="bg-[var(--bg-fill-success)]" />
+								<ProgressIndicator className="bg-fill-success" />
 							</ProgressTrack>
 						</Progress>
 						<Progress value={45}>
 							<ProgressTrack>
-								<ProgressIndicator className="bg-[var(--bg-fill-warning)]" />
+								<ProgressIndicator className="bg-fill-warning" />
 							</ProgressTrack>
 						</Progress>
 						<Progress value={20}>
 							<ProgressTrack>
-								<ProgressIndicator className="bg-[var(--bg-fill-critical)]" />
+								<ProgressIndicator className="bg-fill-critical" />
 							</ProgressTrack>
 						</Progress>
 						<Progress value={60}>
 							<ProgressTrack>
-								<ProgressIndicator className="bg-[var(--bg-fill-info)]" />
+								<ProgressIndicator className="bg-fill-info" />
 							</ProgressTrack>
 						</Progress>
 					</VStack>
