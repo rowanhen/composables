@@ -363,7 +363,8 @@ composables/
 │   ├── lib/                    ← Utilities (cn, numeric-input)
 │   ├── hooks/                  ← React hooks
 │   └── index.ts                ← Barrel exports
-├── showcase/                   ← Demo site (deployed to Cloudflare Pages)
+├── .storybook/                 ← Storybook configuration and shared preview
+├── showcase/                   ← Storybook stories, demo components, and static build
 ├── scripts/                    ← Token generation & palette management
 │   ├── palette.ts              ← Source of truth for color scales
 │   ├── generate-css.ts         ← Generates palette, Tailwind colour adapter, and semantic utilities

@@ -11,7 +11,6 @@
 		"node_modules",
 		"packages/ui/dist",
 		"packages/showcase/dist",
-		"showcase/src/routeTree.gen.ts",
 		"bun.lock"
 	]
 }

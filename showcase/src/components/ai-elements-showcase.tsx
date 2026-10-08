@@ -1,12 +1,10 @@
 // Showcase imports from _internal/ to demonstrate primitive components.
 // In your app, always import from @/components/ui-opinionated/ instead.
-import { Link } from '@tanstack/react-router'
 import { useState, useCallback } from 'react'
 import { Card } from '@/components/_internal/card'
 import { Grid } from '@/components/_internal/grid'
 import { HStack, VStack } from '@/components/_internal/stack'
 import { Typography } from '@/components/_internal/typography'
-import { aiElementPageMeta } from '../ai-elements-pages'
 
 import {
 	Message,
@@ -521,25 +519,6 @@ export function AIFullChatShowcase() {
 
 // ── Main Export ────────────────────────────────────────────────────────────
 
-function AIElementsRouteIndex() {
-	return (
-		<div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
-			{aiElementPageMeta.map((page) => (
-				<Link
-					key={page.slug}
-					to={page.path}
-					className="min-h-28 rounded-md border border-stroke/50 bg-background p-4 hover:border-stroke hover:bg-muted"
-				>
-					<Typography variant="heading-200">{page.title}</Typography>
-					<Typography variant="body-100" className="mt-2 text-muted-foreground">
-						{page.description}
-					</Typography>
-				</Link>
-			))}
-		</div>
-	)
-}
-
 export function AIElementsShowcase() {
 	return (
 		<ShowcaseSection
@@ -547,7 +526,6 @@ export function AIElementsShowcase() {
 			description="Chatbot and AI-native components powered by Vercel AI SDK integration."
 		>
 			<VStack gap={10}>
-				<AIElementsRouteIndex />
 				<Grid columns={1} gap={10} className="lg:grid-cols-2">
 					<AIMessageShowcase />
 					<AIConversationShowcase />

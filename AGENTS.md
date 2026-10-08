@@ -9,7 +9,8 @@ Composables is a React component library built on Base UI and Tailwind CSS v4. P
 ## Commands
 
 - Install: `bun install`
-- Dev showcase: `bun run dev`
+- Dev Storybook: `bun run dev` (port 6006)
+- Build Storybook: `bun run build:storybook` (output: `showcase/dist`)
 - Lint / format / typecheck: `bun run lint`, `bun run format:check`, `bun run typecheck`
 - CSS checks: `bun scripts/generate-css.ts --check`, `bun scripts/generate-preset-css.ts --check`
 - AI rules check: `bun scripts/generate-rules.ts --check`
@@ -74,3 +75,9 @@ All non-AI opinionated components are exported from the package root. Their runt
 ## Notes
 
 The a11y oxlint plugin is intentionally disabled. Do not add broad a11y churn unless explicitly requested.
+
+## Storybook
+
+The component gallery uses Storybook with React and Vite. Stories live in `showcase/src/stories/` and reuse the existing demo components. Shared styles, fonts, theme controls, and the toaster are configured in `.storybook/preview.tsx`; aliases and Tailwind are configured in `.storybook/main.ts`. Add stories directly rather than generating routes or maintaining a separate navigation registry.
+
+`showcase/vite.config.ts` is only a compatibility bridge for existing build/deploy commands: `bunx vite build showcase` delegates to `bun run build:storybook`. Keep that entrypoint working while workflows still use it.

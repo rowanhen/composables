@@ -23,7 +23,7 @@
 		"./presets/*": "./dist/presets/*"
 	},
 	"scripts": {
-		"dev": "vite showcase",
+		"dev": "storybook dev -p 6006",
 		"lint": "oxlint",
 		"format": "oxfmt --write .",
 		"format:check": "oxfmt --check .",
@@ -32,14 +32,14 @@
 		"generate:palette": "bun scripts/generate-css.ts",
 		"generate:presets": "bun scripts/generate-preset-css.ts",
 		"generate:css": "bun run generate:palette && bun run generate:presets",
-		"generate:showcase-routes": "bun scripts/generate-showcase-routes.ts",
 		"generate:rules": "bun scripts/generate-rules.ts",
 		"build:css": "bun scripts/build-css.ts",
 		"prepack": "bun run build:css",
 		"test:tokens": "bun scripts/check-token-system.ts",
 		"test:rules": "bun scripts/generate-rules.ts --check",
 		"test:css": "bun scripts/test-downstream-css.ts",
-		"deploy:showcase": "./scripts/deploy-showcase.sh"
+		"deploy:showcase": "./scripts/deploy-showcase.sh",
+		"build:storybook": "storybook build -o showcase/dist"
 	},
 	"dependencies": {
 		"@base-ui/react": "^1.6.0",
@@ -167,8 +167,6 @@
 		"@streamdown/mermaid": "^1.0.2",
 		"@tailwindcss/cli": "^4.3.2",
 		"@tailwindcss/vite": "^4.3.2",
-		"@tanstack/react-router": "^1.170.17",
-		"@tanstack/router-plugin": "^1.168.19",
 		"@types/node": "^26.1.0",
 		"@types/react": "^19.2.17",
 		"@types/react-dom": "^19.2.3",
@@ -189,6 +187,8 @@
 		"typescript": "^6.0.3",
 		"use-stick-to-bottom": "^1.1.6",
 		"vite": "^8.1.3",
-		"wrangler": "^4.107.0"
+		"wrangler": "^4.107.0",
+		"storybook": "^10.6.1",
+		"@storybook/react-vite": "^10.6.1"
 	}
 }

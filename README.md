@@ -642,3 +642,15 @@ Component tokens include `--layer-card-radius`, `--layer-card-padding`,
 ## License
 
 MIT. See [LICENSE](LICENSE) for details.
+
+## Component gallery
+
+The gallery runs in Storybook. Existing component and AI demos are available as simple showcase stories, with the theme and token editor available in the preview.
+
+```bash
+bun install
+bun run dev              # Storybook at http://localhost:6006
+bun run build:storybook  # Static gallery in showcase/dist
+```
+
+Stories live in `showcase/src/stories/`; add a `.stories.tsx` file there to extend the gallery. The existing `bunx vite build showcase` command also builds Storybook for compatibility with current build and deployment workflows.

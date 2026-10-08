@@ -22,5 +22,5 @@
 			"@/*": ["showcase/src/*"]
 		}
 	},
-	"include": ["src", "showcase/src"]
+	"include": ["src", "showcase/src", ".storybook", "showcase/vite.config.ts"]
 }
