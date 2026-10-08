@@ -1,6 +1,6 @@
 import { ArrowRightIcon, BookOpenIcon, SettingsIcon } from 'lucide-react'
 import { LayerCard } from '@/components/ui-opinionated/layer-card'
-import { Button } from '@/components/ui-opinionated/button'
+import { Button } from '@/components/_internal/button'
 import { ClipboardText } from '@/components/ui-opinionated/clipboard-text'
 import { ShowcaseSection, ShowcaseGroup } from './showcase-section'
 
@@ -19,6 +19,7 @@ export function LayerCardShowcase() {
 								variant="ghost"
 								size="icon-sm"
 								aria-label="Open getting started"
+								nativeButton={false}
 								render={<a href="#layer-card-composition" />}
 							>
 								<ArrowRightIcon />
