@@ -8,39 +8,61 @@ function Tabs({ className, orientation = 'horizontal', ...props }: TabsPrimitive
 		<TabsPrimitive.Root
 			data-slot="tabs"
 			data-orientation={orientation}
-			className={cn('gap-2 group/tabs flex data-[orientation=horizontal]:flex-col', className)}
+			orientation={orientation}
+			className={cn(
+				'group/tabs flex min-w-0 gap-2 data-[orientation=horizontal]:flex-col',
+				className,
+			)}
 			{...props}
 		/>
 	)
 }
 
+const segmentedList =
+	'rounded-(--tabs-list-radius) bg-muted p-(--tabs-list-padding) shadow-(--tabs-list-shadow)'
+const lineList =
+	'gap-1 border-b border-stroke bg-transparent pb-1 group-data-[orientation=vertical]/tabs:border-b-0 group-data-[orientation=vertical]/tabs:border-e group-data-[orientation=vertical]/tabs:pe-1'
 const tabsListVariants = cva(
-	'rounded-lg p-0.5 group-data-horizontal/tabs:h-8 data-[variant=line]:rounded-none group/tabs-list text-muted-foreground inline-flex w-fit items-center justify-center group-data-[orientation=vertical]/tabs:h-fit group-data-[orientation=vertical]/tabs:flex-col',
+	'relative isolate inline-flex w-fit max-w-full shrink-0 items-stretch overflow-x-auto group/tabs-list group-data-[orientation=vertical]/tabs:flex-col',
 	{
 		variants: {
 			variant: {
-				default: 'bg-muted',
-				line: 'gap-1 bg-transparent',
+				default: segmentedList,
+				segmented: segmentedList,
+				line: lineList,
+				underline: lineList,
 			},
 		},
-		defaultVariants: {
-			variant: 'default',
-		},
+		defaultVariants: { variant: 'segmented' },
 	},
 )
 
 function TabsList({
 	className,
-	variant = 'default',
+	variant = 'segmented',
+	children,
 	...props
 }: TabsPrimitive.List.Props & VariantProps<typeof tabsListVariants>) {
+	const segmented = variant === 'default' || variant === 'segmented'
 	return (
 		<TabsPrimitive.List
 			data-slot="tabs-list"
 			data-variant={variant}
+			data-treatment={segmented ? 'segmented' : 'underline'}
 			className={cn(tabsListVariants({ variant }), className)}
 			{...props}
-		/>
+		>
+			{children}
+			<TabsPrimitive.Indicator
+				data-slot="tabs-indicator"
+				className={cn(
+					'pointer-events-none absolute left-0 top-0 z-0 w-(--active-tab-width) translate-x-(--active-tab-left) translate-y-(--active-tab-top) transition-[translate,width,height] duration-(--motion-duration-disclosure) ease-(--motion-ease-standard) motion-reduce:transition-none',
+					segmented
+						? 'h-(--active-tab-height) rounded-(--tabs-tab-radius) border-(length:--tabs-indicator-border-width) border-stroke-secondary bg-surface-default shadow-(--tabs-indicator-shadow)'
+						: 'h-0.5 bg-fill-primary [translate:var(--active-tab-left)_0] top-auto bottom-0 group-data-[orientation=vertical]/tabs:top-0 group-data-[orientation=vertical]/tabs:bottom-auto group-data-[orientation=vertical]/tabs:left-auto group-data-[orientation=vertical]/tabs:end-0 group-data-[orientation=vertical]/tabs:w-0.5 group-data-[orientation=vertical]/tabs:h-(--active-tab-height) group-data-[orientation=vertical]/tabs:[translate:0_var(--active-tab-top)]',
+				)}
+			/>
+		</TabsPrimitive.List>
 	)
 }
 
@@ -50,10 +72,8 @@ function TabsTrigger({ className, ...props }: TabsPrimitive.Tab.Props) {
 			data-slot="tabs-trigger"
 			className={cn(
 				FOCUS_RING,
-				"gap-1.5 rounded-md border border-transparent px-1.5 py-0.5 text-xs font-medium group-data-vertical/tabs:py-[calc(--spacing(1.25))] [&_svg:not([class*='size-'])]:size-3.5 focus-visible:outline-ring text-muted hover:text-foreground relative inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center whitespace-nowrap transition-[opacity,box-shadow] group-data-[orientation=vertical]/tabs:w-full group-data-[orientation=vertical]/tabs:justify-start focus-visible:outline-1 disabled:pointer-events-none disabled:opacity-disabled [&_svg]:pointer-events-none [&_svg]:shrink-0",
-				'group-data-[variant=line]/tabs-list:bg-transparent group-data-[variant=line]/tabs-list:data-active:bg-transparent dark:group-data-[variant=line]/tabs-list:data-active:border-transparent dark:group-data-[variant=line]/tabs-list:data-active:bg-transparent',
-				'data-active:bg-page dark:data-active:text-foreground dark:data-active:border-field dark:data-active:bg-surface-field/30 data-active:text-foreground',
-				'after:bg-foreground after:absolute after:opacity-0 after:transition-opacity group-data-[orientation=horizontal]/tabs:after:inset-x-0 group-data-[orientation=horizontal]/tabs:after:bottom-[-5px] group-data-[orientation=horizontal]/tabs:after:h-0.5 group-data-[orientation=vertical]/tabs:after:inset-y-0 group-data-[orientation=vertical]/tabs:after:-right-1 group-data-[orientation=vertical]/tabs:after:w-0.5 group-data-[variant=line]/tabs-list:data-active:after:opacity-100',
+				"relative z-10 inline-flex h-(--tabs-tab-height) shrink-0 items-center justify-center gap-1.5 rounded-(--tabs-tab-radius) bg-transparent px-2.5 text-sm font-normal whitespace-nowrap text-default outline-none transition-colors duration-(--motion-duration-color) data-active:font-medium disabled:pointer-events-none disabled:opacity-disabled data-disabled:pointer-events-none data-disabled:opacity-disabled group-data-[orientation=vertical]/tabs:justify-start [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-3.5",
+				'group-data-[treatment=underline]/tabs-list:hover:bg-surface-hover',
 				className,
 			)}
 			{...props}
@@ -65,7 +85,7 @@ function TabsContent({ className, ...props }: TabsPrimitive.Panel.Props) {
 	return (
 		<TabsPrimitive.Panel
 			data-slot="tabs-content"
-			className={cn('text-xs/relaxed flex-1 outline-none', className)}
+			className={cn('flex-1 text-xs/relaxed outline-none', className)}
 			{...props}
 		/>
 	)

@@ -207,7 +207,7 @@ export const FlowRoot = forwardRef<HTMLDivElement, FlowRootProps>(function FlowR
 				className={cn(
 					'max-w-full outline-none',
 					canvas &&
-						'overflow-auto rounded-(--flow-canvas-radius) border border-stroke bg-muted bg-[image:var(--flow-canvas-background-image)] [background-size:var(--flow-canvas-background-size)_var(--flow-canvas-background-size)]',
+						'overflow-auto rounded-(--flow-canvas-radius) border-(length:--flow-border-width) border-stroke bg-muted bg-[image:var(--flow-canvas-background-image)] [background-size:var(--flow-canvas-background-size)_var(--flow-canvas-background-size)]',
 					canvas && FOCUS_RING,
 					panning && 'cursor-grabbing select-none',
 					className,
@@ -310,7 +310,7 @@ export const FlowNode = forwardRef<HTMLDivElement, FlowNodeProps>(function FlowN
 		'data-flow-node': nodeId,
 		'aria-disabled': disabled || undefined,
 		className: cn(
-			'relative min-w-0 rounded-(--flow-node-radius) border border-stroke-secondary bg-surface-default px-3 py-2 text-sm text-default shadow-(--flow-node-shadow)',
+			'relative min-w-0 rounded-(--flow-node-radius) border-(length:--flow-border-width) border-stroke-secondary bg-surface-default px-3 py-2 text-sm text-default shadow-(--flow-node-shadow)',
 			disabled && 'opacity-disabled',
 			className,
 		),

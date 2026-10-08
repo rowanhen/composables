@@ -153,7 +153,7 @@
 	--transition-slow: var(--motion-duration-slow) var(--motion-ease-decelerate);
 	--hover-transform: none;
 	--hover-shadow: none;
-	--active-scale: 1;
+	--active-scale: 0.98;
 	--heading-font-weight: 600;
 	--heading-letter-spacing: var(--tracking-tight);
 	--body-letter-spacing: var(--tracking-normal);
@@ -184,6 +184,9 @@
 	--button-brand-text-shadow: 0 1px 1px #00000059, 0 0 1px #00000040;
 	--layer-card-radius: var(--radius-lg);
 	--layer-card-shadow: 0 1px 2px #0000000d;
+	--tabs-tab-height: calc(var(--spacing) * 8);
+	--tabs-list-shadow: 0 0 0 1px var(--border-secondary);
+	--tabs-indicator-shadow: 0 1px 2px #0000000d;
 	--flow-node-shadow: 0 1px 2px #0000000d;
 	--flow-canvas-background-image: radial-gradient(var(--border-disabled) 1px, transparent 1px);
 	--button-secondary-border: var(--border-secondary);
@@ -501,6 +504,9 @@
 	--card-radius: var(--radius-xl);
 	--layer-card-radius: var(--radius-lg);
 	--layer-card-shadow: 0 1px 2px #0000000d;
+	--tabs-tab-height: calc(var(--spacing) * 8);
+	--tabs-list-shadow: 0 0 0 1px var(--border-secondary);
+	--tabs-indicator-shadow: 0 1px 2px #0000000d;
 	--flow-node-shadow: 0 1px 2px #0000000d;
 	--flow-canvas-background-image: radial-gradient(var(--border-disabled) 1px, transparent 1px);
 	--input-radius: var(--radius-lg);
@@ -526,7 +532,7 @@
 	--hover-ring-color: var(--border-secondary);
 	--hover-transform: none;
 	--hover-shadow: none;
-	--active-scale: 1;
+	--active-scale: 0.98;
 	--heading-font-weight: 600;
 	--hero-font-weight: 600;
 	--section-title-font-weight: 600;

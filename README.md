@@ -539,6 +539,12 @@ All normal components import from `@leitware/composables`; AI components import 
 | `dropdown-menu`     | Contextual menu triggered by a button                                      |
 | `table-of-contents` | Nested section navigation with an active rail and optional scroll tracking |
 
+Tabs default to `variant="segmented"`, with an animated selection surface.
+Use `variant="underline"` for the line treatment; the existing `default` and
+`line` variant names remain supported as aliases. Labels use semantic text
+colours in every preset. Flow uses `--flow-border-width` with a minimum of 1px,
+so canvas and node outlines survive a zero global border width.
+
 ### Data Display
 
 | Component        | Description                                                                  |

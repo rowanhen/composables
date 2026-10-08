@@ -173,7 +173,7 @@ export const brutalist: Record<string, string> = {
 	'--transition-slow': 'var(--motion-duration-slow) var(--motion-ease-linear)',
 	'--hover-transform': 'none',
 	'--hover-shadow': 'none',
-	'--active-scale': '1',
+	'--active-scale': '0.98',
 
 	// ── Phase 1c: Typography - heavy, structural ──────────────────────────
 	'--heading-font-weight': '700',

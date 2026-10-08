@@ -7,7 +7,7 @@ import { cn, FOCUS_RING, FOCUS_RING_DESTRUCTIVE, HOVER_RING } from '../lib/utils
 // border (no bg-clip-padding) so filled and outlined buttons read as the same
 // size regardless of --border-width-base.
 const buttonVariants = cva(
-	`${FOCUS_RING} ${HOVER_RING} rounded-(--button-radius) border border-transparent text-xs/relaxed font-medium [&_svg:not([class*='size-'])]:size-4 inline-flex items-center justify-center whitespace-nowrap transition-[opacity,box-shadow,transform] active:scale-[var(--active-scale)] disabled:pointer-events-none disabled:opacity-disabled [&_svg]:pointer-events-none shrink-0 [&_svg]:shrink-0 outline-none group/button select-none`,
+	`${FOCUS_RING} ${HOVER_RING} rounded-(--button-radius) border border-transparent text-xs/relaxed font-medium [&_svg:not([class*='size-'])]:size-4 inline-flex items-center justify-center whitespace-nowrap transition-[opacity,box-shadow,transform] duration-(--motion-duration-interaction) ease-(--motion-ease-standard) active:[transform:scale(var(--active-scale,0.98))] disabled:pointer-events-none disabled:opacity-disabled [&_svg]:pointer-events-none shrink-0 [&_svg]:shrink-0 outline-none group/button select-none`,
 	{
 		variants: {
 			variant: {

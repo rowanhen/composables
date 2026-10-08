@@ -50,7 +50,7 @@ export type TabsProps = Omit<TabsPrimitiveBase.Root.Props, 'children'> & {
 	onValueChange: (value: string) => void
 	/** Accessible label for the tab list (for screen readers). */
 	ariaLabel?: string
-	/** Visual style of the tab list. @default 'line' */
+	/** Visual style of the tab list. @default 'segmented' */
 	variant?: TabsVariant
 	className?: string
 }
@@ -60,7 +60,7 @@ export const Tabs = ({
 	value,
 	onValueChange,
 	ariaLabel,
-	variant = 'line',
+	variant = 'segmented',
 	className,
 	...tabsProps
 }: TabsProps) => {

@@ -137,7 +137,7 @@ export const editorialGrid: Record<string, string> = {
 	'--badge-radius': 'var(--radius)',
 	'--hover-shadow': 'none',
 	'--hover-transform': 'none',
-	'--active-scale': '1',
+	'--active-scale': '0.98',
 	'--motion-duration-fast': '100ms',
 	'--motion-duration-normal': '150ms',
 	'--motion-duration-slow': '200ms',
