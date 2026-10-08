@@ -523,3 +523,53 @@ export { SelectScrollDownButton, SelectScrollUpButton, SelectSeparator } from '.
 export { spacerVariants } from './opinionated/spacer'
 export { stackVariants } from './opinionated/stack'
 export { typographyVariants } from './opinionated/typography'
+
+// Layered surfaces, document navigation, workflow diagrams, and copy fields.
+export {
+	LayerCard,
+	LayerCardRoot,
+	LayerCardPrimary,
+	LayerCardSecondary,
+	type LayerCardProps,
+	type LayerCardRootProps,
+	type LayerCardSectionProps,
+} from './opinionated/layer-card'
+export {
+	TableOfContents,
+	TableOfContentsRoot,
+	TableOfContentsTitle,
+	TableOfContentsList,
+	TableOfContentsItem,
+	TableOfContentsGroup,
+	type TableOfContentsProps,
+	type TableOfContentsItemData,
+	type TableOfContentsItemProps,
+	type TableOfContentsGroupProps,
+} from './opinionated/table-of-contents'
+export {
+	useTableOfContentsActiveId,
+	type TableOfContentsTrackingOptions,
+} from './hooks/use-table-of-contents-active-id'
+export {
+	ClipboardText,
+	type ClipboardTextProps,
+	type ClipboardTextSize,
+	type ClipboardTextStatus,
+} from './opinionated/clipboard-text'
+export {
+	Flow,
+	FlowRoot,
+	FlowNode,
+	FlowParallel,
+	FlowList,
+	FlowAnchor,
+	type FlowProps,
+	type FlowItem,
+	type FlowStep,
+	type FlowBranch,
+	type FlowRootProps,
+	type FlowNodeProps,
+	type FlowAnchorProps,
+	type FlowAlign,
+	type FlowOrientation,
+} from './opinionated/flow'

@@ -1,6 +1,10 @@
 import type React from 'react'
 import {
 	AIElementsShowcase,
+	LayerCardShowcase,
+	TableOfContentsShowcase,
+	FlowShowcase,
+	ClipboardTextShowcase,
 	AccordionShowcase,
 	AlertDialogShowcase,
 	AlertsShowcase,
@@ -60,6 +64,10 @@ import {
 import { showcasePageMeta, type ShowcaseSlug } from './showcase-pages'
 
 const showcaseComponents = {
+	'layer-card': LayerCardShowcase,
+	'table-of-contents': TableOfContentsShowcase,
+	flow: FlowShowcase,
+	'clipboard-text': ClipboardTextShowcase,
 	'color-tokens': ColorTokensShowcase,
 	typography: TypographyShowcase,
 	spacing: SpacingShowcase,

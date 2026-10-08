@@ -11,6 +11,10 @@ import { Container } from '@/components/ui-opinionated/container'
 /* ---- Showcase components ---- */
 import {
 	AIElementsShowcase,
+	LayerCardShowcase,
+	TableOfContentsShowcase,
+	FlowShowcase,
+	ClipboardTextShowcase,
 	AccordionShowcase,
 	AlertDialogShowcase,
 	AlertsShowcase,
@@ -88,6 +92,7 @@ export function App() {
 
 				{/* Actions */}
 				<ButtonsShowcase />
+				<ClipboardTextShowcase />
 				<BadgesShowcase />
 				<IconShowcase />
 				<AvatarShowcase />
@@ -95,6 +100,7 @@ export function App() {
 
 				{/* Content */}
 				<CardsShowcase />
+				<LayerCardShowcase />
 				<AlertsShowcase />
 				<AccordionShowcase />
 				<CollapsibleShowcase />
@@ -116,12 +122,14 @@ export function App() {
 
 				{/* Navigation */}
 				<SidebarShowcase />
+				<TableOfContentsShowcase />
 				<TabsShowcase />
 				<BreadcrumbShowcase />
 				<PaginationShowcase />
 
 				{/* Data Display */}
 				<TableShowcase />
+				<FlowShowcase />
 				<CarouselShowcase />
 				<ProgressShowcase />
 				<CodeBlockShowcase />

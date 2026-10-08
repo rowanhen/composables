@@ -530,30 +530,91 @@ All normal components import from `@leitware/composables`; AI components import 
 
 ### Navigation
 
-| Component       | Description                                            |
-| --------------- | ------------------------------------------------------ |
-| `tabs`          | Tabbed content navigation with items array API         |
-| `breadcrumb`    | Navigation trail with items array API                  |
-| `pagination`    | Page navigation with currentPage and totalPages API    |
-| `sidebar`       | Application sidebar with collapsible navigation groups |
-| `dropdown-menu` | Contextual menu triggered by a button                  |
+| Component           | Description                                                                |
+| ------------------- | -------------------------------------------------------------------------- |
+| `tabs`              | Tabbed content navigation with items array API                             |
+| `breadcrumb`        | Navigation trail with items array API                                      |
+| `pagination`        | Page navigation with currentPage and totalPages API                        |
+| `sidebar`           | Application sidebar with collapsible navigation groups                     |
+| `dropdown-menu`     | Contextual menu triggered by a button                                      |
+| `table-of-contents` | Nested section navigation with an active rail and optional scroll tracking |
 
 ### Data Display
 
-| Component     | Description                                                                  |
-| ------------- | ---------------------------------------------------------------------------- |
-| `table`       | Semantic HTML table with styled rows and cells                               |
-| `card`        | Bordered content container with title, description, action, and footer props |
-| `accordion`   | Vertically collapsible content sections with items array API                 |
-| `collapsible` | Expandable and collapsible content panel with trigger prop                   |
-| `item`        | Flexible list item with title, description, icon, and actions                |
-| `message`     | Message row primitives for chat, activity, and assistant UIs                 |
-| `bubble`      | Message bubble primitives with semantic variants                             |
-| `marker`      | Inline metadata marker with icon, separator, and border variants             |
-| `empty`       | Empty state placeholder with icon, title, and description                    |
-| `carousel`    | Horizontally scrollable content slider with items array API                  |
-| `code-block`  | Monospace code display with line numbers                                     |
-| `list`        | Variant list renderer: arrow, bullet                                         |
+| Component        | Description                                                                  |
+| ---------------- | ---------------------------------------------------------------------------- |
+| `table`          | Semantic HTML table with styled rows and cells                               |
+| `card`           | Bordered content container with title, description, action, and footer props |
+| `accordion`      | Vertically collapsible content sections with items array API                 |
+| `collapsible`    | Expandable and collapsible content panel with trigger prop                   |
+| `item`           | Flexible list item with title, description, icon, and actions                |
+| `message`        | Message row primitives for chat, activity, and assistant UIs                 |
+| `bubble`         | Message bubble primitives with semantic variants                             |
+| `marker`         | Inline metadata marker with icon, separator, and border variants             |
+| `empty`          | Empty state placeholder with icon, title, and description                    |
+| `carousel`       | Horizontally scrollable content slider with items array API                  |
+| `code-block`     | Monospace code display with line numbers                                     |
+| `list`           | Variant list renderer: arrow, bullet                                         |
+| `layer-card`     | Layered content surface with recessed header and footer                      |
+| `flow`           | Connected workflow steps and parallel branches                               |
+| `clipboard-text` | Read-only copy field with success and error feedback                         |
+
+### Kumo-inspired compositions
+
+`LayerCard`, `TableOfContents`, `Flow`, and `ClipboardText` are available from the
+package root. They use the same semantic tokens as the rest of the library and
+adapt to every preset; Kumo adds its soft layered surfaces and diagram canvas.
+Their treatments follow the [Kumo component references](https://kumo-ui.com/components/layer-card/).
+
+```tsx
+import { LayerCard, TableOfContents, Flow, ClipboardText } from '@leitware/composables'
+
+<LayerCard title="Next steps" footer="Last updated just now">
+  <ClipboardText text="bun add @leitware/composables" />
+</LayerCard>
+
+<TableOfContents
+  items={[
+    { id: 'overview', label: 'Overview' },
+    { id: 'setup', label: 'Setup', children: [{ id: 'install', label: 'Installation' }] },
+  ]}
+  trackScroll
+/>
+
+<Flow
+  steps={[
+    { id: 'request', label: 'Request' },
+    { id: 'parallel', branches: [
+      [{ id: 'cache', label: 'Cache lookup' }],
+      [{ id: 'worker', label: 'Worker' }, { id: 'validate', label: 'Validate' }],
+    ] },
+    { id: 'response', label: 'Response' },
+  ]}
+/>
+```
+
+LayerCard exposes `.Root`, `.Primary`, and `.Secondary` for custom composition.
+TableOfContents exposes `.Title`, `.List`, `.Item`, and `.Group`; items support
+Base UI's `render` prop for router links. `activeId` and `onActiveIdChange` support
+controlled selection. Optional `trackScroll` follows matching document section
+IDs with `scrollOffset` for sticky headers. `useTableOfContentsActiveId` also
+supports a custom scroll root.
+
+Flow exposes `.Node`, `.Parallel`, `.List`, and `.Anchor`. Use `orientation="vertical"`
+for a top-to-bottom diagram, `align="center"` for centered branches, or `canvas={false}`
+for an inline diagram. Connectors update when nodes, anchors, or the viewport
+resize. The canvas supports native scrolling and mouse dragging; node controls
+retain their normal interactions. Node IDs should be unique within the document.
+
+ClipboardText supports `sm`, `default`, and `lg` sizes, `textToCopy` for a value
+that differs from the display, optional tooltips, localized `labels`, and
+`onCopy` / `onCopyError` callbacks. Feedback resets after `feedbackDuration`
+(default 1500ms). Failed clipboard writes never display a success state.
+
+Component tokens include `--layer-card-radius`, `--layer-card-padding`,
+`--layer-card-shadow`, `--clipboard-text-height` (and `-sm` / `-lg`),
+`--clipboard-text-radius`, `--flow-gap`, `--flow-branch-gap`, `--flow-node-radius`,
+`--flow-node-shadow`, and the `--flow-canvas-*` controls.
 
 ### Form Components
 

@@ -70,6 +70,13 @@ export const showcasePageMeta = [
 		description: 'Command controls, variants, sizes, loading states, and icon layouts.',
 	},
 	{
+		slug: 'clipboard-text',
+		path: '/clipboard-text',
+		title: 'Clipboard text',
+		category: 'Actions',
+		description: 'Read-only values with one-click copying and accessible feedback.',
+	},
+	{
 		slug: 'badge',
 		path: '/badge',
 		title: 'Badge',
@@ -96,6 +103,13 @@ export const showcasePageMeta = [
 		title: 'Kbd',
 		category: 'Actions',
 		description: 'Keyboard shortcut and command-key display.',
+	},
+	{
+		slug: 'layer-card',
+		path: '/layer-card',
+		title: 'Layer card',
+		category: 'Content',
+		description: 'Raised content surfaces with recessed header and footer layers.',
 	},
 	{
 		slug: 'card',
@@ -217,6 +231,13 @@ export const showcasePageMeta = [
 		description: 'Transient notifications and feedback.',
 	},
 	{
+		slug: 'table-of-contents',
+		path: '/table-of-contents',
+		title: 'Table of contents',
+		category: 'Navigation',
+		description: 'Grouped section links with active states and optional scroll tracking.',
+	},
+	{
 		slug: 'sidebar',
 		path: '/sidebar',
 		title: 'Sidebar',
@@ -243,6 +264,13 @@ export const showcasePageMeta = [
 		title: 'Pagination',
 		category: 'Navigation',
 		description: 'Paged navigation for result sets and tables.',
+	},
+	{
+		slug: 'flow',
+		path: '/flow',
+		title: 'Flow',
+		category: 'Data',
+		description: 'Directed workflows with sequential steps and parallel branches.',
 	},
 	{
 		slug: 'table',

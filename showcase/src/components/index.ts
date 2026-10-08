@@ -72,3 +72,8 @@ export { BentoShowcase } from './bento-showcase'
 export { DividerShowcase } from './divider-showcase'
 export { SidebarShowcase } from './sidebar-showcase'
 export { ToggleGroupShowcase } from './toggle-group-showcase'
+
+export { LayerCardShowcase } from './layer-card-showcase'
+export { TableOfContentsShowcase } from './table-of-contents-showcase'
+export { FlowShowcase } from './flow-showcase'
+export { ClipboardTextShowcase } from './clipboard-text-showcase'

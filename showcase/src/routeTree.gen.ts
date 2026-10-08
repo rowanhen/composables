@@ -18,6 +18,7 @@ import { Route as ToggleGroupIndexRouteImport } from './routes/toggle-group/inde
 import { Route as ToastIndexRouteImport } from './routes/toast/index'
 import { Route as TabsIndexRouteImport } from './routes/tabs/index'
 import { Route as TableIndexRouteImport } from './routes/table/index'
+import { Route as TableOfContentsIndexRouteImport } from './routes/table-of-contents/index'
 import { Route as StackIndexRouteImport } from './routes/stack/index'
 import { Route as SpacingIndexRouteImport } from './routes/spacing/index'
 import { Route as SliderIndexRouteImport } from './routes/slider/index'
@@ -37,12 +38,14 @@ import { Route as NativeSelectIndexRouteImport } from './routes/native-select/in
 import { Route as MessageIndexRouteImport } from './routes/message/index'
 import { Route as MarkerIndexRouteImport } from './routes/marker/index'
 import { Route as ListIndexRouteImport } from './routes/list/index'
+import { Route as LayerCardIndexRouteImport } from './routes/layer-card/index'
 import { Route as KbdIndexRouteImport } from './routes/kbd/index'
 import { Route as ItemIndexRouteImport } from './routes/item/index'
 import { Route as IconIndexRouteImport } from './routes/icon/index'
 import { Route as HoverCardIndexRouteImport } from './routes/hover-card/index'
 import { Route as GridIndexRouteImport } from './routes/grid/index'
 import { Route as FormControlsIndexRouteImport } from './routes/form-controls/index'
+import { Route as FlowIndexRouteImport } from './routes/flow/index'
 import { Route as EmptyIndexRouteImport } from './routes/empty/index'
 import { Route as DropzoneIndexRouteImport } from './routes/dropzone/index'
 import { Route as DropdownMenuIndexRouteImport } from './routes/dropdown-menu/index'
@@ -53,6 +56,7 @@ import { Route as ContainerIndexRouteImport } from './routes/container/index'
 import { Route as ColorTokensIndexRouteImport } from './routes/color-tokens/index'
 import { Route as CollapsibleIndexRouteImport } from './routes/collapsible/index'
 import { Route as CodeBlockIndexRouteImport } from './routes/code-block/index'
+import { Route as ClipboardTextIndexRouteImport } from './routes/clipboard-text/index'
 import { Route as CarouselIndexRouteImport } from './routes/carousel/index'
 import { Route as CardIndexRouteImport } from './routes/card/index'
 import { Route as CalendarIndexRouteImport } from './routes/calendar/index'
@@ -126,6 +130,11 @@ const TabsIndexRoute = TabsIndexRouteImport.update({
 const TableIndexRoute = TableIndexRouteImport.update({
   id: '/table/',
   path: '/table/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TableOfContentsIndexRoute = TableOfContentsIndexRouteImport.update({
+  id: '/table-of-contents/',
+  path: '/table-of-contents/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const StackIndexRoute = StackIndexRouteImport.update({
@@ -223,6 +232,11 @@ const ListIndexRoute = ListIndexRouteImport.update({
   path: '/list/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LayerCardIndexRoute = LayerCardIndexRouteImport.update({
+  id: '/layer-card/',
+  path: '/layer-card/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const KbdIndexRoute = KbdIndexRouteImport.update({
   id: '/kbd/',
   path: '/kbd/',
@@ -251,6 +265,11 @@ const GridIndexRoute = GridIndexRouteImport.update({
 const FormControlsIndexRoute = FormControlsIndexRouteImport.update({
   id: '/form-controls/',
   path: '/form-controls/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FlowIndexRoute = FlowIndexRouteImport.update({
+  id: '/flow/',
+  path: '/flow/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EmptyIndexRoute = EmptyIndexRouteImport.update({
@@ -301,6 +320,11 @@ const CollapsibleIndexRoute = CollapsibleIndexRouteImport.update({
 const CodeBlockIndexRoute = CodeBlockIndexRouteImport.update({
   id: '/code-block/',
   path: '/code-block/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClipboardTextIndexRoute = ClipboardTextIndexRouteImport.update({
+  id: '/clipboard-text/',
+  path: '/clipboard-text/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CarouselIndexRoute = CarouselIndexRouteImport.update({
@@ -472,6 +496,7 @@ export interface FileRoutesByFullPath {
   '/calendar/': typeof CalendarIndexRoute
   '/card/': typeof CardIndexRoute
   '/carousel/': typeof CarouselIndexRoute
+  '/clipboard-text/': typeof ClipboardTextIndexRoute
   '/code-block/': typeof CodeBlockIndexRoute
   '/collapsible/': typeof CollapsibleIndexRoute
   '/color-tokens/': typeof ColorTokensIndexRoute
@@ -482,12 +507,14 @@ export interface FileRoutesByFullPath {
   '/dropdown-menu/': typeof DropdownMenuIndexRoute
   '/dropzone/': typeof DropzoneIndexRoute
   '/empty/': typeof EmptyIndexRoute
+  '/flow/': typeof FlowIndexRoute
   '/form-controls/': typeof FormControlsIndexRoute
   '/grid/': typeof GridIndexRoute
   '/hover-card/': typeof HoverCardIndexRoute
   '/icon/': typeof IconIndexRoute
   '/item/': typeof ItemIndexRoute
   '/kbd/': typeof KbdIndexRoute
+  '/layer-card/': typeof LayerCardIndexRoute
   '/list/': typeof ListIndexRoute
   '/marker/': typeof MarkerIndexRoute
   '/message/': typeof MessageIndexRoute
@@ -507,6 +534,7 @@ export interface FileRoutesByFullPath {
   '/slider/': typeof SliderIndexRoute
   '/spacing/': typeof SpacingIndexRoute
   '/stack/': typeof StackIndexRoute
+  '/table-of-contents/': typeof TableOfContentsIndexRoute
   '/table/': typeof TableIndexRoute
   '/tabs/': typeof TabsIndexRoute
   '/toast/': typeof ToastIndexRoute
@@ -547,6 +575,7 @@ export interface FileRoutesByTo {
   '/calendar': typeof CalendarIndexRoute
   '/card': typeof CardIndexRoute
   '/carousel': typeof CarouselIndexRoute
+  '/clipboard-text': typeof ClipboardTextIndexRoute
   '/code-block': typeof CodeBlockIndexRoute
   '/collapsible': typeof CollapsibleIndexRoute
   '/color-tokens': typeof ColorTokensIndexRoute
@@ -557,12 +586,14 @@ export interface FileRoutesByTo {
   '/dropdown-menu': typeof DropdownMenuIndexRoute
   '/dropzone': typeof DropzoneIndexRoute
   '/empty': typeof EmptyIndexRoute
+  '/flow': typeof FlowIndexRoute
   '/form-controls': typeof FormControlsIndexRoute
   '/grid': typeof GridIndexRoute
   '/hover-card': typeof HoverCardIndexRoute
   '/icon': typeof IconIndexRoute
   '/item': typeof ItemIndexRoute
   '/kbd': typeof KbdIndexRoute
+  '/layer-card': typeof LayerCardIndexRoute
   '/list': typeof ListIndexRoute
   '/marker': typeof MarkerIndexRoute
   '/message': typeof MessageIndexRoute
@@ -582,6 +613,7 @@ export interface FileRoutesByTo {
   '/slider': typeof SliderIndexRoute
   '/spacing': typeof SpacingIndexRoute
   '/stack': typeof StackIndexRoute
+  '/table-of-contents': typeof TableOfContentsIndexRoute
   '/table': typeof TableIndexRoute
   '/tabs': typeof TabsIndexRoute
   '/toast': typeof ToastIndexRoute
@@ -623,6 +655,7 @@ export interface FileRoutesById {
   '/calendar/': typeof CalendarIndexRoute
   '/card/': typeof CardIndexRoute
   '/carousel/': typeof CarouselIndexRoute
+  '/clipboard-text/': typeof ClipboardTextIndexRoute
   '/code-block/': typeof CodeBlockIndexRoute
   '/collapsible/': typeof CollapsibleIndexRoute
   '/color-tokens/': typeof ColorTokensIndexRoute
@@ -633,12 +666,14 @@ export interface FileRoutesById {
   '/dropdown-menu/': typeof DropdownMenuIndexRoute
   '/dropzone/': typeof DropzoneIndexRoute
   '/empty/': typeof EmptyIndexRoute
+  '/flow/': typeof FlowIndexRoute
   '/form-controls/': typeof FormControlsIndexRoute
   '/grid/': typeof GridIndexRoute
   '/hover-card/': typeof HoverCardIndexRoute
   '/icon/': typeof IconIndexRoute
   '/item/': typeof ItemIndexRoute
   '/kbd/': typeof KbdIndexRoute
+  '/layer-card/': typeof LayerCardIndexRoute
   '/list/': typeof ListIndexRoute
   '/marker/': typeof MarkerIndexRoute
   '/message/': typeof MessageIndexRoute
@@ -658,6 +693,7 @@ export interface FileRoutesById {
   '/slider/': typeof SliderIndexRoute
   '/spacing/': typeof SpacingIndexRoute
   '/stack/': typeof StackIndexRoute
+  '/table-of-contents/': typeof TableOfContentsIndexRoute
   '/table/': typeof TableIndexRoute
   '/tabs/': typeof TabsIndexRoute
   '/toast/': typeof ToastIndexRoute
@@ -700,6 +736,7 @@ export interface FileRouteTypes {
     | '/calendar/'
     | '/card/'
     | '/carousel/'
+    | '/clipboard-text/'
     | '/code-block/'
     | '/collapsible/'
     | '/color-tokens/'
@@ -710,12 +747,14 @@ export interface FileRouteTypes {
     | '/dropdown-menu/'
     | '/dropzone/'
     | '/empty/'
+    | '/flow/'
     | '/form-controls/'
     | '/grid/'
     | '/hover-card/'
     | '/icon/'
     | '/item/'
     | '/kbd/'
+    | '/layer-card/'
     | '/list/'
     | '/marker/'
     | '/message/'
@@ -735,6 +774,7 @@ export interface FileRouteTypes {
     | '/slider/'
     | '/spacing/'
     | '/stack/'
+    | '/table-of-contents/'
     | '/table/'
     | '/tabs/'
     | '/toast/'
@@ -775,6 +815,7 @@ export interface FileRouteTypes {
     | '/calendar'
     | '/card'
     | '/carousel'
+    | '/clipboard-text'
     | '/code-block'
     | '/collapsible'
     | '/color-tokens'
@@ -785,12 +826,14 @@ export interface FileRouteTypes {
     | '/dropdown-menu'
     | '/dropzone'
     | '/empty'
+    | '/flow'
     | '/form-controls'
     | '/grid'
     | '/hover-card'
     | '/icon'
     | '/item'
     | '/kbd'
+    | '/layer-card'
     | '/list'
     | '/marker'
     | '/message'
@@ -810,6 +853,7 @@ export interface FileRouteTypes {
     | '/slider'
     | '/spacing'
     | '/stack'
+    | '/table-of-contents'
     | '/table'
     | '/tabs'
     | '/toast'
@@ -850,6 +894,7 @@ export interface FileRouteTypes {
     | '/calendar/'
     | '/card/'
     | '/carousel/'
+    | '/clipboard-text/'
     | '/code-block/'
     | '/collapsible/'
     | '/color-tokens/'
@@ -860,12 +905,14 @@ export interface FileRouteTypes {
     | '/dropdown-menu/'
     | '/dropzone/'
     | '/empty/'
+    | '/flow/'
     | '/form-controls/'
     | '/grid/'
     | '/hover-card/'
     | '/icon/'
     | '/item/'
     | '/kbd/'
+    | '/layer-card/'
     | '/list/'
     | '/marker/'
     | '/message/'
@@ -885,6 +932,7 @@ export interface FileRouteTypes {
     | '/slider/'
     | '/spacing/'
     | '/stack/'
+    | '/table-of-contents/'
     | '/table/'
     | '/tabs/'
     | '/toast/'
@@ -926,6 +974,7 @@ export interface RootRouteChildren {
   CalendarIndexRoute: typeof CalendarIndexRoute
   CardIndexRoute: typeof CardIndexRoute
   CarouselIndexRoute: typeof CarouselIndexRoute
+  ClipboardTextIndexRoute: typeof ClipboardTextIndexRoute
   CodeBlockIndexRoute: typeof CodeBlockIndexRoute
   CollapsibleIndexRoute: typeof CollapsibleIndexRoute
   ColorTokensIndexRoute: typeof ColorTokensIndexRoute
@@ -936,12 +985,14 @@ export interface RootRouteChildren {
   DropdownMenuIndexRoute: typeof DropdownMenuIndexRoute
   DropzoneIndexRoute: typeof DropzoneIndexRoute
   EmptyIndexRoute: typeof EmptyIndexRoute
+  FlowIndexRoute: typeof FlowIndexRoute
   FormControlsIndexRoute: typeof FormControlsIndexRoute
   GridIndexRoute: typeof GridIndexRoute
   HoverCardIndexRoute: typeof HoverCardIndexRoute
   IconIndexRoute: typeof IconIndexRoute
   ItemIndexRoute: typeof ItemIndexRoute
   KbdIndexRoute: typeof KbdIndexRoute
+  LayerCardIndexRoute: typeof LayerCardIndexRoute
   ListIndexRoute: typeof ListIndexRoute
   MarkerIndexRoute: typeof MarkerIndexRoute
   MessageIndexRoute: typeof MessageIndexRoute
@@ -961,6 +1012,7 @@ export interface RootRouteChildren {
   SliderIndexRoute: typeof SliderIndexRoute
   SpacingIndexRoute: typeof SpacingIndexRoute
   StackIndexRoute: typeof StackIndexRoute
+  TableOfContentsIndexRoute: typeof TableOfContentsIndexRoute
   TableIndexRoute: typeof TableIndexRoute
   TabsIndexRoute: typeof TabsIndexRoute
   ToastIndexRoute: typeof ToastIndexRoute
@@ -1048,6 +1100,13 @@ declare module '@tanstack/react-router' {
       path: '/table'
       fullPath: '/table/'
       preLoaderRoute: typeof TableIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/table-of-contents/': {
+      id: '/table-of-contents/'
+      path: '/table-of-contents'
+      fullPath: '/table-of-contents/'
+      preLoaderRoute: typeof TableOfContentsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/stack/': {
@@ -1183,6 +1242,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ListIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/layer-card/': {
+      id: '/layer-card/'
+      path: '/layer-card'
+      fullPath: '/layer-card/'
+      preLoaderRoute: typeof LayerCardIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/kbd/': {
       id: '/kbd/'
       path: '/kbd'
@@ -1223,6 +1289,13 @@ declare module '@tanstack/react-router' {
       path: '/form-controls'
       fullPath: '/form-controls/'
       preLoaderRoute: typeof FormControlsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/flow/': {
+      id: '/flow/'
+      path: '/flow'
+      fullPath: '/flow/'
+      preLoaderRoute: typeof FlowIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/empty/': {
@@ -1293,6 +1366,13 @@ declare module '@tanstack/react-router' {
       path: '/code-block'
       fullPath: '/code-block/'
       preLoaderRoute: typeof CodeBlockIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/clipboard-text/': {
+      id: '/clipboard-text/'
+      path: '/clipboard-text'
+      fullPath: '/clipboard-text/'
+      preLoaderRoute: typeof ClipboardTextIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/carousel/': {
@@ -1518,6 +1598,7 @@ const rootRouteChildren: RootRouteChildren = {
   CalendarIndexRoute: CalendarIndexRoute,
   CardIndexRoute: CardIndexRoute,
   CarouselIndexRoute: CarouselIndexRoute,
+  ClipboardTextIndexRoute: ClipboardTextIndexRoute,
   CodeBlockIndexRoute: CodeBlockIndexRoute,
   CollapsibleIndexRoute: CollapsibleIndexRoute,
   ColorTokensIndexRoute: ColorTokensIndexRoute,
@@ -1528,12 +1609,14 @@ const rootRouteChildren: RootRouteChildren = {
   DropdownMenuIndexRoute: DropdownMenuIndexRoute,
   DropzoneIndexRoute: DropzoneIndexRoute,
   EmptyIndexRoute: EmptyIndexRoute,
+  FlowIndexRoute: FlowIndexRoute,
   FormControlsIndexRoute: FormControlsIndexRoute,
   GridIndexRoute: GridIndexRoute,
   HoverCardIndexRoute: HoverCardIndexRoute,
   IconIndexRoute: IconIndexRoute,
   ItemIndexRoute: ItemIndexRoute,
   KbdIndexRoute: KbdIndexRoute,
+  LayerCardIndexRoute: LayerCardIndexRoute,
   ListIndexRoute: ListIndexRoute,
   MarkerIndexRoute: MarkerIndexRoute,
   MessageIndexRoute: MessageIndexRoute,
@@ -1553,6 +1636,7 @@ const rootRouteChildren: RootRouteChildren = {
   SliderIndexRoute: SliderIndexRoute,
   SpacingIndexRoute: SpacingIndexRoute,
   StackIndexRoute: StackIndexRoute,
+  TableOfContentsIndexRoute: TableOfContentsIndexRoute,
   TableIndexRoute: TableIndexRoute,
   TabsIndexRoute: TabsIndexRoute,
   ToastIndexRoute: ToastIndexRoute,
