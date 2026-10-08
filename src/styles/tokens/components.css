@@ -61,6 +61,8 @@
 		--button-quiet-hover-bg: initial;
 
 		/* Brand buttons can opt into the same filled finishes per colour. */
+		--button-brand-font-weight: 500;
+		--button-brand-text-shadow: none;
 		--button-brand-bg: initial;
 		--button-brand-text: initial;
 		--button-brand-border: initial;

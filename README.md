@@ -396,8 +396,9 @@ Kumo takes its cues from [Cloudflare's Kumo](https://kumo-ui.com/components/butt
 neutral light/dark surfaces, blue primary actions, an orange brand accent, and
 solid red destructive buttons. Primary (`variant="default"`) and destructive
 buttons have darker borders, vertical gradients, and inset top highlights.
-All five brand button variants use the same finish in their own colours; alerts
-and badges continue to use the coordinated tinted surfaces.
+All five brand button variants use vivid colour gradients and brighter upper
+highlights, with semibold white labels and a subtle text shadow; alerts and
+badges continue to use the coordinated tinted surfaces.
 Its default and large buttons are 36px and 40px tall; small and extra-small
 buttons are 26px and 20px tall. The preset also styles fields, cards, status
 surfaces, and the sidebar through the existing token system.
@@ -406,6 +407,7 @@ Button finishes can be tuned with `--button-primary-border`,
 `--button-primary-background-image`, `--button-primary-hover-background-image`,
 and `--button-primary-shadow`, with equivalent `--button-destructive-*`, `--button-brand-*`, and
 `--button-brand-2-*` through `--button-brand-5-*` tokens.
+Brand labels use `--button-brand-font-weight` and `--button-brand-text-shadow`.
 Destructive fill and text use `--button-destructive-bg` and
 `--button-destructive-text`, independently of the tinted critical surfaces used
 by alerts and badges. Button sizes use `--button-height`, `--button-height-xs`,

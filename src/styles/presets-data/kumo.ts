@@ -28,42 +28,36 @@ function emphasisFinish(
 	}
 }
 
-function brandFinishes(
-	text: Record<BrandButton, string>,
-	fills: Partial<Record<BrandButton, string>> = {},
-): Record<string, string> {
-	const variants = ['brand', 'brand-2', 'brand-3', 'brand-4', 'brand-5'] as const
+// Vivid body colours and a bright upper edge make the brand actions pop.
+// White labels use a heavier weight and a subtle shadow over these gradients.
+const brandButtonColors: Record<BrandButton, { top: string; bottom: string; highlight: string }> = {
+	brand: { top: '#F45B00', bottom: '#E04400', highlight: '#FF8A00' },
+	'brand-2': { top: '#009DB8', bottom: '#007DAB', highlight: '#00D8EA' },
+	'brand-3': { top: '#AA0AFF', bottom: '#7C00E5', highlight: '#E04BFF' },
+	'brand-4': { top: '#1464FF', bottom: '#0045EF', highlight: '#388BFF' },
+	'brand-5': { top: '#00AB38', bottom: '#008D21', highlight: '#63E600' },
+}
+
+function brandFinishes(): Record<string, string> {
 	return Object.assign(
 		{},
-		...variants.map((variant) => {
-			const fill = fills[variant] ?? `var(--bg-fill-${variant})`
+		...Object.entries(brandButtonColors).map(([variant, { top, bottom, highlight }]) => {
+			const edge = `color-mix(in oklch, ${top}, black 8%)`
+			const rim = `color-mix(in oklch, ${highlight}, white 15%)`
+			const shadow = `color-mix(in srgb, ${top}, transparent 82%)`
+			const hoverShadow = `color-mix(in srgb, ${top}, transparent 75%)`
 			return {
-				// White labels need a restrained gradient to keep contrast
-				// above 4.5:1, including the brightest hover stop.
-				...emphasisFinish(
-					variant,
-					fill,
-					variant === 'brand' || variant === 'brand-2' || variant === 'brand-5'
-						? { start: 1, hover: 2 }
-						: text[variant] === '#FFFFFF'
-							? { start: 3, hover: 5 }
-							: { start: 5, hover: 10 },
-				),
-				[`--button-${variant}-bg`]: fill,
-				[`--button-${variant}-text`]: text[variant],
+				[`--button-${variant}-bg`]: top,
+				[`--button-${variant}-text`]: '#FFFFFF',
+				[`--button-${variant}-border`]: edge,
+				[`--button-${variant}-hover-border`]: top,
+				[`--button-${variant}-background-image`]: `linear-gradient(to bottom, ${highlight} 0%, ${top} 20%, ${bottom} 100%)`,
+				[`--button-${variant}-hover-background-image`]: `linear-gradient(to bottom, ${highlight} 0%, ${top} 20%, color-mix(in oklch, ${bottom}, ${top} 25%) 100%)`,
+				[`--button-${variant}-shadow`]: `inset 0 1px 0 ${rim}, inset 0 -1px 0 ${edge}, 0 2px 3px ${shadow}`,
+				[`--button-${variant}-hover-shadow`]: `inset 0 1px 0 ${rim}, inset 0 -1px 0 ${edge}, 0 2px 6px ${hoverShadow}`,
 			}
 		}),
 	)
-}
-
-// Saturated action fills keep their energy in both themes. Orange, turquoise,
-// and green use deeper shades than the shared accents for readable white labels.
-const brandButtonFills: Record<BrandButton, string> = {
-	brand: '#D43C00',
-	'brand-2': '#008090',
-	'brand-3': '#8A00F5',
-	'brand-4': '#0057FF',
-	'brand-5': '#008700',
 }
 
 const shape: Record<string, string> = {
@@ -91,6 +85,8 @@ const shape: Record<string, string> = {
 	'--button-font-size-xs': 'var(--text-xs)',
 	'--button-font-size-sm': 'var(--text-xs)',
 	'--button-gap': 'calc(var(--spacing) * 1.5)',
+	'--button-brand-font-weight': '600',
+	'--button-brand-text-shadow': '0 1px 1px #00000059, 0 0 1px #00000040',
 	'--card-radius': 'var(--radius-xl)',
 	'--input-radius': 'var(--radius-lg)',
 	'--input-height': 'calc(var(--spacing) * 9)',
@@ -127,16 +123,7 @@ export const kumo: Record<string, string> = {
 	...shape,
 	...emphasisFinish('primary', 'var(--bg-fill-primary)'),
 	...emphasisFinish('destructive', 'var(--bg-fill-critical)'),
-	...brandFinishes(
-		{
-			brand: '#FFFFFF',
-			'brand-2': '#FFFFFF',
-			'brand-3': '#FFFFFF',
-			'brand-4': '#FFFFFF',
-			'brand-5': '#FFFFFF',
-		},
-		brandButtonFills,
-	),
+	...brandFinishes(),
 
 	'--bg-default': '#FBFBFB',
 	'--bg-inverse': '#080808',
@@ -245,16 +232,7 @@ export const kumoDark: Record<string, string> = {
 	...shape,
 	...emphasisFinish('primary', 'var(--bg-fill-primary)'),
 	...emphasisFinish('destructive', 'var(--bg-fill-critical)'),
-	...brandFinishes(
-		{
-			brand: '#FFFFFF',
-			'brand-2': '#FFFFFF',
-			'brand-3': '#FFFFFF',
-			'brand-4': '#FFFFFF',
-			'brand-5': '#FFFFFF',
-		},
-		brandButtonFills,
-	),
+	...brandFinishes(),
 
 	'--shadow-base-color': '#0000004D',
 	'--bg-default': '#030303',
