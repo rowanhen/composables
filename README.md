@@ -654,3 +654,7 @@ bun run build:storybook  # Static gallery in showcase/dist
 ```
 
 Stories live in `showcase/src/stories/`; add a `.stories.tsx` file there to extend the gallery. The existing `bunx vite build showcase` command also builds Storybook for compatibility with current build and deployment workflows.
+
+The production gallery is [composables.leitware.com](https://composables.leitware.com). Deploy with `bun run deploy:showcase`. Cloudflare Pages hosts that custom domain; the `composables_canonical_domain` Bulk Redirect list sends the Pages domain and its deployment subdomains to the production gallery, preserving paths and query strings. GitHub Pages is disabled.
+
+The static build versions Storybook's otherwise unversioned runtime script URLs and emits cache headers in `scripts/prepare-storybook.ts`, so browsers load matching scripts after each deployment.

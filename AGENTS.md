@@ -81,3 +81,5 @@ The a11y oxlint plugin is intentionally disabled. Do not add broad a11y churn un
 The component gallery uses Storybook with React and Vite. Stories live in `showcase/src/stories/` and reuse the existing demo components. Shared styles, fonts, theme controls, and the toaster are configured in `.storybook/preview.tsx`; aliases and Tailwind are configured in `.storybook/main.ts`. Add stories directly rather than generating routes or maintaining a separate navigation registry.
 
 `showcase/vite.config.ts` is only a compatibility bridge for existing build/deploy commands: `bunx vite build showcase` delegates to `bun run build:storybook`. Keep that entrypoint working while workflows still use it.
+
+The gallery's only public deployment is `https://composables.leitware.com`, hosted by the `composables-showcase` Cloudflare Pages project. Keep this project and its custom domain. GitHub Pages is disabled; the Cloudflare Bulk Redirect list `composables_canonical_domain` redirects Pages aliases (including deployment subdomains) to the custom domain. `scripts/prepare-storybook.ts` versions stable runtime script URLs and writes cache headers after the static build.

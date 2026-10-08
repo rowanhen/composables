@@ -2,8 +2,7 @@
 # Deploy the showcase site to Cloudflare Pages via direct upload.
 #
 # Usage:
-#   ./scripts/deploy-showcase.sh              # deploy to production
-#   ./scripts/deploy-showcase.sh --preview    # deploy as preview
+#   ./scripts/deploy-showcase.sh              # deploy composables.leitware.com
 #
 # Requires:
 #   - CLOUDFLARE_ACCOUNT_ID and CLOUDFLARE_API_TOKEN env vars
@@ -15,15 +14,11 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 ROOT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 
-# --- Parse arguments ---
-BRANCH="main"
-
-for arg in "$@"; do
-  case "$arg" in
-    --preview) BRANCH="preview" ;;
-    *) echo "Unknown argument: $arg"; exit 1 ;;
-  esac
-done
+# There is one public gallery; Pages aliases redirect to the custom domain.
+if [[ "$#" -ne 0 ]]; then
+  echo "Usage: ./scripts/deploy-showcase.sh"
+  exit 1
+fi
 
 # --- Require CF credentials ---
 if [[ -z "${CLOUDFLARE_ACCOUNT_ID:-}" || -z "${CLOUDFLARE_API_TOKEN:-}" ]]; then
@@ -40,7 +35,7 @@ export CLOUDFLARE_API_TOKEN
 # --- Build ---
 echo ""
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "  Deploying: composables-showcase (branch: $BRANCH)"
+echo "  Deploying: composables.leitware.com"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo ""
 
@@ -51,14 +46,10 @@ echo ""
 echo "→ Deploying to Cloudflare Pages..."
 npx wrangler pages deploy "$ROOT_DIR/showcase/dist" \
   --project-name "composables-showcase" \
-  --branch "$BRANCH"
+  --branch "main"
 
 echo ""
 echo "✓ composables-showcase deployed successfully"
 
-if [[ "$BRANCH" == "main" ]]; then
-  echo "  Site: https://composables.leitware.com"
-else
-  echo "  Preview URL will appear in the wrangler output above."
-fi
+echo "  Site: https://composables.leitware.com"
 echo ""
