@@ -28,14 +28,13 @@ Tailwind v4 consumers that need state or responsive variants of exact public sem
 
 ## Entrypoints
 
-| Import                               | Source                              |
-| ------------------------------------ | ----------------------------------- |
-| `@leitware/composables`              | `./src/index.ts`                    |
-| `@leitware/composables/ai`           | `./src/opinionated/ai/index.ts`     |
-| `@leitware/composables/blocks`       | `./src/opinionated/blocks/index.ts` |
-| `@leitware/composables/styles.css`   | `./dist/styles.css`                 |
-| `@leitware/composables/tailwind.css` | `./dist/tailwind.css`               |
-| `@leitware/composables/presets/*`    | `./dist/presets/*`                  |
+| Import                               | Source                          |
+| ------------------------------------ | ------------------------------- |
+| `@leitware/composables`              | `./src/index.ts`                |
+| `@leitware/composables/ai`           | `./src/opinionated/ai/index.ts` |
+| `@leitware/composables/styles.css`   | `./dist/styles.css`             |
+| `@leitware/composables/tailwind.css` | `./dist/tailwind.css`           |
+| `@leitware/composables/presets/*`    | `./dist/presets/*`              |
 
 ## Optional Dependencies
 

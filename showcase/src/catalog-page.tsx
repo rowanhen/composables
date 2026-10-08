@@ -18,12 +18,6 @@ export function CatalogPage() {
 					</Typography>
 					<HStack gap={3} className="mt-6 flex-wrap">
 						<Link
-							to="/blocks"
-							className="rounded-md border border-stroke bg-background px-3 py-2 text-sm font-medium hover:bg-muted"
-						>
-							Page blocks
-						</Link>
-						<Link
 							to="/showcase"
 							className="rounded-md border border-stroke bg-background px-3 py-2 text-sm font-medium hover:bg-muted"
 						>
