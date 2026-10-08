@@ -1,0 +1,630 @@
+/* ============================================================================
+   @leitware/composables - Kumo Preset
+   ============================================================================
+   Cloudflare Kumo-inspired: neutral surfaces, blue actions, and highlighted gradient buttons.
+
+   HOW TO USE:
+   1. Copy this file into your project's global CSS (e.g. index.css)
+   2. Or import the preset: @import "@leitware/composables/presets/kumo.css";
+   3. Add class="dark" to <html> for dark mode.
+   ============================================================================ */
+
+:root {
+	--bg-default: #fbfbfb;
+	--bg-inverse: #080808;
+	--bg-muted: #f2f2f2;
+	--bg-surface-default: #ffffff;
+	--bg-surface-popover: #ffffff;
+	--bg-surface-accent: #f8f8f8;
+	--bg-surface-field: #ffffff;
+	--bg-surface-info: #eff6ff;
+	--bg-surface-success: #ecfdf5;
+	--bg-surface-warning: #fffbeb;
+	--bg-surface-critical: #fef2f2;
+	--bg-surface-emphasis: #eff6ff;
+	--bg-surface-inverse: #080808;
+	--bg-surface-transparent: #0000000d;
+	--bg-overlay: #00000080;
+	--bg-surface-brand: #fff2e8;
+	--bg-surface-brand-2: #e7fcff;
+	--bg-surface-brand-3: #f6ebff;
+	--bg-surface-brand-4: #edf3ff;
+	--bg-surface-brand-5: #ebfff0;
+	--bg-surface-hover: #f5f5f5;
+	--bg-fill-default: #ffffff;
+	--bg-fill-primary: #056dff;
+	--bg-fill-brand: #ff6a00;
+	--bg-fill-brand-2: #00c2d6;
+	--bg-fill-brand-3: #8a00f5;
+	--bg-fill-brand-4: #0057ff;
+	--bg-fill-brand-5: #00b83f;
+	--bg-fill-info: #3b82f6;
+	--bg-fill-success: #059669;
+	--bg-fill-warning: #f59e0b;
+	--bg-fill-critical: oklch(63.7% 0.237 25.331);
+	--bg-fill-emphasis: #056dff;
+	--bg-fill-transparent: #0000000d;
+	--bg-fill-secondary: #ffffff;
+	--bg-fill-secondary-inverse: #171717;
+	--text-default: #171717;
+	--text-secondary: #737373;
+	--text-muted: #737373;
+	--text-disabled: #d4d4d4;
+	--text-inverse: #f5f5f5;
+	--text-on-fill-primary: #ffffff;
+	--text-on-fill-brand: #171717;
+	--text-on-fill-secondary: #171717;
+	--text-on-surface-accent: #171717;
+	--text-info: #1e40af;
+	--text-success: #065f46;
+	--text-warning: #a16207;
+	--text-critical: #b91c1c;
+	--text-emphasis: #1e40af;
+	--text-brand: #a93600;
+	--text-brand-2: #006778;
+	--text-brand-3: #7200ca;
+	--text-brand-4: #0042cc;
+	--text-brand-5: #006e23;
+	--text-link: #1e40af;
+	--icon-default: #171717;
+	--icon-secondary: #737373;
+	--icon-disabled: #d4d4d4;
+	--icon-inverse: #f5f5f5;
+	--icon-info: #3b82f6;
+	--icon-success: #059669;
+	--icon-warning: #d97706;
+	--icon-critical: #ef4444;
+	--icon-emphasis: #056dff;
+	--icon-brand: #ff6a00;
+	--icon-brand-2: #00a5ba;
+	--icon-brand-3: #8a00f5;
+	--icon-brand-4: #0057ff;
+	--icon-brand-5: #00a536;
+	--border-default: #e9e9e9;
+	--border-secondary: #1717171a;
+	--border-input: #1717171a;
+	--border-tertiary: #d4d4d4;
+	--border-disabled: #e5e5e5;
+	--border-inverse: #525252;
+	--border-focus: #056dff;
+	--border-brand: #ffbb8a;
+	--border-brand-2: #71e5f2;
+	--border-brand-3: #d1a3ff;
+	--border-brand-4: #9abbff;
+	--border-brand-5: #80efa4;
+	--border-info: #bfdbfe;
+	--border-success: #a7f3d0;
+	--border-warning: #fde68a;
+	--border-critical: #fecaca;
+	--border-emphasis: #bfdbfe;
+	--chart-1: #056dff;
+	--chart-2: #ff6a00;
+	--chart-3: #00b83f;
+	--chart-4: #8a00f5;
+	--chart-5: #ef4444;
+	--sidebar-background: #fbfbfb;
+	--sidebar-foreground: #171717;
+	--sidebar-primary: #056dff;
+	--sidebar-primary-foreground: #ffffff;
+	--sidebar-accent: #f5f5f5;
+	--sidebar-accent-foreground: #171717;
+	--sidebar-border: #e9e9e9;
+	--sidebar-ring: #056dff;
+	--spacing: 0.25rem;
+	--border-width-base: 0.0625rem;
+	--radius: 0.5rem;
+	--font-size-base: 0.875rem;
+	--leading-base: 1.5;
+	--letter-spacing-base: 0.01em;
+	--opacity-disabled: 0.5;
+	--shadow-offset-y: 1px;
+	--shadow-blur: 2px;
+	--shadow-spread: 0px;
+	--shadow-base-color: #0000000d;
+	--container-sm: 576px;
+	--container-md: 768px;
+	--container-lg: 1056px;
+	--container-xl: 1248px;
+	--container-2xl: 1440px;
+	--dropdown-offset: 4;
+	--overlay-offset: 4;
+	--font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+	--font-heading: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+	--font-brand: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+	--button-radius: var(--radius-lg);
+	--card-radius: var(--radius-xl);
+	--card-padding: calc(var(--spacing) * 4);
+	--input-radius: var(--radius-lg);
+	--input-height: calc(var(--spacing) * 9);
+	--badge-radius: var(--radius-md);
+	--motion-duration-fast: 100ms;
+	--motion-duration-normal: 200ms;
+	--motion-duration-slow: 300ms;
+	--motion-duration-color: var(--motion-duration-fast);
+	--motion-duration-interaction: var(--motion-duration-fast);
+	--motion-duration-disclosure: var(--motion-duration-normal);
+	--motion-duration-overlay: var(--motion-duration-fast);
+	--motion-ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+	--motion-ease-accelerate: cubic-bezier(0.4, 0, 1, 1);
+	--motion-ease-decelerate: cubic-bezier(0, 0, 0.2, 1);
+	--motion-ease-linear: linear;
+	--transition-default: var(--motion-duration-normal) var(--motion-ease-standard);
+	--transition-fast: var(--motion-duration-fast) var(--motion-ease-standard);
+	--transition-slow: var(--motion-duration-slow) var(--motion-ease-decelerate);
+	--hover-transform: none;
+	--hover-shadow: none;
+	--active-scale: 1;
+	--heading-font-weight: 600;
+	--heading-letter-spacing: var(--tracking-tight);
+	--body-letter-spacing: var(--tracking-normal);
+	--hero-font-size: var(--text-5xl);
+	--hero-font-weight: 600;
+	--hero-letter-spacing: var(--tracking-tight);
+	--section-title-size: var(--text-3xl);
+	--section-title-font-weight: 600;
+	--section-title-letter-spacing: var(--tracking-tight);
+	--card-title-size: var(--text-lg);
+	--card-title-font-weight: 600;
+	--card-title-letter-spacing: var(--tracking-normal);
+	--text-xs: 0.75rem;
+	--text-xs--line-height: 1.333333;
+	--text-sm: 0.8125rem;
+	--text-sm--line-height: 1.5;
+	--button-radius-xs: 0.25rem;
+	--button-radius-sm: 0.375rem;
+	--button-height: calc(var(--spacing) * 9);
+	--button-height-xs: calc(var(--spacing) * 5);
+	--button-height-sm: calc(var(--spacing) * 6.5);
+	--button-height-lg: calc(var(--spacing) * 10);
+	--button-font-size: var(--text-base);
+	--button-font-size-xs: var(--text-xs);
+	--button-font-size-sm: var(--text-xs);
+	--button-gap: calc(var(--spacing) * 1.5);
+	--button-secondary-border: var(--border-secondary);
+	--button-secondary-hover-bg: var(--bg-surface-hover);
+	--button-secondary-shadow: 0 1px 2px #0000000d;
+	--button-secondary-hover-shadow: 0 1px 2px #0000000d;
+	--button-outline-shadow: 0 1px 2px #0000000d;
+	--button-outline-hover-shadow: 0 1px 2px #0000000d;
+	--button-quiet-hover-bg: var(--bg-surface-hover);
+	--button-destructive-bg: var(--bg-fill-critical);
+	--button-destructive-text: #ffffff;
+	--focus-ring-width: 2px;
+	--focus-ring-color: var(--border-focus);
+	--hover-ring-width: 0px;
+	--hover-ring-color: var(--border-secondary);
+	--button-primary-border: color-mix(in oklch, var(--bg-fill-primary), black 10%);
+	--button-primary-hover-border: color-mix(in oklch, var(--bg-fill-primary), black 10%);
+	--button-primary-background-image: linear-gradient(
+		to bottom,
+		color-mix(in oklch, var(--bg-fill-primary), white 15%),
+		var(--bg-fill-primary)
+	);
+	--button-primary-hover-background-image: linear-gradient(
+		to bottom,
+		color-mix(in oklch, var(--bg-fill-primary), white 30%),
+		var(--bg-fill-primary)
+	);
+	--button-primary-shadow:
+		inset 0 1px 0 color-mix(in oklch, var(--bg-fill-primary), white 30%), 0 1px 2px #0000000d;
+	--button-primary-hover-shadow:
+		inset 0 1px 0 color-mix(in oklch, var(--bg-fill-primary), white 30%), 0 1px 2px #0000000d;
+	--button-destructive-border: color-mix(in oklch, var(--bg-fill-critical), black 10%);
+	--button-destructive-hover-border: color-mix(in oklch, var(--bg-fill-critical), black 10%);
+	--button-destructive-background-image: linear-gradient(
+		to bottom,
+		color-mix(in oklch, var(--bg-fill-critical), white 15%),
+		var(--bg-fill-critical)
+	);
+	--button-destructive-hover-background-image: linear-gradient(
+		to bottom,
+		color-mix(in oklch, var(--bg-fill-critical), white 30%),
+		var(--bg-fill-critical)
+	);
+	--button-destructive-shadow:
+		inset 0 1px 0 color-mix(in oklch, var(--bg-fill-critical), white 30%), 0 1px 2px #0000000d;
+	--button-destructive-hover-shadow:
+		inset 0 1px 0 color-mix(in oklch, var(--bg-fill-critical), white 30%), 0 1px 2px #0000000d;
+	--button-brand-border: color-mix(in oklch, #d43c00, black 10%);
+	--button-brand-hover-border: color-mix(in oklch, #d43c00, black 10%);
+	--button-brand-background-image: linear-gradient(
+		to bottom,
+		color-mix(in oklch, #d43c00, white 1%),
+		#d43c00
+	);
+	--button-brand-hover-background-image: linear-gradient(
+		to bottom,
+		color-mix(in oklch, #d43c00, white 2%),
+		#d43c00
+	);
+	--button-brand-shadow: inset 0 1px 0 color-mix(in oklch, #d43c00, white 30%), 0 1px 2px #0000000d;
+	--button-brand-hover-shadow:
+		inset 0 1px 0 color-mix(in oklch, #d43c00, white 30%), 0 1px 2px #0000000d;
+	--button-brand-bg: #d43c00;
+	--button-brand-text: #ffffff;
+	--button-brand-2-border: color-mix(in oklch, #008090, black 10%);
+	--button-brand-2-hover-border: color-mix(in oklch, #008090, black 10%);
+	--button-brand-2-background-image: linear-gradient(
+		to bottom,
+		color-mix(in oklch, #008090, white 1%),
+		#008090
+	);
+	--button-brand-2-hover-background-image: linear-gradient(
+		to bottom,
+		color-mix(in oklch, #008090, white 2%),
+		#008090
+	);
+	--button-brand-2-shadow:
+		inset 0 1px 0 color-mix(in oklch, #008090, white 30%), 0 1px 2px #0000000d;
+	--button-brand-2-hover-shadow:
+		inset 0 1px 0 color-mix(in oklch, #008090, white 30%), 0 1px 2px #0000000d;
+	--button-brand-2-bg: #008090;
+	--button-brand-2-text: #ffffff;
+	--button-brand-3-border: color-mix(in oklch, #8a00f5, black 10%);
+	--button-brand-3-hover-border: color-mix(in oklch, #8a00f5, black 10%);
+	--button-brand-3-background-image: linear-gradient(
+		to bottom,
+		color-mix(in oklch, #8a00f5, white 3%),
+		#8a00f5
+	);
+	--button-brand-3-hover-background-image: linear-gradient(
+		to bottom,
+		color-mix(in oklch, #8a00f5, white 5%),
+		#8a00f5
+	);
+	--button-brand-3-shadow:
+		inset 0 1px 0 color-mix(in oklch, #8a00f5, white 30%), 0 1px 2px #0000000d;
+	--button-brand-3-hover-shadow:
+		inset 0 1px 0 color-mix(in oklch, #8a00f5, white 30%), 0 1px 2px #0000000d;
+	--button-brand-3-bg: #8a00f5;
+	--button-brand-3-text: #ffffff;
+	--button-brand-4-border: color-mix(in oklch, #0057ff, black 10%);
+	--button-brand-4-hover-border: color-mix(in oklch, #0057ff, black 10%);
+	--button-brand-4-background-image: linear-gradient(
+		to bottom,
+		color-mix(in oklch, #0057ff, white 3%),
+		#0057ff
+	);
+	--button-brand-4-hover-background-image: linear-gradient(
+		to bottom,
+		color-mix(in oklch, #0057ff, white 5%),
+		#0057ff
+	);
+	--button-brand-4-shadow:
+		inset 0 1px 0 color-mix(in oklch, #0057ff, white 30%), 0 1px 2px #0000000d;
+	--button-brand-4-hover-shadow:
+		inset 0 1px 0 color-mix(in oklch, #0057ff, white 30%), 0 1px 2px #0000000d;
+	--button-brand-4-bg: #0057ff;
+	--button-brand-4-text: #ffffff;
+	--button-brand-5-border: color-mix(in oklch, #008700, black 10%);
+	--button-brand-5-hover-border: color-mix(in oklch, #008700, black 10%);
+	--button-brand-5-background-image: linear-gradient(
+		to bottom,
+		color-mix(in oklch, #008700, white 1%),
+		#008700
+	);
+	--button-brand-5-hover-background-image: linear-gradient(
+		to bottom,
+		color-mix(in oklch, #008700, white 2%),
+		#008700
+	);
+	--button-brand-5-shadow:
+		inset 0 1px 0 color-mix(in oklch, #008700, white 30%), 0 1px 2px #0000000d;
+	--button-brand-5-hover-shadow:
+		inset 0 1px 0 color-mix(in oklch, #008700, white 30%), 0 1px 2px #0000000d;
+	--button-brand-5-bg: #008700;
+	--button-brand-5-text: #ffffff;
+	--background: var(--bg-default);
+	--foreground: var(--text-default);
+	--card: var(--bg-surface-default);
+	--card-foreground: var(--text-default);
+	--popover: var(--bg-surface-popover);
+	--popover-foreground: var(--text-default);
+	--primary: var(--bg-fill-primary);
+	--primary-foreground: var(--text-on-fill-primary);
+	--secondary: var(--bg-fill-secondary);
+	--secondary-foreground: var(--text-on-fill-secondary);
+	--muted: var(--bg-muted);
+	--muted-foreground: var(--text-muted);
+	--accent: var(--bg-surface-accent);
+	--accent-foreground: var(--text-on-surface-accent);
+	--destructive: var(--bg-fill-critical);
+	--border: var(--border-default);
+	--input: var(--border-input);
+	--ring: var(--border-focus);
+}
+
+.dark {
+	--bg-default: #030303;
+	--bg-inverse: #fbfbfb;
+	--bg-muted: #0b0b0b;
+	--bg-surface-default: #0f0f0f;
+	--bg-surface-popover: #0f0f0f;
+	--bg-surface-accent: #060606;
+	--bg-surface-field: #171717;
+	--bg-surface-info: #101b35;
+	--bg-surface-success: #0b241b;
+	--bg-surface-warning: #2b2111;
+	--bg-surface-critical: #2c1415;
+	--bg-surface-emphasis: #101b35;
+	--bg-surface-inverse: #fbfbfb;
+	--bg-surface-transparent: #ffffff0d;
+	--bg-overlay: #000000b3;
+	--bg-surface-brand: #311a0a;
+	--bg-surface-brand-2: #062b31;
+	--bg-surface-brand-3: #291039;
+	--bg-surface-brand-4: #0b1c3d;
+	--bg-surface-brand-5: #082b13;
+	--bg-surface-hover: #262626;
+	--bg-fill-default: #0f0f0f;
+	--bg-fill-primary: #045ede;
+	--bg-fill-brand: #ff6a00;
+	--bg-fill-brand-2: #00d9ed;
+	--bg-fill-brand-3: #b35cff;
+	--bg-fill-brand-4: #4791ff;
+	--bg-fill-brand-5: #22e65f;
+	--bg-fill-info: #3b82f6;
+	--bg-fill-success: #34d399;
+	--bg-fill-warning: #ea580c;
+	--bg-fill-critical: oklch(57.7% 0.245 27.325);
+	--bg-fill-emphasis: #045ede;
+	--bg-fill-transparent: #ffffff0d;
+	--bg-fill-secondary: #0f0f0f;
+	--bg-fill-secondary-inverse: #f5f5f5;
+	--text-default: #f5f5f5;
+	--text-secondary: #a3a3a3;
+	--text-muted: #a3a3a3;
+	--text-disabled: #525252;
+	--text-inverse: #171717;
+	--text-on-fill-primary: #ffffff;
+	--text-on-fill-brand: #171717;
+	--text-on-fill-secondary: #f5f5f5;
+	--text-on-surface-accent: #f5f5f5;
+	--text-info: #60a5fa;
+	--text-success: #a7f3d0;
+	--text-warning: #fb923c;
+	--text-critical: #f87171;
+	--text-emphasis: #60a5fa;
+	--text-brand: #ffae70;
+	--text-brand-2: #66edff;
+	--text-brand-3: #d49aff;
+	--text-brand-4: #80b3ff;
+	--text-brand-5: #6bf593;
+	--text-link: #60a5fa;
+	--icon-default: #f5f5f5;
+	--icon-secondary: #a3a3a3;
+	--icon-disabled: #525252;
+	--icon-inverse: #171717;
+	--icon-info: #60a5fa;
+	--icon-success: #34d399;
+	--icon-warning: #fb923c;
+	--icon-critical: #f87171;
+	--icon-emphasis: #60a5fa;
+	--icon-brand: #ff842e;
+	--icon-brand-2: #00d9ed;
+	--icon-brand-3: #b35cff;
+	--icon-brand-4: #4791ff;
+	--icon-brand-5: #22e65f;
+	--border-default: #262626;
+	--border-secondary: #333333;
+	--border-input: #333333;
+	--border-tertiary: #404040;
+	--border-disabled: #262626;
+	--border-inverse: #d4d4d4;
+	--border-focus: #60a5fa;
+	--border-brand: #a23b00;
+	--border-brand-2: #007b8a;
+	--border-brand-3: #7222a8;
+	--border-brand-4: #174fad;
+	--border-brand-5: #00732a;
+	--border-info: #1e3a8a;
+	--border-success: #065f46;
+	--border-warning: #78350f;
+	--border-critical: #7f1d1d;
+	--border-emphasis: #1e3a8a;
+	--chart-1: #60a5fa;
+	--chart-2: #ff6a00;
+	--chart-3: #22e65f;
+	--chart-4: #b35cff;
+	--chart-5: #f87171;
+	--sidebar-background: #030303;
+	--sidebar-foreground: #f5f5f5;
+	--sidebar-primary: #045ede;
+	--sidebar-primary-foreground: #ffffff;
+	--sidebar-accent: #262626;
+	--sidebar-accent-foreground: #f5f5f5;
+	--sidebar-border: #262626;
+	--sidebar-ring: #60a5fa;
+	--font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+	--font-heading: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+	--font-brand: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+	--spacing: 0.25rem;
+	--border-width-base: 0.0625rem;
+	--radius: 0.5rem;
+	--font-size-base: 0.875rem;
+	--text-xs: 0.75rem;
+	--text-xs--line-height: 1.333333;
+	--text-sm: 0.8125rem;
+	--text-sm--line-height: 1.5;
+	--leading-base: 1.5;
+	--letter-spacing-base: 0.01em;
+	--button-radius: var(--radius-lg);
+	--button-radius-xs: 0.25rem;
+	--button-radius-sm: 0.375rem;
+	--button-height: calc(var(--spacing) * 9);
+	--button-height-xs: calc(var(--spacing) * 5);
+	--button-height-sm: calc(var(--spacing) * 6.5);
+	--button-height-lg: calc(var(--spacing) * 10);
+	--button-font-size: var(--text-base);
+	--button-font-size-xs: var(--text-xs);
+	--button-font-size-sm: var(--text-xs);
+	--button-gap: calc(var(--spacing) * 1.5);
+	--card-radius: var(--radius-xl);
+	--input-radius: var(--radius-lg);
+	--input-height: calc(var(--spacing) * 9);
+	--badge-radius: var(--radius-md);
+	--opacity-disabled: 0.5;
+	--shadow-offset-y: 1px;
+	--shadow-blur: 2px;
+	--shadow-spread: 0px;
+	--shadow-base-color: #0000004d;
+	--button-secondary-border: var(--border-secondary);
+	--button-secondary-hover-bg: var(--bg-surface-hover);
+	--button-secondary-shadow: 0 1px 2px #0000000d;
+	--button-secondary-hover-shadow: 0 1px 2px #0000000d;
+	--button-outline-shadow: 0 1px 2px #0000000d;
+	--button-outline-hover-shadow: 0 1px 2px #0000000d;
+	--button-quiet-hover-bg: var(--bg-surface-hover);
+	--button-destructive-bg: var(--bg-fill-critical);
+	--button-destructive-text: #ffffff;
+	--focus-ring-width: 2px;
+	--focus-ring-color: var(--border-focus);
+	--hover-ring-width: 0px;
+	--hover-ring-color: var(--border-secondary);
+	--hover-transform: none;
+	--hover-shadow: none;
+	--active-scale: 1;
+	--heading-font-weight: 600;
+	--hero-font-weight: 600;
+	--section-title-font-weight: 600;
+	--card-title-font-weight: 600;
+	--button-primary-border: color-mix(in oklch, var(--bg-fill-primary), black 10%);
+	--button-primary-hover-border: color-mix(in oklch, var(--bg-fill-primary), black 10%);
+	--button-primary-background-image: linear-gradient(
+		to bottom,
+		color-mix(in oklch, var(--bg-fill-primary), white 15%),
+		var(--bg-fill-primary)
+	);
+	--button-primary-hover-background-image: linear-gradient(
+		to bottom,
+		color-mix(in oklch, var(--bg-fill-primary), white 30%),
+		var(--bg-fill-primary)
+	);
+	--button-primary-shadow:
+		inset 0 1px 0 color-mix(in oklch, var(--bg-fill-primary), white 30%), 0 1px 2px #0000000d;
+	--button-primary-hover-shadow:
+		inset 0 1px 0 color-mix(in oklch, var(--bg-fill-primary), white 30%), 0 1px 2px #0000000d;
+	--button-destructive-border: color-mix(in oklch, var(--bg-fill-critical), black 10%);
+	--button-destructive-hover-border: color-mix(in oklch, var(--bg-fill-critical), black 10%);
+	--button-destructive-background-image: linear-gradient(
+		to bottom,
+		color-mix(in oklch, var(--bg-fill-critical), white 15%),
+		var(--bg-fill-critical)
+	);
+	--button-destructive-hover-background-image: linear-gradient(
+		to bottom,
+		color-mix(in oklch, var(--bg-fill-critical), white 30%),
+		var(--bg-fill-critical)
+	);
+	--button-destructive-shadow:
+		inset 0 1px 0 color-mix(in oklch, var(--bg-fill-critical), white 30%), 0 1px 2px #0000000d;
+	--button-destructive-hover-shadow:
+		inset 0 1px 0 color-mix(in oklch, var(--bg-fill-critical), white 30%), 0 1px 2px #0000000d;
+	--button-brand-border: color-mix(in oklch, #d43c00, black 10%);
+	--button-brand-hover-border: color-mix(in oklch, #d43c00, black 10%);
+	--button-brand-background-image: linear-gradient(
+		to bottom,
+		color-mix(in oklch, #d43c00, white 1%),
+		#d43c00
+	);
+	--button-brand-hover-background-image: linear-gradient(
+		to bottom,
+		color-mix(in oklch, #d43c00, white 2%),
+		#d43c00
+	);
+	--button-brand-shadow: inset 0 1px 0 color-mix(in oklch, #d43c00, white 30%), 0 1px 2px #0000000d;
+	--button-brand-hover-shadow:
+		inset 0 1px 0 color-mix(in oklch, #d43c00, white 30%), 0 1px 2px #0000000d;
+	--button-brand-bg: #d43c00;
+	--button-brand-text: #ffffff;
+	--button-brand-2-border: color-mix(in oklch, #008090, black 10%);
+	--button-brand-2-hover-border: color-mix(in oklch, #008090, black 10%);
+	--button-brand-2-background-image: linear-gradient(
+		to bottom,
+		color-mix(in oklch, #008090, white 1%),
+		#008090
+	);
+	--button-brand-2-hover-background-image: linear-gradient(
+		to bottom,
+		color-mix(in oklch, #008090, white 2%),
+		#008090
+	);
+	--button-brand-2-shadow:
+		inset 0 1px 0 color-mix(in oklch, #008090, white 30%), 0 1px 2px #0000000d;
+	--button-brand-2-hover-shadow:
+		inset 0 1px 0 color-mix(in oklch, #008090, white 30%), 0 1px 2px #0000000d;
+	--button-brand-2-bg: #008090;
+	--button-brand-2-text: #ffffff;
+	--button-brand-3-border: color-mix(in oklch, #8a00f5, black 10%);
+	--button-brand-3-hover-border: color-mix(in oklch, #8a00f5, black 10%);
+	--button-brand-3-background-image: linear-gradient(
+		to bottom,
+		color-mix(in oklch, #8a00f5, white 3%),
+		#8a00f5
+	);
+	--button-brand-3-hover-background-image: linear-gradient(
+		to bottom,
+		color-mix(in oklch, #8a00f5, white 5%),
+		#8a00f5
+	);
+	--button-brand-3-shadow:
+		inset 0 1px 0 color-mix(in oklch, #8a00f5, white 30%), 0 1px 2px #0000000d;
+	--button-brand-3-hover-shadow:
+		inset 0 1px 0 color-mix(in oklch, #8a00f5, white 30%), 0 1px 2px #0000000d;
+	--button-brand-3-bg: #8a00f5;
+	--button-brand-3-text: #ffffff;
+	--button-brand-4-border: color-mix(in oklch, #0057ff, black 10%);
+	--button-brand-4-hover-border: color-mix(in oklch, #0057ff, black 10%);
+	--button-brand-4-background-image: linear-gradient(
+		to bottom,
+		color-mix(in oklch, #0057ff, white 3%),
+		#0057ff
+	);
+	--button-brand-4-hover-background-image: linear-gradient(
+		to bottom,
+		color-mix(in oklch, #0057ff, white 5%),
+		#0057ff
+	);
+	--button-brand-4-shadow:
+		inset 0 1px 0 color-mix(in oklch, #0057ff, white 30%), 0 1px 2px #0000000d;
+	--button-brand-4-hover-shadow:
+		inset 0 1px 0 color-mix(in oklch, #0057ff, white 30%), 0 1px 2px #0000000d;
+	--button-brand-4-bg: #0057ff;
+	--button-brand-4-text: #ffffff;
+	--button-brand-5-border: color-mix(in oklch, #008700, black 10%);
+	--button-brand-5-hover-border: color-mix(in oklch, #008700, black 10%);
+	--button-brand-5-background-image: linear-gradient(
+		to bottom,
+		color-mix(in oklch, #008700, white 1%),
+		#008700
+	);
+	--button-brand-5-hover-background-image: linear-gradient(
+		to bottom,
+		color-mix(in oklch, #008700, white 2%),
+		#008700
+	);
+	--button-brand-5-shadow:
+		inset 0 1px 0 color-mix(in oklch, #008700, white 30%), 0 1px 2px #0000000d;
+	--button-brand-5-hover-shadow:
+		inset 0 1px 0 color-mix(in oklch, #008700, white 30%), 0 1px 2px #0000000d;
+	--button-brand-5-bg: #008700;
+	--button-brand-5-text: #ffffff;
+	--background: var(--bg-default);
+	--foreground: var(--text-default);
+	--card: var(--bg-surface-default);
+	--card-foreground: var(--text-default);
+	--popover: var(--bg-surface-popover);
+	--popover-foreground: var(--text-default);
+	--primary: var(--bg-fill-primary);
+	--primary-foreground: var(--text-on-fill-primary);
+	--secondary: var(--bg-fill-secondary);
+	--secondary-foreground: var(--text-on-fill-secondary);
+	--muted: var(--bg-muted);
+	--muted-foreground: var(--text-muted);
+	--accent: var(--bg-surface-accent);
+	--accent-foreground: var(--text-on-surface-accent);
+	--destructive: var(--bg-fill-critical);
+	--border: var(--border-default);
+	--input: var(--border-input);
+	--ring: var(--border-focus);
+}

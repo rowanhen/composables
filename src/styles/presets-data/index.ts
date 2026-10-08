@@ -2,11 +2,13 @@ import { defaultPreset, defaultPresetDark } from './default'
 import { brutalist, brutalistDark } from './brutalist'
 import { signalPop, signalPopDark } from './signal-pop'
 import { editorialGrid, editorialGridDark } from './editorial-grid'
+import { kumo, kumoDark } from './kumo'
 
 export { defaultPreset, defaultPresetDark } from './default'
 export { brutalist, brutalistDark } from './brutalist'
 export { signalPop, signalPopDark } from './signal-pop'
 export { editorialGrid, editorialGridDark } from './editorial-grid'
+export { kumo, kumoDark } from './kumo'
 
 export interface PresetDefinition {
 	name: string
@@ -46,6 +48,14 @@ export const presetDefinitions = [
 		description: 'Flat editorial grid, visible rules, and vivid signals.',
 		light: editorialGrid,
 		dark: editorialGridDark,
+	},
+	{
+		name: 'kumo',
+		label: 'Kumo',
+		description:
+			'Cloudflare Kumo-inspired: neutral surfaces, blue actions, and highlighted gradient buttons.',
+		light: kumo,
+		dark: kumoDark,
 	},
 ] satisfies PresetDefinition[]
 

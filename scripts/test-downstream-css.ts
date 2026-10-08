@@ -20,6 +20,7 @@ import { existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'no
 import { join } from 'node:path'
 import { execSync } from 'node:child_process'
 
+import { presetDefinitions } from '../src/styles/presets-data'
 import { defaultPreset, defaultPresetDark } from '../src/styles/presets-data/default'
 import { publicSemanticUtilities } from '../src/styles/tokens/registry'
 
@@ -52,6 +53,10 @@ const requiredTokens: Record<string, string> = {
 	'Component: leading-base': '--leading-base',
 	'Component: border-width-base': '--border-width-base',
 	'Component: button-radius': '--button-radius',
+	'Component: button-height': '--button-height',
+	'Component: button-primary-background-image': '--button-primary-background-image',
+	'Component: button-primary-shadow': '--button-primary-shadow',
+	'Component: button-destructive-bg': '--button-destructive-bg',
 	'Component: transition-default': '--transition-default',
 	'Component: motion-duration-overlay': '--motion-duration-overlay',
 	'Component: motion-duration-disclosure': '--motion-duration-disclosure',
@@ -238,6 +243,22 @@ for (const [label, preset] of [
 		console.log(`  OK       Compiled ${label} default preset value`)
 	}
 }
+
+// Every registered preset must reach the package with its complete generated
+// light/dark token set, including component finishes such as gradients.
+for (const preset of presetDefinitions) {
+	const shippedPath = join(ROOT, 'dist/presets', `${preset.name}.css`)
+	const sourcePath = join(ROOT, 'src/styles/presets', `${preset.name}.css`)
+	if (
+		!existsSync(shippedPath) ||
+		readFileSync(shippedPath, 'utf-8') !== readFileSync(sourcePath, 'utf-8')
+	) {
+		console.error(`  MISSING  Published preset ${preset.name} is absent or out of sync`)
+		failed = true
+	}
+}
+if (!failed)
+	console.log(`  OK       All ${presetDefinitions.length} presets published without token loss`)
 
 // 7. Check the source CSS doesn't contain @import 'tailwindcss'
 

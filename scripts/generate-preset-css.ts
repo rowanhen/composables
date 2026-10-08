@@ -8,12 +8,16 @@
  */
 import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
+import { format as formatWithOxfmt } from 'oxfmt'
 
 import { presetDefinitions } from '../src/styles/presets-data'
 import { shadcnCompatAliases } from '../src/styles/tokens/registry'
 
 const OUT_DIR = join(import.meta.dir, '../src/styles/presets')
 const CHECK_MODE = process.argv.includes('--check')
+const formatterOptions = JSON.parse(
+	readFileSync(join(import.meta.dir, '../.oxfmtrc.json'), 'utf-8'),
+) as Record<string, unknown>
 
 function tokensToCSS(tokens: Record<string, string>, indent: string): string {
 	return Object.entries(tokens)
@@ -68,8 +72,14 @@ for (const file of currentFiles) {
 }
 
 for (const preset of presetDefinitions) {
-	const css = generateCSS(preset)
 	const outPath = join(OUT_DIR, `${preset.name}.css`)
+	const formatted = await formatWithOxfmt(outPath, generateCSS(preset), formatterOptions)
+	if (formatted.errors.length > 0) {
+		for (const error of formatted.errors) console.error(error.message)
+		failed = true
+		continue
+	}
+	const css = formatted.code
 	if (CHECK_MODE) {
 		const current = existsSync(outPath) ? readFileSync(outPath, 'utf-8') : ''
 		if (current !== css) {
@@ -91,5 +101,7 @@ if (CHECK_MODE) {
 	console.log(`✓ ${presetDefinitions.length} preset CSS files are in sync with presets-data.`)
 	process.exit(0)
 }
+
+if (failed) process.exit(1)
 
 console.log(`\nDone - ${presetDefinitions.length} preset CSS files generated.`)

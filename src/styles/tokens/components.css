@@ -25,6 +25,82 @@
 
 		/* ── Component dimensions ──────────────────────────────────────────── */
 		--button-radius: var(--radius-md);
+		--button-radius-xs: var(--button-radius);
+		--button-radius-sm: var(--button-radius);
+		--button-height: calc(var(--spacing) * 7);
+		--button-height-xs: calc(var(--spacing) * 5);
+		--button-height-sm: calc(var(--spacing) * 6);
+		--button-height-lg: calc(var(--spacing) * 8);
+		--button-font-size: var(--text-xs);
+		--button-font-size-xs: var(--text-2xs);
+		--button-font-size-sm: var(--text-xs);
+		--button-gap: var(--spacing);
+
+		/* Optional button finishes. `initial` makes var() use its fallback
+		   on the button, so semantic colours still resolve in scoped themes. */
+		--button-primary-border: transparent;
+		--button-primary-hover-border: initial;
+		--button-primary-background-image: none;
+		--button-primary-hover-background-image: none;
+		--button-primary-shadow: none;
+		--button-primary-hover-shadow: initial;
+		--button-destructive-bg: initial;
+		--button-destructive-text: initial;
+		--button-destructive-border: initial;
+		--button-destructive-hover-border: initial;
+		--button-destructive-background-image: none;
+		--button-destructive-hover-background-image: none;
+		--button-destructive-shadow: none;
+		--button-destructive-hover-shadow: initial;
+		--button-secondary-border: transparent;
+		--button-secondary-hover-bg: initial;
+		--button-secondary-shadow: none;
+		--button-secondary-hover-shadow: initial;
+		--button-outline-shadow: none;
+		--button-outline-hover-shadow: initial;
+		--button-quiet-hover-bg: initial;
+
+		/* Brand buttons can opt into the same filled finishes per colour. */
+		--button-brand-bg: initial;
+		--button-brand-text: initial;
+		--button-brand-border: initial;
+		--button-brand-hover-border: initial;
+		--button-brand-background-image: none;
+		--button-brand-hover-background-image: none;
+		--button-brand-shadow: none;
+		--button-brand-hover-shadow: initial;
+		--button-brand-2-bg: initial;
+		--button-brand-2-text: initial;
+		--button-brand-2-border: initial;
+		--button-brand-2-hover-border: initial;
+		--button-brand-2-background-image: none;
+		--button-brand-2-hover-background-image: none;
+		--button-brand-2-shadow: none;
+		--button-brand-2-hover-shadow: initial;
+		--button-brand-3-bg: initial;
+		--button-brand-3-text: initial;
+		--button-brand-3-border: initial;
+		--button-brand-3-hover-border: initial;
+		--button-brand-3-background-image: none;
+		--button-brand-3-hover-background-image: none;
+		--button-brand-3-shadow: none;
+		--button-brand-3-hover-shadow: initial;
+		--button-brand-4-bg: initial;
+		--button-brand-4-text: initial;
+		--button-brand-4-border: initial;
+		--button-brand-4-hover-border: initial;
+		--button-brand-4-background-image: none;
+		--button-brand-4-hover-background-image: none;
+		--button-brand-4-shadow: none;
+		--button-brand-4-hover-shadow: initial;
+		--button-brand-5-bg: initial;
+		--button-brand-5-text: initial;
+		--button-brand-5-border: initial;
+		--button-brand-5-hover-border: initial;
+		--button-brand-5-background-image: none;
+		--button-brand-5-hover-background-image: none;
+		--button-brand-5-shadow: none;
+		--button-brand-5-hover-shadow: initial;
 		--card-radius: var(--radius-lg);
 		--card-padding: calc(var(--spacing) * 4);
 		--input-radius: var(--radius-md);

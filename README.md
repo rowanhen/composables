@@ -235,6 +235,14 @@ Editorial Grid:
 @import '@leitware/composables/presets/editorial-grid.css';
 ```
 
+**Kumo**
+
+```css
+@import '@fontsource-variable/inter';
+@import '@leitware/composables/styles.css';
+@import '@leitware/composables/presets/kumo.css';
+```
+
 The variable entrypoints include their preset weight ranges. The explicit IBM Plex files load normal weights 400–700; add italic entrypoints only if your interface uses them. The same package paths can instead be loaded as side-effect imports from an application entry file, for example `import '@fontsource-variable/inter'` or `import '@fontsource/ibm-plex-sans/600.css'`.
 
 ---
@@ -370,18 +378,38 @@ export default function RootLayout({ children }) {
 
 The default theme is included in `styles.css`. Alternative presets are available as standalone CSS files:
 
-| Preset             | Vibe                                        | Fonts                                          |
-| ------------------ | ------------------------------------------- | ---------------------------------------------- |
-| **Default**        | Clean neutral system, works everywhere      | Inter + Bricolage Grotesque                    |
-| **Brutalist**      | Bold, high-contrast, raw aesthetic          | Space Grotesk + JetBrains Mono                 |
-| **Signal Pop**     | Bright consumer-tech, modular and graphic   | IBM Plex Sans + Space Grotesk + JetBrains Mono |
-| **Editorial Grid** | Flat technical catalogue with vivid signals | Inter + Bricolage Grotesque                    |
+| Preset             | Vibe                                                 | Fonts                                          |
+| ------------------ | ---------------------------------------------------- | ---------------------------------------------- |
+| **Default**        | Clean neutral system, works everywhere               | Inter + Bricolage Grotesque                    |
+| **Brutalist**      | Bold, high-contrast, raw aesthetic                   | Space Grotesk + JetBrains Mono                 |
+| **Signal Pop**     | Bright consumer-tech, modular and graphic            | IBM Plex Sans + Space Grotesk + JetBrains Mono |
+| **Editorial Grid** | Flat technical catalogue with vivid signals          | Inter + Bricolage Grotesque                    |
+| **Kumo**           | Cloudflare-inspired surfaces and highlighted buttons | Inter                                          |
 
 ```css
 /* Optional: use exactly one alternative preset after styles.css */
 @import '@leitware/composables/styles.css';
 @import '@leitware/composables/presets/brutalist.css';
 ```
+
+Kumo takes its cues from [Cloudflare's Kumo](https://kumo-ui.com/components/button/):
+neutral light/dark surfaces, blue primary actions, an orange brand accent, and
+solid red destructive buttons. Primary (`variant="default"`) and destructive
+buttons have darker borders, vertical gradients, and inset top highlights.
+All five brand button variants use the same finish in their own colours; alerts
+and badges continue to use the coordinated tinted surfaces.
+Its default and large buttons are 36px and 40px tall; small and extra-small
+buttons are 26px and 20px tall. The preset also styles fields, cards, status
+surfaces, and the sidebar through the existing token system.
+
+Button finishes can be tuned with `--button-primary-border`,
+`--button-primary-background-image`, `--button-primary-hover-background-image`,
+and `--button-primary-shadow`, with equivalent `--button-destructive-*`, `--button-brand-*`, and
+`--button-brand-2-*` through `--button-brand-5-*` tokens.
+Destructive fill and text use `--button-destructive-bg` and
+`--button-destructive-text`, independently of the tinted critical surfaces used
+by alerts and badges. Button sizes use `--button-height`, `--button-height-xs`,
+`--button-height-sm`, and `--button-height-lg`; icon buttons use the same heights.
 
 ### Creating a Preset
 
