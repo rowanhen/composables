@@ -3,12 +3,14 @@ import { brutalist, brutalistDark } from './brutalist'
 import { signalPop, signalPopDark } from './signal-pop'
 import { editorialGrid, editorialGridDark } from './editorial-grid'
 import { kumo, kumoDark } from './kumo'
+import { oqita, oqitaDark } from './oqita'
 
 export { defaultPreset, defaultPresetDark } from './default'
 export { brutalist, brutalistDark } from './brutalist'
 export { signalPop, signalPopDark } from './signal-pop'
 export { editorialGrid, editorialGridDark } from './editorial-grid'
 export { kumo, kumoDark } from './kumo'
+export { oqita, oqitaDark } from './oqita'
 
 export interface PresetDefinition {
 	name: string
@@ -56,6 +58,14 @@ export const presetDefinitions = [
 			'Cloudflare Kumo-inspired: neutral surfaces, blue actions, and highlighted gradient buttons.',
 		light: kumo,
 		dark: kumoDark,
+	},
+	{
+		name: 'oqita',
+		label: 'Oqita',
+		description:
+			'Friendly and soft: expressive type, compact pill controls, quiet surfaces, and cobalt actions.',
+		light: oqita,
+		dark: oqitaDark,
 	},
 ] satisfies PresetDefinition[]
 
