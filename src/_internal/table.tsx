@@ -7,7 +7,10 @@ function Table({ className, ...props }: React.ComponentProps<'table'>) {
 		<div data-slot="table-container" className="relative w-full overflow-x-auto">
 			<table
 				data-slot="table"
-				className={cn('w-full caption-bottom text-xs', className)}
+				className={cn(
+					'w-full caption-bottom text-(length:--body-font-size) leading-(--body-line-height)',
+					className,
+				)}
 				{...props}
 			/>
 		</div>
@@ -15,7 +18,13 @@ function Table({ className, ...props }: React.ComponentProps<'table'>) {
 }
 
 function TableHeader({ className, ...props }: React.ComponentProps<'thead'>) {
-	return <thead data-slot="table-header" className={cn('[&_tr]:border-b', className)} {...props} />
+	return (
+		<thead
+			data-slot="table-header"
+			className={cn('[&_tr]:border-b-(length:--rule-width)', className)}
+			{...props}
+		/>
+	)
 }
 
 function TableBody({ className, ...props }: React.ComponentProps<'tbody'>) {
@@ -32,7 +41,10 @@ function TableFooter({ className, ...props }: React.ComponentProps<'tfoot'>) {
 	return (
 		<tfoot
 			data-slot="table-footer"
-			className={cn('bg-muted/50 border-t font-medium [&>tr]:last:border-b-0', className)}
+			className={cn(
+				'bg-muted/50 border-t-(length:--rule-width) font-medium [&>tr]:last:border-b-0',
+				className,
+			)}
 			{...props}
 		/>
 	)
@@ -42,7 +54,10 @@ function TableRow({ className, ...props }: React.ComponentProps<'tr'>) {
 	return (
 		<tr
 			data-slot="table-row"
-			className={cn('hover:bg-muted/50 data-[state=selected]:bg-muted border-b', className)}
+			className={cn(
+				'hover:bg-muted/50 data-[state=selected]:bg-muted border-b-(length:--rule-width)',
+				className,
+			)}
 			{...props}
 		/>
 	)
@@ -53,7 +68,7 @@ function TableHead({ className, ...props }: React.ComponentProps<'th'>) {
 		<th
 			data-slot="table-head"
 			className={cn(
-				'text-foreground h-10 px-2 text-left align-middle font-medium whitespace-nowrap [&:has([role=checkbox])]:pr-0',
+				'text-(color:--label-color) text-(length:--label-font-size) leading-(--text-xs--line-height) [text-transform:var(--label-text-transform)] h-10 px-2 text-left align-middle font-medium whitespace-nowrap [&:has([role=checkbox])]:pr-0',
 				className,
 			)}
 			{...props}

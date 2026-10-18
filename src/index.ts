@@ -369,6 +369,7 @@ export {
 	SelectGroup,
 	SelectItem,
 	SelectLabel,
+	SelectRoot,
 	SelectTrigger,
 	SelectValue,
 	type SelectOption,
@@ -405,7 +406,6 @@ export {
 	SidebarMenuBadge,
 	SidebarMenuButton,
 	SidebarMenuItem,
-	SidebarMenuSkeleton,
 	SidebarMenuSub,
 	SidebarMenuSubButton,
 	SidebarMenuSubItem,
@@ -430,6 +430,7 @@ export {
 export { Slider } from './opinionated/slider'
 export { Toaster } from './opinionated/sonner'
 export { Spacer, type SpacerProps } from './opinionated/spacer'
+export { Spinner, spinnerVariants } from './opinionated/spinner'
 export { Stack, type StackProps } from './opinionated/stack'
 export { Switch } from './opinionated/switch'
 

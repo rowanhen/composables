@@ -4,7 +4,7 @@ import { cva, type VariantProps } from 'class-variance-authority'
 import { cn, FOCUS_RING, HOVER_RING } from '../lib/utils'
 
 const toggleVariants = cva(
-	`${FOCUS_RING} ${HOVER_RING} hover:text-foreground aria-pressed:bg-muted data-[state=on]:bg-muted gap-1 rounded-md text-xs font-medium transition-[opacity,box-shadow] [&_svg:not([class*='size-'])]:size-3.5 group/toggle inline-flex items-center justify-center whitespace-nowrap outline-none disabled:pointer-events-none disabled:opacity-disabled [&_svg]:pointer-events-none [&_svg]:shrink-0`,
+	`${FOCUS_RING} ${HOVER_RING} hover:text-foreground aria-pressed:bg-muted data-[state=on]:bg-muted gap-1 rounded-md text-(length:--control-font-size) leading-(--text-xs--line-height) font-medium transition-[opacity,box-shadow] [&_svg:not([class*='size-'])]:size-3.5 group/toggle inline-flex items-center justify-center whitespace-nowrap outline-none disabled:pointer-events-none disabled:opacity-disabled [&_svg]:pointer-events-none [&_svg]:shrink-0`,
 	{
 		variants: {
 			variant: {

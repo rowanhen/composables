@@ -23,6 +23,8 @@ export function ButtonsShowcase() {
 						<Button variant="secondary">Secondary</Button>
 						<Button variant="outline">Outline</Button>
 						<Button variant="ghost">Ghost</Button>
+						<Button variant="neutral">Neutral</Button>
+						<Button variant="inverse">Inverse</Button>
 						<Button variant="destructive">Destructive</Button>
 						<Button variant="success">Success</Button>
 						<Button variant="warning">Warning</Button>

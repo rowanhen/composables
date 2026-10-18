@@ -126,6 +126,12 @@ export const semanticColorTokens: SemanticColorToken[] = [
 		label: 'surface-hover',
 	},
 	{
+		cssVar: '--bg-surface-input',
+		reference: '{neutral.200}',
+		category: 'bg',
+		label: 'surface-input',
+	},
+	{
 		cssVar: '--bg-fill-default',
 		reference: '{neutral.100}',
 		category: 'bg',
@@ -136,6 +142,12 @@ export const semanticColorTokens: SemanticColorToken[] = [
 		reference: '{neutral.1000}',
 		category: 'bg',
 		label: 'fill-primary',
+	},
+	{
+		cssVar: '--bg-fill-primary-hover',
+		reference: '{neutral.900}',
+		category: 'bg',
+		label: 'fill-primary-hover',
 	},
 	{ cssVar: '--bg-fill-brand', reference: '{pink.800}', category: 'bg', label: 'fill-brand' },
 	{
@@ -180,6 +192,18 @@ export const semanticColorTokens: SemanticColorToken[] = [
 		label: 'fill-secondary',
 	},
 	{
+		cssVar: '--bg-fill-secondary-hover',
+		reference: '{neutral.900}',
+		category: 'bg',
+		label: 'fill-secondary-hover',
+	},
+	{
+		cssVar: '--bg-fill-selected',
+		reference: '{neutral.1000}',
+		category: 'bg',
+		label: 'fill-selected',
+	},
+	{
 		cssVar: '--bg-fill-secondary-inverse',
 		reference: '{base.white}',
 		category: 'bg',
@@ -219,6 +243,12 @@ export const semanticColorTokens: SemanticColorToken[] = [
 		reference: '{neutral.1000}',
 		category: 'text',
 		label: 'on-fill-secondary',
+	},
+	{
+		cssVar: '--text-on-fill-selected',
+		reference: '{neutral.0}',
+		category: 'text',
+		label: 'on-fill-selected',
 	},
 	{
 		cssVar: '--text-on-surface-accent',
@@ -345,6 +375,8 @@ export const tailwindColorAliases: TailwindColorAlias[] = [
 	{ cssVar: '--color-field', target: '--border-secondary' },
 	{ cssVar: '--color-focus', target: '--border-focus' },
 	{ cssVar: '--color-fill-critical', target: '--bg-fill-critical' },
+	{ cssVar: '--color-selected', target: '--bg-fill-selected' },
+	{ cssVar: '--color-selected-foreground', target: '--text-on-fill-selected' },
 	{ cssVar: '--color-sidebar-stroke', target: '--border-default' },
 	{ cssVar: '--color-chart-1', target: '--chart-1' },
 	{ cssVar: '--color-chart-2', target: '--chart-2' },
@@ -367,6 +399,7 @@ export const tailwindColorAliases: TailwindColorAlias[] = [
 	{ cssVar: '--color-surface-critical', target: '--bg-surface-critical' },
 	{ cssVar: '--color-surface-info', target: '--bg-surface-info' },
 	{ cssVar: '--color-surface-emphasis', target: '--bg-surface-emphasis' },
+	{ cssVar: '--color-surface-input', target: '--bg-surface-input' },
 	{ cssVar: '--color-surface-brand', target: '--bg-surface-brand' },
 	{ cssVar: '--color-surface-brand-2', target: '--bg-surface-brand-2' },
 	{ cssVar: '--color-surface-brand-3', target: '--bg-surface-brand-3' },

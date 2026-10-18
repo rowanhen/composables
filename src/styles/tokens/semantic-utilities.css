@@ -93,12 +93,20 @@
 		background-color: var(--bg-surface-hover);
 	}
 
+	.bg-surface-input {
+		background-color: var(--bg-surface-input);
+	}
+
 	.bg-fill-default {
 		background-color: var(--bg-fill-default);
 	}
 
 	.bg-fill-primary {
 		background-color: var(--bg-fill-primary);
+	}
+
+	.bg-fill-primary-hover {
+		background-color: var(--bg-fill-primary-hover);
 	}
 
 	.bg-fill-brand {
@@ -149,6 +157,14 @@
 		background-color: var(--bg-fill-secondary);
 	}
 
+	.bg-fill-secondary-hover {
+		background-color: var(--bg-fill-secondary-hover);
+	}
+
+	.bg-fill-selected {
+		background-color: var(--bg-fill-selected);
+	}
+
 	.bg-fill-secondary-inverse {
 		background-color: var(--bg-fill-secondary-inverse);
 	}
@@ -183,6 +199,10 @@
 
 	.text-on-fill-secondary {
 		color: var(--text-on-fill-secondary);
+	}
+
+	.text-on-fill-selected {
+		color: var(--text-on-fill-selected);
 	}
 
 	.text-on-surface-accent {

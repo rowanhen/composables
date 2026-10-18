@@ -124,7 +124,7 @@ function ComboboxItem({ className, children, ...props }: ComboboxPrimitive.Item.
 		<ComboboxPrimitive.Item
 			data-slot="combobox-item"
 			className={cn(
-				"data-highlighted:bg-accent data-highlighted:text-accent-foreground not-data-[variant=destructive]:data-highlighted:**:text-accent-foreground min-h-7 gap-2 rounded-md px-2 py-1 text-xs/relaxed [&_svg:not([class*='size-'])]:size-3.5 relative flex w-full cursor-default items-center outline-none select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-disabled [&_svg]:pointer-events-none [&_svg]:shrink-0",
+				"data-highlighted:bg-accent data-highlighted:text-accent-foreground not-data-[variant=destructive]:data-highlighted:**:text-accent-foreground min-h-7 gap-2 rounded-md px-2 py-1 text-(length:--control-font-size) leading-relaxed [&_svg:not([class*='size-'])]:size-3.5 relative flex w-full cursor-default items-center outline-none select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-disabled [&_svg]:pointer-events-none [&_svg]:shrink-0",
 				FOCUS_RING,
 				className,
 			)}
@@ -193,7 +193,7 @@ function ComboboxChips({
 			className={cn(
 				GROUP_FOCUS_RING,
 				HOVER_RING,
-				'bg-surface-field/20 dark:bg-surface-field/30 border-field flex min-h-(--input-height) flex-wrap items-center gap-1 rounded-(--input-radius) border bg-clip-padding px-2 py-0.5 text-xs/relaxed has-data-[slot=combobox-chip]:px-1',
+				'bg-surface-input border-field flex min-h-(--control-size-md) flex-wrap items-center gap-1 rounded-(--input-radius) border bg-clip-padding px-2 py-0.5 text-(length:--control-font-size) leading-relaxed has-data-[slot=combobox-chip]:px-1',
 				className,
 			)}
 			{...props}

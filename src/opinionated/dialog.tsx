@@ -1,4 +1,5 @@
 import type { Dialog as DialogPrimitiveBase } from '@base-ui/react/dialog'
+import type { VariantProps } from 'class-variance-authority'
 import type * as React from 'react'
 
 import {
@@ -12,6 +13,7 @@ import {
 	Dialog as DialogPrimitive,
 	DialogTitle,
 	DialogTrigger,
+	type dialogContentVariants,
 } from '../_internal/dialog'
 
 /**
@@ -52,6 +54,8 @@ export interface DialogProps extends Omit<DialogPrimitiveBase.Root.Props, 'child
 	footer?: React.ReactNode
 	/** Whether to show the built-in close (×) button. @default true */
 	showCloseButton?: boolean
+	/** `responsive` docks the dialog to the bottom of the screen on small viewports. @default 'center' */
+	placement?: VariantProps<typeof dialogContentVariants>['placement']
 	className?: string
 }
 
@@ -62,6 +66,7 @@ function Dialog({
 	children,
 	footer,
 	showCloseButton = true,
+	placement,
 	className,
 	open,
 	onOpenChange,
@@ -77,7 +82,11 @@ function Dialog({
 		return (
 			<DialogPrimitive open={open} onOpenChange={onOpenChange} {...dialogProps}>
 				{trigger && <DialogTrigger>{trigger}</DialogTrigger>}
-				<DialogContent className={className} showCloseButton={showCloseButton}>
+				<DialogContent
+					className={className}
+					placement={placement}
+					showCloseButton={showCloseButton}
+				>
 					{(title || description) && (
 						<DialogHeader>
 							{title && <DialogTitle>{title}</DialogTitle>}

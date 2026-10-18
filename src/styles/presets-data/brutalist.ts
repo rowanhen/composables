@@ -24,6 +24,7 @@ export const brutalist: Record<string, string> = {
 	'--bg-surface-popover': '#FFFFFFFF',
 	'--bg-surface-accent': '#F0F0F0FF',
 	'--bg-surface-field': '#0A0A0AFF',
+	'--bg-surface-input': '#0A0A0A33', // surface-field at 20%
 	'--bg-surface-info': '#E8F0F8FF',
 	'--bg-surface-success': '#E8F4E8FF',
 	'--bg-surface-warning': '#FBF4E0FF',
@@ -40,6 +41,8 @@ export const brutalist: Record<string, string> = {
 	'--bg-surface-hover': '#F0F0F0FF',
 	'--bg-fill-default': '#FFFFFFFF',
 	'--bg-fill-primary': '#0A0A0AFF',
+	'--bg-fill-primary-hover': '#0A0A0AFF',
+	'--bg-fill-selected': '#0A0A0AFF',
 	'--bg-fill-brand': '#CC2200FF',
 	'--bg-fill-brand-2': '#111111FF',
 	'--bg-fill-brand-3': '#FFD700FF',
@@ -52,6 +55,7 @@ export const brutalist: Record<string, string> = {
 	'--bg-fill-emphasis': '#0A0A0AFF',
 	'--bg-fill-transparent': '#00000010',
 	'--bg-fill-secondary': '#F0F0F0FF',
+	'--bg-fill-secondary-hover': '#F0F0F0FF',
 	'--bg-fill-secondary-inverse': '#FFFFFFFF',
 	'--text-default': '#0A0A0AFF',
 	'--text-secondary': '#2E2E2EFF',
@@ -59,6 +63,7 @@ export const brutalist: Record<string, string> = {
 	'--text-disabled': '#AAAAAAFF',
 	'--text-inverse': '#F8F8F8FF',
 	'--text-on-fill-primary': '#FFFFFFFF',
+	'--text-on-fill-selected': '#FFFFFFFF',
 	'--text-on-fill-brand': '#FFFFFFFF',
 	'--text-on-fill-secondary': '#0A0A0AFF',
 	'--text-on-surface-accent': '#0A0A0AFF',
@@ -149,12 +154,13 @@ export const brutalist: Record<string, string> = {
 
 	// ── Phase 1a: Component tokens ────────────────────────────────────────
 	// Zero radius everywhere - things are what they are
-	'--button-radius': '0px',
-	'--card-radius': '0px',
+	'--button-radius': 'var(--radius)',
+	'--card-radius': 'var(--radius)',
 	'--card-padding': 'calc(var(--spacing) * 6)',
-	'--input-radius': '0px',
-	'--input-height': 'calc(var(--spacing) * 10)',
-	'--badge-radius': '0px',
+	'--input-radius': 'var(--radius)',
+	'--control-size-md': 'calc(var(--spacing) * 10)',
+	'--button-height': 'calc(var(--spacing) * 7)',
+	'--badge-radius': 'var(--radius)',
 
 	// ── Phase 1b: Motion - instant. No decorative animation. ─────────────
 	'--motion-duration-fast': '0ms',
@@ -174,20 +180,6 @@ export const brutalist: Record<string, string> = {
 	'--hover-transform': 'none',
 	'--hover-shadow': 'none',
 	'--active-scale': '0.98',
-
-	// ── Phase 1c: Typography - heavy, structural ──────────────────────────
-	'--heading-font-weight': '700',
-	'--heading-letter-spacing': 'var(--tracking-tight)',
-	'--body-letter-spacing': 'var(--tracking-normal)',
-	'--hero-font-size': 'var(--text-6xl)',
-	'--hero-font-weight': '700',
-	'--hero-letter-spacing': 'var(--tracking-tight)',
-	'--section-title-size': 'var(--text-3xl)',
-	'--section-title-font-weight': '700',
-	'--section-title-letter-spacing': 'var(--tracking-tight)',
-	'--card-title-size': 'var(--text-base)',
-	'--card-title-font-weight': '700',
-	'--card-title-letter-spacing': 'var(--tracking-normal)',
 }
 
 export const brutalistDark: Record<string, string> = {
@@ -199,6 +191,7 @@ export const brutalistDark: Record<string, string> = {
 	'--bg-surface-popover': '#141414FF',
 	'--bg-surface-accent': '#1A1A1AFF',
 	'--bg-surface-field': '#C0C0C0FF',
+	'--bg-surface-input': '#C0C0C04D', // surface-field at 30%
 	'--bg-surface-info': '#0A1828FF',
 	'--bg-surface-success': '#0A180AFF',
 	'--bg-surface-warning': '#1E1406FF',
@@ -215,6 +208,8 @@ export const brutalistDark: Record<string, string> = {
 	'--bg-surface-hover': '#1A1A1AFF',
 	'--bg-fill-default': '#0A0A0AFF',
 	'--bg-fill-primary': '#F0F0F0FF',
+	'--bg-fill-primary-hover': '#F0F0F0FF',
+	'--bg-fill-selected': '#F0F0F0FF',
 	'--bg-fill-brand': '#FF3322FF',
 	'--bg-fill-brand-2': '#F0F0F0FF',
 	'--bg-fill-brand-3': '#FFE033FF',
@@ -227,6 +222,7 @@ export const brutalistDark: Record<string, string> = {
 	'--bg-fill-emphasis': '#F0F0F0FF',
 	'--bg-fill-transparent': '#FFFFFF10',
 	'--bg-fill-secondary': '#1A1A1AFF',
+	'--bg-fill-secondary-hover': '#1A1A1AFF',
 	'--bg-fill-secondary-inverse': '#0A0A0AFF',
 	'--text-default': '#F0F0F0FF',
 	'--text-secondary': '#C0C0C0FF',
@@ -234,6 +230,7 @@ export const brutalistDark: Record<string, string> = {
 	'--text-disabled': '#444444FF',
 	'--text-inverse': '#0A0A0AFF',
 	'--text-on-fill-primary': '#0A0A0AFF',
+	'--text-on-fill-selected': '#0A0A0AFF',
 	'--text-on-fill-brand': '#000000FF',
 	'--text-on-fill-secondary': '#F0F0F0FF',
 	'--text-on-surface-accent': '#F0F0F0FF',

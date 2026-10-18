@@ -1,7 +1,10 @@
+import type { VariantProps } from 'class-variance-authority'
+
 import {
 	ProgressIndicator,
 	ProgressLabel,
 	Progress as ProgressPrimitive,
+	progressIndicatorVariants,
 	ProgressTrack,
 	ProgressValue,
 } from '../_internal/progress'
@@ -9,6 +12,8 @@ import {
 export interface ProgressProps {
 	/** Progress value (0-100) */
 	value: number
+	/** Visual style variant. @default 'default' */
+	variant?: VariantProps<typeof progressIndicatorVariants>['variant']
 	/** Optional label text */
 	label?: string
 	/** Whether to display the numeric value */
@@ -27,7 +32,7 @@ export interface ProgressProps {
  * <Progress value={100} label="Complete" />
  * ```
  */
-function Progress({ value, label, showValue = false, className }: ProgressProps) {
+function Progress({ value, variant, label, showValue = false, className }: ProgressProps) {
 	return (
 		<ProgressPrimitive value={value} className={className}>
 			{(label || showValue) && (
@@ -37,7 +42,7 @@ function Progress({ value, label, showValue = false, className }: ProgressProps)
 				</div>
 			)}
 			<ProgressTrack>
-				<ProgressIndicator />
+				<ProgressIndicator variant={variant} />
 			</ProgressTrack>
 		</ProgressPrimitive>
 	)

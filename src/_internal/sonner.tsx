@@ -25,15 +25,15 @@ const Toaster = ({ ...props }: ToasterProps) => {
 				unstyled: true,
 				classNames: {
 					toast:
-						'flex items-center gap-2 rounded-lg border bg-popover p-3 text-xs font-medium text-popover-foreground shadow-md w-[var(--width)]',
-					title: 'text-xs font-medium leading-relaxed',
+						'flex items-center gap-2 rounded-lg border bg-popover p-3 text-(length:--body-font-size) leading-(--body-line-height) font-medium text-popover-foreground shadow-md w-[var(--width)]',
+					title: 'text-(length:--body-font-size) font-medium leading-relaxed',
 					description: 'text-2xs font-normal leading-relaxed text-muted-foreground',
 					content: 'flex flex-col gap-0.5',
 					icon: 'flex size-4 shrink-0 items-center justify-center',
 					actionButton:
-						'ml-auto h-6 shrink-0 cursor-pointer rounded-md bg-primary px-2.5 text-xs font-medium text-primary-foreground',
+						'ml-auto h-6 shrink-0 cursor-pointer rounded-md bg-primary px-2.5 text-(length:--body-font-size) leading-(--body-line-height) font-medium text-primary-foreground',
 					cancelButton:
-						'ml-auto h-6 shrink-0 cursor-pointer rounded-md bg-muted px-2.5 text-xs font-medium text-muted-foreground',
+						'ml-auto h-6 shrink-0 cursor-pointer rounded-md bg-muted px-2.5 text-(length:--body-font-size) leading-(--body-line-height) font-medium text-muted-foreground',
 					success:
 						'bg-surface-success border-stroke-success text-success [&_[data-icon]>svg]:text-icon-success [&_[data-title]]:text-success [&_[data-description]]:text-success/90',
 					error:

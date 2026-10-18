@@ -9,14 +9,14 @@ function Checkbox({ className, ...props }: CheckboxPrimitive.Root.Props) {
 			className={cn(
 				FOCUS_RING,
 				HOVER_RING,
-				'border-field dark:bg-surface-field/30 data-checked:bg-primary data-checked:text-primary-foreground dark:data-checked:bg-primary data-checked:border-primary aria-invalid:aria-checked:border-primary flex size-4 items-center justify-center rounded-sm border transition-shadow group-has-disabled/field:opacity-disabled peer relative shrink-0 outline-none after:absolute after:-inset-x-3 after:-inset-y-2 disabled:cursor-not-allowed disabled:opacity-disabled',
+				'border-(color:--choice-border-color) not-data-checked:hover:bg-(--bg-surface-hover) dark:bg-surface-field/30 data-checked:bg-selected data-checked:text-selected-foreground dark:data-checked:bg-selected data-checked:border-selected aria-invalid:aria-checked:border-selected flex size-(--choice-size) items-center justify-center rounded-(--checkbox-radius) border transition-shadow group-has-disabled/field:opacity-disabled peer relative shrink-0 outline-none after:absolute after:-inset-x-3 after:-inset-y-2 disabled:cursor-not-allowed disabled:opacity-disabled',
 				className,
 			)}
 			{...props}
 		>
 			<CheckboxPrimitive.Indicator
 				data-slot="checkbox-indicator"
-				className="[&>svg]:size-3.5 grid place-content-center text-current transition-none"
+				className="size-full [&>svg]:size-full [&>svg]:stroke-[3] grid place-content-center text-current transition-none"
 			>
 				<CheckIcon />
 			</CheckboxPrimitive.Indicator>

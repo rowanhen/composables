@@ -52,18 +52,6 @@ function Skeleton({
 	style,
 	...props
 }: SkeletonProps) {
-	const sizeStyles = {
-		sm: 'h-4',
-		md: 'h-6',
-		lg: 'h-8',
-	}
-
-	const variantStyles = {
-		rectangle: 'rounded-md',
-		circle: 'rounded-full',
-		text: 'rounded',
-	}
-
 	const computedStyle: React.CSSProperties = {
 		...style,
 		...(width !== undefined && {
@@ -76,7 +64,9 @@ function Skeleton({
 
 	return (
 		<SkeletonPrimitive
-			className={cn(variantStyles[variant], size && !height && sizeStyles[size], className)}
+			variant={variant}
+			size={height === undefined ? size : undefined}
+			className={className}
 			style={computedStyle}
 			{...props}
 		/>

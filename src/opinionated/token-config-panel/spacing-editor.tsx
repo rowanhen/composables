@@ -96,13 +96,31 @@ export const controlShapeTokens: FactorToken[] = [
 
 export const controlSizeTokens: FactorToken[] = [
 	{
-		cssVar: '--input-height',
-		label: 'Input height',
+		cssVar: '--control-size-sm',
+		label: 'Control height (sm)',
+		base: '--spacing',
+		defaultFactor: 6,
+		min: 4,
+		max: 14,
+		step: 1,
+	},
+	{
+		cssVar: '--control-size-md',
+		label: 'Control height (md)',
 		base: '--spacing',
 		defaultFactor: 7,
 		min: 5,
 		max: 14,
-		step: 0.5,
+		step: 1,
+	},
+	{
+		cssVar: '--control-size-lg',
+		label: 'Control height (lg)',
+		base: '--spacing',
+		defaultFactor: 8,
+		min: 6,
+		max: 16,
+		step: 1,
 	},
 	{
 		cssVar: '--card-padding',

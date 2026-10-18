@@ -28,7 +28,7 @@ export interface FormCheckboxProps extends Omit<
 	description?: string
 	/** Error message(s). Accepts a string, array, or react-hook-form error array. */
 	error?: string | string[] | Array<{ message?: string } | undefined>
-	/** Controlled checked state. @default false */
+	/** Controlled checked state. Omit (or use `defaultChecked`) for uncontrolled. */
 	checked?: boolean
 	/** Called when the user toggles the checkbox. */
 	onCheckedChange?: (checked: boolean) => void
@@ -49,7 +49,7 @@ function FormCheckbox({
 	label,
 	description,
 	error,
-	checked = false,
+	checked,
 	onCheckedChange,
 	disabled = false,
 	required = false,

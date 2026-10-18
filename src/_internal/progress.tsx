@@ -1,6 +1,24 @@
 import { Progress as ProgressPrimitive } from '@base-ui/react/progress'
+import { cva, type VariantProps } from 'class-variance-authority'
 
 import { cn } from '../lib/utils'
+
+const progressIndicatorVariants = cva(
+	'h-full rounded-full transition-[width] duration-normal ease-out',
+	{
+		variants: {
+			variant: {
+				default: 'bg-primary',
+				success: 'bg-fill-success',
+				warning: 'bg-fill-warning',
+				destructive: 'bg-fill-critical',
+			},
+		},
+		defaultVariants: {
+			variant: 'default',
+		},
+	},
+)
 
 function Progress({ className, value, ...props }: ProgressPrimitive.Root.Props) {
 	return (
@@ -17,20 +35,25 @@ function ProgressTrack({ className, ...props }: ProgressPrimitive.Track.Props) {
 	return (
 		<ProgressPrimitive.Track
 			data-slot="progress-track"
-			className={cn('relative h-2 w-full overflow-hidden rounded-full bg-muted', className)}
+			className={cn(
+				'relative h-2 w-full overflow-hidden rounded-full bg-muted has-data-[variant=success]:bg-surface-success has-data-[variant=warning]:bg-surface-warning has-data-[variant=destructive]:bg-surface-critical',
+				className,
+			)}
 			{...props}
 		/>
 	)
 }
 
-function ProgressIndicator({ className, ...props }: ProgressPrimitive.Indicator.Props) {
+function ProgressIndicator({
+	className,
+	variant,
+	...props
+}: ProgressPrimitive.Indicator.Props & VariantProps<typeof progressIndicatorVariants>) {
 	return (
 		<ProgressPrimitive.Indicator
 			data-slot="progress-indicator"
-			className={cn(
-				'h-full rounded-full bg-primary transition-[width] duration-normal ease-out',
-				className,
-			)}
+			data-variant={variant ?? 'default'}
+			className={cn(progressIndicatorVariants({ variant, className }))}
 			{...props}
 		/>
 	)
@@ -56,4 +79,11 @@ function ProgressValue({ className, ...props }: ProgressPrimitive.Value.Props) {
 	)
 }
 
-export { Progress, ProgressTrack, ProgressIndicator, ProgressLabel, ProgressValue }
+export {
+	Progress,
+	ProgressTrack,
+	ProgressIndicator,
+	progressIndicatorVariants,
+	ProgressLabel,
+	ProgressValue,
+}

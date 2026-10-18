@@ -80,6 +80,17 @@ export function ProgressShowcase() {
 					</VStack>
 				</ShowcaseGroup>
 
+				<ShowcaseGroup label="Variants">
+					<VStack gap={3} className="max-w-md">
+						{(['default', 'success', 'warning', 'destructive'] as const).map((variant) => (
+							<Progress key={variant} value={60}>
+								<ProgressTrack>
+									<ProgressIndicator variant={variant} />
+								</ProgressTrack>
+							</Progress>
+						))}
+					</VStack>
+				</ShowcaseGroup>
 				<ShowcaseGroup label="Animated">
 					<div className="max-w-md">
 						<Progress value={animated}>

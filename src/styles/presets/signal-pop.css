@@ -17,6 +17,7 @@
 	--bg-surface-popover: #ffffffff;
 	--bg-surface-accent: #ff8bd3ff;
 	--bg-surface-field: #e8eef2ff;
+	--bg-surface-input: #e8eef233;
 	--bg-surface-info: #d7f0faff;
 	--bg-surface-success: #def6d8ff;
 	--bg-surface-warning: #ffe8b5ff;
@@ -33,6 +34,8 @@
 	--bg-surface-hover: #e7eff7ff;
 	--bg-fill-default: #f4f5f1ff;
 	--bg-fill-primary: #006fe6ff;
+	--bg-fill-primary-hover: #006fe6ff;
+	--bg-fill-selected: #006fe6ff;
 	--bg-fill-brand: #006fe6ff;
 	--bg-fill-brand-2: #eeff00ff;
 	--bg-fill-brand-3: #ff4db8ff;
@@ -45,6 +48,7 @@
 	--bg-fill-emphasis: #7a5cffff;
 	--bg-fill-transparent: #0b0b0f12;
 	--bg-fill-secondary: #eeff00ff;
+	--bg-fill-secondary-hover: #eeff00ff;
 	--bg-fill-secondary-inverse: #050507ff;
 	--text-default: #0b0b0fff;
 	--text-secondary: #2b2d35ff;
@@ -52,6 +56,7 @@
 	--text-disabled: #b9bdc6ff;
 	--text-inverse: #f9faf2ff;
 	--text-on-fill-primary: #ffffffff;
+	--text-on-fill-selected: #ffffffff;
 	--text-on-fill-brand: #ffffffff;
 	--text-on-fill-secondary: #050507ff;
 	--text-on-surface-accent: #0b0b0fff;
@@ -135,7 +140,7 @@
 	--card-radius: var(--radius-2xl);
 	--card-padding: calc(var(--spacing) * 7);
 	--input-radius: var(--radius-xl);
-	--input-height: calc(var(--spacing) * 12);
+	--control-size-md: calc(var(--spacing) * 12);
 	--badge-radius: var(--radius-4xl);
 	--motion-duration-fast: 120ms;
 	--motion-duration-normal: 180ms;
@@ -154,18 +159,7 @@
 	--hover-transform: none;
 	--hover-shadow: none;
 	--active-scale: 0.96;
-	--heading-font-weight: 700;
-	--heading-letter-spacing: var(--tracking-normal);
-	--body-letter-spacing: var(--tracking-normal);
-	--hero-font-size: var(--text-6xl);
-	--hero-font-weight: 700;
-	--hero-letter-spacing: var(--tracking-normal);
-	--section-title-size: var(--text-3xl);
-	--section-title-font-weight: 700;
-	--section-title-letter-spacing: var(--tracking-normal);
-	--card-title-size: var(--text-lg);
-	--card-title-font-weight: 700;
-	--card-title-letter-spacing: var(--tracking-normal);
+	--button-height: calc(var(--spacing) * 7);
 	--border-style: solid;
 	--focus-ring-color: #ff4db8ff;
 	--focus-ring-width: 0.1875rem;
@@ -205,6 +199,7 @@
 	--bg-surface-popover: #050507ff;
 	--bg-surface-accent: #351026ff;
 	--bg-surface-field: #17191fff;
+	--bg-surface-input: #17191f4d;
 	--bg-surface-info: #073348ff;
 	--bg-surface-success: #0b3017ff;
 	--bg-surface-warning: #342602ff;
@@ -221,6 +216,8 @@
 	--bg-surface-hover: #17191fff;
 	--bg-fill-default: #202124ff;
 	--bg-fill-primary: #006fe6ff;
+	--bg-fill-primary-hover: #006fe6ff;
+	--bg-fill-selected: #006fe6ff;
 	--bg-fill-brand: #006fe6ff;
 	--bg-fill-brand-2: #eeff00ff;
 	--bg-fill-brand-3: #ff4db8ff;
@@ -233,6 +230,7 @@
 	--bg-fill-emphasis: #9d86ffff;
 	--bg-fill-transparent: #ffffff12;
 	--bg-fill-secondary: #eeff00ff;
+	--bg-fill-secondary-hover: #eeff00ff;
 	--bg-fill-secondary-inverse: #050507ff;
 	--text-default: #f7f8f2ff;
 	--text-secondary: #d7dad2ff;
@@ -240,6 +238,7 @@
 	--text-disabled: #5b606aff;
 	--text-inverse: #050507ff;
 	--text-on-fill-primary: #ffffffff;
+	--text-on-fill-selected: #ffffffff;
 	--text-on-fill-brand: #ffffffff;
 	--text-on-fill-secondary: #050507ff;
 	--text-on-surface-accent: #f7f8f2ff;
@@ -317,7 +316,8 @@
 	--card-radius: var(--radius-2xl);
 	--card-padding: calc(var(--spacing) * 7);
 	--input-radius: var(--radius-xl);
-	--input-height: calc(var(--spacing) * 12);
+	--control-size-md: calc(var(--spacing) * 12);
+	--button-height: calc(var(--spacing) * 7);
 	--badge-radius: var(--radius-4xl);
 	--border-style: solid;
 	--focus-ring-color: #ff4db8ff;
@@ -345,18 +345,6 @@
 	--transition-slow: var(--motion-duration-slow) var(--motion-ease-decelerate);
 	--hover-shadow: none;
 	--active-scale: 0.96;
-	--heading-font-weight: 700;
-	--heading-letter-spacing: var(--tracking-normal);
-	--body-letter-spacing: var(--tracking-normal);
-	--hero-font-size: var(--text-6xl);
-	--hero-font-weight: 700;
-	--hero-letter-spacing: var(--tracking-normal);
-	--section-title-size: var(--text-3xl);
-	--section-title-font-weight: 700;
-	--section-title-letter-spacing: var(--tracking-normal);
-	--card-title-size: var(--text-lg);
-	--card-title-font-weight: 700;
-	--card-title-letter-spacing: var(--tracking-normal);
 	--background: var(--bg-default);
 	--foreground: var(--text-default);
 	--card: var(--bg-surface-default);

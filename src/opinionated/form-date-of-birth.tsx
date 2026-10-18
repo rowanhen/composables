@@ -110,8 +110,8 @@ function FormDateOfBirth({
 	}
 
 	const inputClassName = cn(
-		'text-center tabular-nums',
-		hasError && 'aria-invalid:border-stroke-critical aria-invalid:ring-stroke-critical/20',
+		'text-center tabular-nums min-w-0',
+		hasError && 'aria-invalid:border-fill-critical aria-invalid:ring-fill-critical/20',
 	)
 
 	return (
@@ -124,7 +124,7 @@ function FormDateOfBirth({
 			)}
 			<FieldContent>
 				<fieldset
-					className="flex items-center gap-1 border-none p-0 m-0 min-w-0"
+					className="flex items-center gap-2 border-none p-0 m-0 min-w-0"
 					aria-label={ariaLabel || label || 'Date of birth'}
 					aria-labelledby={ariaLabelledBy}
 				>
@@ -143,10 +143,12 @@ function FormDateOfBirth({
 						aria-invalid={hasError}
 						aria-required={required}
 						aria-label="Day"
-						className={cn(inputClassName, 'w-10')}
+						className={cn(inputClassName, 'w-[3.75em]')}
 						maxLength={2}
 					/>
-					<span className="text-muted-foreground text-sm">/</span>
+					<span className="text-muted-foreground text-(length:--control-font-size) leading-(--text-sm--line-height)">
+						/
+					</span>
 					<Input
 						ref={monthRef}
 						id={`${fieldId}-month`}
@@ -161,10 +163,12 @@ function FormDateOfBirth({
 						required={required}
 						aria-invalid={hasError}
 						aria-label="Month"
-						className={cn(inputClassName, 'w-10')}
+						className={cn(inputClassName, 'w-[3.75em]')}
 						maxLength={2}
 					/>
-					<span className="text-muted-foreground text-sm">/</span>
+					<span className="text-muted-foreground text-(length:--control-font-size) leading-(--text-sm--line-height)">
+						/
+					</span>
 					<Input
 						ref={yearRef}
 						id={`${fieldId}-year`}
@@ -179,7 +183,7 @@ function FormDateOfBirth({
 						required={required}
 						aria-invalid={hasError}
 						aria-label="Year"
-						className={cn(inputClassName, 'w-14')}
+						className={cn(inputClassName, 'w-[5em]')}
 						maxLength={4}
 					/>
 				</fieldset>

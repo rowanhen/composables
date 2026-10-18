@@ -91,12 +91,20 @@
 	background-color: var(--bg-surface-hover);
 }
 
+@utility bg-surface-input {
+	background-color: var(--bg-surface-input);
+}
+
 @utility bg-fill-default {
 	background-color: var(--bg-fill-default);
 }
 
 @utility bg-fill-primary {
 	background-color: var(--bg-fill-primary);
+}
+
+@utility bg-fill-primary-hover {
+	background-color: var(--bg-fill-primary-hover);
 }
 
 @utility bg-fill-brand {
@@ -147,6 +155,14 @@
 	background-color: var(--bg-fill-secondary);
 }
 
+@utility bg-fill-secondary-hover {
+	background-color: var(--bg-fill-secondary-hover);
+}
+
+@utility bg-fill-selected {
+	background-color: var(--bg-fill-selected);
+}
+
 @utility bg-fill-secondary-inverse {
 	background-color: var(--bg-fill-secondary-inverse);
 }
@@ -181,6 +197,10 @@
 
 @utility text-on-fill-secondary {
 	color: var(--text-on-fill-secondary);
+}
+
+@utility text-on-fill-selected {
+	color: var(--text-on-fill-selected);
 }
 
 @utility text-on-surface-accent {

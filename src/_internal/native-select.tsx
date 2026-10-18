@@ -27,7 +27,7 @@ function NativeSelect({
 				className={cn(
 					FOCUS_RING,
 					HOVER_RING,
-					'border-field bg-page h-(--input-height) w-full appearance-none rounded-(--input-radius) border px-3 py-2 pr-9 text-xs/relaxed shadow-xs outline-none motion-colors disabled:pointer-events-none disabled:cursor-not-allowed data-[size=sm]:h-8 data-[size=sm]:py-1',
+					'border-field bg-surface-input h-(--control-size-md) w-full min-w-(--control-min-width) appearance-none rounded-(--input-radius) border px-3 py-0 pr-9 text-(length:--control-font-size) leading-relaxed shadow-xs outline-none motion-colors disabled:pointer-events-none disabled:cursor-not-allowed data-[size=sm]:h-(--control-size-sm)',
 					className,
 				)}
 				{...props}

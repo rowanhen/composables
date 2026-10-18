@@ -23,6 +23,22 @@ export function TooltipShowcase() {
 					</TooltipTrigger>
 					<TooltipContent side="bottom">Send email</TooltipContent>
 				</Tooltip>
+				<Tooltip>
+					<TooltipTrigger render={<Button variant="outline" />}>Inverse</TooltipTrigger>
+					<TooltipContent variant="inverse">Inverse tooltip</TooltipContent>
+				</Tooltip>
+				<Tooltip>
+					<TooltipTrigger render={<Button variant="outline" />}>Brand</TooltipTrigger>
+					<TooltipContent variant="brand">Brand tooltip</TooltipContent>
+				</Tooltip>
+				<Typography variant="body-100">
+					Inline{' '}
+					<Tooltip>
+						<TooltipTrigger variant="underline">underlined term</TooltipTrigger>
+						<TooltipContent>Explains the term</TooltipContent>
+					</Tooltip>{' '}
+					with a tooltip.
+				</Typography>
 			</HStack>
 		</ShowcaseSection>
 	)

@@ -27,8 +27,10 @@ This is the exact allowlist of framework-independent semantic colour classes shi
 | `bg-surface-brand-4`        | bg       | `--bg-surface-brand-4`        | `background-color: var(--bg-surface-brand-4)`        |
 | `bg-surface-brand-5`        | bg       | `--bg-surface-brand-5`        | `background-color: var(--bg-surface-brand-5)`        |
 | `bg-surface-hover`          | bg       | `--bg-surface-hover`          | `background-color: var(--bg-surface-hover)`          |
+| `bg-surface-input`          | bg       | `--bg-surface-input`          | `background-color: var(--bg-surface-input)`          |
 | `bg-fill-default`           | bg       | `--bg-fill-default`           | `background-color: var(--bg-fill-default)`           |
 | `bg-fill-primary`           | bg       | `--bg-fill-primary`           | `background-color: var(--bg-fill-primary)`           |
+| `bg-fill-primary-hover`     | bg       | `--bg-fill-primary-hover`     | `background-color: var(--bg-fill-primary-hover)`     |
 | `bg-fill-brand`             | bg       | `--bg-fill-brand`             | `background-color: var(--bg-fill-brand)`             |
 | `bg-fill-brand-2`           | bg       | `--bg-fill-brand-2`           | `background-color: var(--bg-fill-brand-2)`           |
 | `bg-fill-brand-3`           | bg       | `--bg-fill-brand-3`           | `background-color: var(--bg-fill-brand-3)`           |
@@ -41,6 +43,8 @@ This is the exact allowlist of framework-independent semantic colour classes shi
 | `bg-fill-emphasis`          | bg       | `--bg-fill-emphasis`          | `background-color: var(--bg-fill-emphasis)`          |
 | `bg-fill-transparent`       | bg       | `--bg-fill-transparent`       | `background-color: var(--bg-fill-transparent)`       |
 | `bg-fill-secondary`         | bg       | `--bg-fill-secondary`         | `background-color: var(--bg-fill-secondary)`         |
+| `bg-fill-secondary-hover`   | bg       | `--bg-fill-secondary-hover`   | `background-color: var(--bg-fill-secondary-hover)`   |
+| `bg-fill-selected`          | bg       | `--bg-fill-selected`          | `background-color: var(--bg-fill-selected)`          |
 | `bg-fill-secondary-inverse` | bg       | `--bg-fill-secondary-inverse` | `background-color: var(--bg-fill-secondary-inverse)` |
 | `text-default`              | text     | `--text-default`              | `color: var(--text-default)`                         |
 | `text-content-secondary`    | text     | `--text-secondary`            | `color: var(--text-secondary)`                       |
@@ -50,6 +54,7 @@ This is the exact allowlist of framework-independent semantic colour classes shi
 | `text-on-fill-primary`      | text     | `--text-on-fill-primary`      | `color: var(--text-on-fill-primary)`                 |
 | `text-on-fill-brand`        | text     | `--text-on-fill-brand`        | `color: var(--text-on-fill-brand)`                   |
 | `text-on-fill-secondary`    | text     | `--text-on-fill-secondary`    | `color: var(--text-on-fill-secondary)`               |
+| `text-on-fill-selected`     | text     | `--text-on-fill-selected`     | `color: var(--text-on-fill-selected)`                |
 | `text-on-surface-accent`    | text     | `--text-on-surface-accent`    | `color: var(--text-on-surface-accent)`               |
 | `text-info`                 | text     | `--text-info`                 | `color: var(--text-info)`                            |
 | `text-success`              | text     | `--text-success`              | `color: var(--text-success)`                         |

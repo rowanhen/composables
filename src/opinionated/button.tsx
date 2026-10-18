@@ -1,8 +1,9 @@
 import type { VariantProps } from 'class-variance-authority'
-import { Loader2Icon } from 'lucide-react'
 import type * as React from 'react'
 
 import { Button as ButtonPrimitive, type buttonVariants } from '../_internal/button'
+import { Spinner } from '../_internal/spinner'
+import { cn } from '../lib/utils'
 
 /**
  * Props for the opinionated Button component.
@@ -52,12 +53,21 @@ function Button({
 			variant={variant}
 			size={size}
 			shape={shape}
-			className={className}
+			className={cn(loading && 'relative', className)}
 			disabled={isDisabled}
+			aria-busy={loading || undefined}
 			type={type}
 			{...buttonProps}
 		>
-			{loading ? <Loader2Icon className="animate-spin" /> : children}
+			{loading ? (
+				<>
+					{/* Keep the label in flow so the button holds its width. */}
+					<span className="invisible inline-flex items-center gap-1">{children}</span>
+					<Spinner className="absolute inset-0 m-auto" />
+				</>
+			) : (
+				children
+			)}
 		</ButtonPrimitive>
 	)
 }

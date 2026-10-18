@@ -1,11 +1,10 @@
 import type { VariantProps } from 'class-variance-authority'
 import { ChevronDownIcon } from 'lucide-react'
 import * as React from 'react'
-import { Button as ButtonPrimitive } from '../_internal/button'
 import { Calendar } from '../_internal/calendar'
 import { Field, FieldContent, FieldDescription, FieldError, FieldLabel } from '../_internal/field'
+import { FieldTrigger } from '../_internal/input'
 import { Popover, PopoverContent, PopoverTrigger } from '../_internal/popover'
-import { cn } from '../lib/utils'
 
 export interface FormCalendarPopoverProps {
 	label?: string
@@ -96,25 +95,21 @@ function FormCalendarPopover({
 				<Popover open={open} onOpenChange={setOpen}>
 					<PopoverTrigger
 						render={
-							<ButtonPrimitive
+							<FieldTrigger
 								id={inputId}
 								name={name}
-								variant="outline"
 								disabled={disabled}
 								aria-invalid={hasError}
 								aria-required={required}
 								aria-label={ariaLabel}
 								aria-labelledby={ariaLabelledBy || (label ? inputId : undefined)}
 								onBlur={handleBlur}
-								className={cn(
-									'w-full justify-between font-normal',
-									!value && 'text-muted-foreground',
-								)}
+								data-placeholder={value ? undefined : ''}
 								{...props}
 							>
 								{value ? value.toLocaleDateString() : placeholder}
-								<ChevronDownIcon className="ml-2 h-4 w-4 opacity-50" />
-							</ButtonPrimitive>
+								<ChevronDownIcon className="text-muted-foreground size-[1.25em] shrink-0" />
+							</FieldTrigger>
 						}
 					/>
 					<PopoverContent className="w-auto p-0" align="start">

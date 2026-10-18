@@ -27,13 +27,13 @@
 		--button-radius: var(--radius-md);
 		--button-radius-xs: var(--button-radius);
 		--button-radius-sm: var(--button-radius);
-		--button-height: calc(var(--spacing) * 7);
+		--button-height: var(--control-size-md);
 		--button-height-xs: calc(var(--spacing) * 5);
-		--button-height-sm: calc(var(--spacing) * 6);
-		--button-height-lg: calc(var(--spacing) * 8);
-		--button-font-size: var(--text-xs);
+		--button-height-sm: var(--control-size-sm);
+		--button-height-lg: var(--control-size-lg);
+		--button-font-size: var(--control-font-size);
 		--button-font-size-xs: var(--text-2xs);
-		--button-font-size-sm: var(--text-xs);
+		--button-font-size-sm: var(--control-font-size);
 		--button-gap: var(--spacing);
 
 		/* Optional button finishes. `initial` makes var() use its fallback
@@ -108,7 +108,7 @@
 		--layer-card-padding: var(--card-padding);
 		--layer-card-shadow: var(--shadow-sm);
 		--clipboard-text-radius: var(--input-radius);
-		--clipboard-text-height: var(--input-height);
+		--clipboard-text-height: var(--control-size-md);
 		--clipboard-text-height-sm: calc(var(--spacing) * 6.5);
 		--clipboard-text-height-lg: calc(var(--spacing) * 10);
 		--flow-border-width: max(1px, var(--border-width-base));
@@ -124,8 +124,17 @@
 		--flow-canvas-background-size: calc(var(--spacing) * 4);
 		--card-radius: var(--radius-lg);
 		--card-padding: calc(var(--spacing) * 4);
+		--card-border-width: var(--border-width-base);
+		--alert-border-width: var(--border-width-base);
+		--alert-accent-width: 0px;
+		--dialog-radius: var(--radius-xl);
+		--dialog-max-width: 90vw;
+		--dialog-border-width: var(--border-width-base);
+		--tooltip-bg: var(--bg-surface-inverse);
+		--tooltip-fg: var(--text-inverse);
+		/* Hairline rules: dividers, separators, table and accordion rows. */
+		--rule-width: var(--border-width-base);
 		--input-radius: var(--radius-md);
-		--input-height: calc(var(--spacing) * 7);
 		--badge-radius: var(--radius-4xl);
 		--grid-overlay-color: color-mix(in srgb, var(--text-default) 6%, transparent);
 
@@ -137,6 +146,41 @@
 		--tabs-list-shadow: none;
 		--tabs-indicator-border-width: var(--border-width-base);
 		--tabs-indicator-shadow: var(--shadow-sm);
+
+		--switch-on-color: var(--primary);
+		/* Text buttons are at least this many times their height wide. */
+		--button-min-width-ratio: 1.75;
+		/* Track height; the thumb fills it less one spacing step, the track is twice as wide. */
+		--switch-height: calc(var(--spacing) * 4);
+		/* Slider track height; the thumb is the same size and sits inside it. */
+		--slider-size: calc(var(--spacing) * 5);
+		--slider-thumb-color: var(--background);
+		--slider-thumb-border: var(--primary);
+
+		/* ── Choice controls (checkbox, radio) ─────────────────────────────── */
+		--choice-size: calc(var(--spacing) * 4);
+		--choice-border-color: var(--border-secondary);
+		--checkbox-radius: var(--radius-sm);
+
+		/* ── Field labels ──────────────────────────────────────────────────── */
+		--label-font-size: var(--text-xs);
+		--label-color: currentColor;
+		--label-text-transform: none;
+
+		/* ── Control scale ─────────────────────────────────────────────────── */
+		/* One height scale shared by every control (buttons, inputs, selects),
+		   picked by the component's size prop. Values must stay whole multiples
+		   of --spacing and the font size a --text-* step: check-token-system
+		   rejects anything else. */
+		--control-size-sm: calc(var(--spacing) * 6);
+		--control-size-md: calc(var(--spacing) * 7);
+		--control-size-lg: calc(var(--spacing) * 8);
+		--control-font-size: var(--text-xs);
+		/* Fields never shrink below this, however tight their container. */
+		--control-min-width: calc(var(--spacing) * 30);
+		/* Buttons inside an input group, and the even inset around them. */
+		--input-group-button-size: calc(var(--control-size-md) * 0.7);
+		--input-group-inset: calc((var(--control-size-md) - var(--input-group-button-size)) / 2);
 
 		/* ── Motion ────────────────────────────────────────────────────────── */
 		--motion-duration-fast: 100ms;
@@ -157,19 +201,18 @@
 		--hover-shadow: var(--shadow-md);
 		--active-scale: 0.98;
 
-		/* ── Typography composition ─────────────────────────────────────────── */
-		--heading-font-weight: 700;
-		--heading-letter-spacing: var(--tracking-tight);
-		--body-letter-spacing: var(--tracking-normal);
-		--hero-font-size: var(--text-5xl);
-		--hero-font-weight: 700;
-		--hero-letter-spacing: var(--tracking-tight);
-		--section-title-size: var(--text-3xl);
-		--section-title-font-weight: 700;
-		--section-title-letter-spacing: var(--tracking-tight);
-		--card-title-size: var(--text-lg);
-		--card-title-font-weight: 600;
-		--card-title-letter-spacing: var(--tracking-normal);
+		/* ── Type roles ────────────────────────────────────────────────────── */
+		/* Component copy picks a role, the preset picks the --text-* step.
+		   body: running copy (cards, alerts, tooltips, tables, overlays)
+		   title: card / popover / empty-state titles
+		   heading: dialog, sheet and alert-dialog titles */
+		--body-font-size: var(--text-xs);
+		--title-font-size: var(--text-sm);
+		--heading-font-size: var(--text-sm);
+		/* Line heights travel with their role, as ratios of the font size. */
+		--body-line-height: var(--text-xs--line-height);
+		--title-line-height: var(--text-sm--line-height);
+		--heading-line-height: var(--text-sm--line-height);
 
 		/* ── Border style ──────────────────────────────────────────────────── */
 		--border-style: solid;
@@ -178,6 +221,7 @@
 		--focus-ring-color: var(--ring);
 		--focus-ring-width: calc(var(--border-width-base) * 2);
 		--focus-ring-offset: 0px;
+		--focus-ring-opacity: 30%;
 		--focus-ring-style: solid;
 
 		/* ── Hover ring ────────────────────────────────────────────────────── */

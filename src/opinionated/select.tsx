@@ -86,12 +86,15 @@ function Select({
 	)
 }
 
-// Re-export sub-components for advanced usage
+// Re-export sub-components for advanced usage. SelectRoot is the unstyled
+// Base UI root - compose it with the parts below when the options-array
+// Select API can't express the trigger content (e.g. a labelled null state).
 export {
 	SelectContent,
 	SelectGroup,
 	SelectItem,
 	SelectLabel,
+	SelectPrimitive as SelectRoot,
 	SelectScrollDownButton,
 	SelectScrollUpButton,
 	SelectSeparator,

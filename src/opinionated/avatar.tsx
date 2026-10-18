@@ -43,11 +43,11 @@ export interface AvatarProps extends VariantProps<typeof avatarVariants> {
  * <Avatar src="/user.png" fallback="?" />
  * ```
  */
-function Avatar({ src, alt, name, fallback, size, className }: AvatarProps) {
+function Avatar({ src, alt, name, fallback, size, variant, className }: AvatarProps) {
 	const displayFallback = fallback ?? (name ? getInitials(name) : '?')
 
 	return (
-		<AvatarPrimitive size={size} className={className}>
+		<AvatarPrimitive size={size} variant={variant} className={className}>
 			{src && <AvatarImage src={src} alt={alt ?? name ?? 'Avatar'} />}
 			<AvatarFallback>{displayFallback}</AvatarFallback>
 		</AvatarPrimitive>

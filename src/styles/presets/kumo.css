@@ -17,6 +17,7 @@
 	--bg-surface-popover: #ffffff;
 	--bg-surface-accent: #f8f8f8;
 	--bg-surface-field: #ffffff;
+	--bg-surface-input: #ffffff33;
 	--bg-surface-info: #eff6ff;
 	--bg-surface-success: #ecfdf5;
 	--bg-surface-warning: #fffbeb;
@@ -33,6 +34,8 @@
 	--bg-surface-hover: #f5f5f5;
 	--bg-fill-default: #ffffff;
 	--bg-fill-primary: #056dff;
+	--bg-fill-primary-hover: #056dff;
+	--bg-fill-selected: #056dff;
 	--bg-fill-brand: #ff6a00;
 	--bg-fill-brand-2: #00c2d6;
 	--bg-fill-brand-3: #8a00f5;
@@ -45,6 +48,7 @@
 	--bg-fill-emphasis: #056dff;
 	--bg-fill-transparent: #0000000d;
 	--bg-fill-secondary: #ffffff;
+	--bg-fill-secondary-hover: #ffffff;
 	--bg-fill-secondary-inverse: #171717;
 	--text-default: #171717;
 	--text-secondary: #737373;
@@ -52,6 +56,7 @@
 	--text-disabled: #d4d4d4;
 	--text-inverse: #f5f5f5;
 	--text-on-fill-primary: #ffffff;
+	--text-on-fill-selected: #ffffff;
 	--text-on-fill-brand: #171717;
 	--text-on-fill-secondary: #171717;
 	--text-on-surface-accent: #171717;
@@ -135,7 +140,7 @@
 	--card-radius: var(--radius-xl);
 	--card-padding: calc(var(--spacing) * 4);
 	--input-radius: var(--radius-lg);
-	--input-height: calc(var(--spacing) * 9);
+	--control-size-md: calc(var(--spacing) * 9);
 	--badge-radius: var(--radius-md);
 	--motion-duration-fast: 100ms;
 	--motion-duration-normal: 200ms;
@@ -154,18 +159,6 @@
 	--hover-transform: none;
 	--hover-shadow: none;
 	--active-scale: 0.98;
-	--heading-font-weight: 600;
-	--heading-letter-spacing: var(--tracking-tight);
-	--body-letter-spacing: var(--tracking-normal);
-	--hero-font-size: var(--text-5xl);
-	--hero-font-weight: 600;
-	--hero-letter-spacing: var(--tracking-tight);
-	--section-title-size: var(--text-3xl);
-	--section-title-font-weight: 600;
-	--section-title-letter-spacing: var(--tracking-tight);
-	--card-title-size: var(--text-lg);
-	--card-title-font-weight: 600;
-	--card-title-letter-spacing: var(--tracking-normal);
 	--text-xs: 0.75rem;
 	--text-xs--line-height: 1.333333;
 	--text-sm: 0.8125rem;
@@ -198,7 +191,7 @@
 	--button-quiet-hover-bg: var(--bg-surface-hover);
 	--button-destructive-bg: var(--bg-fill-critical);
 	--button-destructive-text: #ffffff;
-	--focus-ring-width: 2px;
+	--focus-ring-width: calc(var(--border-width-base) * 2);
 	--focus-ring-color: var(--border-focus);
 	--hover-ring-width: 0px;
 	--hover-ring-color: var(--border-secondary);
@@ -382,6 +375,7 @@
 	--bg-surface-popover: #0f0f0f;
 	--bg-surface-accent: #060606;
 	--bg-surface-field: #171717;
+	--bg-surface-input: #1717174d;
 	--bg-surface-info: #101b35;
 	--bg-surface-success: #0b241b;
 	--bg-surface-warning: #2b2111;
@@ -398,6 +392,8 @@
 	--bg-surface-hover: #262626;
 	--bg-fill-default: #0f0f0f;
 	--bg-fill-primary: #045ede;
+	--bg-fill-primary-hover: #045ede;
+	--bg-fill-selected: #045ede;
 	--bg-fill-brand: #ff6a00;
 	--bg-fill-brand-2: #00d9ed;
 	--bg-fill-brand-3: #b35cff;
@@ -410,6 +406,7 @@
 	--bg-fill-emphasis: #045ede;
 	--bg-fill-transparent: #ffffff0d;
 	--bg-fill-secondary: #0f0f0f;
+	--bg-fill-secondary-hover: #0f0f0f;
 	--bg-fill-secondary-inverse: #f5f5f5;
 	--text-default: #f5f5f5;
 	--text-secondary: #a3a3a3;
@@ -417,6 +414,7 @@
 	--text-disabled: #525252;
 	--text-inverse: #171717;
 	--text-on-fill-primary: #ffffff;
+	--text-on-fill-selected: #ffffff;
 	--text-on-fill-brand: #171717;
 	--text-on-fill-secondary: #f5f5f5;
 	--text-on-surface-accent: #f5f5f5;
@@ -510,7 +508,7 @@
 	--flow-node-shadow: 0 1px 2px #0000000d;
 	--flow-canvas-background-image: radial-gradient(var(--border-disabled) 1px, transparent 1px);
 	--input-radius: var(--radius-lg);
-	--input-height: calc(var(--spacing) * 9);
+	--control-size-md: calc(var(--spacing) * 9);
 	--badge-radius: var(--radius-md);
 	--opacity-disabled: 0.5;
 	--shadow-offset-y: 1px;
@@ -526,17 +524,13 @@
 	--button-quiet-hover-bg: var(--bg-surface-hover);
 	--button-destructive-bg: var(--bg-fill-critical);
 	--button-destructive-text: #ffffff;
-	--focus-ring-width: 2px;
+	--focus-ring-width: calc(var(--border-width-base) * 2);
 	--focus-ring-color: var(--border-focus);
 	--hover-ring-width: 0px;
 	--hover-ring-color: var(--border-secondary);
 	--hover-transform: none;
 	--hover-shadow: none;
 	--active-scale: 0.98;
-	--heading-font-weight: 600;
-	--hero-font-weight: 600;
-	--section-title-font-weight: 600;
-	--card-title-font-weight: 600;
 	--button-primary-border: color-mix(in oklch, var(--bg-fill-primary), black 10%);
 	--button-primary-hover-border: color-mix(in oklch, var(--bg-fill-primary), black 10%);
 	--button-primary-background-image: linear-gradient(

@@ -1,4 +1,4 @@
-import { AlertTriangleIcon, CircleCheckIcon, InfoIcon, TriangleAlertIcon } from 'lucide-react'
+import { CircleAlertIcon, CircleCheckIcon, InfoIcon, TriangleAlertIcon } from 'lucide-react'
 import type { VariantProps } from 'class-variance-authority'
 import type * as React from 'react'
 
@@ -39,7 +39,7 @@ export interface AlertProps extends Omit<React.ComponentProps<typeof AlertPrimit
 	 * - `notice` - info icon (ℹ), neutral styling
 	 * - `positive` - check icon, green styling
 	 * - `warning` - triangle icon, amber styling
-	 * - `negative` - alert triangle icon, red/destructive styling
+	 * - `negative` - alert circle icon, red/destructive styling
 	 * @default 'default'
 	 */
 	type?: AlertType
@@ -80,13 +80,13 @@ function Alert({
 	const getIcon = () => {
 		switch (type) {
 			case 'negative':
-				return <AlertTriangleIcon className="size-3.5" />
+				return <CircleAlertIcon />
 			case 'positive':
-				return <CircleCheckIcon className="size-3.5" />
+				return <CircleCheckIcon />
 			case 'notice':
-				return <InfoIcon className="size-3.5" />
+				return <InfoIcon />
 			case 'warning':
-				return <TriangleAlertIcon className="size-3.5" />
+				return <TriangleAlertIcon />
 			default:
 				return null
 		}
@@ -98,10 +98,8 @@ function Alert({
 	return (
 		<AlertPrimitive variant={resolvedVariant} className={className} {...alertProps}>
 			{icon}
-			<div className="flex-1">
-				{title && <AlertTitle>{title}</AlertTitle>}
-				{content && <AlertDescription>{content}</AlertDescription>}
-			</div>
+			{title && <AlertTitle>{title}</AlertTitle>}
+			{content && <AlertDescription>{content}</AlertDescription>}
 			{action && <AlertAction>{action}</AlertAction>}
 		</AlertPrimitive>
 	)

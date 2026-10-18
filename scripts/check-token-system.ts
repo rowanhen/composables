@@ -454,6 +454,82 @@ function checkPresetContrast() {
 	}
 }
 
+// Sizing tokens pick a step on a scale; they never hold raw lengths.
+const SPACING_STEP_TOKENS = [
+	'--control-size-sm',
+	'--control-size-md',
+	'--control-size-lg',
+	'--control-min-width',
+	'--card-padding',
+	'--choice-size',
+	'--switch-height',
+	'--slider-size',
+]
+const SPACING_STEP = /^calc\(var\(--spacing\) \* \d+\)$/
+const TEXT_STEP_TOKENS = [
+	'--control-font-size',
+	'--body-font-size',
+	'--title-font-size',
+	'--heading-font-size',
+	'--label-font-size',
+]
+const TEXT_STEP = /^var\(--text-[a-z0-9]+\)$/
+// Radii derive from --radius (or are a full pill); borders from the base width.
+// Focus and hover ring widths stay free: a borderless preset (signal-pop sets
+// --border-width-base to 0) still needs visible rings.
+const RADIUS_TOKENS = [
+	'--button-radius',
+	'--badge-radius',
+	'--card-radius',
+	'--input-radius',
+	'--checkbox-radius',
+	'--dialog-radius',
+]
+const RADIUS_STEP = /^(var\(--radius(-[a-z0-9]+)?\)|calc\(var\(--radius\) \* [\d.]+\)|9999px)$/
+const BORDER_TOKENS = [
+	'--card-border-width',
+	'--alert-border-width',
+	'--alert-accent-width',
+	'--dialog-border-width',
+]
+const BORDER_STEP =
+	/^(0(px)?|var\(--(border-width-base|rule-width)\)|calc\(var\(--border-width-base\) \* \d+\))$/
+// --rule-width is the one raw hairline allowed.
+const RULE_STEP = /^(0\.0625rem|1px|var\(--border-width-base\))$/
+
+function checkScaleTokens() {
+	const sources: [string, Map<string, string>][] = [
+		['components.css', declarationMap(read(COMPONENTS_CSS))],
+		...presetDefinitions.flatMap((preset): [string, Map<string, string>][] => [
+			[`${preset.name} light`, new Map(Object.entries(preset.light))],
+			[`${preset.name} dark`, new Map(Object.entries(preset.dark))],
+		]),
+	]
+
+	for (const [source, values] of sources) {
+		for (const [tokens, pattern, expected] of [
+			[SPACING_STEP_TOKENS, SPACING_STEP, 'calc(var(--spacing) * <whole number>)'],
+			[TEXT_STEP_TOKENS, TEXT_STEP, 'var(--text-<step>)'],
+			[RADIUS_TOKENS, RADIUS_STEP, 'var(--radius[-step]) or calc(var(--radius) * n) or 9999px'],
+			[
+				BORDER_TOKENS,
+				BORDER_STEP,
+				'0px, var(--border-width-base) or calc(var(--border-width-base) * n)',
+			],
+			[['--rule-width'], RULE_STEP, 'a 1px hairline or var(--border-width-base)'],
+		] as const) {
+			for (const cssVar of tokens) {
+				const value = values.get(cssVar)
+				if (value !== undefined && !pattern.test(value)) {
+					fail(`${source} ${cssVar} is "${value}"; must be ${expected}`)
+				}
+			}
+		}
+	}
+
+	if (!failed) ok('sizing, type, radius and border tokens stay on their scales')
+}
+
 console.log('Checking semantic token system...\n')
 
 assertNoDuplicates(semanticColorCssVars, 'semantic color registry')
@@ -462,6 +538,7 @@ checkTailwindAliases()
 checkPublicSemanticUtilities()
 checkPublicTailwindCollisions()
 checkPresets()
+checkScaleTokens()
 checkPresetContrast()
 checkSemanticClassUsage()
 

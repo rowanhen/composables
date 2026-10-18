@@ -23,32 +23,32 @@ const dividerVariants = cva('shrink-0', {
 		{
 			variant: 'solid',
 			orientation: 'horizontal',
-			class: 'h-[var(--border-width-base)] bg-stroke',
+			class: 'h-[var(--rule-width)] bg-[var(--divider-color,var(--border-default))]',
 		},
 		{
 			variant: 'solid',
 			orientation: 'vertical',
-			class: 'w-[var(--border-width-base)] bg-stroke',
+			class: 'w-[var(--rule-width)] bg-[var(--divider-color,var(--border-default))]',
 		},
 		{
 			variant: 'dots',
 			orientation: 'horizontal',
-			class: 'h-[var(--border-width-base)]',
+			class: 'h-[var(--rule-width)]',
 		},
 		{
 			variant: 'dots',
 			orientation: 'vertical',
-			class: 'w-[var(--border-width-base)]',
+			class: 'w-[var(--rule-width)]',
 		},
 		{
 			variant: 'pills',
 			orientation: 'horizontal',
-			class: 'h-[var(--border-width-base)]',
+			class: 'h-[var(--rule-width)]',
 		},
 		{
 			variant: 'pills',
 			orientation: 'vertical',
-			class: 'w-[var(--border-width-base)]',
+			class: 'w-[var(--rule-width)]',
 		},
 	],
 	defaultVariants: {
@@ -65,7 +65,7 @@ interface DividerProps extends React.HTMLAttributes<HTMLDivElement> {
 	orientation?: 'horizontal' | 'vertical'
 	/** Vertical alignment of the divider within its line. @default "center" */
 	align?: 'start' | 'center' | 'end'
-	/** Width multiplier for pills. Controls pill width as calc(var(--border-width-base) * n). @default 4 */
+	/** Width multiplier for pills. Controls pill width as calc(var(--rule-width) * n). @default 4 */
 	pillsMultiplier?: number
 	/** CSS color value for dots/pills patterns. Sets --divider-color. @default "var(--border-default)" */
 	color?: string
@@ -82,37 +82,35 @@ function getPatternStyle(
 		return orientation === 'horizontal'
 			? {
 					backgroundImage:
-						'radial-gradient(circle, var(--divider-color, var(--border-default)) calc(var(--border-width-base) / 2), transparent 0)',
-					backgroundSize:
-						'calc(var(--border-width-base) + var(--spacing) * 1) var(--border-width-base)',
+						'radial-gradient(circle, var(--divider-color, var(--border-default)) calc(var(--rule-width) / 2), transparent 0)',
+					backgroundSize: 'calc(var(--rule-width) + var(--spacing) * 1) var(--rule-width)',
 					backgroundRepeat: 'repeat-x',
 					backgroundPosition: 'left center',
 				}
 			: {
 					backgroundImage:
-						'radial-gradient(circle, var(--divider-color, var(--border-default)) calc(var(--border-width-base) / 2), transparent 0)',
-					backgroundSize:
-						'var(--border-width-base) calc(var(--border-width-base) + var(--spacing) * 1)',
+						'radial-gradient(circle, var(--divider-color, var(--border-default)) calc(var(--rule-width) / 2), transparent 0)',
+					backgroundSize: 'var(--rule-width) calc(var(--rule-width) + var(--spacing) * 1)',
 					backgroundRepeat: 'repeat-y',
 					backgroundPosition: 'center top',
 				}
 	}
 
 	// pills
-	const pillLen = `calc(var(--border-width-base) * ${pillsMultiplier})`
+	const pillLen = `calc(var(--rule-width) * ${pillsMultiplier})`
 	const unit = `calc(${pillLen} + var(--spacing) * 1)`
 
 	return orientation === 'horizontal'
 		? {
 				backgroundImage: `repeating-linear-gradient(to right, var(--divider-color, var(--border-default)) 0, var(--divider-color, var(--border-default)) ${pillLen}, transparent ${pillLen}, transparent ${unit})`,
-				backgroundSize: `${unit} var(--border-width-base)`,
+				backgroundSize: `${unit} var(--rule-width)`,
 				backgroundRepeat: 'repeat-x',
 				backgroundPosition: 'left center',
 				borderRadius: 'var(--radius)',
 			}
 		: {
 				backgroundImage: `repeating-linear-gradient(to bottom, var(--divider-color, var(--border-default)) 0, var(--divider-color, var(--border-default)) ${pillLen}, transparent ${pillLen}, transparent ${unit})`,
-				backgroundSize: `var(--border-width-base) ${unit}`,
+				backgroundSize: `var(--rule-width) ${unit}`,
 				backgroundRepeat: 'repeat-y',
 				backgroundPosition: 'center top',
 				borderRadius: 'var(--radius)',

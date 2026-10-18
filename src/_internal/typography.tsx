@@ -50,8 +50,10 @@ const typographyVariants = cva('', {
 			'caption-100': 'font-sans font-normal text-xs tracking-normal text-muted-foreground',
 
 			// Link variants - sans font, 500, underline
-			'link-100': 'font-sans font-medium text-sm tracking-normal underline',
-			'link-200': 'font-sans font-medium text-base tracking-normal underline',
+			'link-100':
+				'font-sans font-medium text-sm tracking-normal underline hover:text-(--text-secondary)',
+			'link-200':
+				'font-sans font-medium text-base tracking-normal underline hover:text-(--text-secondary)',
 		},
 	},
 	defaultVariants: {

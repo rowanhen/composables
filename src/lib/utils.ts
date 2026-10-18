@@ -10,7 +10,7 @@ export function cn(...inputs: ClassValue[]) {
  * Change this once to update focus behaviour across every component.
  */
 export const FOCUS_RING =
-	'focus-visible:border-[var(--focus-ring-color)] focus-visible:ring-[color:var(--focus-ring-color)]/30 focus-visible:ring-[length:var(--focus-ring-width)] aria-invalid:ring-stroke-critical/20 dark:aria-invalid:ring-stroke-critical/40 aria-invalid:border-stroke-critical dark:aria-invalid:border-stroke-critical/50 aria-invalid:ring-[length:var(--focus-ring-width)]'
+	'focus-visible:border-[var(--focus-ring-color)] focus-visible:ring-[color:color-mix(in_oklab,var(--focus-ring-color)_var(--focus-ring-opacity),transparent)] focus-visible:ring-[length:var(--focus-ring-width)] focus-visible:ring-offset-[length:var(--focus-ring-offset)] focus-visible:ring-offset-(--background) aria-invalid:ring-fill-critical/20 dark:aria-invalid:ring-fill-critical/40 aria-invalid:border-fill-critical dark:aria-invalid:border-fill-critical/50 aria-invalid:ring-[length:var(--focus-ring-width)]'
 
 /**
  * Centralised hover ring style for all interactive elements.
@@ -25,7 +25,7 @@ export const HOVER_RING =
  * inside a wrapper, such as InputGroup and chip inputs.
  */
 export const GROUP_FOCUS_RING =
-	'has-[:focus-visible]:border-[var(--focus-ring-color)] has-[:focus-visible]:ring-[color:var(--focus-ring-color)]/30 has-[:focus-visible]:ring-[length:var(--focus-ring-width)] has-aria-invalid:ring-stroke-critical/20 dark:has-aria-invalid:ring-stroke-critical/40 has-aria-invalid:border-stroke-critical dark:has-aria-invalid:border-stroke-critical/50 has-aria-invalid:ring-[length:var(--focus-ring-width)]'
+	'has-[:focus-visible]:border-[var(--focus-ring-color)] has-[:focus-visible]:ring-[color:color-mix(in_oklab,var(--focus-ring-color)_var(--focus-ring-opacity),transparent)] has-[:focus-visible]:ring-[length:var(--focus-ring-width)] has-[:focus-visible]:ring-offset-[length:var(--focus-ring-offset)] has-[:focus-visible]:ring-offset-(--background) has-aria-invalid:ring-fill-critical/20 dark:has-aria-invalid:ring-fill-critical/40 has-aria-invalid:border-fill-critical dark:has-aria-invalid:border-fill-critical/50 has-aria-invalid:ring-[length:var(--focus-ring-width)]'
 
 /** Destructive-variant focus override layered on top of FOCUS_RING. */
 export const FOCUS_RING_DESTRUCTIVE =

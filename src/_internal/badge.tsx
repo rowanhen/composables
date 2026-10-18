@@ -8,7 +8,7 @@ const BADGE_LINK_HOVER =
 	'[a]:hover:ring-[length:var(--hover-ring-width)] [a]:hover:ring-[color:var(--hover-ring-color)]/30'
 
 const badgeVariants = cva(
-	`${FOCUS_RING} gap-1 rounded-(--badge-radius) border border-transparent py-0.5 font-medium transition-[opacity,box-shadow] has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 inline-flex items-center justify-center w-fit whitespace-nowrap shrink-0 [&>svg]:pointer-events-none overflow-hidden group/badge`,
+	`${FOCUS_RING} gap-1 rounded-(--badge-radius) border border-transparent py-0.5 font-medium [text-transform:var(--label-text-transform)] transition-[opacity,box-shadow] has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 inline-flex items-center justify-center w-fit whitespace-nowrap shrink-0 [&>svg]:pointer-events-none overflow-hidden group/badge`,
 	{
 		variants: {
 			variant: {
@@ -16,6 +16,7 @@ const badgeVariants = cva(
 				secondary: `bg-secondary text-secondary-foreground ${BADGE_LINK_HOVER}`,
 				destructive: `bg-surface-critical ${BADGE_LINK_HOVER} ${FOCUS_RING_DESTRUCTIVE} text-critical border-stroke-critical`,
 				outline: `border-stroke text-foreground ${BADGE_LINK_HOVER} bg-surface-field/20 dark:bg-surface-field/30`,
+				inverse: `bg-(--bg-inverse) text-(color:--text-inverse) ${BADGE_LINK_HOVER}`,
 				ghost: `${HOVER_RING} hover:text-muted-foreground`,
 				success: 'bg-surface-success text-success border-stroke-success',
 				warning: 'bg-surface-warning text-warning border-stroke-warning',

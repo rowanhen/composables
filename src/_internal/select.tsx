@@ -40,7 +40,7 @@ function SelectTrigger({
 			className={cn(
 				FOCUS_RING,
 				HOVER_RING,
-				"border-field data-[placeholder]:text-muted-foreground bg-surface-field/20 dark:bg-surface-field/30 dark:hover:bg-surface-field/50 gap-1.5 rounded-(--input-radius) border px-2 py-1.5 text-xs/relaxed data-[size=default]:h-(--input-height) data-[size=sm]:h-6 *:data-[slot=select-value]:flex *:data-[slot=select-value]:gap-1.5 [&_svg:not([class*='size-'])]:size-3.5 flex w-fit items-center justify-between whitespace-nowrap outline-none disabled:cursor-not-allowed disabled:opacity-disabled *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center [&_svg]:pointer-events-none [&_svg]:shrink-0",
+				"border-field data-[placeholder]:text-muted-foreground bg-surface-input gap-1.5 rounded-(--input-radius) border px-2 py-1.5 text-(length:--control-font-size) leading-relaxed data-[size=default]:h-(--control-size-md) data-[size=sm]:h-(--control-size-sm) *:data-[slot=select-value]:flex *:data-[slot=select-value]:gap-1.5 [&_svg:not([class*='size-'])]:size-3.5 flex w-fit min-w-(--control-min-width) items-center justify-between whitespace-nowrap outline-none disabled:cursor-not-allowed disabled:opacity-disabled *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center [&_svg]:pointer-events-none [&_svg]:shrink-0",
 				className,
 			)}
 			{...props}
@@ -109,7 +109,7 @@ function SelectItem({ className, children, ...props }: SelectPrimitive.Item.Prop
 		<SelectPrimitive.Item
 			data-slot="select-item"
 			className={cn(
-				"focus:bg-accent focus:text-accent-foreground not-data-[variant=destructive]:focus:**:text-accent-foreground min-h-7 gap-2 rounded-md px-2 py-1 text-xs/relaxed [&_svg:not([class*='size-'])]:size-3.5 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2 relative flex w-full cursor-default items-center outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-disabled [&_svg]:pointer-events-none [&_svg]:shrink-0",
+				"focus:bg-accent focus:text-accent-foreground not-data-[variant=destructive]:focus:**:text-accent-foreground min-h-7 gap-2 rounded-md px-2 py-1 text-(length:--control-font-size) leading-relaxed [&_svg:not([class*='size-'])]:size-3.5 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2 relative flex w-full cursor-default items-center outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-disabled [&_svg]:pointer-events-none [&_svg]:shrink-0",
 				className,
 			)}
 			{...props}

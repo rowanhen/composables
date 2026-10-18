@@ -120,7 +120,7 @@ function FormInputGroup({
 				</FieldLabel>
 			)}
 			<FieldContent>
-				<InputGroup data-invalid={hasError}>
+				<InputGroup data-invalid={hasError} data-disabled={disabled || undefined}>
 					{startAddon && (
 						<InputGroupAddon align="inline-start" {...startAddonProps}>
 							{startAddon}

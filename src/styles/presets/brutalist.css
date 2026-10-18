@@ -17,6 +17,7 @@
 	--bg-surface-popover: #ffffffff;
 	--bg-surface-accent: #f0f0f0ff;
 	--bg-surface-field: #0a0a0aff;
+	--bg-surface-input: #0a0a0a33;
 	--bg-surface-info: #e8f0f8ff;
 	--bg-surface-success: #e8f4e8ff;
 	--bg-surface-warning: #fbf4e0ff;
@@ -33,6 +34,8 @@
 	--bg-surface-hover: #f0f0f0ff;
 	--bg-fill-default: #ffffffff;
 	--bg-fill-primary: #0a0a0aff;
+	--bg-fill-primary-hover: #0a0a0aff;
+	--bg-fill-selected: #0a0a0aff;
 	--bg-fill-brand: #cc2200ff;
 	--bg-fill-brand-2: #111111ff;
 	--bg-fill-brand-3: #ffd700ff;
@@ -45,6 +48,7 @@
 	--bg-fill-emphasis: #0a0a0aff;
 	--bg-fill-transparent: #00000010;
 	--bg-fill-secondary: #f0f0f0ff;
+	--bg-fill-secondary-hover: #f0f0f0ff;
 	--bg-fill-secondary-inverse: #ffffffff;
 	--text-default: #0a0a0aff;
 	--text-secondary: #2e2e2eff;
@@ -52,6 +56,7 @@
 	--text-disabled: #aaaaaaff;
 	--text-inverse: #f8f8f8ff;
 	--text-on-fill-primary: #ffffffff;
+	--text-on-fill-selected: #ffffffff;
 	--text-on-fill-brand: #ffffffff;
 	--text-on-fill-secondary: #0a0a0aff;
 	--text-on-surface-accent: #0a0a0aff;
@@ -131,12 +136,13 @@
 	--font-sans: 'JetBrains Mono Variable', monospace;
 	--font-heading: 'Space Grotesk Variable', 'Arial', sans-serif;
 	--font-brand: 'Space Grotesk Variable', 'Arial', sans-serif;
-	--button-radius: 0px;
-	--card-radius: 0px;
+	--button-radius: var(--radius);
+	--card-radius: var(--radius);
 	--card-padding: calc(var(--spacing) * 6);
-	--input-radius: 0px;
-	--input-height: calc(var(--spacing) * 10);
-	--badge-radius: 0px;
+	--input-radius: var(--radius);
+	--control-size-md: calc(var(--spacing) * 10);
+	--button-height: calc(var(--spacing) * 7);
+	--badge-radius: var(--radius);
 	--motion-duration-fast: 0ms;
 	--motion-duration-normal: 0ms;
 	--motion-duration-slow: 50ms;
@@ -154,18 +160,6 @@
 	--hover-transform: none;
 	--hover-shadow: none;
 	--active-scale: 0.98;
-	--heading-font-weight: 700;
-	--heading-letter-spacing: var(--tracking-tight);
-	--body-letter-spacing: var(--tracking-normal);
-	--hero-font-size: var(--text-6xl);
-	--hero-font-weight: 700;
-	--hero-letter-spacing: var(--tracking-tight);
-	--section-title-size: var(--text-3xl);
-	--section-title-font-weight: 700;
-	--section-title-letter-spacing: var(--tracking-tight);
-	--card-title-size: var(--text-base);
-	--card-title-font-weight: 700;
-	--card-title-letter-spacing: var(--tracking-normal);
 	--background: var(--bg-default);
 	--foreground: var(--text-default);
 	--card: var(--bg-surface-default);
@@ -194,6 +188,7 @@
 	--bg-surface-popover: #141414ff;
 	--bg-surface-accent: #1a1a1aff;
 	--bg-surface-field: #c0c0c0ff;
+	--bg-surface-input: #c0c0c04d;
 	--bg-surface-info: #0a1828ff;
 	--bg-surface-success: #0a180aff;
 	--bg-surface-warning: #1e1406ff;
@@ -210,6 +205,8 @@
 	--bg-surface-hover: #1a1a1aff;
 	--bg-fill-default: #0a0a0aff;
 	--bg-fill-primary: #f0f0f0ff;
+	--bg-fill-primary-hover: #f0f0f0ff;
+	--bg-fill-selected: #f0f0f0ff;
 	--bg-fill-brand: #ff3322ff;
 	--bg-fill-brand-2: #f0f0f0ff;
 	--bg-fill-brand-3: #ffe033ff;
@@ -222,6 +219,7 @@
 	--bg-fill-emphasis: #f0f0f0ff;
 	--bg-fill-transparent: #ffffff10;
 	--bg-fill-secondary: #1a1a1aff;
+	--bg-fill-secondary-hover: #1a1a1aff;
 	--bg-fill-secondary-inverse: #0a0a0aff;
 	--text-default: #f0f0f0ff;
 	--text-secondary: #c0c0c0ff;
@@ -229,6 +227,7 @@
 	--text-disabled: #444444ff;
 	--text-inverse: #0a0a0aff;
 	--text-on-fill-primary: #0a0a0aff;
+	--text-on-fill-selected: #0a0a0aff;
 	--text-on-fill-brand: #000000ff;
 	--text-on-fill-secondary: #f0f0f0ff;
 	--text-on-surface-accent: #f0f0f0ff;

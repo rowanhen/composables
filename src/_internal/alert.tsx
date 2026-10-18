@@ -4,7 +4,9 @@ import type * as React from 'react'
 import { cn } from '../lib/utils'
 
 const alertVariants = cva(
-	"grid gap-0.5 rounded-lg border px-2 py-1.5 text-left text-xs/relaxed has-data-[slot=alert-action]:relative has-data-[slot=alert-action]:pr-18 has-[>svg]:grid-cols-[auto_1fr] has-[>svg]:gap-x-1.5 *:[svg]:row-span-2 *:[svg]:translate-y-0.5 *:[svg]:text-current *:[svg:not([class*='size-'])]:size-3.5 w-full relative group/alert",
+	// Padding and icon scale with the body copy. --alert-accent-width draws a
+	// leading bar in the variant's --alert-accent colour (0 by default).
+	"grid gap-0.5 overflow-hidden rounded-lg border-(length:--alert-border-width) p-[0.75em] pl-[calc(0.75em_+_var(--alert-accent-width))] before:absolute before:inset-y-0 before:left-0 before:w-(--alert-accent-width) before:bg-(--alert-accent) [--alert-accent:var(--bg-fill-secondary)] text-left text-(length:--body-font-size) leading-relaxed has-data-[slot=alert-action]:relative has-data-[slot=alert-action]:pr-18 has-[>svg]:grid-cols-[auto_1fr] has-[>svg]:gap-x-[0.5em] *:[svg]:row-span-2 *:[svg]:translate-y-[0.125em] *:[svg]:text-current *:[svg:not([class*='size-'])]:size-[1.25em] w-full relative group/alert",
 	{
 		variants: {
 			variant: {
@@ -12,12 +14,12 @@ const alertVariants = cva(
 				secondary: 'bg-muted text-foreground',
 				outline: 'border-stroke bg-transparent text-foreground',
 				destructive:
-					'bg-surface-critical border-stroke-critical text-critical *:data-[slot=alert-description]:text-critical/90 *:[svg]:text-icon-critical',
+					'[--alert-accent:var(--bg-fill-critical)] bg-surface-critical border-stroke-critical text-critical *:data-[slot=alert-description]:text-critical/90 *:[svg]:text-icon-critical',
 				warning:
-					'bg-surface-warning border-stroke-warning text-warning *:data-[slot=alert-description]:text-warning *:[svg]:text-icon-warning',
+					'[--alert-accent:var(--bg-fill-warning)] bg-surface-warning border-stroke-warning text-warning *:data-[slot=alert-description]:text-warning *:[svg]:text-icon-warning',
 				success:
-					'bg-surface-success border-stroke-success text-success *:data-[slot=alert-description]:text-success *:[svg]:text-icon-success',
-				info: 'bg-surface-info border-stroke-info text-info *:data-[slot=alert-description]:text-info *:[svg]:text-icon-info',
+					'[--alert-accent:var(--bg-fill-success)] bg-surface-success border-stroke-success text-success *:data-[slot=alert-description]:text-success *:[svg]:text-icon-success',
+				info: '[--alert-accent:var(--bg-fill-info)] bg-surface-info border-stroke-info text-info *:data-[slot=alert-description]:text-info *:[svg]:text-icon-info',
 				brand:
 					'bg-surface-brand border-stroke-brand text-brand *:data-[slot=alert-description]:text-brand/90 *:[svg]:text-icon-brand',
 				'brand-2':
@@ -69,7 +71,7 @@ function AlertDescription({ className, ...props }: React.ComponentProps<'div'>) 
 		<div
 			data-slot="alert-description"
 			className={cn(
-				'text-muted-foreground text-xs/relaxed text-balance md:text-pretty [&_p:not(:last-child)]:mb-4 [&_a]:hover:text-foreground [&_a]:underline [&_a]:underline-offset-3',
+				'text-muted-foreground text-(length:--body-font-size) leading-relaxed text-balance md:text-pretty [&_p:not(:last-child)]:mb-4 [&_a]:hover:text-foreground [&_a]:underline [&_a]:underline-offset-3',
 				className,
 			)}
 			{...props}
@@ -81,7 +83,7 @@ function AlertAction({ className, ...props }: React.ComponentProps<'div'>) {
 	return (
 		<div
 			data-slot="alert-action"
-			className={cn('absolute top-1.5 right-2', className)}
+			className={cn('absolute top-[0.75em] right-[0.75em]', className)}
 			{...props}
 		/>
 	)

@@ -13,6 +13,7 @@ import {
 } from 'lucide-react'
 import type React from 'react'
 import { Avatar, AvatarFallback } from '@/components/_internal/avatar'
+import { Skeleton } from '@/components/_internal/skeleton'
 import {
 	Sidebar,
 	SidebarContent,
@@ -26,7 +27,6 @@ import {
 	SidebarMenuBadge,
 	SidebarMenuButton,
 	SidebarMenuItem,
-	SidebarMenuSkeleton,
 	SidebarMenuSub,
 	SidebarMenuSubButton,
 	SidebarMenuSubItem,
@@ -431,7 +431,10 @@ export function SidebarShowcase() {
 						<SidebarProvider className="!min-h-0 h-full" defaultOpen>
 							<Sidebar collapsible="none">
 								<SidebarHeader>
-									<SidebarMenuSkeleton showIcon />
+									<div className="flex h-8 items-center gap-2 px-2">
+										<Skeleton className="size-4" />
+										<Skeleton variant="text" size="sm" className="w-3/4" />
+									</div>
 								</SidebarHeader>
 								<SidebarContent>
 									<SidebarGroup>
@@ -440,7 +443,10 @@ export function SidebarShowcase() {
 												{Array.from({ length: 5 }).map((_, i) => (
 													// biome-ignore lint/suspicious/noArrayIndexKey: skeleton items have no identity
 													<SidebarMenuItem key={i}>
-														<SidebarMenuSkeleton showIcon />
+														<div className="flex h-8 items-center gap-2 px-2">
+															<Skeleton className="size-4" />
+															<Skeleton variant="text" size="sm" className="w-3/4" />
+														</div>
 													</SidebarMenuItem>
 												))}
 											</SidebarMenu>

@@ -28,7 +28,7 @@ export interface FormSwitchProps extends Omit<
 	description?: string
 	/** Error message(s). Accepts a string, array, or react-hook-form error array. */
 	error?: string | string[] | Array<{ message?: string } | undefined>
-	/** Controlled checked state. @default false */
+	/** Controlled checked state. Omit (or use `defaultChecked`) for uncontrolled. */
 	checked?: boolean
 	/** Called when the user toggles the switch. */
 	onCheckedChange?: (checked: boolean) => void
@@ -51,7 +51,7 @@ function FormSwitch({
 	label,
 	description,
 	error,
-	checked = false,
+	checked,
 	onCheckedChange,
 	disabled = false,
 	required = false,
@@ -81,10 +81,11 @@ function FormSwitch({
 	return (
 		<Field orientation={orientation} className={className} data-invalid={hasError}>
 			<FieldContent
-				className={orientation === 'horizontal' ? 'flex-row items-center gap-2' : undefined}
+				className={orientation === 'horizontal' ? 'flex-row items-start gap-2' : undefined}
 			>
-				{hasLabelOrDescription && (
-					<div className="flex flex-col gap-0.5 flex-1">
+				{/* Text column: label, assistive text and error stack beside the switch. */}
+				{(hasLabelOrDescription || hasError) && (
+					<div className="flex flex-col gap-1.5 flex-1">
 						{label && (
 							<FieldLabel htmlFor={switchId}>
 								{label}
@@ -92,6 +93,7 @@ function FormSwitch({
 							</FieldLabel>
 						)}
 						{description && <FieldDescription>{description}</FieldDescription>}
+						{hasError && <FieldError errors={errorArray} />}
 					</div>
 				)}
 				<Switch
@@ -108,7 +110,6 @@ function FormSwitch({
 					size={size}
 					{...switchProps}
 				/>
-				{hasError && <FieldError errors={errorArray} />}
 			</FieldContent>
 		</Field>
 	)

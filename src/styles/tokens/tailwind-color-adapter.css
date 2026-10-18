@@ -42,6 +42,8 @@
 	--color-field: var(--border-secondary);
 	--color-focus: var(--border-focus);
 	--color-fill-critical: var(--bg-fill-critical);
+	--color-selected: var(--bg-fill-selected);
+	--color-selected-foreground: var(--text-on-fill-selected);
 	--color-sidebar-stroke: var(--border-default);
 	--color-chart-1: var(--chart-1);
 	--color-chart-2: var(--chart-2);
@@ -64,6 +66,7 @@
 	--color-surface-critical: var(--bg-surface-critical);
 	--color-surface-info: var(--bg-surface-info);
 	--color-surface-emphasis: var(--bg-surface-emphasis);
+	--color-surface-input: var(--bg-surface-input);
 	--color-surface-brand: var(--bg-surface-brand);
 	--color-surface-brand-2: var(--bg-surface-brand-2);
 	--color-surface-brand-3: var(--bg-surface-brand-3);

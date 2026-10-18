@@ -41,8 +41,10 @@
 	--bg-surface-brand-4: #e0e8f8ff;
 	--bg-surface-brand-5: #e8f0e8ff;
 	--bg-surface-hover: #efefefff;
+	--bg-surface-input: #2e2e2e33;
 	--bg-fill-default: #f8f8f8ff;
 	--bg-fill-primary: #0a0a0aff;
+	--bg-fill-primary-hover: #0a0a0aff;
 	--bg-fill-brand: #e87000ff;
 	--bg-fill-brand-2: #0a8080ff;
 	--bg-fill-brand-3: #c89030ff;
@@ -55,6 +57,8 @@
 	--bg-fill-emphasis: #0a0a0aff;
 	--bg-fill-transparent: #00000010;
 	--bg-fill-secondary: #efefefff;
+	--bg-fill-secondary-hover: #efefefff;
+	--bg-fill-selected: #0a0a0aff;
 	--bg-fill-secondary-inverse: #f8f8f8ff;
 
 	/* ── Text ──────────────────────────────────────────────────────────── */
@@ -66,6 +70,7 @@
 	--text-on-fill-primary: #f8f8f8ff;
 	--text-on-fill-brand: #0a0a0aff;
 	--text-on-fill-secondary: #0a0a0aff;
+	--text-on-fill-selected: #f8f8f8ff;
 	--text-on-surface-accent: #0a0a0aff;
 	--text-info: #001e5eff;
 	--text-success: #003a00ff;
@@ -174,8 +179,10 @@
 	--bg-surface-brand-4: #0a101eff;
 	--bg-surface-brand-5: #0a1a10ff;
 	--bg-surface-hover: #1a1a1aff;
+	--bg-surface-input: #8888884d;
 	--bg-fill-default: #0a0a0aff;
 	--bg-fill-primary: #f0f0f0ff;
+	--bg-fill-primary-hover: #f0f0f0ff;
 	--bg-fill-brand: #88cc00ff;
 	--bg-fill-brand-2: #22aaaaff;
 	--bg-fill-brand-3: #d09830ff;
@@ -188,6 +195,8 @@
 	--bg-fill-emphasis: #f0f0f0ff;
 	--bg-fill-transparent: #ffffff10;
 	--bg-fill-secondary: #141414ff;
+	--bg-fill-secondary-hover: #141414ff;
+	--bg-fill-selected: #f0f0f0ff;
 	--bg-fill-secondary-inverse: #0a0a0aff;
 
 	/* ── Text ──────────────────────────────────────────────────────────── */
@@ -199,6 +208,7 @@
 	--text-on-fill-primary: #0a0a0aff;
 	--text-on-fill-brand: #0a0a0aff;
 	--text-on-fill-secondary: #f0f0f0ff;
+	--text-on-fill-selected: #0a0a0aff;
 	--text-on-surface-accent: #f0f0f0ff;
 	--text-info: #99bbffff;
 	--text-success: #77dd77ff;

@@ -2,12 +2,20 @@ import type { RadioGroup as RadioGroupPrimitive } from '@base-ui/react/radio-gro
 import type { VariantProps } from 'class-variance-authority'
 import * as React from 'react'
 import { Field, FieldContent, FieldDescription, FieldError, FieldLabel } from '../_internal/field'
-import { Label } from '../_internal/label'
-import { RadioGroup, RadioGroupItem } from '../_internal/radio-group'
+import {
+	RadioGroup,
+	RadioGroupItem,
+	RadioGroupOption,
+	type radioGroupOptionVariants,
+} from '../_internal/radio-group'
 
 export interface FormRadioGroupOption {
 	label: string
 	value: string
+	/** Supporting copy under the label. */
+	description?: string
+	/** Leading icon or illustration. */
+	icon?: React.ReactNode
 	disabled?: boolean
 }
 
@@ -24,6 +32,8 @@ export interface FormRadioGroupProps extends Omit<
 	disabled?: boolean
 	required?: boolean
 	orientation?: VariantProps<typeof Field>['orientation']
+	/** `card` renders each option as a selectable tile. */
+	variant?: VariantProps<typeof radioGroupOptionVariants>['variant']
 	className?: string
 	// Additional props
 	id?: string
@@ -40,6 +50,7 @@ function FormRadioGroup({
 	disabled = false,
 	required = false,
 	orientation = 'vertical',
+	variant = 'default',
 	className,
 	id,
 	name,
@@ -89,17 +100,23 @@ function FormRadioGroup({
 					{options.map((option) => {
 						const optionId = `${radioGroupId}-${option.value}`
 						return (
-							<div key={option.value} className="flex items-center space-x-2">
+							<RadioGroupOption key={option.value} htmlFor={optionId} variant={variant}>
 								<RadioGroupItem
 									value={option.value}
 									id={optionId}
 									disabled={disabled || option.disabled}
 									aria-invalid={hasError}
 								/>
-								<Label htmlFor={optionId} className="text-sm font-normal cursor-pointer">
-									{option.label}
-								</Label>
-							</div>
+								{option.icon}
+								<span className="flex flex-col gap-0.5">
+									<span className="font-medium">{option.label}</span>
+									{option.description && (
+										<span className="text-muted-foreground text-xs/relaxed">
+											{option.description}
+										</span>
+									)}
+								</span>
+							</RadioGroupOption>
 						)
 					})}
 				</RadioGroup>

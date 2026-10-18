@@ -17,6 +17,7 @@
 	--bg-surface-popover: #ffffff;
 	--bg-surface-accent: #efefeb;
 	--bg-surface-field: #e7e7e1;
+	--bg-surface-input: #e7e7e133;
 	--bg-surface-info: #eef6ff;
 	--bg-surface-success: #eefaf1;
 	--bg-surface-warning: #fff9e8;
@@ -33,6 +34,8 @@
 	--bg-surface-hover: #ecece7;
 	--bg-fill-default: #f7f7f3;
 	--bg-fill-primary: #111111;
+	--bg-fill-primary-hover: #111111;
+	--bg-fill-selected: #111111;
 	--bg-fill-brand: #21e36b;
 	--bg-fill-brand-2: #ffe14a;
 	--bg-fill-brand-3: #58a7f8;
@@ -45,6 +48,7 @@
 	--bg-fill-emphasis: #3c8ee6;
 	--bg-fill-transparent: #00000008;
 	--bg-fill-secondary: #efefeb;
+	--bg-fill-secondary-hover: #efefeb;
 	--bg-fill-secondary-inverse: #ffffff;
 	--text-default: #111111;
 	--text-secondary: #555550;
@@ -52,6 +56,7 @@
 	--text-disabled: #b7b7b0;
 	--text-inverse: #ffffff;
 	--text-on-fill-primary: #ffffff;
+	--text-on-fill-selected: #ffffff;
 	--text-on-fill-brand: #111111;
 	--text-on-fill-secondary: #111111;
 	--text-on-surface-accent: #111111;
@@ -135,7 +140,7 @@
 	--card-radius: var(--radius);
 	--card-padding: calc(var(--spacing) * 6);
 	--input-radius: var(--radius);
-	--input-height: calc(var(--spacing) * 10);
+	--control-size-md: calc(var(--spacing) * 10);
 	--badge-radius: var(--radius);
 	--motion-duration-fast: 100ms;
 	--motion-duration-normal: 150ms;
@@ -154,18 +159,7 @@
 	--hover-transform: none;
 	--hover-shadow: none;
 	--active-scale: 0.98;
-	--heading-font-weight: 700;
-	--heading-letter-spacing: var(--tracking-tight);
-	--body-letter-spacing: var(--tracking-normal);
-	--hero-font-size: var(--text-6xl);
-	--hero-font-weight: 700;
-	--hero-letter-spacing: var(--tracking-tight);
-	--section-title-size: var(--text-3xl);
-	--section-title-font-weight: 700;
-	--section-title-letter-spacing: var(--tracking-tight);
-	--card-title-size: var(--text-lg);
-	--card-title-font-weight: 600;
-	--card-title-letter-spacing: var(--tracking-normal);
+	--button-height: calc(var(--spacing) * 7);
 	--background: var(--bg-default);
 	--foreground: var(--text-default);
 	--card: var(--bg-surface-default);
@@ -194,6 +188,7 @@
 	--bg-surface-popover: #191918;
 	--bg-surface-accent: #1e1e1c;
 	--bg-surface-field: #262624;
+	--bg-surface-input: #2626244d;
 	--bg-surface-info: #132332;
 	--bg-surface-success: #14251a;
 	--bg-surface-warning: #2a2412;
@@ -210,6 +205,8 @@
 	--bg-surface-hover: #20201e;
 	--bg-fill-default: #111111;
 	--bg-fill-primary: #f7f7f3;
+	--bg-fill-primary-hover: #f7f7f3;
+	--bg-fill-selected: #f7f7f3;
 	--bg-fill-brand: #21e36b;
 	--bg-fill-brand-2: #ffe14a;
 	--bg-fill-brand-3: #58a7f8;
@@ -222,6 +219,7 @@
 	--bg-fill-emphasis: #58a7f8;
 	--bg-fill-transparent: #ffffff0d;
 	--bg-fill-secondary: #1e1e1c;
+	--bg-fill-secondary-hover: #1e1e1c;
 	--bg-fill-secondary-inverse: #111111;
 	--text-default: #f7f7f3;
 	--text-secondary: #b8b8b1;
@@ -229,6 +227,7 @@
 	--text-disabled: #5e5e59;
 	--text-inverse: #111111;
 	--text-on-fill-primary: #111111;
+	--text-on-fill-selected: #111111;
 	--text-on-fill-brand: #111111;
 	--text-on-fill-secondary: #f7f7f3;
 	--text-on-surface-accent: #f7f7f3;

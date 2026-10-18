@@ -1,4 +1,5 @@
 import { Dialog as DialogPrimitive } from '@base-ui/react/dialog'
+import { cva, type VariantProps } from 'class-variance-authority'
 import { XIcon } from 'lucide-react'
 import type * as React from 'react'
 import { Button } from './button'
@@ -33,23 +34,38 @@ function DialogOverlay({ className, ...props }: DialogPrimitive.Backdrop.Props) 
 	)
 }
 
+const dialogContentVariants = cva(
+	'bg-page data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 ring-foreground/10 grid max-w-[calc(100%-2rem)] max-h-[calc(100dvh-var(--spacing)*8)] overflow-y-auto gap-4 rounded-(--dialog-radius) p-4 text-(length:--body-font-size) leading-relaxed ring-(length:--dialog-border-width) duration-fast sm:w-auto sm:max-w-(--dialog-max-width) fixed top-1/2 left-1/2 z-modal w-full -translate-x-1/2 -translate-y-1/2 outline-none',
+	{
+		variants: {
+			placement: {
+				center: '',
+				// Docks to the bottom of the viewport below `sm`, like a drawer.
+				responsive:
+					'max-sm:top-auto max-sm:bottom-0 max-sm:max-w-full max-sm:max-h-[90dvh] max-sm:translate-y-0 max-sm:rounded-b-none max-sm:data-open:slide-in-from-bottom max-sm:data-closed:slide-out-to-bottom max-sm:data-open:zoom-in-100 max-sm:data-closed:zoom-out-100',
+			},
+		},
+		defaultVariants: { placement: 'center' },
+	},
+)
+
 function DialogContent({
 	className,
 	children,
 	showCloseButton = true,
+	placement,
 	...props
-}: DialogPrimitive.Popup.Props & {
-	showCloseButton?: boolean
-}) {
+}: DialogPrimitive.Popup.Props &
+	VariantProps<typeof dialogContentVariants> & {
+		showCloseButton?: boolean
+	}) {
 	return (
 		<DialogPortal>
 			<DialogOverlay />
 			<DialogPrimitive.Popup
 				data-slot="dialog-content"
-				className={cn(
-					'bg-page data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 ring-foreground/10 grid max-w-[calc(100%-2rem)] gap-4 rounded-xl p-4 text-xs/relaxed ring-[length:var(--border-width)] duration-fast sm:w-auto sm:max-w-[90vw] fixed top-1/2 left-1/2 z-modal w-full -translate-x-1/2 -translate-y-1/2 outline-none',
-					className,
-				)}
+				data-placement={placement ?? 'center'}
+				className={cn(dialogContentVariants({ placement }), className)}
 				{...props}
 			>
 				{children}
@@ -99,7 +115,10 @@ function DialogTitle({ className, ...props }: DialogPrimitive.Title.Props) {
 	return (
 		<DialogPrimitive.Title
 			data-slot="dialog-title"
-			className={cn('text-sm font-medium', className)}
+			className={cn(
+				'text-(length:--heading-font-size) leading-(--heading-line-height) font-medium',
+				className,
+			)}
 			{...props}
 		/>
 	)
@@ -110,7 +129,7 @@ function DialogDescription({ className, ...props }: DialogPrimitive.Description.
 		<DialogPrimitive.Description
 			data-slot="dialog-description"
 			className={cn(
-				'text-muted-foreground *:[a]:hover:text-foreground text-xs/relaxed *:[a]:underline *:[a]:underline-offset-3',
+				'text-muted-foreground *:[a]:hover:text-foreground text-(length:--body-font-size) leading-relaxed *:[a]:underline *:[a]:underline-offset-3',
 				className,
 			)}
 			{...props}
@@ -119,6 +138,7 @@ function DialogDescription({ className, ...props }: DialogPrimitive.Description.
 }
 
 export {
+	dialogContentVariants,
 	Dialog,
 	DialogClose,
 	DialogContent,

@@ -13,6 +13,7 @@ export const defaultPreset: Record<string, string> = {
 	'--bg-surface-popover': '#F9F9F8FF',
 	'--bg-surface-accent': '#F1F0EFFF',
 	'--bg-surface-field': '#DAD9D6FF',
+	'--bg-surface-input': '#DAD9D633', // surface-field at 20%
 	'--bg-surface-info': '#F1FAFDFF',
 	'--bg-surface-success': '#F5FBF5FF',
 	'--bg-surface-warning': '#FFF7EDFF',
@@ -29,6 +30,8 @@ export const defaultPreset: Record<string, string> = {
 	'--bg-surface-hover': '#F1F0EFFF',
 	'--bg-fill-default': '#F9F9F8FF',
 	'--bg-fill-primary': '#21201CFF',
+	'--bg-fill-primary-hover': '#21201CFF',
+	'--bg-fill-selected': '#21201CFF',
 	'--bg-fill-brand': '#D6409FFF',
 	'--bg-fill-brand-2': '#12A594FF',
 	'--bg-fill-brand-3': '#FFC53DFF',
@@ -41,6 +44,7 @@ export const defaultPreset: Record<string, string> = {
 	'--bg-fill-emphasis': '#0090FFFF',
 	'--bg-fill-transparent': '#0000000D',
 	'--bg-fill-secondary': '#F1F0EFFF',
+	'--bg-fill-secondary-hover': '#F1F0EFFF',
 	'--bg-fill-secondary-inverse': '#FFFFFFFF',
 	'--text-default': '#21201CFF',
 	'--text-secondary': '#63635EFF',
@@ -48,6 +52,7 @@ export const defaultPreset: Record<string, string> = {
 	'--text-disabled': '#CFCECAFF',
 	'--text-inverse': '#FFFFFFFF',
 	'--text-on-fill-primary': '#FFFFFFFF',
+	'--text-on-fill-selected': '#FFFFFFFF',
 	'--text-on-fill-brand': '#000000FF',
 	'--text-on-fill-secondary': '#21201CFF',
 	'--text-on-surface-accent': '#21201CFF',
@@ -139,7 +144,7 @@ export const defaultPreset: Record<string, string> = {
 	'--card-radius': 'var(--radius-lg)',
 	'--card-padding': 'calc(var(--spacing) * 4)',
 	'--input-radius': 'var(--radius-md)',
-	'--input-height': 'calc(var(--spacing) * 7)',
+	'--control-size-md': 'calc(var(--spacing) * 7)',
 	'--badge-radius': 'var(--radius-4xl)',
 
 	// ── Phase 1b: Motion tokens ────────────────────────────────────────────
@@ -160,20 +165,6 @@ export const defaultPreset: Record<string, string> = {
 	'--hover-transform': 'none',
 	'--hover-shadow': 'var(--shadow-md)',
 	'--active-scale': '0.98',
-
-	// ── Phase 1c: Typography composition tokens ───────────────────────────
-	'--heading-font-weight': '700',
-	'--heading-letter-spacing': 'var(--tracking-tight)',
-	'--body-letter-spacing': 'var(--tracking-normal)',
-	'--hero-font-size': 'var(--text-5xl)',
-	'--hero-font-weight': '700',
-	'--hero-letter-spacing': 'var(--tracking-tight)',
-	'--section-title-size': 'var(--text-3xl)',
-	'--section-title-font-weight': '700',
-	'--section-title-letter-spacing': 'var(--tracking-tight)',
-	'--card-title-size': 'var(--text-lg)',
-	'--card-title-font-weight': '600',
-	'--card-title-letter-spacing': 'var(--tracking-normal)',
 }
 
 export const defaultPresetDark: Record<string, string> = {
@@ -189,6 +180,7 @@ export const defaultPresetDark: Record<string, string> = {
 	'--bg-surface-popover': '#191918FF',
 	'--bg-surface-accent': '#222221FF',
 	'--bg-surface-field': '#494844FF',
+	'--bg-surface-input': '#4948444D', // surface-field at 30%
 	'--bg-surface-info': '#111A27FF',
 	'--bg-surface-success': '#141A15FF',
 	'--bg-surface-warning': '#1E160FFF',
@@ -205,6 +197,8 @@ export const defaultPresetDark: Record<string, string> = {
 	'--bg-surface-hover': '#222221FF',
 	'--bg-fill-default': '#191918FF',
 	'--bg-fill-primary': '#EEEEECFF',
+	'--bg-fill-primary-hover': '#EEEEECFF',
+	'--bg-fill-selected': '#EEEEECFF',
 	'--bg-fill-brand': '#D6409FFF',
 	'--bg-fill-brand-2': '#12A594FF',
 	'--bg-fill-brand-3': '#FFC53DFF',
@@ -217,6 +211,7 @@ export const defaultPresetDark: Record<string, string> = {
 	'--bg-fill-emphasis': '#0090FFFF',
 	'--bg-fill-transparent': '#0000000D',
 	'--bg-fill-secondary': '#222221FF',
+	'--bg-fill-secondary-hover': '#222221FF',
 	'--bg-fill-secondary-inverse': '#000000FF',
 	'--text-default': '#EEEEECFF',
 	'--text-secondary': '#B5B3ADFF',
@@ -224,6 +219,7 @@ export const defaultPresetDark: Record<string, string> = {
 	'--text-disabled': '#494844FF',
 	'--text-inverse': '#000000FF',
 	'--text-on-fill-primary': '#000000FF',
+	'--text-on-fill-selected': '#000000FF',
 	'--text-on-fill-brand': '#000000FF',
 	'--text-on-fill-secondary': '#EEEEECFF',
 	'--text-on-surface-accent': '#EEEEECFF',

@@ -1,4 +1,5 @@
 import { cva, type VariantProps } from 'class-variance-authority'
+import { CircleAlertIcon } from 'lucide-react'
 import { useMemo } from 'react'
 import { Label } from './label'
 import { Separator } from './separator'
@@ -27,7 +28,7 @@ function FieldLegend({
 			data-slot="field-legend"
 			data-variant={variant}
 			className={cn(
-				'mb-2 font-medium data-[variant=label]:text-xs/relaxed data-[variant=legend]:text-sm',
+				'mb-2 font-medium data-[variant=label]:text-(length:--label-font-size) data-[variant=label]:leading-relaxed data-[variant=label]:text-(color:--label-color) data-[variant=label]:[text-transform:var(--label-text-transform)] data-[variant=legend]:text-(length:--heading-font-size) data-[variant=legend]:leading-(--heading-line-height)',
 				className,
 			)}
 			{...props}
@@ -83,7 +84,7 @@ function FieldContent({ className, ...props }: React.ComponentProps<'div'>) {
 	return (
 		<div
 			data-slot="field-content"
-			className={cn('gap-0.5 group/field-content flex flex-1 flex-col leading-snug', className)}
+			className={cn('gap-1.5 group/field-content flex flex-1 flex-col leading-snug', className)}
 			{...props}
 		/>
 	)
@@ -108,7 +109,7 @@ function FieldTitle({ className, ...props }: React.ComponentProps<'div'>) {
 		<div
 			data-slot="field-label"
 			className={cn(
-				'gap-2 text-xs/relaxed font-medium group-data-[disabled=true]/field:opacity-disabled flex w-fit items-center leading-snug',
+				'gap-2 text-(length:--label-font-size) text-(color:--label-color) [text-transform:var(--label-text-transform)] group-data-[invalid=true]/field:text-critical font-medium group-data-[disabled=true]/field:opacity-disabled flex w-fit items-center leading-snug',
 				className,
 			)}
 			{...props}
@@ -121,8 +122,7 @@ function FieldDescription({ className, ...props }: React.ComponentProps<'p'>) {
 		<p
 			data-slot="field-description"
 			className={cn(
-				'text-muted-foreground text-left text-xs/relaxed [[data-variant=legend]+&]:-mt-1.5 leading-normal font-normal group-has-[[data-orientation=horizontal]]/field:text-balance',
-				'last:mt-0 nth-last-2:-mt-1',
+				'text-muted-foreground group-data-[invalid=true]/field:text-critical text-left text-xs/relaxed [[data-variant=legend]+&]:-mt-1.5 leading-normal font-normal group-has-[[data-orientation=horizontal]]/field:text-balance',
 				'[&>a:hover]:text-primary [&>a]:underline [&>a]:underline-offset-4',
 				className,
 			)}
@@ -199,10 +199,14 @@ function FieldError({
 		<div
 			role="alert"
 			data-slot="field-error"
-			className={cn('text-critical text-xs/relaxed font-normal break-all', className)}
+			className={cn(
+				'text-critical text-xs/relaxed font-normal break-all flex items-start gap-1 [&>svg]:size-[1.25em] [&>svg]:shrink-0 [&>svg]:mt-[0.125em]',
+				className,
+			)}
 			{...props}
 		>
-			{content}
+			<CircleAlertIcon aria-hidden="true" />
+			<div className="min-w-0">{content}</div>
 		</div>
 	)
 }
