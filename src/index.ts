@@ -58,6 +58,8 @@ export {
 
 export { AspectRatio } from './opinionated/aspect-ratio'
 
+export { Image, type ImageProps } from './opinionated/image'
+
 export { Avatar, AvatarFallback, AvatarImage, type AvatarProps } from './opinionated/avatar'
 
 export { Badge, type BadgeProps } from './opinionated/badge'

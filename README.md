@@ -54,6 +54,24 @@ import { FormInput } from '@leitware/composables'
 import { Card } from '@leitware/composables'
 ```
 
+### Images
+
+`Image` requires `src`, `alt`, and intrinsic pixel `width`/`height`, or explicit `fill` mode. Dimensions reserve space before loading; images shrink to fit their container. Use `alt=""` for decorative images.
+
+```tsx
+import { AspectRatio, Image } from '@leitware/composables'
+
+<Image src="/mountains.jpg" alt="Snow on the mountain peaks" width={1200} height={800} />
+
+<AspectRatio ratio={16 / 9}>
+	<Image src="/mountains.jpg" alt="Snow on the mountain peaks" fill />
+</AspectRatio>
+```
+
+`fill` absolutely positions the image inside a positioned parent with a defined size. For a background, use a relatively positioned container, `alt=""`, and place foreground content above the image. `fit="cover"` crops by default; `fit="contain"` shows the entire image against the muted background. `position` controls the focal point. `className`, `style`, and the forwarded ref target the actual image.
+
+Images default to `loading="lazy"` and `decoding="async"`. For an above-the-fold hero, use `loading="eager"` and optionally `fetchPriority="high"`. Native `srcSet`, `sizes`, events, and other image attributes pass through. Supply `sizes` to describe the rendered width when using width-descriptor `srcSet` sources. This is a native browser image component: it does not generate responsive sources or provide Next.js image optimization. Captions and credits can be composed using `figure` and `figcaption`.
+
 ### Override the theme
 
 Override known semantic variables after the imports. Define both modes when a colour decision should change with the theme:
