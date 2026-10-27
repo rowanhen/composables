@@ -10,6 +10,12 @@ const meta = {
 		alt: 'Illustrated mountains beneath a peach sky and setting sun',
 		width: 800,
 		height: 450,
+		variant: 'default',
+		fit: 'cover',
+	},
+	argTypes: {
+		variant: { control: 'select', options: ['default', 'outline', 'plain'] },
+		fit: { control: 'select', options: ['cover', 'contain'] },
 	},
 	parameters: {
 		docs: {
@@ -25,6 +31,10 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Intrinsic: Story = {}
+
+export const Outline: Story = { args: { variant: 'outline' } }
+
+export const Plain: Story = { args: { variant: 'plain' } }
 
 export const Cropped: Story = {
 	render: () => (
@@ -54,7 +64,14 @@ export const Contained: Story = {
 export const Background: Story = {
 	render: () => (
 		<div className="relative isolate overflow-hidden rounded-lg p-12">
-			<Image src="images/landscape.svg" alt="" fill loading="eager" className="-z-10" />
+			<Image
+				src="images/landscape.svg"
+				alt=""
+				fill
+				variant="plain"
+				loading="eager"
+				className="-z-10"
+			/>
 			<div className="rounded-lg bg-background p-6 text-foreground">
 				<h2 className="text-xl font-semibold">Explore the mountains</h2>
 				<p>The decorative image fills the space behind this content.</p>

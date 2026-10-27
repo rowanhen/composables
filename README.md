@@ -72,6 +72,8 @@ import { AspectRatio, Image } from '@leitware/composables'
 
 Images default to `loading="lazy"` and `decoding="async"`. For an above-the-fold hero, use `loading="eager"` and optionally `fetchPriority="high"`. Native `srcSet`, `sizes`, events, and other image attributes pass through. Supply `sizes` to describe the rendered width when using width-descriptor `srcSet` sources. This is a native browser image component: it does not generate responsive sources or provide Next.js image optimization. Captions and credits can be composed using `figure` and `figcaption`.
 
+Image presentation uses the same CVA variant system as other components: `variant="default"` provides rounded corners and a muted background, `variant="outline"` adds a semantic border, and `variant="plain"` removes rounding and background for edge-to-edge media. The default appearance is unchanged. `imageVariants` is exported for reusing these styles; `className` overrides remain supported.
+
 ### Override the theme
 
 Override known semantic variables after the imports. Define both modes when a colour decision should change with the theme:
