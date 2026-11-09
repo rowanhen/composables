@@ -1,3 +1,5 @@
+import { gutenberg, gutenbergDark } from './gutenberg'
+export { gutenberg, gutenbergDark } from './gutenberg'
 import { defaultPreset, defaultPresetDark } from './default'
 import { brutalist, brutalistDark } from './brutalist'
 import { signalPop, signalPopDark } from './signal-pop'
@@ -21,6 +23,13 @@ export interface PresetDefinition {
 }
 
 export const presetDefinitions = [
+	{
+		name: 'gutenberg',
+		label: 'Gutenberg',
+		description: 'Quiet book reading: charcoal, warm gold, and monospaced text.',
+		light: gutenberg,
+		dark: gutenbergDark,
+	},
 	{
 		name: 'default',
 		label: 'Default',

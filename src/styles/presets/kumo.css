@@ -49,7 +49,7 @@
 	--bg-fill-transparent: #0000000d;
 	--bg-fill-secondary: #ffffff;
 	--bg-fill-secondary-hover: #ffffff;
-	--bg-fill-secondary-inverse: #171717;
+	--bg-fill-secondary-inverse: #ffffff;
 	--text-default: #171717;
 	--text-secondary: #737373;
 	--text-muted: #737373;
@@ -407,7 +407,7 @@
 	--bg-fill-transparent: #ffffff0d;
 	--bg-fill-secondary: #0f0f0f;
 	--bg-fill-secondary-hover: #0f0f0f;
-	--bg-fill-secondary-inverse: #f5f5f5;
+	--bg-fill-secondary-inverse: #0f0f0f;
 	--text-default: #f5f5f5;
 	--text-secondary: #a3a3a3;
 	--text-muted: #a3a3a3;
