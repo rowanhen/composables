@@ -26,7 +26,7 @@ export const presetDefinitions = [
 	{
 		name: 'gutenberg',
 		label: 'Gutenberg',
-		description: 'Quiet book reading: charcoal, warm gold, and monospaced text.',
+		description: 'Soft neutral surfaces, blue accents, and generous pill-shaped controls.',
 		light: gutenberg,
 		dark: gutenbergDark,
 	},

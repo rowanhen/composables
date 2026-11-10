@@ -23,7 +23,7 @@ function RadioGroupItem({ className, ...props }: RadioPrimitive.Root.Props) {
 			className={cn(
 				FOCUS_RING,
 				HOVER_RING,
-				'border-(color:--choice-border-color) not-data-checked:hover:bg-(--bg-surface-hover) dark:bg-surface-field/30 data-checked:bg-selected data-checked:text-selected-foreground dark:data-checked:bg-selected data-checked:border-selected flex size-(--choice-size) rounded-full transition-shadow group/radio-group-item peer relative aspect-square shrink-0 border outline-none after:absolute after:-inset-x-3 after:-inset-y-2 disabled:cursor-not-allowed disabled:opacity-disabled',
+				'border-(color:--choice-border-color) not-data-checked:hover:bg-(--bg-surface-hover) dark:bg-surface-field/30 data-checked:bg-selected data-checked:text-selected-foreground dark:data-checked:bg-selected data-checked:border-selected flex size-(--choice-size) rounded-full transition-shadow group/radio-group-item peer relative aspect-square shrink-0 border-(length:--choice-border-width) outline-none after:absolute after:-inset-x-3 after:-inset-y-2 disabled:cursor-not-allowed disabled:opacity-disabled',
 				className,
 			)}
 			{...props}
