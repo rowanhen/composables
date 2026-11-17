@@ -6,6 +6,7 @@ import { signalPop, signalPopDark } from './signal-pop'
 import { editorialGrid, editorialGridDark } from './editorial-grid'
 import { kumo, kumoDark } from './kumo'
 import { oqita, oqitaDark } from './oqita'
+import { sponder } from './sponder'
 
 export { defaultPreset, defaultPresetDark } from './default'
 export { brutalist, brutalistDark } from './brutalist'
@@ -13,6 +14,7 @@ export { signalPop, signalPopDark } from './signal-pop'
 export { editorialGrid, editorialGridDark } from './editorial-grid'
 export { kumo, kumoDark } from './kumo'
 export { oqita, oqitaDark } from './oqita'
+export { sponder } from './sponder'
 
 export interface PresetDefinition {
 	name: string
@@ -75,6 +77,13 @@ export const presetDefinitions = [
 			'Friendly and soft: expressive type, compact pill controls, quiet surfaces, and cobalt actions.',
 		light: oqita,
 		dark: oqitaDark,
+	},
+	{
+		name: 'sponder',
+		label: 'Sponder',
+		description: 'Dark slate surfaces, green brand accents, and Inter and Geist typography.',
+		light: sponder,
+		dark: sponder,
 	},
 ] satisfies PresetDefinition[]
 

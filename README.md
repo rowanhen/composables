@@ -235,6 +235,15 @@ Editorial Grid:
 @import '@leitware/composables/presets/kumo.css';
 ```
 
+Sponder:
+
+```css
+@import '@fontsource-variable/inter';
+@import '@fontsource-variable/geist';
+@import '@leitware/composables/styles.css';
+@import '@leitware/composables/presets/sponder.css';
+```
+
 The variable entrypoints include their preset weight ranges. The explicit IBM Plex files load normal weights 400–700; add italic entrypoints only if your interface uses them. The same package paths can instead be loaded as side-effect imports from an application entry file, for example `import '@fontsource-variable/inter'` or `import '@fontsource/ibm-plex-sans/600.css'`.
 
 ---
@@ -370,13 +379,14 @@ export default function RootLayout({ children }) {
 
 The default theme is included in `styles.css`. Alternative presets are available as standalone CSS files:
 
-| Preset             | Vibe                                                 | Fonts                                          |
-| ------------------ | ---------------------------------------------------- | ---------------------------------------------- |
-| **Default**        | Clean neutral system, works everywhere               | Inter + Bricolage Grotesque                    |
-| **Brutalist**      | Bold, high-contrast, raw aesthetic                   | Space Grotesk + JetBrains Mono                 |
-| **Signal Pop**     | Bright consumer-tech, modular and graphic            | IBM Plex Sans + Space Grotesk + JetBrains Mono |
-| **Editorial Grid** | Flat technical catalogue with vivid signals          | Inter + Bricolage Grotesque                    |
-| **Kumo**           | Cloudflare-inspired surfaces and highlighted buttons | Inter                                          |
+| Preset             | Vibe                                                       | Fonts                                          |
+| ------------------ | ---------------------------------------------------------- | ---------------------------------------------- |
+| **Default**        | Clean neutral system, works everywhere                     | Inter + Bricolage Grotesque                    |
+| **Brutalist**      | Bold, high-contrast, raw aesthetic                         | Space Grotesk + JetBrains Mono                 |
+| **Signal Pop**     | Bright consumer-tech, modular and graphic                  | IBM Plex Sans + Space Grotesk + JetBrains Mono |
+| **Editorial Grid** | Flat technical catalogue with vivid signals                | Inter + Bricolage Grotesque                    |
+| **Kumo**           | Cloudflare-inspired surfaces and highlighted buttons       | Inter                                          |
+| **Sponder**        | Dark slate surfaces and green accents in both colour modes | Inter + Geist                                  |
 
 ```css
 /* Optional: use exactly one alternative preset after styles.css */
