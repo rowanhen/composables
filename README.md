@@ -379,14 +379,14 @@ export default function RootLayout({ children }) {
 
 The default theme is included in `styles.css`. Alternative presets are available as standalone CSS files:
 
-| Preset             | Vibe                                                       | Fonts                                          |
-| ------------------ | ---------------------------------------------------------- | ---------------------------------------------- |
-| **Default**        | Clean neutral system, works everywhere                     | Inter + Bricolage Grotesque                    |
-| **Brutalist**      | Bold, high-contrast, raw aesthetic                         | Space Grotesk + JetBrains Mono                 |
-| **Signal Pop**     | Bright consumer-tech, modular and graphic                  | IBM Plex Sans + Space Grotesk + JetBrains Mono |
-| **Editorial Grid** | Flat technical catalogue with vivid signals                | Inter + Bricolage Grotesque                    |
-| **Kumo**           | Cloudflare-inspired surfaces and highlighted buttons       | Inter                                          |
-| **Sponder**        | Dark slate surfaces and green accents in both colour modes | Inter + Geist                                  |
+| Preset             | Vibe                                                  | Fonts                                          |
+| ------------------ | ----------------------------------------------------- | ---------------------------------------------- |
+| **Default**        | Clean neutral system, works everywhere                | Inter + Bricolage Grotesque                    |
+| **Brutalist**      | Bold, high-contrast, raw aesthetic                    | Space Grotesk + JetBrains Mono                 |
+| **Signal Pop**     | Bright consumer-tech, modular and graphic             | IBM Plex Sans + Space Grotesk + JetBrains Mono |
+| **Editorial Grid** | Flat technical catalogue with vivid signals           | Inter + Bricolage Grotesque                    |
+| **Kumo**           | Cloudflare-inspired surfaces and highlighted buttons  | Inter                                          |
+| **Sponder**        | Warm light and dark slate surfaces with green accents | Inter + Geist                                  |
 
 ```css
 /* Optional: use exactly one alternative preset after styles.css */
