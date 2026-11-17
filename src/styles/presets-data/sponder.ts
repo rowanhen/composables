@@ -5,7 +5,7 @@ export const sponder: Record<string, string> = {
 	...defaultPreset,
 
 	'--bg-default': '#101318FF',
-	'--bg-inverse': '#E7E4DEFF',
+	'--bg-inverse': '#F8F7F4FF',
 	'--bg-muted': '#171B21FF',
 	'--bg-surface-default': '#12161DFF',
 	'--bg-surface-popover': '#171C23FF',
@@ -118,4 +118,31 @@ export const sponder: Record<string, string> = {
 	'--font-sans': '"Inter Variable", "Inter", "Helvetica Neue", Arial, sans-serif',
 	'--font-heading': '"Geist Variable", "Inter Variable", "Helvetica Neue", Arial, sans-serif',
 	'--font-brand': '"Geist Variable", "Inter Variable", "Helvetica Neue", Arial, sans-serif',
+
+	// Component dimensions
+	'--card-radius': 'var(--radius)',
+	'--card-padding': 'calc(var(--spacing) * 6)',
+	'--input-radius': 'var(--radius)',
+	'--control-size-md': 'calc(var(--spacing) * 11)',
+	'--button-height': 'calc(var(--spacing) * 11)',
+	'--badge-radius': '9999px',
+
+	// Motion
+	'--motion-duration-fast': '120ms',
+	'--motion-duration-normal': '180ms',
+	'--motion-duration-slow': '280ms',
+	'--motion-duration-color': '150ms',
+	'--motion-duration-interaction': '180ms',
+	'--motion-duration-disclosure': '220ms',
+	'--motion-duration-overlay': '240ms',
+	'--motion-ease-standard': 'cubic-bezier(0.2, 0.8, 0.2, 1)',
+	'--motion-ease-accelerate': 'cubic-bezier(0.4, 0, 1, 1)',
+	'--motion-ease-decelerate': 'cubic-bezier(0, 0, 0.2, 1)',
+	'--motion-ease-linear': 'linear',
+	'--transition-default': 'var(--motion-duration-normal) var(--motion-ease-standard)',
+	'--transition-fast': 'var(--motion-duration-fast) var(--motion-ease-standard)',
+	'--transition-slow': 'var(--motion-duration-slow) var(--motion-ease-standard)',
+	'--hover-transform': 'translateY(-1px)',
+	'--hover-shadow': '0 14px 32px rgba(17, 24, 39, 0.08)',
+	'--active-scale': '0.99',
 }
