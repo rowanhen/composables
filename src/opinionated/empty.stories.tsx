@@ -20,7 +20,7 @@ export const Overview: Story = {
 		<Gallery>
 			<Empty>
 				<EmptyHeader>
-					<InboxIcon className="size-10 text-muted-foreground" />
+					<InboxIcon className="size-10 text-content-muted" />
 					<EmptyTitle>No results found</EmptyTitle>
 					<EmptyDescription>
 						Try adjusting your search or filters to find what you're looking for.

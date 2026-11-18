@@ -8,16 +8,16 @@ const BADGE_LINK_HOVER =
 	'[a]:hover:ring-[length:var(--hover-ring-width)] [a]:hover:ring-[color:var(--hover-ring-color)]/30'
 
 const badgeVariants = cva(
-	`${FOCUS_RING} gap-1 rounded-(--badge-radius) border border-transparent py-0.5 font-medium [text-transform:var(--label-text-transform)] transition-[opacity,box-shadow] has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 inline-flex items-center justify-center w-fit whitespace-nowrap shrink-0 [&>svg]:pointer-events-none overflow-hidden group/badge`,
+	`${FOCUS_RING} gap-1 rounded-badge border border-transparent py-0.5 font-medium [text-transform:var(--label-text-transform)] transition-[opacity,box-shadow] has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 inline-flex items-center justify-center w-fit whitespace-nowrap shrink-0 [&>svg]:pointer-events-none overflow-hidden group/badge`,
 	{
 		variants: {
 			variant: {
-				default: `bg-primary text-primary-foreground ${BADGE_LINK_HOVER}`,
-				secondary: `bg-secondary text-secondary-foreground ${BADGE_LINK_HOVER}`,
+				default: `bg-fill-primary text-on-fill-primary ${BADGE_LINK_HOVER}`,
+				secondary: `bg-fill-secondary text-on-fill-secondary ${BADGE_LINK_HOVER}`,
 				destructive: `bg-surface-critical ${BADGE_LINK_HOVER} ${FOCUS_RING_DESTRUCTIVE} text-critical border-stroke-critical`,
-				outline: `border-stroke text-foreground ${BADGE_LINK_HOVER} bg-surface-field/20 dark:bg-surface-field/30`,
-				inverse: `bg-(--bg-inverse) text-(color:--text-inverse) ${BADGE_LINK_HOVER}`,
-				ghost: `${HOVER_RING} hover:text-muted-foreground`,
+				outline: `border-stroke text-content-default ${BADGE_LINK_HOVER} bg-surface-field/20 dark:bg-surface-field/30`,
+				inverse: `bg-inverse text-content-inverse ${BADGE_LINK_HOVER}`,
+				ghost: `${HOVER_RING} hover:text-content-muted`,
 				success: 'bg-surface-success text-success border-stroke-success',
 				warning: 'bg-surface-warning text-warning border-stroke-warning',
 				info: 'bg-surface-info text-info border-stroke-info',
@@ -27,7 +27,7 @@ const badgeVariants = cva(
 				'brand-4': 'bg-surface-brand-4 text-brand-4 border-stroke-brand-4',
 				'brand-5': 'bg-surface-brand-5 text-brand-5 border-stroke-brand-5',
 				emphasis: 'bg-surface-emphasis text-emphasis border-stroke-emphasis',
-				link: 'text-primary underline-offset-4 hover:underline',
+				link: 'text-link underline-offset-4 hover:underline',
 			},
 			size: {
 				sm: 'h-4 px-1.5 text-2xs [&>svg]:size-2!',

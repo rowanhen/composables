@@ -72,7 +72,7 @@ export const Background: Story = {
 				loading="eager"
 				className="-z-10"
 			/>
-			<div className="rounded-lg bg-background p-6 text-foreground">
+			<div className="rounded-lg bg-default p-6 text-content-default">
 				<h2 className="text-xl font-semibold">Explore the mountains</h2>
 				<p>The decorative image fills the space behind this content.</p>
 			</div>

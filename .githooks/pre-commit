@@ -2,7 +2,7 @@
 set -e
 
 echo "Running oxlint..."
-bunx oxlint
+bun run lint
 
 echo "Running oxfmt check..."
 bunx oxfmt --check .
@@ -11,10 +11,8 @@ echo "Running typecheck..."
 bun run typecheck
 
 echo "Verifying generated palette CSS..."
-bun scripts/generate-css.ts --check
+bun scripts/generate-tokens.ts --check
 
-echo "Verifying generated preset CSS..."
-bun scripts/generate-preset-css.ts --check
 
 echo "Verifying generated AI rules and skill manifests..."
 bun run test:rules

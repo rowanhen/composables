@@ -83,7 +83,7 @@ export interface DataLabelProps extends React.ComponentProps<'dt'> {
 export function DataLabel({ children, className, ...props }: DataLabelProps) {
 	return (
 		<dt className={cn('break-words min-w-0', className)} {...props}>
-			<Typography variant="body-100" className="font-normal text-muted-foreground">
+			<Typography variant="body-100" className="font-normal text-content-muted">
 				{children}
 			</Typography>
 		</dt>
@@ -110,7 +110,7 @@ export interface DataValueProps extends React.ComponentProps<'dd'> {
  * // Complex value with multiple children
  * <DataValue>
  *   <span>£1,000</span>
- *   <span className="text-muted">(Calculated)</span>
+ *   <span className="text-content-muted">(Calculated)</span>
  * </DataValue>
  * ```
  */

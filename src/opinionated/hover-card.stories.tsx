@@ -26,7 +26,7 @@ export const Basic: Story = {
 					<HoverCardTrigger
 						href="#"
 						onClick={(e) => e.preventDefault()}
-						className="w-fit cursor-pointer underline underline-offset-4 decoration-muted-foreground/40 text-foreground font-medium"
+						className="w-fit cursor-pointer underline underline-offset-4 decoration-muted-foreground/40 text-content-default font-medium"
 					>
 						@composables
 					</HoverCardTrigger>
@@ -40,19 +40,19 @@ export const Basic: Story = {
 								<Typography variant="label-200" className="font-semibold">
 									Composables
 								</Typography>
-								<Typography variant="caption-100" className="text-muted-foreground">
+								<Typography variant="caption-100" className="text-content-muted">
 									A composable design system for modern React applications.
 								</Typography>
 								<HStack gap={3} className="pt-1">
 									<HStack gap={1} align="center">
-										<MapPinIcon className="size-3 text-muted-foreground" />
-										<Typography variant="caption-100" className="text-muted-foreground">
+										<MapPinIcon className="size-3 text-content-muted" />
+										<Typography variant="caption-100" className="text-content-muted">
 											London, UK
 										</Typography>
 									</HStack>
 									<HStack gap={1} align="center">
-										<CalendarDaysIcon className="size-3 text-muted-foreground" />
-										<Typography variant="caption-100" className="text-muted-foreground">
+										<CalendarDaysIcon className="size-3 text-content-muted" />
+										<Typography variant="caption-100" className="text-content-muted">
 											Joined 2017
 										</Typography>
 									</HStack>
@@ -77,7 +77,7 @@ export const InlineUsage: Story = {
 						<HoverCardTrigger
 							href="#"
 							onClick={(e) => e.preventDefault()}
-							className="cursor-pointer underline underline-offset-4 decoration-muted-foreground/40 text-foreground font-medium"
+							className="cursor-pointer underline underline-offset-4 decoration-muted-foreground/40 text-content-default font-medium"
 						>
 							@alice
 						</HoverCardTrigger>
@@ -91,7 +91,7 @@ export const InlineUsage: Story = {
 									<Typography variant="label-200" className="font-semibold">
 										Alice Johnson
 									</Typography>
-									<Typography variant="caption-100" className="text-muted-foreground">
+									<Typography variant="caption-100" className="text-content-muted">
 										Senior Engineer · Platform Team
 									</Typography>
 								</VStack>
@@ -103,7 +103,7 @@ export const InlineUsage: Story = {
 						<HoverCardTrigger
 							href="#"
 							onClick={(e) => e.preventDefault()}
-							className="cursor-pointer underline underline-offset-4 decoration-muted-foreground/40 text-foreground font-medium"
+							className="cursor-pointer underline underline-offset-4 decoration-muted-foreground/40 text-content-default font-medium"
 						>
 							@bob
 						</HoverCardTrigger>
@@ -117,7 +117,7 @@ export const InlineUsage: Story = {
 									<Typography variant="label-200" className="font-semibold">
 										Bob Martinez
 									</Typography>
-									<Typography variant="caption-100" className="text-muted-foreground">
+									<Typography variant="caption-100" className="text-content-muted">
 										Tech Lead · Design Systems
 									</Typography>
 								</VStack>

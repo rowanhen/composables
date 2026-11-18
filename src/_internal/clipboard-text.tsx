@@ -19,9 +19,9 @@ export interface ClipboardTextRootProps extends ComponentPropsWithoutRef<'div'> 
 	renderCopyButton?: (button: ReactElement) => ReactNode
 }
 const heights = {
-	sm: 'h-(--clipboard-text-height-sm)',
-	default: 'h-(--clipboard-text-height)',
-	lg: 'h-(--clipboard-text-height-lg)',
+	sm: 'h-clipboard-text-sm',
+	default: 'h-clipboard-text',
+	lg: 'h-clipboard-text-lg',
 }
 
 export const ClipboardTextRoot = forwardRef<HTMLDivElement, ClipboardTextRootProps>(
@@ -76,7 +76,7 @@ export const ClipboardTextRoot = forwardRef<HTMLDivElement, ClipboardTextRootPro
 				data-size={size}
 				data-status={status}
 				className={cn(
-					'flex min-w-0 items-center rounded-(--clipboard-text-radius) border border-stroke-input bg-surface-field text-default',
+					'flex min-w-0 items-center rounded-clipboard-text border border-stroke-input bg-surface-field text-content-default',
 					GROUP_FOCUS_RING,
 					heights[size],
 					disabled && 'opacity-disabled',

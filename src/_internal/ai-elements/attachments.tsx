@@ -191,7 +191,7 @@ export const Attachment = ({ data, onRemove, className, children, ...props }: At
 						'flex h-8 cursor-pointer select-none items-center gap-1.5',
 						'rounded-md border border-stroke px-1.5',
 						'font-medium text-sm transition-all',
-						'hover:bg-muted hover:text-foreground dark:hover:bg-muted/50',
+						'hover:bg-muted hover:text-content-default dark:hover:bg-muted/50',
 					],
 					variant === 'list' && [
 						'flex w-full items-center gap-3 rounded-lg border p-3',
@@ -225,7 +225,7 @@ export const AttachmentPreview = ({
 	const iconSize = variant === 'inline' ? 'size-3' : 'size-4'
 
 	const renderIcon = (Icon: typeof ImageIcon) => (
-		<Icon className={cn(iconSize, 'text-muted-foreground')} />
+		<Icon className={cn(iconSize, 'text-content-muted')} />
 	)
 
 	const renderContent = () => {
@@ -281,7 +281,7 @@ export const AttachmentInfo = ({
 		<div className={cn('min-w-0 flex-1', className)} {...props}>
 			<span className="block truncate">{label}</span>
 			{showMediaType && data.mediaType && (
-				<span className="block truncate text-muted-foreground text-xs">{data.mediaType}</span>
+				<span className="block truncate text-content-muted text-xs">{data.mediaType}</span>
 			)}
 		</div>
 	)
@@ -377,7 +377,7 @@ export type AttachmentEmptyProps = HTMLAttributes<HTMLDivElement>
 
 export const AttachmentEmpty = ({ className, children, ...props }: AttachmentEmptyProps) => (
 	<div
-		className={cn('flex items-center justify-center p-4 text-muted-foreground text-sm', className)}
+		className={cn('flex items-center justify-center p-4 text-content-muted text-sm', className)}
 		{...props}
 	>
 		{children ?? 'No attachments'}

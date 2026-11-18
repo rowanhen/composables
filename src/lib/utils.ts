@@ -1,5 +1,21 @@
 import { type ClassValue, clsx } from 'clsx'
-import { twMerge } from 'tailwind-merge'
+import { extendTailwindMerge } from 'tailwind-merge'
+import { componentUtilityAliases } from '../styles/tokens/utility-aliases'
+
+const names = (prefix: string) =>
+	Object.keys(componentUtilityAliases)
+		.filter((key) => key.startsWith(prefix) && !key.slice(prefix.length).includes('--'))
+		.map((key) => key.slice(prefix.length))
+const twMerge = extendTailwindMerge({
+	extend: {
+		theme: {
+			spacing: names('--spacing-'),
+			text: names('--text-'),
+			shadow: names('--shadow-'),
+			radius: names('--radius-'),
+		},
+	},
+})
 
 export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs))
@@ -10,22 +26,23 @@ export function cn(...inputs: ClassValue[]) {
  * Change this once to update focus behaviour across every component.
  */
 export const FOCUS_RING =
-	'focus-visible:border-[var(--focus-ring-color)] focus-visible:ring-[color:color-mix(in_oklab,var(--focus-ring-color)_var(--focus-ring-opacity),transparent)] focus-visible:ring-[length:var(--focus-ring-width)] focus-visible:ring-offset-[length:var(--focus-ring-offset)] focus-visible:ring-offset-(--background) aria-invalid:ring-fill-critical/20 dark:aria-invalid:ring-fill-critical/40 aria-invalid:border-fill-critical dark:aria-invalid:border-fill-critical/50 aria-invalid:ring-[length:var(--focus-ring-width)]'
+	'focus-visible:border-[var(--focus-ring-color)] focus-visible:ring-[color:color-mix(in_oklab,var(--focus-ring-color)_var(--focus-ring-opacity),transparent)] focus-visible:ring-[length:var(--focus-ring-width)] focus-visible:ring-offset-[length:var(--focus-ring-offset)] focus-visible:ring-offset-(--bg-default) aria-invalid:ring-control-invalid/20 dark:aria-invalid:ring-control-invalid/40 aria-invalid:border-control-invalid dark:aria-invalid:border-control-invalid/50 aria-invalid:ring-[length:var(--focus-ring-width)]'
 
 /**
  * Centralised hover ring style for all interactive elements.
  * Uses a thinner accent treatment than focus, with a border color and ring
  * so presets with zero base border width still have a visible hover affordance.
  */
-export const HOVER_RING =
-	'hover:border-[var(--hover-ring-color)] hover:ring-[length:var(--hover-ring-width)] hover:ring-[color:var(--hover-ring-color)]/30'
+export const HOVER_INDICATOR =
+	'hover:ring-[length:var(--hover-ring-width)] hover:ring-[color:var(--hover-ring-color)]/30'
+export const HOVER_RING = `hover:border-hover-ring ${HOVER_INDICATOR}`
 
 /**
  * Focus treatment for grouped controls whose focusable element is nested
  * inside a wrapper, such as InputGroup and chip inputs.
  */
 export const GROUP_FOCUS_RING =
-	'has-[:focus-visible]:border-[var(--focus-ring-color)] has-[:focus-visible]:ring-[color:color-mix(in_oklab,var(--focus-ring-color)_var(--focus-ring-opacity),transparent)] has-[:focus-visible]:ring-[length:var(--focus-ring-width)] has-[:focus-visible]:ring-offset-[length:var(--focus-ring-offset)] has-[:focus-visible]:ring-offset-(--background) has-aria-invalid:ring-fill-critical/20 dark:has-aria-invalid:ring-fill-critical/40 has-aria-invalid:border-fill-critical dark:has-aria-invalid:border-fill-critical/50 has-aria-invalid:ring-[length:var(--focus-ring-width)]'
+	'has-[:focus-visible]:border-[var(--focus-ring-color)] has-[:focus-visible]:ring-[color:color-mix(in_oklab,var(--focus-ring-color)_var(--focus-ring-opacity),transparent)] has-[:focus-visible]:ring-[length:var(--focus-ring-width)] has-[:focus-visible]:ring-offset-[length:var(--focus-ring-offset)] has-[:focus-visible]:ring-offset-(--bg-default) has-aria-invalid:ring-control-invalid/20 dark:has-aria-invalid:ring-control-invalid/40 has-aria-invalid:border-control-invalid dark:has-aria-invalid:border-control-invalid/50 has-aria-invalid:ring-[length:var(--focus-ring-width)]'
 
 /** Destructive-variant focus override layered on top of FOCUS_RING. */
 export const FOCUS_RING_DESTRUCTIVE =

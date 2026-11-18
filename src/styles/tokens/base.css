@@ -8,8 +8,8 @@
 
 @layer base {
 	::selection {
-		background-color: var(--primary);
-		color: var(--primary-foreground);
+		background-color: var(--selection-bg);
+		color: var(--selection-text);
 	}
 
 	* {
@@ -45,7 +45,7 @@
 	}
 
 	body {
-		@apply font-sans bg-page text-foreground text-sm antialiased;
+		@apply font-sans bg-page text-content-default text-sm antialiased;
 	}
 
 	html {

@@ -26,7 +26,7 @@ export const Overview: Story = {
 				<HStack gap={4} align="center">
 					<Spinner variant="dots" />
 					<Spinner variant="dots" className="h-8" />
-					<Spinner variant="dots" className="text-foreground h-8" />
+					<Spinner variant="dots" className="text-content-default h-8" />
 				</HStack>
 			</Group>
 		</Gallery>

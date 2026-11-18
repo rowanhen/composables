@@ -6,12 +6,10 @@
    See README.md "Quick Start" for the full import pattern.
 
    File structure:
-     tokens/palette.css        - Primitive color scales (build-time + runtime)
+     tokens/palette.css        - Primitive color scales (runtime)
      tokens/tailwind-color-adapter.css - Generated Tailwind color aliases
      tokens/tailwind-theme.css - Non-color Tailwind theme registrations
-     tokens/semantic.css       - Semantic role tokens (:root + .dark)
-     tokens/components.css     - Component-level tunables
-     presets/default.css       - The canonical default light/dark preset
+     presets/default.css       - Complete default light/dark runtime values
      tokens/semantic-utilities.css - Generated public semantic classes
      tokens/base.css           - Global base styles (@layer base)
    ============================================================================ */
@@ -67,8 +65,8 @@
 @import './tokens/palette.css';
 @import './tokens/tailwind-color-adapter.css';
 @import './tokens/tailwind-theme.css';
-@import './tokens/semantic.css';
-@import './tokens/components.css';
+@import './tokens/tailwind-public-utilities.css';
 @import './presets/default.css';
+@import './tokens/motion.css';
 @import './tokens/semantic-utilities.css';
 @import './tokens/base.css';

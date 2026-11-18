@@ -32,12 +32,7 @@ const TAILWIND_ADAPTER_OUTPUT = join(DIST_DIR, 'tailwind.css')
 console.log('Building CSS...\n')
 
 // 1. Regenerate source-owned CSS so dist never bakes stale token output.
-execSync('bun scripts/generate-css.ts', {
-	cwd: ROOT,
-	stdio: 'inherit',
-	timeout: 60_000,
-})
-execSync('bun scripts/generate-preset-css.ts', {
+execSync('bun scripts/generate-tokens.ts', {
 	cwd: ROOT,
 	stdio: 'inherit',
 	timeout: 60_000,
@@ -86,6 +81,7 @@ try {
 	phase = 'atomic stylesheet publication'
 	publishFileAtomically(compiledOutput, OUTPUT_FILE)
 	publishFileAtomically(TAILWIND_ADAPTER_SRC, TAILWIND_ADAPTER_OUTPUT)
+	publishFileAtomically(join(ROOT, 'src/styles/tokens/compat.css'), join(DIST_DIR, 'compat.css'))
 
 	phase = 'atomic preset publication'
 	const presetFiles = readdirSync(PRESETS_SRC).filter((file) => file.endsWith('.css'))

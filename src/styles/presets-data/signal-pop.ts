@@ -1,3 +1,5 @@
+import type { PresetTokens } from '../tokens/types'
+
 import { defaultPreset, defaultPresetDark } from './default'
 
 /**
@@ -12,7 +14,7 @@ import { defaultPreset, defaultPresetDark } from './default'
  *   Heading - Space Grotesk Variable: techy, geometric, still approachable.
  *   Brand   - JetBrains Mono Variable: code/device labels and hero accents.
  */
-export const signalPop: Record<string, string> = {
+export const signalPop: PresetTokens = {
 	...defaultPreset,
 
 	// Semantic color tokens
@@ -31,7 +33,7 @@ export const signalPop: Record<string, string> = {
 	'--bg-surface-emphasis': '#BBA6FFFF',
 	'--bg-surface-inverse': '#111217FF',
 	'--bg-surface-transparent': '#0B0B0F12',
-	'--bg-overlay': 'var(--overlays-black-alpha-800)',
+	'--bg-overlay': 'var(--palette-overlays-black-alpha-800)',
 	'--bg-surface-brand': '#CFE1FFFF',
 	'--bg-surface-brand-2': '#EEFF00FF',
 	'--bg-surface-brand-3': '#FF8BD3FF',
@@ -127,7 +129,7 @@ export const signalPop: Record<string, string> = {
 	// Dimension tokens
 	'--spacing': '0.328125rem',
 	'--border-width-base': '0rem',
-	'--radius': '1.125rem',
+	'--radius-base': '1.125rem',
 	'--font-size-base': '1rem',
 	'--leading-base': '1.25',
 	'--letter-spacing-base': '0.01em',
@@ -181,7 +183,7 @@ export const signalPop: Record<string, string> = {
 	'--active-scale': '0.96',
 }
 
-export const signalPopDark: Record<string, string> = {
+export const signalPopDark: PresetTokens = {
 	...defaultPresetDark,
 
 	// Semantic color tokens
@@ -200,7 +202,7 @@ export const signalPopDark: Record<string, string> = {
 	'--bg-surface-emphasis': '#251064FF',
 	'--bg-surface-inverse': '#E7E8E2FF',
 	'--bg-surface-transparent': '#FFFFFF12',
-	'--bg-overlay': 'var(--overlays-black-alpha-800)',
+	'--bg-overlay': 'var(--palette-overlays-black-alpha-800)',
 	'--bg-surface-brand': '#09285CFF',
 	'--bg-surface-brand-2': '#343A00FF',
 	'--bg-surface-brand-3': '#451331FF',
@@ -296,7 +298,7 @@ export const signalPopDark: Record<string, string> = {
 	// Dimension tokens
 	'--spacing': '0.328125rem',
 	'--border-width-base': '0rem',
-	'--radius': '1.125rem',
+	'--radius-base': '1.125rem',
 	'--font-size-base': '1rem',
 	'--leading-base': '1.25',
 	'--letter-spacing-base': '0.01em',

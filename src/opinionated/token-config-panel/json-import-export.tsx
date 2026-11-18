@@ -1,3 +1,4 @@
+import { parseTokenOverrides, tokenNames, type TokenOverrides } from '../../styles/tokens/types'
 import React from 'react'
 
 import { Button } from '../../_internal/button'
@@ -5,29 +6,19 @@ import { Textarea } from '../../_internal/textarea'
 import { VStack } from '../../_internal/stack'
 import { Typography } from '../../_internal/typography'
 
-import { colorTokens } from './color-editor'
-import { allDimensionTokens, allStringTokens } from './spacing-editor'
-import { fontCssVars } from './typography-editor'
-import { getResolvedColor, getResolvedDimension } from './helpers'
+import { getResolvedDimension } from './helpers'
 import { removePresetStyle } from './preset-manager'
 
 /* ------------------------------------------------------------------ */
 /*  JSON import / export tab                                            */
 /* ------------------------------------------------------------------ */
 
-export function buildJsonSnapshot(): Record<string, string> {
-	const current: Record<string, string> = {}
-	for (const token of colorTokens) {
-		current[token.cssVar] = getResolvedColor(token.cssVar)
-	}
-	for (const token of allDimensionTokens) {
-		current[token.cssVar] = getResolvedDimension(token.cssVar)
-	}
-	for (const token of allStringTokens) {
-		current[token.cssVar] = getResolvedDimension(token.cssVar)
-	}
-	for (const v of fontCssVars) {
-		current[v] = getResolvedDimension(v)
+export function buildJsonSnapshot(): TokenOverrides {
+	const current: TokenOverrides = {}
+	for (const name of tokenNames) {
+		const value = getResolvedDimension(name)
+		// Guaranteed-invalid optional finishes are represented explicitly for round trips.
+		current[name] = value || 'initial'
 	}
 	return current
 }
@@ -41,7 +32,7 @@ export function JsonImportExport({
 }: {
 	jsonText: string
 	setJsonText: (text: string) => void
-	setOverrides: React.Dispatch<React.SetStateAction<Record<string, string>>>
+	setOverrides: React.Dispatch<React.SetStateAction<TokenOverrides>>
 	setActivePreset: (preset: string) => void
 	resetAll: () => void
 }) {
@@ -49,8 +40,9 @@ export function JsonImportExport({
 
 	function applyJson() {
 		try {
-			const parsed = JSON.parse(jsonText) as Record<string, string>
+			const parsed = parseTokenOverrides(JSON.parse(jsonText))
 			removePresetStyle()
+			for (const name of tokenNames) document.documentElement.style.removeProperty(name)
 			setActivePreset('default')
 			for (const [cssVar, val] of Object.entries(parsed)) {
 				if (cssVar.startsWith('--') && typeof val === 'string') {

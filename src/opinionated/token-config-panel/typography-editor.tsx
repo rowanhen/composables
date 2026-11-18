@@ -1,3 +1,4 @@
+import type { TokenName } from '../../styles/tokens/types'
 import React from 'react'
 
 import { Typography } from '../../_internal/typography'
@@ -101,8 +102,8 @@ export function FontSelectRow({
 	onApply,
 }: {
 	label: string
-	cssVar: string
-	onApply: (cssVar: string, value: string) => void
+	cssVar: TokenName
+	onApply: (cssVar: TokenName, value: string) => void
 }) {
 	const [value, setValue] = React.useState(() => {
 		const resolved = getResolvedDimension(cssVar).trim()
@@ -122,13 +123,13 @@ export function FontSelectRow({
 
 	return (
 		<div className="py-1">
-			<Typography variant="caption-100" className="text-muted-foreground mb-1 block">
+			<Typography variant="caption-100" className="text-content-muted mb-1 block">
 				{label}
 			</Typography>
 			<select
 				value={value}
 				onChange={handleChange}
-				className="w-full h-7 rounded-md border border-stroke bg-transparent px-2 text-xs text-foreground outline-none focus:ring-[length:var(--border-width)] focus:ring-focus"
+				className="w-full h-7 rounded-md border border-stroke bg-transparent px-2 text-xs text-content-default outline-none focus:ring-[length:var(--border-width)] focus:ring-focus"
 			>
 				{FONT_GROUPS.map((group) => (
 					<optgroup key={group.label} label={group.label}>

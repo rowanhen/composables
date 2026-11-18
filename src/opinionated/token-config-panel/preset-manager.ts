@@ -1,3 +1,4 @@
+import { createPresetCSS } from '../../styles/tokens/preset'
 import type { Preset } from './types'
 
 export { presets } from './presets-data'
@@ -9,13 +10,7 @@ export { presets } from './presets-data'
 const PRESET_STYLE_ID = 'composables-preset-overrides'
 
 function buildPresetStyleSheet(preset: Preset): string {
-	const lightLines = Object.entries(preset.overrides)
-		.map(([k, v]) => `  ${k}: ${v};`)
-		.join('\n')
-	const darkLines = Object.entries(preset.darkOverrides)
-		.map(([k, v]) => `  ${k}: ${v};`)
-		.join('\n')
-	return `:root {\n${lightLines}\n}\n.dark {\n${darkLines}\n}`
+	return createPresetCSS({ light: preset.overrides, dark: preset.darkOverrides })
 }
 
 export function injectPresetStyle(preset: Preset) {

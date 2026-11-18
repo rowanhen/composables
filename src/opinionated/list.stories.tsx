@@ -63,7 +63,9 @@ export const CompositionalChildrenAPI: Story = {
 							<ListArrowItem content="Hand-rolled item A" />
 							<ListArrowItem content="Hand-rolled item B with longer description text" />
 							<ListArrowItem
-								content={<span className="font-semibold text-primary">Highlighted item C</span>}
+								content={
+									<span className="font-semibold text-content-default">Highlighted item C</span>
+								}
 							/>
 						</List>
 					</div>

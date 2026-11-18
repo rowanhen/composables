@@ -1,7 +1,9 @@
+import type { PresetTokens } from '../tokens/types'
+
 import { defaultPreset, defaultPresetDark } from './default'
 
 /** Flat editorial surfaces, visible grid lines, and vivid signal blocks. */
-export const editorialGrid: Record<string, string> = {
+export const editorialGrid: PresetTokens = {
 	...defaultPreset,
 
 	'--bg-default': '#F7F7F3',
@@ -103,7 +105,7 @@ export const editorialGrid: Record<string, string> = {
 	'--chart-5': '#FF7D73',
 	'--spacing': '0.25rem',
 	'--border-width-base': '0.0625rem',
-	'--radius': '0.125rem',
+	'--radius-base': '0.125rem',
 	'--font-size-base': '1rem',
 	'--leading-base': '1.3',
 	'--letter-spacing-base': '0em',
@@ -134,13 +136,13 @@ export const editorialGrid: Record<string, string> = {
 	'--sidebar-ring': '#111111',
 
 	// Flat cells and restrained interactions.
-	'--button-radius': 'var(--radius)',
-	'--card-radius': 'var(--radius)',
+	'--button-radius': 'var(--radius-base)',
+	'--card-radius': 'var(--radius-base)',
 	'--card-padding': 'calc(var(--spacing) * 6)',
-	'--input-radius': 'var(--radius)',
+	'--input-radius': 'var(--radius-base)',
 	'--control-size-md': 'calc(var(--spacing) * 10)',
 	'--button-height': 'calc(var(--spacing) * 7)',
-	'--badge-radius': 'var(--radius)',
+	'--badge-radius': 'var(--radius-base)',
 	'--hover-shadow': 'none',
 	'--hover-transform': 'none',
 	'--active-scale': '0.98',
@@ -153,7 +155,7 @@ export const editorialGrid: Record<string, string> = {
 	'--motion-duration-overlay': '150ms',
 }
 
-export const editorialGridDark: Record<string, string> = {
+export const editorialGridDark: PresetTokens = {
 	...defaultPresetDark,
 
 	'--bg-default': '#111111',
@@ -265,7 +267,7 @@ export const editorialGridDark: Record<string, string> = {
 
 	'--spacing': '0.25rem',
 	'--border-width-base': '0.0625rem',
-	'--radius': '0.125rem',
+	'--radius-base': '0.125rem',
 	'--font-size-base': '1rem',
 	'--leading-base': '1.3',
 	'--letter-spacing-base': '0em',

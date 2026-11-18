@@ -39,7 +39,7 @@ const withTheme: Decorator = (Story, context) => {
 	}, [preset])
 
 	return (
-		<div className="bg-page text-foreground p-6">
+		<div className="bg-page text-content-default p-6">
 			<Story />
 		</div>
 	)

@@ -6,8 +6,29 @@
 export const steps = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950, 1000] as const
 export type Step = (typeof steps)[number]
 
+export type PaletteFamily =
+	| 'neutral'
+	| 'red'
+	| 'orange'
+	| 'amber'
+	| 'green'
+	| 'jade'
+	| 'sky'
+	| 'blue'
+	| 'violet'
+	| 'pink'
+export type PaletteTokenName =
+	| `--palette-${PaletteFamily}-${Step}`
+	| `--palette-${PaletteFamily}-alpha-${Step}`
+	| `--palette-overlays-black-alpha-${Step}`
+	| '--palette-base-white'
+	| '--palette-base-black'
+export function paletteVar<T extends PaletteTokenName>(name: T): `var(${T})` {
+	return `var(${name})`
+}
+
 export interface PaletteScale {
-	name: string
+	name: PaletteFamily
 	solid: Record<Step, string>
 	alpha: Record<Step, string>
 }

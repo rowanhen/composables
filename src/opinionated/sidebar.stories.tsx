@@ -145,7 +145,7 @@ export const Variants: Story = {
 			<Group label="Variants">
 				<HStack gap={4} align="start">
 					<VStack gap={2} className="flex-1 min-w-0">
-						<Typography variant="caption-100" className="text-muted-foreground">
+						<Typography variant="caption-100" className="text-content-muted">
 							sidebar (default)
 						</Typography>
 						<SidebarDemo>
@@ -154,7 +154,7 @@ export const Variants: Story = {
 									<DemoSidebarContent />
 								</Sidebar>
 								<SidebarInset className="p-4">
-									<Typography variant="caption-100" className="text-muted-foreground">
+									<Typography variant="caption-100" className="text-content-muted">
 										Main content
 									</Typography>
 								</SidebarInset>
@@ -163,7 +163,7 @@ export const Variants: Story = {
 					</VStack>
 
 					<VStack gap={2} className="flex-1 min-w-0">
-						<Typography variant="caption-100" className="text-muted-foreground">
+						<Typography variant="caption-100" className="text-content-muted">
 							floating
 						</Typography>
 						<SidebarDemo>
@@ -172,7 +172,7 @@ export const Variants: Story = {
 									<DemoSidebarContent />
 								</Sidebar>
 								<SidebarInset className="p-4">
-									<Typography variant="caption-100" className="text-muted-foreground">
+									<Typography variant="caption-100" className="text-content-muted">
 										Main content
 									</Typography>
 								</SidebarInset>
@@ -181,7 +181,7 @@ export const Variants: Story = {
 					</VStack>
 
 					<VStack gap={2} className="flex-1 min-w-0">
-						<Typography variant="caption-100" className="text-muted-foreground">
+						<Typography variant="caption-100" className="text-content-muted">
 							inset
 						</Typography>
 						<SidebarDemo>
@@ -190,7 +190,7 @@ export const Variants: Story = {
 									<DemoSidebarContent />
 								</Sidebar>
 								<SidebarInset className="p-4">
-									<Typography variant="caption-100" className="text-muted-foreground">
+									<Typography variant="caption-100" className="text-content-muted">
 										Main content
 									</Typography>
 								</SidebarInset>
@@ -210,7 +210,7 @@ export const CollapsibleModes: Story = {
 			<Group label="Collapsible modes">
 				<HStack gap={4} align="start">
 					<VStack gap={2} className="flex-1 min-w-0">
-						<Typography variant="caption-100" className="text-muted-foreground">
+						<Typography variant="caption-100" className="text-content-muted">
 							expanded
 						</Typography>
 						<SidebarDemo>
@@ -226,7 +226,7 @@ export const CollapsibleModes: Story = {
 					</VStack>
 
 					<VStack gap={2} className="flex-1 min-w-0">
-						<Typography variant="caption-100" className="text-muted-foreground">
+						<Typography variant="caption-100" className="text-content-muted">
 							collapsible="offExamples" (collapsed)
 						</Typography>
 						<SidebarDemo>
@@ -242,7 +242,7 @@ export const CollapsibleModes: Story = {
 					</VStack>
 
 					<VStack gap={2} className="flex-1 min-w-0">
-						<Typography variant="caption-100" className="text-muted-foreground">
+						<Typography variant="caption-100" className="text-content-muted">
 							collapsible="icon" (collapsed)
 						</Typography>
 						<SidebarDemo>
@@ -270,7 +270,7 @@ export const RightSide: Story = {
 				<SidebarDemo>
 					<SidebarProvider className="!min-h-0 h-full" defaultOpen>
 						<SidebarInset className="p-4">
-							<Typography variant="caption-100" className="text-muted-foreground">
+							<Typography variant="caption-100" className="text-content-muted">
 								Main content
 							</Typography>
 						</SidebarInset>
@@ -291,7 +291,7 @@ export const MenuButtonSizes: Story = {
 			<Group label="Menu button sizes">
 				<HStack gap={4} align="start">
 					<VStack gap={2} className="flex-1 min-w-0">
-						<Typography variant="caption-100" className="text-muted-foreground">
+						<Typography variant="caption-100" className="text-content-muted">
 							sm
 						</Typography>
 						<SidebarDemo height={220}>
@@ -320,7 +320,7 @@ export const MenuButtonSizes: Story = {
 					</VStack>
 
 					<VStack gap={2} className="flex-1 min-w-0">
-						<Typography variant="caption-100" className="text-muted-foreground">
+						<Typography variant="caption-100" className="text-content-muted">
 							default
 						</Typography>
 						<SidebarDemo height={220}>
@@ -349,7 +349,7 @@ export const MenuButtonSizes: Story = {
 					</VStack>
 
 					<VStack gap={2} className="flex-1 min-w-0">
-						<Typography variant="caption-100" className="text-muted-foreground">
+						<Typography variant="caption-100" className="text-content-muted">
 							lg
 						</Typography>
 						<SidebarDemo height={220}>
@@ -438,7 +438,7 @@ export const SubMenu: Story = {
 							</SidebarContent>
 						</Sidebar>
 						<SidebarInset className="p-4">
-							<Typography variant="caption-100" className="text-muted-foreground">
+							<Typography variant="caption-100" className="text-content-muted">
 								Design System
 							</Typography>
 						</SidebarInset>
@@ -481,7 +481,7 @@ export const SkeletonLoadingState: Story = {
 							</SidebarContent>
 						</Sidebar>
 						<SidebarInset className="p-4">
-							<Typography variant="caption-100" className="text-muted-foreground">
+							<Typography variant="caption-100" className="text-content-muted">
 								Loading…
 							</Typography>
 						</SidebarInset>

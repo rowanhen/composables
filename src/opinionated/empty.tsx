@@ -80,7 +80,7 @@ function Empty({
 					{description && (
 						<EmptyDescription>
 							{typeof description === 'string' ? (
-								<Typography variant="body-100" className="text-muted-foreground">
+								<Typography variant="body-100" className="text-content-muted">
 									{description}
 								</Typography>
 							) : (
@@ -168,7 +168,7 @@ function EmptyTableState({
 							{subtitle && (
 								<EmptyDescription>
 									{typeof subtitle === 'string' ? (
-										<Typography variant="body-100" className="text-muted-foreground">
+										<Typography variant="body-100" className="text-content-muted">
 											{subtitle}
 										</Typography>
 									) : (

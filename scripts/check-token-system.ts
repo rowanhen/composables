@@ -1,3 +1,4 @@
+import { validateTokenSystem } from './validate-tokens'
 /**
  * check-token-system.ts
  *
@@ -101,30 +102,19 @@ function checkSemanticCss() {
 	const css = read(SEMANTIC_CSS)
 	const root = declarationMap(extractCssBlock(css, ':root'))
 	const dark = declarationMap(extractCssBlock(css, '.dark'))
-	const required = [...semanticColorCssVars, ...shadcnCompatCssVars, ...sidebarColorCssVars]
+	const required = [...semanticColorCssVars, ...sidebarColorCssVars]
 
 	assertSetContains(new Set(root.keys()), required, 'semantic.css :root')
-	assertSetContains(
-		new Set(dark.keys()),
-		required.filter((token) => token !== '--radius'),
-		'semantic.css .dark',
-	)
+	assertSetContains(new Set(dark.keys()), required, 'semantic.css .dark')
 
+	const compat = declarationMap(read(join(ROOT, 'src/styles/tokens/compat.css')))
 	for (const { cssVar, target } of shadcnCompatAliases) {
-		const expected = `var(${target})`
-		if (root.get(cssVar) !== expected) {
-			fail(
-				`semantic.css :root ${cssVar} should be ${expected}, got ${root.get(cssVar) ?? 'missing'}`,
-			)
-		}
-		if (dark.get(cssVar) !== expected) {
-			fail(
-				`semantic.css .dark ${cssVar} should be ${expected}, got ${dark.get(cssVar) ?? 'missing'}`,
-			)
-		}
+		if (root.has(cssVar) || dark.has(cssVar))
+			fail(`Core semantic CSS must not define compatibility token ${cssVar}`)
+		if (compat.get(cssVar) !== `var(${target})`)
+			fail(`Optional compatibility bridge is missing ${cssVar}`)
 	}
-
-	if (!failed) ok('semantic.css aliases point at canonical semantic tokens')
+	if (!failed) ok('generic aliases are isolated in the optional compatibility bridge')
 }
 
 function checkTailwindAliases() {
@@ -278,11 +268,11 @@ function checkPresets() {
 		const generatedDark = declarationMap(extractCssBlock(generatedCss, '.dark'))
 		for (const { cssVar, target } of shadcnCompatAliases) {
 			const expected = `var(${target})`
-			if (generatedRoot.get(cssVar) !== expected) {
-				fail(`${preset.name}.css :root ${cssVar} should be generated as ${expected}`)
+			if (generatedRoot.has(cssVar)) {
+				fail(`${preset.name}.css :root ${cssVar} must not emit compatibility aliases (${expected})`)
 			}
-			if (generatedDark.get(cssVar) !== expected) {
-				fail(`${preset.name}.css .dark ${cssVar} should be generated as ${expected}`)
+			if (generatedDark.has(cssVar)) {
+				fail(`${preset.name}.css .dark ${cssVar} must not emit compatibility aliases (${expected})`)
 			}
 		}
 	}
@@ -339,7 +329,7 @@ function checkSemanticClassUsage() {
 	const knownSuffixes = new Set(
 		tailwindColorCssVars.map((cssVar) => cssVar.replace('--color-', '')),
 	)
-	const publicClassNames = new Set(publicSemanticUtilityClassNames)
+	const publicClassNames = new Set<string>(publicSemanticUtilityClassNames)
 	const files = [...listFiles(join(ROOT, 'src')), ...listFiles(join(ROOT, 'showcase/src'))]
 	const problems: string[] = []
 
@@ -474,7 +464,7 @@ const TEXT_STEP_TOKENS = [
 	'--label-font-size',
 ]
 const TEXT_STEP = /^var\(--text-[a-z0-9]+\)$/
-// Radii derive from --radius (or are a full pill); borders from the base width.
+// Radii derive from --radius-base (or are a full pill); borders from the base width.
 // Focus and hover ring widths stay free: a borderless preset (signal-pop sets
 // --border-width-base to 0) still needs visible rings.
 const RADIUS_TOKENS = [
@@ -485,7 +475,7 @@ const RADIUS_TOKENS = [
 	'--checkbox-radius',
 	'--dialog-radius',
 ]
-const RADIUS_STEP = /^(var\(--radius(-[a-z0-9]+)?\)|calc\(var\(--radius\) \* [\d.]+\)|9999px)$/
+const RADIUS_STEP = /^(var\(--radius(-[a-z0-9]+)?\)|calc\(var\(--radius-base\) \* [\d.]+\)|9999px)$/
 const BORDER_TOKENS = [
 	'--card-border-width',
 	'--alert-border-width',
@@ -510,7 +500,11 @@ function checkScaleTokens() {
 		for (const [tokens, pattern, expected] of [
 			[SPACING_STEP_TOKENS, SPACING_STEP, 'calc(var(--spacing) * <whole number>)'],
 			[TEXT_STEP_TOKENS, TEXT_STEP, 'var(--text-<step>)'],
-			[RADIUS_TOKENS, RADIUS_STEP, 'var(--radius[-step]) or calc(var(--radius) * n) or 9999px'],
+			[
+				RADIUS_TOKENS,
+				RADIUS_STEP,
+				'var(--radius-base[-step]) or calc(var(--radius-base) * n) or 9999px',
+			],
 			[
 				BORDER_TOKENS,
 				BORDER_STEP,
@@ -532,6 +526,7 @@ function checkScaleTokens() {
 
 console.log('Checking semantic token system...\n')
 
+for (const error of validateTokenSystem()) fail(error)
 assertNoDuplicates(semanticColorCssVars, 'semantic color registry')
 checkSemanticCss()
 checkTailwindAliases()

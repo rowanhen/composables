@@ -34,7 +34,7 @@ export const Basic: Story = {
 								<CarouselItem key={id}>
 									<Card className="p-0">
 										<Placeholder className="aspect-square">
-											<Typography variant="heading-400" className="text-muted-foreground">
+											<Typography variant="heading-400" className="text-content-muted">
 												{i + 1}
 											</Typography>
 										</Placeholder>
@@ -63,7 +63,7 @@ export const MultipleItems: Story = {
 								<CarouselItem key={id} className="basis-1/2 sm:basis-1/3">
 									<Card className="p-0">
 										<Placeholder className="aspect-square">
-											<Typography variant="heading-300" className="text-muted-foreground">
+											<Typography variant="heading-300" className="text-content-muted">
 												{i + 1}
 											</Typography>
 										</Placeholder>
@@ -91,7 +91,7 @@ export const Vertical: Story = {
 								<CarouselItem key={id} className="pt-2 basis-1/2">
 									<Card className="p-0">
 										<Placeholder className="p-4">
-											<Typography variant="heading-300" className="text-muted-foreground">
+											<Typography variant="heading-300" className="text-content-muted">
 												{i + 1}
 											</Typography>
 										</Placeholder>

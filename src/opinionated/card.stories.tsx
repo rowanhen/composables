@@ -77,10 +77,7 @@ export const Promo: Story = {
 	render: () => (
 		<Gallery>
 			<Card className="max-w-xl flex-row items-center gap-(--card-space) px-(--card-space)">
-				<div
-					className="bg-surface-brand size-20 shrink-0 rounded-(--card-radius)"
-					aria-hidden="true"
-				/>
+				<div className="bg-surface-brand size-20 shrink-0 rounded-card" aria-hidden="true" />
 				<div className="flex flex-1 flex-col gap-(--card-space)">
 					<CardHeader className="px-0">
 						<CardTitle>Add breakdown cover</CardTitle>

@@ -49,7 +49,7 @@ export const InputGroupExample: Story = {
 	render: () => (
 		<Gallery>
 			<Group label="Input Group">
-				<Typography variant="body-100" className="text-muted-foreground">
+				<Typography variant="body-100" className="text-content-muted">
 					Composable input groups with icons, text, and buttons on either side.
 				</Typography>
 

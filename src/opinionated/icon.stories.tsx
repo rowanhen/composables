@@ -75,7 +75,7 @@ export const ColourInheritance: Story = {
 		<Gallery>
 			<Group label="Colour inheritance">
 				<HStack gap={4} align="center">
-					<span className="text-foreground">
+					<span className="text-content-default">
 						<Icon size="lg">
 							<HeartIcon />
 						</Icon>
@@ -85,12 +85,12 @@ export const ColourInheritance: Story = {
 							<AlertCircleIcon />
 						</Icon>
 					</span>
-					<span className="text-muted-foreground">
+					<span className="text-content-muted">
 						<Icon size="lg">
 							<SearchIcon />
 						</Icon>
 					</span>
-					<span className="text-primary">
+					<span className="text-content-default">
 						<Icon size="lg">
 							<MailIcon />
 						</Icon>

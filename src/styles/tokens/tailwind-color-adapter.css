@@ -5,28 +5,10 @@
    is generated from registry.ts; consumers do not need Tailwind to use the
    guaranteed classes in semantic-utilities.css.
 
-   To regenerate:  bun scripts/generate-css.ts
+   To regenerate:  bun scripts/generate-tokens.ts
    ============================================================================ */
 
 @theme inline {
-	--color-background: var(--background);
-	--color-foreground: var(--foreground);
-	--color-card: var(--card);
-	--color-card-foreground: var(--card-foreground);
-	--color-popover: var(--popover);
-	--color-popover-foreground: var(--popover-foreground);
-	--color-primary: var(--primary);
-	--color-primary-foreground: var(--primary-foreground);
-	--color-secondary: var(--secondary);
-	--color-secondary-foreground: var(--secondary-foreground);
-	--color-muted: var(--muted);
-	--color-muted-foreground: var(--muted-foreground);
-	--color-accent: var(--accent);
-	--color-accent-foreground: var(--accent-foreground);
-	--color-destructive: var(--destructive);
-	--color-border: var(--border);
-	--color-input: var(--input);
-	--color-ring: var(--ring);
 	--color-sidebar-background: var(--sidebar-background);
 	--color-sidebar-foreground: var(--sidebar-foreground);
 	--color-sidebar-primary: var(--sidebar-primary);
@@ -93,4 +75,51 @@
 	--color-stroke-brand-3: var(--border-brand-3);
 	--color-stroke-brand-4: var(--border-brand-4);
 	--color-stroke-brand-5: var(--border-brand-5);
+	--color-default: var(--bg-default);
+	--color-inverse: var(--bg-inverse);
+	--color-muted: var(--bg-muted);
+	--color-surface-default: var(--bg-surface-default);
+	--color-surface-popover: var(--bg-surface-popover);
+	--color-surface-accent: var(--bg-surface-accent);
+	--color-surface-inverse: var(--bg-surface-inverse);
+	--color-surface-transparent: var(--bg-surface-transparent);
+	--color-fill-default: var(--bg-fill-default);
+	--color-fill-primary: var(--bg-fill-primary);
+	--color-fill-primary-hover: var(--bg-fill-primary-hover);
+	--color-fill-brand: var(--bg-fill-brand);
+	--color-fill-brand-2: var(--bg-fill-brand-2);
+	--color-fill-brand-3: var(--bg-fill-brand-3);
+	--color-fill-brand-4: var(--bg-fill-brand-4);
+	--color-fill-brand-5: var(--bg-fill-brand-5);
+	--color-fill-info: var(--bg-fill-info);
+	--color-fill-success: var(--bg-fill-success);
+	--color-fill-warning: var(--bg-fill-warning);
+	--color-fill-emphasis: var(--bg-fill-emphasis);
+	--color-fill-transparent: var(--bg-fill-transparent);
+	--color-fill-secondary: var(--bg-fill-secondary);
+	--color-fill-secondary-hover: var(--bg-fill-secondary-hover);
+	--color-fill-selected: var(--bg-fill-selected);
+	--color-fill-secondary-inverse: var(--bg-fill-secondary-inverse);
+	--color-content-default: var(--text-default);
+	--color-content-secondary: var(--text-secondary);
+	--color-content-muted: var(--text-muted);
+	--color-disabled: var(--text-disabled);
+	--color-content-inverse: var(--text-inverse);
+	--color-on-fill-primary: var(--text-on-fill-primary);
+	--color-on-fill-brand: var(--text-on-fill-brand);
+	--color-on-fill-secondary: var(--text-on-fill-secondary);
+	--color-on-fill-selected: var(--text-on-fill-selected);
+	--color-on-surface-accent: var(--text-on-surface-accent);
+	--color-link: var(--text-link);
+	--color-icon-default: var(--icon-default);
+	--color-icon-secondary: var(--icon-secondary);
+	--color-icon-disabled: var(--icon-disabled);
+	--color-icon-inverse: var(--icon-inverse);
+	--color-stroke-default: var(--border-default);
+	--color-stroke-secondary: var(--border-secondary);
+	--color-stroke-input: var(--border-input);
+	--color-stroke-tertiary: var(--border-tertiary);
+	--color-stroke-disabled: var(--border-disabled);
+	--color-stroke-inverse: var(--border-inverse);
+	--color-stroke-focus: var(--border-focus);
 }

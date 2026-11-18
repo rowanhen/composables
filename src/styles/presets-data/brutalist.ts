@@ -1,3 +1,5 @@
+import type { PresetTokens } from '../tokens/types'
+
 /**
  * Brutalist - Raw, architectural, uncompromising.
  * Studied references: Bloomberg Terminal aesthetic, Balenciaga.com restraint,
@@ -15,7 +17,7 @@
  * Character: zero border-radius, heavy borders, hard offset shadows,
  * instant transitions, high contrast palette with a single editorial red.
  */
-export const brutalist: Record<string, string> = {
+export const brutalist: PresetTokens = {
 	// ── Semantic color tokens ─────────────────────────────────────────────
 	'--bg-default': '#FFFFFFFF',
 	'--bg-inverse': '#0A0A0AFF',
@@ -32,7 +34,7 @@ export const brutalist: Record<string, string> = {
 	'--bg-surface-emphasis': '#E8E8F4FF',
 	'--bg-surface-inverse': '#3A3A3AFF',
 	'--bg-surface-transparent': '#00000010',
-	'--bg-overlay': 'var(--overlays-black-alpha-800)',
+	'--bg-overlay': 'var(--palette-overlays-black-alpha-800)',
 	'--bg-surface-brand': '#FFEFEBFF',
 	'--bg-surface-brand-2': '#F0F0F0FF',
 	'--bg-surface-brand-3': '#FFF8E0FF',
@@ -128,7 +130,7 @@ export const brutalist: Record<string, string> = {
 	// ── Dimension tokens ──────────────────────────────────────────────────
 	'--spacing': '0.25rem',
 	'--border-width-base': '0.125rem',
-	'--radius': '0rem',
+	'--radius-base': '0rem',
 	'--font-size-base': '1rem',
 	'--leading-base': '1.4',
 	'--letter-spacing-base': '0.04em',
@@ -154,13 +156,13 @@ export const brutalist: Record<string, string> = {
 
 	// ── Phase 1a: Component tokens ────────────────────────────────────────
 	// Zero radius everywhere - things are what they are
-	'--button-radius': 'var(--radius)',
-	'--card-radius': 'var(--radius)',
+	'--button-radius': 'var(--radius-base)',
+	'--card-radius': 'var(--radius-base)',
 	'--card-padding': 'calc(var(--spacing) * 6)',
-	'--input-radius': 'var(--radius)',
+	'--input-radius': 'var(--radius-base)',
 	'--control-size-md': 'calc(var(--spacing) * 10)',
 	'--button-height': 'calc(var(--spacing) * 7)',
-	'--badge-radius': 'var(--radius)',
+	'--badge-radius': 'var(--radius-base)',
 
 	// ── Phase 1b: Motion - instant. No decorative animation. ─────────────
 	'--motion-duration-fast': '0ms',
@@ -182,7 +184,7 @@ export const brutalist: Record<string, string> = {
 	'--active-scale': '0.98',
 }
 
-export const brutalistDark: Record<string, string> = {
+export const brutalistDark: PresetTokens = {
 	// ── Dark: inverted - paper becomes black, ink becomes off-white ───────
 	'--bg-default': '#0A0A0AFF',
 	'--bg-inverse': '#F8F8F8FF',
@@ -199,7 +201,7 @@ export const brutalistDark: Record<string, string> = {
 	'--bg-surface-emphasis': '#0A0A1EFF',
 	'--bg-surface-inverse': '#888888FF',
 	'--bg-surface-transparent': '#FFFFFF10',
-	'--bg-overlay': 'var(--overlays-black-alpha-800)',
+	'--bg-overlay': 'var(--palette-overlays-black-alpha-800)',
 	'--bg-surface-brand': '#1E0A08FF',
 	'--bg-surface-brand-2': '#141414FF',
 	'--bg-surface-brand-3': '#1E1A08FF',

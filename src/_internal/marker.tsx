@@ -5,13 +5,13 @@ import { Slot } from 'radix-ui'
 import { cn } from '../lib/utils'
 
 const markerVariants = cva(
-	'text-muted-foreground group/marker relative flex min-h-4 w-full items-center gap-2 text-left text-xs/relaxed [&_a]:underline [&_a]:underline-offset-3 [&_a]:hover:text-foreground [&_svg:not([class*=size-])]:size-4',
+	'text-content-muted group/marker relative flex min-h-4 w-full items-center gap-2 text-left text-xs/relaxed [&_a]:underline [&_a]:underline-offset-3 [&_a]:hover:text-content-default [&_svg:not([class*=size-])]:size-4',
 	{
 		variants: {
 			variant: {
 				default: '',
 				separator:
-					'before:bg-stroke after:bg-stroke before:mr-1 before:h-(--border-width-base) before:min-w-0 before:flex-1 after:ml-1 after:h-(--border-width-base) after:min-w-0 after:flex-1',
+					'before:bg-stroke after:bg-stroke before:mr-1 before:h-border-width-base before:min-w-0 before:flex-1 after:ml-1 after:h-border-width-base after:min-w-0 after:flex-1',
 				border: 'border-b border-stroke pb-2',
 			},
 		},

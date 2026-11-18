@@ -106,14 +106,14 @@ function getPatternStyle(
 				backgroundSize: `${unit} var(--rule-width)`,
 				backgroundRepeat: 'repeat-x',
 				backgroundPosition: 'left center',
-				borderRadius: 'var(--radius)',
+				borderRadius: 'var(--radius-base)',
 			}
 		: {
 				backgroundImage: `repeating-linear-gradient(to bottom, var(--divider-color, var(--border-default)) 0, var(--divider-color, var(--border-default)) ${pillLen}, transparent ${pillLen}, transparent ${unit})`,
 				backgroundSize: `var(--rule-width) ${unit}`,
 				backgroundRepeat: 'repeat-y',
 				backgroundPosition: 'center top',
-				borderRadius: 'var(--radius)',
+				borderRadius: 'var(--radius-base)',
 			}
 }
 
@@ -136,7 +136,7 @@ function Divider({
 	const patternStyle =
 		variant === 'dots' || variant === 'pills'
 			? getPatternStyle(variant, orientation, pillsMultiplier)
-			: { borderRadius: 'var(--radius)' }
+			: { borderRadius: 'var(--radius-base)' }
 
 	const colorStyle = color ? ({ '--divider-color': color } as React.CSSProperties) : {}
 

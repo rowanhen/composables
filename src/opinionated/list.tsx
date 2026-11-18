@@ -33,16 +33,16 @@ export type ListVariant = 'arrow' | 'bullet'
 function ArrowItem({ content }: ListItemData) {
 	return (
 		<li className="flex items-start gap-3">
-			<span className="text-primary text-sm select-none" aria-hidden="true">
+			<span className="text-icon-default text-sm select-none" aria-hidden="true">
 				→
 			</span>
-			<span className="text-muted-foreground text-sm">{content}</span>
+			<span className="text-content-muted text-sm">{content}</span>
 		</li>
 	)
 }
 
 function BulletItem({ content }: ListItemData) {
-	return <li className="text-muted-foreground text-sm">{content}</li>
+	return <li className="text-content-muted text-sm">{content}</li>
 }
 
 const VARIANT_ITEM: Record<ListVariant, React.FC<ListItemData>> = {

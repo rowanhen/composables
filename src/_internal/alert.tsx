@@ -6,13 +6,13 @@ import { cn } from '../lib/utils'
 const alertVariants = cva(
 	// Padding and icon scale with the body copy. --alert-accent-width draws a
 	// leading bar in the variant's --alert-accent colour (0 by default).
-	"grid gap-0.5 overflow-hidden rounded-lg border-(length:--alert-border-width) p-[0.75em] pl-[calc(0.75em_+_var(--alert-accent-width))] before:absolute before:inset-y-0 before:left-0 before:w-(--alert-accent-width) before:bg-(--alert-accent) [--alert-accent:var(--bg-fill-secondary)] text-left text-(length:--body-font-size) leading-relaxed has-data-[slot=alert-action]:relative has-data-[slot=alert-action]:pr-18 has-[>svg]:grid-cols-[auto_1fr] has-[>svg]:gap-x-[0.5em] *:[svg]:row-span-2 *:[svg]:translate-y-[0.125em] *:[svg]:text-current *:[svg:not([class*='size-'])]:size-[1.25em] w-full relative group/alert",
+	"grid gap-0.5 overflow-hidden rounded-lg border-(length:--alert-border-width) p-[0.75em] pl-[calc(0.75em_+_var(--alert-accent-width))] before:absolute before:inset-y-0 before:left-0 before:w-alert-accent-width before:bg-(--alert-accent) [--alert-accent:var(--bg-fill-secondary)] text-left text-body leading-relaxed has-data-[slot=alert-action]:relative has-data-[slot=alert-action]:pr-18 has-[>svg]:grid-cols-[auto_1fr] has-[>svg]:gap-x-[0.5em] *:[svg]:row-span-2 *:[svg]:translate-y-[0.125em] *:[svg]:text-current *:[svg:not([class*='size-'])]:size-[1.25em] w-full relative group/alert",
 	{
 		variants: {
 			variant: {
-				default: 'bg-card text-card-foreground',
-				secondary: 'bg-muted text-foreground',
-				outline: 'border-stroke bg-transparent text-foreground',
+				default: 'bg-surface-default text-content-default',
+				secondary: 'bg-muted text-content-default',
+				outline: 'border-stroke bg-transparent text-content-default',
 				destructive:
 					'[--alert-accent:var(--bg-fill-critical)] bg-surface-critical border-stroke-critical text-critical *:data-[slot=alert-description]:text-critical/90 *:[svg]:text-icon-critical',
 				warning:
@@ -58,7 +58,7 @@ function AlertTitle({ className, ...props }: React.ComponentProps<'div'>) {
 		<div
 			data-slot="alert-title"
 			className={cn(
-				'font-medium group-has-[>svg]/alert:col-start-2 [&_a]:hover:text-foreground [&_a]:underline [&_a]:underline-offset-3',
+				'font-medium group-has-[>svg]/alert:col-start-2 [&_a]:hover:text-content-default [&_a]:underline [&_a]:underline-offset-3',
 				className,
 			)}
 			{...props}
@@ -71,7 +71,7 @@ function AlertDescription({ className, ...props }: React.ComponentProps<'div'>) 
 		<div
 			data-slot="alert-description"
 			className={cn(
-				'text-muted-foreground text-(length:--body-font-size) leading-relaxed text-balance md:text-pretty [&_p:not(:last-child)]:mb-4 [&_a]:hover:text-foreground [&_a]:underline [&_a]:underline-offset-3',
+				'text-content-muted text-body leading-relaxed text-balance md:text-pretty [&_p:not(:last-child)]:mb-4 [&_a]:hover:text-content-default [&_a]:underline [&_a]:underline-offset-3',
 				className,
 			)}
 			{...props}

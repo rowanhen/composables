@@ -5,7 +5,7 @@
    These rules intentionally map only semantically compatible token categories
    to CSS properties; Tailwind is not required in downstream applications.
 
-   To regenerate:  bun scripts/generate-css.ts
+   To regenerate:  bun scripts/generate-tokens.ts
    ============================================================================ */
 
 @layer utilities {
@@ -169,7 +169,7 @@
 		background-color: var(--bg-fill-secondary-inverse);
 	}
 
-	.text-default {
+	.text-content-default {
 		color: var(--text-default);
 	}
 
@@ -185,7 +185,7 @@
 		color: var(--text-disabled);
 	}
 
-	.text-inverse {
+	.text-content-inverse {
 		color: var(--text-inverse);
 	}
 

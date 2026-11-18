@@ -18,8 +18,7 @@ function Tabs({ className, orientation = 'horizontal', ...props }: TabsPrimitive
 	)
 }
 
-const segmentedList =
-	'rounded-(--tabs-list-radius) bg-muted p-(--tabs-list-padding) shadow-(--tabs-list-shadow)'
+const segmentedList = 'rounded-tabs-list bg-muted p-tabs-list-inset shadow-tabs-list'
 const lineList =
 	'gap-1 border-b border-stroke bg-transparent pb-1 group-data-[orientation=vertical]/tabs:border-b-0 group-data-[orientation=vertical]/tabs:border-e group-data-[orientation=vertical]/tabs:pe-1'
 const tabsListVariants = cva(
@@ -56,9 +55,9 @@ function TabsList({
 			<TabsPrimitive.Indicator
 				data-slot="tabs-indicator"
 				className={cn(
-					'pointer-events-none absolute left-0 top-0 z-0 w-(--active-tab-width) translate-x-(--active-tab-left) translate-y-(--active-tab-top) transition-[translate,width,height] duration-(--motion-duration-disclosure) ease-(--motion-ease-standard) motion-reduce:transition-none',
+					'pointer-events-none absolute left-0 top-0 z-0 w-(--active-tab-width) translate-x-(--active-tab-left) translate-y-(--active-tab-top) transition-[translate,width,height] duration-disclosure ease-standard motion-reduce:transition-none',
 					segmented
-						? 'h-(--active-tab-height) rounded-(--tabs-tab-radius) border-(length:--tabs-indicator-border-width) border-stroke-secondary bg-surface-default shadow-(--tabs-indicator-shadow)'
+						? 'h-(--active-tab-height) rounded-tabs-tab border-(length:--tabs-indicator-border-width) border-stroke-secondary bg-surface-default shadow-tabs-indicator'
 						: 'h-0.5 bg-fill-primary [translate:var(--active-tab-left)_0] top-auto bottom-0 group-data-[orientation=vertical]/tabs:top-0 group-data-[orientation=vertical]/tabs:bottom-auto group-data-[orientation=vertical]/tabs:left-auto group-data-[orientation=vertical]/tabs:end-0 group-data-[orientation=vertical]/tabs:w-0.5 group-data-[orientation=vertical]/tabs:h-(--active-tab-height) group-data-[orientation=vertical]/tabs:[translate:0_var(--active-tab-top)]',
 				)}
 			/>
@@ -72,7 +71,7 @@ function TabsTrigger({ className, ...props }: TabsPrimitive.Tab.Props) {
 			data-slot="tabs-trigger"
 			className={cn(
 				FOCUS_RING,
-				"relative z-10 inline-flex h-(--tabs-tab-height) shrink-0 items-center justify-center gap-1.5 rounded-(--tabs-tab-radius) bg-transparent px-2.5 text-sm font-normal whitespace-nowrap text-default outline-none transition-colors duration-(--motion-duration-color) data-active:font-medium disabled:pointer-events-none disabled:opacity-disabled data-disabled:pointer-events-none data-disabled:opacity-disabled group-data-[orientation=vertical]/tabs:justify-start [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-3.5",
+				"relative z-10 inline-flex h-tabs-tab shrink-0 items-center justify-center gap-1.5 rounded-tabs-tab bg-transparent px-2.5 text-sm font-normal whitespace-nowrap text-content-default outline-none transition-colors duration-color data-active:font-medium disabled:pointer-events-none disabled:opacity-disabled data-disabled:pointer-events-none data-disabled:opacity-disabled group-data-[orientation=vertical]/tabs:justify-start [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-3.5",
 				'group-data-[treatment=underline]/tabs-list:hover:bg-surface-hover',
 				className,
 			)}
@@ -85,10 +84,7 @@ function TabsContent({ className, ...props }: TabsPrimitive.Panel.Props) {
 	return (
 		<TabsPrimitive.Panel
 			data-slot="tabs-content"
-			className={cn(
-				'text-(length:--body-font-size) leading-relaxed flex-1 outline-none',
-				className,
-			)}
+			className={cn('text-body leading-relaxed flex-1 outline-none', className)}
 			{...props}
 		/>
 	)

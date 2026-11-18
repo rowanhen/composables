@@ -26,16 +26,20 @@ jobs:
         continue-on-error: true
         run: bun src/scripts/lint-no-arbitrary.ts src showcase/src
       - name: Verify generated CSS
-        run: bun scripts/generate-css.ts --check
-      - name: Verify generated preset CSS
-        run: bun scripts/generate-preset-css.ts --check
+        run: bun scripts/generate-tokens.ts --check
       - name: Verify generated AI rules and skill manifests
         run: bun run test:rules
       - name: Test token system
         run: bun run test:tokens
+      - name: Test typed token API
+        run: bun run test:token-api
       - name: Build CSS
         run: bun run build:css
       - name: Test downstream CSS
         run: bun run test:css
+      - name: Install browser
+        run: bunx playwright install --with-deps chromium
+      - name: Test tokens in browser
+        run: bun run test:tokens:browser
       - name: Build showcase
         run: bunx vite build showcase

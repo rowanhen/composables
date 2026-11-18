@@ -10,8 +10,8 @@
  *   --bento-gap           Gap between cells (default: var(--border-width, 1px))
  *
  * Base tokens used directly:
- *   --border              Grid line color (via bg-stroke)
- *   --radius              Corner radius (via rounded-lg)
+ *   --border-default              Grid line color (via bg-stroke)
+ *   --radius-base              Corner radius (via rounded-lg)
  *   --border-style        Border style on all components (default: solid)
  *
  * Layout philosophy:
@@ -39,7 +39,7 @@ const BENTO_CONTAINER =
 	'min-w-0 bg-stroke gap-[var(--bento-gap,var(--border-width,1px))] p-[var(--bento-gap,var(--border-width,1px))] rounded-lg'
 
 /** Every direct cell child gets card background - it sits on top of the border bg. */
-const BENTO_CELL = 'min-w-0 bg-card rounded-lg overflow-hidden'
+const BENTO_CELL = 'min-w-0 bg-surface-default rounded-lg overflow-hidden'
 
 // ─── STAT CELL ────────────────────────────────────────────────────────────────
 //
@@ -57,7 +57,7 @@ interface StatCellProps extends React.ComponentProps<'div'> {
 function StatCell({ label, value, large = false, className, ...props }: StatCellProps) {
 	return (
 		<div data-slot="bento-stat-cell" className={cn(BENTO_CELL, 'p-4', className)} {...props}>
-			<div className="text-[10px] uppercase text-muted-foreground mb-1">{label}</div>
+			<div className="text-[10px] uppercase text-content-muted mb-1">{label}</div>
 			<div className={cn('font-bold', large ? 'text-xl' : 'text-xs')}>{value}</div>
 		</div>
 	)
@@ -66,7 +66,7 @@ function StatCell({ label, value, large = false, className, ...props }: StatCell
 // ─── BENTO GRID ───────────────────────────────────────────────────────────────
 //
 // General-purpose grid with configurable columns. Direct children should be
-// BentoCell components (or anything that provides its own bg-card padding).
+// BentoCell components (or anything that provides its own bg-surface-default padding).
 // The gap-as-border pattern means you must NOT add separate borders to cells.
 
 interface BentoGridProps extends React.ComponentProps<'div'> {
@@ -308,7 +308,7 @@ function BentoTriple({ header, aside, body, footer, className, ...props }: Bento
 // ─── CELL GRID ────────────────────────────────────────────────────────────────
 //
 // Equal-column grid using the gap-as-border pattern. Direct children must
-// provide their own `bg-card` (e.g. StatCell, or wrap in `<div className="bg-card">`).
+// provide their own `bg-surface-default` (e.g. StatCell, or wrap in `<div className="bg-surface-default">`).
 //
 // `subtle` uses the secondary border color for a lighter grid line.
 

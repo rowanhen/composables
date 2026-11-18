@@ -345,7 +345,7 @@ function DropZoneArea({ children, className }: DropZoneAreaProps) {
 				'rounded-xl border p-8 transition-[opacity,box-shadow] focus-visible:outline-none',
 				FOCUS_RING,
 				disabled ? 'cursor-not-allowed opacity-disabled' : 'cursor-pointer',
-				isDragActive && 'border-primary bg-accent',
+				isDragActive && 'border-stroke-default bg-surface-accent',
 				isDragReject && 'border-stroke-critical bg-surface-critical',
 				hasError && 'border-stroke-critical',
 				hasFiles && 'p-4',
@@ -386,20 +386,18 @@ function DropZoneContent({ title = 'Upload files', description, className }: Dro
 		<div className={cn('flex flex-col items-center gap-1 text-center', className)}>
 			<div
 				className={cn(
-					'text-muted-foreground mb-3 flex size-10 items-center justify-center rounded-lg border transition-[opacity,box-shadow]',
-					isDragAccept && 'border-primary text-primary',
+					'text-content-muted mb-3 flex size-10 items-center justify-center rounded-lg border transition-[opacity,box-shadow]',
+					isDragAccept && 'border-stroke-success text-success',
 					isDragReject && 'border-stroke-critical text-icon-critical',
 				)}
 			>
 				<UploadIcon className="size-5" />
 			</div>
 			<span className="text-sm font-medium">{title}</span>
-			<span className={cn('text-muted-foreground text-xs', isDragReject && 'text-critical')}>
+			<span className={cn('text-content-muted text-xs', isDragReject && 'text-critical')}>
 				{getDragMessage()}
 			</span>
-			<span className="text-muted-foreground mt-0.5 text-xs">
-				{description || defaultDescription}
-			</span>
+			<span className="text-content-muted mt-0.5 text-xs">{description || defaultDescription}</span>
 		</div>
 	)
 }
@@ -420,12 +418,12 @@ function DropZoneFile({ file, onRemove, disabled = false, className }: DropZoneF
 
 	return (
 		<div className={cn('flex items-center gap-3', className)}>
-			<div className="text-muted-foreground flex size-10 shrink-0 items-center justify-center rounded-lg border">
+			<div className="text-content-muted flex size-10 shrink-0 items-center justify-center rounded-lg border">
 				<FileIcon className="size-5" />
 			</div>
 			<div className="flex min-w-0 flex-1 flex-col gap-0.5">
 				<span className="truncate text-sm font-medium">{file.name}</span>
-				<span className="text-muted-foreground text-xs">{formatFileSize(file.size)}</span>
+				<span className="text-content-muted text-xs">{formatFileSize(file.size)}</span>
 			</div>
 			<Button
 				variant="destructive"

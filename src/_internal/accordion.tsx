@@ -10,7 +10,7 @@ const accordionVariants = cva('group/accordion flex w-full flex-col', {
 			// Edge-to-edge rows divided by rules.
 			flush: '',
 			// Rules inside a filled, rounded panel.
-			filled: 'bg-accent rounded-(--card-radius) px-(--card-padding)',
+			filled: 'bg-surface-accent rounded-card px-card-inset',
 			separated: 'gap-2',
 		},
 	},
@@ -55,7 +55,7 @@ function AccordionTrigger({ className, children, ...props }: AccordionPrimitive.
 			<AccordionPrimitive.Trigger
 				data-slot="accordion-trigger"
 				className={cn(
-					'**:data-[slot=accordion-trigger-icon]:text-muted-foreground gap-6 p-2 group-data-[variant=flush]/accordion:px-0 group-data-[variant=filled]/accordion:px-0 group-data-[variant=flush]/accordion:py-3 group-data-[variant=filled]/accordion:py-3 text-left text-(length:--body-font-size) leading-relaxed font-medium group-data-[variant=default]/accordion:hover:underline group-data-[variant=separated]/accordion:hover:underline active:opacity-80 **:data-[slot=accordion-trigger-icon]:ml-auto **:data-[slot=accordion-trigger-icon]:size-4 group/accordion-trigger relative flex flex-1 items-start justify-between rounded-sm border border-transparent transition-[opacity,box-shadow] outline-none disabled:pointer-events-none disabled:opacity-disabled',
+					'**:data-[slot=accordion-trigger-icon]:text-content-muted gap-6 p-2 group-data-[variant=flush]/accordion:px-0 group-data-[variant=filled]/accordion:px-0 group-data-[variant=flush]/accordion:py-3 group-data-[variant=filled]/accordion:py-3 text-left text-body leading-relaxed font-medium group-data-[variant=default]/accordion:hover:underline group-data-[variant=separated]/accordion:hover:underline active:opacity-80 **:data-[slot=accordion-trigger-icon]:ml-auto **:data-[slot=accordion-trigger-icon]:size-4 group/accordion-trigger relative flex flex-1 items-start justify-between rounded-sm border border-transparent transition-[opacity,box-shadow] outline-none disabled:pointer-events-none disabled:opacity-disabled',
 					FOCUS_RING,
 					className,
 				)}
@@ -64,7 +64,7 @@ function AccordionTrigger({ className, children, ...props }: AccordionPrimitive.
 				{children}
 				<ChevronDownIcon
 					data-slot="accordion-trigger-icon"
-					className="pointer-events-none shrink-0 motion-safe:transition-transform motion-safe:duration-(--motion-duration-disclosure) group-aria-expanded/accordion-trigger:rotate-180"
+					className="pointer-events-none shrink-0 motion-safe:transition-transform motion-safe:duration-disclosure group-aria-expanded/accordion-trigger:rotate-180"
 				/>
 			</AccordionPrimitive.Trigger>
 		</AccordionPrimitive.Header>
@@ -75,12 +75,12 @@ function AccordionContent({ className, children, ...props }: AccordionPrimitive.
 	return (
 		<AccordionPrimitive.Panel
 			data-slot="accordion-content"
-			className="data-open:animate-accordion-down data-closed:animate-accordion-up px-2 group-data-[variant=flush]/accordion:px-0 group-data-[variant=filled]/accordion:px-0 text-(length:--body-font-size) leading-relaxed overflow-hidden"
+			className="data-open:animate-accordion-down data-closed:animate-accordion-up px-2 group-data-[variant=flush]/accordion:px-0 group-data-[variant=filled]/accordion:px-0 text-body leading-relaxed overflow-hidden"
 			{...props}
 		>
 			<div
 				className={cn(
-					'pt-0 pb-4 [&_a]:hover:text-foreground h-(--accordion-panel-height) data-ending-style:h-0 data-starting-style:h-0 [&_a]:underline [&_a]:underline-offset-3',
+					'pt-0 pb-4 [&_a]:hover:text-content-default h-(--accordion-panel-height) data-ending-style:h-0 data-starting-style:h-0 [&_a]:underline [&_a]:underline-offset-3',
 					className,
 				)}
 			>

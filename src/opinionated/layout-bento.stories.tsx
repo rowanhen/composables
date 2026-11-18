@@ -33,12 +33,12 @@ function MetricContent({ label, value, trend }: { label: string; value: string; 
 		<div className="p-4 h-full">
 			<Typography
 				variant="caption-100"
-				className="text-muted-foreground uppercase tracking-wider mb-1"
+				className="text-content-muted uppercase tracking-wider mb-1"
 			>
 				{label}
 			</Typography>
 			<div className="text-2xl font-bold">{value}</div>
-			{trend && <div className="text-xs text-muted-foreground mt-1">{trend}</div>}
+			{trend && <div className="text-xs text-content-muted mt-1">{trend}</div>}
 		</div>
 	)
 }
@@ -48,7 +48,11 @@ function ChartPlaceholder({ label }: { label: string }) {
 			<div className="text-xs font-medium">{label}</div>
 			<div className="flex items-end gap-1 h-16">
 				{[40, 65, 45, 80, 55, 90, 70, 85, 60, 95, 75, 88].map((h, i) => (
-					<div key={i} className="flex-1 bg-foreground/20 rounded-sm" style={{ height: `${h}%` }} />
+					<div
+						key={i}
+						className="flex-1 bg-fill-primary/20 rounded-sm"
+						style={{ height: `${h}%` }}
+					/>
 				))}
 			</div>
 		</div>
@@ -57,14 +61,14 @@ function ChartPlaceholder({ label }: { label: string }) {
 function BentoSplitDemo() {
 	return (
 		<Group label="BentoSplit">
-			<Typography variant="body-100" className="text-muted-foreground">
+			<Typography variant="body-100" className="text-content-muted">
 				Fixed 200px icon panel (spans both rows) | content + stats stacked in the second column.
 			</Typography>
 			<BentoSplit
 				icon={
 					<VStack gap={2} align="center">
 						<Avatar size="xl" className="rounded-md">
-							<AvatarFallback className="rounded-md bg-primary text-primary-foreground text-2xl font-bold">
+							<AvatarFallback className="rounded-md bg-fill-primary text-on-fill-primary text-2xl font-bold">
 								AC
 							</AvatarFallback>
 						</Avatar>
@@ -74,7 +78,7 @@ function BentoSplitDemo() {
 				content={
 					<div className="p-4">
 						<div className="text-lg font-bold mb-1">Q2 2024 Summary</div>
-						<div className="text-xs text-muted-foreground mb-3">
+						<div className="text-xs text-content-muted mb-3">
 							Revenue up 24% quarter-over-quarter. All major targets exceeded.
 						</div>
 						<div className="flex gap-2 flex-wrap">
@@ -87,19 +91,19 @@ function BentoSplitDemo() {
 				stats={
 					<div className="grid grid-cols-1 sm:grid-cols-3 gap-0">
 						<div className="p-3 border-b sm:border-b-0 sm:border-r border-stroke">
-							<Typography variant="caption-100" className="text-muted-foreground uppercase mb-0.5">
+							<Typography variant="caption-100" className="text-content-muted uppercase mb-0.5">
 								Revenue
 							</Typography>
 							<div className="text-sm font-bold">$124k</div>
 						</div>
 						<div className="p-3 border-b sm:border-b-0 sm:border-r border-stroke">
-							<Typography variant="caption-100" className="text-muted-foreground uppercase mb-0.5">
+							<Typography variant="caption-100" className="text-content-muted uppercase mb-0.5">
 								Users
 							</Typography>
 							<div className="text-sm font-bold">3,891</div>
 						</div>
 						<div className="p-3">
-							<Typography variant="caption-100" className="text-muted-foreground uppercase mb-0.5">
+							<Typography variant="caption-100" className="text-content-muted uppercase mb-0.5">
 								NPS
 							</Typography>
 							<div className="text-sm font-bold">+68</div>
@@ -113,7 +117,7 @@ function BentoSplitDemo() {
 function BentoLeaderDemo() {
 	return (
 		<Group label="BentoLeader">
-			<Typography variant="body-100" className="text-muted-foreground">
+			<Typography variant="body-100" className="text-content-muted">
 				Full-width header spanning all columns, then N equal columns below.
 			</Typography>
 			<BentoLeader
@@ -129,7 +133,7 @@ function BentoLeaderDemo() {
 				header={
 					<div className="p-4">
 						<div className="text-sm font-bold">Server Status</div>
-						<div className="text-xs text-muted-foreground">All systems operational</div>
+						<div className="text-xs text-content-muted">All systems operational</div>
 					</div>
 				}
 				columns={[
@@ -144,7 +148,7 @@ function BentoLeaderDemo() {
 function BentoQuadDemo() {
 	return (
 		<Group label="BentoQuad">
-			<Typography variant="body-100" className="text-muted-foreground">
+			<Typography variant="body-100" className="text-content-muted">
 				2×2 grid with [2fr | 1fr] column ratio. Mobile: stacked.
 			</Typography>
 			<BentoQuad
@@ -158,10 +162,10 @@ function BentoQuadDemo() {
 									<div key={name}>
 										<div className="flex justify-between text-xs mb-0.5">
 											<span>{name}</span>
-											<span className="text-muted-foreground">{pct}</span>
+											<span className="text-content-muted">{pct}</span>
 										</div>
 										<div className="h-1 bg-stroke rounded-full overflow-hidden">
-											<div className="h-full bg-foreground" style={{ width: pct }} />
+											<div className="h-full bg-fill-primary" style={{ width: pct }} />
 										</div>
 									</div>
 								)
@@ -179,7 +183,7 @@ function BentoQuadDemo() {
 function BentoTripleDemo() {
 	return (
 		<Group label="BentoTriple">
-			<Typography variant="body-100" className="text-muted-foreground">
+			<Typography variant="body-100" className="text-content-muted">
 				Header (full width) | aside + body | footer (full width). Aside = [1fr], body = [2fr].
 			</Typography>
 			<BentoTriple
@@ -187,7 +191,7 @@ function BentoTripleDemo() {
 					<div className="p-4 flex items-center justify-between">
 						<div>
 							<div className="text-sm font-bold">Product Analytics</div>
-							<div className="text-xs text-muted-foreground">Week of 3–9 Jun 2024</div>
+							<div className="text-xs text-content-muted">Week of 3–9 Jun 2024</div>
 						</div>
 						<div className="flex gap-2">
 							<Badge variant="outline">Export</Badge>
@@ -207,13 +211,13 @@ function BentoTripleDemo() {
 				footer={
 					<div className="p-3 flex gap-8">
 						<div className="text-xs">
-							<span className="text-muted-foreground">Top feature: </span>Dashboard
+							<span className="text-content-muted">Top feature: </span>Dashboard
 						</div>
 						<div className="text-xs">
-							<span className="text-muted-foreground">Top source: </span>Organic
+							<span className="text-content-muted">Top source: </span>Organic
 						</div>
 						<div className="text-xs">
-							<span className="text-muted-foreground">Avg session: </span>4m 22s
+							<span className="text-content-muted">Avg session: </span>4m 22s
 						</div>
 					</div>
 				}
@@ -224,19 +228,19 @@ function BentoTripleDemo() {
 function CellGridDemo() {
 	return (
 		<Group label="CellGrid + StatCell">
-			<Typography variant="body-100" className="text-muted-foreground">
+			<Typography variant="body-100" className="text-content-muted">
 				Equal-column grid using gap-as-border. StatCell is the canonical cell child.
 			</Typography>
 			<VStack gap={4}>
 				<div>
-					<div className="text-xs text-muted-foreground mb-2">2-column</div>
+					<div className="text-xs text-content-muted mb-2">2-column</div>
 					<CellGrid cols={2}>
 						<StatCell label="Revenue" value="$124,820" large />
 						<StatCell label="Expenses" value="$48,340" large />
 					</CellGrid>
 				</div>
 				<div>
-					<div className="text-xs text-muted-foreground mb-2">3-column</div>
+					<div className="text-xs text-content-muted mb-2">3-column</div>
 					<CellGrid cols={3}>
 						<StatCell label="New Users" value="1,284" />
 						<StatCell label="Active" value="891" />
@@ -244,7 +248,7 @@ function CellGridDemo() {
 					</CellGrid>
 				</div>
 				<div>
-					<div className="text-xs text-muted-foreground mb-2">4-column</div>
+					<div className="text-xs text-content-muted mb-2">4-column</div>
 					<CellGrid cols={4}>
 						<StatCell label="P1 Issues" value="0" />
 						<StatCell label="P2 Issues" value="3" />
@@ -253,7 +257,7 @@ function CellGridDemo() {
 					</CellGrid>
 				</div>
 				<div>
-					<div className="text-xs text-muted-foreground mb-2">5-column (subtle)</div>
+					<div className="text-xs text-content-muted mb-2">5-column (subtle)</div>
 					<CellGrid cols={5} subtle>
 						<StatCell label="Mon" value="142" />
 						<StatCell label="Tue" value="198" />
@@ -269,42 +273,42 @@ function CellGridDemo() {
 function CellRowDemo() {
 	return (
 		<Group label="CellRow">
-			<Typography variant="body-100" className="text-muted-foreground">
+			<Typography variant="body-100" className="text-content-muted">
 				Flex-direction flip - mobile: stacked, desktop: side-by-side. Uses gap-as-divider.
 			</Typography>
 			<VStack gap={3}>
 				<CellRow>
-					<div className="bg-card p-4 xl:w-48 xl:shrink-0">
-						<Typography variant="caption-100" className="text-muted-foreground uppercase mb-1">
+					<div className="bg-surface-default p-4 xl:w-48 xl:shrink-0">
+						<Typography variant="caption-100" className="text-content-muted uppercase mb-1">
 							Label / Icon
 						</Typography>
 						<div className="text-sm font-bold">Profile</div>
 					</div>
-					<div className="bg-card p-4 flex-1">
-						<div className="text-xs text-muted-foreground mb-1">Full Name</div>
+					<div className="bg-surface-default p-4 flex-1">
+						<div className="text-xs text-content-muted mb-1">Full Name</div>
 						<div className="text-sm font-medium">Jane Doe</div>
 					</div>
-					<div className="bg-card p-4 flex-1">
-						<div className="text-xs text-muted-foreground mb-1">Email</div>
+					<div className="bg-surface-default p-4 flex-1">
+						<div className="text-xs text-content-muted mb-1">Email</div>
 						<div className="text-sm font-medium">jane@example.com</div>
 					</div>
 				</CellRow>
 				<CellRow>
-					<div className="bg-card p-4 xl:w-48 xl:shrink-0">
-						<Typography variant="caption-100" className="text-muted-foreground uppercase mb-1">
+					<div className="bg-surface-default p-4 xl:w-48 xl:shrink-0">
+						<Typography variant="caption-100" className="text-content-muted uppercase mb-1">
 							Stats
 						</Typography>
-						<div className="size-8 rounded-md bg-primary text-primary-foreground flex items-center justify-center text-sm font-bold">
+						<div className="size-8 rounded-md bg-fill-primary text-on-fill-primary flex items-center justify-center text-sm font-bold">
 							▲
 						</div>
 					</div>
-					<div className="bg-card p-4 flex-1">
+					<div className="bg-surface-default p-4 flex-1">
 						<StatCell label="This week" value="+$4,200" large />
 					</div>
-					<div className="bg-card p-4 flex-1">
+					<div className="bg-surface-default p-4 flex-1">
 						<StatCell label="This month" value="+$18,900" large />
 					</div>
-					<div className="bg-card p-4 flex-1">
+					<div className="bg-surface-default p-4 flex-1">
 						<StatCell label="This year" value="+$124k" large />
 					</div>
 				</CellRow>
@@ -315,7 +319,7 @@ function CellRowDemo() {
 function BentoGridDemo() {
 	return (
 		<Group label="BentoGrid + BentoCell">
-			<Typography variant="body-100" className="text-muted-foreground">
+			<Typography variant="body-100" className="text-content-muted">
 				General-purpose grid with col/row span control. Background = border color; gap exposes it as
 				lines.
 			</Typography>

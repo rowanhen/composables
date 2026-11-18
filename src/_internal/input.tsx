@@ -13,7 +13,7 @@ const fieldControlVariants = cva(
 	cn(
 		FOCUS_RING,
 		HOVER_RING,
-		'bg-surface-input border-field h-(--control-size-md) rounded-(--input-radius) border text-(length:--control-font-size) max-md:text-[length:max(var(--control-font-size),var(--text-sm))] leading-relaxed w-full min-w-(--control-min-width) outline-none disabled:cursor-not-allowed disabled:opacity-disabled',
+		'bg-control-surface text-control-content border-control-stroke h-control-md rounded-input border text-control max-md:text-[length:max(var(--control-font-size),var(--text-sm))] leading-relaxed w-full min-w-control-min-width outline-none disabled:bg-control-disabled-surface disabled:text-control-disabled-content disabled:border-control-disabled-stroke disabled:cursor-not-allowed disabled:opacity-disabled',
 	),
 )
 
@@ -24,7 +24,7 @@ function Input({ className, type, ...props }: React.ComponentProps<'input'>) {
 			data-slot="input"
 			className={cn(
 				fieldControlVariants(),
-				'px-2 py-0.5 file:h-6 file:text-xs/relaxed file:font-medium file:text-foreground placeholder:text-muted-foreground file:inline-flex file:border-0 file:bg-transparent disabled:pointer-events-none',
+				'px-2 py-0.5 file:h-6 file:text-xs/relaxed file:font-medium file:text-content-default placeholder:text-control-placeholder file:inline-flex file:border-0 file:bg-transparent disabled:pointer-events-none',
 				className,
 			)}
 			{...props}
@@ -43,7 +43,7 @@ function FieldTrigger({ className, type = 'button', ...props }: React.ComponentP
 			data-slot="field-trigger"
 			className={cn(
 				fieldControlVariants(),
-				'flex cursor-pointer items-center justify-between gap-2 px-3 text-left data-[placeholder]:text-muted-foreground',
+				'flex cursor-pointer items-center justify-between gap-2 px-3 text-left data-[placeholder]:text-control-placeholder',
 				className,
 			)}
 			{...props}

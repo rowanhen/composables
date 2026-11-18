@@ -111,7 +111,7 @@ function FormDateOfBirth({
 
 	const inputClassName = cn(
 		'text-center tabular-nums min-w-0',
-		hasError && 'aria-invalid:border-fill-critical aria-invalid:ring-fill-critical/20',
+		hasError && 'aria-invalid:border-stroke-critical aria-invalid:ring-stroke-critical/20',
 	)
 
 	return (
@@ -146,9 +146,7 @@ function FormDateOfBirth({
 						className={cn(inputClassName, 'w-[3.75em]')}
 						maxLength={2}
 					/>
-					<span className="text-muted-foreground text-(length:--control-font-size) leading-(--text-sm--line-height)">
-						/
-					</span>
+					<span className="text-content-muted text-control leading-type-sm">/</span>
 					<Input
 						ref={monthRef}
 						id={`${fieldId}-month`}
@@ -166,9 +164,7 @@ function FormDateOfBirth({
 						className={cn(inputClassName, 'w-[3.75em]')}
 						maxLength={2}
 					/>
-					<span className="text-muted-foreground text-(length:--control-font-size) leading-(--text-sm--line-height)">
-						/
-					</span>
+					<span className="text-content-muted text-control leading-type-sm">/</span>
 					<Input
 						ref={yearRef}
 						id={`${fieldId}-year`}

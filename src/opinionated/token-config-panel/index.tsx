@@ -1,3 +1,4 @@
+import { tokenNames, type TokenName, type TokenOverrides } from '../../styles/tokens/types'
 import React from 'react'
 
 import { Button } from '../../_internal/button'
@@ -9,7 +10,7 @@ import { Switch } from '../../_internal/switch'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../../_internal/tabs'
 import { Typography } from '../../_internal/typography'
 
-import { colorTokens, colorCategories, colorTokensByCategory, ColorTokenRow } from './color-editor'
+import { colorCategories, colorTokensByCategory, ColorTokenRow } from './color-editor'
 import {
 	controlShapeTokens,
 	controlSizeTokens,
@@ -26,8 +27,6 @@ import {
 	dropdownOffsetTokens,
 	overlayOffsetTokens,
 	containerTokens,
-	allDimensionTokens,
-	allStringTokens,
 	DimensionSliderRow,
 	StringTokenRow,
 } from './spacing-editor'
@@ -43,7 +42,7 @@ function SectionHeader({ children }: { children: React.ReactNode }) {
 	return (
 		<Typography
 			variant="caption-100"
-			className="text-muted-foreground uppercase tracking-wider mb-1 block"
+			className="text-content-muted uppercase tracking-wider mb-1 block"
 		>
 			{children}
 		</Typography>
@@ -94,28 +93,17 @@ export function TokenConfigPanel({
 	grid,
 	onGridChange,
 }: TokenConfigPanelProps = {}) {
-	const [overrides, setOverrides] = React.useState<Record<string, string>>({})
+	const [overrides, setOverrides] = React.useState<TokenOverrides>({})
 	const [activePreset, setActivePreset] = React.useState<string>('default')
 	const [jsonText, setJsonText] = React.useState('')
 
-	function applyOverride(cssVar: string, value: string) {
+	function applyOverride(cssVar: TokenName, value: string) {
 		document.documentElement.style.setProperty(cssVar, value)
 		setOverrides((prev) => ({ ...prev, [cssVar]: value }))
 	}
 
 	function clearInlineOverrides() {
-		for (const token of colorTokens) {
-			document.documentElement.style.removeProperty(token.cssVar)
-		}
-		for (const token of allDimensionTokens) {
-			document.documentElement.style.removeProperty(token.cssVar)
-		}
-		for (const token of allStringTokens) {
-			document.documentElement.style.removeProperty(token.cssVar)
-		}
-		for (const v of fontCssVars) {
-			document.documentElement.style.removeProperty(v)
-		}
+		for (const name of tokenNames) document.documentElement.style.removeProperty(name)
 		setOverrides({})
 	}
 
@@ -174,7 +162,7 @@ export function TokenConfigPanel({
 					<div className="px-4 pb-3">
 						<Typography
 							variant="caption-100"
-							className="text-muted-foreground uppercase tracking-wider mb-2 block"
+							className="text-content-muted uppercase tracking-wider mb-2 block"
 						>
 							Display
 						</Typography>
@@ -186,7 +174,7 @@ export function TokenConfigPanel({
 										onCheckedChange={onDarkChange}
 										aria-label="Toggle dark mode"
 									/>
-									<Typography variant="caption-100" className="text-muted-foreground">
+									<Typography variant="caption-100" className="text-content-muted">
 										Dark mode
 									</Typography>
 								</HStack>
@@ -198,7 +186,7 @@ export function TokenConfigPanel({
 										onCheckedChange={onGridChange}
 										aria-label="Toggle grid overlay"
 									/>
-									<Typography variant="caption-100" className="text-muted-foreground">
+									<Typography variant="caption-100" className="text-content-muted">
 										Grid
 									</Typography>
 								</HStack>
@@ -210,14 +198,14 @@ export function TokenConfigPanel({
 				<div className="px-4 pb-2">
 					<Typography
 						variant="caption-100"
-						className="text-muted-foreground uppercase tracking-wider mb-1 block"
+						className="text-content-muted uppercase tracking-wider mb-1 block"
 					>
 						Preset
 					</Typography>
 					<select
 						value={activePreset}
 						onChange={(e) => applyPreset(e.target.value)}
-						className="w-full h-7 rounded-md border border-stroke bg-transparent px-2 text-xs text-foreground outline-none focus:ring-[length:var(--border-width)] focus:ring-focus"
+						className="w-full h-7 rounded-md border border-stroke bg-transparent px-2 text-xs text-content-default outline-none focus:ring-[length:var(--border-width)] focus:ring-focus"
 					>
 						<option value="default">Default</option>
 						{Object.entries(presets)

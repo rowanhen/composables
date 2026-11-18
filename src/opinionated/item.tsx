@@ -145,7 +145,7 @@ function Item({
 							{description && (
 								<ItemDescription>
 									{typeof description === 'string' ? (
-										<Typography variant="body-100" className="text-muted-foreground">
+										<Typography variant="body-100" className="text-content-muted">
 											{description}
 										</Typography>
 									) : (

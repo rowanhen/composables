@@ -111,9 +111,7 @@ function FormRadioGroup({
 								<span className="flex flex-col gap-0.5">
 									<span className="font-medium">{option.label}</span>
 									{option.description && (
-										<span className="text-muted-foreground text-xs/relaxed">
-											{option.description}
-										</span>
+										<span className="text-content-muted text-xs/relaxed">{option.description}</span>
 									)}
 								</span>
 							</RadioGroupOption>

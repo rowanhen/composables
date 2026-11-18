@@ -1,3 +1,5 @@
+import type { PresetTokens, TokenOverrides } from '../tokens/types'
+
 import { defaultPreset, defaultPresetDark } from './default'
 
 /**
@@ -15,7 +17,7 @@ function emphasisFinish(
 	kind: 'primary' | 'destructive' | BrandButton,
 	fill: string,
 	gradientMix = { start: 15, hover: 30 },
-): Record<string, string> {
+): TokenOverrides {
 	const edge = `color-mix(in oklch, ${fill}, black 10%)`
 	const highlight = `color-mix(in oklch, ${fill}, white 30%)`
 	return {
@@ -38,7 +40,7 @@ const brandButtonColors: Record<BrandButton, { top: string; bottom: string; high
 	'brand-5': { top: '#00AB38', bottom: '#008D21', highlight: '#63E600' },
 }
 
-function brandFinishes(): Record<string, string> {
+function brandFinishes(): TokenOverrides {
 	return Object.assign(
 		{},
 		...Object.entries(brandButtonColors).map(([variant, { top, bottom, highlight }]) => {
@@ -60,10 +62,10 @@ function brandFinishes(): Record<string, string> {
 	)
 }
 
-const shape: Record<string, string> = {
+const shape: TokenOverrides = {
 	'--spacing': '0.25rem',
 	'--border-width-base': '0.0625rem',
-	'--radius': '0.5rem',
+	'--radius-base': '0.5rem',
 	'--font-size-base': '0.875rem',
 	'--text-xs': '0.75rem',
 	'--text-xs--line-height': '1.333333',
@@ -121,7 +123,7 @@ const shape: Record<string, string> = {
 	'--active-scale': '0.98',
 }
 
-export const kumo: Record<string, string> = {
+export const kumo: PresetTokens = {
 	...defaultPreset,
 	...shape,
 	...emphasisFinish('primary', 'var(--bg-fill-primary)'),
@@ -235,7 +237,7 @@ export const kumo: Record<string, string> = {
 	'--sidebar-ring': '#056DFF',
 }
 
-export const kumoDark: Record<string, string> = {
+export const kumoDark: PresetTokens = {
 	...defaultPresetDark,
 	...shape,
 	...emphasisFinish('primary', 'var(--bg-fill-primary)'),

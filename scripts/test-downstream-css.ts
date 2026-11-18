@@ -1,3 +1,5 @@
+import { componentUtilityAliases } from '../src/styles/tokens/utility-aliases'
+import { foundationDefaults } from '../src/styles/tokens/foundations'
 /**
  * test-downstream-css.ts
  *
@@ -32,12 +34,12 @@ const SEMANTIC_UTILITIES_CSS = join(ROOT, 'src/styles/tokens/semantic-utilities.
 // ── Tokens that MUST appear in compiled output ───────────────────────────
 const requiredTokens: Record<string, string> = {
 	// Palette primitives (from palette.css @theme inline)
-	'Palette: neutral-50': '--neutral-50',
-	'Palette: neutral-1000': '--neutral-1000',
-	'Palette: blue-800': '--blue-800',
-	'Palette: red-950': '--red-950',
-	'Palette: green-800': '--green-800',
-	'Palette: pink-800': '--pink-800',
+	'Palette: neutral-50': '--palette-neutral-50',
+	'Palette: neutral-1000': '--palette-neutral-1000',
+	'Palette: blue-800': '--palette-blue-800',
+	'Palette: red-950': '--palette-red-950',
+	'Palette: green-800': '--palette-green-800',
+	'Palette: pink-800': '--palette-pink-800',
 
 	// Semantic tokens (from semantic.css :root)
 	'Semantic: bg-default': '--bg-default',
@@ -64,11 +66,6 @@ const requiredTokens: Record<string, string> = {
 
 	// Dark mode tokens (from semantic.css .dark)
 	'Dark mode: .dark selector': '.dark',
-
-	// shadcn compat tokens
-	'shadcn: --background': '--background',
-	'shadcn: --foreground': '--foreground',
-	'shadcn: --destructive': '--destructive',
 }
 
 // Tailwind utility classes that MUST be present (catches missing @source)
@@ -82,8 +79,8 @@ const requiredUtilities: Record<string, string> = {
 	'Utility: transition': 'transition',
 	'Utility: motion-colors': 'motion-colors',
 	'Utility: motion-overlay': 'motion-overlay',
-	'Utility: bg-primary': 'bg-primary',
-	'Utility: text-foreground': 'text-foreground',
+	'Utility: bg-fill-primary': 'bg-fill-primary',
+	'Utility: text-content-default': 'text-content-default',
 	'Utility: border-stroke': 'border-stroke',
 }
 
@@ -173,8 +170,43 @@ if (!failed) {
 	console.log(`  OK       ${publicSemanticUtilities.length} optional Tailwind variant utilities`)
 }
 
+const nativeCandidates: Array<{ name: string; property: string; target: string }> = []
+for (const [alias, target] of Object.entries(componentUtilityAliases)) {
+	if (alias.includes('--line-height')) continue
+	const namespaces: Array<[string, string, string]> = [
+		['--spacing-', 'h-', 'height'],
+		['--radius-', 'rounded-', 'border-radius'],
+		['--text-', 'text-', 'font-size'],
+		['--leading-', 'leading-', 'line-height'],
+		['--shadow-', 'shadow-', 'box-shadow'],
+		['--transition-duration-', 'duration-', 'transition-duration'],
+		['--ease-', 'ease-', 'transition-timing-function'],
+		['--color-', 'bg-', 'background-color'],
+	]
+	for (const [prefix, utility, property] of namespaces)
+		if (alias.startsWith(prefix))
+			nativeCandidates.push({ name: `${utility}${alias.slice(prefix.length)}`, property, target })
+}
+for (const key of Object.keys(foundationDefaults)) {
+	if (key.startsWith('--z-index-'))
+		nativeCandidates.push({
+			name: `z-${key.slice('--z-index-'.length)}`,
+			property: 'z-index',
+			target: key,
+		})
+	if (key.startsWith('--transition-duration-'))
+		nativeCandidates.push({
+			name: `duration-${key.slice('--transition-duration-'.length)}`,
+			property: 'transition-duration',
+			target: key,
+		})
+}
 const variantCandidates = publicSemanticUtilities
 	.map(({ className }) => `hover:${className}`)
+	.concat(
+		nativeCandidates.map((candidate) => candidate.name),
+		['md:h-control-md', 'hover:bg-control-surface/50'],
+	)
 	.join(' ')
 const tailwindTestDir = mkdtempSync(join(ROOT, '.test-tailwind-'))
 const tailwindTestInput = join(tailwindTestDir, 'input.css')
@@ -206,6 +238,23 @@ try {
 			}
 		}
 	}
+	for (const candidate of nativeCandidates) {
+		const start = variantOutput.indexOf(`.${candidate.name}{`)
+		const rule = start < 0 ? '' : variantOutput.slice(start, variantOutput.indexOf('}', start) + 1)
+		if (!rule.includes(candidate.property) || !rule.includes(`var(${candidate.target})`)) {
+			console.error(
+				`  MISSING  Native role ${candidate.name}: ${candidate.property} -> ${candidate.target}`,
+			)
+			failed = true
+		}
+	}
+	if (
+		!variantOutput.includes('md\\:h-control-md') ||
+		!variantOutput.includes('hover\\:bg-control-surface\\/50')
+	) {
+		console.error('MISSING responsive/opacity component role variants')
+		failed = true
+	}
 	if (!failed) {
 		console.log(
 			`  OK       Tailwind compiled hover variants for all ${publicSemanticUtilities.length} public utilities`,
@@ -222,13 +271,22 @@ try {
 // 6. The package source owns its default appearance: styles.css imports the
 // canonical default preset after fallback semantic/component values.
 const packageCSS = readFileSync(join(ROOT, 'src/styles/composable.css'), 'utf-8')
-const semanticImport = packageCSS.indexOf("@import './tokens/semantic.css';")
-const componentsImport = packageCSS.indexOf("@import './tokens/components.css';")
 const defaultImport = packageCSS.indexOf("@import './presets/default.css';")
-
-if (defaultImport < semanticImport || defaultImport < componentsImport) {
-	console.error('  MISSING  composable.css must import the default preset after token fallbacks')
+if (
+	defaultImport === -1 ||
+	packageCSS.includes("@import './tokens/semantic.css';") ||
+	packageCSS.includes("@import './tokens/components.css';")
+) {
+	console.error(
+		'The package must import its complete default preset exactly once, without duplicate baseline token layers',
+	)
 	failed = true
+}
+for (const alias of ['--background', '--foreground', '--primary']) {
+	if (new RegExp(`${alias}\\s*:`).test(output)) {
+		console.error(`Core CSS leaked legacy alias ${alias}`)
+		failed = true
+	}
 }
 
 for (const [label, preset] of [

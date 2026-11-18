@@ -1,16 +1,16 @@
+import type { PresetTokens, TokenName } from '../../styles/tokens/types'
 /* ------------------------------------------------------------------ */
 /*  Shared types for token-config-panel                                 */
 /* ------------------------------------------------------------------ */
 
 export interface FlatToken {
-	cssVar: string
-	reference: string
+	cssVar: TokenName
 	category: string
 	label: string
 }
 
 export interface DimensionToken {
-	cssVar: string
+	cssVar: TokenName
 	label: string
 	defaultValue: number
 	min: number
@@ -20,10 +20,10 @@ export interface DimensionToken {
 }
 
 export interface FactorToken {
-	cssVar: string
+	cssVar: TokenName
 	label: string
 	/** Base token the factor multiplies - the override is written as calc(var(base) * factor). */
-	base: '--radius' | '--spacing'
+	base: '--radius-base' | '--spacing'
 	defaultFactor: number
 	min: number
 	max: number
@@ -33,7 +33,7 @@ export interface FactorToken {
 }
 
 export interface StringToken {
-	cssVar: string
+	cssVar: TokenName
 	label: string
 	defaultValue: string
 	placeholder?: string
@@ -42,8 +42,8 @@ export interface StringToken {
 export interface Preset {
 	label: string
 	description: string
-	overrides: Record<string, string>
-	darkOverrides: Record<string, string>
+	overrides: PresetTokens
+	darkOverrides: PresetTokens
 }
 
 export interface FontGroup {

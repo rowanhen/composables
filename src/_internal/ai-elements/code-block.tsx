@@ -74,7 +74,7 @@ const LINE_NUMBER_CLASSES = cn(
 	'before:w-8',
 	'before:mr-4',
 	'before:text-right',
-	'before:text-muted-foreground/50',
+	'before:text-content-muted/50',
 	'before:font-mono',
 	'before:select-none',
 )
@@ -289,7 +289,7 @@ export const CodeBlockContainer = ({
 }: HTMLAttributes<HTMLDivElement> & { language: string }) => (
 	<div
 		className={cn(
-			'group relative w-full overflow-hidden rounded-md border bg-page text-foreground',
+			'group relative w-full overflow-hidden rounded-md border bg-page text-content-default',
 			className,
 		)}
 		data-language={language}
@@ -309,7 +309,7 @@ export const CodeBlockHeader = ({
 }: HTMLAttributes<HTMLDivElement>) => (
 	<div
 		className={cn(
-			'flex items-center justify-between border-b bg-muted/80 px-3 py-2 text-muted-foreground text-xs',
+			'flex items-center justify-between border-b bg-muted/80 px-3 py-2 text-content-muted text-xs',
 			className,
 		)}
 		{...props}

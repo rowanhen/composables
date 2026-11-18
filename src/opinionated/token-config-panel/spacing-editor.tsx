@@ -1,3 +1,4 @@
+import type { TokenName } from '../../styles/tokens/types'
 import React from 'react'
 
 import { Input } from '../../_internal/input'
@@ -40,7 +41,7 @@ export const borderWidthTokens: DimensionToken[] = [
 
 export const radiusTokens: DimensionToken[] = [
 	{
-		cssVar: '--radius',
+		cssVar: '--radius-base',
 		label: 'Base radius',
 		defaultValue: 0.5,
 		min: 0,
@@ -51,13 +52,13 @@ export const radiusTokens: DimensionToken[] = [
 ]
 
 /* Component dimensions are edited as multipliers of their base token so they
-   track --radius/--spacing by default; the override is written as a calc()
+   track --radius-base/--spacing by default; the override is written as a calc()
    expression, never a detached absolute value (except the pill escape hatch). */
 export const controlShapeTokens: FactorToken[] = [
 	{
 		cssVar: '--button-radius',
 		label: 'Button radius',
-		base: '--radius',
+		base: '--radius-base',
 		defaultFactor: 0.8,
 		min: 0,
 		max: 3,
@@ -67,7 +68,7 @@ export const controlShapeTokens: FactorToken[] = [
 	{
 		cssVar: '--badge-radius',
 		label: 'Badge radius',
-		base: '--radius',
+		base: '--radius-base',
 		defaultFactor: 2.6,
 		min: 0,
 		max: 3,
@@ -77,7 +78,7 @@ export const controlShapeTokens: FactorToken[] = [
 	{
 		cssVar: '--input-radius',
 		label: 'Input radius',
-		base: '--radius',
+		base: '--radius-base',
 		defaultFactor: 0.8,
 		min: 0,
 		max: 3,
@@ -86,7 +87,7 @@ export const controlShapeTokens: FactorToken[] = [
 	{
 		cssVar: '--card-radius',
 		label: 'Card radius',
-		base: '--radius',
+		base: '--radius-base',
 		defaultFactor: 1,
 		min: 0,
 		max: 3,
@@ -315,7 +316,7 @@ export function DimensionSliderRow({
 	onApply,
 }: {
 	token: DimensionToken
-	onApply: (cssVar: string, value: string) => void
+	onApply: (cssVar: TokenName, value: string) => void
 }) {
 	const [value, setValue] = React.useState(() => {
 		const resolved = getResolvedDimension(token.cssVar)
@@ -377,7 +378,7 @@ export function FactorSliderRow({
 	onApply,
 }: {
 	token: FactorToken
-	onApply: (cssVar: string, value: string) => void
+	onApply: (cssVar: TokenName, value: string) => void
 }) {
 	const [state, setState] = React.useState(() => {
 		const resolved = getResolvedDimension(token.cssVar)
@@ -452,7 +453,7 @@ export function StringTokenRow({
 	onApply,
 }: {
 	token: StringToken
-	onApply: (cssVar: string, value: string) => void
+	onApply: (cssVar: TokenName, value: string) => void
 }) {
 	const [value, setValue] = React.useState(() => {
 		const resolved = getResolvedDimension(token.cssVar)
@@ -466,7 +467,7 @@ export function StringTokenRow({
 
 	return (
 		<div className="py-1">
-			<Typography variant="caption-100" className="text-muted-foreground mb-1 block">
+			<Typography variant="caption-100" className="text-content-muted mb-1 block">
 				{token.label}
 			</Typography>
 			<Input

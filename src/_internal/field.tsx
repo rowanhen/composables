@@ -28,7 +28,7 @@ function FieldLegend({
 			data-slot="field-legend"
 			data-variant={variant}
 			className={cn(
-				'mb-2 font-medium data-[variant=label]:text-(length:--label-font-size) data-[variant=label]:leading-relaxed data-[variant=label]:text-(color:--label-color) data-[variant=label]:[text-transform:var(--label-text-transform)] data-[variant=legend]:text-(length:--heading-font-size) data-[variant=legend]:leading-(--heading-line-height)',
+				'mb-2 font-medium data-[variant=label]:text-label data-[variant=label]:leading-relaxed data-[variant=label]:text-(color:--label-color) data-[variant=label]:[text-transform:var(--label-text-transform)] data-[variant=legend]:text-heading data-[variant=legend]:leading-heading',
 				className,
 			)}
 			{...props}
@@ -95,7 +95,7 @@ function FieldLabel({ className, ...props }: React.ComponentProps<typeof Label>)
 		<Label
 			data-slot="field-label"
 			className={cn(
-				'has-data-checked:bg-primary/5 dark:has-data-checked:bg-primary/10 gap-2 group-data-[disabled=true]/field:opacity-disabled has-[>[data-slot=field]]:rounded-md has-[>[data-slot=field]]:border [&>*]:data-[slot=field]:p-2 group/field-label peer/field-label flex w-fit leading-snug',
+				'has-data-checked:bg-fill-primary/5 dark:has-data-checked:bg-fill-primary/10 gap-2 group-data-[disabled=true]/field:opacity-disabled has-[>[data-slot=field]]:rounded-md has-[>[data-slot=field]]:border [&>*]:data-[slot=field]:p-2 group/field-label peer/field-label flex w-fit leading-snug',
 				'has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col',
 				className,
 			)}
@@ -109,7 +109,7 @@ function FieldTitle({ className, ...props }: React.ComponentProps<'div'>) {
 		<div
 			data-slot="field-label"
 			className={cn(
-				'gap-2 text-(length:--label-font-size) text-(color:--label-color) [text-transform:var(--label-text-transform)] group-data-[invalid=true]/field:text-critical font-medium group-data-[disabled=true]/field:opacity-disabled flex w-fit items-center leading-snug',
+				'gap-2 text-label text-(color:--label-color) [text-transform:var(--label-text-transform)] group-data-[invalid=true]/field:text-critical font-medium group-data-[disabled=true]/field:opacity-disabled flex w-fit items-center leading-snug',
 				className,
 			)}
 			{...props}
@@ -122,8 +122,8 @@ function FieldDescription({ className, ...props }: React.ComponentProps<'p'>) {
 		<p
 			data-slot="field-description"
 			className={cn(
-				'text-muted-foreground group-data-[invalid=true]/field:text-critical text-left text-xs/relaxed [[data-variant=legend]+&]:-mt-1.5 leading-normal font-normal group-has-[[data-orientation=horizontal]]/field:text-balance',
-				'[&>a:hover]:text-primary [&>a]:underline [&>a]:underline-offset-4',
+				'text-content-muted group-data-[invalid=true]/field:text-critical text-left text-xs/relaxed [[data-variant=legend]+&]:-mt-1.5 leading-normal font-normal group-has-[[data-orientation=horizontal]]/field:text-balance',
+				'[&>a:hover]:text-link [&>a]:underline [&>a]:underline-offset-4',
 				className,
 			)}
 			{...props}
@@ -151,7 +151,7 @@ function FieldSeparator({
 			<Separator className="absolute inset-0 top-1/2" />
 			{children && (
 				<span
-					className="text-muted-foreground px-2 bg-page relative mx-auto block w-fit"
+					className="text-content-muted px-2 bg-page relative mx-auto block w-fit"
 					data-slot="field-separator-content"
 				>
 					{children}

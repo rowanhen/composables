@@ -9,7 +9,405 @@
    3. Add class="dark" to <html> for dark mode.
    ============================================================================ */
 
-:root {
+:root,
+[data-preset='kumo'] {
+	--spacing: 0.25rem;
+	--text-2xs: calc(var(--font-size-base) * 0.625);
+	--text-2xs--line-height: calc(var(--leading-base) * 0.75);
+	--text-xs: 0.75rem;
+	--text-xs--line-height: 1.333333;
+	--text-sm: 0.8125rem;
+	--text-sm--line-height: 1.5;
+	--text-base: var(--font-size-base);
+	--text-base--line-height: var(--leading-base);
+	--text-lg: calc(var(--font-size-base) * 1.125);
+	--text-lg--line-height: var(--leading-base);
+	--text-xl: calc(var(--font-size-base) * 1.25);
+	--text-xl--line-height: calc(var(--leading-base) * 0.94);
+	--text-2xl: calc(var(--font-size-base) * 1.5);
+	--text-2xl--line-height: calc(var(--leading-base) * 0.94);
+	--text-3xl: calc(var(--font-size-base) * 1.75);
+	--text-3xl--line-height: calc(var(--leading-base) * 0.85);
+	--text-4xl: calc(var(--font-size-base) * 2);
+	--text-4xl--line-height: calc(var(--leading-base) * 0.85);
+	--text-5xl: calc(var(--font-size-base) * 2.5);
+	--text-5xl--line-height: calc(var(--leading-base) * 0.75);
+	--text-6xl: calc(var(--font-size-base) * 3.5);
+	--text-6xl--line-height: calc(var(--leading-base) * 0.75);
+	--text-7xl: calc(var(--font-size-base) * 5);
+	--text-7xl--line-height: calc(var(--leading-base) * 0.75);
+	--tracking-tighter: calc(var(--letter-spacing-base) * -2);
+	--tracking-tight: calc(var(--letter-spacing-base) * -1);
+	--tracking-normal: 0em;
+	--tracking-wide: var(--letter-spacing-base);
+	--tracking-wider: calc(var(--letter-spacing-base) * 2);
+	--tracking-widest: calc(var(--letter-spacing-base) * 4);
+	--font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+	--font-heading: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+	--font-brand: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+	--border-width: var(--border-width-base);
+	--default-border-width: var(--border-width-base);
+	--radius-sm: calc(var(--radius-base) * 0.6);
+	--radius-md: calc(var(--radius-base) * 0.8);
+	--radius-lg: var(--radius-base);
+	--radius-xl: calc(var(--radius-base) * 1.4);
+	--radius-2xl: calc(var(--radius-base) * 1.8);
+	--radius-3xl: calc(var(--radius-base) * 2.2);
+	--radius-4xl: calc(var(--radius-base) * 2.6);
+	--shadow-xs: 0 calc(var(--shadow-offset-y) * 1) calc(var(--shadow-blur) * 1)
+		calc(var(--shadow-spread) * 1) var(--shadow-base-color);
+	--shadow-sm:
+		0 calc(var(--shadow-offset-y) * 1.5) calc(var(--shadow-blur) * 1.5)
+			calc(var(--shadow-spread) * 1.5) var(--shadow-base-color),
+		0 calc(var(--shadow-offset-y) * 1) calc(var(--shadow-blur) * 1) calc(var(--shadow-spread) * -1)
+			var(--shadow-base-color);
+	--shadow-md:
+		0 calc(var(--shadow-offset-y) * 3) calc(var(--shadow-blur) * 3) calc(var(--shadow-spread) * -1)
+			var(--shadow-base-color),
+		0 calc(var(--shadow-offset-y) * 1.5) calc(var(--shadow-blur) * 2)
+			calc(var(--shadow-spread) * -2) var(--shadow-base-color);
+	--shadow-lg:
+		0 calc(var(--shadow-offset-y) * 6) calc(var(--shadow-blur) * 7) calc(var(--shadow-spread) * -3)
+			var(--shadow-base-color),
+		0 calc(var(--shadow-offset-y) * 3) calc(var(--shadow-blur) * 3) calc(var(--shadow-spread) * -4)
+			var(--shadow-base-color);
+	--shadow-xl:
+		0 calc(var(--shadow-offset-y) * 12) calc(var(--shadow-blur) * 12)
+			calc(var(--shadow-spread) * -5) var(--shadow-base-color),
+		0 calc(var(--shadow-offset-y) * 5) calc(var(--shadow-blur) * 5) calc(var(--shadow-spread) * -6)
+			var(--shadow-base-color);
+	--z-index-dropdown: 50;
+	--z-index-sticky: 100;
+	--z-index-overlay: 200;
+	--z-index-modal: 300;
+	--z-index-popover: 400;
+	--z-index-toast: 500;
+	--z-index-tooltip: 600;
+	--transition-duration-fast: var(--motion-duration-fast);
+	--transition-duration-normal: var(--motion-duration-normal);
+	--transition-duration-slow: var(--motion-duration-slow);
+	--ease-default: var(--motion-ease-standard);
+	--ease-in: var(--motion-ease-accelerate);
+	--ease-out: var(--motion-ease-decelerate);
+	--ease-linear: var(--motion-ease-linear);
+	--default-transition-duration: var(--motion-duration-interaction);
+	--default-transition-timing-function: var(--motion-ease-standard);
+	--animate-accordion-down: accordion-down var(--motion-duration-disclosure)
+		var(--motion-ease-decelerate);
+	--animate-accordion-up: accordion-up var(--motion-duration-disclosure)
+		var(--motion-ease-accelerate);
+	--opacity-disabled: 0.5;
+	--container-sm: 576px;
+	--container-md: 768px;
+	--container-lg: 1056px;
+	--container-xl: 1248px;
+	--container-2xl: 1440px;
+	--control-bg: var(--bg-surface-input);
+	--control-text: var(--text-default);
+	--control-placeholder: var(--text-muted);
+	--control-border: var(--border-input);
+	--control-border-invalid: var(--border-critical);
+	--control-bg-disabled: var(--bg-muted);
+	--control-text-disabled: var(--text-disabled);
+	--control-border-disabled: var(--border-disabled);
+	--selection-bg: var(--bg-fill-selected);
+	--selection-text: var(--text-on-fill-selected);
+	--font-size-base: 0.875rem;
+	--leading-base: 1.5;
+	--letter-spacing-base: 0.01em;
+	--border-width-base: 0.0625rem;
+	--shadow-base-color: #0000000d;
+	--shadow-offset-y: 1px;
+	--shadow-blur: 2px;
+	--shadow-spread: 0px;
+	--rule-width: var(--border-width-base);
+	--control-size-sm: calc(var(--spacing) * 6);
+	--control-size-md: calc(var(--spacing) * 9);
+	--control-size-lg: calc(var(--spacing) * 8);
+	--control-font-size: var(--text-xs);
+	--control-min-width: calc(var(--spacing) * 30);
+	--motion-duration-fast: 100ms;
+	--motion-duration-normal: 200ms;
+	--motion-duration-slow: 300ms;
+	--motion-duration-color: var(--motion-duration-fast);
+	--motion-duration-interaction: var(--motion-duration-fast);
+	--motion-duration-disclosure: var(--motion-duration-normal);
+	--motion-duration-overlay: var(--motion-duration-fast);
+	--motion-ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+	--motion-ease-accelerate: cubic-bezier(0.4, 0, 1, 1);
+	--motion-ease-decelerate: cubic-bezier(0, 0, 0.2, 1);
+	--motion-ease-linear: linear;
+	--transition-default: var(--motion-duration-normal) var(--motion-ease-standard);
+	--transition-fast: var(--motion-duration-fast) var(--motion-ease-standard);
+	--transition-slow: var(--motion-duration-slow) var(--motion-ease-decelerate);
+	--hover-transform: none;
+	--hover-shadow: none;
+	--active-scale: 0.98;
+	--body-font-size: var(--text-xs);
+	--title-font-size: var(--text-sm);
+	--heading-font-size: var(--text-sm);
+	--body-line-height: var(--text-xs--line-height);
+	--title-line-height: var(--text-sm--line-height);
+	--heading-line-height: var(--text-sm--line-height);
+	--border-style: solid;
+	--focus-ring-color: var(--border-focus);
+	--focus-ring-width: calc(var(--border-width-base) * 2);
+	--focus-ring-offset: 0px;
+	--focus-ring-opacity: 30%;
+	--focus-ring-style: solid;
+	--hover-ring-color: var(--border-secondary);
+	--hover-ring-width: 0px;
+	--space-layout-sm: calc(var(--spacing) * 6);
+	--space-layout-md: calc(var(--spacing) * 12);
+	--space-layout-lg: calc(var(--spacing) * 24);
+	--choice-border-selected: var(--bg-fill-selected);
+	--button-primary-bg-active: color-mix(
+		in srgb,
+		var(--bg-fill-primary),
+		var(--text-on-fill-primary) 12%
+	);
+	--button-secondary-bg-active: color-mix(
+		in srgb,
+		var(--bg-fill-secondary),
+		var(--text-on-fill-secondary) 12%
+	);
+	--menu-item-bg-hover: var(--bg-surface-accent);
+	--menu-item-text-hover: var(--text-on-surface-accent);
+	--dropdown-offset: 4;
+	--overlay-offset: 4;
+	--button-radius: var(--radius-lg);
+	--button-radius-xs: 0.25rem;
+	--button-radius-sm: 0.375rem;
+	--button-height: calc(var(--spacing) * 9);
+	--button-height-xs: calc(var(--spacing) * 5);
+	--button-height-sm: calc(var(--spacing) * 6.5);
+	--button-height-lg: calc(var(--spacing) * 10);
+	--button-font-size: var(--text-base);
+	--button-font-size-xs: var(--text-xs);
+	--button-font-size-sm: var(--text-xs);
+	--button-gap: calc(var(--spacing) * 1.5);
+	--button-primary-border: color-mix(in oklch, var(--bg-fill-primary), black 10%);
+	--button-primary-hover-border: color-mix(in oklch, var(--bg-fill-primary), black 10%);
+	--button-primary-background-image: linear-gradient(
+		to bottom,
+		color-mix(in oklch, var(--bg-fill-primary), white 15%),
+		var(--bg-fill-primary)
+	);
+	--button-primary-hover-background-image: linear-gradient(
+		to bottom,
+		color-mix(in oklch, var(--bg-fill-primary), white 30%),
+		var(--bg-fill-primary)
+	);
+	--button-primary-shadow:
+		inset 0 1px 0 color-mix(in oklch, var(--bg-fill-primary), white 30%), 0 1px 2px #0000000d;
+	--button-primary-hover-shadow:
+		inset 0 1px 0 color-mix(in oklch, var(--bg-fill-primary), white 30%), 0 1px 2px #0000000d;
+	--button-destructive-bg: var(--bg-fill-critical);
+	--button-destructive-text: #ffffff;
+	--button-destructive-border: color-mix(in oklch, var(--bg-fill-critical), black 10%);
+	--button-destructive-hover-border: color-mix(in oklch, var(--bg-fill-critical), black 10%);
+	--button-destructive-background-image: linear-gradient(
+		to bottom,
+		color-mix(in oklch, var(--bg-fill-critical), white 15%),
+		var(--bg-fill-critical)
+	);
+	--button-destructive-hover-background-image: linear-gradient(
+		to bottom,
+		color-mix(in oklch, var(--bg-fill-critical), white 30%),
+		var(--bg-fill-critical)
+	);
+	--button-destructive-shadow:
+		inset 0 1px 0 color-mix(in oklch, var(--bg-fill-critical), white 30%), 0 1px 2px #0000000d;
+	--button-destructive-hover-shadow:
+		inset 0 1px 0 color-mix(in oklch, var(--bg-fill-critical), white 30%), 0 1px 2px #0000000d;
+	--button-secondary-border: var(--border-secondary);
+	--button-secondary-hover-bg: var(--bg-surface-hover);
+	--button-secondary-shadow: 0 1px 2px #0000000d;
+	--button-secondary-hover-shadow: 0 1px 2px #0000000d;
+	--button-outline-shadow: 0 1px 2px #0000000d;
+	--button-outline-hover-shadow: 0 1px 2px #0000000d;
+	--button-quiet-hover-bg: var(--bg-surface-hover);
+	--button-brand-font-weight: 600;
+	--button-brand-text-shadow: 0 1px 1px #00000059, 0 0 1px #00000040;
+	--button-brand-bg: #f45b00;
+	--button-brand-text: #ffffff;
+	--button-brand-border: color-mix(in oklch, #f45b00, black 8%);
+	--button-brand-hover-border: #f45b00;
+	--button-brand-background-image: linear-gradient(
+		to bottom,
+		#ff8a00 0%,
+		#f45b00 20%,
+		#e04400 100%
+	);
+	--button-brand-hover-background-image: linear-gradient(
+		to bottom,
+		#ff8a00 0%,
+		#f45b00 20%,
+		color-mix(in oklch, #e04400, #f45b00 25%) 100%
+	);
+	--button-brand-shadow:
+		inset 0 1px 0 color-mix(in oklch, #ff8a00, white 15%),
+		inset 0 -1px 0 color-mix(in oklch, #f45b00, black 8%),
+		0 2px 3px color-mix(in srgb, #f45b00, transparent 82%);
+	--button-brand-hover-shadow:
+		inset 0 1px 0 color-mix(in oklch, #ff8a00, white 15%),
+		inset 0 -1px 0 color-mix(in oklch, #f45b00, black 8%),
+		0 2px 6px color-mix(in srgb, #f45b00, transparent 75%);
+	--button-brand-2-bg: #009db8;
+	--button-brand-2-text: #ffffff;
+	--button-brand-2-border: color-mix(in oklch, #009db8, black 8%);
+	--button-brand-2-hover-border: #009db8;
+	--button-brand-2-background-image: linear-gradient(
+		to bottom,
+		#00d8ea 0%,
+		#009db8 20%,
+		#007dab 100%
+	);
+	--button-brand-2-hover-background-image: linear-gradient(
+		to bottom,
+		#00d8ea 0%,
+		#009db8 20%,
+		color-mix(in oklch, #007dab, #009db8 25%) 100%
+	);
+	--button-brand-2-shadow:
+		inset 0 1px 0 color-mix(in oklch, #00d8ea, white 15%),
+		inset 0 -1px 0 color-mix(in oklch, #009db8, black 8%),
+		0 2px 3px color-mix(in srgb, #009db8, transparent 82%);
+	--button-brand-2-hover-shadow:
+		inset 0 1px 0 color-mix(in oklch, #00d8ea, white 15%),
+		inset 0 -1px 0 color-mix(in oklch, #009db8, black 8%),
+		0 2px 6px color-mix(in srgb, #009db8, transparent 75%);
+	--button-brand-3-bg: #aa0aff;
+	--button-brand-3-text: #ffffff;
+	--button-brand-3-border: color-mix(in oklch, #aa0aff, black 8%);
+	--button-brand-3-hover-border: #aa0aff;
+	--button-brand-3-background-image: linear-gradient(
+		to bottom,
+		#e04bff 0%,
+		#aa0aff 20%,
+		#7c00e5 100%
+	);
+	--button-brand-3-hover-background-image: linear-gradient(
+		to bottom,
+		#e04bff 0%,
+		#aa0aff 20%,
+		color-mix(in oklch, #7c00e5, #aa0aff 25%) 100%
+	);
+	--button-brand-3-shadow:
+		inset 0 1px 0 color-mix(in oklch, #e04bff, white 15%),
+		inset 0 -1px 0 color-mix(in oklch, #aa0aff, black 8%),
+		0 2px 3px color-mix(in srgb, #aa0aff, transparent 82%);
+	--button-brand-3-hover-shadow:
+		inset 0 1px 0 color-mix(in oklch, #e04bff, white 15%),
+		inset 0 -1px 0 color-mix(in oklch, #aa0aff, black 8%),
+		0 2px 6px color-mix(in srgb, #aa0aff, transparent 75%);
+	--button-brand-4-bg: #1464ff;
+	--button-brand-4-text: #ffffff;
+	--button-brand-4-border: color-mix(in oklch, #1464ff, black 8%);
+	--button-brand-4-hover-border: #1464ff;
+	--button-brand-4-background-image: linear-gradient(
+		to bottom,
+		#388bff 0%,
+		#1464ff 20%,
+		#0045ef 100%
+	);
+	--button-brand-4-hover-background-image: linear-gradient(
+		to bottom,
+		#388bff 0%,
+		#1464ff 20%,
+		color-mix(in oklch, #0045ef, #1464ff 25%) 100%
+	);
+	--button-brand-4-shadow:
+		inset 0 1px 0 color-mix(in oklch, #388bff, white 15%),
+		inset 0 -1px 0 color-mix(in oklch, #1464ff, black 8%),
+		0 2px 3px color-mix(in srgb, #1464ff, transparent 82%);
+	--button-brand-4-hover-shadow:
+		inset 0 1px 0 color-mix(in oklch, #388bff, white 15%),
+		inset 0 -1px 0 color-mix(in oklch, #1464ff, black 8%),
+		0 2px 6px color-mix(in srgb, #1464ff, transparent 75%);
+	--button-brand-5-bg: #00ab38;
+	--button-brand-5-text: #ffffff;
+	--button-brand-5-border: color-mix(in oklch, #00ab38, black 8%);
+	--button-brand-5-hover-border: #00ab38;
+	--button-brand-5-background-image: linear-gradient(
+		to bottom,
+		#63e600 0%,
+		#00ab38 20%,
+		#008d21 100%
+	);
+	--button-brand-5-hover-background-image: linear-gradient(
+		to bottom,
+		#63e600 0%,
+		#00ab38 20%,
+		color-mix(in oklch, #008d21, #00ab38 25%) 100%
+	);
+	--button-brand-5-shadow:
+		inset 0 1px 0 color-mix(in oklch, #63e600, white 15%),
+		inset 0 -1px 0 color-mix(in oklch, #00ab38, black 8%),
+		0 2px 3px color-mix(in srgb, #00ab38, transparent 82%);
+	--button-brand-5-hover-shadow:
+		inset 0 1px 0 color-mix(in oklch, #63e600, white 15%),
+		inset 0 -1px 0 color-mix(in oklch, #00ab38, black 8%),
+		0 2px 6px color-mix(in srgb, #00ab38, transparent 75%);
+	--layer-card-radius: var(--radius-lg);
+	--layer-card-padding: var(--card-padding);
+	--layer-card-shadow: 0 1px 2px #0000000d;
+	--clipboard-text-radius: var(--input-radius);
+	--clipboard-text-height: var(--control-size-md);
+	--clipboard-text-height-sm: calc(var(--spacing) * 6.5);
+	--clipboard-text-height-lg: calc(var(--spacing) * 10);
+	--flow-border-width: max(1px, var(--border-width-base));
+	--flow-gap: calc(var(--spacing) * 10);
+	--flow-branch-gap: calc(var(--spacing) * 4);
+	--flow-node-radius: var(--radius-md);
+	--flow-node-shadow: 0 1px 2px #0000000d;
+	--flow-connector-color: initial;
+	--flow-canvas-radius: var(--radius-lg);
+	--flow-canvas-padding-x: calc(var(--spacing) * 4);
+	--flow-canvas-padding-y: calc(var(--spacing) * 12);
+	--flow-canvas-background-image: radial-gradient(var(--border-disabled) 1px, transparent 1px);
+	--flow-canvas-background-size: calc(var(--spacing) * 4);
+	--card-radius: var(--radius-xl);
+	--card-padding: calc(var(--spacing) * 4);
+	--card-border-width: var(--border-width-base);
+	--alert-border-width: var(--border-width-base);
+	--alert-accent-width: 0px;
+	--dialog-radius: var(--radius-xl);
+	--dialog-max-width: 90vw;
+	--dialog-border-width: var(--border-width-base);
+	--tooltip-bg: var(--bg-surface-inverse);
+	--tooltip-fg: var(--text-inverse);
+	--input-radius: var(--radius-lg);
+	--badge-radius: var(--radius-md);
+	--grid-overlay-color: color-mix(in srgb, var(--text-default) 6%, transparent);
+	--tabs-list-radius: var(--radius-lg);
+	--tabs-tab-radius: var(--radius-md);
+	--tabs-list-padding: calc(var(--spacing) * 0.5);
+	--tabs-tab-height: calc(var(--spacing) * 8);
+	--tabs-list-shadow: 0 0 0 1px var(--border-secondary);
+	--tabs-indicator-border-width: var(--border-width-base);
+	--tabs-indicator-shadow: 0 1px 2px #0000000d;
+	--switch-on-color: var(--bg-fill-primary);
+	--button-min-width-ratio: 1.75;
+	--switch-height: calc(var(--spacing) * 4);
+	--slider-size: calc(var(--spacing) * 5);
+	--slider-thumb-color: var(--bg-default);
+	--slider-thumb-border: var(--bg-fill-primary);
+	--choice-size: calc(var(--spacing) * 4);
+	--choice-border-width: var(--border-width-base);
+	--checkbox-icon-size: calc(var(--choice-size) * 0.85);
+	--choice-border-color: var(--border-secondary);
+	--checkbox-radius: var(--radius-sm);
+	--kbd-height: calc(var(--spacing) * 5);
+	--kbd-radius: var(--radius-sm);
+	--kbd-font-size: var(--text-2xs);
+	--label-font-size: var(--text-xs);
+	--label-color: currentColor;
+	--label-text-transform: none;
+	--input-group-button-size: calc(var(--control-size-md) * 0.7);
+	--input-group-inset: calc((var(--control-size-md) - var(--input-group-button-size)) / 2);
+	--bento-gap: var(--border-width-base, 0.0625rem);
+	--radius-base: 0.5rem;
 	--bg-default: #fbfbfb;
 	--bg-inverse: #080808;
 	--bg-muted: #f2f2f2;
@@ -115,33 +513,125 @@
 	--sidebar-accent-foreground: #171717;
 	--sidebar-border: #e9e9e9;
 	--sidebar-ring: #056dff;
+}
+.dark,
+[data-preset='kumo'].dark,
+.dark [data-preset='kumo'] {
 	--spacing: 0.25rem;
-	--border-width-base: 0.0625rem;
-	--radius: 0.5rem;
-	--font-size-base: 0.875rem;
-	--leading-base: 1.5;
-	--letter-spacing-base: 0.01em;
+	--text-2xs: calc(var(--font-size-base) * 0.625);
+	--text-2xs--line-height: calc(var(--leading-base) * 0.75);
+	--text-xs: 0.75rem;
+	--text-xs--line-height: 1.333333;
+	--text-sm: 0.8125rem;
+	--text-sm--line-height: 1.5;
+	--text-base: var(--font-size-base);
+	--text-base--line-height: var(--leading-base);
+	--text-lg: calc(var(--font-size-base) * 1.125);
+	--text-lg--line-height: var(--leading-base);
+	--text-xl: calc(var(--font-size-base) * 1.25);
+	--text-xl--line-height: calc(var(--leading-base) * 0.94);
+	--text-2xl: calc(var(--font-size-base) * 1.5);
+	--text-2xl--line-height: calc(var(--leading-base) * 0.94);
+	--text-3xl: calc(var(--font-size-base) * 1.75);
+	--text-3xl--line-height: calc(var(--leading-base) * 0.85);
+	--text-4xl: calc(var(--font-size-base) * 2);
+	--text-4xl--line-height: calc(var(--leading-base) * 0.85);
+	--text-5xl: calc(var(--font-size-base) * 2.5);
+	--text-5xl--line-height: calc(var(--leading-base) * 0.75);
+	--text-6xl: calc(var(--font-size-base) * 3.5);
+	--text-6xl--line-height: calc(var(--leading-base) * 0.75);
+	--text-7xl: calc(var(--font-size-base) * 5);
+	--text-7xl--line-height: calc(var(--leading-base) * 0.75);
+	--tracking-tighter: calc(var(--letter-spacing-base) * -2);
+	--tracking-tight: calc(var(--letter-spacing-base) * -1);
+	--tracking-normal: 0em;
+	--tracking-wide: var(--letter-spacing-base);
+	--tracking-wider: calc(var(--letter-spacing-base) * 2);
+	--tracking-widest: calc(var(--letter-spacing-base) * 4);
+	--font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+	--font-heading: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+	--font-brand: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+	--border-width: var(--border-width-base);
+	--default-border-width: var(--border-width-base);
+	--radius-sm: calc(var(--radius-base) * 0.6);
+	--radius-md: calc(var(--radius-base) * 0.8);
+	--radius-lg: var(--radius-base);
+	--radius-xl: calc(var(--radius-base) * 1.4);
+	--radius-2xl: calc(var(--radius-base) * 1.8);
+	--radius-3xl: calc(var(--radius-base) * 2.2);
+	--radius-4xl: calc(var(--radius-base) * 2.6);
+	--shadow-xs: 0 calc(var(--shadow-offset-y) * 1) calc(var(--shadow-blur) * 1)
+		calc(var(--shadow-spread) * 1) var(--shadow-base-color);
+	--shadow-sm:
+		0 calc(var(--shadow-offset-y) * 1.5) calc(var(--shadow-blur) * 1.5)
+			calc(var(--shadow-spread) * 1.5) var(--shadow-base-color),
+		0 calc(var(--shadow-offset-y) * 1) calc(var(--shadow-blur) * 1) calc(var(--shadow-spread) * -1)
+			var(--shadow-base-color);
+	--shadow-md:
+		0 calc(var(--shadow-offset-y) * 3) calc(var(--shadow-blur) * 3) calc(var(--shadow-spread) * -1)
+			var(--shadow-base-color),
+		0 calc(var(--shadow-offset-y) * 1.5) calc(var(--shadow-blur) * 2)
+			calc(var(--shadow-spread) * -2) var(--shadow-base-color);
+	--shadow-lg:
+		0 calc(var(--shadow-offset-y) * 6) calc(var(--shadow-blur) * 7) calc(var(--shadow-spread) * -3)
+			var(--shadow-base-color),
+		0 calc(var(--shadow-offset-y) * 3) calc(var(--shadow-blur) * 3) calc(var(--shadow-spread) * -4)
+			var(--shadow-base-color);
+	--shadow-xl:
+		0 calc(var(--shadow-offset-y) * 12) calc(var(--shadow-blur) * 12)
+			calc(var(--shadow-spread) * -5) var(--shadow-base-color),
+		0 calc(var(--shadow-offset-y) * 5) calc(var(--shadow-blur) * 5) calc(var(--shadow-spread) * -6)
+			var(--shadow-base-color);
+	--z-index-dropdown: 50;
+	--z-index-sticky: 100;
+	--z-index-overlay: 200;
+	--z-index-modal: 300;
+	--z-index-popover: 400;
+	--z-index-toast: 500;
+	--z-index-tooltip: 600;
+	--transition-duration-fast: var(--motion-duration-fast);
+	--transition-duration-normal: var(--motion-duration-normal);
+	--transition-duration-slow: var(--motion-duration-slow);
+	--ease-default: var(--motion-ease-standard);
+	--ease-in: var(--motion-ease-accelerate);
+	--ease-out: var(--motion-ease-decelerate);
+	--ease-linear: var(--motion-ease-linear);
+	--default-transition-duration: var(--motion-duration-interaction);
+	--default-transition-timing-function: var(--motion-ease-standard);
+	--animate-accordion-down: accordion-down var(--motion-duration-disclosure)
+		var(--motion-ease-decelerate);
+	--animate-accordion-up: accordion-up var(--motion-duration-disclosure)
+		var(--motion-ease-accelerate);
 	--opacity-disabled: 0.5;
-	--shadow-offset-y: 1px;
-	--shadow-blur: 2px;
-	--shadow-spread: 0px;
-	--shadow-base-color: #0000000d;
 	--container-sm: 576px;
 	--container-md: 768px;
 	--container-lg: 1056px;
 	--container-xl: 1248px;
 	--container-2xl: 1440px;
-	--dropdown-offset: 4;
-	--overlay-offset: 4;
-	--font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
-	--font-heading: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
-	--font-brand: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
-	--button-radius: var(--radius-lg);
-	--card-radius: var(--radius-xl);
-	--card-padding: calc(var(--spacing) * 4);
-	--input-radius: var(--radius-lg);
+	--control-bg: var(--bg-surface-input);
+	--control-text: var(--text-default);
+	--control-placeholder: var(--text-muted);
+	--control-border: var(--border-input);
+	--control-border-invalid: var(--border-critical);
+	--control-bg-disabled: var(--bg-muted);
+	--control-text-disabled: var(--text-disabled);
+	--control-border-disabled: var(--border-disabled);
+	--selection-bg: var(--bg-fill-selected);
+	--selection-text: var(--text-on-fill-selected);
+	--font-size-base: 0.875rem;
+	--leading-base: 1.5;
+	--letter-spacing-base: 0.01em;
+	--border-width-base: 0.0625rem;
+	--shadow-base-color: #0000004d;
+	--shadow-offset-y: 1px;
+	--shadow-blur: 2px;
+	--shadow-spread: 0px;
+	--rule-width: var(--border-width-base);
+	--control-size-sm: calc(var(--spacing) * 6);
 	--control-size-md: calc(var(--spacing) * 9);
-	--badge-radius: var(--radius-md);
+	--control-size-lg: calc(var(--spacing) * 8);
+	--control-font-size: var(--text-xs);
+	--control-min-width: calc(var(--spacing) * 30);
 	--motion-duration-fast: 100ms;
 	--motion-duration-normal: 200ms;
 	--motion-duration-slow: 300ms;
@@ -159,10 +649,39 @@
 	--hover-transform: none;
 	--hover-shadow: none;
 	--active-scale: 0.98;
-	--text-xs: 0.75rem;
-	--text-xs--line-height: 1.333333;
-	--text-sm: 0.8125rem;
-	--text-sm--line-height: 1.5;
+	--body-font-size: var(--text-xs);
+	--title-font-size: var(--text-sm);
+	--heading-font-size: var(--text-sm);
+	--body-line-height: var(--text-xs--line-height);
+	--title-line-height: var(--text-sm--line-height);
+	--heading-line-height: var(--text-sm--line-height);
+	--border-style: solid;
+	--focus-ring-color: var(--border-focus);
+	--focus-ring-width: calc(var(--border-width-base) * 2);
+	--focus-ring-offset: 0px;
+	--focus-ring-opacity: 30%;
+	--focus-ring-style: solid;
+	--hover-ring-color: var(--border-secondary);
+	--hover-ring-width: 0px;
+	--space-layout-sm: calc(var(--spacing) * 6);
+	--space-layout-md: calc(var(--spacing) * 12);
+	--space-layout-lg: calc(var(--spacing) * 24);
+	--choice-border-selected: var(--bg-fill-selected);
+	--button-primary-bg-active: color-mix(
+		in srgb,
+		var(--bg-fill-primary),
+		var(--text-on-fill-primary) 12%
+	);
+	--button-secondary-bg-active: color-mix(
+		in srgb,
+		var(--bg-fill-secondary),
+		var(--text-on-fill-secondary) 12%
+	);
+	--menu-item-bg-hover: var(--bg-surface-accent);
+	--menu-item-text-hover: var(--text-on-surface-accent);
+	--dropdown-offset: 4;
+	--overlay-offset: 4;
+	--button-radius: var(--radius-lg);
 	--button-radius-xs: 0.25rem;
 	--button-radius-sm: 0.375rem;
 	--button-height: calc(var(--spacing) * 9);
@@ -173,28 +692,6 @@
 	--button-font-size-xs: var(--text-xs);
 	--button-font-size-sm: var(--text-xs);
 	--button-gap: calc(var(--spacing) * 1.5);
-	--button-brand-font-weight: 600;
-	--button-brand-text-shadow: 0 1px 1px #00000059, 0 0 1px #00000040;
-	--layer-card-radius: var(--radius-lg);
-	--layer-card-shadow: 0 1px 2px #0000000d;
-	--tabs-tab-height: calc(var(--spacing) * 8);
-	--tabs-list-shadow: 0 0 0 1px var(--border-secondary);
-	--tabs-indicator-shadow: 0 1px 2px #0000000d;
-	--flow-node-shadow: 0 1px 2px #0000000d;
-	--flow-canvas-background-image: radial-gradient(var(--border-disabled) 1px, transparent 1px);
-	--button-secondary-border: var(--border-secondary);
-	--button-secondary-hover-bg: var(--bg-surface-hover);
-	--button-secondary-shadow: 0 1px 2px #0000000d;
-	--button-secondary-hover-shadow: 0 1px 2px #0000000d;
-	--button-outline-shadow: 0 1px 2px #0000000d;
-	--button-outline-hover-shadow: 0 1px 2px #0000000d;
-	--button-quiet-hover-bg: var(--bg-surface-hover);
-	--button-destructive-bg: var(--bg-fill-critical);
-	--button-destructive-text: #ffffff;
-	--focus-ring-width: calc(var(--border-width-base) * 2);
-	--focus-ring-color: var(--border-focus);
-	--hover-ring-width: 0px;
-	--hover-ring-color: var(--border-secondary);
 	--button-primary-border: color-mix(in oklch, var(--bg-fill-primary), black 10%);
 	--button-primary-hover-border: color-mix(in oklch, var(--bg-fill-primary), black 10%);
 	--button-primary-background-image: linear-gradient(
@@ -211,6 +708,8 @@
 		inset 0 1px 0 color-mix(in oklch, var(--bg-fill-primary), white 30%), 0 1px 2px #0000000d;
 	--button-primary-hover-shadow:
 		inset 0 1px 0 color-mix(in oklch, var(--bg-fill-primary), white 30%), 0 1px 2px #0000000d;
+	--button-destructive-bg: var(--bg-fill-critical);
+	--button-destructive-text: #ffffff;
 	--button-destructive-border: color-mix(in oklch, var(--bg-fill-critical), black 10%);
 	--button-destructive-hover-border: color-mix(in oklch, var(--bg-fill-critical), black 10%);
 	--button-destructive-background-image: linear-gradient(
@@ -227,6 +726,15 @@
 		inset 0 1px 0 color-mix(in oklch, var(--bg-fill-critical), white 30%), 0 1px 2px #0000000d;
 	--button-destructive-hover-shadow:
 		inset 0 1px 0 color-mix(in oklch, var(--bg-fill-critical), white 30%), 0 1px 2px #0000000d;
+	--button-secondary-border: var(--border-secondary);
+	--button-secondary-hover-bg: var(--bg-surface-hover);
+	--button-secondary-shadow: 0 1px 2px #0000000d;
+	--button-secondary-hover-shadow: 0 1px 2px #0000000d;
+	--button-outline-shadow: 0 1px 2px #0000000d;
+	--button-outline-hover-shadow: 0 1px 2px #0000000d;
+	--button-quiet-hover-bg: var(--bg-surface-hover);
+	--button-brand-font-weight: 600;
+	--button-brand-text-shadow: 0 1px 1px #00000059, 0 0 1px #00000040;
 	--button-brand-bg: #f45b00;
 	--button-brand-text: #ffffff;
 	--button-brand-border: color-mix(in oklch, #f45b00, black 8%);
@@ -347,27 +855,65 @@
 		inset 0 1px 0 color-mix(in oklch, #63e600, white 15%),
 		inset 0 -1px 0 color-mix(in oklch, #00ab38, black 8%),
 		0 2px 6px color-mix(in srgb, #00ab38, transparent 75%);
-	--background: var(--bg-default);
-	--foreground: var(--text-default);
-	--card: var(--bg-surface-default);
-	--card-foreground: var(--text-default);
-	--popover: var(--bg-surface-popover);
-	--popover-foreground: var(--text-default);
-	--primary: var(--bg-fill-primary);
-	--primary-foreground: var(--text-on-fill-primary);
-	--secondary: var(--bg-fill-secondary);
-	--secondary-foreground: var(--text-on-fill-secondary);
-	--muted: var(--bg-muted);
-	--muted-foreground: var(--text-muted);
-	--accent: var(--bg-surface-accent);
-	--accent-foreground: var(--text-on-surface-accent);
-	--destructive: var(--bg-fill-critical);
-	--border: var(--border-default);
-	--input: var(--border-input);
-	--ring: var(--border-focus);
-}
-
-.dark {
+	--layer-card-radius: var(--radius-lg);
+	--layer-card-padding: var(--card-padding);
+	--layer-card-shadow: 0 1px 2px #0000000d;
+	--clipboard-text-radius: var(--input-radius);
+	--clipboard-text-height: var(--control-size-md);
+	--clipboard-text-height-sm: calc(var(--spacing) * 6.5);
+	--clipboard-text-height-lg: calc(var(--spacing) * 10);
+	--flow-border-width: max(1px, var(--border-width-base));
+	--flow-gap: calc(var(--spacing) * 10);
+	--flow-branch-gap: calc(var(--spacing) * 4);
+	--flow-node-radius: var(--radius-md);
+	--flow-node-shadow: 0 1px 2px #0000000d;
+	--flow-connector-color: initial;
+	--flow-canvas-radius: var(--radius-lg);
+	--flow-canvas-padding-x: calc(var(--spacing) * 4);
+	--flow-canvas-padding-y: calc(var(--spacing) * 12);
+	--flow-canvas-background-image: radial-gradient(var(--border-disabled) 1px, transparent 1px);
+	--flow-canvas-background-size: calc(var(--spacing) * 4);
+	--card-radius: var(--radius-xl);
+	--card-padding: calc(var(--spacing) * 4);
+	--card-border-width: var(--border-width-base);
+	--alert-border-width: var(--border-width-base);
+	--alert-accent-width: 0px;
+	--dialog-radius: var(--radius-xl);
+	--dialog-max-width: 90vw;
+	--dialog-border-width: var(--border-width-base);
+	--tooltip-bg: var(--bg-surface-inverse);
+	--tooltip-fg: var(--text-inverse);
+	--input-radius: var(--radius-lg);
+	--badge-radius: var(--radius-md);
+	--grid-overlay-color: color-mix(in srgb, var(--text-default) 6%, transparent);
+	--tabs-list-radius: var(--radius-lg);
+	--tabs-tab-radius: var(--radius-md);
+	--tabs-list-padding: calc(var(--spacing) * 0.5);
+	--tabs-tab-height: calc(var(--spacing) * 8);
+	--tabs-list-shadow: 0 0 0 1px var(--border-secondary);
+	--tabs-indicator-border-width: var(--border-width-base);
+	--tabs-indicator-shadow: 0 1px 2px #0000000d;
+	--switch-on-color: var(--bg-fill-primary);
+	--button-min-width-ratio: 1.75;
+	--switch-height: calc(var(--spacing) * 4);
+	--slider-size: calc(var(--spacing) * 5);
+	--slider-thumb-color: var(--bg-default);
+	--slider-thumb-border: var(--bg-fill-primary);
+	--choice-size: calc(var(--spacing) * 4);
+	--choice-border-width: var(--border-width-base);
+	--checkbox-icon-size: calc(var(--choice-size) * 0.85);
+	--choice-border-color: var(--border-secondary);
+	--checkbox-radius: var(--radius-sm);
+	--kbd-height: calc(var(--spacing) * 5);
+	--kbd-radius: var(--radius-sm);
+	--kbd-font-size: var(--text-2xs);
+	--label-font-size: var(--text-xs);
+	--label-color: currentColor;
+	--label-text-transform: none;
+	--input-group-button-size: calc(var(--control-size-md) * 0.7);
+	--input-group-inset: calc((var(--control-size-md) - var(--input-group-button-size)) / 2);
+	--bento-gap: var(--border-width-base, 0.0625rem);
+	--radius-base: 0.5rem;
 	--bg-default: #030303;
 	--bg-inverse: #fbfbfb;
 	--bg-muted: #0b0b0b;
@@ -473,232 +1019,4 @@
 	--sidebar-accent-foreground: #f5f5f5;
 	--sidebar-border: #262626;
 	--sidebar-ring: #60a5fa;
-	--font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
-	--font-heading: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
-	--font-brand: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
-	--spacing: 0.25rem;
-	--border-width-base: 0.0625rem;
-	--radius: 0.5rem;
-	--font-size-base: 0.875rem;
-	--text-xs: 0.75rem;
-	--text-xs--line-height: 1.333333;
-	--text-sm: 0.8125rem;
-	--text-sm--line-height: 1.5;
-	--leading-base: 1.5;
-	--letter-spacing-base: 0.01em;
-	--button-radius: var(--radius-lg);
-	--button-radius-xs: 0.25rem;
-	--button-radius-sm: 0.375rem;
-	--button-height: calc(var(--spacing) * 9);
-	--button-height-xs: calc(var(--spacing) * 5);
-	--button-height-sm: calc(var(--spacing) * 6.5);
-	--button-height-lg: calc(var(--spacing) * 10);
-	--button-font-size: var(--text-base);
-	--button-font-size-xs: var(--text-xs);
-	--button-font-size-sm: var(--text-xs);
-	--button-gap: calc(var(--spacing) * 1.5);
-	--button-brand-font-weight: 600;
-	--button-brand-text-shadow: 0 1px 1px #00000059, 0 0 1px #00000040;
-	--card-radius: var(--radius-xl);
-	--layer-card-radius: var(--radius-lg);
-	--layer-card-shadow: 0 1px 2px #0000000d;
-	--tabs-tab-height: calc(var(--spacing) * 8);
-	--tabs-list-shadow: 0 0 0 1px var(--border-secondary);
-	--tabs-indicator-shadow: 0 1px 2px #0000000d;
-	--flow-node-shadow: 0 1px 2px #0000000d;
-	--flow-canvas-background-image: radial-gradient(var(--border-disabled) 1px, transparent 1px);
-	--input-radius: var(--radius-lg);
-	--control-size-md: calc(var(--spacing) * 9);
-	--badge-radius: var(--radius-md);
-	--opacity-disabled: 0.5;
-	--shadow-offset-y: 1px;
-	--shadow-blur: 2px;
-	--shadow-spread: 0px;
-	--shadow-base-color: #0000004d;
-	--button-secondary-border: var(--border-secondary);
-	--button-secondary-hover-bg: var(--bg-surface-hover);
-	--button-secondary-shadow: 0 1px 2px #0000000d;
-	--button-secondary-hover-shadow: 0 1px 2px #0000000d;
-	--button-outline-shadow: 0 1px 2px #0000000d;
-	--button-outline-hover-shadow: 0 1px 2px #0000000d;
-	--button-quiet-hover-bg: var(--bg-surface-hover);
-	--button-destructive-bg: var(--bg-fill-critical);
-	--button-destructive-text: #ffffff;
-	--focus-ring-width: calc(var(--border-width-base) * 2);
-	--focus-ring-color: var(--border-focus);
-	--hover-ring-width: 0px;
-	--hover-ring-color: var(--border-secondary);
-	--hover-transform: none;
-	--hover-shadow: none;
-	--active-scale: 0.98;
-	--button-primary-border: color-mix(in oklch, var(--bg-fill-primary), black 10%);
-	--button-primary-hover-border: color-mix(in oklch, var(--bg-fill-primary), black 10%);
-	--button-primary-background-image: linear-gradient(
-		to bottom,
-		color-mix(in oklch, var(--bg-fill-primary), white 15%),
-		var(--bg-fill-primary)
-	);
-	--button-primary-hover-background-image: linear-gradient(
-		to bottom,
-		color-mix(in oklch, var(--bg-fill-primary), white 30%),
-		var(--bg-fill-primary)
-	);
-	--button-primary-shadow:
-		inset 0 1px 0 color-mix(in oklch, var(--bg-fill-primary), white 30%), 0 1px 2px #0000000d;
-	--button-primary-hover-shadow:
-		inset 0 1px 0 color-mix(in oklch, var(--bg-fill-primary), white 30%), 0 1px 2px #0000000d;
-	--button-destructive-border: color-mix(in oklch, var(--bg-fill-critical), black 10%);
-	--button-destructive-hover-border: color-mix(in oklch, var(--bg-fill-critical), black 10%);
-	--button-destructive-background-image: linear-gradient(
-		to bottom,
-		color-mix(in oklch, var(--bg-fill-critical), white 15%),
-		var(--bg-fill-critical)
-	);
-	--button-destructive-hover-background-image: linear-gradient(
-		to bottom,
-		color-mix(in oklch, var(--bg-fill-critical), white 30%),
-		var(--bg-fill-critical)
-	);
-	--button-destructive-shadow:
-		inset 0 1px 0 color-mix(in oklch, var(--bg-fill-critical), white 30%), 0 1px 2px #0000000d;
-	--button-destructive-hover-shadow:
-		inset 0 1px 0 color-mix(in oklch, var(--bg-fill-critical), white 30%), 0 1px 2px #0000000d;
-	--button-brand-bg: #f45b00;
-	--button-brand-text: #ffffff;
-	--button-brand-border: color-mix(in oklch, #f45b00, black 8%);
-	--button-brand-hover-border: #f45b00;
-	--button-brand-background-image: linear-gradient(
-		to bottom,
-		#ff8a00 0%,
-		#f45b00 20%,
-		#e04400 100%
-	);
-	--button-brand-hover-background-image: linear-gradient(
-		to bottom,
-		#ff8a00 0%,
-		#f45b00 20%,
-		color-mix(in oklch, #e04400, #f45b00 25%) 100%
-	);
-	--button-brand-shadow:
-		inset 0 1px 0 color-mix(in oklch, #ff8a00, white 15%),
-		inset 0 -1px 0 color-mix(in oklch, #f45b00, black 8%),
-		0 2px 3px color-mix(in srgb, #f45b00, transparent 82%);
-	--button-brand-hover-shadow:
-		inset 0 1px 0 color-mix(in oklch, #ff8a00, white 15%),
-		inset 0 -1px 0 color-mix(in oklch, #f45b00, black 8%),
-		0 2px 6px color-mix(in srgb, #f45b00, transparent 75%);
-	--button-brand-2-bg: #009db8;
-	--button-brand-2-text: #ffffff;
-	--button-brand-2-border: color-mix(in oklch, #009db8, black 8%);
-	--button-brand-2-hover-border: #009db8;
-	--button-brand-2-background-image: linear-gradient(
-		to bottom,
-		#00d8ea 0%,
-		#009db8 20%,
-		#007dab 100%
-	);
-	--button-brand-2-hover-background-image: linear-gradient(
-		to bottom,
-		#00d8ea 0%,
-		#009db8 20%,
-		color-mix(in oklch, #007dab, #009db8 25%) 100%
-	);
-	--button-brand-2-shadow:
-		inset 0 1px 0 color-mix(in oklch, #00d8ea, white 15%),
-		inset 0 -1px 0 color-mix(in oklch, #009db8, black 8%),
-		0 2px 3px color-mix(in srgb, #009db8, transparent 82%);
-	--button-brand-2-hover-shadow:
-		inset 0 1px 0 color-mix(in oklch, #00d8ea, white 15%),
-		inset 0 -1px 0 color-mix(in oklch, #009db8, black 8%),
-		0 2px 6px color-mix(in srgb, #009db8, transparent 75%);
-	--button-brand-3-bg: #aa0aff;
-	--button-brand-3-text: #ffffff;
-	--button-brand-3-border: color-mix(in oklch, #aa0aff, black 8%);
-	--button-brand-3-hover-border: #aa0aff;
-	--button-brand-3-background-image: linear-gradient(
-		to bottom,
-		#e04bff 0%,
-		#aa0aff 20%,
-		#7c00e5 100%
-	);
-	--button-brand-3-hover-background-image: linear-gradient(
-		to bottom,
-		#e04bff 0%,
-		#aa0aff 20%,
-		color-mix(in oklch, #7c00e5, #aa0aff 25%) 100%
-	);
-	--button-brand-3-shadow:
-		inset 0 1px 0 color-mix(in oklch, #e04bff, white 15%),
-		inset 0 -1px 0 color-mix(in oklch, #aa0aff, black 8%),
-		0 2px 3px color-mix(in srgb, #aa0aff, transparent 82%);
-	--button-brand-3-hover-shadow:
-		inset 0 1px 0 color-mix(in oklch, #e04bff, white 15%),
-		inset 0 -1px 0 color-mix(in oklch, #aa0aff, black 8%),
-		0 2px 6px color-mix(in srgb, #aa0aff, transparent 75%);
-	--button-brand-4-bg: #1464ff;
-	--button-brand-4-text: #ffffff;
-	--button-brand-4-border: color-mix(in oklch, #1464ff, black 8%);
-	--button-brand-4-hover-border: #1464ff;
-	--button-brand-4-background-image: linear-gradient(
-		to bottom,
-		#388bff 0%,
-		#1464ff 20%,
-		#0045ef 100%
-	);
-	--button-brand-4-hover-background-image: linear-gradient(
-		to bottom,
-		#388bff 0%,
-		#1464ff 20%,
-		color-mix(in oklch, #0045ef, #1464ff 25%) 100%
-	);
-	--button-brand-4-shadow:
-		inset 0 1px 0 color-mix(in oklch, #388bff, white 15%),
-		inset 0 -1px 0 color-mix(in oklch, #1464ff, black 8%),
-		0 2px 3px color-mix(in srgb, #1464ff, transparent 82%);
-	--button-brand-4-hover-shadow:
-		inset 0 1px 0 color-mix(in oklch, #388bff, white 15%),
-		inset 0 -1px 0 color-mix(in oklch, #1464ff, black 8%),
-		0 2px 6px color-mix(in srgb, #1464ff, transparent 75%);
-	--button-brand-5-bg: #00ab38;
-	--button-brand-5-text: #ffffff;
-	--button-brand-5-border: color-mix(in oklch, #00ab38, black 8%);
-	--button-brand-5-hover-border: #00ab38;
-	--button-brand-5-background-image: linear-gradient(
-		to bottom,
-		#63e600 0%,
-		#00ab38 20%,
-		#008d21 100%
-	);
-	--button-brand-5-hover-background-image: linear-gradient(
-		to bottom,
-		#63e600 0%,
-		#00ab38 20%,
-		color-mix(in oklch, #008d21, #00ab38 25%) 100%
-	);
-	--button-brand-5-shadow:
-		inset 0 1px 0 color-mix(in oklch, #63e600, white 15%),
-		inset 0 -1px 0 color-mix(in oklch, #00ab38, black 8%),
-		0 2px 3px color-mix(in srgb, #00ab38, transparent 82%);
-	--button-brand-5-hover-shadow:
-		inset 0 1px 0 color-mix(in oklch, #63e600, white 15%),
-		inset 0 -1px 0 color-mix(in oklch, #00ab38, black 8%),
-		0 2px 6px color-mix(in srgb, #00ab38, transparent 75%);
-	--background: var(--bg-default);
-	--foreground: var(--text-default);
-	--card: var(--bg-surface-default);
-	--card-foreground: var(--text-default);
-	--popover: var(--bg-surface-popover);
-	--popover-foreground: var(--text-default);
-	--primary: var(--bg-fill-primary);
-	--primary-foreground: var(--text-on-fill-primary);
-	--secondary: var(--bg-fill-secondary);
-	--secondary-foreground: var(--text-on-fill-secondary);
-	--muted: var(--bg-muted);
-	--muted-foreground: var(--text-muted);
-	--accent: var(--bg-surface-accent);
-	--accent-foreground: var(--text-on-surface-accent);
-	--destructive: var(--bg-fill-critical);
-	--border: var(--border-default);
-	--input: var(--border-input);
-	--ring: var(--border-focus);
 }

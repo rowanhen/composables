@@ -135,7 +135,7 @@ export const Promise: Story = {
 					variant="outline"
 					onClick={() => {
 						const id = toast('Loading', {
-							icon: <Loader2Icon className="size-4 animate-spin text-muted-foreground" />,
+							icon: <Loader2Icon className="size-4 animate-spin text-content-muted" />,
 						})
 						setTimeout(() => {
 							toast.success('Operation complete', { id, icon: undefined })

@@ -46,11 +46,11 @@ This is the exact allowlist of framework-independent semantic colour classes shi
 | `bg-fill-secondary-hover`   | bg       | `--bg-fill-secondary-hover`   | `background-color: var(--bg-fill-secondary-hover)`   |
 | `bg-fill-selected`          | bg       | `--bg-fill-selected`          | `background-color: var(--bg-fill-selected)`          |
 | `bg-fill-secondary-inverse` | bg       | `--bg-fill-secondary-inverse` | `background-color: var(--bg-fill-secondary-inverse)` |
-| `text-default`              | text     | `--text-default`              | `color: var(--text-default)`                         |
+| `text-content-default`      | text     | `--text-default`              | `color: var(--text-default)`                         |
 | `text-content-secondary`    | text     | `--text-secondary`            | `color: var(--text-secondary)`                       |
 | `text-content-muted`        | text     | `--text-muted`                | `color: var(--text-muted)`                           |
 | `text-disabled`             | text     | `--text-disabled`             | `color: var(--text-disabled)`                        |
-| `text-inverse`              | text     | `--text-inverse`              | `color: var(--text-inverse)`                         |
+| `text-content-inverse`      | text     | `--text-inverse`              | `color: var(--text-inverse)`                         |
 | `text-on-fill-primary`      | text     | `--text-on-fill-primary`      | `color: var(--text-on-fill-primary)`                 |
 | `text-on-fill-brand`        | text     | `--text-on-fill-brand`        | `color: var(--text-on-fill-brand)`                   |
 | `text-on-fill-secondary`    | text     | `--text-on-fill-secondary`    | `color: var(--text-on-fill-secondary)`               |

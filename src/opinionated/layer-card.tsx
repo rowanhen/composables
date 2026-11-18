@@ -32,7 +32,7 @@ const LayerCardComponent = forwardRef<HTMLDivElement, LayerCardProps>(function L
 			{layered ? (
 				<LayerCardPrimary>{children}</LayerCardPrimary>
 			) : (
-				<div className="p-(--layer-card-padding)">{children}</div>
+				<div className="p-layer-card-inset">{children}</div>
 			)}
 			{footer != null && <LayerCardSecondary>{footer}</LayerCardSecondary>}
 		</LayerCardRoot>

@@ -101,7 +101,7 @@ export const InlineCitationCarouselHeader = ({
 }: InlineCitationCarouselHeaderProps) => (
 	<div
 		className={cn(
-			'flex items-center justify-between gap-2 rounded-t-md bg-secondary p-2',
+			'flex items-center justify-between gap-2 rounded-t-md bg-fill-secondary p-2',
 			className,
 		)}
 		{...props}
@@ -144,7 +144,7 @@ export const InlineCitationCarouselIndex = ({
 	return (
 		<div
 			className={cn(
-				'flex flex-1 items-center justify-end px-3 py-1 text-muted-foreground text-xs',
+				'flex flex-1 items-center justify-end px-3 py-1 text-content-muted text-xs',
 				className,
 			)}
 			{...props}
@@ -176,7 +176,7 @@ export const InlineCitationCarouselPrev = ({
 			type="button"
 			{...props}
 		>
-			<ArrowLeftIcon className="size-4 text-muted-foreground" />
+			<ArrowLeftIcon className="size-4 text-content-muted" />
 		</button>
 	)
 }
@@ -203,7 +203,7 @@ export const InlineCitationCarouselNext = ({
 			type="button"
 			{...props}
 		>
-			<ArrowRightIcon className="size-4 text-muted-foreground" />
+			<ArrowRightIcon className="size-4 text-content-muted" />
 		</button>
 	)
 }
@@ -224,9 +224,9 @@ export const InlineCitationSource = ({
 }: InlineCitationSourceProps) => (
 	<div className={cn('space-y-1', className)} {...props}>
 		{title && <h4 className="truncate font-medium text-sm leading-tight">{title}</h4>}
-		{url && <p className="truncate break-all text-muted-foreground text-xs">{url}</p>}
+		{url && <p className="truncate break-all text-content-muted text-xs">{url}</p>}
 		{description && (
-			<p className="line-clamp-3 text-muted-foreground text-sm leading-relaxed">{description}</p>
+			<p className="line-clamp-3 text-content-muted text-sm leading-relaxed">{description}</p>
 		)}
 		{children}
 	</div>
@@ -240,7 +240,10 @@ export const InlineCitationQuote = ({
 	...props
 }: InlineCitationQuoteProps) => (
 	<blockquote
-		className={cn('border-muted border-l-2 pl-3 text-muted-foreground text-sm italic', className)}
+		className={cn(
+			'border-stroke-tertiary border-l-2 pl-3 text-content-muted text-sm italic',
+			className,
+		)}
 		{...props}
 	>
 		{children}

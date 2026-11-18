@@ -72,7 +72,7 @@ function FormSlider({
 					{label}
 					{required && <span className="text-critical">*</span>}
 					{showValue && displayValue && (
-						<span className="ml-auto text-muted-foreground font-normal">{displayValue}</span>
+						<span className="ml-auto text-content-muted font-normal">{displayValue}</span>
 					)}
 				</FieldLabel>
 			)}

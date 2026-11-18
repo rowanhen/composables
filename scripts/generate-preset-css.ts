@@ -11,25 +11,13 @@ import { join } from 'node:path'
 import { format as formatWithOxfmt } from 'oxfmt'
 
 import { presetDefinitions } from '../src/styles/presets-data'
-import { shadcnCompatAliases } from '../src/styles/tokens/registry'
+import { createPresetCSS } from '../src/styles/tokens/preset'
 
 const OUT_DIR = join(import.meta.dir, '../src/styles/presets')
 const CHECK_MODE = process.argv.includes('--check')
 const formatterOptions = JSON.parse(
 	readFileSync(join(import.meta.dir, '../.oxfmtrc.json'), 'utf-8'),
 ) as Record<string, unknown>
-
-function tokensToCSS(tokens: Record<string, string>, indent: string): string {
-	return Object.entries(tokens)
-		.map(([key, value]) => `${indent}${key}: ${normalizeTokenValue(value)};`)
-		.join('\n')
-}
-
-function normalizeTokenValue(value: string): string {
-	return value
-		.replace(/#[0-9a-fA-F]{3,8}/g, (hex) => hex.toLowerCase())
-		.replace(/"([^"]+)"/g, "'$1'")
-}
 
 function generateCSS(preset: (typeof presetDefinitions)[number]): string {
 	const header = `/* ============================================================================
@@ -43,21 +31,21 @@ function generateCSS(preset: (typeof presetDefinitions)[number]): string {
    3. Add class="dark" to <html> for dark mode.
    ============================================================================ */`
 
-	const aliases = Object.fromEntries(
-		shadcnCompatAliases.map(({ cssVar, target }) => [cssVar, `var(${target})`]),
-	)
-	const rootBlock = `:root {\n${tokensToCSS({ ...preset.light, ...aliases }, '\t')}\n}`
-	const darkBlock = `.dark {\n${tokensToCSS({ ...preset.dark, ...aliases }, '\t')}\n}`
-
-	return `${header}\n\n${rootBlock}\n\n${darkBlock}\n`
+	const scope = `[data-preset="${preset.name}"]`
+	const css = createPresetCSS(preset)
+		.replace(':root {', `:root, ${scope} {`)
+		.replace('.dark {', `.dark, ${scope}.dark, .dark ${scope} {`)
+	return `${header}\n\n${css}`
 }
 
 // Ensure output directory exists
-mkdirSync(OUT_DIR, { recursive: true })
+if (!CHECK_MODE) mkdirSync(OUT_DIR, { recursive: true })
 
 let failed = false
 const expectedFiles = new Set(presetDefinitions.map((preset) => `${preset.name}.css`))
-const currentFiles = readdirSync(OUT_DIR).filter((file) => file.endsWith('.css'))
+const currentFiles = existsSync(OUT_DIR)
+	? readdirSync(OUT_DIR).filter((file) => file.endsWith('.css'))
+	: []
 
 for (const file of currentFiles) {
 	if (expectedFiles.has(file)) continue

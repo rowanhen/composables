@@ -1,3 +1,4 @@
+import type { PresetTokens } from '../tokens/types'
 import { gutenberg, gutenbergDark } from './gutenberg'
 export { gutenberg, gutenbergDark } from './gutenberg'
 import { defaultPreset, defaultPresetDark } from './default'
@@ -20,8 +21,8 @@ export interface PresetDefinition {
 	name: string
 	label: string
 	description: string
-	light: Record<string, string>
-	dark: Record<string, string>
+	light: PresetTokens
+	dark: PresetTokens
 }
 
 export const presetDefinitions = [
@@ -85,8 +86,10 @@ export const presetDefinitions = [
 		light: sponder,
 		dark: sponderDark,
 	},
-] satisfies PresetDefinition[]
+] as const satisfies readonly PresetDefinition[]
+
+export type PresetName = (typeof presetDefinitions)[number]['name']
 
 export const presetDefinitionsByName = Object.fromEntries(
 	presetDefinitions.map((preset) => [preset.name, preset]),
-) as Record<string, PresetDefinition>
+) as Record<PresetName, PresetDefinition>

@@ -35,11 +35,11 @@ const CodeBlock = React.forwardRef<HTMLPreElement, CodeBlockProps>(
 						<div key={index} className="flex min-w-max items-start">
 							<span
 								aria-hidden="true"
-								className="inline-flex w-[3ch] shrink-0 select-none bg-page pr-[1ch] text-right text-muted-foreground"
+								className="inline-flex w-[3ch] shrink-0 select-none bg-page pr-[1ch] text-right text-content-muted"
 							>
 								{leftPad(String(index + 1), 3)}
 							</span>
-							<span className="min-w-[10%] whitespace-pre bg-muted pl-[2ch] text-foreground">
+							<span className="min-w-[10%] whitespace-pre bg-muted pl-[2ch] text-content-default">
 								{line}
 							</span>
 						</div>

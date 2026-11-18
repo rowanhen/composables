@@ -72,17 +72,17 @@ function Collapsible({
 						<>
 							<ChevronDownIcon
 								data-slot="collapsible-trigger-icon"
-								className="pointer-events-none shrink-0 size-4 text-muted-foreground group-aria-expanded/collapsible-trigger:hidden"
+								className="pointer-events-none shrink-0 size-4 text-content-muted group-aria-expanded/collapsible-trigger:hidden"
 							/>
 							<ChevronUpIcon
 								data-slot="collapsible-trigger-icon"
-								className="pointer-events-none hidden shrink-0 size-4 text-muted-foreground group-aria-expanded/collapsible-trigger:inline"
+								className="pointer-events-none hidden shrink-0 size-4 text-content-muted group-aria-expanded/collapsible-trigger:inline"
 							/>
 						</>
 					)}
 				</CollapsibleTrigger>
 				<CollapsibleContent className="data-open:animate-accordion-down data-closed:animate-accordion-up overflow-hidden px-2 text-xs/relaxed">
-					<div className="pt-0 pb-4 [&_a]:hover:text-foreground h-(--accordion-panel-height) data-ending-style:h-0 data-starting-style:h-0 [&_a]:underline [&_a]:underline-offset-3 [&_p:not(:last-child)]:mb-4">
+					<div className="pt-0 pb-4 [&_a]:hover:text-content-default h-(--accordion-panel-height) data-ending-style:h-0 data-starting-style:h-0 [&_a]:underline [&_a]:underline-offset-3 [&_p:not(:last-child)]:mb-4">
 						{children}
 					</div>
 				</CollapsibleContent>

@@ -1,3 +1,5 @@
+import type { PresetTokens, TokenOverrides } from '../tokens/types'
+
 import { defaultPreset, defaultPresetDark } from './default'
 
 /**
@@ -5,7 +7,7 @@ import { defaultPreset, defaultPresetDark } from './default'
  * typography, and spacing; colour stays saturated, never washed out.
  * Bricolage Grotesque headings + DM Sans body (optional font peers).
  */
-const shape: Record<string, string> = {
+const shape: TokenOverrides = {
 	'--spacing': '0.25rem',
 	'--font-sans': '"DM Sans Variable", ui-sans-serif, system-ui, sans-serif',
 	'--font-heading': '"Bricolage Grotesque Variable", ui-sans-serif, system-ui, sans-serif',
@@ -13,7 +15,7 @@ const shape: Record<string, string> = {
 	'--font-size-base': '1rem',
 	'--leading-base': '1.5',
 	'--letter-spacing-base': '0.01em',
-	'--radius': '0.875rem',
+	'--radius-base': '0.875rem',
 	'--border-width-base': '0.0625rem',
 	'--control-size-sm': 'calc(var(--spacing) * 10)',
 	'--control-size-md': 'calc(var(--spacing) * 11)',
@@ -54,13 +56,13 @@ const shape: Record<string, string> = {
 	'--title-line-height': 'var(--text-lg--line-height)',
 	'--heading-font-size': 'var(--text-xl)',
 	'--heading-line-height': 'var(--text-xl--line-height)',
-	'--card-radius': 'calc(var(--radius) * 1.6)',
+	'--card-radius': 'calc(var(--radius-base) * 1.6)',
 	'--card-padding': 'calc(var(--spacing) * 5)',
 	'--card-border-width': 'calc(var(--border-width-base) * 0)',
 	'--alert-border-width': 'calc(var(--border-width-base) * 0)',
-	'--dialog-radius': 'calc(var(--radius) * 1.6)',
+	'--dialog-radius': 'calc(var(--radius-base) * 1.6)',
 	'--badge-radius': '9999px',
-	'--checkbox-radius': 'calc(var(--radius) * 0.4)',
+	'--checkbox-radius': 'calc(var(--radius-base) * 0.4)',
 	'--choice-size': 'calc(var(--spacing) * 5)',
 	'--choice-border-color': 'var(--border-input)',
 	'--switch-height': 'calc(var(--spacing) * 6)',
@@ -88,7 +90,7 @@ const shape: Record<string, string> = {
 function colourRoles(
 	surface: string,
 	roles: Record<string, { fill: string; text: string }>,
-): Record<string, string> {
+): TokenOverrides {
 	return Object.fromEntries(
 		Object.entries(roles).flatMap(([role, { fill, text }]) => [
 			[`--bg-surface-${role}`, surface],
@@ -136,7 +138,7 @@ const brandButtons = Object.fromEntries(
 	]),
 )
 
-export const oqita: Record<string, string> = {
+export const oqita: PresetTokens = {
 	...defaultPreset,
 	...shape,
 	...brandButtons,
@@ -198,7 +200,7 @@ export const oqita: Record<string, string> = {
 	'--sidebar-ring': '#FFCC00',
 }
 
-export const oqitaDark: Record<string, string> = {
+export const oqitaDark: PresetTokens = {
 	...defaultPresetDark,
 	...shape,
 	...brandButtons,

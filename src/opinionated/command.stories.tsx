@@ -94,7 +94,7 @@ function CommandDemo() {
 					<Button variant="outline" onClick={() => setOpen(true)}>
 						Open command palette
 					</Button>
-					<p className="text-muted-foreground text-xs">
+					<p className="text-content-muted text-xs">
 						Or press <kbd>⌘</kbd>
 						<kbd>K</kbd>
 					</p>

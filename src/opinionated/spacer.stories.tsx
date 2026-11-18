@@ -45,7 +45,7 @@ export const Overview: Story = {
 							className="h-4 rounded-sm bg-fill-brand"
 							style={{ width: `calc(var(--spacing) * ${multiplier})` }}
 						/>
-						<Typography variant="caption-100" className="text-muted-foreground font-mono">
+						<Typography variant="caption-100" className="text-content-muted font-mono">
 							{multiplier * 4}px
 						</Typography>
 					</HStack>

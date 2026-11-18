@@ -67,7 +67,7 @@ export const ChainOfThoughtHeader = memo(
 			<Collapsible onOpenChange={setIsOpen} open={isOpen}>
 				<CollapsibleTrigger
 					className={cn(
-						'flex w-full items-center gap-2 text-muted-foreground text-sm transition-colors hover:text-foreground',
+						'flex w-full items-center gap-2 text-content-muted text-sm transition-colors hover:text-content-default',
 						className,
 					)}
 					{...props}
@@ -91,9 +91,9 @@ export type ChainOfThoughtStepProps = ComponentProps<'div'> & {
 }
 
 const stepStatusStyles = {
-	active: 'text-foreground',
-	complete: 'text-muted-foreground',
-	pending: 'text-muted-foreground/50',
+	active: 'text-content-default',
+	complete: 'text-content-muted',
+	pending: 'text-content-muted/50',
 }
 
 export const ChainOfThoughtStep = memo(
@@ -117,11 +117,11 @@ export const ChainOfThoughtStep = memo(
 		>
 			<div className="relative mt-0.5">
 				<Icon className="size-4" />
-				<div className="absolute top-7 bottom-0 left-1/2 w-(--border-width-base) -translate-x-1/2 bg-border" />
+				<div className="absolute top-7 bottom-0 left-1/2 w-border-width-base -translate-x-1/2 bg-stroke" />
 			</div>
 			<div className="flex-1 space-y-2 overflow-hidden">
 				<div>{label}</div>
-				{description && <div className="text-muted-foreground text-xs">{description}</div>}
+				{description && <div className="text-content-muted text-xs">{description}</div>}
 				{children}
 			</div>
 		</div>
@@ -161,7 +161,7 @@ export const ChainOfThoughtContent = memo(
 				<CollapsibleContent
 					className={cn(
 						'mt-2 space-y-3',
-						'data-[state=closed]:fade-out-0 data-[state=closed]:slide-out-to-top-2 data-[state=open]:slide-in-from-top-2 text-foreground outline-none data-[state=closed]:animate-out data-[state=open]:animate-in',
+						'data-[state=closed]:fade-out-0 data-[state=closed]:slide-out-to-top-2 data-[state=open]:slide-in-from-top-2 text-content-default outline-none data-[state=closed]:animate-out data-[state=open]:animate-in',
 						className,
 					)}
 					{...props}
@@ -183,7 +183,7 @@ export const ChainOfThoughtImage = memo(
 			<div className="relative flex max-h-[22rem] items-center justify-center overflow-hidden rounded-lg bg-muted p-3">
 				{children}
 			</div>
-			{caption && <p className="text-muted-foreground text-xs">{caption}</p>}
+			{caption && <p className="text-content-muted text-xs">{caption}</p>}
 		</div>
 	),
 )

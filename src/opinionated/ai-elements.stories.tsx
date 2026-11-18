@@ -224,7 +224,7 @@ function AIReasoningDemo() {
 		<Group label="Reasoning">
 			<div className="max-w-2xl">
 				<VStack gap={4}>
-					<Typography variant="caption-100" className="text-muted-foreground">
+					<Typography variant="caption-100" className="text-content-muted">
 						Completed (auto-collapsed)
 					</Typography>
 					<Reasoning isStreaming={false} defaultOpen={false} duration={12}>
@@ -234,7 +234,7 @@ function AIReasoningDemo() {
 						</ReasoningContent>
 					</Reasoning>
 
-					<Typography variant="caption-100" className="text-muted-foreground">
+					<Typography variant="caption-100" className="text-content-muted">
 						Expanded
 					</Typography>
 					<Reasoning isStreaming={false} defaultOpen={true} duration={8}>
@@ -315,7 +315,7 @@ function AIPlanDemo() {
 						</PlanAction>
 					</PlanHeader>
 					<PlanContent>
-						<VStack gap={2} className="text-sm text-muted-foreground">
+						<VStack gap={2} className="text-sm text-content-muted">
 							<p>1. Extract session logic into a shared utility</p>
 							<p>2. Replace legacy middleware with new auth handler</p>
 							<p>3. Update integration tests</p>
@@ -444,7 +444,7 @@ function AIConfirmationDemo() {
 		<Group label="Confirmation">
 			<div className="max-w-2xl">
 				<VStack gap={4}>
-					<Typography variant="caption-100" className="text-muted-foreground">
+					<Typography variant="caption-100" className="text-content-muted">
 						Pending approval
 					</Typography>
 					<Confirmation approval={approval1} state={state1}>
@@ -483,7 +483,7 @@ function AIConfirmationDemo() {
 						</ConfirmationRejected>
 					</Confirmation>
 
-					<Typography variant="caption-100" className="text-muted-foreground">
+					<Typography variant="caption-100" className="text-content-muted">
 						Already approved
 					</Typography>
 					<Confirmation approval={{ id: 'demo-2', approved: true }} state="approval-responded">
@@ -553,7 +553,7 @@ function AIFullChatDemo() {
 							</Reasoning>
 							<MessageContent>
 								<MessageResponse>
-									{`Here's how to add dark mode using CSS custom properties:\n\n1. **Define tokens** for both light and dark themes\n2. **Toggle a class** (e.g. \`.dark\`) on the root element\n3. **Use semantic tokens** like \`bg-page\` and \`text-foreground\` that automatically switch\n\nYour design system already handles this - just add the \`.dark\` class to your \`<html>\` element.`}
+									{`Here's how to add dark mode using CSS custom properties:\n\n1. **Define tokens** for both light and dark themes\n2. **Toggle a class** (e.g. \`.dark\`) on the root element\n3. **Use semantic tokens** like \`bg-page\` and \`text-content-default\` that automatically switch\n\nYour design system already handles this - just add the \`.dark\` class to your \`<html>\` element.`}
 								</MessageResponse>
 							</MessageContent>
 							<Sources>

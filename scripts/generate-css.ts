@@ -1,9 +1,13 @@
-#!/usr/bin/env bun
+import { tokenCatalog } from '../src/styles/tokens/catalog'
+import { resolveTokens } from '../src/styles/tokens/preset'
+import { systemDefaults } from '../src/styles/tokens/system-tokens'
+import { componentRecipes } from '../src/styles/tokens/recipes'
+import { componentUtilityAliases } from '../src/styles/tokens/utility-aliases'
 /**
  * generate-css.ts
  *
  * Regenerates the CSS outputs owned by the token registry:
- *   1. @theme inline  - build-time values for Tailwind utility generation
+ *   1. Runtime primitive palette values
  *   2. :root           - runtime CSS custom properties (light mode)
  *   3. .dark           - runtime CSS custom properties (dark mode)
  *   4. Tailwind color adapter aliases
@@ -11,13 +15,18 @@
  *   6. Public Tailwind variant utilities
  *   7. Consumer skill semantic utility manifest
  *
- * semantic.css is NOT touched - it contains only semantic token mappings.
+ * All runtime token CSS is generated from typed sources.
  *
  * Usage:
- *   bun scripts/generate-css.ts           # overwrites palette.css in-place
- *   bun scripts/generate-css.ts --check   # exits non-zero if file would change
+ *   bun scripts/generate-tokens.ts           # overwrites palette.css in-place
+ *   bun scripts/generate-tokens.ts --check   # exits non-zero if file would change
  */
 
+import { componentDefaults } from '../src/styles/tokens/component-tokens'
+import { foundationDefaults } from '../src/styles/tokens/foundations'
+import { defaultPreset, defaultPresetDark } from '../src/styles/presets-data/default'
+import { semanticColorCssVars, sidebarColorCssVars } from '../src/styles/tokens/registry'
+import { format } from 'oxfmt'
 import { existsSync, readFileSync, writeFileSync } from 'node:fs'
 import { join, dirname } from 'node:path'
 import {
@@ -28,8 +37,8 @@ import {
 	darkBaseColors,
 	overlaysBlackAlpha,
 	darkOverlaysBlackAlpha,
-} from './palette.ts'
-import type { PaletteScale, Step } from './palette.ts'
+} from '../src/styles/tokens/palette-data.ts'
+import type { PaletteScale, Step } from '../src/styles/tokens/palette-data.ts'
 import {
 	publicSemanticUtilities,
 	shadcnCompatAliases,
@@ -60,19 +69,23 @@ function generatePaletteLines(
 
 	for (const palette of scales) {
 		for (const step of steps) {
-			lines.push(`${indent}--${palette.name}-${step}: ${palette.solid[step].toLowerCase()};`)
+			lines.push(
+				`${indent}--palette-${palette.name}-${step}: ${palette.solid[step].toLowerCase()};`,
+			)
 		}
 		for (const step of steps) {
-			lines.push(`${indent}--${palette.name}-alpha-${step}: ${palette.alpha[step].toLowerCase()};`)
+			lines.push(
+				`${indent}--palette-${palette.name}-alpha-${step}: ${palette.alpha[step].toLowerCase()};`,
+			)
 		}
 	}
 
-	lines.push(`${indent}--base-white: ${base.white.toLowerCase()};`)
-	lines.push(`${indent}--base-black: ${base.black.toLowerCase()};`)
+	lines.push(`${indent}--palette-base-white: ${base.white.toLowerCase()};`)
+	lines.push(`${indent}--palette-base-black: ${base.black.toLowerCase()};`)
 
 	for (const step of steps) {
 		const val = overlays[step]
-		if (val) lines.push(`${indent}--overlays-black-alpha-${step}: ${val.toLowerCase()};`)
+		if (val) lines.push(`${indent}--palette-overlays-black-alpha-${step}: ${val.toLowerCase()};`)
 	}
 
 	return lines
@@ -84,39 +97,11 @@ function generatePaletteCSS(): string {
 	const lightLines = generatePaletteLines(palettes, baseColors, overlaysBlackAlpha, '\t')
 	const darkLines = generatePaletteLines(darkPalettes, darkBaseColors, darkOverlaysBlackAlpha, '\t')
 
-	return `/* ============================================================================
-   Primitive Color Palette
-   ============================================================================
-   Raw color values from a fixed scale. 10 families × 12 stops (50–1000)
-   plus alpha variants, base colors, and overlay alphas.
-
-   This file serves TWO purposes from the same data:
-
-   1. @theme inline  - Resolved at BUILD TIME by Tailwind so it can generate
-      utility classes (e.g. bg-blue-800, text-neutral-950). These values are
-      baked into the compiled CSS and cannot change at runtime.
-
-   2. :root / .dark  - Standard CSS custom properties available at RUNTIME.
-      These power var(--blue-800) references in component code and can be
-      swapped by presets or dark mode.
-
-   Both sections are generated from the same source of truth:
-     scripts/palette.ts → scripts/generate-css.ts
-
-   To regenerate:  bun scripts/generate-css.ts
-   ============================================================================ */
-
-/* ── Build-time: Tailwind utility class generation ────────────────────── */
-@theme inline {
-${lightLines.join('\n')}
-}
-
-/* ── Runtime: CSS custom properties (light) ───────────────────────────── */
+	return `/* Generated primitive palette. Edit src/styles/tokens/palette-data.ts.
+   Raw values are runtime-only; components consume semantic roles, not palette utilities. */
 :root {
 ${lightLines.join('\n')}
 }
-
-/* ── Runtime: CSS custom properties (dark) ────────────────────────────── */
 .dark {
 ${darkLines.join('\n')}
 }
@@ -135,7 +120,7 @@ function generateTailwindColorAdapterCSS(): string {
    is generated from registry.ts; consumers do not need Tailwind to use the
    guaranteed classes in semantic-utilities.css.
 
-   To regenerate:  bun scripts/generate-css.ts
+   To regenerate:  bun scripts/generate-tokens.ts
    ============================================================================ */
 
 @theme inline {
@@ -159,7 +144,7 @@ function generateSemanticUtilitiesCSS(): string {
    These rules intentionally map only semantically compatible token categories
    to CSS properties; Tailwind is not required in downstream applications.
 
-   To regenerate:  bun scripts/generate-css.ts
+   To regenerate:  bun scripts/generate-tokens.ts
    ============================================================================ */
 
 @layer utilities {
@@ -168,7 +153,30 @@ ${utilities}
 `
 }
 
+function recipeCSS(): string {
+	return Object.entries(componentRecipes)
+		.map(
+			([name, recipe]) =>
+				`@utility ${name} {\n${Object.entries(recipe)
+					.map(
+						([property, value]) =>
+							`\t${property.replace(/[A-Z]/g, (c) => `-${c.toLowerCase()}`)}: ${value};`,
+					)
+					.join('\n')}\n}`,
+		)
+		.join('\n\n')
+}
+
 function generateTailwindPublicUtilitiesCSS(): string {
+	const foundations = Object.entries(foundationDefaults)
+		.map(([key, value]) => `\t${key}: ${value};`)
+		.join('\n')
+	const theme = [
+		...tailwindColorAliases.map(({ cssVar, target }) => `\t${cssVar}: var(${target});`),
+		...Object.entries(componentUtilityAliases).map(
+			([name, target]) => `\t${name}: var(${target});`,
+		),
+	].join('\n')
 	const utilities = publicSemanticUtilities
 		.map(({ className, declarations }) => {
 			const body = declarations.map(([property, value]) => `\t${property}: ${value};`).join('\n')
@@ -182,10 +190,20 @@ function generateTailwindPublicUtilitiesCSS(): string {
    Optional Tailwind v4 adapter for variants of every guaranteed public class.
    Import this after Tailwind in a consuming application's CSS entrypoint.
 
-   To regenerate:  bun scripts/generate-css.ts
+   To regenerate:  bun scripts/generate-tokens.ts
    ============================================================================ */
 
 ${utilities}
+
+${recipeCSS()}
+
+@theme static {
+${foundations}
+}
+
+@theme inline {
+${theme}
+}
 `
 }
 
@@ -246,7 +264,14 @@ ${table}
 `
 }
 
-function writeOrCheck(path: string, result: string, label: string): boolean {
+async function writeOrCheck(path: string, result: string, label: string): Promise<boolean> {
+	const formatted = await format(
+		path,
+		result,
+		JSON.parse(readFileSync(join(ROOT, '.oxfmtrc.json'), 'utf-8')),
+	)
+	if (formatted.errors.length) throw new Error(formatted.errors.map((e) => e.message).join('\n'))
+	result = formatted.code
 	const original = existsSync(path) ? readFileSync(path, 'utf-8') : ''
 
 	if (CHECK_MODE) {
@@ -267,7 +292,60 @@ function writeOrCheck(path: string, result: string, label: string): boolean {
 
 assertNoPublicTailwindCollisions()
 
-const outputs = [
+const declarations = (values: Record<string, string>) =>
+	Object.entries(values)
+		.map(([key, value]) => `\t${key}: ${value};`)
+		.join('\n')
+const header = '/* Generated by scripts/generate-tokens.ts. Edit the typed token sources. */\n'
+const aliases = Object.fromEntries(
+	shadcnCompatAliases.map(({ cssVar, target }) => [cssVar, `var(${target})`]),
+)
+const semanticValues = (preset: Record<string, string>) =>
+	Object.fromEntries(
+		[...semanticColorCssVars, ...sidebarColorCssVars].map((key) => [key, preset[key]]),
+	)
+const defaultValues = resolveTokens(defaultPreset)
+const reference =
+	'# Token reference\n\nGenerated by `bun run generate:tokens`. See [the authoring guide](tokens.md) for role selection and overrides.\n\n' +
+	['foundation', 'semantic', 'system', 'component']
+		.map(
+			(layer) =>
+				`## ${layer}\n\n| Token | Group | Default (light) |\n| --- | --- | --- |\n` +
+				tokenCatalog
+					.filter((token) => token.layer === layer)
+					.map(
+						(token) => `| \`${token.name}\` | ${token.group} | \`${defaultValues[token.name]}\` |`,
+					)
+					.join('\n'),
+		)
+		.join('\n\n') +
+	'\n'
+const outputs = await Promise.all([
+	writeOrCheck(
+		join(TOKENS_DIR, 'compat.css'),
+		header +
+			`:root, .dark, [data-preset], [data-theme] {\n${declarations(aliases)}\n}\n@theme inline {\n${shadcnCompatAliases.map(({ cssVar, target }) => `--color-${cssVar.slice(2)}: var(${target});`).join('\n')}\n}\n`,
+		'compat.css',
+	),
+	writeOrCheck(join(ROOT, 'docs/token-reference.md'), reference, 'docs/token-reference.md'),
+	writeOrCheck(
+		join(TOKENS_DIR, 'semantic.css'),
+		header +
+			`:root {\n--radius-base: 0rem;\n${declarations({ ...semanticValues(defaultPreset) })}\n}\n.dark {\n${declarations({ ...semanticValues(defaultPresetDark) })}\n}\n`,
+		'semantic.css',
+	),
+	writeOrCheck(
+		join(TOKENS_DIR, 'components.css'),
+		header +
+			`@layer base {\n:root {\n${declarations({ ...systemDefaults, ...componentDefaults })}\n}\n}\n`,
+		'components.css',
+	),
+	writeOrCheck(
+		join(TOKENS_DIR, 'tailwind-theme.css'),
+		header +
+			`@theme static {\n${declarations(foundationDefaults)}\n}\n@theme inline {\n${declarations(Object.fromEntries(Object.entries(componentUtilityAliases).map(([key, value]) => [key, `var(${value})`])))}\n}\n`,
+		'tailwind-theme.css',
+	),
 	writeOrCheck(PALETTE_CSS_PATH, generatePaletteCSS(), 'tokens/palette.css'),
 	writeOrCheck(
 		TAILWIND_COLOR_ADAPTER_PATH,
@@ -289,9 +367,9 @@ const outputs = [
 		generateSemanticUtilitiesManifest(),
 		'skills/use-composables/references/semantic-utilities.md',
 	),
-]
+])
 
 if (CHECK_MODE && outputs.includes(false)) {
-	console.error('  Run: bun scripts/generate-css.ts')
+	console.error('  Run: bun scripts/generate-tokens.ts')
 	process.exit(1)
 }

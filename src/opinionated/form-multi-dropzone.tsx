@@ -121,7 +121,7 @@ function FormMultiDropZone({
 							<div className="flex flex-col gap-4">
 								<DropZoneFileList files={value} onRemove={handleRemove} disabled={disabled} />
 								{canAddMore && (
-									<div className="text-muted-foreground border-t pt-4 text-center text-xs">
+									<div className="text-content-muted border-t pt-4 text-center text-xs">
 										Drop more files or click to add
 									</div>
 								)}

@@ -9,7 +9,305 @@
    3. Add class="dark" to <html> for dark mode.
    ============================================================================ */
 
-:root {
+:root,
+[data-preset='editorial-grid'] {
+	--spacing: 0.25rem;
+	--text-2xs: calc(var(--font-size-base) * 0.625);
+	--text-2xs--line-height: calc(var(--leading-base) * 0.75);
+	--text-xs: calc(var(--font-size-base) * 0.75);
+	--text-xs--line-height: calc(var(--leading-base) * 0.94);
+	--text-sm: calc(var(--font-size-base) * 0.875);
+	--text-sm--line-height: var(--leading-base);
+	--text-base: var(--font-size-base);
+	--text-base--line-height: var(--leading-base);
+	--text-lg: calc(var(--font-size-base) * 1.125);
+	--text-lg--line-height: var(--leading-base);
+	--text-xl: calc(var(--font-size-base) * 1.25);
+	--text-xl--line-height: calc(var(--leading-base) * 0.94);
+	--text-2xl: calc(var(--font-size-base) * 1.5);
+	--text-2xl--line-height: calc(var(--leading-base) * 0.94);
+	--text-3xl: calc(var(--font-size-base) * 1.75);
+	--text-3xl--line-height: calc(var(--leading-base) * 0.85);
+	--text-4xl: calc(var(--font-size-base) * 2);
+	--text-4xl--line-height: calc(var(--leading-base) * 0.85);
+	--text-5xl: calc(var(--font-size-base) * 2.5);
+	--text-5xl--line-height: calc(var(--leading-base) * 0.75);
+	--text-6xl: calc(var(--font-size-base) * 3.5);
+	--text-6xl--line-height: calc(var(--leading-base) * 0.75);
+	--text-7xl: calc(var(--font-size-base) * 5);
+	--text-7xl--line-height: calc(var(--leading-base) * 0.75);
+	--tracking-tighter: calc(var(--letter-spacing-base) * -2);
+	--tracking-tight: calc(var(--letter-spacing-base) * -1);
+	--tracking-normal: 0em;
+	--tracking-wide: var(--letter-spacing-base);
+	--tracking-wider: calc(var(--letter-spacing-base) * 2);
+	--tracking-widest: calc(var(--letter-spacing-base) * 4);
+	--font-sans: 'Inter Variable', sans-serif;
+	--font-heading: 'Inter Variable', sans-serif;
+	--font-brand: 'Bricolage Grotesque Variable', sans-serif;
+	--border-width: var(--border-width-base);
+	--default-border-width: var(--border-width-base);
+	--radius-sm: calc(var(--radius-base) * 0.6);
+	--radius-md: calc(var(--radius-base) * 0.8);
+	--radius-lg: var(--radius-base);
+	--radius-xl: calc(var(--radius-base) * 1.4);
+	--radius-2xl: calc(var(--radius-base) * 1.8);
+	--radius-3xl: calc(var(--radius-base) * 2.2);
+	--radius-4xl: calc(var(--radius-base) * 2.6);
+	--shadow-xs: 0 calc(var(--shadow-offset-y) * 1) calc(var(--shadow-blur) * 1)
+		calc(var(--shadow-spread) * 1) var(--shadow-base-color);
+	--shadow-sm:
+		0 calc(var(--shadow-offset-y) * 1.5) calc(var(--shadow-blur) * 1.5)
+			calc(var(--shadow-spread) * 1.5) var(--shadow-base-color),
+		0 calc(var(--shadow-offset-y) * 1) calc(var(--shadow-blur) * 1) calc(var(--shadow-spread) * -1)
+			var(--shadow-base-color);
+	--shadow-md:
+		0 calc(var(--shadow-offset-y) * 3) calc(var(--shadow-blur) * 3) calc(var(--shadow-spread) * -1)
+			var(--shadow-base-color),
+		0 calc(var(--shadow-offset-y) * 1.5) calc(var(--shadow-blur) * 2)
+			calc(var(--shadow-spread) * -2) var(--shadow-base-color);
+	--shadow-lg:
+		0 calc(var(--shadow-offset-y) * 6) calc(var(--shadow-blur) * 7) calc(var(--shadow-spread) * -3)
+			var(--shadow-base-color),
+		0 calc(var(--shadow-offset-y) * 3) calc(var(--shadow-blur) * 3) calc(var(--shadow-spread) * -4)
+			var(--shadow-base-color);
+	--shadow-xl:
+		0 calc(var(--shadow-offset-y) * 12) calc(var(--shadow-blur) * 12)
+			calc(var(--shadow-spread) * -5) var(--shadow-base-color),
+		0 calc(var(--shadow-offset-y) * 5) calc(var(--shadow-blur) * 5) calc(var(--shadow-spread) * -6)
+			var(--shadow-base-color);
+	--z-index-dropdown: 50;
+	--z-index-sticky: 100;
+	--z-index-overlay: 200;
+	--z-index-modal: 300;
+	--z-index-popover: 400;
+	--z-index-toast: 500;
+	--z-index-tooltip: 600;
+	--transition-duration-fast: var(--motion-duration-fast);
+	--transition-duration-normal: var(--motion-duration-normal);
+	--transition-duration-slow: var(--motion-duration-slow);
+	--ease-default: var(--motion-ease-standard);
+	--ease-in: var(--motion-ease-accelerate);
+	--ease-out: var(--motion-ease-decelerate);
+	--ease-linear: var(--motion-ease-linear);
+	--default-transition-duration: var(--motion-duration-interaction);
+	--default-transition-timing-function: var(--motion-ease-standard);
+	--animate-accordion-down: accordion-down var(--motion-duration-disclosure)
+		var(--motion-ease-decelerate);
+	--animate-accordion-up: accordion-up var(--motion-duration-disclosure)
+		var(--motion-ease-accelerate);
+	--opacity-disabled: 0.45;
+	--container-sm: 576px;
+	--container-md: 768px;
+	--container-lg: 1056px;
+	--container-xl: 1248px;
+	--container-2xl: 1440px;
+	--control-bg: var(--bg-surface-input);
+	--control-text: var(--text-default);
+	--control-placeholder: var(--text-muted);
+	--control-border: var(--border-input);
+	--control-border-invalid: var(--border-critical);
+	--control-bg-disabled: var(--bg-muted);
+	--control-text-disabled: var(--text-disabled);
+	--control-border-disabled: var(--border-disabled);
+	--selection-bg: var(--bg-fill-selected);
+	--selection-text: var(--text-on-fill-selected);
+	--font-size-base: 1rem;
+	--leading-base: 1.3;
+	--letter-spacing-base: 0em;
+	--border-width-base: 0.0625rem;
+	--shadow-base-color: #00000000;
+	--shadow-offset-y: 0px;
+	--shadow-blur: 0px;
+	--shadow-spread: 0px;
+	--rule-width: var(--border-width-base);
+	--control-size-sm: calc(var(--spacing) * 6);
+	--control-size-md: calc(var(--spacing) * 10);
+	--control-size-lg: calc(var(--spacing) * 8);
+	--control-font-size: var(--text-xs);
+	--control-min-width: calc(var(--spacing) * 30);
+	--motion-duration-fast: 100ms;
+	--motion-duration-normal: 150ms;
+	--motion-duration-slow: 200ms;
+	--motion-duration-color: 100ms;
+	--motion-duration-interaction: 100ms;
+	--motion-duration-disclosure: 150ms;
+	--motion-duration-overlay: 150ms;
+	--motion-ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+	--motion-ease-accelerate: cubic-bezier(0.4, 0, 1, 1);
+	--motion-ease-decelerate: cubic-bezier(0, 0, 0.2, 1);
+	--motion-ease-linear: linear;
+	--transition-default: var(--motion-duration-normal) var(--motion-ease-standard);
+	--transition-fast: var(--motion-duration-fast) var(--motion-ease-standard);
+	--transition-slow: var(--motion-duration-slow) var(--motion-ease-decelerate);
+	--hover-transform: none;
+	--hover-shadow: none;
+	--active-scale: 0.98;
+	--body-font-size: var(--text-xs);
+	--title-font-size: var(--text-sm);
+	--heading-font-size: var(--text-sm);
+	--body-line-height: var(--text-xs--line-height);
+	--title-line-height: var(--text-sm--line-height);
+	--heading-line-height: var(--text-sm--line-height);
+	--border-style: solid;
+	--focus-ring-color: var(--border-focus);
+	--focus-ring-width: calc(var(--border-width-base) * 2);
+	--focus-ring-offset: 0px;
+	--focus-ring-opacity: 30%;
+	--focus-ring-style: solid;
+	--hover-ring-color: var(--border-focus);
+	--hover-ring-width: var(--border-width-base);
+	--space-layout-sm: calc(var(--spacing) * 6);
+	--space-layout-md: calc(var(--spacing) * 12);
+	--space-layout-lg: calc(var(--spacing) * 24);
+	--choice-border-selected: var(--bg-fill-selected);
+	--button-primary-bg-active: color-mix(
+		in srgb,
+		var(--bg-fill-primary),
+		var(--text-on-fill-primary) 12%
+	);
+	--button-secondary-bg-active: color-mix(
+		in srgb,
+		var(--bg-fill-secondary),
+		var(--text-on-fill-secondary) 12%
+	);
+	--menu-item-bg-hover: var(--bg-surface-accent);
+	--menu-item-text-hover: var(--text-on-surface-accent);
+	--dropdown-offset: 4;
+	--overlay-offset: 4;
+	--button-radius: var(--radius-base);
+	--button-radius-xs: var(--button-radius);
+	--button-radius-sm: var(--button-radius);
+	--button-height: calc(var(--spacing) * 7);
+	--button-height-xs: calc(var(--spacing) * 5);
+	--button-height-sm: var(--control-size-sm);
+	--button-height-lg: var(--control-size-lg);
+	--button-font-size: var(--control-font-size);
+	--button-font-size-xs: var(--text-2xs);
+	--button-font-size-sm: var(--control-font-size);
+	--button-gap: var(--spacing);
+	--button-primary-border: transparent;
+	--button-primary-hover-border: initial;
+	--button-primary-background-image: none;
+	--button-primary-hover-background-image: none;
+	--button-primary-shadow: none;
+	--button-primary-hover-shadow: initial;
+	--button-destructive-bg: initial;
+	--button-destructive-text: initial;
+	--button-destructive-border: initial;
+	--button-destructive-hover-border: initial;
+	--button-destructive-background-image: none;
+	--button-destructive-hover-background-image: none;
+	--button-destructive-shadow: none;
+	--button-destructive-hover-shadow: initial;
+	--button-secondary-border: transparent;
+	--button-secondary-hover-bg: initial;
+	--button-secondary-shadow: none;
+	--button-secondary-hover-shadow: initial;
+	--button-outline-shadow: none;
+	--button-outline-hover-shadow: initial;
+	--button-quiet-hover-bg: initial;
+	--button-brand-font-weight: 500;
+	--button-brand-text-shadow: none;
+	--button-brand-bg: initial;
+	--button-brand-text: initial;
+	--button-brand-border: initial;
+	--button-brand-hover-border: initial;
+	--button-brand-background-image: none;
+	--button-brand-hover-background-image: none;
+	--button-brand-shadow: none;
+	--button-brand-hover-shadow: initial;
+	--button-brand-2-bg: initial;
+	--button-brand-2-text: initial;
+	--button-brand-2-border: initial;
+	--button-brand-2-hover-border: initial;
+	--button-brand-2-background-image: none;
+	--button-brand-2-hover-background-image: none;
+	--button-brand-2-shadow: none;
+	--button-brand-2-hover-shadow: initial;
+	--button-brand-3-bg: initial;
+	--button-brand-3-text: initial;
+	--button-brand-3-border: initial;
+	--button-brand-3-hover-border: initial;
+	--button-brand-3-background-image: none;
+	--button-brand-3-hover-background-image: none;
+	--button-brand-3-shadow: none;
+	--button-brand-3-hover-shadow: initial;
+	--button-brand-4-bg: initial;
+	--button-brand-4-text: initial;
+	--button-brand-4-border: initial;
+	--button-brand-4-hover-border: initial;
+	--button-brand-4-background-image: none;
+	--button-brand-4-hover-background-image: none;
+	--button-brand-4-shadow: none;
+	--button-brand-4-hover-shadow: initial;
+	--button-brand-5-bg: initial;
+	--button-brand-5-text: initial;
+	--button-brand-5-border: initial;
+	--button-brand-5-hover-border: initial;
+	--button-brand-5-background-image: none;
+	--button-brand-5-hover-background-image: none;
+	--button-brand-5-shadow: none;
+	--button-brand-5-hover-shadow: initial;
+	--layer-card-radius: var(--card-radius);
+	--layer-card-padding: var(--card-padding);
+	--layer-card-shadow: var(--shadow-sm);
+	--clipboard-text-radius: var(--input-radius);
+	--clipboard-text-height: var(--control-size-md);
+	--clipboard-text-height-sm: calc(var(--spacing) * 6.5);
+	--clipboard-text-height-lg: calc(var(--spacing) * 10);
+	--flow-border-width: max(1px, var(--border-width-base));
+	--flow-gap: calc(var(--spacing) * 10);
+	--flow-branch-gap: calc(var(--spacing) * 4);
+	--flow-node-radius: var(--radius-md);
+	--flow-node-shadow: var(--shadow-sm);
+	--flow-connector-color: initial;
+	--flow-canvas-radius: var(--radius-lg);
+	--flow-canvas-padding-x: calc(var(--spacing) * 4);
+	--flow-canvas-padding-y: calc(var(--spacing) * 12);
+	--flow-canvas-background-image: none;
+	--flow-canvas-background-size: calc(var(--spacing) * 4);
+	--card-radius: var(--radius-base);
+	--card-padding: calc(var(--spacing) * 6);
+	--card-border-width: var(--border-width-base);
+	--alert-border-width: var(--border-width-base);
+	--alert-accent-width: 0px;
+	--dialog-radius: var(--radius-xl);
+	--dialog-max-width: 90vw;
+	--dialog-border-width: var(--border-width-base);
+	--tooltip-bg: var(--bg-surface-inverse);
+	--tooltip-fg: var(--text-inverse);
+	--input-radius: var(--radius-base);
+	--badge-radius: var(--radius-base);
+	--grid-overlay-color: color-mix(in srgb, var(--text-default) 6%, transparent);
+	--tabs-list-radius: var(--radius-lg);
+	--tabs-tab-radius: var(--radius-md);
+	--tabs-list-padding: calc(var(--spacing) * 0.5);
+	--tabs-tab-height: calc(var(--spacing) * 8);
+	--tabs-list-shadow: none;
+	--tabs-indicator-border-width: var(--border-width-base);
+	--tabs-indicator-shadow: var(--shadow-sm);
+	--switch-on-color: var(--bg-fill-primary);
+	--button-min-width-ratio: 1.75;
+	--switch-height: calc(var(--spacing) * 4);
+	--slider-size: calc(var(--spacing) * 5);
+	--slider-thumb-color: var(--bg-default);
+	--slider-thumb-border: var(--bg-fill-primary);
+	--choice-size: calc(var(--spacing) * 4);
+	--choice-border-width: var(--border-width-base);
+	--checkbox-icon-size: calc(var(--choice-size) * 0.85);
+	--choice-border-color: var(--border-secondary);
+	--checkbox-radius: var(--radius-sm);
+	--kbd-height: calc(var(--spacing) * 5);
+	--kbd-radius: var(--radius-sm);
+	--kbd-font-size: var(--text-2xs);
+	--label-font-size: var(--text-xs);
+	--label-color: currentColor;
+	--label-text-transform: none;
+	--input-group-button-size: calc(var(--control-size-md) * 0.7);
+	--input-group-inset: calc((var(--control-size-md) - var(--input-group-button-size)) / 2);
+	--bento-gap: var(--border-width-base, 0.0625rem);
+	--radius-base: 0.125rem;
 	--bg-default: #f7f7f3;
 	--bg-inverse: #111111;
 	--bg-muted: #efefeb;
@@ -115,33 +413,125 @@
 	--sidebar-accent-foreground: #111111;
 	--sidebar-border: #c9c9c2;
 	--sidebar-ring: #111111;
+}
+.dark,
+[data-preset='editorial-grid'].dark,
+.dark [data-preset='editorial-grid'] {
 	--spacing: 0.25rem;
-	--border-width-base: 0.0625rem;
-	--radius: 0.125rem;
-	--font-size-base: 1rem;
-	--leading-base: 1.3;
-	--letter-spacing-base: 0em;
+	--text-2xs: calc(var(--font-size-base) * 0.625);
+	--text-2xs--line-height: calc(var(--leading-base) * 0.75);
+	--text-xs: calc(var(--font-size-base) * 0.75);
+	--text-xs--line-height: calc(var(--leading-base) * 0.94);
+	--text-sm: calc(var(--font-size-base) * 0.875);
+	--text-sm--line-height: var(--leading-base);
+	--text-base: var(--font-size-base);
+	--text-base--line-height: var(--leading-base);
+	--text-lg: calc(var(--font-size-base) * 1.125);
+	--text-lg--line-height: var(--leading-base);
+	--text-xl: calc(var(--font-size-base) * 1.25);
+	--text-xl--line-height: calc(var(--leading-base) * 0.94);
+	--text-2xl: calc(var(--font-size-base) * 1.5);
+	--text-2xl--line-height: calc(var(--leading-base) * 0.94);
+	--text-3xl: calc(var(--font-size-base) * 1.75);
+	--text-3xl--line-height: calc(var(--leading-base) * 0.85);
+	--text-4xl: calc(var(--font-size-base) * 2);
+	--text-4xl--line-height: calc(var(--leading-base) * 0.85);
+	--text-5xl: calc(var(--font-size-base) * 2.5);
+	--text-5xl--line-height: calc(var(--leading-base) * 0.75);
+	--text-6xl: calc(var(--font-size-base) * 3.5);
+	--text-6xl--line-height: calc(var(--leading-base) * 0.75);
+	--text-7xl: calc(var(--font-size-base) * 5);
+	--text-7xl--line-height: calc(var(--leading-base) * 0.75);
+	--tracking-tighter: calc(var(--letter-spacing-base) * -2);
+	--tracking-tight: calc(var(--letter-spacing-base) * -1);
+	--tracking-normal: 0em;
+	--tracking-wide: var(--letter-spacing-base);
+	--tracking-wider: calc(var(--letter-spacing-base) * 2);
+	--tracking-widest: calc(var(--letter-spacing-base) * 4);
+	--font-sans: 'Inter Variable', sans-serif;
+	--font-heading: 'Inter Variable', sans-serif;
+	--font-brand: 'Bricolage Grotesque Variable', sans-serif;
+	--border-width: var(--border-width-base);
+	--default-border-width: var(--border-width-base);
+	--radius-sm: calc(var(--radius-base) * 0.6);
+	--radius-md: calc(var(--radius-base) * 0.8);
+	--radius-lg: var(--radius-base);
+	--radius-xl: calc(var(--radius-base) * 1.4);
+	--radius-2xl: calc(var(--radius-base) * 1.8);
+	--radius-3xl: calc(var(--radius-base) * 2.2);
+	--radius-4xl: calc(var(--radius-base) * 2.6);
+	--shadow-xs: 0 calc(var(--shadow-offset-y) * 1) calc(var(--shadow-blur) * 1)
+		calc(var(--shadow-spread) * 1) var(--shadow-base-color);
+	--shadow-sm:
+		0 calc(var(--shadow-offset-y) * 1.5) calc(var(--shadow-blur) * 1.5)
+			calc(var(--shadow-spread) * 1.5) var(--shadow-base-color),
+		0 calc(var(--shadow-offset-y) * 1) calc(var(--shadow-blur) * 1) calc(var(--shadow-spread) * -1)
+			var(--shadow-base-color);
+	--shadow-md:
+		0 calc(var(--shadow-offset-y) * 3) calc(var(--shadow-blur) * 3) calc(var(--shadow-spread) * -1)
+			var(--shadow-base-color),
+		0 calc(var(--shadow-offset-y) * 1.5) calc(var(--shadow-blur) * 2)
+			calc(var(--shadow-spread) * -2) var(--shadow-base-color);
+	--shadow-lg:
+		0 calc(var(--shadow-offset-y) * 6) calc(var(--shadow-blur) * 7) calc(var(--shadow-spread) * -3)
+			var(--shadow-base-color),
+		0 calc(var(--shadow-offset-y) * 3) calc(var(--shadow-blur) * 3) calc(var(--shadow-spread) * -4)
+			var(--shadow-base-color);
+	--shadow-xl:
+		0 calc(var(--shadow-offset-y) * 12) calc(var(--shadow-blur) * 12)
+			calc(var(--shadow-spread) * -5) var(--shadow-base-color),
+		0 calc(var(--shadow-offset-y) * 5) calc(var(--shadow-blur) * 5) calc(var(--shadow-spread) * -6)
+			var(--shadow-base-color);
+	--z-index-dropdown: 50;
+	--z-index-sticky: 100;
+	--z-index-overlay: 200;
+	--z-index-modal: 300;
+	--z-index-popover: 400;
+	--z-index-toast: 500;
+	--z-index-tooltip: 600;
+	--transition-duration-fast: var(--motion-duration-fast);
+	--transition-duration-normal: var(--motion-duration-normal);
+	--transition-duration-slow: var(--motion-duration-slow);
+	--ease-default: var(--motion-ease-standard);
+	--ease-in: var(--motion-ease-accelerate);
+	--ease-out: var(--motion-ease-decelerate);
+	--ease-linear: var(--motion-ease-linear);
+	--default-transition-duration: var(--motion-duration-interaction);
+	--default-transition-timing-function: var(--motion-ease-standard);
+	--animate-accordion-down: accordion-down var(--motion-duration-disclosure)
+		var(--motion-ease-decelerate);
+	--animate-accordion-up: accordion-up var(--motion-duration-disclosure)
+		var(--motion-ease-accelerate);
 	--opacity-disabled: 0.45;
-	--shadow-offset-y: 0px;
-	--shadow-blur: 0px;
-	--shadow-spread: 0px;
-	--shadow-base-color: #00000000;
 	--container-sm: 576px;
 	--container-md: 768px;
 	--container-lg: 1056px;
 	--container-xl: 1248px;
 	--container-2xl: 1440px;
-	--dropdown-offset: 4;
-	--overlay-offset: 4;
-	--font-sans: 'Inter Variable', sans-serif;
-	--font-heading: 'Inter Variable', sans-serif;
-	--font-brand: 'Bricolage Grotesque Variable', sans-serif;
-	--button-radius: var(--radius);
-	--card-radius: var(--radius);
-	--card-padding: calc(var(--spacing) * 6);
-	--input-radius: var(--radius);
+	--control-bg: var(--bg-surface-input);
+	--control-text: var(--text-default);
+	--control-placeholder: var(--text-muted);
+	--control-border: var(--border-input);
+	--control-border-invalid: var(--border-critical);
+	--control-bg-disabled: var(--bg-muted);
+	--control-text-disabled: var(--text-disabled);
+	--control-border-disabled: var(--border-disabled);
+	--selection-bg: var(--bg-fill-selected);
+	--selection-text: var(--text-on-fill-selected);
+	--font-size-base: 1rem;
+	--leading-base: 1.3;
+	--letter-spacing-base: 0em;
+	--border-width-base: 0.0625rem;
+	--shadow-base-color: #00000000;
+	--shadow-offset-y: 0px;
+	--shadow-blur: 0px;
+	--shadow-spread: 0px;
+	--rule-width: var(--border-width-base);
+	--control-size-sm: calc(var(--spacing) * 6);
 	--control-size-md: calc(var(--spacing) * 10);
-	--badge-radius: var(--radius);
+	--control-size-lg: calc(var(--spacing) * 8);
+	--control-font-size: var(--text-xs);
+	--control-min-width: calc(var(--spacing) * 30);
 	--motion-duration-fast: 100ms;
 	--motion-duration-normal: 150ms;
 	--motion-duration-slow: 200ms;
@@ -159,28 +549,171 @@
 	--hover-transform: none;
 	--hover-shadow: none;
 	--active-scale: 0.98;
+	--body-font-size: var(--text-xs);
+	--title-font-size: var(--text-sm);
+	--heading-font-size: var(--text-sm);
+	--body-line-height: var(--text-xs--line-height);
+	--title-line-height: var(--text-sm--line-height);
+	--heading-line-height: var(--text-sm--line-height);
+	--border-style: solid;
+	--focus-ring-color: var(--border-focus);
+	--focus-ring-width: calc(var(--border-width-base) * 2);
+	--focus-ring-offset: 0px;
+	--focus-ring-opacity: 30%;
+	--focus-ring-style: solid;
+	--hover-ring-color: var(--border-focus);
+	--hover-ring-width: var(--border-width-base);
+	--space-layout-sm: calc(var(--spacing) * 6);
+	--space-layout-md: calc(var(--spacing) * 12);
+	--space-layout-lg: calc(var(--spacing) * 24);
+	--choice-border-selected: var(--bg-fill-selected);
+	--button-primary-bg-active: color-mix(
+		in srgb,
+		var(--bg-fill-primary),
+		var(--text-on-fill-primary) 12%
+	);
+	--button-secondary-bg-active: color-mix(
+		in srgb,
+		var(--bg-fill-secondary),
+		var(--text-on-fill-secondary) 12%
+	);
+	--menu-item-bg-hover: var(--bg-surface-accent);
+	--menu-item-text-hover: var(--text-on-surface-accent);
+	--dropdown-offset: 4;
+	--overlay-offset: 4;
+	--button-radius: var(--radius-base);
+	--button-radius-xs: var(--button-radius);
+	--button-radius-sm: var(--button-radius);
 	--button-height: calc(var(--spacing) * 7);
-	--background: var(--bg-default);
-	--foreground: var(--text-default);
-	--card: var(--bg-surface-default);
-	--card-foreground: var(--text-default);
-	--popover: var(--bg-surface-popover);
-	--popover-foreground: var(--text-default);
-	--primary: var(--bg-fill-primary);
-	--primary-foreground: var(--text-on-fill-primary);
-	--secondary: var(--bg-fill-secondary);
-	--secondary-foreground: var(--text-on-fill-secondary);
-	--muted: var(--bg-muted);
-	--muted-foreground: var(--text-muted);
-	--accent: var(--bg-surface-accent);
-	--accent-foreground: var(--text-on-surface-accent);
-	--destructive: var(--bg-fill-critical);
-	--border: var(--border-default);
-	--input: var(--border-input);
-	--ring: var(--border-focus);
-}
-
-.dark {
+	--button-height-xs: calc(var(--spacing) * 5);
+	--button-height-sm: var(--control-size-sm);
+	--button-height-lg: var(--control-size-lg);
+	--button-font-size: var(--control-font-size);
+	--button-font-size-xs: var(--text-2xs);
+	--button-font-size-sm: var(--control-font-size);
+	--button-gap: var(--spacing);
+	--button-primary-border: transparent;
+	--button-primary-hover-border: initial;
+	--button-primary-background-image: none;
+	--button-primary-hover-background-image: none;
+	--button-primary-shadow: none;
+	--button-primary-hover-shadow: initial;
+	--button-destructive-bg: initial;
+	--button-destructive-text: initial;
+	--button-destructive-border: initial;
+	--button-destructive-hover-border: initial;
+	--button-destructive-background-image: none;
+	--button-destructive-hover-background-image: none;
+	--button-destructive-shadow: none;
+	--button-destructive-hover-shadow: initial;
+	--button-secondary-border: transparent;
+	--button-secondary-hover-bg: initial;
+	--button-secondary-shadow: none;
+	--button-secondary-hover-shadow: initial;
+	--button-outline-shadow: none;
+	--button-outline-hover-shadow: initial;
+	--button-quiet-hover-bg: initial;
+	--button-brand-font-weight: 500;
+	--button-brand-text-shadow: none;
+	--button-brand-bg: initial;
+	--button-brand-text: initial;
+	--button-brand-border: initial;
+	--button-brand-hover-border: initial;
+	--button-brand-background-image: none;
+	--button-brand-hover-background-image: none;
+	--button-brand-shadow: none;
+	--button-brand-hover-shadow: initial;
+	--button-brand-2-bg: initial;
+	--button-brand-2-text: initial;
+	--button-brand-2-border: initial;
+	--button-brand-2-hover-border: initial;
+	--button-brand-2-background-image: none;
+	--button-brand-2-hover-background-image: none;
+	--button-brand-2-shadow: none;
+	--button-brand-2-hover-shadow: initial;
+	--button-brand-3-bg: initial;
+	--button-brand-3-text: initial;
+	--button-brand-3-border: initial;
+	--button-brand-3-hover-border: initial;
+	--button-brand-3-background-image: none;
+	--button-brand-3-hover-background-image: none;
+	--button-brand-3-shadow: none;
+	--button-brand-3-hover-shadow: initial;
+	--button-brand-4-bg: initial;
+	--button-brand-4-text: initial;
+	--button-brand-4-border: initial;
+	--button-brand-4-hover-border: initial;
+	--button-brand-4-background-image: none;
+	--button-brand-4-hover-background-image: none;
+	--button-brand-4-shadow: none;
+	--button-brand-4-hover-shadow: initial;
+	--button-brand-5-bg: initial;
+	--button-brand-5-text: initial;
+	--button-brand-5-border: initial;
+	--button-brand-5-hover-border: initial;
+	--button-brand-5-background-image: none;
+	--button-brand-5-hover-background-image: none;
+	--button-brand-5-shadow: none;
+	--button-brand-5-hover-shadow: initial;
+	--layer-card-radius: var(--card-radius);
+	--layer-card-padding: var(--card-padding);
+	--layer-card-shadow: var(--shadow-sm);
+	--clipboard-text-radius: var(--input-radius);
+	--clipboard-text-height: var(--control-size-md);
+	--clipboard-text-height-sm: calc(var(--spacing) * 6.5);
+	--clipboard-text-height-lg: calc(var(--spacing) * 10);
+	--flow-border-width: max(1px, var(--border-width-base));
+	--flow-gap: calc(var(--spacing) * 10);
+	--flow-branch-gap: calc(var(--spacing) * 4);
+	--flow-node-radius: var(--radius-md);
+	--flow-node-shadow: var(--shadow-sm);
+	--flow-connector-color: initial;
+	--flow-canvas-radius: var(--radius-lg);
+	--flow-canvas-padding-x: calc(var(--spacing) * 4);
+	--flow-canvas-padding-y: calc(var(--spacing) * 12);
+	--flow-canvas-background-image: none;
+	--flow-canvas-background-size: calc(var(--spacing) * 4);
+	--card-radius: var(--radius-base);
+	--card-padding: calc(var(--spacing) * 6);
+	--card-border-width: var(--border-width-base);
+	--alert-border-width: var(--border-width-base);
+	--alert-accent-width: 0px;
+	--dialog-radius: var(--radius-xl);
+	--dialog-max-width: 90vw;
+	--dialog-border-width: var(--border-width-base);
+	--tooltip-bg: var(--bg-surface-inverse);
+	--tooltip-fg: var(--text-inverse);
+	--input-radius: var(--radius-base);
+	--badge-radius: var(--radius-base);
+	--grid-overlay-color: color-mix(in srgb, var(--text-default) 6%, transparent);
+	--tabs-list-radius: var(--radius-lg);
+	--tabs-tab-radius: var(--radius-md);
+	--tabs-list-padding: calc(var(--spacing) * 0.5);
+	--tabs-tab-height: calc(var(--spacing) * 8);
+	--tabs-list-shadow: none;
+	--tabs-indicator-border-width: var(--border-width-base);
+	--tabs-indicator-shadow: var(--shadow-sm);
+	--switch-on-color: var(--bg-fill-primary);
+	--button-min-width-ratio: 1.75;
+	--switch-height: calc(var(--spacing) * 4);
+	--slider-size: calc(var(--spacing) * 5);
+	--slider-thumb-color: var(--bg-default);
+	--slider-thumb-border: var(--bg-fill-primary);
+	--choice-size: calc(var(--spacing) * 4);
+	--choice-border-width: var(--border-width-base);
+	--checkbox-icon-size: calc(var(--choice-size) * 0.85);
+	--choice-border-color: var(--border-secondary);
+	--checkbox-radius: var(--radius-sm);
+	--kbd-height: calc(var(--spacing) * 5);
+	--kbd-radius: var(--radius-sm);
+	--kbd-font-size: var(--text-2xs);
+	--label-font-size: var(--text-xs);
+	--label-color: currentColor;
+	--label-text-transform: none;
+	--input-group-button-size: calc(var(--control-size-md) * 0.7);
+	--input-group-inset: calc((var(--control-size-md) - var(--input-group-button-size)) / 2);
+	--bento-gap: var(--border-width-base, 0.0625rem);
+	--radius-base: 0.125rem;
 	--bg-default: #111111;
 	--bg-inverse: #f7f7f3;
 	--bg-muted: #191918;
@@ -286,43 +819,4 @@
 	--sidebar-accent-foreground: #f7f7f3;
 	--sidebar-border: #3b3b37;
 	--sidebar-ring: #f7f7f3;
-	--font-sans: 'Inter Variable', sans-serif;
-	--font-heading: 'Inter Variable', sans-serif;
-	--font-brand: 'Bricolage Grotesque Variable', sans-serif;
-	--spacing: 0.25rem;
-	--border-width-base: 0.0625rem;
-	--radius: 0.125rem;
-	--font-size-base: 1rem;
-	--leading-base: 1.3;
-	--letter-spacing-base: 0em;
-	--opacity-disabled: 0.45;
-	--shadow-offset-y: 0px;
-	--shadow-blur: 0px;
-	--shadow-spread: 0px;
-	--shadow-base-color: #00000000;
-	--container-sm: 576px;
-	--container-md: 768px;
-	--container-lg: 1056px;
-	--container-xl: 1248px;
-	--container-2xl: 1440px;
-	--dropdown-offset: 4;
-	--overlay-offset: 4;
-	--background: var(--bg-default);
-	--foreground: var(--text-default);
-	--card: var(--bg-surface-default);
-	--card-foreground: var(--text-default);
-	--popover: var(--bg-surface-popover);
-	--popover-foreground: var(--text-default);
-	--primary: var(--bg-fill-primary);
-	--primary-foreground: var(--text-on-fill-primary);
-	--secondary: var(--bg-fill-secondary);
-	--secondary-foreground: var(--text-on-fill-secondary);
-	--muted: var(--bg-muted);
-	--muted-foreground: var(--text-muted);
-	--accent: var(--bg-surface-accent);
-	--accent-foreground: var(--text-on-surface-accent);
-	--destructive: var(--bg-fill-critical);
-	--border: var(--border-default);
-	--input: var(--border-input);
-	--ring: var(--border-focus);
 }

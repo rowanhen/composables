@@ -11,7 +11,7 @@
 		"forceConsistentCasingInFileNames": true,
 		"noEmit": true,
 		"lib": ["ES2024", "DOM", "DOM.Iterable"],
-		"types": ["node"],
+		"types": ["node", "bun"],
 		"baseUrl": ".",
 		"paths": {
 			"@/components/_internal/*": ["src/_internal/*"],
@@ -20,7 +20,21 @@
 			"@/lib/*": ["src/lib/*"],
 			"@/hooks/*": ["src/hooks/*"],
 			"@/*": ["showcase/src/*"]
-		}
+		},
+		"allowImportingTsExtensions": true
 	},
-	"include": ["src", "showcase/src", ".storybook", "showcase/vite.config.ts"]
+	"include": [
+		"src",
+		"showcase/src",
+		".storybook",
+		"showcase/vite.config.ts",
+		"scripts/generate*.ts",
+		"scripts/check-token-system.ts",
+		"scripts/lint-tokens.ts",
+		"scripts/token-system.test.ts",
+		"scripts/validate-tokens.ts",
+		"scripts/token-browser.test.ts",
+		"scripts/build-css.ts",
+		"scripts/test-downstream-css.ts"
+	]
 }

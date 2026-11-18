@@ -43,7 +43,7 @@ export const Sizes: Story = {
 						<AvatarFallback>GH</AvatarFallback>
 					</Avatar>
 				</HStack>
-				<Typography variant="caption-100" className="text-muted-foreground">
+				<Typography variant="caption-100" className="text-content-muted">
 					xs · sm · md · lg · xl
 				</Typography>
 			</Group>
@@ -73,7 +73,7 @@ export const Fallbacks: Story = {
 						<AvatarFallback>AB</AvatarFallback>
 					</Avatar>
 				</HStack>
-				<Typography variant="caption-100" className="text-muted-foreground">
+				<Typography variant="caption-100" className="text-content-muted">
 					Shows initials when image fails to load
 				</Typography>
 			</Group>
@@ -87,19 +87,19 @@ export const AvatarGroup: Story = {
 		<Gallery>
 			<Group label="Avatar Group">
 				<div className="flex -space-x-2">
-					<Avatar size="md" className="ring-2 ring-background">
+					<Avatar size="md" className="ring-2 ring-page">
 						<AvatarImage src="images/avatar-1.svg" alt="User" />
 						<AvatarFallback>A</AvatarFallback>
 					</Avatar>
-					<Avatar size="md" className="ring-2 ring-background">
+					<Avatar size="md" className="ring-2 ring-page">
 						<AvatarImage src="images/avatar-2.svg" alt="User" />
 						<AvatarFallback>B</AvatarFallback>
 					</Avatar>
-					<Avatar size="md" className="ring-2 ring-background">
+					<Avatar size="md" className="ring-2 ring-page">
 						<AvatarImage src="images/avatar-3.svg" alt="User" />
 						<AvatarFallback>C</AvatarFallback>
 					</Avatar>
-					<Avatar size="md" className="ring-2 ring-background">
+					<Avatar size="md" className="ring-2 ring-page">
 						<AvatarFallback className="text-2xs">+3</AvatarFallback>
 					</Avatar>
 				</div>

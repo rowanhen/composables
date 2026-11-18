@@ -63,8 +63,8 @@ const TableOfContentsLink = forwardRef<HTMLAnchorElement, TableOfContentsItemPro
 				'block w-full truncate border-s-2 border-transparent py-0.5 ps-4 text-start text-sm leading-5 no-underline outline-none',
 				FOCUS_RING,
 				active
-					? 'border-primary font-medium text-default'
-					: 'text-content-secondary hover:border-stroke-secondary hover:text-default',
+					? 'border-stroke-default font-medium text-content-default'
+					: 'text-content-secondary hover:border-stroke-secondary hover:text-content-default',
 				className,
 			),
 		}

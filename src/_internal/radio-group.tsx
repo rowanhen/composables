@@ -23,7 +23,7 @@ function RadioGroupItem({ className, ...props }: RadioPrimitive.Root.Props) {
 			className={cn(
 				FOCUS_RING,
 				HOVER_RING,
-				'border-(color:--choice-border-color) not-data-checked:hover:bg-(--bg-surface-hover) dark:bg-surface-field/30 data-checked:bg-selected data-checked:text-selected-foreground dark:data-checked:bg-selected data-checked:border-selected flex size-(--choice-size) rounded-full transition-shadow group/radio-group-item peer relative aspect-square shrink-0 border-(length:--choice-border-width) outline-none after:absolute after:-inset-x-3 after:-inset-y-2 disabled:cursor-not-allowed disabled:opacity-disabled',
+				'border-(color:--choice-border-color) not-data-checked:hover:bg-surface-hover dark:bg-surface-field/30 data-checked:bg-selected data-checked:text-selected-foreground dark:data-checked:bg-selected data-checked:border-choice-stroke-selected flex size-choice rounded-full transition-shadow group/radio-group-item peer relative aspect-square shrink-0 border-(length:--choice-border-width) outline-none after:absolute after:-inset-x-3 after:-inset-y-2 disabled:cursor-not-allowed disabled:opacity-disabled',
 				className,
 			)}
 			{...props}
@@ -39,14 +39,14 @@ function RadioGroupItem({ className, ...props }: RadioPrimitive.Root.Props) {
 }
 
 const radioGroupOptionVariants = cva(
-	'flex cursor-pointer items-center gap-2 text-(length:--body-font-size) text-foreground normal-case font-normal leading-snug',
+	'flex cursor-pointer items-center gap-2 text-body text-content-default normal-case font-normal leading-snug',
 	{
 		variants: {
 			variant: {
 				default: '',
 				// Selectable tile: the whole card is the hit area and the checked
 				// tile takes the selected colour as its border.
-				card: 'bg-accent hover:bg-secondary rounded-(--input-radius) border border-transparent p-3 has-data-checked:border-selected has-disabled:cursor-not-allowed has-disabled:opacity-disabled motion-colors',
+				card: 'bg-surface-accent hover:bg-fill-secondary rounded-input border border-transparent p-3 has-data-checked:border-choice-stroke-selected has-disabled:cursor-not-allowed has-disabled:opacity-disabled motion-colors',
 			},
 		},
 		defaultVariants: { variant: 'default' },

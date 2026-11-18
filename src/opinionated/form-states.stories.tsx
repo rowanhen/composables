@@ -60,7 +60,7 @@ function Row({ title, render }: { title: string; render: (state: State) => React
 			<Grid columns={3} gap={6}>
 				{STATES.map(({ state, title: stateTitle }) => (
 					<div key={state} className="flex min-w-0 flex-col gap-2">
-						<span className="text-muted-foreground text-2xs uppercase">{stateTitle}</span>
+						<span className="text-content-muted text-2xs uppercase">{stateTitle}</span>
 						{render(state)}
 					</div>
 				))}

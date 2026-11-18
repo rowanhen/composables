@@ -22,18 +22,20 @@
 		"./ai": "./src/opinionated/ai/index.ts",
 		"./styles.css": "./dist/styles.css",
 		"./tailwind.css": "./dist/tailwind.css",
-		"./presets/*": "./dist/presets/*"
+		"./presets/*": "./dist/presets/*",
+		"./tokens": "./src/styles/tokens/index.ts",
+		"./compat.css": "./dist/compat.css"
 	},
 	"scripts": {
 		"dev": "storybook dev -p 6006",
-		"lint": "oxlint",
+		"lint": "oxlint && bun scripts/lint-tokens.ts",
 		"format": "oxfmt --write .",
 		"format:check": "oxfmt --check .",
 		"typecheck": "tsc --noEmit",
 		"hooks:install": "git config core.hooksPath .githooks",
 		"generate:palette": "bun scripts/generate-css.ts",
 		"generate:presets": "bun scripts/generate-preset-css.ts",
-		"generate:css": "bun run generate:palette && bun run generate:presets",
+		"generate:css": "bun run generate:tokens",
 		"generate:rules": "bun scripts/generate-rules.ts",
 		"build:css": "bun scripts/build-css.ts",
 		"prepack": "bun run build:css",
@@ -41,7 +43,11 @@
 		"test:rules": "bun scripts/generate-rules.ts --check",
 		"test:css": "bun scripts/test-downstream-css.ts",
 		"deploy:showcase": "./scripts/deploy-showcase.sh",
-		"build:storybook": "storybook build -o showcase/dist && bun scripts/prepare-storybook.ts"
+		"build:storybook": "storybook build -o showcase/dist && bun scripts/prepare-storybook.ts",
+		"generate:tokens": "bun scripts/generate-tokens.ts",
+		"test:generated": "bun scripts/generate-tokens.ts --check",
+		"test:token-api": "bun test scripts/token-system.test.ts",
+		"test:tokens:browser": "bun test scripts/token-browser.test.ts"
 	},
 	"dependencies": {
 		"@base-ui/react": "^1.6.0",
@@ -164,6 +170,7 @@
 		"@fontsource-variable/space-grotesk": "^5.2.10",
 		"@fontsource/ibm-plex-mono": "^5.2.7",
 		"@fontsource/ibm-plex-sans": "^5.2.8",
+		"@playwright/test": "^1.65.1",
 		"@radix-ui/react-use-controllable-state": "^1.2.3",
 		"@storybook/addon-a11y": "^10.6.2",
 		"@storybook/addon-docs": "^10.6.2",
@@ -175,6 +182,7 @@
 		"@streamdown/mermaid": "^1.0.2",
 		"@tailwindcss/cli": "^4.3.2",
 		"@tailwindcss/vite": "^4.3.2",
+		"@types/bun": "^1.4.4",
 		"@types/node": "^26.1.0",
 		"@types/react": "^19.2.17",
 		"@types/react-dom": "^19.2.3",

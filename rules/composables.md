@@ -35,6 +35,8 @@ Tailwind v4 consumers that need state or responsive variants of exact public sem
 | `@leitware/composables/styles.css`   | `./dist/styles.css`             |
 | `@leitware/composables/tailwind.css` | `./dist/tailwind.css`           |
 | `@leitware/composables/presets/*`    | `./dist/presets/*`              |
+| `@leitware/composables/tokens`       | `./src/styles/tokens/index.ts`  |
+| `@leitware/composables/compat.css`   | `./dist/compat.css`             |
 
 ## Optional Dependencies
 

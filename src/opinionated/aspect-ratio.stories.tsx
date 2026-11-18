@@ -28,48 +28,48 @@ export const Overview: Story = {
 						<VStack gap={1} className="w-48">
 							<AspectRatio ratio={16 / 9}>
 								<Placeholder className="size-full">
-									<Typography variant="caption-100" className="text-muted-foreground">
+									<Typography variant="caption-100" className="text-content-muted">
 										16:9
 									</Typography>
 								</Placeholder>
 							</AspectRatio>
-							<Typography variant="caption-100" className="text-muted-foreground">
+							<Typography variant="caption-100" className="text-content-muted">
 								Widescreen
 							</Typography>
 						</VStack>
 						<VStack gap={1} className="w-48">
 							<AspectRatio ratio={4 / 3}>
 								<Placeholder className="size-full">
-									<Typography variant="caption-100" className="text-muted-foreground">
+									<Typography variant="caption-100" className="text-content-muted">
 										4:3
 									</Typography>
 								</Placeholder>
 							</AspectRatio>
-							<Typography variant="caption-100" className="text-muted-foreground">
+							<Typography variant="caption-100" className="text-content-muted">
 								Standard
 							</Typography>
 						</VStack>
 						<VStack gap={1} className="w-48">
 							<AspectRatio ratio={1}>
 								<Placeholder className="size-full">
-									<Typography variant="caption-100" className="text-muted-foreground">
+									<Typography variant="caption-100" className="text-content-muted">
 										1:1
 									</Typography>
 								</Placeholder>
 							</AspectRatio>
-							<Typography variant="caption-100" className="text-muted-foreground">
+							<Typography variant="caption-100" className="text-content-muted">
 								Square
 							</Typography>
 						</VStack>
 						<VStack gap={1} className="w-32">
 							<AspectRatio ratio={3 / 4}>
 								<Placeholder className="size-full">
-									<Typography variant="caption-100" className="text-muted-foreground">
+									<Typography variant="caption-100" className="text-content-muted">
 										3:4
 									</Typography>
 								</Placeholder>
 							</AspectRatio>
-							<Typography variant="caption-100" className="text-muted-foreground">
+							<Typography variant="caption-100" className="text-content-muted">
 								Portrait
 							</Typography>
 						</VStack>

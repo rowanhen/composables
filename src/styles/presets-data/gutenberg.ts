@@ -1,13 +1,15 @@
+import type { PresetTokens, TokenOverrides } from '../tokens/types'
+
 import { defaultPreset, defaultPresetDark } from './default'
 
-const shape: Record<string, string> = {
+const shape: TokenOverrides = {
 	'--font-sans':
 		'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
 	'--font-heading':
 		'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
-	'--radius': '0.75rem',
+	'--radius-base': '0.75rem',
 	'--choice-size': 'calc(var(--spacing) * 6)',
-	'--checkbox-radius': 'calc(var(--radius) * 0.4)',
+	'--checkbox-radius': 'calc(var(--radius-base) * 0.4)',
 	'--choice-border-width': '1px',
 	'--checkbox-icon-size': 'calc(var(--spacing) * 5.5)',
 	'--border-width-base': '0px',
@@ -25,7 +27,7 @@ const shape: Record<string, string> = {
 	'--tabs-tab-height': 'calc(var(--spacing) * 11)',
 	'--slider-size': 'calc(var(--spacing) * 14)',
 	'--switch-height': 'calc(var(--spacing) * 6)',
-	'--input-radius': 'calc(var(--radius) * 1.333333)',
+	'--input-radius': 'calc(var(--radius-base) * 1.333333)',
 	'--button-radius': '9999px',
 	'--button-radius-sm': '9999px',
 	'--button-radius-xs': '9999px',
@@ -37,7 +39,7 @@ const shape: Record<string, string> = {
 	'--control-size-sm': 'calc(var(--spacing) * 11)',
 	'--control-size-lg': 'calc(var(--spacing) * 14)',
 }
-export const gutenberg: Record<string, string> = {
+export const gutenberg: PresetTokens = {
 	...defaultPreset,
 	...shape,
 	...{
@@ -73,7 +75,7 @@ export const gutenberg: Record<string, string> = {
 		'--icon-brand': '#0028ff',
 	},
 }
-export const gutenbergDark: Record<string, string> = {
+export const gutenbergDark: PresetTokens = {
 	...defaultPresetDark,
 	...shape,
 	...{

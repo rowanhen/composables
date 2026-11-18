@@ -95,7 +95,7 @@ const newspaperGridVariants = cva(
 		// Container provides the top + left edge of the newspaper grid
 		'border-t-[length:var(--border-width,var(--border-width-base,0.0625rem))]',
 		'border-l-[length:var(--border-width,var(--border-width-base,0.0625rem))]',
-		'border-foreground',
+		'border-stroke-default',
 	].join(' '),
 	{
 		variants: {
@@ -149,7 +149,7 @@ const ROW_SPANS: Record<1 | 2 | 3, string> = {
 const CELL_BORDERS = [
 	'border-b-[length:var(--border-width,var(--border-width-base,0.0625rem))]',
 	'border-r-[length:var(--border-width,var(--border-width-base,0.0625rem))]',
-	'border-foreground',
+	'border-stroke-default',
 ].join(' ')
 
 interface NewspaperCellProps extends React.ComponentProps<'div'> {

@@ -47,13 +47,13 @@ const typographyVariants = cva('', {
 			'brand-label-200': 'font-brand font-bold text-base leading-none tracking-normal uppercase',
 
 			// Caption variant - sans font, 400
-			'caption-100': 'font-sans font-normal text-xs tracking-normal text-muted-foreground',
+			'caption-100': 'font-sans font-normal text-xs tracking-normal text-content-muted',
 
 			// Link variants - sans font, 500, underline
 			'link-100':
-				'font-sans font-medium text-sm tracking-normal underline hover:text-(--text-secondary)',
+				'font-sans font-medium text-sm tracking-normal underline hover:text-content-secondary',
 			'link-200':
-				'font-sans font-medium text-base tracking-normal underline hover:text-(--text-secondary)',
+				'font-sans font-medium text-base tracking-normal underline hover:text-content-secondary',
 		},
 	},
 	defaultVariants: {

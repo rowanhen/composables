@@ -1,330 +1,312 @@
-export interface SemanticColorToken {
-	cssVar: string
-	reference: string
-	category: 'bg' | 'text' | 'icon' | 'border' | 'chart'
-	label: string
-}
+export type SemanticColorToken = {
+	[Category in 'bg' | 'text' | 'icon' | 'border' | 'chart']: {
+		cssVar: `--${Category}-${string}`
+		category: Category
+		label: string
+	}
+}['bg' | 'text' | 'icon' | 'border' | 'chart']
 
 export interface CssAlias {
 	cssVar: string
-	target: string
+	target: SemanticColorName
 }
 
 export interface TailwindColorAlias {
 	cssVar: string
-	target: string
+	target: SemanticColorName | (typeof sidebarColorCssVars)[number]
 }
 
 export interface PublicSemanticUtility {
-	className: string
+	className: SemanticUtilityClassName
 	declarations: ReadonlyArray<readonly [property: string, value: string]>
 	category: SemanticColorToken['category']
-	token: string
+	token: SemanticColorName
 }
 
-export const semanticColorTokens: SemanticColorToken[] = [
+export const semanticColorTokens = [
 	// Background
-	{ cssVar: '--bg-default', reference: '{neutral.100}', category: 'bg', label: 'default' },
-	{ cssVar: '--bg-inverse', reference: '{neutral.1000}', category: 'bg', label: 'inverse' },
-	{ cssVar: '--bg-muted', reference: '{neutral.200}', category: 'bg', label: 'muted' },
+	{ cssVar: '--bg-default', category: 'bg', label: 'default' },
+	{ cssVar: '--bg-inverse', category: 'bg', label: 'inverse' },
+	{ cssVar: '--bg-muted', category: 'bg', label: 'muted' },
 	{
 		cssVar: '--bg-surface-default',
-		reference: '{neutral.100}',
 		category: 'bg',
 		label: 'surface-default',
 	},
 	{
 		cssVar: '--bg-surface-popover',
-		reference: '{neutral.100}',
 		category: 'bg',
 		label: 'surface-popover',
 	},
 	{
 		cssVar: '--bg-surface-accent',
-		reference: '{neutral.200}',
 		category: 'bg',
 		label: 'surface-accent',
 	},
 	{
 		cssVar: '--bg-surface-field',
-		reference: '{neutral.500}',
 		category: 'bg',
 		label: 'surface-field',
 	},
-	{ cssVar: '--bg-surface-info', reference: '{sky.100}', category: 'bg', label: 'surface-info' },
+	{ cssVar: '--bg-surface-info', category: 'bg', label: 'surface-info' },
 	{
 		cssVar: '--bg-surface-success',
-		reference: '{green.100}',
 		category: 'bg',
 		label: 'surface-success',
 	},
 	{
 		cssVar: '--bg-surface-warning',
-		reference: '{orange.100}',
 		category: 'bg',
 		label: 'surface-warning',
 	},
 	{
 		cssVar: '--bg-surface-critical',
-		reference: '{red.100}',
 		category: 'bg',
 		label: 'surface-critical',
 	},
 	{
 		cssVar: '--bg-surface-emphasis',
-		reference: '{blue.100}',
 		category: 'bg',
 		label: 'surface-emphasis',
 	},
 	{
 		cssVar: '--bg-surface-inverse',
-		reference: '{neutral.950}',
 		category: 'bg',
 		label: 'surface-inverse',
 	},
 	{
 		cssVar: '--bg-surface-transparent',
-		reference: '{Overlays.Black-Alpha.50}',
 		category: 'bg',
 		label: 'surface-transparent',
 	},
 	{
 		cssVar: '--bg-overlay',
-		reference: '{Overlays.Black-Alpha.800}',
 		category: 'bg',
 		label: 'overlay',
 	},
-	{ cssVar: '--bg-surface-brand', reference: '{pink.100}', category: 'bg', label: 'surface-brand' },
+	{ cssVar: '--bg-surface-brand', category: 'bg', label: 'surface-brand' },
 	{
 		cssVar: '--bg-surface-brand-2',
-		reference: '{jade.100}',
 		category: 'bg',
 		label: 'surface-brand-2',
 	},
 	{
 		cssVar: '--bg-surface-brand-3',
-		reference: '{amber.100}',
 		category: 'bg',
 		label: 'surface-brand-3',
 	},
 	{
 		cssVar: '--bg-surface-brand-4',
-		reference: '{blue.100}',
 		category: 'bg',
 		label: 'surface-brand-4',
 	},
 	{
 		cssVar: '--bg-surface-brand-5',
-		reference: '{green.100}',
 		category: 'bg',
 		label: 'surface-brand-5',
 	},
 	{
 		cssVar: '--bg-surface-hover',
-		reference: '{neutral.200}',
 		category: 'bg',
 		label: 'surface-hover',
 	},
 	{
 		cssVar: '--bg-surface-input',
-		reference: '{neutral.200}',
 		category: 'bg',
 		label: 'surface-input',
 	},
 	{
 		cssVar: '--bg-fill-default',
-		reference: '{neutral.100}',
 		category: 'bg',
 		label: 'fill-default',
 	},
 	{
 		cssVar: '--bg-fill-primary',
-		reference: '{neutral.1000}',
 		category: 'bg',
 		label: 'fill-primary',
 	},
 	{
 		cssVar: '--bg-fill-primary-hover',
-		reference: '{neutral.900}',
 		category: 'bg',
 		label: 'fill-primary-hover',
 	},
-	{ cssVar: '--bg-fill-brand', reference: '{pink.800}', category: 'bg', label: 'fill-brand' },
+	{ cssVar: '--bg-fill-brand', category: 'bg', label: 'fill-brand' },
 	{
 		cssVar: '--bg-fill-brand-2',
-		reference: '{jade.800}',
 		category: 'bg',
 		label: 'fill-brand-2',
 	},
 	{
 		cssVar: '--bg-fill-brand-3',
-		reference: '{amber.800}',
 		category: 'bg',
 		label: 'fill-brand-3',
 	},
 	{
 		cssVar: '--bg-fill-brand-4',
-		reference: '{blue.800}',
 		category: 'bg',
 		label: 'fill-brand-4',
 	},
 	{
 		cssVar: '--bg-fill-brand-5',
-		reference: '{green.800}',
 		category: 'bg',
 		label: 'fill-brand-5',
 	},
-	{ cssVar: '--bg-fill-info', reference: '{sky.800}', category: 'bg', label: 'fill-info' },
-	{ cssVar: '--bg-fill-success', reference: '{green.800}', category: 'bg', label: 'fill-success' },
-	{ cssVar: '--bg-fill-warning', reference: '{orange.800}', category: 'bg', label: 'fill-warning' },
-	{ cssVar: '--bg-fill-critical', reference: '{red.800}', category: 'bg', label: 'fill-critical' },
-	{ cssVar: '--bg-fill-emphasis', reference: '{blue.800}', category: 'bg', label: 'fill-emphasis' },
+	{ cssVar: '--bg-fill-info', category: 'bg', label: 'fill-info' },
+	{ cssVar: '--bg-fill-success', category: 'bg', label: 'fill-success' },
+	{ cssVar: '--bg-fill-warning', category: 'bg', label: 'fill-warning' },
+	{ cssVar: '--bg-fill-critical', category: 'bg', label: 'fill-critical' },
+	{ cssVar: '--bg-fill-emphasis', category: 'bg', label: 'fill-emphasis' },
 	{
 		cssVar: '--bg-fill-transparent',
-		reference: '{Overlays.Black-Alpha.50}',
 		category: 'bg',
 		label: 'fill-transparent',
 	},
 	{
 		cssVar: '--bg-fill-secondary',
-		reference: '{neutral.1000}',
 		category: 'bg',
 		label: 'fill-secondary',
 	},
 	{
 		cssVar: '--bg-fill-secondary-hover',
-		reference: '{neutral.900}',
 		category: 'bg',
 		label: 'fill-secondary-hover',
 	},
 	{
 		cssVar: '--bg-fill-selected',
-		reference: '{neutral.1000}',
 		category: 'bg',
 		label: 'fill-selected',
 	},
 	{
 		cssVar: '--bg-fill-secondary-inverse',
-		reference: '{base.white}',
 		category: 'bg',
 		label: 'fill-secondary-inverse',
 	},
 
 	// Text
-	{ cssVar: '--text-default', reference: '{neutral.1000}', category: 'text', label: 'default' },
+	{ cssVar: '--text-default', category: 'text', label: 'content-default' },
 	{
 		cssVar: '--text-secondary',
-		reference: '{neutral.950}',
 		category: 'text',
 		label: 'content-secondary',
 	},
 	{
 		cssVar: '--text-muted',
-		reference: '{neutral.800}',
 		category: 'text',
 		label: 'content-muted',
 	},
-	{ cssVar: '--text-disabled', reference: '{neutral.600}', category: 'text', label: 'disabled' },
-	{ cssVar: '--text-inverse', reference: '{base.white}', category: 'text', label: 'inverse' },
+	{ cssVar: '--text-disabled', category: 'text', label: 'disabled' },
+	{ cssVar: '--text-inverse', category: 'text', label: 'content-inverse' },
 	{
 		cssVar: '--text-on-fill-primary',
-		reference: '{base.white}',
 		category: 'text',
 		label: 'on-fill-primary',
 	},
 	{
 		cssVar: '--text-on-fill-brand',
-		reference: '{base.black}',
 		category: 'text',
 		label: 'on-fill-brand',
 	},
 	{
 		cssVar: '--text-on-fill-secondary',
-		reference: '{neutral.1000}',
 		category: 'text',
 		label: 'on-fill-secondary',
 	},
 	{
 		cssVar: '--text-on-fill-selected',
-		reference: '{neutral.0}',
 		category: 'text',
 		label: 'on-fill-selected',
 	},
 	{
 		cssVar: '--text-on-surface-accent',
-		reference: '{neutral.1000}',
 		category: 'text',
 		label: 'on-surface-accent',
 	},
-	{ cssVar: '--text-info', reference: '{sky.1000}', category: 'text', label: 'info' },
-	{ cssVar: '--text-success', reference: '{green.1000}', category: 'text', label: 'success' },
-	{ cssVar: '--text-warning', reference: '{orange.1000}', category: 'text', label: 'warning' },
-	{ cssVar: '--text-critical', reference: '{red.1000}', category: 'text', label: 'critical' },
-	{ cssVar: '--text-emphasis', reference: '{blue.1000}', category: 'text', label: 'emphasis' },
-	{ cssVar: '--text-brand', reference: '{pink.1000}', category: 'text', label: 'brand' },
-	{ cssVar: '--text-brand-2', reference: '{jade.1000}', category: 'text', label: 'brand-2' },
-	{ cssVar: '--text-brand-3', reference: '{amber.1000}', category: 'text', label: 'brand-3' },
-	{ cssVar: '--text-brand-4', reference: '{blue.1000}', category: 'text', label: 'brand-4' },
-	{ cssVar: '--text-brand-5', reference: '{green.1000}', category: 'text', label: 'brand-5' },
-	{ cssVar: '--text-link', reference: '{blue.1000}', category: 'text', label: 'link' },
+	{ cssVar: '--text-info', category: 'text', label: 'info' },
+	{ cssVar: '--text-success', category: 'text', label: 'success' },
+	{ cssVar: '--text-warning', category: 'text', label: 'warning' },
+	{ cssVar: '--text-critical', category: 'text', label: 'critical' },
+	{ cssVar: '--text-emphasis', category: 'text', label: 'emphasis' },
+	{ cssVar: '--text-brand', category: 'text', label: 'brand' },
+	{ cssVar: '--text-brand-2', category: 'text', label: 'brand-2' },
+	{ cssVar: '--text-brand-3', category: 'text', label: 'brand-3' },
+	{ cssVar: '--text-brand-4', category: 'text', label: 'brand-4' },
+	{ cssVar: '--text-brand-5', category: 'text', label: 'brand-5' },
+	{ cssVar: '--text-link', category: 'text', label: 'link' },
 
 	// Icon
-	{ cssVar: '--icon-default', reference: '{neutral.1000}', category: 'icon', label: 'default' },
-	{ cssVar: '--icon-secondary', reference: '{neutral.950}', category: 'icon', label: 'secondary' },
-	{ cssVar: '--icon-disabled', reference: '{neutral.300}', category: 'icon', label: 'disabled' },
-	{ cssVar: '--icon-inverse', reference: '{neutral.100}', category: 'icon', label: 'inverse' },
-	{ cssVar: '--icon-info', reference: '{sky.950}', category: 'icon', label: 'info' },
-	{ cssVar: '--icon-success', reference: '{green.950}', category: 'icon', label: 'success' },
-	{ cssVar: '--icon-warning', reference: '{orange.950}', category: 'icon', label: 'warning' },
-	{ cssVar: '--icon-critical', reference: '{red.950}', category: 'icon', label: 'critical' },
-	{ cssVar: '--icon-emphasis', reference: '{blue.950}', category: 'icon', label: 'emphasis' },
-	{ cssVar: '--icon-brand', reference: '{pink.950}', category: 'icon', label: 'brand' },
-	{ cssVar: '--icon-brand-2', reference: '{jade.950}', category: 'icon', label: 'brand-2' },
-	{ cssVar: '--icon-brand-3', reference: '{amber.950}', category: 'icon', label: 'brand-3' },
-	{ cssVar: '--icon-brand-4', reference: '{blue.950}', category: 'icon', label: 'brand-4' },
-	{ cssVar: '--icon-brand-5', reference: '{green.950}', category: 'icon', label: 'brand-5' },
+	{ cssVar: '--icon-default', category: 'icon', label: 'default' },
+	{ cssVar: '--icon-secondary', category: 'icon', label: 'secondary' },
+	{ cssVar: '--icon-disabled', category: 'icon', label: 'disabled' },
+	{ cssVar: '--icon-inverse', category: 'icon', label: 'inverse' },
+	{ cssVar: '--icon-info', category: 'icon', label: 'info' },
+	{ cssVar: '--icon-success', category: 'icon', label: 'success' },
+	{ cssVar: '--icon-warning', category: 'icon', label: 'warning' },
+	{ cssVar: '--icon-critical', category: 'icon', label: 'critical' },
+	{ cssVar: '--icon-emphasis', category: 'icon', label: 'emphasis' },
+	{ cssVar: '--icon-brand', category: 'icon', label: 'brand' },
+	{ cssVar: '--icon-brand-2', category: 'icon', label: 'brand-2' },
+	{ cssVar: '--icon-brand-3', category: 'icon', label: 'brand-3' },
+	{ cssVar: '--icon-brand-4', category: 'icon', label: 'brand-4' },
+	{ cssVar: '--icon-brand-5', category: 'icon', label: 'brand-5' },
 
 	// Border
-	{ cssVar: '--border-default', reference: '{neutral.600}', category: 'border', label: 'default' },
+	{ cssVar: '--border-default', category: 'border', label: 'default' },
 	{
 		cssVar: '--border-secondary',
-		reference: '{neutral.500}',
 		category: 'border',
 		label: 'secondary',
 	},
-	{ cssVar: '--border-input', reference: '{neutral.500}', category: 'border', label: 'input' },
+	{ cssVar: '--border-input', category: 'border', label: 'input' },
 	{
 		cssVar: '--border-tertiary',
-		reference: '{neutral.700}',
 		category: 'border',
 		label: 'tertiary',
 	},
 	{
 		cssVar: '--border-disabled',
-		reference: '{neutral.500}',
 		category: 'border',
 		label: 'disabled',
 	},
-	{ cssVar: '--border-inverse', reference: '{neutral.950}', category: 'border', label: 'inverse' },
-	{ cssVar: '--border-focus', reference: '{blue.950}', category: 'border', label: 'focus' },
-	{ cssVar: '--border-brand', reference: '{pink.600}', category: 'border', label: 'brand' },
-	{ cssVar: '--border-brand-2', reference: '{jade.600}', category: 'border', label: 'brand-2' },
-	{ cssVar: '--border-brand-3', reference: '{amber.600}', category: 'border', label: 'brand-3' },
-	{ cssVar: '--border-brand-4', reference: '{blue.600}', category: 'border', label: 'brand-4' },
-	{ cssVar: '--border-brand-5', reference: '{green.600}', category: 'border', label: 'brand-5' },
-	{ cssVar: '--border-info', reference: '{sky.600}', category: 'border', label: 'info' },
-	{ cssVar: '--border-success', reference: '{green.600}', category: 'border', label: 'success' },
-	{ cssVar: '--border-warning', reference: '{orange.600}', category: 'border', label: 'warning' },
-	{ cssVar: '--border-critical', reference: '{red.600}', category: 'border', label: 'critical' },
-	{ cssVar: '--border-emphasis', reference: '{blue.700}', category: 'border', label: 'emphasis' },
+	{ cssVar: '--border-inverse', category: 'border', label: 'inverse' },
+	{ cssVar: '--border-focus', category: 'border', label: 'focus' },
+	{ cssVar: '--border-brand', category: 'border', label: 'brand' },
+	{ cssVar: '--border-brand-2', category: 'border', label: 'brand-2' },
+	{ cssVar: '--border-brand-3', category: 'border', label: 'brand-3' },
+	{ cssVar: '--border-brand-4', category: 'border', label: 'brand-4' },
+	{ cssVar: '--border-brand-5', category: 'border', label: 'brand-5' },
+	{ cssVar: '--border-info', category: 'border', label: 'info' },
+	{ cssVar: '--border-success', category: 'border', label: 'success' },
+	{ cssVar: '--border-warning', category: 'border', label: 'warning' },
+	{ cssVar: '--border-critical', category: 'border', label: 'critical' },
+	{ cssVar: '--border-emphasis', category: 'border', label: 'emphasis' },
 
 	// Chart
-	{ cssVar: '--chart-1', reference: '{blue.700}', category: 'chart', label: '1' },
-	{ cssVar: '--chart-2', reference: '{blue.800}', category: 'chart', label: '2' },
-	{ cssVar: '--chart-3', reference: '{violet.700}', category: 'chart', label: '3' },
-	{ cssVar: '--chart-4', reference: '{violet.800}', category: 'chart', label: '4' },
-	{ cssVar: '--chart-5', reference: '{violet.900}', category: 'chart', label: '5' },
-]
+	{ cssVar: '--chart-1', category: 'chart', label: '1' },
+	{ cssVar: '--chart-2', category: 'chart', label: '2' },
+	{ cssVar: '--chart-3', category: 'chart', label: '3' },
+	{ cssVar: '--chart-4', category: 'chart', label: '4' },
+	{ cssVar: '--chart-5', category: 'chart', label: '5' },
+] as const satisfies readonly SemanticColorToken[]
+
+export type SemanticColorName = (typeof semanticColorTokens)[number]['cssVar']
+
+type UtilityFor<Token> = Token extends {
+	category: infer Category
+	label: infer Label extends string
+}
+	? Category extends 'bg'
+		? `bg-${Label}`
+		: Category extends 'text'
+			? `text-${Label}`
+			: Category extends 'border'
+				? `border-stroke-${Label}`
+				: Category extends 'icon'
+					? `${'text' | 'fill' | 'stroke'}-icon-${Label}`
+					: Category extends 'chart'
+						? `${'fill' | 'stroke'}-chart-${Label}`
+						: never
+	: never
+export type SemanticUtilityClassName = UtilityFor<(typeof semanticColorTokens)[number]>
 
 export const shadcnCompatAliases: CssAlias[] = [
 	{ cssVar: '--background', target: '--bg-default' },
@@ -359,11 +341,7 @@ export const sidebarColorCssVars = [
 	'--sidebar-ring',
 ] as const
 
-export const tailwindColorAliases: TailwindColorAlias[] = [
-	...shadcnCompatAliases.map(({ cssVar }) => ({
-		cssVar: `--color-${cssVar.slice(2)}`,
-		target: cssVar,
-	})),
+const legacyTailwindColorAliases: TailwindColorAlias[] = [
 	...sidebarColorCssVars.map((cssVar) => ({
 		cssVar: `--color-${cssVar.slice(2)}`,
 		target: cssVar,
@@ -428,6 +406,19 @@ export const tailwindColorAliases: TailwindColorAlias[] = [
 	{ cssVar: '--color-stroke-brand-5', target: '--border-brand-5' },
 ]
 
+/** Canonical aliases support opacity modifiers and variants through native Tailwind. */
+export const tailwindColorAliases: TailwindColorAlias[] = [
+	...new Map(
+		[
+			...legacyTailwindColorAliases,
+			...semanticColorTokens.map((token) => ({
+				cssVar: `--color-${token.category === 'border' ? 'stroke-' : token.category === 'icon' ? 'icon-' : token.category === 'chart' ? 'chart-' : ''}${token.label}`,
+				target: token.cssVar,
+			})),
+		].map((alias) => [alias.cssVar, alias]),
+	).values(),
+]
+
 /**
  * The guaranteed, framework-independent semantic color utility contract.
  *
@@ -440,7 +431,7 @@ export const publicSemanticUtilities: PublicSemanticUtility[] = semanticColorTok
 	(token): PublicSemanticUtility[] => {
 		const value = `var(${token.cssVar})`
 		const utility = (
-			className: string,
+			className: SemanticUtilityClassName,
 			declarations: PublicSemanticUtility['declarations'],
 		): PublicSemanticUtility => ({
 			className,

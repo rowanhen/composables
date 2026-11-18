@@ -18,7 +18,7 @@ export function Group({
 		<VStack gap={2} className="min-w-0">
 			{label && <Typography variant="heading-200">{label}</Typography>}
 			{description && (
-				<Typography variant="body-200" className="text-muted-foreground">
+				<Typography variant="body-200" className="text-content-muted">
 					{description}
 				</Typography>
 			)}
@@ -47,7 +47,7 @@ export function Gallery({
 						</Typography>
 					)}
 					{description && (
-						<Typography variant="body-200" className="text-muted-foreground">
+						<Typography variant="body-200" className="text-content-muted">
 							{description}
 						</Typography>
 					)}
@@ -113,7 +113,10 @@ export function Swatch({
 					borderWidth: borderColor ? 2 : undefined,
 				}}
 			/>
-			<Typography variant="caption-100" className="max-w-20 truncate text-center text-foreground">
+			<Typography
+				variant="caption-100"
+				className="max-w-20 truncate text-center text-content-default"
+			>
 				{label}
 			</Typography>
 		</VStack>

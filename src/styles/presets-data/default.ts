@@ -1,10 +1,12 @@
+import type { PresetTokens } from '../tokens/types'
+
 /**
  * Default - Clean, neutral, Inter-based. The "no opinion" starting point.
  * Think Linear, Vercel. A solid foundation that stays out of the way.
  *
  * Fonts: Inter Variable (all) - the most carefully crafted neutral sans-serif.
  */
-export const defaultPreset: Record<string, string> = {
+export const defaultPreset: PresetTokens = {
 	// ── Semantic color tokens ─────────────────────────────────────────────
 	'--bg-default': '#F9F9F8FF',
 	'--bg-inverse': '#21201CFF',
@@ -21,7 +23,7 @@ export const defaultPreset: Record<string, string> = {
 	'--bg-surface-emphasis': '#F4FAFFFF',
 	'--bg-surface-inverse': '#63635EFF',
 	'--bg-surface-transparent': '#0000000D',
-	'--bg-overlay': 'var(--overlays-black-alpha-800)',
+	'--bg-overlay': 'var(--palette-overlays-black-alpha-800)',
 	'--bg-surface-brand': '#FEF7FBFF',
 	'--bg-surface-brand-2': '#EEFAF8FF',
 	'--bg-surface-brand-3': '#FFFAF0FF',
@@ -117,7 +119,7 @@ export const defaultPreset: Record<string, string> = {
 	// ── Dimension tokens ──────────────────────────────────────────────────
 	'--spacing': '0.25rem',
 	'--border-width-base': '0.0625rem',
-	'--radius': '0.5rem',
+	'--radius-base': '0.5rem',
 	'--font-size-base': '1rem',
 	'--leading-base': '1.33',
 	'--letter-spacing-base': '0.025em',
@@ -167,7 +169,7 @@ export const defaultPreset: Record<string, string> = {
 	'--active-scale': '0.98',
 }
 
-export const defaultPresetDark: Record<string, string> = {
+export const defaultPresetDark: PresetTokens = {
 	// Full dark-mode token set - mirrors tokens.css .dark values so that the
 	// injected :root overrides from the light preset are fully superseded when
 	// dark mode is toggled.
@@ -188,7 +190,7 @@ export const defaultPresetDark: Record<string, string> = {
 	'--bg-surface-emphasis': '#111927FF',
 	'--bg-surface-inverse': '#B5B3ADFF',
 	'--bg-surface-transparent': '#0000000D',
-	'--bg-overlay': 'var(--overlays-black-alpha-800)',
+	'--bg-overlay': 'var(--palette-overlays-black-alpha-800)',
 	'--bg-surface-brand': '#21121DFF',
 	'--bg-surface-brand-2': '#0F201EFF',
 	'--bg-surface-brand-3': '#231E10FF',

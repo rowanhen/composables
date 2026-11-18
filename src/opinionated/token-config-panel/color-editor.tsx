@@ -1,3 +1,4 @@
+import type { TokenName } from '../../styles/tokens/types'
 import React from 'react'
 import { HexColorPicker } from 'react-colorful'
 
@@ -8,7 +9,7 @@ import { semanticColorTokens } from '../../styles/tokens/registry'
 import type { FlatToken } from './types'
 import { getResolvedColor } from './helpers'
 
-export const colorTokens: FlatToken[] = semanticColorTokens
+export const colorTokens: FlatToken[] = [...semanticColorTokens]
 
 export const colorCategories = [...new Set(colorTokens.map((t) => t.category))]
 export const colorTokensByCategory = colorTokens.reduce<Record<string, FlatToken[]>>(
@@ -30,7 +31,7 @@ export function ColorTokenRow({
 	onApply,
 }: {
 	token: FlatToken
-	onApply: (cssVar: string, value: string) => void
+	onApply: (cssVar: TokenName, value: string) => void
 }) {
 	const [expanded, setExpanded] = React.useState(false)
 	const [color, setColor] = React.useState(() => getResolvedColor(token.cssVar))
@@ -66,10 +67,13 @@ export function ColorTokenRow({
 					className="size-6 rounded border border-stroke/60 shrink-0"
 					style={{ backgroundColor: color }}
 				/>
-				<Typography variant="caption-100" className="text-foreground truncate text-left flex-1">
+				<Typography
+					variant="caption-100"
+					className="text-content-default truncate text-left flex-1"
+				>
 					{token.cssVar}
 				</Typography>
-				<Typography variant="caption-100" className="text-muted-foreground shrink-0 font-mono">
+				<Typography variant="caption-100" className="text-content-muted shrink-0 font-mono">
 					{color}
 				</Typography>
 			</button>

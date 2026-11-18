@@ -30,7 +30,7 @@ export interface HoverCardProps extends Omit<HoverCardPrimitiveBase.Root.Props, 
  *     <Avatar src="/avatar.jpg" name="John Doe" />
  *     <div>
  *       <p className="font-medium">John Doe</p>
- *       <p className="text-muted-foreground text-sm">Software Engineer</p>
+ *       <p className="text-content-muted text-sm">Software Engineer</p>
  *     </div>
  *   </div>
  * </HoverCard>

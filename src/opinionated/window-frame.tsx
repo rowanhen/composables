@@ -26,7 +26,7 @@ export function WindowFrame({
 		<div
 			data-slot="window-frame"
 			className={cn(
-				'overflow-hidden rounded-xl border border-stroke-default bg-surface-default text-default shadow-lg',
+				'overflow-hidden rounded-xl border border-stroke-default bg-surface-default text-content-default shadow-lg',
 				className,
 			)}
 			{...props}

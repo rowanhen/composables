@@ -21,13 +21,13 @@ export const Overview: Story = {
 			<VStack gap={6}>
 				<Typography variant="heading-200">Background Fills</Typography>
 				<HStack gap={3} wrap>
-					<Swatch label="fill-primary" bg="--bg-fill-primary" />
-					<Swatch label="fill-brand" bg="--bg-fill-brand" />
-					<Swatch label="fill-info" bg="--bg-fill-info" />
-					<Swatch label="fill-success" bg="--bg-fill-success" />
-					<Swatch label="fill-warning" bg="--bg-fill-warning" />
-					<Swatch label="fill-critical" bg="--bg-fill-critical" />
-					<Swatch label="fill-emphasis" bg="--bg-fill-emphasis" />
+					<Swatch label="Primary fill" bg="--bg-fill-primary" />
+					<Swatch label="Brand fill" bg="--bg-fill-brand" />
+					<Swatch label="Info fill" bg="--bg-fill-info" />
+					<Swatch label="Success fill" bg="--bg-fill-success" />
+					<Swatch label="Warning fill" bg="--bg-fill-warning" />
+					<Swatch label="Critical fill" bg="--bg-fill-critical" />
+					<Swatch label="Emphasis fill" bg="--bg-fill-emphasis" />
 				</HStack>
 
 				<Typography variant="heading-200">Background Surfaces</Typography>

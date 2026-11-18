@@ -29,7 +29,7 @@ const FlowContext = createContext<{ orientation: FlowOrientation; align: FlowAli
 })
 const sequenceClasses = (orientation: FlowOrientation, align: FlowAlign) =>
 	cn(
-		'flex w-max list-none gap-(--flow-gap) p-0',
+		'flex w-max list-none gap-flow-gap p-0',
 		orientation === 'vertical' ? 'flex-col' : 'flex-row',
 		align === 'center' ? 'items-center' : 'items-start',
 	)
@@ -207,7 +207,7 @@ export const FlowRoot = forwardRef<HTMLDivElement, FlowRootProps>(function FlowR
 				className={cn(
 					'max-w-full outline-none',
 					canvas &&
-						'overflow-auto rounded-(--flow-canvas-radius) border-(length:--flow-border-width) border-stroke bg-muted bg-[image:var(--flow-canvas-background-image)] [background-size:var(--flow-canvas-background-size)_var(--flow-canvas-background-size)]',
+						'overflow-auto rounded-flow-canvas border-(length:--flow-border-width) border-stroke bg-muted bg-[image:var(--flow-canvas-background-image)] [background-size:var(--flow-canvas-background-size)_var(--flow-canvas-background-size)]',
 					canvas && FOCUS_RING,
 					panning && 'cursor-grabbing select-none',
 					className,
@@ -261,7 +261,7 @@ export const FlowRoot = forwardRef<HTMLDivElement, FlowRootProps>(function FlowR
 					data-slot="flow-content"
 					className={cn(
 						'relative w-max min-w-full',
-						canvas && 'px-(--flow-canvas-padding-x) py-(--flow-canvas-padding-y)',
+						canvas && 'px-flow-canvas-inset-x py-flow-canvas-inset-y',
 					)}
 				>
 					<svg
@@ -310,7 +310,7 @@ export const FlowNode = forwardRef<HTMLDivElement, FlowNodeProps>(function FlowN
 		'data-flow-node': nodeId,
 		'aria-disabled': disabled || undefined,
 		className: cn(
-			'relative min-w-0 rounded-(--flow-node-radius) border-(length:--flow-border-width) border-stroke-secondary bg-surface-default px-3 py-2 text-sm text-default shadow-(--flow-node-shadow)',
+			'relative min-w-0 rounded-flow-node border-(length:--flow-border-width) border-stroke-secondary bg-surface-default px-3 py-2 text-sm text-content-default shadow-flow-node',
 			disabled && 'opacity-disabled',
 			className,
 		),
@@ -342,7 +342,7 @@ export const FlowParallel = forwardRef<HTMLLIElement, ComponentPropsWithoutRef<'
 				<ul
 					data-flow-items=""
 					className={cn(
-						'flex w-max list-none gap-(--flow-branch-gap) p-0',
+						'flex w-max list-none gap-flow-branch-gap p-0',
 						orientation === 'horizontal' ? 'flex-col' : 'flex-row',
 					)}
 				>

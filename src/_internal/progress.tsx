@@ -8,7 +8,7 @@ const progressIndicatorVariants = cva(
 	{
 		variants: {
 			variant: {
-				default: 'bg-primary',
+				default: 'bg-fill-primary',
 				success: 'bg-fill-success',
 				warning: 'bg-fill-warning',
 				destructive: 'bg-fill-critical',
@@ -73,7 +73,7 @@ function ProgressValue({ className, ...props }: ProgressPrimitive.Value.Props) {
 	return (
 		<ProgressPrimitive.Value
 			data-slot="progress-value"
-			className={cn('text-xs text-muted-foreground tabular-nums', className)}
+			className={cn('text-xs text-content-muted tabular-nums', className)}
 			{...props}
 		/>
 	)

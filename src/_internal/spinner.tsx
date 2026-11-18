@@ -8,7 +8,7 @@ const spinnerVariants = cva('shrink-0', {
 		variant: {
 			default: 'size-4 animate-spin',
 			// Three bouncing dots in currentColor.
-			dots: 'h-4 w-auto text-primary',
+			dots: 'h-4 w-auto text-icon-default',
 		},
 	},
 	defaultVariants: { variant: 'default' },

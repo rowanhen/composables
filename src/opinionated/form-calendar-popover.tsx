@@ -108,7 +108,7 @@ function FormCalendarPopover({
 								{...props}
 							>
 								{value ? value.toLocaleDateString() : placeholder}
-								<ChevronDownIcon className="text-muted-foreground size-[1.25em] shrink-0" />
+								<ChevronDownIcon className="text-content-muted size-[1.25em] shrink-0" />
 							</FieldTrigger>
 						}
 					/>

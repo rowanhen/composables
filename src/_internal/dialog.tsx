@@ -35,7 +35,7 @@ function DialogOverlay({ className, ...props }: DialogPrimitive.Backdrop.Props) 
 }
 
 const dialogContentVariants = cva(
-	'bg-page data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 ring-foreground/10 grid max-w-[calc(100%-2rem)] max-h-[calc(100dvh-var(--spacing)*8)] overflow-y-auto gap-4 rounded-(--dialog-radius) p-4 text-(length:--body-font-size) leading-relaxed ring-(length:--dialog-border-width) duration-fast sm:w-auto sm:max-w-(--dialog-max-width) fixed top-1/2 left-1/2 z-modal w-full -translate-x-1/2 -translate-y-1/2 outline-none',
+	'bg-page data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 ring-stroke-default/10 grid max-w-[calc(100%-2rem)] max-h-[calc(100dvh-var(--spacing)*8)] overflow-y-auto gap-4 rounded-dialog p-4 text-body leading-relaxed ring-(length:--dialog-border-width) duration-fast sm:w-auto sm:max-w-dialog-max-width fixed top-1/2 left-1/2 z-modal w-full -translate-x-1/2 -translate-y-1/2 outline-none',
 	{
 		variants: {
 			placement: {
@@ -115,10 +115,7 @@ function DialogTitle({ className, ...props }: DialogPrimitive.Title.Props) {
 	return (
 		<DialogPrimitive.Title
 			data-slot="dialog-title"
-			className={cn(
-				'text-(length:--heading-font-size) leading-(--heading-line-height) font-medium',
-				className,
-			)}
+			className={cn('text-heading leading-heading font-medium', className)}
 			{...props}
 		/>
 	)
@@ -129,7 +126,7 @@ function DialogDescription({ className, ...props }: DialogPrimitive.Description.
 		<DialogPrimitive.Description
 			data-slot="dialog-description"
 			className={cn(
-				'text-muted-foreground *:[a]:hover:text-foreground text-(length:--body-font-size) leading-relaxed *:[a]:underline *:[a]:underline-offset-3',
+				'text-content-muted *:[a]:hover:text-content-default text-body leading-relaxed *:[a]:underline *:[a]:underline-offset-3',
 				className,
 			)}
 			{...props}
