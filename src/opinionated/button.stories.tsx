@@ -38,10 +38,6 @@ const meta = {
 				'warning',
 				'info',
 				'brand',
-				'brand-2',
-				'brand-3',
-				'brand-4',
-				'brand-5',
 				'emphasis',
 				'link',
 			],
@@ -76,10 +72,6 @@ export const Variants: Story = {
 					<Button variant="warning">Warning</Button>
 					<Button variant="info">Info</Button>
 					<Button variant="brand">Brand</Button>
-					<Button variant="brand-2">Brand 2</Button>
-					<Button variant="brand-3">Brand 3</Button>
-					<Button variant="brand-4">Brand 4</Button>
-					<Button variant="brand-5">Brand 5</Button>
 					<Button variant="emphasis">Emphasis</Button>
 					<Button variant="link">Link</Button>
 				</HStack>

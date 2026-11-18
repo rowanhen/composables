@@ -16,8 +16,8 @@ This is the exact installed-package entrypoint and export-name contract. Import 
 
 ## `@leitware/composables/tokens`
 
-- Values (14): `createPresetCSS`, `definePreset`, `defineTokens`, `isTokenName`, `paletteVar`, `parseTokenOverrides`, `presetDefinitions`, `presetDefinitionsByName`, `publicSemanticUtilities`, `resolveTokens`, `semanticColorTokens`, `tokenCatalog`, `tokenNames`, `tokenVar`
-- Types (19): `ComponentTokenName`, `FoundationTokenName`, `PaletteFamily`, `PaletteScale`, `PaletteTokenName`, `PresetDefinition`, `PresetName`, `PresetTokens`, `SemanticColorName`, `SemanticUtilityClassName`, `SidebarTokenName`, `Step`, `SystemTokenName`, `ThemePreset`, `TokenLayer`, `TokenMetadata`, `TokenName`, `TokenOverrides`, `TokenStyle`
+- Values (16): `createPresetCSS`, `definePreset`, `defineTokens`, `isTokenName`, `parseTokenOverrides`, `presetDefinitions`, `presetDefinitionsByName`, `publicSemanticUtilities`, `resolveTokens`, `semanticColorTokens`, `themes`, `themeValues`, `tokenCatalog`, `tokenNames`, `tokens`, `tokenVar`
+- Types (16): `ComponentTokenName`, `FoundationTokenName`, `PresetDefinition`, `PresetName`, `PresetTokens`, `SemanticColorName`, `SemanticUtilityClassName`, `SidebarTokenName`, `SystemTokenName`, `ThemeName`, `ThemePreset`, `TokenLayer`, `TokenMetadata`, `TokenName`, `TokenOverrides`, `TokenStyle`
 
 ## CSS entrypoints
 

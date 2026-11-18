@@ -22,15 +22,15 @@ Hooks live in `.githooks/`, not Husky. Pre-commit runs lint, formatting, typeche
 
 ## Tokens and Tailwind
 
-Read `docs/tokens.md` before changing the token model. `docs/token-reference.md` is the generated inventory. Sources live in `src/styles/tokens/`: palette-data.ts, foundations.ts, system-tokens.ts, component-tokens.ts, registry.ts, utility-aliases.ts and recipes.ts. Preset values live in `src/styles/presets-data/`.
+Read `docs/tokens.md` before changing the model. `src/styles/tokens/definitions.ts` exports the sole authored `tokens` record: purpose, group, utility registrations and complete theme values are colocated. `themes.ts` contains metadata only. Registry, catalogue and preset exports are derived views, never additional authoring locations.
 
-Run `bun run generate:tokens` for **all** token CSS, presets and references. `bun run test:generated` verifies drift. Never hand-edit generated CSS or manifests. `default.ts` owns baseline semantic colours; there is no handwritten semantic.css source.
+Run `bun run generate:tokens` for all theme CSS, the Tailwind adapter and references. Never hand-edit generated output. Every token has concrete values for every theme and both modes. No authored var() dependencies, fallback sentinels, numbered brand slots or base-factor inheritance. Component properties use explicit background/foreground/border-color names; state follows property.
 
-Use exact `TokenName`, `TokenOverrides` and `PresetTokens` types. Complete presets require every semantic/sidebar colour in both modes. Partial fragments use `TokenOverrides`. The runtime editor and generator share `createPresetCSS`; preserve complete dependency rebinding at theme boundaries.
+Use exact `TokenName`, `TokenOverrides` and `PresetTokens` types. Complete themes require every token in both modes. Component customization must have a real consumer; do not add unused knobs to make inventories look symmetrical. Shared controls use control roles. Card and accordion own surface contracts; disclosure keyframes are behaviour, not a universal animation requirement.
 
-Internal components use semantic classes and native role utilities (`text-body`, `h-control-md`, `rounded-input`). Primitive palette classes, unknown variables and generic compatibility aliases are rejected by `scripts/lint-tokens.ts`. Shared controls use `control-*` roles. Button paint lives in typed recipes; structural layout stays Tailwind. Add legitimate runtime measurement contracts explicitly to lint's local-variable list.
+`bun run lint` includes AST-based raw-colour, token, semantic-role and utility checks. Utility validity comes from the installed Tailwind compiler against the real stylesheet. Unknown classes, constructed classes and untokenized arbitrary appearance fail CI. Structural grid/runtime measurements remain allowed. Keep exceptional third-party contracts narrow and documented. Negative fixtures in `scripts/token-system.test.ts` must continue failing for invalid authoring.
 
-The public framework-independent colour utility contract is `publicSemanticUtilities` in registry.ts. Downstream consumers import styles.css; Tailwind v4 consumers additionally import tailwind.css for variants, opacity modifiers, native component roles and paint recipes. Keep native aliases collision-free and update tailwind-merge namespace coverage if a new utility category needs it.
+Downstream consumers import styles.css; Tailwind v4 consumers additionally import tailwind.css. Utility metadata is colocated in definitions.ts; registry.ts is a derived public view. Keep registrations collision-free and cover new namespaces in tailwind-merge when necessary.
 
 Required checks: lint, format:check, typecheck, test:generated, test:tokens, test:token-api, build:css, test:css and test:tokens:browser. Browser tests need `bunx playwright install chromium` once locally. Update documentation and run generate:rules after changing the public API or README.
 

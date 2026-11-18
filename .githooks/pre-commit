@@ -10,7 +10,7 @@ bunx oxfmt --check .
 echo "Running typecheck..."
 bun run typecheck
 
-echo "Verifying generated palette CSS..."
+echo "Verifying generated token CSS..."
 bun scripts/generate-tokens.ts --check
 
 
@@ -19,3 +19,6 @@ bun run test:rules
 
 echo "Checking semantic token system..."
 bun run test:tokens
+
+echo "Testing token API and enforcement fixtures..."
+bun run test:token-api

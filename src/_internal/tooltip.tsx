@@ -46,8 +46,8 @@ const tooltipContentVariants = cva(
 	{
 		variants: {
 			variant: {
-				// The preset's tooltip colours (--tooltip-bg / --tooltip-fg).
-				default: 'bg-(--tooltip-bg) text-(color:--tooltip-fg)',
+				// The preset's tooltip colours (--tooltip-background / --tooltip-foreground).
+				default: 'bg-(--tooltip-background) text-(color:--tooltip-foreground)',
 				inverse: 'bg-inverse text-content-inverse',
 				brand: 'bg-surface-brand text-content-default',
 			},

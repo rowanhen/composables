@@ -1,3 +1,4 @@
+import { lintUtilitySource, lintStylesheetSource } from './lint-utilities'
 import { tokenNames } from '../src/styles/tokens/types'
 import ts from 'typescript'
 import { readdirSync, readFileSync } from 'node:fs'
@@ -134,7 +135,7 @@ function files(path: string): string[] {
 	return readdirSync(path, { withFileTypes: true }).flatMap((entry) =>
 		entry.isDirectory()
 			? files(join(path, entry.name))
-			: /\.(ts|tsx)$/.test(entry.name)
+			: /\.(ts|tsx|css)$/.test(entry.name)
 				? [join(path, entry.name)]
 				: [],
 	)
@@ -150,9 +151,27 @@ if (import.meta.main) {
 		'showcase/src',
 		'.storybook',
 	].flatMap((dir) => files(join(root, dir)))
-	const issues = paths.flatMap((path) =>
-		lintTokenSource(readFileSync(path, 'utf8'), relative(root, path)),
+	const generatedCSS = new Set([
+		'src/styles/tokens/semantic-utilities.css',
+		'src/styles/tokens/tailwind-public-utilities.css',
+		'src/styles/tokens/compat.css',
+	])
+	paths.push(
+		...files(join(root, 'src/styles')).filter(
+			(path) =>
+				path.endsWith('.css') &&
+				!relative(root, path).startsWith('src/styles/presets/') &&
+				!generatedCSS.has(relative(root, path)),
+		),
 	)
+	const issues = paths.flatMap((path) => [
+		...(path.endsWith('.css')
+			? lintStylesheetSource(readFileSync(path, 'utf8'), relative(root, path))
+			: lintTokenSource(readFileSync(path, 'utf8'), relative(root, path))),
+		...(path.endsWith('.css')
+			? []
+			: lintUtilitySource(readFileSync(path, 'utf8'), relative(root, path))),
+	])
 	if (issues.length) {
 		console.error(issues.join('\n'))
 		process.exit(1)

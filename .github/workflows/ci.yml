@@ -22,9 +22,6 @@ jobs:
         run: bun run format:check
       - name: Typecheck
         run: bun run typecheck
-      - name: Check arbitrary Tailwind values
-        continue-on-error: true
-        run: bun src/scripts/lint-no-arbitrary.ts src showcase/src
       - name: Verify generated CSS
         run: bun scripts/generate-tokens.ts --check
       - name: Verify generated AI rules and skill manifests

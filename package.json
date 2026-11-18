@@ -181,6 +181,7 @@
 		"@streamdown/math": "^1.0.2",
 		"@streamdown/mermaid": "^1.0.2",
 		"@tailwindcss/cli": "^4.3.2",
+		"@tailwindcss/node": "4.3.2",
 		"@tailwindcss/vite": "^4.3.2",
 		"@types/bun": "^1.4.4",
 		"@types/node": "^26.1.0",

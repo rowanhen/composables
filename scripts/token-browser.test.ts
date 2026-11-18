@@ -75,7 +75,7 @@ for (const preset of presetDefinitions)
 			)
 			const expectedBorder = await page.locator('#brand').evaluate((el) => {
 				const probe = document.createElement('span')
-				probe.style.borderColor = 'var(--button-brand-border,var(--border-brand))'
+				probe.style.borderColor = 'var(--button-brand-border-color,var(--border-brand))'
 				el.appendChild(probe)
 				const color = getComputedStyle(probe).borderColor
 				probe.remove()
@@ -85,7 +85,7 @@ for (const preset of presetDefinitions)
 			await page.locator('#brand').hover()
 			const expectedHoverBorder = await page.locator('#brand').evaluate((el) => {
 				const probe = document.createElement('span')
-				probe.style.borderColor = 'var(--button-brand-hover-border,var(--hover-ring-color))'
+				probe.style.borderColor = 'var(--button-brand-border-color-hover,var(--hover-ring-color))'
 				el.appendChild(probe)
 				const color = getComputedStyle(probe).borderColor
 				probe.remove()
@@ -94,7 +94,7 @@ for (const preset of presetDefinitions)
 			expect(await computed('brand', 'border-color')).toBe(expectedHoverBorder)
 
 			expect(await computed('input', 'background-color')).toBe(
-				await resolved('button', 'background-color', '--control-bg'),
+				await resolved('button', 'background-color', '--control-background'),
 			)
 			expect(await computed('override', 'background-color')).toBe(
 				await resolved('button', 'background-color', '--bg-fill-critical'),
@@ -154,4 +154,91 @@ test('scoped motion policy outranks a later imported preset', async () => {
 		`<style>${css}\n${presetCSS}</style><section data-preset="kumo" data-motion="none" class="dark">${controls()}</section>`,
 	)
 	expect(await computed('button', 'transition-duration')).toBe('0s')
+})
+
+test('card and accordion expose independent surface, shape, spacing and motion settings', async () => {
+	const { Card, CardDescription } = await import('../src/_internal/card')
+	const { Accordion, AccordionItem, AccordionTrigger, AccordionContent } =
+		await import('../src/_internal/accordion')
+	const markup = renderToStaticMarkup(
+		createElement(
+			'div',
+			{},
+			createElement(
+				Card,
+				{ id: 'card' },
+				createElement(CardDescription, { id: 'description' }, 'Details'),
+			),
+			createElement(
+				Accordion,
+				{ id: 'accordion', defaultValue: ['one'] },
+				createElement(
+					AccordionItem,
+					{ value: 'one' },
+					createElement(AccordionTrigger, { id: 'trigger' }, 'Details'),
+					createElement(AccordionContent, {}, 'Panel'),
+				),
+			),
+		),
+	)
+	const base = presetDefinitions[1]
+	const light = {
+		...base.light,
+		'--card-background': '#123456',
+		'--card-content': '#fedcba',
+		'--card-border-color': '#abcdef',
+		'--card-description': '#aabbcc',
+		'--card-radius': '19px',
+		'--card-padding': '23px',
+		'--card-shadow': '0px 2px 8px #00000040',
+		'--card-duration': '321ms',
+		'--accordion-background': '#654321',
+		'--accordion-radius': '13px',
+		'--accordion-padding': '7px',
+		'--accordion-duration': '234ms',
+	}
+	await page.setContent(
+		`<style>${css}\n${createPresetCSS({ light, dark: base.dark })}</style>${markup}`,
+	)
+	for (const [property, token] of [
+		['background-color', '--card-background'],
+		['color', '--card-content'],
+		['border-color', '--card-border-color'],
+		['border-radius', '--card-radius'],
+		['padding-top', '--card-padding'],
+		['transition-duration', '--card-duration'],
+	])
+		expect(await computed('card', property)).toBe(await resolved('card', property, token))
+	expect(await computed('card', 'box-shadow')).toContain(
+		await resolved('card', 'box-shadow', '--card-shadow'),
+	)
+	expect(await computed('description', 'color')).toBe('rgb(170, 187, 204)')
+	expect(await computed('accordion', 'background-color')).toBe('rgb(101, 67, 33)')
+	expect(await computed('accordion', 'border-radius')).toBe('13px')
+	expect(
+		await page
+			.locator('[data-slot=accordion-trigger]')
+			.evaluate((el) => getComputedStyle(el).paddingTop),
+	).toBe('14px')
+	await page.locator('html').evaluate((el) => (el.dataset.motion = 'none'))
+	expect(await computed('card', 'transition-duration')).toBe('0s')
+	expect(
+		await page
+			.locator('[data-slot="accordion-trigger-icon"]')
+			.evaluate((el) => getComputedStyle(el).transitionDuration),
+	).toBe('0s')
+})
+
+test('reduced motion reaches scoped themes and native duration utilities', async () => {
+	const themeCSS = readFileSync(join(root, 'dist/presets/kumo.css'), 'utf8')
+	await page.emulateMedia({ reducedMotion: 'reduce' })
+	await page.setContent(
+		`<style>${css}\n${themeCSS}</style><section data-preset="kumo"><div id="motion" class="duration-normal animate-in fade-in-0">Panel</div>${controls()}</section>`,
+	)
+	expect(await computed('button', 'transition-duration')).toBe('0s')
+	expect(await computed('motion', 'transition-duration')).toBe('0s')
+	expect(await computed('motion', 'animation-duration')).toBe('0s')
+	await page.locator('section').evaluate((el) => (el.dataset.motion = 'full'))
+	expect(await computed('motion', 'transition-duration')).toBe('0.2s')
+	await page.emulateMedia({ reducedMotion: 'no-preference' })
 })

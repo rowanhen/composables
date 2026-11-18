@@ -104,7 +104,7 @@ export const Alignment: Story = {
 						<code className="font-mono text-xs">--border-width-base</code> - increase it for
 						chunkier dots/pills. Gaps between elements are controlled by{' '}
 						<code className="font-mono text-xs">--spacing</code>, and corner rounding by{' '}
-						<code className="font-mono text-xs">--radius-base</code>.
+						<code className="font-mono text-xs">--divider-radius</code>.
 					</Typography>
 				</Card>
 			</VStack>

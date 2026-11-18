@@ -1,35 +1,20 @@
-import { systemDefaults } from './system-tokens'
 import type { CSSProperties } from 'react'
-import { componentDefaults } from './component-tokens'
-import { foundationDefaults } from './foundations'
-import { semanticColorTokens, sidebarColorCssVars } from './registry'
-import type { SemanticColorName } from './registry'
+import { sidebarColorCssVars } from './registry'
 
-export type FoundationTokenName = keyof typeof foundationDefaults
-export type SystemTokenName = keyof typeof systemDefaults
-export type ComponentTokenName = keyof typeof componentDefaults
+export type FoundationTokenName = NamesIn<'foundation'>
+export type SystemTokenName = NamesIn<'system'>
+export type ComponentTokenName = NamesIn<'component'>
 export type SidebarTokenName = (typeof sidebarColorCssVars)[number]
-export type TokenName =
-	| SemanticColorName
-	| SidebarTokenName
-	| FoundationTokenName
-	| SystemTokenName
-	| ComponentTokenName
-	| '--radius-base'
+export type { TokenName } from './model'
+import type { TokenName, NamesIn } from './model'
+import { entries } from './model'
 /** Exact keys: misspellings and compatibility aliases are rejected. */
 export type TokenOverrides = Partial<Record<TokenName, string>>
-/** Every preset supplies complete light/dark colour roles; geometry can inherit defaults. */
-export type PresetTokens = Record<SemanticColorName | SidebarTokenName, string> & TokenOverrides
+/** Every theme supplies every token in both modes; no geometry or colour inheritance. */
+export type PresetTokens = Record<TokenName, string>
 export type TokenStyle = CSSProperties & TokenOverrides
 
-export const tokenNames: readonly TokenName[] = [
-	...semanticColorTokens.map((token) => token.cssVar),
-	...sidebarColorCssVars,
-	...(Object.keys(foundationDefaults) as FoundationTokenName[]),
-	...(Object.keys(systemDefaults) as SystemTokenName[]),
-	...(Object.keys(componentDefaults) as ComponentTokenName[]),
-	'--radius-base',
-]
+export const tokenNames: readonly TokenName[] = entries.map(([name]) => name)
 const knownTokens = new Set<string>(tokenNames)
 export function isTokenName(value: string): value is TokenName {
 	return knownTokens.has(value)

@@ -11,7 +11,7 @@
  *
  * Base tokens used directly:
  *   --border-default              Grid line color (via bg-stroke)
- *   --radius-base              Corner radius (via rounded-lg)
+ *   --radius-lg              Corner radius (via rounded-lg)
  *   --border-style        Border style on all components (default: solid)
  *
  * Layout philosophy:
@@ -57,7 +57,7 @@ interface StatCellProps extends React.ComponentProps<'div'> {
 function StatCell({ label, value, large = false, className, ...props }: StatCellProps) {
 	return (
 		<div data-slot="bento-stat-cell" className={cn(BENTO_CELL, 'p-4', className)} {...props}>
-			<div className="text-[10px] uppercase text-content-muted mb-1">{label}</div>
+			<div className="text-2xs uppercase text-content-muted mb-1">{label}</div>
 			<div className={cn('font-bold', large ? 'text-xl' : 'text-xs')}>{value}</div>
 		</div>
 	)

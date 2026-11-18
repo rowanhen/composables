@@ -1,5 +1,6 @@
 import { componentUtilityAliases } from '../src/styles/tokens/utility-aliases'
-import { foundationDefaults } from '../src/styles/tokens/foundations'
+import { categoryValues } from '../src/styles/tokens/model'
+const foundationDefaults = categoryValues('foundation')
 /**
  * test-downstream-css.ts
  *
@@ -33,14 +34,6 @@ const SEMANTIC_UTILITIES_CSS = join(ROOT, 'src/styles/tokens/semantic-utilities.
 
 // ── Tokens that MUST appear in compiled output ───────────────────────────
 const requiredTokens: Record<string, string> = {
-	// Palette primitives (from palette.css @theme inline)
-	'Palette: neutral-50': '--palette-neutral-50',
-	'Palette: neutral-1000': '--palette-neutral-1000',
-	'Palette: blue-800': '--palette-blue-800',
-	'Palette: red-950': '--palette-red-950',
-	'Palette: green-800': '--palette-green-800',
-	'Palette: pink-800': '--palette-pink-800',
-
 	// Semantic tokens (from semantic.css :root)
 	'Semantic: bg-default': '--bg-default',
 	'Semantic: text-default': '--text-default',
@@ -51,15 +44,12 @@ const requiredTokens: Record<string, string> = {
 	'Semantic: icon-default': '--icon-default',
 
 	// Component tokens (from components.css)
-	'Component: font-size-base': '--font-size-base',
-	'Component: leading-base': '--leading-base',
 	'Component: border-width-base': '--border-width-base',
 	'Component: button-radius': '--button-radius',
 	'Component: button-height': '--button-height',
 	'Component: button-primary-background-image': '--button-primary-background-image',
 	'Component: button-primary-shadow': '--button-primary-shadow',
-	'Component: button-destructive-bg': '--button-destructive-bg',
-	'Component: transition-default': '--transition-default',
+	'Component: button-destructive-bg': '--button-destructive-background',
 	'Component: motion-duration-overlay': '--motion-duration-overlay',
 	'Component: motion-duration-disclosure': '--motion-duration-disclosure',
 	'Component: focus-ring-style': '--focus-ring-style',

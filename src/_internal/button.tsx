@@ -13,7 +13,7 @@ const buttonVariants = cva(
 			variant: {
 				default: 'button-primary hover:button-primary-hover active:bg-button-primary-active',
 				outline:
-					'hover:border-hover-ring border-stroke shadow-button-outline hover:shadow-[var(--button-outline-hover-shadow,var(--hover-shadow))] hover:bg-[var(--button-quiet-hover-bg,transparent)] hover:text-content-default aria-expanded:bg-muted aria-expanded:text-content-default',
+					'hover:border-hover-ring border-stroke shadow-button-outline hover:shadow-[var(--button-outline-shadow-hover,var(--shadow-hover))] hover:bg-[var(--button-quiet-background-hover,transparent)] hover:text-content-default aria-expanded:bg-muted aria-expanded:text-content-default',
 				secondary:
 					'hover:border-hover-ring button-secondary hover:button-secondary-hover active:bg-button-secondary-active aria-expanded:bg-fill-secondary aria-expanded:text-on-fill-secondary',
 				// Neutral (white) and ghost fill on hover, like filled buttons, rather
@@ -23,16 +23,12 @@ const buttonVariants = cva(
 				inverse:
 					'border-transparent bg-inverse text-content-inverse hover:bg-inverse/85 hover:border-transparent focus-visible:border-(color:--bg-inverse)',
 				ghost:
-					'border-transparent hover:bg-[var(--button-quiet-hover-bg,var(--bg-surface-hover))] hover:border-[var(--button-quiet-hover-bg,var(--bg-surface-hover))] hover:text-content-default aria-expanded:bg-muted aria-expanded:text-content-default',
+					'border-transparent hover:bg-[var(--button-quiet-background-hover,var(--bg-surface-hover))] hover:border-[var(--button-quiet-background-hover,var(--bg-surface-hover))] hover:text-content-default aria-expanded:bg-muted aria-expanded:text-content-default',
 				destructive: `button-destructive hover:button-destructive-hover ${FOCUS_RING_DESTRUCTIVE}`,
 				success: 'hover:border-hover-ring bg-surface-success text-success border-stroke-success',
 				warning: 'hover:border-hover-ring bg-surface-warning text-warning border-stroke-warning',
 				info: 'hover:border-hover-ring bg-surface-info text-info border-stroke-info',
 				brand: 'font-(--button-brand-font-weight) button-brand hover:button-brand-hover',
-				'brand-2': 'font-(--button-brand-font-weight) button-brand-2 hover:button-brand-2-hover',
-				'brand-3': 'font-(--button-brand-font-weight) button-brand-3 hover:button-brand-3-hover',
-				'brand-4': 'font-(--button-brand-font-weight) button-brand-4 hover:button-brand-4-hover',
-				'brand-5': 'font-(--button-brand-font-weight) button-brand-5 hover:button-brand-5-hover',
 				emphasis:
 					'hover:border-hover-ring bg-surface-emphasis text-emphasis border-stroke-emphasis',
 				link: 'border-transparent text-link underline underline-offset-4 hover:text-content-secondary hover:border-transparent hover:ring-0',

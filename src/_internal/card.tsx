@@ -7,7 +7,7 @@ import { cn } from '../lib/utils'
 // the --card-padding token: sm sits one spacing step tighter. Presets tune a
 // single token and every size stays on the spacing scale.
 const cardVariants = cva(
-	'border-(length:--card-border-width) border-stroke text-content-default gap-(--card-space) overflow-hidden rounded-card py-(--card-space) text-body leading-relaxed has-[>img:first-child]:pt-0 *:[img:first-child]:rounded-t-card *:[img:last-child]:rounded-b-card group/card flex flex-col',
+	'border-(length:--card-border-width) border-card-stroke text-card-content shadow-card transition-colors duration-card gap-(--card-space) overflow-hidden rounded-card py-(--card-space) text-body leading-relaxed has-[>img:first-child]:pt-0 *:[img:first-child]:rounded-t-card *:[img:last-child]:rounded-b-card group/card flex flex-col',
 	{
 		variants: {
 			size: {
@@ -15,7 +15,7 @@ const cardVariants = cva(
 				sm: '[--card-space:calc(var(--card-padding)_-_var(--spacing))]',
 			},
 			variant: {
-				default: 'bg-surface-default',
+				default: 'bg-card-surface',
 				// On the popover surface (white in light themes).
 				raised: 'bg-surface-popover',
 			},
@@ -68,7 +68,7 @@ function CardDescription({ className, ...props }: React.ComponentProps<'div'>) {
 	return (
 		<div
 			data-slot="card-description"
-			className={cn('text-content-muted text-body leading-relaxed', className)}
+			className={cn('text-card-description text-body leading-relaxed', className)}
 			{...props}
 		/>
 	)

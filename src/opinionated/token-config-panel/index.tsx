@@ -1,84 +1,13 @@
-import { tokenNames, type TokenName, type TokenOverrides } from '../../styles/tokens/types'
-import React from 'react'
-
+import * as React from 'react'
 import { Button } from '../../_internal/button'
-import { ScrollArea } from '../../_internal/scroll-area'
-import { Separator } from '../../_internal/separator'
+import { Input } from '../../_internal/input'
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '../../_internal/sheet'
-import { HStack, VStack } from '../../_internal/stack'
-import { Switch } from '../../_internal/switch'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '../../_internal/tabs'
-import { Typography } from '../../_internal/typography'
-
-import { colorCategories, colorTokensByCategory, ColorTokenRow } from './color-editor'
-import {
-	controlShapeTokens,
-	controlSizeTokens,
-	FactorSliderRow,
-	spacingTokens,
-	borderWidthTokens,
-	radiusTokens,
-	typographySizeTokens,
-	lineHeightTokens,
-	letterSpacingTokens,
-	opacityTokens,
-	shadowDimensionTokens,
-	shadowColorToken,
-	dropdownOffsetTokens,
-	overlayOffsetTokens,
-	containerTokens,
-	DimensionSliderRow,
-	StringTokenRow,
-} from './spacing-editor'
-import { FontSelectRow, fontCssVars, loadGoogleFont } from './typography-editor'
-import { presets, injectPresetStyle, removePresetStyle } from './preset-manager'
-import { buildJsonSnapshot, JsonImportExport } from './json-import-export'
-
-/* ------------------------------------------------------------------ */
-/*  SectionHeader                                                       */
-/* ------------------------------------------------------------------ */
-
-function SectionHeader({ children }: { children: React.ReactNode }) {
-	return (
-		<Typography
-			variant="caption-100"
-			className="text-content-muted uppercase tracking-wider mb-1 block"
-		>
-			{children}
-		</Typography>
-	)
-}
-
-/* ------------------------------------------------------------------ */
-/*  PaletteIcon                                                         */
-/* ------------------------------------------------------------------ */
-
-function PaletteIcon({ className }: { className?: string }) {
-	return (
-		<svg
-			xmlns="http://www.w3.org/2000/svg"
-			viewBox="0 0 24 24"
-			fill="none"
-			stroke="currentColor"
-			strokeWidth={2}
-			strokeLinecap="round"
-			strokeLinejoin="round"
-			className={className}
-			aria-hidden="true"
-		>
-			<title>Palette</title>
-			<circle cx="13.5" cy="6.5" r="0.5" fill="currentColor" />
-			<circle cx="17.5" cy="10.5" r="0.5" fill="currentColor" />
-			<circle cx="8.5" cy="7.5" r="0.5" fill="currentColor" />
-			<circle cx="6.5" cy="12" r="0.5" fill="currentColor" />
-			<path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z" />
-		</svg>
-	)
-}
-
-/* ------------------------------------------------------------------ */
-/*  TokenConfigPanel                                                    */
-/* ------------------------------------------------------------------ */
+import { tokenCatalog } from '../../styles/tokens/catalog'
+import { themeValues } from '../../styles/tokens/model'
+import { themes, type ThemeName } from '../../styles/tokens/themes'
+import { parseTokenOverrides, type TokenName } from '../../styles/tokens/types'
+import { createPresetCSS } from '../../styles/tokens/preset'
+import { removePresetStyle } from './preset-manager'
 
 interface TokenConfigPanelProps {
 	dark?: boolean
@@ -87,322 +16,156 @@ interface TokenConfigPanelProps {
 	onGridChange?: (grid: boolean) => void
 }
 
+/** Every row comes from the token inventory; adding a token never requires editor registration. */
 export function TokenConfigPanel({
-	dark,
+	dark = false,
 	onDarkChange,
-	grid,
+	grid = false,
 	onGridChange,
 }: TokenConfigPanelProps = {}) {
-	const [overrides, setOverrides] = React.useState<TokenOverrides>({})
-	const [activePreset, setActivePreset] = React.useState<string>('default')
-	const [jsonText, setJsonText] = React.useState('')
-
-	function applyOverride(cssVar: TokenName, value: string) {
-		document.documentElement.style.setProperty(cssVar, value)
-		setOverrides((prev) => ({ ...prev, [cssVar]: value }))
-	}
-
-	function clearInlineOverrides() {
-		for (const name of tokenNames) document.documentElement.style.removeProperty(name)
-		setOverrides({})
-	}
-
-	function resetAll() {
-		clearInlineOverrides()
+	const [theme, setTheme] = React.useState<ThemeName>('default')
+	const [values, setValues] = React.useState(() => ({
+		light: themeValues('default', 'light'),
+		dark: themeValues('default', 'dark'),
+	}))
+	const [query, setQuery] = React.useState('')
+	const [json, setJson] = React.useState('')
+	const [error, setError] = React.useState('')
+	const mode = dark ? 'dark' : 'light'
+	const rows = tokenCatalog.filter((token) =>
+		`${token.name} ${token.group} ${token.description} ${token.utilities.join(' ')}`
+			.toLowerCase()
+			.includes(query.toLowerCase()),
+	)
+	function apply(next: typeof values) {
 		removePresetStyle()
-		setActivePreset('default')
+		const style = document.createElement('style')
+		style.id = 'composables-preset-overrides'
+		style.textContent = createPresetCSS(next)
+		document.head.appendChild(style)
+		setValues(next)
 	}
-
-	function applyPreset(presetKey: string) {
-		clearInlineOverrides()
-		removePresetStyle()
-		setActivePreset(presetKey)
-
-		const preset = presets[presetKey]
-		if (!preset) return
-
-		for (const v of fontCssVars) {
-			const fontValue = preset.overrides[v]
-			if (fontValue) {
-				const match = fontValue.match(/^"([^"]+)"/)
-				if (match) loadGoogleFont(match[1])
-			}
-		}
-
-		injectPresetStyle(preset)
-		setOverrides(preset.overrides)
+	function selectTheme(name: ThemeName) {
+		setTheme(name)
+		apply({ light: themeValues(name, 'light'), dark: themeValues(name, 'dark') })
+		setError('')
 	}
-
-	function handleTabChange(value: string) {
-		if (value === 'json') {
-			setJsonText(JSON.stringify(buildJsonSnapshot(), null, 2))
+	function edit(name: TokenName, value: string) {
+		try {
+			const parsed = parseTokenOverrides({ [name]: value })
+			apply({ ...values, [mode]: { ...values[mode], ...parsed } })
+			setError('')
+		} catch (error) {
+			setError(error instanceof Error ? error.message : 'Invalid token value')
 		}
 	}
-
-	const overrideCount = Object.keys(overrides).length
-
+	function importValues() {
+		try {
+			const input = JSON.parse(json)
+			const light = parseTokenOverrides(input.light)
+			const dark = parseTokenOverrides(input.dark)
+			if (
+				Object.keys(light).length !== tokenCatalog.length ||
+				Object.keys(dark).length !== tokenCatalog.length
+			)
+				throw new Error('Import must contain every token in both light and dark maps.')
+			apply({ light: { ...values.light, ...light }, dark: { ...values.dark, ...dark } })
+			setError('')
+		} catch (error) {
+			setError(error instanceof Error ? error.message : 'Invalid JSON')
+		}
+	}
 	return (
 		<Sheet>
-			<SheetTrigger render={<Button variant="outline" size="icon" className="size-8" />}>
-				<PaletteIcon className="size-4" />
-			</SheetTrigger>
-			<SheetContent side="right" className="w-full max-w-[400px] sm:max-w-[440px] px-0 pb-0 pt-14">
-				<SheetHeader className="px-4 pt-4 pb-2">
-					<SheetTitle className="flex items-center justify-between">
-						<span>Token Config</span>
-						{overrideCount > 0 && (
-							<Button variant="ghost" size="sm" className="h-7 text-xs" onClick={resetAll}>
-								Reset all ({overrideCount})
-							</Button>
-						)}
-					</SheetTitle>
+			<SheetTrigger render={<Button variant="outline" size="sm" />}>Tokens</SheetTrigger>
+			<SheetContent className="w-full sm:max-w-2xl overflow-y-auto">
+				<SheetHeader>
+					<SheetTitle>Token catalogue</SheetTitle>
 				</SheetHeader>
-
-				{(onDarkChange !== undefined || onGridChange !== undefined) && (
-					<div className="px-4 pb-3">
-						<Typography
-							variant="caption-100"
-							className="text-content-muted uppercase tracking-wider mb-2 block"
+				<div className="flex flex-col gap-4 p-4">
+					<label className="flex flex-col gap-1 text-body">
+						Theme
+						<select
+							aria-label="Theme"
+							className="bg-control-surface text-control-content border border-control-stroke rounded-input h-control-md px-2"
+							value={theme}
+							onChange={(event) => selectTheme(event.target.value as ThemeName)}
 						>
-							Display
-						</Typography>
-						<HStack gap={4}>
-							{onDarkChange !== undefined && (
-								<HStack gap={2} align="center">
-									<Switch
-										checked={dark ?? false}
-										onCheckedChange={onDarkChange}
-										aria-label="Toggle dark mode"
-									/>
-									<Typography variant="caption-100" className="text-content-muted">
-										Dark mode
-									</Typography>
-								</HStack>
-							)}
-							{onGridChange !== undefined && (
-								<HStack gap={2} align="center">
-									<Switch
-										checked={grid ?? false}
-										onCheckedChange={onGridChange}
-										aria-label="Toggle grid overlay"
-									/>
-									<Typography variant="caption-100" className="text-content-muted">
-										Grid
-									</Typography>
-								</HStack>
-							)}
-						</HStack>
-					</div>
-				)}
-
-				<div className="px-4 pb-2">
-					<Typography
-						variant="caption-100"
-						className="text-content-muted uppercase tracking-wider mb-1 block"
-					>
-						Preset
-					</Typography>
-					<select
-						value={activePreset}
-						onChange={(e) => applyPreset(e.target.value)}
-						className="w-full h-7 rounded-md border border-stroke bg-transparent px-2 text-xs text-content-default outline-none focus:ring-[length:var(--border-width)] focus:ring-focus"
-					>
-						<option value="default">Default</option>
-						{Object.entries(presets)
-							.filter(([key]) => key !== 'default')
-							.map(([key, preset]) => (
-								<option key={key} value={key}>
-									{preset?.label ?? key}
+							{themes.map((theme) => (
+								<option key={theme.name} value={theme.name}>
+									{theme.label}
 								</option>
 							))}
-					</select>
-				</div>
-
-				<Tabs
-					defaultValue="visual"
-					className="flex flex-col h-[calc(100vh-14rem)]"
-					onValueChange={handleTabChange}
-				>
-					<TabsList className="mx-4 mb-2">
-						<TabsTrigger value="visual">Visual</TabsTrigger>
-						<TabsTrigger value="json">JSON</TabsTrigger>
-					</TabsList>
-
-					<TabsContent value="visual" className="flex-1 overflow-hidden mt-0">
-						<ScrollArea className="h-full">
-							<div className="px-4 pb-6">
-								<div className="mb-4">
-									<SectionHeader>Spacing</SectionHeader>
-									<VStack gap={1}>
-										{spacingTokens.map((t) => (
-											<DimensionSliderRow key={t.cssVar} token={t} onApply={applyOverride} />
-										))}
-									</VStack>
-								</div>
-								<Separator className="my-3" />
-
-								<div className="mb-4">
-									<SectionHeader>Border Width</SectionHeader>
-									<VStack gap={1}>
-										{borderWidthTokens.map((t) => (
-											<DimensionSliderRow key={t.cssVar} token={t} onApply={applyOverride} />
-										))}
-									</VStack>
-								</div>
-								<Separator className="my-3" />
-
-								<div className="mb-4">
-									<SectionHeader>Border Radius</SectionHeader>
-									<VStack gap={1}>
-										{radiusTokens.map((t) => (
-											<DimensionSliderRow key={t.cssVar} token={t} onApply={applyOverride} />
-										))}
-									</VStack>
-								</div>
-								<Separator className="my-3" />
-
-								<div className="mb-4">
-									<SectionHeader>Control Shape</SectionHeader>
-									<VStack gap={1}>
-										{controlShapeTokens.map((t) => (
-											<FactorSliderRow key={t.cssVar} token={t} onApply={applyOverride} />
-										))}
-									</VStack>
-								</div>
-								<Separator className="my-3" />
-
-								<div className="mb-4">
-									<SectionHeader>Control Size</SectionHeader>
-									<VStack gap={1}>
-										{controlSizeTokens.map((t) => (
-											<FactorSliderRow key={t.cssVar} token={t} onApply={applyOverride} />
-										))}
-									</VStack>
-								</div>
-								<Separator className="my-3" />
-
-								<div className="mb-4">
-									<SectionHeader>Font Size</SectionHeader>
-									<VStack gap={1}>
-										{typographySizeTokens.map((t) => (
-											<DimensionSliderRow key={t.cssVar} token={t} onApply={applyOverride} />
-										))}
-									</VStack>
-								</div>
-								<Separator className="my-3" />
-
-								<div className="mb-4">
-									<SectionHeader>Line Height</SectionHeader>
-									<VStack gap={1}>
-										{lineHeightTokens.map((t) => (
-											<DimensionSliderRow key={t.cssVar} token={t} onApply={applyOverride} />
-										))}
-									</VStack>
-								</div>
-								<Separator className="my-3" />
-
-								<div className="mb-4">
-									<SectionHeader>Letter Spacing</SectionHeader>
-									<VStack gap={1}>
-										{letterSpacingTokens.map((t) => (
-											<DimensionSliderRow key={t.cssVar} token={t} onApply={applyOverride} />
-										))}
-									</VStack>
-								</div>
-								<Separator className="my-3" />
-
-								<div className="mb-4">
-									<SectionHeader>Font Family</SectionHeader>
-									<VStack gap={1}>
-										<FontSelectRow
-											label="Sans / body (--font-sans)"
-											cssVar="--font-sans"
-											onApply={applyOverride}
-										/>
-										<FontSelectRow
-											label="Heading (--font-heading)"
-											cssVar="--font-heading"
-											onApply={applyOverride}
-										/>
-										<FontSelectRow
-											label="Brand (--font-brand)"
-											cssVar="--font-brand"
-											onApply={applyOverride}
-										/>
-									</VStack>
-								</div>
-								<Separator className="my-3" />
-
-								<div className="mb-4">
-									<SectionHeader>Shadow</SectionHeader>
-									<VStack gap={1}>
-										{shadowDimensionTokens.map((t) => (
-											<DimensionSliderRow key={t.cssVar} token={t} onApply={applyOverride} />
-										))}
-										<StringTokenRow token={shadowColorToken} onApply={applyOverride} />
-									</VStack>
-								</div>
-								<Separator className="my-3" />
-
-								<div className="mb-4">
-									<SectionHeader>Opacity</SectionHeader>
-									<VStack gap={1}>
-										{opacityTokens.map((t) => (
-											<DimensionSliderRow key={t.cssVar} token={t} onApply={applyOverride} />
-										))}
-									</VStack>
-								</div>
-								<Separator className="my-3" />
-
-								<div className="mb-4">
-									<SectionHeader>Container Breakpoints</SectionHeader>
-									<VStack gap={1}>
-										{containerTokens.map((t) => (
-											<DimensionSliderRow key={t.cssVar} token={t} onApply={applyOverride} />
-										))}
-									</VStack>
-								</div>
-								<Separator className="my-3" />
-
-								<div className="mb-4">
-									<SectionHeader>Positioning</SectionHeader>
-									<VStack gap={1}>
-										{dropdownOffsetTokens.map((t) => (
-											<DimensionSliderRow key={t.cssVar} token={t} onApply={applyOverride} />
-										))}
-										{overlayOffsetTokens.map((t) => (
-											<DimensionSliderRow key={t.cssVar} token={t} onApply={applyOverride} />
-										))}
-									</VStack>
-								</div>
-								<Separator className="my-3" />
-
-								{colorCategories.map((cat) => (
-									<div key={cat} className="mb-4">
-										<SectionHeader>{cat}</SectionHeader>
-										<VStack gap={0}>
-											{(colorTokensByCategory[cat] ?? []).map(
-												(token: import('./types').FlatToken) => (
-													<ColorTokenRow key={token.cssVar} token={token} onApply={applyOverride} />
-												),
-											)}
-										</VStack>
-									</div>
-								))}
-							</div>
-						</ScrollArea>
-					</TabsContent>
-
-					<TabsContent value="json" className="flex-1 overflow-hidden mt-0 px-4">
-						<JsonImportExport
-							jsonText={jsonText}
-							setJsonText={setJsonText}
-							setOverrides={setOverrides}
-							setActivePreset={setActivePreset}
-							resetAll={resetAll}
+						</select>
+					</label>
+					<div className="flex flex-wrap gap-2">
+						{onDarkChange && (
+							<Button variant="outline" size="sm" onClick={() => onDarkChange(!dark)}>
+								{dark ? 'Edit light mode' : 'Edit dark mode'}
+							</Button>
+						)}
+						{onGridChange && (
+							<Button variant="outline" size="sm" onClick={() => onGridChange(!grid)}>
+								{grid ? 'Hide grid' : 'Show grid'}
+							</Button>
+						)}
+						<Button variant="outline" size="sm" onClick={() => selectTheme(theme)}>
+							Reset theme
+						</Button>
+					</div>
+					<Input
+						aria-label="Search tokens"
+						placeholder="Search name, purpose or utility"
+						value={query}
+						onChange={(event) => setQuery(event.target.value)}
+					/>
+					<p className="text-body text-content-muted">
+						{rows.length} of {tokenCatalog.length} tokens · Editing {mode} values
+					</p>
+					{error && (
+						<p role="alert" className="text-critical text-body">
+							{error}
+						</p>
+					)}
+					{rows.map((token) => (
+						<label
+							key={`${theme}-${mode}-${token.name}`}
+							className="flex flex-col gap-1 border-b border-stroke pb-3"
+						>
+							<span className="font-mono text-body break-all">{token.name}</span>
+							<span className="text-body text-content-muted">{token.description}</span>
+							<Input
+								aria-label={token.name}
+								key={`${theme}-${mode}-${token.name}-${values[mode][token.name]}`}
+								defaultValue={values[mode][token.name]}
+								onBlur={(event) => {
+									if (event.target.value !== values[mode][token.name])
+										edit(token.name, event.target.value)
+								}}
+							/>
+							<span className="font-mono text-xs text-content-muted break-all">
+								{token.utilities.join(' · ') || 'CSS variable'}
+							</span>
+						</label>
+					))}
+					<label className="flex flex-col gap-1 text-body">
+						Complete theme JSON
+						<textarea
+							aria-label="Complete theme JSON"
+							className="min-h-40 bg-control-surface text-control-content border border-control-stroke rounded-input p-2 font-mono text-body"
+							value={json}
+							onChange={(event) => setJson(event.target.value)}
 						/>
-					</TabsContent>
-				</Tabs>
+					</label>
+					<div className="flex gap-2">
+						<Button variant="outline" onClick={() => setJson(JSON.stringify(values, null, 2))}>
+							Export JSON
+						</Button>
+						<Button variant="outline" onClick={importValues}>
+							Import JSON
+						</Button>
+					</div>
+				</div>
 			</SheetContent>
 		</Sheet>
 	)

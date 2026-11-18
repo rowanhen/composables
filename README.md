@@ -252,20 +252,20 @@ The variable entrypoints include their preset weight ranges. The explicit IBM Pl
 
 The token system is built on CSS custom properties. Colours, spacing, typography, radius, borders, shadows, and motion are expressed as semantic or component tokens that presets and applications can override.
 
-See the [token authoring guide](docs/tokens.md) for the naming strategy, internal component roles, preset API, Tailwind integration, migration notes and design-system references. The [generated token reference](docs/token-reference.md) lists every configurable token and its default.
+See the [token authoring guide](docs/tokens.md) for the naming strategy, internal component roles, preset API, Tailwind integration, migration notes and enforcement rules. The [generated token reference](docs/token-reference.md) lists every configurable token and its default.
 
 ```ts
 import { defineTokens, tokenVar, type TokenStyle } from '@leitware/composables/tokens'
 
 const style: TokenStyle = {
-	...defineTokens({ '--radius-base': '0.75rem', '--button-radius': '9999px' }),
+	...defineTokens({ '--card-radius': '0.75rem', '--button-radius': '9999px' }),
 	color: tokenVar('--text-secondary'),
 }
 ```
 
-Presets and overrides use exact token-name unions. `definePreset` extends complete light/dark themes; `createPresetCSS` emits document or scoped CSS with all dependencies rebound at the theme boundary. The live editor uses the same serializer and validates JSON imports against the token registry.
+Presets and overrides use exact token-name unions. `definePreset` extends complete light/dark themes; `createPresetCSS` emits document or scoped CSS with a complete independent map at each theme boundary. The live editor uses the same serializer and validates JSON imports against the token registry.
 
-Run `bun run generate:tokens` to regenerate every token stylesheet, preset and reference from TypeScript. Run `bun run test:generated` to check drift. Do not edit generated CSS. `--radius-base` replaces the old `--radius`; palette implementation variables now start `--palette-`.
+Run `bun run generate:tokens` to regenerate every token stylesheet, preset and reference from TypeScript. Run `bun run test:generated` to check drift. Do not edit generated CSS. All authored values and utility registrations live together in `definitions.ts`; obsolete base factors and the separate palette API have been removed.
 
 ### Motion Modes
 
@@ -337,75 +337,29 @@ Kumo takes its cues from [Cloudflare's Kumo](https://kumo-ui.com/components/butt
 neutral light/dark surfaces, blue primary actions, an orange brand accent, and
 solid red destructive buttons. Primary (`variant="default"`) and destructive
 buttons have darker borders, vertical gradients, and inset top highlights.
-All five brand button variants use vivid colour gradients and brighter upper
-highlights, with semibold white labels and a subtle text shadow; alerts and
-badges continue to use the coordinated tinted surfaces.
-Its default and large buttons are 36px and 40px tall; small and extra-small
-buttons are 26px and 20px tall. The preset also styles fields, cards, status
-surfaces, and the sidebar through the existing token system.
+The brand button uses the brand gradient and foreground; status and action variants retain their own meanings. There is one brand intent, without numbered brand variants.
 
-Button finishes can be tuned with `--button-primary-border`,
-`--button-primary-background-image`, `--button-primary-hover-background-image`,
-and `--button-primary-shadow`, with equivalent `--button-destructive-*`, `--button-brand-*`, and
-`--button-brand-2-*` through `--button-brand-5-*` tokens.
-Brand labels use `--button-brand-font-weight` and `--button-brand-text-shadow`.
-Destructive fill and text use `--button-destructive-bg` and
-`--button-destructive-text`, independently of the tinted critical surfaces used
-by alerts and badges. Button sizes use `--button-height`, `--button-height-xs`,
-`--button-height-sm`, and `--button-height-lg`; icon buttons use the same heights.
+### Token authoring and presets
 
-### Creating a Preset
+All values and utility registrations live together in the exported `tokens` record in `src/styles/tokens/definitions.ts`. Each token owns complete light/dark values for all eight themes. There are no authored base/override/preset chains. `bun run generate:tokens` emits the CSS, Tailwind adapter and documentation from that record.
 
-Add one preset data file, then register it once:
+The [token reference](docs/token-reference.md) lists every name, purpose, utility registration and default value. The [authoring guide](docs/tokens.md) explains naming, component coverage, migration, and the exact enforced rules. TokenConfigPanel exposes every token with search, mode switching, reset and complete JSON import/export.
 
-1. Copy `src/styles/presets-data/default.ts` to `src/styles/presets-data/<name>.ts`.
-2. Export `<name>` and `<name>Dark` records from that file.
-3. Import those records in `src/styles/presets-data/index.ts` and add one entry to `presetDefinitions`.
-4. Run `bun run generate:presets`.
-5. Run `bun run test:tokens`.
+To add a theme, add its metadata in `themes.ts` and its values to every token. Missing values are type and generation errors. Alternative theme imports remain `@leitware/composables/presets/<name>.css`.
 
-That single registry entry feeds the generated CSS files, the downstream package export, and the `TokenConfigPanel` preset dropdown. During `bun run build:css`, the preset is copied to `dist/presets/<name>.css`, so downstream apps can switch presets by changing the import:
+### Enforced checks
 
-```css
-@import '@leitware/composables/styles.css';
-@import '@leitware/composables/presets/<name>.css';
-```
+`bun run lint` rejects raw colours, palette utilities, unknown tokens/classes, constructed classes, wrong semantic roles and untokenized appearance values. Utility validation uses the installed Tailwind compiler with the package stylesheet. Structural layout and documented runtime measurement expressions remain supported.
 
-App-level overrides should come after the preset import.
+Run `lint`, `format:check`, `typecheck`, `test:generated`, `test:tokens`, `test:token-api`, `build:css`, `test:css` and `test:tokens:browser`. CI treats these as required checks, including negative lint fixtures and computed-style browser tests. Regenerate public usage rules with `bun run generate:rules` after API or README changes.
 
-### Token System Checks
-
-The token system self-regulates through CI checks:
-
-- `bun scripts/generate-tokens.ts --check` verifies the generated palette, Tailwind colour adapter, and public semantic utilities.
-- `bun scripts/generate-preset-css.ts --check` verifies generated preset CSS.
-- `bun scripts/generate-rules.ts --check` verifies generated AI usage rules and the consumer skill's public API manifest.
-- `bun run test:tokens` verifies semantic token registry coverage, Tailwind aliases, preset keys, and semantic class usage.
-- `bun run test:css` verifies the compiled downstream CSS contains required tokens and utilities.
-
-Install local Git hooks to run the same checks before commits:
-
-```bash
-bun run hooks:install
-```
-
-The repo-owned `.githooks/pre-commit` hook runs linting, formatting, typechecking, generated CSS drift checks, and semantic token checks. `.githooks/commit-msg` enforces Conventional Commits.
-
----
-
-## Linting
-
-The project uses [Oxlint](https://oxc.rs/docs/guide/usage/linter.html) for linting and [Oxc Formatter](https://oxc.rs/docs/guide/usage/formatter.html) for formatting. A custom script checks for arbitrary Tailwind values to enforce design token usage:
-
-```bash
-bun src/scripts/lint-no-arbitrary.ts src showcase/src
-```
+Install `.githooks` with `bun run hooks:install`. Pre-commit checks styling, types and generated output; commit messages follow Conventional Commits.
 
 ---
 
 ## Showcase
 
-Live component demo: **[https://rowanhen.github.io/composables/](https://rowanhen.github.io/composables/)**
+Live component demo: **[https://composables.leitware.com](https://composables.leitware.com)**
 
 ---
 
@@ -601,10 +555,10 @@ Component tokens include `--layer-card-radius`, `--layer-card-padding`,
 
 ### Tooling Components
 
-| Component            | Description                                                                       |
-| -------------------- | --------------------------------------------------------------------------------- |
-| `token-config-panel` | Live token editor with color pickers, sliders, font selector, and preset switcher |
-| `theme-injector`     | Floating palette button that opens the token editor from any page                 |
+| Component            | Description                                                                        |
+| -------------------- | ---------------------------------------------------------------------------------- |
+| `token-config-panel` | Searchable complete token catalogue with theme/mode editing and JSON import/export |
+| `theme-injector`     | Floating palette button that opens the token editor from any page                  |
 
 ---
 

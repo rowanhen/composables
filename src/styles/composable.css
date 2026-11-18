@@ -5,13 +5,8 @@
    This file does NOT include Tailwind itself - the downstream app owns that.
    See README.md "Quick Start" for the full import pattern.
 
-   File structure:
-     tokens/palette.css        - Primitive color scales (runtime)
-     tokens/tailwind-color-adapter.css - Generated Tailwind color aliases
-     tokens/tailwind-theme.css - Non-color Tailwind theme registrations
-     presets/default.css       - Complete default light/dark runtime values
-     tokens/semantic-utilities.css - Generated public semantic classes
-     tokens/base.css           - Global base styles (@layer base)
+   Author tokens in tokens/definitions.ts; bun run generate:tokens emits the
+   complete themes, Tailwind adapter and guaranteed utility classes.
    ============================================================================ */
 
 @import 'shadcn/tailwind.css';
@@ -62,11 +57,16 @@
 }
 
 /* ── Token layers ─────────────────────────────────────────────────────── */
-@import './tokens/palette.css';
-@import './tokens/tailwind-color-adapter.css';
-@import './tokens/tailwind-theme.css';
 @import './tokens/tailwind-public-utilities.css';
 @import './presets/default.css';
 @import './tokens/motion.css';
 @import './tokens/semantic-utilities.css';
 @import './tokens/base.css';
+
+/* Disclosure mechanics are component behaviour; duration is a configurable token. */
+@utility animate-accordion-down {
+	animation: accordion-down var(--accordion-duration) var(--motion-ease-decelerate);
+}
+@utility animate-accordion-up {
+	animation: accordion-up var(--accordion-duration) var(--motion-ease-decelerate);
+}

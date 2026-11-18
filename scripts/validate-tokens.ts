@@ -1,13 +1,6 @@
-import { palettes, steps } from '../src/styles/tokens/palette-data'
-import { systemDefaults } from '../src/styles/tokens/system-tokens'
-import { readFileSync } from 'node:fs'
-import { join } from 'node:path'
-import { foundationDefaults } from '../src/styles/tokens/foundations'
-import { componentDefaults } from '../src/styles/tokens/component-tokens'
-import { componentUtilityAliases } from '../src/styles/tokens/utility-aliases'
-import { semanticColorCssVars, sidebarColorCssVars } from '../src/styles/tokens/registry'
-import { presetDefinitions } from '../src/styles/presets-data'
-import { resolveTokens } from '../src/styles/tokens/preset'
+import { tokens } from '../src/styles/tokens/definitions'
+import { themes } from '../src/styles/tokens/themes'
+import type { TokenDefinition } from '../src/styles/tokens/schema'
 
 export function validateReferences(
 	values: Record<string, string>,
@@ -35,43 +28,46 @@ export function validateReferences(
 	return [...new Set(errors)]
 }
 
-export function validateTokenSystem(): string[] {
-	const root = join(import.meta.dir, '..')
-
-	const external = new Set<string>([
-		...palettes.flatMap((palette) =>
-			steps.flatMap((step) => [
-				`--palette-${palette.name}-${step}`,
-				`--palette-${palette.name}-alpha-${step}`,
-			]),
-		),
-		...steps.map((step) => `--palette-overlays-black-alpha-${step}`),
-		'--palette-base-white',
-		'--palette-base-black',
-		...[
-			...readFileSync(join(root, 'node_modules/tailwindcss/theme.css'), 'utf8').matchAll(
-				/(--[a-z0-9-]+)\s*:/g,
-			),
-		].map((match) => match[1]),
-	])
+/** Accept a supplied record so mutation tests exercise the same production validator. */
+export function validateDefinitions(definitions: Record<string, TokenDefinition>): string[] {
 	const errors: string[] = []
-	const required = [...semanticColorCssVars, ...sidebarColorCssVars]
-	for (const preset of presetDefinitions) {
-		for (const mode of ['light', 'dark'] as const) {
-			for (const key of required)
-				if (!(key in preset[mode])) errors.push(`${preset.name}.${mode} missing ${key}`)
-			const values = resolveTokens({ ...preset.light, ...preset[mode] })
-			errors.push(
-				...validateReferences(values, external).map((error) => `${preset.name}.${mode}: ${error}`),
-			)
+	const aliases = new Map<string, string>()
+	const utilities = new Set<string>()
+	for (const [name, token] of Object.entries(definitions)) {
+		if (!/^--[a-z][a-z0-9-]*$/.test(name) || /brand-[2-9]/.test(name))
+			errors.push(`Invalid token name ${name}`)
+		if (!token.description.trim() || !token.group.trim())
+			errors.push(`${name}: missing documentation`)
+		for (const theme of themes) {
+			const value = token.values[theme.name]
+			const modes = typeof value === 'string' ? [value, value] : value
+			if (!Array.isArray(modes) || modes.length !== 2) {
+				errors.push(`${name}: missing ${theme.name} modes`)
+				continue
+			}
+			for (const item of modes) {
+				if (typeof item !== 'string' || !item.trim() || /[;{}<>]|var\(|\binitial\b/.test(item))
+					errors.push(`${name}.${theme.name}: expected a concrete CSS value`)
+			}
+		}
+		for (const extra of Object.keys(token.values))
+			if (!themes.some((t) => t.name === extra)) errors.push(`${name}: unknown theme ${extra}`)
+		for (const alias of token.tailwind) {
+			if (aliases.has(alias)) errors.push(`Duplicate Tailwind registration ${alias}`)
+			if (alias in definitions) errors.push(`Tailwind registration overwrites token ${alias}`)
+			aliases.set(alias, name)
+		}
+		for (const [utility, declarations] of Object.entries(token.utilities)) {
+			if (utilities.has(utility)) errors.push(`Duplicate utility ${utility}`)
+			utilities.add(utility)
+			for (const value of Object.values(declarations))
+				if (value !== `var(${name})`) errors.push(`${utility}: must consume its own token ${name}`)
 		}
 	}
-	for (const [alias, target] of Object.entries(componentUtilityAliases)) {
-		if (alias === target) errors.push(`Self-referencing utility alias ${alias}`)
-		if (alias in foundationDefaults || alias in systemDefaults || alias in componentDefaults)
-			errors.push(`Utility alias ${alias} overwrites an owned token`)
-	}
 	return errors
+}
+export function validateTokenSystem(): string[] {
+	return validateDefinitions(tokens)
 }
 if (import.meta.main) {
 	const errors = validateTokenSystem()
@@ -79,5 +75,7 @@ if (import.meta.main) {
 		console.error(errors.join('\n'))
 		process.exit(1)
 	}
-	console.log('All preset dependency graphs are complete and acyclic.')
+	console.log(
+		'Complete, independent token values and collision-free utility registrations verified.',
+	)
 }

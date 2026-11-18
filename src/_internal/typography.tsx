@@ -7,10 +7,10 @@ const typographyVariants = cva('', {
 	variants: {
 		variant: {
 			// Hero variants - brand font, 700, letter-spacing -0.02em, line-height 1
-			'hero-100': 'font-brand font-bold text-4xl leading-none tracking-[-0.02em]',
-			'hero-200': 'font-brand font-bold text-5xl leading-none tracking-[-0.02em]',
-			'hero-300': 'font-brand font-bold text-6xl leading-none tracking-[-0.02em]',
-			'hero-400': 'font-brand font-bold text-7xl leading-none tracking-[-0.02em]',
+			'hero-100': 'font-brand font-bold text-4xl leading-none tracking-hero',
+			'hero-200': 'font-brand font-bold text-5xl leading-none tracking-hero',
+			'hero-300': 'font-brand font-bold text-6xl leading-none tracking-hero',
+			'hero-400': 'font-brand font-bold text-7xl leading-none tracking-hero',
 
 			// Heading variants - heading font, 500, letter-spacing 0
 			'heading-100': 'font-heading font-medium text-sm tracking-normal',
@@ -21,12 +21,12 @@ const typographyVariants = cva('', {
 			'heading-600': 'font-heading font-medium text-4xl tracking-normal',
 
 			// Brand heading variants - brand font, 700, letter-spacing -0.01em
-			'brand-heading-100': 'font-brand font-bold text-sm tracking-[-0.01em]',
-			'brand-heading-200': 'font-brand font-bold text-base tracking-[-0.01em]',
-			'brand-heading-300': 'font-brand font-bold text-xl tracking-[-0.01em]',
-			'brand-heading-400': 'font-brand font-bold text-2xl tracking-[-0.01em]',
-			'brand-heading-500': 'font-brand font-bold text-3xl tracking-[-0.01em]',
-			'brand-heading-600': 'font-brand font-bold text-4xl tracking-[-0.01em]',
+			'brand-heading-100': 'font-brand font-bold text-sm tracking-brand-heading',
+			'brand-heading-200': 'font-brand font-bold text-base tracking-brand-heading',
+			'brand-heading-300': 'font-brand font-bold text-xl tracking-brand-heading',
+			'brand-heading-400': 'font-brand font-bold text-2xl tracking-brand-heading',
+			'brand-heading-500': 'font-brand font-bold text-3xl tracking-brand-heading',
+			'brand-heading-600': 'font-brand font-bold text-4xl tracking-brand-heading',
 
 			// Body variants - sans font, 400, letter-spacing 0
 			'body-100': 'font-sans font-normal text-sm tracking-normal',

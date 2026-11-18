@@ -1,36 +1,45 @@
 /* Motion preferences intentionally outrank preset declarations, including scoped themes. */
-/* Runtime motion preferences; token defaults live in component-tokens.ts. */
+/* Runtime motion preferences; token defaults live in definitions.ts. */
 :root[data-motion='none'],
 [data-motion='none'] {
 	--motion-duration-fast: 0ms !important;
+	--default-transition-duration: 0ms !important;
 	--motion-duration-normal: 0ms !important;
 	--motion-duration-slow: 0ms !important;
 	--motion-duration-color: 0ms !important;
 	--motion-duration-interaction: 0ms !important;
 	--motion-duration-disclosure: 0ms !important;
+	--accordion-duration: 0ms !important;
+	--card-duration: 0ms !important;
 	--motion-duration-overlay: 0ms !important;
 	--hover-transform: none !important;
-	--hover-shadow: none !important;
+	--shadow-hover: none !important;
 	--active-scale: 1 !important;
 }
 
 :root[data-motion='color'],
 [data-motion='color'] {
 	--motion-duration-fast: 0ms !important;
+	--default-transition-duration: 0ms !important;
 	--motion-duration-normal: 0ms !important;
 	--motion-duration-slow: 0ms !important;
 	--motion-duration-color: 120ms !important;
 	--motion-duration-interaction: 0ms !important;
 	--motion-duration-disclosure: 0ms !important;
+	--accordion-duration: 0ms !important;
+	--card-duration: 120ms !important;
 	--motion-duration-overlay: 0ms !important;
 	--hover-transform: none !important;
-	--hover-shadow: none !important;
+	--shadow-hover: none !important;
 	--active-scale: 1 !important;
 }
 
 :root[data-motion='full'],
 [data-motion='full'] {
 	--motion-duration-fast: 100ms !important;
+	--default-transition-duration: 200ms !important;
+	--card-duration: 100ms !important;
+	--accordion-duration: 200ms !important;
 	--motion-duration-normal: 200ms !important;
 	--motion-duration-slow: 300ms !important;
 	--motion-duration-color: var(--motion-duration-fast) !important;
@@ -38,21 +47,24 @@
 	--motion-duration-disclosure: var(--motion-duration-normal) !important;
 	--motion-duration-overlay: var(--motion-duration-fast) !important;
 	--hover-transform: none !important;
-	--hover-shadow: var(--shadow-md) !important;
+	--shadow-hover: var(--shadow-md) !important;
 	--active-scale: 0.98 !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
-	:root:not([data-motion='full']) {
+	:where(:root, [data-preset], [data-theme]):not([data-motion='full']):not([data-motion='full'] *) {
 		--motion-duration-fast: 0ms !important;
+		--default-transition-duration: 0ms !important;
 		--motion-duration-normal: 0ms !important;
 		--motion-duration-slow: 0ms !important;
 		--motion-duration-color: 0ms !important;
 		--motion-duration-interaction: 0ms !important;
 		--motion-duration-disclosure: 0ms !important;
+		--accordion-duration: 0ms !important;
+		--card-duration: 0ms !important;
 		--motion-duration-overlay: 0ms !important;
 		--hover-transform: none !important;
-		--hover-shadow: none !important;
+		--shadow-hover: none !important;
 		--active-scale: 1 !important;
 	}
 }

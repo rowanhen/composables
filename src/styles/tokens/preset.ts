@@ -1,17 +1,9 @@
-import { systemDefaults } from './system-tokens'
-import { componentDefaults } from './component-tokens'
-import { foundationDefaults } from './foundations'
-import { parseTokenOverrides, type PresetTokens, type TokenOverrides } from './types'
+import { themeValues } from './model'
+import { parseTokenOverrides, tokenNames, type PresetTokens, type TokenOverrides } from './types'
 
-/** Rebind dependencies at each theme boundary; never inherit another preset's geometry. */
+/** Apply optional caller customizations to a complete default theme. No dependency resolution. */
 export function resolveTokens(overrides: TokenOverrides): Record<string, string> {
-	return {
-		...foundationDefaults,
-		...systemDefaults,
-		...componentDefaults,
-		'--radius-base': '0rem',
-		...parseTokenOverrides(overrides),
-	}
+	return { ...themeValues('default', 'light'), ...parseTokenOverrides(overrides) }
 }
 
 export interface ThemePreset {
@@ -33,10 +25,14 @@ export function definePreset(
 /** The same serializer powers generated CSS and the live editor. Selector is trusted application code. */
 export function createPresetCSS(preset: ThemePreset, selector = ':root'): string {
 	if (/[{};<>]/.test(selector)) throw new Error('Invalid theme selector')
-	const block = (values: TokenOverrides) =>
-		Object.entries(resolveTokens(values))
+	const block = (values: PresetTokens) => {
+		const parsed = parseTokenOverrides(values)
+		for (const name of tokenNames)
+			if (!(name in parsed)) throw new Error(`Incomplete theme: missing ${name}`)
+		return Object.entries(parsed)
 			.map(([name, value]) => `\t${name}: ${value};`)
 			.join('\n')
+	}
 	const dark = selector === ':root' ? '.dark' : `${selector}.dark, .dark ${selector}`
-	return `${selector} {\n${block(preset.light)}\n}\n${dark} {\n${block({ ...preset.light, ...preset.dark })}\n}\n`
+	return `${selector} {\n${block(preset.light)}\n}\n${dark} {\n${block(preset.dark)}\n}\n`
 }

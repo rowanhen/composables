@@ -26,7 +26,7 @@ export const Basic: Story = {
 					<HoverCardTrigger
 						href="#"
 						onClick={(e) => e.preventDefault()}
-						className="w-fit cursor-pointer underline underline-offset-4 decoration-muted-foreground/40 text-content-default font-medium"
+						className="w-fit cursor-pointer underline underline-offset-4 decoration-content-muted/40 text-content-default font-medium"
 					>
 						@composables
 					</HoverCardTrigger>
@@ -77,7 +77,7 @@ export const InlineUsage: Story = {
 						<HoverCardTrigger
 							href="#"
 							onClick={(e) => e.preventDefault()}
-							className="cursor-pointer underline underline-offset-4 decoration-muted-foreground/40 text-content-default font-medium"
+							className="cursor-pointer underline underline-offset-4 decoration-content-muted/40 text-content-default font-medium"
 						>
 							@alice
 						</HoverCardTrigger>
@@ -103,7 +103,7 @@ export const InlineUsage: Story = {
 						<HoverCardTrigger
 							href="#"
 							onClick={(e) => e.preventDefault()}
-							className="cursor-pointer underline underline-offset-4 decoration-muted-foreground/40 text-content-default font-medium"
+							className="cursor-pointer underline underline-offset-4 decoration-content-muted/40 text-content-default font-medium"
 						>
 							@bob
 						</HoverCardTrigger>

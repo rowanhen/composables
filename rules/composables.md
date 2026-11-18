@@ -174,10 +174,10 @@ Use this catalog to choose public exports. The `Source module` column is for mai
 
 ### Tooling Components
 
-| Module               | Source module                      | Import from             | Public values      | Public types | Description                                                                       |
-| -------------------- | ---------------------------------- | ----------------------- | ------------------ | ------------ | --------------------------------------------------------------------------------- |
-| `token-config-panel` | `./opinionated/token-config-panel` | `@leitware/composables` | `TokenConfigPanel` | -            | Live token editor with color pickers, sliders, font selector, and preset switcher |
-| `theme-injector`     | `./opinionated/theme-injector`     | `@leitware/composables` | `ThemeInjector`    | -            | Floating palette button that opens the token editor from any page                 |
+| Module               | Source module                      | Import from             | Public values      | Public types | Description                                                                        |
+| -------------------- | ---------------------------------- | ----------------------- | ------------------ | ------------ | ---------------------------------------------------------------------------------- |
+| `token-config-panel` | `./opinionated/token-config-panel` | `@leitware/composables` | `TokenConfigPanel` | -            | Searchable complete token catalogue with theme/mode editing and JSON import/export |
+| `theme-injector`     | `./opinionated/theme-injector`     | `@leitware/composables` | `ThemeInjector`    | -            | Floating palette button that opens the token editor from any page                  |
 
 ### Other Public Exports
 

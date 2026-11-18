@@ -1,13 +1,5 @@
 import type { PresetTokens } from '../tokens/types'
-import { gutenberg, gutenbergDark } from './gutenberg'
 export { gutenberg, gutenbergDark } from './gutenberg'
-import { defaultPreset, defaultPresetDark } from './default'
-import { brutalist, brutalistDark } from './brutalist'
-import { signalPop, signalPopDark } from './signal-pop'
-import { editorialGrid, editorialGridDark } from './editorial-grid'
-import { kumo, kumoDark } from './kumo'
-import { oqita, oqitaDark } from './oqita'
-import { sponder, sponderDark } from './sponder'
 
 export { defaultPreset, defaultPresetDark } from './default'
 export { brutalist, brutalistDark } from './brutalist'
@@ -25,68 +17,13 @@ export interface PresetDefinition {
 	dark: PresetTokens
 }
 
-export const presetDefinitions = [
-	{
-		name: 'gutenberg',
-		label: 'Gutenberg',
-		description: 'Soft neutral surfaces, blue accents, and generous pill-shaped controls.',
-		light: gutenberg,
-		dark: gutenbergDark,
-	},
-	{
-		name: 'default',
-		label: 'Default',
-		description: 'Clean, neutral, Inter-based. The "no opinion" starting point.',
-		light: defaultPreset,
-		dark: defaultPresetDark,
-	},
-	{
-		name: 'brutalist',
-		label: 'Brutalist',
-		description:
-			'Raw, architectural, uncompromising. Structural honesty: things look exactly like what they are.',
-		light: brutalist,
-		dark: brutalistDark,
-	},
-	{
-		name: 'signal-pop',
-		label: 'Signal Pop',
-		description:
-			'Bright consumer-tech energy: electric modules, capsule controls, hard outlines, and codey labels.',
-		light: signalPop,
-		dark: signalPopDark,
-	},
-	{
-		name: 'editorial-grid',
-		label: 'Editorial Grid',
-		description: 'Flat editorial grid, visible rules, and vivid signals.',
-		light: editorialGrid,
-		dark: editorialGridDark,
-	},
-	{
-		name: 'kumo',
-		label: 'Kumo',
-		description:
-			'Cloudflare Kumo-inspired: neutral surfaces, blue actions, and highlighted gradient buttons.',
-		light: kumo,
-		dark: kumoDark,
-	},
-	{
-		name: 'oqita',
-		label: 'Oqita',
-		description:
-			'Friendly and soft: expressive type, compact pill controls, quiet surfaces, and cobalt actions.',
-		light: oqita,
-		dark: oqitaDark,
-	},
-	{
-		name: 'sponder',
-		label: 'Sponder',
-		description: 'Warm light surfaces, dark slate surfaces, and green brand accents.',
-		light: sponder,
-		dark: sponderDark,
-	},
-] as const satisfies readonly PresetDefinition[]
+import { themes } from '../tokens/themes'
+import { themeValues } from '../tokens/model'
+export const presetDefinitions = themes.map((theme) => ({
+	...theme,
+	light: themeValues(theme.name, 'light'),
+	dark: themeValues(theme.name, 'dark'),
+}))
 
 export type PresetName = (typeof presetDefinitions)[number]['name']
 
