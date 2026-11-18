@@ -85,7 +85,8 @@ export function lintTokenSource(source: string, file = 'component.tsx'): string[
 				}
 				// Dividers paint a boundary with background; avatar separation rings paint the page surface.
 				const intentional =
-					(property === 'bg' && (role === 'stroke' || role.startsWith('stroke-'))) ||
+					(property === 'bg' &&
+						(role === 'stroke' || role.startsWith('stroke-') || role === 'sidebar-border')) ||
 					(property === 'ring' && role === 'page')
 				if (intentional) continue
 				const allowed = target.startsWith('--bg-')
@@ -98,7 +99,13 @@ export function lintTokenSource(source: string, file = 'component.tsx'): string[
 								? ['text', 'fill', 'stroke']
 								: target.startsWith('--chart-')
 									? ['bg', 'fill', 'stroke']
-									: null
+									: /(?:border-color|ring-color)/.test(target)
+										? ['border', 'ring', 'outline']
+										: /(?:background|surface)/.test(target)
+											? ['bg']
+											: /(?:foreground|content|placeholder)/.test(target)
+												? ['text']
+												: null
 				if (allowed && !allowed.includes(property))
 					issues.push(
 						`${file}:${location}: ${property}-${role} uses ${target} in the wrong property role`,

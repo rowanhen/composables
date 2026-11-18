@@ -155,3 +155,19 @@ test('authored CSS cannot bypass colour or utility enforcement', () => {
 	expect(lintStylesheetSource('.custom-card { color: var(--text-default); }')).not.toEqual([])
 	expect(lintStylesheetSource('@utility custom-card { color: var(--text-default); }')).toEqual([])
 })
+
+test('component paint aliases preserve their property roles', () => {
+	for (const name of [
+		'text-control-surface',
+		'bg-control-content',
+		'text-card-surface',
+		'bg-card-content',
+		'text-control-stroke',
+	])
+		expect(lintTokenSource(`const className = "${name}"`)).not.toEqual([])
+	expect(
+		lintTokenSource(
+			'const className = "bg-control-surface text-control-content border-control-stroke bg-card-surface text-card-content"',
+		),
+	).toEqual([])
+})
