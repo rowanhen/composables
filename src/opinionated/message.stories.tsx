@@ -10,21 +10,16 @@ import {
 	MessageGroup,
 	MessageHeader,
 } from './message'
-import { VStack } from '../_internal/stack'
 
 const meta = {
-	title: 'Content/Message',
-	parameters: {
-		docs: {
-			description: { component: 'Generic conversational message layout primitives.' },
-		},
-	},
+	title: 'Components/Message',
 } satisfies Meta
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Conversation: Story = {
+	name: 'Message',
 	render: () => (
 		<Gallery>
 			<Group label="Conversation">
@@ -54,14 +49,6 @@ export const Conversation: Story = {
 					</Message>
 				</MessageGroup>
 			</Group>
-		</Gallery>
-	),
-}
-
-export const More: Story = {
-	render: () => (
-		<Gallery>
-			<VStack gap={4} className="max-w-2xl"></VStack>
 		</Gallery>
 	),
 }

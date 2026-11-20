@@ -11,12 +11,12 @@
 	},
 	"iconLibrary": "lucide",
 	"aliases": {
-		"components": "src/_internal",
+		"components": "src/components",
 		"utils": "src/lib",
-		"ui": "src/_internal",
+		"ui": "src/components/ui",
 		"hooks": "src/hooks"
 	},
 	"registries": {
-		"@ai-elements": "https://ai-sdk.dev/elements/api/registry/{name}.json"
+		"@keyframery": "https://keyframery.com/r/{name}.json"
 	}
 }

@@ -1,13 +1,16 @@
-import type { RadioGroup as RadioGroupPrimitive } from '@base-ui/react/radio-group'
-import type { VariantProps } from 'class-variance-authority'
 import * as React from 'react'
-import { Field, FieldContent, FieldDescription, FieldError, FieldLabel } from '../_internal/field'
 import {
-	RadioGroup,
-	RadioGroupItem,
-	RadioGroupOption,
-	type radioGroupOptionVariants,
-} from '../_internal/radio-group'
+	Field,
+	FieldContent,
+	FieldDescription,
+	FieldError,
+	FieldLabel,
+	type FieldErrors,
+	type FieldProps,
+	fieldErrors,
+} from './field'
+import { cn } from '../lib/utils'
+import { RadioGroup, RadioGroupItem } from './radio-group'
 
 export interface FormRadioGroupOption {
 	label: string
@@ -20,20 +23,20 @@ export interface FormRadioGroupOption {
 }
 
 export interface FormRadioGroupProps extends Omit<
-	RadioGroupPrimitive.Props,
+	React.ComponentProps<typeof RadioGroup>,
 	'value' | 'onValueChange'
 > {
 	label?: string
 	description?: string
-	error?: string | string[] | Array<{ message?: string } | undefined>
+	error?: FieldErrors
 	options: FormRadioGroupOption[]
 	value?: string | null
 	onValueChange?: (value: string | null) => void
 	disabled?: boolean
 	required?: boolean
-	orientation?: VariantProps<typeof Field>['orientation']
+	orientation?: FieldProps['orientation']
 	/** `card` renders each option as a selectable tile. */
-	variant?: VariantProps<typeof radioGroupOptionVariants>['variant']
+	variant?: 'default' | 'card'
 	className?: string
 	// Additional props
 	id?: string
@@ -56,30 +59,14 @@ function FormRadioGroup({
 	name,
 	...radioGroupProps
 }: FormRadioGroupProps) {
-	const errorArray = React.useMemo(() => {
-		if (!error) return undefined
-		if (Array.isArray(error)) {
-			return error.map((e) => (typeof e === 'string' ? { message: e } : e))
-		}
-		return [{ message: error }]
-	}, [error])
+	const errorArray = fieldErrors(error)
 
-	const hasError = Boolean(error)
+	const hasError = errorArray.length > 0
 	const generatedId = React.useId()
 	const radioGroupId = id || generatedId
 
-	// Wrap onValueChange to match the primitive's signature
-	const handleValueChange = React.useCallback(
-		(newValue: unknown) => {
-			if (onValueChange) {
-				onValueChange(typeof newValue === 'string' ? newValue : null)
-			}
-		},
-		[onValueChange],
-	)
-
 	return (
-		<Field orientation={orientation} className={className} data-invalid={hasError}>
+		<Field orientation={orientation} className={className} invalid={hasError} disabled={disabled}>
 			{label && (
 				<FieldLabel id={`${radioGroupId}-label`}>
 					{label}
@@ -89,8 +76,10 @@ function FormRadioGroup({
 			<FieldContent>
 				<RadioGroup
 					id={radioGroupId}
-					value={value ?? undefined}
-					onValueChange={handleValueChange}
+					value={value}
+					onValueChange={onValueChange}
+					name={name}
+					required={required}
 					disabled={disabled}
 					aria-invalid={hasError}
 					aria-required={required}
@@ -100,7 +89,15 @@ function FormRadioGroup({
 					{options.map((option) => {
 						const optionId = `${radioGroupId}-${option.value}`
 						return (
-							<RadioGroupOption key={option.value} htmlFor={optionId} variant={variant}>
+							<label
+								key={option.value}
+								htmlFor={optionId}
+								className={cn(
+									'flex cursor-pointer items-center gap-2',
+									variant === 'card' &&
+										'rounded-md border border-stroke-default p-3 has-data-checked:border-stroke-brand',
+								)}
+							>
 								<RadioGroupItem
 									value={option.value}
 									id={optionId}
@@ -116,13 +113,10 @@ function FormRadioGroup({
 										</span>
 									)}
 								</span>
-							</RadioGroupOption>
+							</label>
 						)
 					})}
 				</RadioGroup>
-				{name && (
-					<input type="hidden" name={name} value={value ?? ''} aria-hidden="true" tabIndex={-1} />
-				)}
 				{description && <FieldDescription>{description}</FieldDescription>}
 				{hasError && <FieldError errors={errorArray} />}
 			</FieldContent>

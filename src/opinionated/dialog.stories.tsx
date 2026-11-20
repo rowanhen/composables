@@ -1,57 +1,38 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Gallery } from '../_storybook/gallery'
-import { Button } from '../_internal/button'
-import {
-	Dialog,
-	DialogContent,
-	DialogDescription,
-	DialogFooter,
-	DialogHeader,
-	DialogTitle,
-	DialogTrigger,
-} from '../_internal/dialog'
-import { Input } from '../_internal/input'
-import { Label } from '../_internal/label'
-import { VStack } from '../_internal/stack'
+import { Dialog, DialogClose } from './dialog'
+import { FormInput } from './form-input'
 
 const meta = {
-	title: 'Overlays/Dialog',
-	parameters: {
-		docs: {
-			description: { component: 'Modal surfaces for focused tasks.' },
-		},
+	title: 'Components/Dialog',
+	component: Dialog,
+	args: {
+		title: 'Edit profile',
+		description: 'Update the name and email on your profile.',
+		trigger: 'Edit profile',
 	},
-} satisfies Meta
+} satisfies Meta<typeof Dialog>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Overview: Story = {
-	render: () => (
+	name: 'Dialog',
+	render: (args) => (
 		<Gallery>
-			<Dialog>
-				<DialogTrigger render={<Button variant="outline" />}>Open Dialog</DialogTrigger>
-				<DialogContent>
-					<DialogHeader>
-						<DialogTitle>Edit profile</DialogTitle>
-						<DialogDescription>
-							Make changes to your profile here. Click save when you're done.
-						</DialogDescription>
-					</DialogHeader>
-					<VStack gap={3}>
-						<VStack gap={1}>
-							<Label htmlFor="name">Name</Label>
-							<Input id="name" defaultValue="Jane Doe" />
-						</VStack>
-						<VStack gap={1}>
-							<Label htmlFor="email">Email</Label>
-							<Input id="email" defaultValue="jane@example.com" />
-						</VStack>
-					</VStack>
-					<DialogFooter showCloseButton>
-						<Button>Save changes</Button>
-					</DialogFooter>
-				</DialogContent>
+			<Dialog
+				{...args}
+				footer={
+					<>
+						<DialogClose>Cancel</DialogClose>
+						<DialogClose variant="primary">Save changes</DialogClose>
+					</>
+				}
+			>
+				<div className="mt-4 space-y-3">
+					<FormInput label="Name" defaultValue="Jane Doe" />
+					<FormInput label="Email" defaultValue="jane@example.com" />
+				</div>
 			</Dialog>
 		</Gallery>
 	),

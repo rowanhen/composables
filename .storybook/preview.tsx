@@ -1,31 +1,9 @@
 import React from 'react'
-import { MotionGlobalConfig } from 'motion/react'
 import type { Decorator, Preview } from '@storybook/react-vite'
-import { presetDefinitions } from '../src/styles/presets-data'
+import { applyPresetStyles, presetOptions } from '../showcase/src/presets'
 import '../showcase/src/styles/composable.css'
 
-// Freeze JS-driven animations for visual tests.
-MotionGlobalConfig.skipAnimations = navigator.webdriver
-
 const PRESET_STYLE_ID = 'composables-storybook-preset'
-
-// Presets are `:root` stylesheets, so inject only the active one.
-function applyPreset(presetName: string) {
-	document.getElementById(PRESET_STYLE_ID)?.remove()
-
-	const preset = presetDefinitions.find((candidate) => candidate.name === presetName)
-	if (!preset || preset.name === 'default') return
-
-	const toBlock = (selector: string, vars: Record<string, string>) =>
-		`${selector}{${Object.entries(vars)
-			.map(([cssVar, value]) => `${cssVar}:${value};`)
-			.join('')}}`
-
-	const style = document.createElement('style')
-	style.id = PRESET_STYLE_ID
-	style.textContent = `${toBlock(':root', preset.light)}\n${toBlock('.dark', preset.dark)}`
-	document.head.appendChild(style)
-}
 
 const withTheme: Decorator = (Story, context) => {
 	const { theme, preset } = context.globals
@@ -35,7 +13,7 @@ const withTheme: Decorator = (Story, context) => {
 	}, [theme])
 
 	React.useLayoutEffect(() => {
-		applyPreset(preset)
+		applyPresetStyles(preset, PRESET_STYLE_ID)
 	}, [preset])
 
 	return (
@@ -71,7 +49,7 @@ const preview: Preview = {
 			toolbar: {
 				title: 'Preset',
 				icon: 'paintbrush',
-				items: presetDefinitions.map((item) => ({ value: item.name, title: item.label })),
+				items: presetOptions,
 				dynamicTitle: true,
 			},
 		},
@@ -89,27 +67,14 @@ const preview: Preview = {
 		},
 		options: {
 			storySort: {
-				order: [
-					'Foundations',
-					'Layout',
-					'Actions',
-					'Content',
-					'Overlays',
-					'Navigation',
-					'Data',
-					'Forms',
-					'AI',
-					'Utilities',
-					'*',
-				],
+				method: 'alphabetical',
+				order: ['Components', 'Utilities', 'Foundations'],
 			},
 		},
 		a11y: {
 			test: 'todo',
 		},
 	},
-
-	tags: ['autodocs'],
 }
 
 export default preview

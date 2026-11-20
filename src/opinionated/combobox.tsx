@@ -1,121 +1,51 @@
+'use client'
+
+import type { ComponentProps } from 'react'
 import {
-	Combobox as ComboboxPrimitive,
-	ComboboxChip,
-	ComboboxChips,
-	ComboboxChipsInput,
-	ComboboxCollection,
+	Combobox as Root,
 	ComboboxContent,
+	ComboboxControl,
 	ComboboxEmpty,
-	ComboboxGroup,
 	ComboboxInput,
-	ComboboxItem,
 	ComboboxLabel,
 	ComboboxList,
-	ComboboxSeparator,
 	ComboboxTrigger,
-	ComboboxValue,
-	useComboboxAnchor,
-} from '../_internal/combobox'
+} from '../components/keyframery/combobox'
 
-export interface ComboboxOption {
+export type ComboboxProps = Pick<
+	ComponentProps<typeof Root<string, false>>,
+	'items' | 'disabled' | 'required' | 'name' | 'speed'
+> & {
+	value?: string | null
+	defaultValue?: string | null
+	onValueChange?: (value: string | null) => void
+
 	label: string
-	value: string
-	disabled?: boolean
-}
-
-export interface ComboboxProps {
-	/** Currently selected value */
-	value?: string
-	/** Callback when value changes */
-	onValueChange?: (value: string) => void
-	/** List of selectable options */
-	options: ComboboxOption[]
-	/** Placeholder text when no value is selected */
 	placeholder?: string
-	/** Placeholder text for the search input */
-	searchPlaceholder?: string
-	/** Message shown when no options match the search */
 	emptyMessage?: string
-	/** Whether the combobox is disabled */
-	disabled?: boolean
-	/** Additional class names for the input */
 	className?: string
 }
 
-/**
- * Opinionated Combobox component with simplified options array API.
- * Use for standalone searchable select dropdowns (not form-bound).
- * For form usage, see form-combobox.
- *
- * @example
- * ```tsx
- * const [value, setValue] = useState('')
- *
- * <Combobox
- *   value={value}
- *   onValueChange={setValue}
- *   options={[
- *     { label: 'Apple', value: 'apple' },
- *     { label: 'Banana', value: 'banana' },
- *     { label: 'Cherry', value: 'cherry' },
- *   ]}
- *   placeholder="Select a fruit"
- *   searchPlaceholder="Search fruits..."
- *   emptyMessage="No fruits found"
- * />
- * ```
- */
-function Combobox({
-	value,
-	onValueChange,
-	options,
-	placeholder = 'Select...',
-	searchPlaceholder = 'Search...',
-	emptyMessage = 'No results found',
-	disabled = false,
+export function Combobox({
+	label,
+	placeholder,
+	emptyMessage = 'No options found.',
 	className,
+	...props
 }: ComboboxProps) {
-	const selectedOption = options.find((opt) => opt.value === value)
-
 	return (
-		<ComboboxPrimitive value={value ?? null} onValueChange={(v) => onValueChange?.(v ?? '')}>
-			<ComboboxInput
-				placeholder={selectedOption?.label ?? placeholder}
-				disabled={disabled}
-				className={className}
-				showClear={!!value}
-			/>
+		<Root {...props}>
+			<div className={className}>
+				<ComboboxLabel>{label}</ComboboxLabel>
+				<ComboboxControl>
+					<ComboboxInput placeholder={placeholder} />
+					<ComboboxTrigger aria-label={`Show options for ${label}`} />
+				</ComboboxControl>
+			</div>
 			<ComboboxContent>
-				<ComboboxInput placeholder={searchPlaceholder} disabled={disabled} />
-				<ComboboxList>
-					{options.map((option) => (
-						<ComboboxItem key={option.value} value={option.value} disabled={option.disabled}>
-							{option.label}
-						</ComboboxItem>
-					))}
-				</ComboboxList>
 				<ComboboxEmpty>{emptyMessage}</ComboboxEmpty>
+				<ComboboxList />
 			</ComboboxContent>
-		</ComboboxPrimitive>
+		</Root>
 	)
 }
-
-// Re-export sub-components for advanced usage
-export {
-	ComboboxChip,
-	ComboboxChips,
-	ComboboxChipsInput,
-	ComboboxCollection,
-	ComboboxContent,
-	ComboboxEmpty,
-	ComboboxGroup,
-	ComboboxInput,
-	ComboboxItem,
-	ComboboxLabel,
-	ComboboxList,
-	ComboboxSeparator,
-	ComboboxTrigger,
-	ComboboxValue,
-	useComboboxAnchor,
-}
-export { Combobox }

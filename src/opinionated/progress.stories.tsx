@@ -7,19 +7,13 @@ import {
 	ProgressLabel,
 	ProgressTrack,
 	ProgressValue,
-} from '../_internal/progress'
+} from '../components/keyframery/progress'
 import { Progress as ProgressOpinionated } from './progress'
-import { HStack, VStack } from '../_internal/stack'
 
 const meta = {
-	title: 'Data/Progress',
+	title: 'Components/Progress',
 	component: Progress,
 	args: { value: 60 },
-	parameters: {
-		docs: {
-			description: { component: 'Progress bars and completion indicators.' },
-		},
-	},
 } satisfies Meta<typeof Progress>
 
 export default meta
@@ -38,9 +32,9 @@ function ProgressDemo() {
 
 	return (
 		<Gallery title="Progress" description="Displays task completion status as a progress bar.">
-			<VStack gap={6}>
+			<div className="flex flex-col gap-6">
 				<Group label="Basic">
-					<VStack gap={3} className="max-w-md">
+					<div className="flex flex-col gap-3 max-w-md">
 						<Progress value={0}>
 							<ProgressTrack>
 								<ProgressIndicator />
@@ -66,39 +60,25 @@ function ProgressDemo() {
 								<ProgressIndicator />
 							</ProgressTrack>
 						</Progress>
-					</VStack>
+					</div>
 				</Group>
 
 				<Group label="With Label">
-					<VStack gap={3} className="max-w-md">
+					<div className="flex flex-col gap-3 max-w-md">
 						<Progress value={65}>
-							<HStack justify="between" className="mb-1">
+							<div className="flex gap-4 justify-between mb-1">
 								<ProgressLabel>Uploading files...</ProgressLabel>
 								<ProgressValue />
-							</HStack>
+							</div>
 							<ProgressTrack>
 								<ProgressIndicator />
 							</ProgressTrack>
 						</Progress>
 						<Progress value={100}>
-							<HStack justify="between" className="mb-1">
+							<div className="flex gap-4 justify-between mb-1">
 								<ProgressLabel>Complete</ProgressLabel>
 								<ProgressValue />
-							</HStack>
-							<ProgressTrack>
-								<ProgressIndicator variant="success" />
-							</ProgressTrack>
-						</Progress>
-					</VStack>
-				</Group>
-
-				<Group label="Animated">
-					<div className="max-w-md">
-						<Progress value={animated}>
-							<HStack justify="between" className="mb-1">
-								<ProgressLabel>Processing...</ProgressLabel>
-								<ProgressValue />
-							</HStack>
+							</div>
 							<ProgressTrack>
 								<ProgressIndicator />
 							</ProgressTrack>
@@ -106,44 +86,31 @@ function ProgressDemo() {
 					</div>
 				</Group>
 
-				<Group label="Variants (primitive)">
-					<VStack gap={3} className="max-w-md">
-						<Progress value={60}>
+				<Group label="Animated">
+					<div className="max-w-md">
+						<Progress value={animated}>
+							<div className="flex gap-4 justify-between mb-1">
+								<ProgressLabel>Processing...</ProgressLabel>
+								<ProgressValue />
+							</div>
 							<ProgressTrack>
-								<ProgressIndicator variant="default" />
+								<ProgressIndicator />
 							</ProgressTrack>
 						</Progress>
-						<Progress value={80}>
-							<ProgressTrack>
-								<ProgressIndicator variant="success" />
-							</ProgressTrack>
-						</Progress>
-						<Progress value={45}>
-							<ProgressTrack>
-								<ProgressIndicator variant="warning" />
-							</ProgressTrack>
-						</Progress>
-						<Progress value={20}>
-							<ProgressTrack>
-								<ProgressIndicator variant="destructive" />
-							</ProgressTrack>
-						</Progress>
-					</VStack>
+					</div>
 				</Group>
 
-				<Group label="Variants (opinionated)">
-					<VStack gap={3} className="max-w-md">
-						<ProgressOpinionated value={80} label="Default" showValue />
-						<ProgressOpinionated value={80} variant="success" label="Success" showValue />
-						<ProgressOpinionated value={45} variant="warning" label="Warning" showValue />
-						<ProgressOpinionated value={20} variant="destructive" label="Destructive" showValue />
-					</VStack>
+				<Group label="Pending progress">
+					<div className="max-w-md">
+						<ProgressOpinionated value={null} label="Preparing export" />
+					</div>
 				</Group>
-			</VStack>
+			</div>
 		</Gallery>
 	)
 }
 
 export const Overview: Story = {
+	name: 'Progress',
 	render: () => <ProgressDemo />,
 }

@@ -1,11 +1,5 @@
-/**
- * Opinionated Switch component.
- * Re-exports the primitive as the API is already clean.
- *
- * @example
- * ```tsx
- * <Switch checked={enabled} onCheckedChange={setEnabled} />
- * <Switch defaultChecked />
- * ```
- */
-export { Switch } from '../_internal/switch'
+import type { ComponentProps } from 'react'
+import { Switch } from '../components/keyframery/switch'
+
+export type SwitchProps = ComponentProps<typeof Switch>
+export { Switch }

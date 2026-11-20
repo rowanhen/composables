@@ -1,18 +1,25 @@
-import type { VariantProps } from 'class-variance-authority'
 import * as React from 'react'
 import {
 	Combobox,
 	ComboboxChip,
+	ComboboxChipRemove,
 	ComboboxChips,
-	ComboboxChipsInput,
+	ComboboxInput,
 	ComboboxContent,
 	ComboboxEmpty,
-	ComboboxItem,
 	ComboboxList,
 	ComboboxValue,
-	useComboboxAnchor,
-} from '../_internal/combobox'
-import { Field, FieldContent, FieldDescription, FieldError, FieldLabel } from '../_internal/field'
+} from '../components/keyframery/combobox'
+import {
+	Field,
+	FieldContent,
+	FieldDescription,
+	FieldError,
+	FieldLabel,
+	type FieldErrors,
+	type FieldProps,
+	fieldErrors,
+} from './field'
 
 export interface FormMultiComboboxOption {
 	id: string
@@ -23,14 +30,14 @@ export interface FormMultiComboboxOption {
 export interface FormMultiComboboxProps {
 	label?: string
 	description?: string
-	error?: string | string[] | Array<{ message?: string } | undefined>
+	error?: FieldErrors
 	placeholder?: string
 	options: FormMultiComboboxOption[]
 	value?: FormMultiComboboxOption[]
 	onValueChange?: (value: FormMultiComboboxOption[]) => void
 	disabled?: boolean
 	required?: boolean
-	orientation?: VariantProps<typeof Field>['orientation']
+	orientation?: FieldProps['orientation']
 	className?: string
 	// ComboboxContent props
 	side?: 'top' | 'bottom' | 'left' | 'right'
@@ -76,44 +83,17 @@ function FormMultiCombobox({
 	'aria-labelledby': ariaLabelledBy,
 	...comboboxProps
 }: FormMultiComboboxProps) {
-	const errorArray = React.useMemo(() => {
-		if (!error) return undefined
-		if (Array.isArray(error)) {
-			return error.map((e) => (typeof e === 'string' ? { message: e } : e))
-		}
-		return [{ message: error }]
-	}, [error])
+	const errorArray = fieldErrors(error)
 
-	const hasError = Boolean(error)
+	const hasError = errorArray.length > 0
 	const generatedId = React.useId()
 	const inputId = id || generatedId
-	const containerRef = useComboboxAnchor()
 
-	// Convert value array to the format expected by Combobox (array of option values)
-	// Always return an array to keep the component controlled
-	const comboboxValue = React.useMemo(() => {
-		if (!value || value.length === 0) return []
-		return value.map((item) => item.value)
-	}, [value])
-
-	// Handle value change from Combobox
-	const handleValueChange = React.useCallback(
-		(newValue: string[] | undefined) => {
-			if (!onValueChange) return
-			// Always ensure we pass an array, even if empty
-			if (!newValue || newValue.length === 0) {
-				onValueChange([])
-				return
-			}
-			// Map string values back to option objects
-			const selectedOptions = options.filter((option) => newValue.includes(option.value))
-			onValueChange(selectedOptions)
-		},
-		[onValueChange, options],
-	)
+	const items = options.map(({ id, value: label, disabled }) => ({ value: id, label, disabled }))
+	const optionsById = new Map(options.map((option) => [option.id, option]))
 
 	return (
-		<Field orientation={orientation} className={className} data-invalid={hasError}>
+		<Field orientation={orientation} className={className} invalid={hasError} disabled={disabled}>
 			{label && (
 				<FieldLabel htmlFor={inputId}>
 					{label}
@@ -121,86 +101,57 @@ function FormMultiCombobox({
 				</FieldLabel>
 			)}
 			<FieldContent>
-				<Combobox
-					items={options}
+				<Combobox<string, true>
+					items={items}
 					multiple
-					value={comboboxValue}
-					onValueChange={handleValueChange}
+					value={value?.map((option) => option.id)}
+					onValueChange={(ids) => {
+						onValueChange?.(
+							ids.flatMap((key) => {
+								const option = optionsById.get(key)
+								return option ? [option] : []
+							}),
+						)
+					}}
 					disabled={disabled}
+					required={required}
+					name={name}
 					{...comboboxProps}
 				>
-					<ComboboxChips
-						ref={containerRef}
-						aria-invalid={hasError}
-						aria-required={required}
-						aria-label={ariaLabel}
-						aria-labelledby={ariaLabelledBy}
-					>
+					<ComboboxChips>
 						<ComboboxValue>
-							{(selectedValues: FormMultiComboboxOption[] | string[] | undefined) => {
-								// Handle undefined/null/empty array case when field is empty
-								if (!selectedValues || selectedValues.length === 0) {
+							{({ value: selected }) =>
+								Array.isArray(selected) &&
+								selected.map((key) => {
+									const option = optionsById.get(key)
 									return (
-										<ComboboxChipsInput
-											id={inputId}
-											name={name}
-											placeholder={placeholder}
-											disabled={disabled}
-											aria-invalid={hasError}
-											aria-required={required}
-										/>
-									)
-								}
-
-								// Handle both cases: when items are provided (full objects) or when value is provided (strings)
-								// Check the first element to determine the type
-								const firstValue = selectedValues[0]
-								const selectedOptions =
-									firstValue && typeof firstValue === 'object'
-										? (selectedValues as FormMultiComboboxOption[])
-										: ((selectedValues as string[])
-												.map((val) => options.find((opt) => opt.value === val))
-												.filter(Boolean) as FormMultiComboboxOption[])
-
-								return (
-									<React.Fragment>
-										{selectedOptions.map((option) => (
-											<ComboboxChip
-												key={option.id}
-												showRemove={showRemove}
-												aria-label={`${option.value}, remove`}
-											>
+										option && (
+											<ComboboxChip key={option.id} value={option.id}>
 												{option.value}
+												{showRemove && <ComboboxChipRemove aria-label={`Remove ${option.value}`} />}
 											</ComboboxChip>
-										))}
-										<ComboboxChipsInput
-											id={inputId}
-											name={name}
-											placeholder={selectedOptions.length > 0 ? '' : placeholder}
-											disabled={disabled}
-											aria-invalid={hasError}
-											aria-required={required}
-										/>
-									</React.Fragment>
-								)
-							}}
+										)
+									)
+								})
+							}
 						</ComboboxValue>
+						<ComboboxInput
+							id={inputId}
+							placeholder={placeholder}
+							aria-label={ariaLabel}
+							aria-labelledby={ariaLabelledBy}
+							aria-invalid={hasError || undefined}
+							aria-required={required}
+						/>
 					</ComboboxChips>
 					<ComboboxContent
 						side={side}
 						sideOffset={sideOffset}
 						align={align}
 						alignOffset={alignOffset}
-						anchor={containerRef}
 					>
-						<ComboboxList>
-							{options.length === 0 && emptyText && <ComboboxEmpty>{emptyText}</ComboboxEmpty>}
-							{options.map((option) => (
-								<ComboboxItem key={option.id} value={option.value} disabled={option.disabled}>
-									{option.value}
-								</ComboboxItem>
-							))}
-						</ComboboxList>
+						<ComboboxEmpty>{emptyText}</ComboboxEmpty>
+						<ComboboxList />
 					</ComboboxContent>
 				</Combobox>
 				{description && <FieldDescription>{description}</FieldDescription>}

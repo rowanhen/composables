@@ -1,19 +1,21 @@
-import type { Slider as SliderPrimitiveBase } from '@base-ui/react/slider'
-import type { VariantProps } from 'class-variance-authority'
 import * as React from 'react'
-import { Field, FieldContent, FieldDescription, FieldError, FieldLabel } from '../_internal/field'
-import { Slider as SliderPrimitive } from '../_internal/slider'
+import {
+	Field,
+	FieldContent,
+	FieldDescription,
+	FieldError,
+	FieldLabel,
+	type FieldErrors,
+	type FieldProps,
+	fieldErrors,
+} from './field'
+import { Slider, type SliderProps } from './slider'
 
-export interface FormSliderProps extends Omit<
-	SliderPrimitiveBase.Root.Props,
-	'children' | 'orientation'
-> {
+export interface FormSliderProps extends Omit<SliderProps, 'orientation'> {
 	label?: string
 	description?: string
-	error?: string | string[] | Array<{ message?: string } | undefined>
-	showValue?: boolean
-	valueFormatter?: (value: number | number[] | readonly number[]) => string
-	orientation?: VariantProps<typeof Field>['orientation']
+	error?: FieldErrors
+	orientation?: FieldProps['orientation']
 	className?: string
 	required?: boolean
 }
@@ -22,72 +24,33 @@ function FormSlider({
 	label,
 	description,
 	error,
-	showValue = false,
-	valueFormatter,
 	orientation = 'vertical',
 	className,
 	required = false,
-	value,
-	defaultValue,
-	min = 0,
-	max = 100,
-	step,
 	disabled,
 	...sliderProps
 }: FormSliderProps) {
-	const errorArray = React.useMemo(() => {
-		if (!error) return undefined
-		if (Array.isArray(error)) {
-			return error.map((e) => (typeof e === 'string' ? { message: e } : e))
-		}
-		return [{ message: error }]
-	}, [error])
+	const errorArray = fieldErrors(error)
 
-	const hasError = Boolean(error)
+	const hasError = errorArray.length > 0
 	const generatedId = React.useId()
 	const sliderId = sliderProps.id || generatedId
 
-	// Format the current value for display
-	const formatValue = React.useCallback(
-		(val: number | number[] | readonly number[] | undefined) => {
-			if (val === undefined) return ''
-			if (valueFormatter) {
-				return valueFormatter(val)
-			}
-			if (Array.isArray(val)) {
-				return val.join(' - ')
-			}
-			return String(val)
-		},
-		[valueFormatter],
-	)
-
-	const currentValue = value ?? defaultValue
-	const displayValue = formatValue(currentValue)
-
 	return (
-		<Field orientation={orientation} className={className} data-invalid={hasError}>
-			{(label || showValue) && (
-				<FieldLabel htmlFor={sliderId}>
+		<Field orientation={orientation} className={className} invalid={hasError} disabled={disabled}>
+			{label && (
+				<FieldLabel id={`${sliderId}-label`}>
 					{label}
 					{required && <span className="text-critical">*</span>}
-					{showValue && displayValue && (
-						<span className="ml-auto text-muted-foreground font-normal">{displayValue}</span>
-					)}
 				</FieldLabel>
 			)}
 			<FieldContent>
-				<SliderPrimitive
+				<Slider
 					id={sliderId}
-					value={value}
-					defaultValue={defaultValue}
-					min={min}
-					max={max}
-					step={step}
+					aria-invalid={hasError || undefined}
+					aria-labelledby={label ? `${sliderId}-label` : undefined}
+					required={required}
 					disabled={disabled}
-					aria-invalid={hasError}
-					aria-required={required}
-					aria-label={label || undefined}
 					{...sliderProps}
 				/>
 				{description && <FieldDescription>{description}</FieldDescription>}

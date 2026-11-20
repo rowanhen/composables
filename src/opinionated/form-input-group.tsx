@@ -1,7 +1,15 @@
-import type { VariantProps } from 'class-variance-authority'
 import * as React from 'react'
 
-import { Field, FieldContent, FieldDescription, FieldError, FieldLabel } from '../_internal/field'
+import {
+	Field,
+	FieldContent,
+	FieldDescription,
+	FieldError,
+	FieldLabel,
+	type FieldErrors,
+	type FieldProps,
+	fieldErrors,
+} from './field'
 import {
 	InputGroup,
 	InputGroupAddon,
@@ -9,28 +17,31 @@ import {
 	InputGroupInput,
 	InputGroupText,
 	InputGroupTextarea,
-} from '../_internal/input-group'
+} from './input-group'
 import { type NumericInputOptions, useNumericInput } from '../hooks/use-numeric-input'
 
 export interface FormInputGroupInputProps
 	extends
-		Omit<React.ComponentProps<'input'>, 'disabled' | 'required' | 'aria-invalid' | 'aria-required'>,
+		Omit<
+			React.ComponentProps<typeof InputGroupInput>,
+			'disabled' | 'required' | 'aria-invalid' | 'aria-required'
+		>,
 		NumericInputOptions {}
 
 export interface FormInputGroupProps {
 	ref?: React.Ref<HTMLInputElement>
 	label?: string
 	description?: string
-	error?: string | string[] | Array<{ message?: string } | undefined>
+	error?: FieldErrors
 	disabled?: boolean
 	required?: boolean
-	orientation?: VariantProps<typeof Field>['orientation']
+	orientation?: FieldProps['orientation']
 	className?: string
 	// Input props (includes numeric options)
 	inputProps?: FormInputGroupInputProps
 	// Textarea props (alternative to input)
 	textareaProps?: Omit<
-		React.ComponentProps<'textarea'>,
+		React.ComponentProps<typeof InputGroupTextarea>,
 		'disabled' | 'required' | 'aria-invalid' | 'aria-required'
 	>
 	// Addon props
@@ -72,15 +83,9 @@ function FormInputGroup({
 	endText,
 	id,
 }: FormInputGroupProps) {
-	const errorArray = React.useMemo(() => {
-		if (!error) return undefined
-		if (Array.isArray(error)) {
-			return error.map((e) => (typeof e === 'string' ? { message: e } : e))
-		}
-		return [{ message: error }]
-	}, [error])
+	const errorArray = fieldErrors(error)
 
-	const hasError = Boolean(error)
+	const hasError = errorArray.length > 0
 	const generatedId = React.useId()
 	const inputId = id || generatedId
 	const isTextarea = Boolean(textareaProps)
@@ -112,7 +117,7 @@ function FormInputGroup({
 	})
 
 	return (
-		<Field orientation={orientation} className={className} data-invalid={hasError}>
+		<Field orientation={orientation} className={className} invalid={hasError} disabled={disabled}>
 			{label && (
 				<FieldLabel htmlFor={inputId}>
 					{label}
@@ -156,6 +161,10 @@ function FormInputGroup({
 							aria-required={required}
 							{...restInputProps}
 							{...numericInputProps}
+							inputMode={numericInputProps.inputMode ?? restInputProps.inputMode}
+							value={
+								numericInputProps.value === undefined ? undefined : String(numericInputProps.value)
+							}
 						/>
 					)}
 					{endText && (

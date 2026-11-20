@@ -1,6 +1,10 @@
+import type { ComponentProps } from 'react'
+import { Direction, DirectionProvider } from '../components/keyframery/direction'
+
+export type DirectionProviderProps = ComponentProps<typeof DirectionProvider>
+export { Direction, DirectionProvider }
 export {
-	DirectionProvider,
+	DirectionToggle,
 	useDirection,
-	type DirectionProviderProps,
-	type TextDirection,
-} from '../_internal/direction'
+	type Dir as TextDirection,
+} from '../components/keyframery/direction'

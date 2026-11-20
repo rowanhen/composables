@@ -1,11 +1,10 @@
-import type * as React from 'react'
+import type { ComponentProps } from 'react'
 
 import {
 	NativeSelect as NativeSelectPrimitive,
 	NativeSelectOptGroup,
 	NativeSelectOption,
-	type NativeSelectProps as NativeSelectPrimitiveProps,
-} from '../_internal/native-select'
+} from '../components/keyframery/native-select'
 
 export interface NativeSelectOptionData {
 	label: string
@@ -13,27 +12,17 @@ export interface NativeSelectOptionData {
 	disabled?: boolean
 }
 
-export interface NativeSelectProps extends Omit<NativeSelectPrimitiveProps, 'children'> {
+export interface NativeSelectProps extends Omit<
+	ComponentProps<typeof NativeSelectPrimitive>,
+	'children'
+> {
 	options: NativeSelectOptionData[]
 	placeholder?: string
-	onValueChange?: (value: string, event: React.ChangeEvent<HTMLSelectElement>) => void
 }
 
-function NativeSelect({
-	options,
-	placeholder,
-	onChange,
-	onValueChange,
-	...selectProps
-}: NativeSelectProps) {
+function NativeSelect({ options, placeholder, ...selectProps }: NativeSelectProps) {
 	return (
-		<NativeSelectPrimitive
-			onChange={(event) => {
-				onChange?.(event)
-				onValueChange?.(event.currentTarget.value, event)
-			}}
-			{...selectProps}
-		>
+		<NativeSelectPrimitive {...selectProps}>
 			{placeholder && (
 				<NativeSelectOption value="" disabled>
 					{placeholder}

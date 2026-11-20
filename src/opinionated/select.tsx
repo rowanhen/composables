@@ -1,15 +1,16 @@
+'use client'
+
+import type { ComponentProps } from 'react'
 import {
+	Select as SelectRoot,
 	SelectContent,
 	SelectGroup,
 	SelectItem,
 	SelectLabel,
-	Select as SelectPrimitive,
-	SelectScrollDownButton,
-	SelectScrollUpButton,
 	SelectSeparator,
 	SelectTrigger,
 	SelectValue,
-} from '../_internal/select'
+} from '../components/keyframery/select'
 
 export interface SelectOption {
 	label: string
@@ -17,88 +18,48 @@ export interface SelectOption {
 	disabled?: boolean
 }
 
-export interface SelectProps {
-	/** Currently selected value */
-	value?: string
-	/** Callback when value changes */
-	onValueChange?: (value: string) => void
-	/** List of selectable options */
+export type SelectProps = Pick<
+	ComponentProps<typeof SelectRoot<string, false>>,
+	'disabled' | 'required' | 'name' | 'speed'
+> & {
 	options: SelectOption[]
-	/** Placeholder text when no value is selected */
+	value?: string | null
+	defaultValue?: string | null
+	onValueChange?: (value: string | null) => void
 	placeholder?: string
-	/** Whether the select is disabled */
-	disabled?: boolean
-	/** Additional class names for the trigger */
 	className?: string
-	/** Size variant */
-	size?: 'sm' | 'default'
+	triggerProps?: ComponentProps<typeof SelectTrigger>
+	contentProps?: Pick<
+		ComponentProps<typeof SelectContent>,
+		'side' | 'sideOffset' | 'align' | 'alignOffset'
+	>
 }
 
-/**
- * Opinionated Select component with simplified options array API.
- * Use for standalone dropdown selects (not form-bound).
- * For form usage, see form-select.
- *
- * @example
- * ```tsx
- * const [value, setValue] = useState('')
- *
- * <Select
- *   value={value}
- *   onValueChange={setValue}
- *   options={[
- *     { label: 'Small', value: 'sm' },
- *     { label: 'Medium', value: 'md' },
- *     { label: 'Large', value: 'lg' },
- *   ]}
- *   placeholder="Select size"
- * />
- * ```
- */
-function Select({
-	value,
-	onValueChange,
+export function Select({
 	options,
-	placeholder = 'Select...',
-	disabled = false,
+	placeholder = 'Select…',
 	className,
-	size = 'default',
+	triggerProps,
+	contentProps,
+	...props
 }: SelectProps) {
 	return (
-		<SelectPrimitive
-			value={value}
-			onValueChange={(v) => {
-				if (v !== null) onValueChange?.(v)
-			}}
-			disabled={disabled}
-		>
-			<SelectTrigger className={className} size={size}>
+		<SelectRoot<string> items={options} {...props}>
+			<SelectTrigger className={className} {...triggerProps}>
 				<SelectValue placeholder={placeholder} />
 			</SelectTrigger>
-			<SelectContent>
-				{options.map((option) => (
-					<SelectItem key={option.value} value={option.value} disabled={option.disabled}>
-						{option.label}
-					</SelectItem>
-				))}
-			</SelectContent>
-		</SelectPrimitive>
+			<SelectContent {...contentProps} />
+		</SelectRoot>
 	)
 }
 
-// Re-export sub-components for advanced usage. SelectRoot is the unstyled
-// Base UI root - compose it with the parts below when the options-array
-// Select API can't express the trigger content (e.g. a labelled null state).
 export {
 	SelectContent,
 	SelectGroup,
 	SelectItem,
 	SelectLabel,
-	SelectPrimitive as SelectRoot,
-	SelectScrollDownButton,
-	SelectScrollUpButton,
+	SelectRoot,
 	SelectSeparator,
 	SelectTrigger,
 	SelectValue,
 }
-export { Select }

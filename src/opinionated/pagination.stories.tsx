@@ -1,54 +1,20 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Gallery } from '../_storybook/gallery'
-import {
-	Pagination,
-	PaginationContent,
-	PaginationEllipsis,
-	PaginationItem,
-	PaginationLink,
-	PaginationNext,
-	PaginationPrevious,
-} from '../_internal/pagination'
+import { Pagination } from './pagination'
 
-const meta = {
-	title: 'Navigation/Pagination',
-	parameters: {
-		docs: {
-			description: { component: 'Paged navigation for result sets and tables.' },
-		},
-	},
-} satisfies Meta
+const meta = { title: 'Components/Pagination', component: Pagination } satisfies Meta<
+	typeof Pagination
+>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Overview: Story = {
-	render: () => (
+	name: 'Pagination',
+	args: { pageCount: 24, defaultPage: 5, 'aria-label': 'Search results pages' },
+	render: (args) => (
 		<Gallery>
-			<Pagination>
-				<PaginationContent>
-					<PaginationItem>
-						<PaginationPrevious href="#" />
-					</PaginationItem>
-					<PaginationItem>
-						<PaginationLink href="#" isActive>
-							1
-						</PaginationLink>
-					</PaginationItem>
-					<PaginationItem>
-						<PaginationLink href="#">2</PaginationLink>
-					</PaginationItem>
-					<PaginationItem>
-						<PaginationLink href="#">3</PaginationLink>
-					</PaginationItem>
-					<PaginationItem>
-						<PaginationEllipsis />
-					</PaginationItem>
-					<PaginationItem>
-						<PaginationNext href="#" />
-					</PaginationItem>
-				</PaginationContent>
-			</Pagination>
+			<Pagination {...args} />
 		</Gallery>
 	),
 }

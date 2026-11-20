@@ -1,19 +1,12 @@
 import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Gallery, Group } from '../_storybook/gallery'
-import { Calendar } from '../_internal/calendar'
-import { Grid } from '../_internal/grid'
-import { HStack, VStack } from '../_internal/stack'
+import { Calendar } from './calendar'
 import { FormCalendarPopover } from './form-calendar-popover'
 import { FormDateOfBirth } from './form-date-of-birth'
 
 const meta = {
-	title: 'Forms/Calendar',
-	parameters: {
-		docs: {
-			description: { component: 'Date picking and calendar display.' },
-		},
-	},
+	title: 'Components/Calendar',
 } satisfies Meta
 
 export default meta
@@ -32,9 +25,9 @@ function CalendarDemo() {
 			title="Calendar & Date Pickers"
 			description="Calendar primitive and opinionated date picker components."
 		>
-			<VStack gap={8}>
+			<div className="flex flex-col gap-8">
 				<Group label="Calendar Popover">
-					<Grid columns={1} gap={4} className="sm:grid-cols-2 max-w-lg">
+					<div className="grid grid-cols-1 gap-4 sm:grid-cols-2 max-w-lg">
 						<FormCalendarPopover
 							label="Select a date"
 							placeholder="Pick a date"
@@ -50,7 +43,7 @@ function CalendarDemo() {
 							minDate={REFERENCE_DATE}
 							maxDate={new Date(REFERENCE_DATE.getTime() + 30 * DAY_MS)}
 						/>
-					</Grid>
+					</div>
 				</Group>
 				<Group label="Date of Birth">
 					<div className="max-w-xs">
@@ -58,15 +51,16 @@ function CalendarDemo() {
 					</div>
 				</Group>
 				<Group label="Raw Calendar">
-					<HStack gap={6} wrap>
-						<Calendar defaultMonth={REFERENCE_DATE} today={REFERENCE_DATE} />
-					</HStack>
+					<div className="flex gap-6 flex-wrap">
+						<Calendar defaultMonth="2026-06" today="2026-06-15" />
+					</div>
 				</Group>
-			</VStack>
+			</div>
 		</Gallery>
 	)
 }
 
 export const Overview: Story = {
+	name: 'Calendar',
 	render: () => <CalendarDemo />,
 }

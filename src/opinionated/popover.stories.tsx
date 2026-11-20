@@ -1,53 +1,30 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Gallery } from '../_storybook/gallery'
-import { Button } from '../_internal/button'
-import { Grid } from '../_internal/grid'
-import { Input } from '../_internal/input'
-import { Label } from '../_internal/label'
-import {
-	Popover,
-	PopoverContent,
-	PopoverDescription,
-	PopoverHeader,
-	PopoverTitle,
-	PopoverTrigger,
-} from '../_internal/popover'
-import { VStack } from '../_internal/stack'
+import { FormInput } from './form-input'
+import { Popover, PopoverDescription, PopoverTitle } from './popover'
 
-const meta = {
-	title: 'Overlays/Popover',
-	parameters: {
-		docs: {
-			description: { component: 'Anchored floating content and lightweight panels.' },
-		},
-	},
-} satisfies Meta
+const meta = { title: 'Components/Popover', component: Popover } satisfies Meta<typeof Popover>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Overview: Story = {
-	render: () => (
+	name: 'Popover',
+	args: {
+		trigger: 'Dimensions',
+		children: (
+			<div className="space-y-3">
+				<div>
+					<PopoverTitle>Dimensions</PopoverTitle>
+					<PopoverDescription>Set the width of the layer.</PopoverDescription>
+				</div>
+				<FormInput label="Width" defaultValue="100%" />
+			</div>
+		),
+	},
+	render: (args) => (
 		<Gallery>
-			<Popover>
-				<PopoverTrigger render={<Button variant="outline" />}>Open Popover</PopoverTrigger>
-				<PopoverContent>
-					<PopoverHeader>
-						<PopoverTitle>Dimensions</PopoverTitle>
-						<PopoverDescription>Set the dimensions for the layer.</PopoverDescription>
-					</PopoverHeader>
-					<Grid columns={2} gap={3}>
-						<VStack gap={1}>
-							<Label>Width</Label>
-							<Input defaultValue="100%" />
-						</VStack>
-						<VStack gap={1}>
-							<Label>Height</Label>
-							<Input defaultValue="auto" />
-						</VStack>
-					</Grid>
-				</PopoverContent>
-			</Popover>
+			<Popover {...args} />
 		</Gallery>
 	),
 }

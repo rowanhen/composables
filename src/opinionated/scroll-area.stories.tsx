@@ -1,18 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Gallery, Group, Placeholder } from '../_storybook/gallery'
-import { ScrollArea, ScrollBar } from '../_internal/scroll-area'
-import { Separator } from '../_internal/separator'
-import { HStack } from '../_internal/stack'
-import { Typography } from '../_internal/typography'
+import { ScrollArea } from './scroll-area'
+import { Separator } from '../components/keyframery/separator'
 
 const meta = {
 	title: 'Utilities/Scroll area',
 	component: ScrollArea,
-	parameters: {
-		docs: {
-			description: { component: 'Styled overflow regions and scroll affordances.' },
-		},
-	},
 } satisfies Meta<typeof ScrollArea>
 
 export default meta
@@ -26,9 +19,7 @@ export const Vertical: Story = {
 					<div className="p-4">
 						{Array.from({ length: 20 }, (_, i) => (
 							<div key={i}>
-								<Typography variant="body-100" className="py-1">
-									Item {i + 1}
-								</Typography>
+								<p className="text-sm py-1">Item {i + 1}</p>
 								{i < 19 && <Separator />}
 							</div>
 						))}
@@ -43,25 +34,16 @@ export const Horizontal: Story = {
 	render: () => (
 		<Gallery>
 			<Group label="Horizontal">
-				<ScrollArea className="w-64 rounded-md border border-stroke">
+				<ScrollArea showHorizontal className="w-64 rounded-md border border-stroke">
 					<div className="flex gap-4 p-4">
 						{Array.from({ length: 10 }, (_, i) => (
 							<Placeholder key={i} className="h-20 w-32 shrink-0 rounded-md">
-								<Typography variant="body-100">Card {i + 1}</Typography>
+								<p className="text-sm">Card {i + 1}</p>
 							</Placeholder>
 						))}
 					</div>
-					<ScrollBar orientation="horizontal" />
 				</ScrollArea>
 			</Group>
-		</Gallery>
-	),
-}
-
-export const More: Story = {
-	render: () => (
-		<Gallery>
-			<HStack gap={6} wrap></HStack>
 		</Gallery>
 	),
 }

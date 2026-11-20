@@ -1,81 +1,43 @@
-import type { Tabs as TabsPrimitiveBase } from '@base-ui/react/tabs'
-import type { VariantProps } from 'class-variance-authority'
+'use client'
 
+import type { ComponentProps, ReactNode } from 'react'
 import {
+	Tabs as Root,
 	TabsList,
-	Tabs as TabsPrimitive,
-	TabsTrigger,
-	type tabsListVariants,
-} from '../_internal/tabs'
+	TabsPanel,
+	TabsPanels,
+	TabsTab,
+} from '../components/keyframery/tabs'
 
-/** A single tab in the Tabs navigation bar. */
-export type TabItem = {
-	/** Unique identifier matched against the `value` prop to indicate the active tab. */
+export interface TabItem {
 	value: string
-	/** Display label rendered in the tab trigger. */
 	label: string
+	content: ReactNode
+	disabled?: boolean
 }
 
-/** Visual style variants available for the Tabs navigation bar. */
-export type TabsVariant = NonNullable<VariantProps<typeof tabsListVariants>['variant']>
-
-/**
- * Props for the opinionated Tabs component.
- *
- * Renders a tab bar from an `items` array. Pair with `TabsContent` from the
- * re-export to render the corresponding panel for each tab.
- *
- * @example
- * ```tsx
- * const [tab, setTab] = useState('overview')
- *
- * <Tabs
- *   items={[
- *     { value: 'overview', label: 'Overview' },
- *     { value: 'settings', label: 'Settings' },
- *   ]}
- *   value={tab}
- *   onValueChange={setTab}
- * />
- * <TabsContent value="overview">...</TabsContent>
- * <TabsContent value="settings">...</TabsContent>
- * ```
- */
-export type TabsProps = Omit<TabsPrimitiveBase.Root.Props, 'children'> & {
-	/** Tab definitions to render in the navigation bar. */
-	items: TabItem[]
-	/** Currently active tab value. */
-	value: string
-	/** Called when the user clicks a different tab. */
-	onValueChange: (value: string) => void
-	/** Accessible label for the tab list (for screen readers). */
-	ariaLabel?: string
-	/** Visual style of the tab list. @default 'segmented' */
-	variant?: TabsVariant
-	className?: string
+export type TabsProps = Omit<ComponentProps<typeof Root>, 'children'> & {
+	items: readonly TabItem[]
+	ariaLabel: string
 }
 
-export const Tabs = ({
-	items,
-	value,
-	onValueChange,
-	ariaLabel,
-	variant = 'segmented',
-	className,
-	...tabsProps
-}: TabsProps) => {
+export function Tabs({ items, ariaLabel, ...props }: TabsProps) {
 	return (
-		<TabsPrimitive value={value} onValueChange={onValueChange} className={className} {...tabsProps}>
-			<TabsList variant={variant} aria-label={ariaLabel}>
-				{items.map((item) => (
-					<TabsTrigger key={item.value} value={item.value}>
-						{item.label}
-					</TabsTrigger>
+		<Root {...props}>
+			<TabsList aria-label={ariaLabel}>
+				{items.map(({ value, label, disabled }) => (
+					<TabsTab key={value} value={value} disabled={disabled}>
+						{label}
+					</TabsTab>
 				))}
 			</TabsList>
-		</TabsPrimitive>
+			<TabsPanels>
+				{items.map(({ value, content }) => (
+					<TabsPanel key={value} value={value}>
+						{content}
+					</TabsPanel>
+				))}
+			</TabsPanels>
+		</Root>
 	)
 }
-
-// Re-export sub-components for advanced usage
-export { TabsContent } from '../_internal/tabs'

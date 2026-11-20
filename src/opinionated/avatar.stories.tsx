@@ -1,17 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Gallery, Group } from '../_storybook/gallery'
-import { Avatar, AvatarFallback, AvatarImage } from '../_internal/avatar'
-import { HStack, VStack } from '../_internal/stack'
-import { Typography } from '../_internal/typography'
+import { Avatar, AvatarFallback, AvatarImage } from '../components/keyframery/avatar'
 
 const meta = {
-	title: 'Actions/Avatar',
+	title: 'Components/Avatar',
 	component: Avatar,
-	parameters: {
-		docs: {
-			description: { component: 'User and entity identity surfaces.' },
-		},
-	},
 } satisfies Meta<typeof Avatar>
 
 export default meta
@@ -21,8 +14,8 @@ export const Sizes: Story = {
 	render: () => (
 		<Gallery>
 			<Group label="Sizes">
-				<HStack gap={3} align="center">
-					<Avatar size="xs">
+				<div className="flex gap-3 items-center">
+					<Avatar className="size-5">
 						<AvatarImage src="images/avatar-1.svg" alt="User" />
 						<AvatarFallback>U</AvatarFallback>
 					</Avatar>
@@ -38,14 +31,12 @@ export const Sizes: Story = {
 						<AvatarImage src="images/avatar-4.svg" alt="User" />
 						<AvatarFallback>EF</AvatarFallback>
 					</Avatar>
-					<Avatar size="xl">
+					<Avatar className="size-14">
 						<AvatarImage src="images/avatar-5.svg" alt="User" />
 						<AvatarFallback>GH</AvatarFallback>
 					</Avatar>
-				</HStack>
-				<Typography variant="caption-100" className="text-muted-foreground">
-					xs · sm · md · lg · xl
-				</Typography>
+				</div>
+				<span className="text-xs text-muted-foreground">xs · sm · md · lg · xl</span>
 			</Group>
 		</Gallery>
 	),
@@ -55,7 +46,7 @@ export const Fallbacks: Story = {
 	render: () => (
 		<Gallery>
 			<Group label="Fallbacks">
-				<HStack gap={3} align="center">
+				<div className="flex gap-3 items-center">
 					<Avatar size="lg">
 						<AvatarImage src="/broken-image.jpg" alt="Broken" />
 						<AvatarFallback>JD</AvatarFallback>
@@ -68,14 +59,14 @@ export const Fallbacks: Story = {
 						<AvatarImage src="/broken-image.jpg" alt="Broken" />
 						<AvatarFallback>RS</AvatarFallback>
 					</Avatar>
-					<Avatar size="lg" variant="brand">
+					<Avatar size="lg">
 						<AvatarImage src="/broken-image.jpg" alt="Broken" />
 						<AvatarFallback>AB</AvatarFallback>
 					</Avatar>
-				</HStack>
-				<Typography variant="caption-100" className="text-muted-foreground">
+				</div>
+				<span className="text-xs text-muted-foreground">
 					Shows initials when image fails to load
-				</Typography>
+				</span>
 			</Group>
 		</Gallery>
 	),
@@ -104,14 +95,6 @@ export const AvatarGroup: Story = {
 					</Avatar>
 				</div>
 			</Group>
-		</Gallery>
-	),
-}
-
-export const More: Story = {
-	render: () => (
-		<Gallery>
-			<VStack gap={6}></VStack>
 		</Gallery>
 	),
 }

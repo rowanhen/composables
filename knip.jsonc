@@ -1,0 +1,11 @@
+{
+	"$schema": "./node_modules/knip/schema.json",
+	"ignoreDependencies": [
+		// Invoked from scripts/deploy-showcase.sh.
+		"wrangler",
+	],
+	"ignoreIssues": {
+		// Keep upstream exports intact so the vendored files can be refreshed.
+		"src/components/keyframery/**": ["exports", "types"],
+	},
+}

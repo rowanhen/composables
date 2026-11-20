@@ -1,40 +1,22 @@
-import type { VariantProps } from 'class-variance-authority'
+'use client'
 
+import type { ComponentProps } from 'react'
 import {
+	Progress as Root,
 	ProgressIndicator,
 	ProgressLabel,
-	Progress as ProgressPrimitive,
-	progressIndicatorVariants,
 	ProgressTrack,
 	ProgressValue,
-} from '../_internal/progress'
+} from '../components/keyframery/progress'
 
-export interface ProgressProps {
-	/** Progress value (0-100) */
-	value: number
-	/** Visual style variant. @default 'default' */
-	variant?: VariantProps<typeof progressIndicatorVariants>['variant']
-	/** Optional label text */
+export type ProgressProps = Omit<ComponentProps<typeof Root>, 'children'> & {
 	label?: string
-	/** Whether to display the numeric value */
 	showValue?: boolean
-	/** Additional class names */
-	className?: string
 }
 
-/**
- * Opinionated Progress component with simplified props.
- *
- * @example
- * ```tsx
- * <Progress value={75} />
- * <Progress value={50} label="Uploading" showValue />
- * <Progress value={100} label="Complete" />
- * ```
- */
-function Progress({ value, variant, label, showValue = false, className }: ProgressProps) {
+export function Progress({ label, showValue = false, ...props }: ProgressProps) {
 	return (
-		<ProgressPrimitive value={value} className={className}>
+		<Root {...props}>
 			{(label || showValue) && (
 				<div className="flex items-center justify-between">
 					{label && <ProgressLabel>{label}</ProgressLabel>}
@@ -42,12 +24,10 @@ function Progress({ value, variant, label, showValue = false, className }: Progr
 				</div>
 			)}
 			<ProgressTrack>
-				<ProgressIndicator variant={variant} />
+				<ProgressIndicator />
 			</ProgressTrack>
-		</ProgressPrimitive>
+		</Root>
 	)
 }
 
-// Re-export sub-components for advanced usage
 export { ProgressIndicator, ProgressLabel, ProgressTrack, ProgressValue }
-export { Progress }

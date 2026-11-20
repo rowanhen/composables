@@ -1,2 +1,6 @@
-// Re-export resizable components from ui
-export { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '../_internal/resizable'
+export {
+	Resizable,
+	Resizable as ResizablePanelGroup,
+	ResizablePanel,
+	ResizableHandle,
+} from '../components/keyframery/resizable'

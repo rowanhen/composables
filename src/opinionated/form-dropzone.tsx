@@ -1,38 +1,51 @@
-import type { VariantProps } from 'class-variance-authority'
-import * as React from 'react'
+'use client'
 
+import type { ComponentProps, Ref } from 'react'
+import { useState } from 'react'
+import { DEFAULT_ACCEPT, DEFAULT_MAX_SIZE, DropZone, formatFileSize } from './dropzone'
+import type { Accept } from './dropzone'
 import {
-	ACCEPT_PRESETS,
-	type Accept,
-	DEFAULT_ACCEPT,
-	DEFAULT_MAX_SIZE,
-	DropZone,
-	DropZoneArea,
-	DropZoneContent,
-	DropZoneFile,
-	DropZoneInput,
-	type FileRejection,
-	getRejectionMessage,
-} from '../_internal/dropzone'
-import { Field, FieldContent, FieldDescription, FieldError, FieldLabel } from '../_internal/field'
+	Field,
+	FieldContent,
+	FieldDescription,
+	FieldError,
+	FieldLabel,
+	type FieldErrors,
+	fieldErrors,
+} from './field'
 
-export interface FormDropZoneProps {
-	ref?: React.Ref<HTMLDivElement>
-	value: File | null
-	onChange: (file: File | null) => void
+interface DropZoneFieldProps {
+	ref?: Ref<HTMLDivElement>
 	label?: string
 	description?: string
 	prompt?: string
-	error?: string | string[] | Array<{ message?: string } | undefined>
+	error?: FieldErrors
 	maxSizeBytes?: number
+	maxFiles?: number
 	accept?: Accept
 	disabled?: boolean
 	required?: boolean
-	orientation?: VariantProps<typeof Field>['orientation']
+	orientation?: ComponentProps<typeof Field>['orientation']
 	className?: string
+	name?: string
 }
 
-function FormDropZone({
+export interface FormDropZoneProps extends Omit<DropZoneFieldProps, 'maxFiles'> {
+	value: File | null
+	onChange: (file: File | null) => void
+}
+
+export function FormDropZone({ value, onChange, ...props }: FormDropZoneProps) {
+	return (
+		<DropZoneField
+			value={value ? [value] : []}
+			onChange={(files) => onChange(files[0] ?? null)}
+			{...props}
+		/>
+	)
+}
+
+export function DropZoneField({
 	ref,
 	value,
 	onChange,
@@ -41,86 +54,61 @@ function FormDropZone({
 	prompt,
 	error,
 	maxSizeBytes = DEFAULT_MAX_SIZE,
+	maxFiles,
 	accept = DEFAULT_ACCEPT,
-	disabled = false,
-	required = false,
-	orientation = 'vertical',
+	disabled,
+	required,
+	orientation,
 	className,
-}: FormDropZoneProps) {
-	const [rejectionError, setRejectionError] = React.useState<string | null>(null)
-
-	const onDrop = React.useCallback(
-		(acceptedFiles: File[], fileRejections: FileRejection[]) => {
-			if (acceptedFiles.length > 0) {
-				onChange(acceptedFiles[0])
-				setRejectionError(null)
-			} else if (fileRejections.length > 0) {
-				const code = fileRejections[0].errors[0]?.code
-				if (code) {
-					setRejectionError(getRejectionMessage(code, maxSizeBytes, accept))
-				}
-			}
-		},
-		[onChange, maxSizeBytes, accept],
-	)
-
-	const handleRemove = React.useCallback(() => {
-		onChange(null)
-		setRejectionError(null)
-	}, [onChange])
-
-	const errorArray = React.useMemo(() => {
-		if (error) {
-			if (Array.isArray(error)) {
-				return error.map((e) => (typeof e === 'string' ? { message: e } : e))
-			}
-			return [{ message: error }]
-		}
-		if (rejectionError) {
-			return [{ message: rejectionError }]
-		}
-		return undefined
-	}, [error, rejectionError])
-
-	const hasError = Boolean(errorArray?.length)
+	name,
+	multiple,
+}: DropZoneFieldProps & {
+	value: File[]
+	onChange: (files: File[]) => void
+	multiple?: boolean
+}) {
+	const [rejectionError, setRejectionError] = useState<string>()
+	const errors = fieldErrors(error ?? rejectionError)
+	const invalid = errors.length > 0
 
 	return (
 		<Field
 			ref={ref}
-			tabIndex={-1}
 			orientation={orientation}
 			className={className}
-			data-invalid={hasError}
+			invalid={invalid}
+			disabled={disabled}
 		>
-			{label && (
-				<FieldLabel>
-					{label}
-					{required && <span className="text-critical">*</span>}
-				</FieldLabel>
-			)}
+			{label && <FieldLabel>{label}</FieldLabel>}
 			<FieldContent>
 				<DropZone
-					onDrop={onDrop}
+					value={value}
+					onValueChange={(files) => {
+						setRejectionError(undefined)
+						onChange(files)
+					}}
+					onReject={(rejections) => {
+						const reason = rejections[0]?.reasons[0]
+						setRejectionError(
+							reason === 'file-too-large'
+								? `Choose a file no larger than ${formatFileSize(maxSizeBytes)}.`
+								: reason === 'too-many-files'
+									? 'Too many files selected.'
+									: 'The file could not be accepted.',
+						)
+					}}
 					accept={accept}
-					maxSizeBytes={maxSizeBytes}
+					maxSize={maxSizeBytes}
+					maxFiles={maxFiles}
+					multiple={multiple}
 					disabled={disabled}
-					hasError={hasError}
-					hasFiles={!!value}
-				>
-					<DropZoneArea>
-						<DropZoneInput />
-						{value ? (
-							<DropZoneFile file={value} onRemove={handleRemove} disabled={disabled} />
-						) : (
-							<DropZoneContent description={prompt} />
-						)}
-					</DropZoneArea>
-				</DropZone>
+					required={required}
+					name={name}
+					prompt={prompt}
+				/>
 				{description && <FieldDescription>{description}</FieldDescription>}
-				{hasError && <FieldError errors={errorArray} />}
+				{invalid && <FieldError errors={errors} />}
 			</FieldContent>
 		</Field>
 	)
 }
-
-export { FormDropZone, ACCEPT_PRESETS }

@@ -1,22 +1,410 @@
-/* ============================================================================
-   @leitware/composables - Main Stylesheet
-   ============================================================================
-   Design tokens, theme registration, and base styles for the component system.
-   This file does NOT include Tailwind itself - the downstream app owns that.
-   See README.md "Quick Start" for the full import pattern.
-
-   File structure:
-     tokens/palette.css        - Primitive color scales (build-time + runtime)
-     tokens/tailwind-color-adapter.css - Generated Tailwind color aliases
-     tokens/tailwind-theme.css - Non-color Tailwind theme registrations
-     tokens/semantic.css       - Semantic role tokens (:root + .dark)
-     tokens/components.css     - Component-level tunables
-     presets/default.css       - The canonical default light/dark preset
-     tokens/semantic-utilities.css - Generated public semantic classes
-     tokens/base.css           - Global base styles (@layer base)
-   ============================================================================ */
-
 @import 'shadcn/tailwind.css';
+@import './presets/default.css';
+@import './tailwind.css';
+@import './keyframery-motion.css';
+
+@theme inline {
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-card: var(--card);
+	--color-card-foreground: var(--card-foreground);
+	--color-popover: var(--popover);
+	--color-popover-foreground: var(--popover-foreground);
+	--color-primary: var(--primary);
+	--color-primary-foreground: var(--primary-foreground);
+	--color-secondary: var(--secondary);
+	--color-secondary-foreground: var(--secondary-foreground);
+	--color-muted: var(--muted);
+	--color-muted-foreground: var(--muted-foreground);
+	--color-accent: var(--accent);
+	--color-accent-foreground: var(--accent-foreground);
+	--color-destructive: var(--destructive);
+	--color-border: var(--border);
+	--color-input: var(--input);
+	--color-ring: var(--ring);
+	--color-sidebar: var(--sidebar);
+	--color-sidebar-foreground: var(--sidebar-foreground);
+	--color-sidebar-primary: var(--sidebar-primary);
+	--color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+	--color-sidebar-accent: var(--sidebar-accent);
+	--color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+	--color-sidebar-border: var(--sidebar-border);
+	--color-sidebar-ring: var(--sidebar-ring);
+	--color-overlay: var(--bg-overlay);
+	--color-page: var(--bg-default);
+	--color-stroke: var(--border-default);
+	--color-field: var(--border-secondary);
+	--color-focus: var(--border-focus);
+	--color-fill-critical: var(--bg-fill-critical);
+	--color-selected: var(--bg-fill-selected);
+	--color-selected-foreground: var(--text-on-fill-selected);
+	--color-sidebar-stroke: var(--border-default);
+	--color-chart-1: var(--chart-1);
+	--color-chart-2: var(--chart-2);
+	--color-chart-3: var(--chart-3);
+	--color-chart-4: var(--chart-4);
+	--color-chart-5: var(--chart-5);
+	--color-success: var(--text-success);
+	--color-warning: var(--text-warning);
+	--color-critical: var(--text-critical);
+	--color-info: var(--text-info);
+	--color-emphasis: var(--text-emphasis);
+	--color-brand: var(--text-brand);
+
+	--color-surface-success: var(--bg-surface-success);
+	--color-surface-warning: var(--bg-surface-warning);
+	--color-surface-field: var(--bg-surface-field);
+	--color-surface-critical: var(--bg-surface-critical);
+	--color-surface-info: var(--bg-surface-info);
+	--color-surface-emphasis: var(--bg-surface-emphasis);
+	--color-surface-input: var(--bg-surface-input);
+	--color-surface-brand: var(--bg-surface-brand);
+
+	--color-surface-hover: var(--bg-surface-hover);
+	--color-icon-success: var(--icon-success);
+	--color-icon-warning: var(--icon-warning);
+	--color-icon-critical: var(--icon-critical);
+	--color-icon-info: var(--icon-info);
+	--color-icon-emphasis: var(--icon-emphasis);
+	--color-icon-brand: var(--icon-brand);
+
+	--color-stroke-critical: var(--border-critical);
+	--color-stroke-success: var(--border-success);
+	--color-stroke-warning: var(--border-warning);
+	--color-stroke-info: var(--border-info);
+	--color-stroke-emphasis: var(--border-emphasis);
+	--color-stroke-brand: var(--border-brand);
+}
+
+/* Keep radius and typography scales available to component fallbacks and downstream CSS. */
+@theme static {
+	--radius-xs: calc(var(--radius) * 0.4);
+	--radius-sm: calc(var(--radius) * 0.6);
+	--radius-md: calc(var(--radius) * 0.8);
+	--radius-lg: var(--radius);
+	--radius-xl: calc(var(--radius) * 1.4);
+	--radius-2xl: calc(var(--radius) * 1.8);
+	--radius-3xl: calc(var(--radius) * 2.2);
+	--radius-4xl: calc(var(--radius) * 2.6);
+
+	/* Type scale - all sizes derived from --font-size-base,
+     all line-heights derived from --leading-base.
+     Adjust the two root tokens to scale the entire system. */
+	--text-2xs: calc(var(--font-size-base) * 0.625);
+	--text-2xs--line-height: calc(var(--leading-base) * 0.75);
+
+	--text-xs: calc(var(--font-size-base) * 0.75);
+	--text-xs--line-height: calc(var(--leading-base) * 0.94);
+
+	--text-sm: calc(var(--font-size-base) * 0.875);
+	--text-sm--line-height: var(--leading-base);
+
+	--text-base: var(--font-size-base);
+	--text-base--line-height: var(--leading-base);
+
+	--text-lg: calc(var(--font-size-base) * 1.125);
+	--text-lg--line-height: var(--leading-base);
+
+	--text-xl: calc(var(--font-size-base) * 1.25);
+	--text-xl--line-height: calc(var(--leading-base) * 0.94);
+
+	--text-2xl: calc(var(--font-size-base) * 1.5);
+	--text-2xl--line-height: calc(var(--leading-base) * 0.94);
+
+	--text-3xl: calc(var(--font-size-base) * 1.75);
+	--text-3xl--line-height: calc(var(--leading-base) * 0.85);
+
+	--text-4xl: calc(var(--font-size-base) * 2);
+	--text-4xl--line-height: calc(var(--leading-base) * 0.85);
+
+	--text-5xl: calc(var(--font-size-base) * 2.5);
+	--text-5xl--line-height: calc(var(--leading-base) * 0.75);
+
+	--text-6xl: calc(var(--font-size-base) * 3.5);
+	--text-6xl--line-height: calc(var(--leading-base) * 0.75);
+
+	--text-7xl: calc(var(--font-size-base) * 5);
+	--text-7xl--line-height: calc(var(--leading-base) * 0.75);
+}
+
+/* ── Spacing, typography aliases, shadows, motion, z-index ─────────────── */
+@theme {
+	/* Spacing base unit - reactive at runtime via calc(var(--spacing) * N) */
+	--spacing: 0.375rem;
+
+	/* Letter-spacing scale - derived from --letter-spacing-base.
+     tighter=-2x  tight=-1x  normal=0  wide=1x  wider=2x  widest=4x */
+	--tracking-tighter: calc(var(--letter-spacing-base) * -2);
+	--tracking-tight: calc(var(--letter-spacing-base) * -1);
+	--tracking-normal: 0em;
+	--tracking-wide: var(--letter-spacing-base);
+	--tracking-wider: calc(var(--letter-spacing-base) * 2);
+	--tracking-widest: calc(var(--letter-spacing-base) * 4);
+
+	/* Font families - in @theme (not inline) so Tailwind generates var()
+     references, making them runtime-changeable by presets. */
+	--font-sans: 'IBM Plex Mono', sans-serif;
+	--font-heading: 'IBM Plex Mono', sans-serif;
+	--font-brand: 'IBM Plex Mono', sans-serif;
+
+	/* Border width - reactive at runtime */
+	--border-width: var(--border-width-base);
+	--default-border-width: var(--border-width-base);
+
+	/* Shadow scale - derived from base variables
+     xs=1x  sm=1.5x  md=3x  lg=6x  xl=12x */
+	--shadow-xs: 0 calc(var(--shadow-offset-y) * 1) calc(var(--shadow-blur) * 1)
+		calc(var(--shadow-spread) * 1) var(--shadow-base-color);
+	--shadow-sm:
+		0 calc(var(--shadow-offset-y) * 1.5) calc(var(--shadow-blur) * 1.5)
+			calc(var(--shadow-spread) * 1.5) var(--shadow-base-color),
+		0 calc(var(--shadow-offset-y) * 1) calc(var(--shadow-blur) * 1) calc(var(--shadow-spread) * -1)
+			var(--shadow-base-color);
+	--shadow-md:
+		0 calc(var(--shadow-offset-y) * 3) calc(var(--shadow-blur) * 3) calc(var(--shadow-spread) * -1)
+			var(--shadow-base-color),
+		0 calc(var(--shadow-offset-y) * 1.5) calc(var(--shadow-blur) * 2)
+			calc(var(--shadow-spread) * -2) var(--shadow-base-color);
+	--shadow-lg:
+		0 calc(var(--shadow-offset-y) * 6) calc(var(--shadow-blur) * 7) calc(var(--shadow-spread) * -3)
+			var(--shadow-base-color),
+		0 calc(var(--shadow-offset-y) * 3) calc(var(--shadow-blur) * 3) calc(var(--shadow-spread) * -4)
+			var(--shadow-base-color);
+	--shadow-xl:
+		0 calc(var(--shadow-offset-y) * 12) calc(var(--shadow-blur) * 12)
+			calc(var(--shadow-spread) * -5) var(--shadow-base-color),
+		0 calc(var(--shadow-offset-y) * 5) calc(var(--shadow-blur) * 5) calc(var(--shadow-spread) * -6)
+			var(--shadow-base-color);
+
+	/* Motion tokens */
+	--duration-fast: var(--motion-duration-fast);
+	--duration-normal: var(--motion-duration-normal);
+	--duration-slow: var(--motion-duration-slow);
+	--ease-default: var(--motion-ease-standard);
+	--ease-in: var(--motion-ease-accelerate);
+	--ease-out: var(--motion-ease-decelerate);
+	--ease-linear: var(--motion-ease-linear);
+	--default-transition-duration: var(--motion-duration-interaction);
+	--default-transition-timing-function: var(--motion-ease-standard);
+	--animate-accordion-down: accordion-down var(--motion-duration-disclosure)
+		var(--motion-ease-decelerate);
+	--animate-accordion-up: accordion-up var(--motion-duration-disclosure)
+		var(--motion-ease-accelerate);
+
+	/* Opacity tokens */
+	--opacity-disabled: 0.5;
+}
+
+/* ── Container max-widths ──────────────────────────────────────────────── */
+/* Each width = spacing × 12 × (odd number) so that when centered,
+   both edges land on a grid line (grid cell = spacing × 12).
+   Using @theme (not inline) so values scale at runtime with --spacing.
+     sm  = 13 cells, md = 17, lg = 23, xl = 29, 2xl = 31              */
+@theme {
+	--container-sm: calc(var(--spacing) * 156);
+	--container-md: calc(var(--spacing) * 204);
+	--container-lg: calc(var(--spacing) * 276);
+	--container-xl: calc(var(--spacing) * 348);
+	--container-2xl: calc(var(--spacing) * 372);
+}
+
+@layer base {
+	:root {
+		/* ── Scale foundations ──────────────────────────────────────────────── */
+		--font-size-base: 1.15rem;
+		--leading-base: 1.3;
+		--letter-spacing-base: 0.04em;
+		--border-width-base: 0.125rem;
+		--shadow-base-color: rgba(0, 0, 0, 1);
+		--shadow-offset-y: 0px;
+		--shadow-blur: 0px;
+		--shadow-spread: 0px;
+
+		/* ── Component dimensions ──────────────────────────────────────────── */
+		--button-radius: var(--radius-md);
+
+		--card-radius: var(--radius-lg);
+		--card-padding: calc(var(--spacing) * 4);
+		--dialog-radius: var(--radius-xl);
+		--input-radius: var(--radius-md);
+		--badge-radius: var(--radius-4xl);
+
+		/* Keyframery defaults shared by the Composables presets. */
+		--tabs-radius: var(--radius-xl);
+		--tabs-key-radius: var(--radius-lg);
+		--tabs-height: 2rem;
+		--switch-on: var(--primary);
+
+		/* ── Choice controls (checkbox, radio) ─────────────────────────────── */
+		--checkbox-radius: var(--radius-sm);
+
+		/* Keyboard shortcut hints. */
+		--kbd-radius: var(--radius-sm);
+
+		--control-font-size: var(--text-xs);
+
+		/* ── Motion ────────────────────────────────────────────────────────── */
+		--motion-duration-fast: 100ms;
+		--motion-duration-normal: 200ms;
+		--motion-duration-slow: 300ms;
+		--motion-duration-color: var(--motion-duration-fast);
+		--motion-duration-interaction: var(--motion-duration-fast);
+		--motion-duration-disclosure: var(--motion-duration-normal);
+		--motion-duration-overlay: var(--motion-duration-fast);
+		--motion-ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+		--motion-ease-accelerate: cubic-bezier(0.4, 0, 1, 1);
+		--motion-ease-decelerate: cubic-bezier(0, 0, 0.2, 1);
+		--motion-ease-linear: linear;
+
+		--hover-transform: none;
+		--hover-shadow: var(--shadow-md);
+		--active-scale: 0.98;
+
+		/* ── Type roles ────────────────────────────────────────────────────── */
+		/* Component copy picks a role, the preset picks the --text-* step.
+		   body: running copy (cards, alerts, tooltips, tables, overlays)
+		   title: card / popover / empty-state titles
+		   heading: dialog, sheet and alert-dialog titles */
+		--body-font-size: var(--text-xs);
+		--title-font-size: var(--text-sm);
+		--heading-font-size: var(--text-sm);
+		/* Line heights travel with their role, as ratios of the font size. */
+		--body-line-height: var(--text-xs--line-height);
+		--title-line-height: var(--text-sm--line-height);
+		--heading-line-height: var(--text-sm--line-height);
+
+		/* ── Border style ──────────────────────────────────────────────────── */
+		--border-style: solid;
+
+		/* ── Focus ring ────────────────────────────────────────────────────── */
+		--focus-ring-color: var(--ring);
+		--focus-ring-width: calc(var(--border-width-base) * 2);
+		--focus-ring-offset: 0px;
+		--focus-ring-opacity: 30%;
+		--focus-ring-style: solid;
+	}
+
+	:root[data-motion='none'],
+	[data-motion='none'] {
+		--motion-duration-fast: 0ms;
+		--motion-duration-normal: 0ms;
+		--motion-duration-slow: 0ms;
+		--motion-duration-color: 0ms;
+		--motion-duration-interaction: 0ms;
+		--motion-duration-disclosure: 0ms;
+		--motion-duration-overlay: 0ms;
+		--hover-transform: none;
+		--hover-shadow: none;
+		--active-scale: 1;
+	}
+
+	:root[data-motion='color'],
+	[data-motion='color'] {
+		--motion-duration-fast: 0ms;
+		--motion-duration-normal: 0ms;
+		--motion-duration-slow: 0ms;
+		--motion-duration-color: 120ms;
+		--motion-duration-interaction: 0ms;
+		--motion-duration-disclosure: 0ms;
+		--motion-duration-overlay: 0ms;
+		--hover-transform: none;
+		--hover-shadow: none;
+		--active-scale: 1;
+	}
+
+	:root[data-motion='full'],
+	[data-motion='full'] {
+		--motion-duration-fast: 100ms;
+		--motion-duration-normal: 200ms;
+		--motion-duration-slow: 300ms;
+		--motion-duration-color: var(--motion-duration-fast);
+		--motion-duration-interaction: var(--motion-duration-fast);
+		--motion-duration-disclosure: var(--motion-duration-normal);
+		--motion-duration-overlay: var(--motion-duration-fast);
+		--hover-transform: none;
+		--hover-shadow: var(--shadow-md);
+		--active-scale: 0.98;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		:root:not([data-motion='full']) {
+			--motion-duration-fast: 0ms;
+			--motion-duration-normal: 0ms;
+			--motion-duration-slow: 0ms;
+			--motion-duration-color: 0ms;
+			--motion-duration-interaction: 0ms;
+			--motion-duration-disclosure: 0ms;
+			--motion-duration-overlay: 0ms;
+			--hover-transform: none;
+			--hover-shadow: none;
+			--active-scale: 1;
+		}
+	}
+}
+
+@layer base {
+	::selection {
+		background-color: var(--primary);
+		color: var(--primary-foreground);
+	}
+
+	* {
+		@apply border-stroke;
+	}
+
+	/* Universal focus ring - bare anchors, links, summary, tabindex targets.
+     Components use the FOCUS_RING utility class instead. */
+	a:focus-visible,
+	[role='link']:focus-visible,
+	summary:focus-visible,
+	[tabindex]:focus-visible:not([data-slot]) {
+		outline: var(--focus-ring-width) var(--focus-ring-style) var(--focus-ring-color);
+		outline-offset: var(--focus-ring-offset);
+	}
+
+	/* Native form controls used outside the component system */
+	button:not([class]):focus-visible,
+	input:not([class]):focus-visible,
+	select:not([class]):focus-visible,
+	textarea:not([class]):focus-visible {
+		outline: var(--focus-ring-width) var(--focus-ring-style) var(--focus-ring-color);
+		outline-offset: var(--focus-ring-offset);
+	}
+
+	/* Prevent iOS Safari auto-zoom on input focus */
+	@media (hover: none) and (pointer: coarse) {
+		input,
+		textarea,
+		select {
+			font-size: max(1em, 16px) !important;
+		}
+	}
+
+	body {
+		@apply font-sans bg-page text-foreground text-sm antialiased;
+	}
+
+	html {
+		@apply font-sans;
+	}
+
+	/* Wire --border-style into data-slot elements */
+	*:where([data-slot]) {
+		border-style: var(--border-style, solid);
+	}
+
+	/* Wire motion tokens into interactive elements */
+	button:not(:disabled):hover,
+	[role='button']:not([aria-disabled='true']):hover {
+		transform: var(--hover-transform, none);
+		box-shadow: var(--hover-shadow);
+	}
+
+	button:not(:disabled):not([data-slot$='-trigger']):active,
+	[role='button']:not([aria-disabled='true']):not([data-slot$='-trigger']):active {
+		transform: scale(var(--active-scale, 1));
+	}
+}
 
 @custom-variant dark (&:is(.dark *));
 
@@ -62,13 +450,3 @@
 	animation-duration: var(--motion-duration-overlay);
 	animation-timing-function: var(--motion-ease-decelerate);
 }
-
-/* ── Token layers ─────────────────────────────────────────────────────── */
-@import './tokens/palette.css';
-@import './tokens/tailwind-color-adapter.css';
-@import './tokens/tailwind-theme.css';
-@import './tokens/semantic.css';
-@import './tokens/components.css';
-@import './presets/default.css';
-@import './tokens/semantic-utilities.css';
-@import './tokens/base.css';

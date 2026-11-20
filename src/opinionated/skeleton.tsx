@@ -1,13 +1,20 @@
+'use client'
+
 import type * as React from 'react'
 
-import { Skeleton as SkeletonPrimitive } from '../_internal/skeleton'
+import { Skeleton as SkeletonPrimitive } from '../components/keyframery/skeleton'
 import { cn } from '../lib/utils'
 
-export interface SkeletonProps extends React.ComponentProps<typeof SkeletonPrimitive> {
+export interface SkeletonProps extends Omit<
+	React.ComponentProps<typeof SkeletonPrimitive>,
+	'style' | 'className'
+> {
 	/**
 	 * Width of the skeleton
 	 * Can be a number (pixels), string (e.g., "100%", "50px"), or "auto"
 	 */
+	style?: React.CSSProperties
+	className?: string
 	width?: number | string
 	/**
 	 * Height of the skeleton
@@ -52,22 +59,21 @@ function Skeleton({
 	style,
 	...props
 }: SkeletonProps) {
-	const computedStyle: React.CSSProperties = {
-		...style,
-		...(width !== undefined && {
-			width: typeof width === 'number' ? `${width}px` : width,
-		}),
-		...(height !== undefined && {
-			height: typeof height === 'number' ? `${height}px` : height,
-		}),
-	}
+	const sizeClass = size ? { sm: 'h-4', md: 'h-6', lg: 'h-8' }[size] : undefined
 
 	return (
 		<SkeletonPrimitive
-			variant={variant}
-			size={height === undefined ? size : undefined}
-			className={className}
-			style={computedStyle}
+			className={cn(
+				sizeClass,
+				variant === 'circle' && 'rounded-full',
+				variant === 'text' && 'rounded-sm',
+				className,
+			)}
+			style={{
+				...style,
+				...(width !== undefined && { width }),
+				...(height !== undefined && { height }),
+			}}
 			{...props}
 		/>
 	)
@@ -84,7 +90,7 @@ export function SkeletonText({
 }: {
 	lines?: number
 	width?: number | string | 'full' | 'sm' | 'md' | 'lg'
-} & Omit<SkeletonProps, 'variant' | 'width'>) {
+} & Omit<React.ComponentProps<'div'>, 'width'>) {
 	const widthMap = {
 		full: '100%',
 		sm: '60%',
@@ -184,7 +190,7 @@ export function SkeletonCard({
 	showHeader?: boolean
 	showContent?: boolean
 	lines?: number
-} & Omit<SkeletonProps, 'variant' | 'size'>) {
+} & React.ComponentProps<'div'>) {
 	return (
 		<div className={cn('rounded-lg border p-4 space-y-4', className)} {...props}>
 			{showHeader && (

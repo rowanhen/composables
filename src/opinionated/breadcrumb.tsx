@@ -1,4 +1,4 @@
-import * as React from 'react'
+import { Fragment, type ReactNode } from 'react'
 
 import {
 	Breadcrumb as BreadcrumbPrimitive,
@@ -8,11 +8,11 @@ import {
 	BreadcrumbList,
 	BreadcrumbPage,
 	BreadcrumbSeparator,
-} from '../_internal/breadcrumb'
+} from '../components/keyframery/breadcrumb'
 
 export interface BreadcrumbItemData {
 	/** Display label for the breadcrumb item */
-	label: React.ReactNode
+	label: ReactNode
 	/** URL to navigate to (omit for current page) */
 	href?: string
 	/** Click handler (alternative to href) */
@@ -21,13 +21,13 @@ export interface BreadcrumbItemData {
 
 export interface BreadcrumbProps {
 	/** Array of breadcrumb items. Last item is treated as current page. */
-	items: BreadcrumbItemData[]
+	items?: readonly BreadcrumbItemData[]
 	/** Custom separator element */
-	separator?: React.ReactNode
+	separator?: ReactNode
 	/** Additional class names */
 	className?: string
 	/** Children for advanced usage (overrides items) */
-	children?: React.ReactNode
+	children?: ReactNode
 }
 
 /**
@@ -55,12 +55,12 @@ function Breadcrumb({ items, separator, className, children }: BreadcrumbProps) 
 	return (
 		<BreadcrumbPrimitive className={className}>
 			<BreadcrumbList>
-				{items.map((item, index) => {
+				{items?.map((item, index) => {
 					const isLast = index === items.length - 1
 					const isFirst = index === 0
 
 					return (
-						<React.Fragment key={index}>
+						<Fragment key={index}>
 							{!isFirst && <BreadcrumbSeparator>{separator}</BreadcrumbSeparator>}
 							<BreadcrumbItem>
 								{isLast ? (
@@ -76,10 +76,10 @@ function Breadcrumb({ items, separator, className, children }: BreadcrumbProps) 
 										}
 									/>
 								) : (
-									<BreadcrumbPage>{item.label}</BreadcrumbPage>
+									<span>{item.label}</span>
 								)}
 							</BreadcrumbItem>
-						</React.Fragment>
+						</Fragment>
 					)
 				})}
 			</BreadcrumbList>

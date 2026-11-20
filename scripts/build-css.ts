@@ -15,36 +15,25 @@ import {
 	readdirSync,
 	renameSync,
 	rmSync,
+	readFileSync,
 	statSync,
 	writeFileSync,
 } from 'node:fs'
 import { basename, dirname, join } from 'node:path'
-import { execSync } from 'node:child_process'
+import { execFileSync } from 'node:child_process'
+import { semanticUtilities } from '../src/styles/theme'
 
 const ROOT = join(import.meta.dir, '..')
 const DIST_DIR = join(ROOT, 'dist')
 const PRESETS_SRC = join(ROOT, 'src/styles/presets')
 const PRESETS_DIST = join(DIST_DIR, 'presets')
-const TAILWIND_ADAPTER_SRC = join(ROOT, 'src/styles/tokens/tailwind-public-utilities.css')
+const TAILWIND_ADAPTER_SRC = join(ROOT, 'src/styles/tailwind.css')
 const OUTPUT_FILE = join(DIST_DIR, 'styles.css')
 const TAILWIND_ADAPTER_OUTPUT = join(DIST_DIR, 'tailwind.css')
 
 console.log('Building CSS...\n')
 
-// 1. Regenerate source-owned CSS so dist never bakes stale token output.
-execSync('bun scripts/generate-css.ts', {
-	cwd: ROOT,
-	stdio: 'inherit',
-	timeout: 60_000,
-})
-execSync('bun scripts/generate-preset-css.ts', {
-	cwd: ROOT,
-	stdio: 'inherit',
-	timeout: 60_000,
-})
-
-// 2. Prepare stable output directories. Files are staged under unique names
-// and atomically renamed, so concurrent builds never expose partial output.
+// Stage writes before replacing the package files.
 mkdirSync(DIST_DIR, { recursive: true })
 mkdirSync(PRESETS_DIST, { recursive: true })
 
@@ -66,16 +55,21 @@ function publishFileAtomically(source: string, destination: string) {
 try {
 	// The unique directory is a direct child of the repo, so package imports
 	// still resolve through the repo's node_modules and source paths stay simple.
+	const publicClasses = semanticUtilities(readFileSync(TAILWIND_ADAPTER_SRC, 'utf8'))
+		.map(({ name }) => name)
+		.join(' ')
 	const inputCSS = `@import 'tailwindcss';
 @import 'tw-animate-css';
 @import '../src/styles/composable.css';
 @source "../src/**/*.{ts,tsx}";
+@source inline("${publicClasses}");
 `
 	writeFileSync(inputFile, inputCSS)
 
 	phase = 'Tailwind compilation'
-	execSync(
-		`npx @tailwindcss/cli -i ${JSON.stringify(inputFile)} -o ${JSON.stringify(compiledOutput)} --minify`,
+	execFileSync(
+		'bunx',
+		['--no-install', 'tailwindcss', '-i', inputFile, '-o', compiledOutput, '--minify'],
 		{
 			cwd: ROOT,
 			stdio: 'inherit',

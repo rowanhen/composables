@@ -1,59 +1,31 @@
-import type { VariantProps } from 'class-variance-authority'
-import type * as React from 'react'
+'use client'
 
-import {
-	AvatarFallback,
-	Avatar as AvatarPrimitive,
-	AvatarImage,
-	avatarVariants,
-} from '../_internal/avatar'
+import type { ComponentProps, ReactNode } from 'react'
+import { Avatar as Root, AvatarFallback, AvatarImage } from '../components/keyframery/avatar'
 
-/**
- * Get initials from a name string.
- * Takes first letter of first and last words, or first two letters if single word.
- */
-function getInitials(name: string): string {
-	const words = name.trim().split(/\s+/)
-	if (words.length === 1) {
-		return words[0].slice(0, 2).toUpperCase()
-	}
-	return (words[0][0] + words[words.length - 1][0]).toUpperCase()
-}
-
-export interface AvatarProps extends VariantProps<typeof avatarVariants> {
-	/** Image source URL */
+export type AvatarProps = Omit<ComponentProps<typeof Root>, 'children'> & {
 	src?: string
-	/** Alt text for the image */
 	alt?: string
-	/** Name for generating fallback initials */
 	name?: string
-	/** Custom fallback content (overrides name-based initials) */
-	fallback?: React.ReactNode
-	/** Additional class names */
-	className?: string
+	fallback?: ReactNode
 }
 
-/**
- * Opinionated Avatar component with automatic initials fallback.
- *
- * @example
- * ```tsx
- * <Avatar src="/avatar.jpg" name="John Doe" />
- * <Avatar name="Jane Smith" size="lg" />
- * <Avatar src="/user.png" fallback="?" />
- * ```
- */
-function Avatar({ src, alt, name, fallback, size, variant, className }: AvatarProps) {
-	const displayFallback = fallback ?? (name ? getInitials(name) : '?')
-
+function initials(name?: string) {
+	const words = name?.trim().split(/\s+/).filter(Boolean) ?? []
+	const first = words[0]
+	if (!first) return '?'
 	return (
-		<AvatarPrimitive size={size} variant={variant} className={className}>
-			{src && <AvatarImage src={src} alt={alt ?? name ?? 'Avatar'} />}
-			<AvatarFallback>{displayFallback}</AvatarFallback>
-		</AvatarPrimitive>
+		words.length === 1 ? first.slice(0, 2) : first[0] + words[words.length - 1][0]
+	).toUpperCase()
+}
+
+export function Avatar({ src, alt, name, fallback, ...props }: AvatarProps) {
+	return (
+		<Root {...props}>
+			{src && <AvatarImage src={src} alt={alt ?? name ?? ''} />}
+			<AvatarFallback>{fallback ?? initials(name)}</AvatarFallback>
+		</Root>
 	)
 }
 
-// Re-export sub-components for advanced usage
-export { AvatarFallback, AvatarImage, avatarVariants }
-export { Avatar }
+export { AvatarFallback, AvatarImage } from '../components/keyframery/avatar'

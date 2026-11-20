@@ -1,35 +1,30 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Gallery } from '../_storybook/gallery'
-import { Label } from '../_internal/label'
-import { Slider } from '../_internal/slider'
-import { VStack } from '../_internal/stack'
+import { Label } from './label'
+import { Slider } from './slider'
 
 const meta = {
-	title: 'Forms/Slider',
+	title: 'Components/Slider',
 	component: Slider,
-	parameters: {
-		docs: {
-			description: { component: 'Range controls and value selection.' },
-		},
-	},
 } satisfies Meta<typeof Slider>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Overview: Story = {
+	name: 'Slider',
 	render: () => (
 		<Gallery>
-			<VStack gap={6} className="max-w-md">
-				<VStack gap={2}>
+			<div className="flex flex-col gap-6 max-w-md">
+				<div className="flex flex-col gap-2">
 					<Label>Single value</Label>
-					<Slider defaultValue={[50]} />
-				</VStack>
-				<VStack gap={2}>
+					<Slider defaultValue={50} aria-label="Single value" showValue />
+				</div>
+				<div className="flex flex-col gap-2">
 					<Label>Range</Label>
-					<Slider defaultValue={[25, 75]} />
-				</VStack>
-			</VStack>
+					<Slider defaultValue={[25, 75]} aria-label="Range" showValue />
+				</div>
+			</div>
 		</Gallery>
 	),
 }

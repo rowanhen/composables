@@ -1,2 +1,1 @@
-// Re-export Spinner from the base UI component
-export { Spinner, spinnerVariants } from '../_internal/spinner'
+export { Spinner, type SpinnerSize } from '../components/keyframery/spinner'

@@ -3,8 +3,6 @@
 	"compilerOptions": {
 		"baseUrl": ".",
 		"paths": {
-			"@/components/_internal/*": ["../src/_internal/*"],
-			"@/components/ui-opinionated/*": ["../src/opinionated/*"],
 			"@/lib/*": ["../src/lib/*"],
 			"@/hooks/*": ["../src/hooks/*"],
 			"@/*": ["./src/*"]

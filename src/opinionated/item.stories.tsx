@@ -1,8 +1,8 @@
 import { FileTextIcon, MoreHorizontalIcon, SettingsIcon, UserIcon } from 'lucide-react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Gallery, Group } from '../_storybook/gallery'
-import { Badge } from '../_internal/badge'
-import { Button } from '../_internal/button'
+import { Badge } from './badge'
+import { Button } from './button'
 import {
 	Item,
 	ItemActions,
@@ -11,19 +11,11 @@ import {
 	ItemGroup,
 	ItemMedia,
 	ItemTitle,
-} from '../_internal/item'
-import { VStack } from '../_internal/stack'
+} from '../components/keyframery/item'
 
 const meta = {
-	title: 'Content/Item',
+	title: 'Components/Item',
 	component: Item,
-	parameters: {
-		docs: {
-			description: {
-				component: 'Reusable list-row composition with media, metadata, and actions.',
-			},
-		},
-	},
 } satisfies Meta<typeof Item>
 
 export default meta
@@ -55,7 +47,7 @@ export const Variants: Story = {
 							<ItemDescription>Bordered variant for separation</ItemDescription>
 						</ItemContent>
 						<ItemActions>
-							<Button variant="ghost" size="icon-xs">
+							<Button variant="ghost" size="icon-sm" aria-label="More actions">
 								<MoreHorizontalIcon />
 							</Button>
 						</ItemActions>
@@ -98,25 +90,17 @@ export const Sizes: Story = {
 							<ItemDescription>Compact layout</ItemDescription>
 						</ItemContent>
 					</Item>
-					<Item size="xs" variant="outline">
+					<Item variant="outline">
 						<ItemMedia variant="icon">
 							<FileTextIcon />
 						</ItemMedia>
 						<ItemContent>
-							<ItemTitle>Extra small size</ItemTitle>
+							<ItemTitle>Compact row</ItemTitle>
 							<ItemDescription>Minimal padding</ItemDescription>
 						</ItemContent>
 					</Item>
 				</ItemGroup>
 			</Group>
-		</Gallery>
-	),
-}
-
-export const More: Story = {
-	render: () => (
-		<Gallery>
-			<VStack gap={6} className="max-w-lg"></VStack>
 		</Gallery>
 	),
 }

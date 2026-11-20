@@ -1,131 +1,97 @@
-import type * as React from 'react'
+'use client'
 
+import type { ComponentProps, ReactElement, ReactNode } from 'react'
 import {
-	DropdownMenu as DropdownMenuPrimitive,
-	DropdownMenuCheckboxItem,
-	DropdownMenuContent,
-	DropdownMenuGroup,
-	DropdownMenuItem,
-	DropdownMenuLabel,
-	DropdownMenuPortal,
-	DropdownMenuRadioGroup,
-	DropdownMenuRadioItem,
-	DropdownMenuSeparator,
-	DropdownMenuShortcut,
-	DropdownMenuSub,
-	DropdownMenuSubContent,
-	DropdownMenuSubTrigger,
-	DropdownMenuTrigger,
-} from '../_internal/dropdown-menu'
+	Menu,
+	MenuCheckboxItem,
+	MenuContent,
+	MenuGroup,
+	MenuGroupLabel,
+	MenuItem,
+	MenuItemIcon,
+	MenuRadioGroup,
+	MenuRadioItem,
+	MenuSeparator,
+	MenuShortcut,
+	MenuSub,
+	MenuSubContent,
+	MenuSubTrigger,
+	MenuTrigger,
+} from '../components/keyframery/menu'
 
-export interface DropdownMenuItemData {
-	/** Display label for the menu item */
-	label: React.ReactNode
-	/** Click handler */
-	onClick?: () => void
-	/** Icon to display before the label */
-	icon?: React.ReactNode
-	/** Keyboard shortcut to display */
-	shortcut?: string
-	/** Whether the item is disabled */
-	disabled?: boolean
-	/** Set to true to render a separator instead of an item */
-	separator?: boolean
-	/** Variant for destructive actions */
-	variant?: 'default' | 'destructive'
-}
+export type DropdownMenuItemData =
+	| {
+			label: ReactNode
+			value?: string
+			onClick?: ComponentProps<typeof MenuItem>['onSelect']
+			icon?: ReactNode
+			shortcut?: string
+			disabled?: boolean
+			destructive?: boolean
+			separator?: false
+	  }
+	| { separator: true }
 
-export interface DropdownMenuProps {
-	/** Trigger element that opens the menu */
-	trigger: React.ReactNode
-	/** Array of menu items */
-	items?: DropdownMenuItemData[]
-	/** Menu alignment relative to trigger */
-	align?: 'start' | 'center' | 'end'
-	/** Side to position the menu */
-	side?: 'top' | 'right' | 'bottom' | 'left'
-	/** Additional class names for the content */
-	className?: string
-	/** Children for advanced usage (overrides items) */
-	children?: React.ReactNode
-}
+export type DropdownMenuProps = Omit<ComponentProps<typeof Menu>, 'items' | 'children'> &
+	Pick<ComponentProps<typeof MenuContent>, 'align' | 'side' | 'className'> & {
+		trigger: string | ReactElement
+		items?: readonly DropdownMenuItemData[]
+		children?: ReactNode
+	}
 
-/**
- * Opinionated DropdownMenu component with items array API.
- *
- * @example
- * ```tsx
- * <DropdownMenu
- *   trigger={<Button>Open Menu</Button>}
- *   items={[
- *     { label: 'Edit', icon: <EditIcon />, onClick: () => console.log('edit') },
- *     { label: 'Copy', shortcut: '⌘C', onClick: () => console.log('copy') },
- *     { separator: true },
- *     { label: 'Delete', variant: 'destructive', onClick: () => console.log('delete') },
- *   ]}
- * />
- * ```
- */
-function DropdownMenu({
+export function DropdownMenu({
 	trigger,
 	items,
 	align = 'start',
 	side = 'bottom',
 	className,
 	children,
+	...props
 }: DropdownMenuProps) {
-	// If children provided, use primitive API
-	if (children) {
-		return (
-			<DropdownMenuPrimitive>
-				<DropdownMenuTrigger render={<>{trigger}</>} />
-				{children}
-			</DropdownMenuPrimitive>
-		)
-	}
-
 	return (
-		<DropdownMenuPrimitive>
-			<DropdownMenuTrigger render={<>{trigger}</>} />
-			<DropdownMenuContent align={align} side={side} className={className}>
-				{items?.map((item, index) => {
-					if (item.separator) {
-						return <DropdownMenuSeparator key={index} />
-					}
-
-					return (
-						<DropdownMenuItem
-							key={index}
-							onClick={item.onClick}
-							disabled={item.disabled}
-							variant={item.variant}
-						>
-							{item.icon}
-							{item.label}
-							{item.shortcut && <DropdownMenuShortcut>{item.shortcut}</DropdownMenuShortcut>}
-						</DropdownMenuItem>
-					)
-				})}
-			</DropdownMenuContent>
-		</DropdownMenuPrimitive>
+		<Menu {...props}>
+			{typeof trigger === 'string' ? (
+				<MenuTrigger>{trigger}</MenuTrigger>
+			) : (
+				<MenuTrigger render={trigger} />
+			)}
+			<MenuContent className={className} align={align} side={side}>
+				{children ??
+					items?.map((item, index) =>
+						item.separator ? (
+							<MenuSeparator key={index} />
+						) : (
+							<MenuItem
+								key={item.value ?? index}
+								value={item.value}
+								label={typeof item.label === 'string' ? item.label : undefined}
+								shortcut={item.shortcut}
+								onSelect={item.onClick}
+								disabled={item.disabled}
+								destructive={item.destructive}
+							>
+								{item.icon && <MenuItemIcon>{item.icon}</MenuItemIcon>}
+								{item.label}
+							</MenuItem>
+						),
+					)}
+			</MenuContent>
+		</Menu>
 	)
 }
 
-// Re-export sub-components for advanced usage
 export {
-	DropdownMenuCheckboxItem,
-	DropdownMenuContent,
-	DropdownMenuGroup,
-	DropdownMenuItem,
-	DropdownMenuLabel,
-	DropdownMenuPortal,
-	DropdownMenuRadioGroup,
-	DropdownMenuRadioItem,
-	DropdownMenuSeparator,
-	DropdownMenuShortcut,
-	DropdownMenuSub,
-	DropdownMenuSubContent,
-	DropdownMenuSubTrigger,
-	DropdownMenuTrigger,
+	MenuCheckboxItem as DropdownMenuCheckboxItem,
+	MenuContent as DropdownMenuContent,
+	MenuGroup as DropdownMenuGroup,
+	MenuGroupLabel as DropdownMenuLabel,
+	MenuItem as DropdownMenuItem,
+	MenuRadioGroup as DropdownMenuRadioGroup,
+	MenuRadioItem as DropdownMenuRadioItem,
+	MenuSeparator as DropdownMenuSeparator,
+	MenuShortcut as DropdownMenuShortcut,
+	MenuSub as DropdownMenuSub,
+	MenuSubContent as DropdownMenuSubContent,
+	MenuSubTrigger as DropdownMenuSubTrigger,
+	MenuTrigger as DropdownMenuTrigger,
 }
-export { DropdownMenu }

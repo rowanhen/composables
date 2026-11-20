@@ -9,15 +9,9 @@ import {
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Gallery, Group } from '../_storybook/gallery'
 import { ToggleGroup, ToggleGroupItem } from './toggle-group'
-import { HStack, VStack } from '../_internal/stack'
 
 const meta = {
-	title: 'Forms/Toggle group',
-	parameters: {
-		docs: {
-			description: { component: 'Single and multiple selection toggle groups.' },
-		},
-	},
+	title: 'Components/Toggle group',
 } satisfies Meta
 
 export default meta
@@ -29,8 +23,7 @@ export const SingleValue: Story = {
 		<Gallery>
 			<Group label="Single value">
 				<ToggleGroup
-					defaultValue="left"
-					variant="outline"
+					defaultValue={['left']}
 					options={[
 						{ value: 'left', label: 'Left', icon: <AlignLeftIcon /> },
 						{ value: 'center', label: 'Center', icon: <AlignCenterIcon /> },
@@ -47,7 +40,7 @@ export const MultipleValues: Story = {
 	render: () => (
 		<Gallery>
 			<Group label="Multiple values">
-				<ToggleGroup defaultValue={['bold']} multiple variant="outline">
+				<ToggleGroup defaultValue={['bold']} multiple>
 					<ToggleGroupItem value="bold" aria-label="Bold">
 						<BoldIcon />
 					</ToggleGroupItem>
@@ -67,27 +60,19 @@ export const Spacing: Story = {
 	render: () => (
 		<Gallery>
 			<Group label="Spacing">
-				<HStack gap={4} wrap>
-					<ToggleGroup defaultValue="left" variant="outline" spacing="sm">
+				<div className="flex gap-4 flex-wrap">
+					<ToggleGroup defaultValue={['left']}>
 						<ToggleGroupItem value="left">Left</ToggleGroupItem>
 						<ToggleGroupItem value="center">Center</ToggleGroupItem>
 						<ToggleGroupItem value="right">Right</ToggleGroupItem>
 					</ToggleGroup>
-					<ToggleGroup defaultValue="top" orientation="vertical" variant="outline">
+					<ToggleGroup defaultValue={['top']} orientation="vertical">
 						<ToggleGroupItem value="top">Top</ToggleGroupItem>
 						<ToggleGroupItem value="middle">Middle</ToggleGroupItem>
 						<ToggleGroupItem value="bottom">Bottom</ToggleGroupItem>
 					</ToggleGroup>
-				</HStack>
+				</div>
 			</Group>
-		</Gallery>
-	),
-}
-
-export const More: Story = {
-	render: () => (
-		<Gallery>
-			<VStack gap={4}></VStack>
 		</Gallery>
 	),
 }

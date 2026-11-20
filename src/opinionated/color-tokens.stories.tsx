@@ -1,26 +1,20 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Gallery, Swatch } from '../_storybook/gallery'
-import { HStack, VStack } from '../_internal/stack'
-import { Typography } from '../_internal/typography'
 
 const meta = {
 	title: 'Foundations/Color tokens',
-	parameters: {
-		docs: {
-			description: { component: 'Palette scales, semantic colors, and runtime theme variables.' },
-		},
-	},
 } satisfies Meta
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Overview: Story = {
+	name: 'Color tokens',
 	render: () => (
 		<Gallery>
-			<VStack gap={6}>
-				<Typography variant="heading-200">Background Fills</Typography>
-				<HStack gap={3} wrap>
+			<div className="flex flex-col gap-6">
+				<h3 className="text-base font-medium">Background Fills</h3>
+				<div className="flex gap-3 flex-wrap">
 					<Swatch label="fill-primary" bg="--bg-fill-primary" />
 					<Swatch label="fill-brand" bg="--bg-fill-brand" />
 					<Swatch label="fill-info" bg="--bg-fill-info" />
@@ -28,10 +22,10 @@ export const Overview: Story = {
 					<Swatch label="fill-warning" bg="--bg-fill-warning" />
 					<Swatch label="fill-critical" bg="--bg-fill-critical" />
 					<Swatch label="fill-emphasis" bg="--bg-fill-emphasis" />
-				</HStack>
+				</div>
 
-				<Typography variant="heading-200">Background Surfaces</Typography>
-				<HStack gap={3} wrap>
+				<h3 className="text-base font-medium">Background Surfaces</h3>
+				<div className="flex gap-3 flex-wrap">
 					<Swatch label="default" bg="--bg-surface-default" />
 					<Swatch label="info" bg="--bg-surface-info" />
 					<Swatch label="success" bg="--bg-surface-success" />
@@ -40,10 +34,10 @@ export const Overview: Story = {
 					<Swatch label="emphasis" bg="--bg-surface-emphasis" />
 					<Swatch label="brand" bg="--bg-surface-brand" />
 					<Swatch label="inverse" bg="--bg-surface-inverse" />
-				</HStack>
+				</div>
 
-				<Typography variant="heading-200">Borders</Typography>
-				<HStack gap={3} wrap>
+				<h3 className="text-base font-medium">Borders</h3>
+				<div className="flex gap-3 flex-wrap">
 					<Swatch label="default" borderColor="--border-default" />
 					<Swatch label="focus" borderColor="--border-focus" />
 					<Swatch label="brand" borderColor="--border-brand" />
@@ -51,10 +45,10 @@ export const Overview: Story = {
 					<Swatch label="success" borderColor="--border-success" />
 					<Swatch label="warning" borderColor="--border-warning" />
 					<Swatch label="critical" borderColor="--border-critical" />
-				</HStack>
+				</div>
 
-				<Typography variant="heading-200">Text Colors</Typography>
-				<HStack gap={6} wrap>
+				<h3 className="text-base font-medium">Text Colors</h3>
+				<div className="flex gap-6 flex-wrap">
 					{[
 						['Default', '--text-default'],
 						['Secondary', '--text-secondary'],
@@ -67,12 +61,12 @@ export const Overview: Story = {
 						['Brand', '--text-brand'],
 						['Link', '--text-link'],
 					].map(([label, cssVar]) => (
-						<Typography key={label} variant="body-200" style={{ color: `var(${cssVar})` }}>
+						<p className="text-base" key={label} style={{ color: `var(${cssVar})` }}>
 							{label}
-						</Typography>
+						</p>
 					))}
-				</HStack>
-			</VStack>
+				</div>
+			</div>
 		</Gallery>
 	),
 }

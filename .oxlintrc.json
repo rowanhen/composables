@@ -4,5 +4,27 @@
 		"no-unused-vars": "error",
 		"react/no-unknown-property": "off"
 	},
-	"ignorePatterns": ["dist", "node_modules"]
+	"ignorePatterns": ["dist", "node_modules"],
+	"jsPlugins": [
+		{
+			"name": "composables",
+			"specifier": "./src/lint/index.mjs"
+		}
+	],
+	"overrides": [
+		{
+			"files": ["showcase/src/**/*.{js,jsx,ts,tsx}"],
+			"rules": {
+				"composables/use-opinionated-components": "error",
+				"composables/use-semantic-tokens": "error"
+			}
+		},
+		{
+			"files": ["showcase/src/tools/token-config-panel/**/*"],
+			"rules": {
+				"composables/use-opinionated-components": "off",
+				"composables/use-semantic-tokens": "off"
+			}
+		}
+	]
 }

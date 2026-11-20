@@ -1,15 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Gallery } from '../_storybook/gallery'
-import { Badge } from '../_internal/badge'
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../_internal/table'
+import { Badge } from './badge'
+import {
+	Table,
+	TableBody,
+	TableCell,
+	TableHead,
+	TableHeader,
+	TableRow,
+} from '../components/keyframery/table'
 
 const meta = {
-	title: 'Data/Table',
-	parameters: {
-		docs: {
-			description: { component: 'Structured tabular content with opinionated spacing.' },
-		},
-	},
+	title: 'Components/Table',
 } satisfies Meta
 
 export default meta
@@ -40,7 +42,7 @@ function PolicyTable() {
 							<TableCell>
 								<Badge
 									variant={
-										status === 'Active' ? 'success' : status === 'Pending' ? 'warning' : 'secondary'
+										status === 'Active' ? 'success' : status === 'Pending' ? 'outline' : 'secondary'
 									}
 								>
 									{status}
@@ -56,6 +58,7 @@ function PolicyTable() {
 }
 
 export const Overview: Story = {
+	name: 'Table',
 	render: () => (
 		<Gallery>
 			<PolicyTable />

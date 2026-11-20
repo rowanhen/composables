@@ -1,111 +1,57 @@
+'use client'
+
 import { CircleAlertIcon, CircleCheckIcon, InfoIcon, TriangleAlertIcon } from 'lucide-react'
-import type { VariantProps } from 'class-variance-authority'
-import type * as React from 'react'
-
+import type { ComponentProps, ReactNode } from 'react'
 import {
-	AlertAction,
+	Alert as Root,
+	AlertClose,
 	AlertDescription,
-	Alert as AlertPrimitive,
 	AlertTitle,
-	type alertVariants,
-} from '../_internal/alert'
+} from '../components/keyframery/alert'
 
+type RootProps = ComponentProps<typeof Root>
+export type AlertVariant = NonNullable<RootProps['variant']>
 export type AlertType = 'notice' | 'negative' | 'positive' | 'default' | 'warning'
 
-/** Visual style variants available for the Alert. */
-export type AlertVariant = NonNullable<VariantProps<typeof alertVariants>['variant']>
-
-/**
- * Props for the opinionated Alert component.
- *
- * Maps a semantic `type` prop to the appropriate icon and visual variant,
- * so you don't need to handle that mapping yourself.
- *
- * @example
- * ```tsx
- * <Alert type="positive" title="Payment successful" message="Your invoice has been sent." />
- * <Alert type="negative" title="Something went wrong" message={error.message} />
- * <Alert type="notice" message="Your session expires in 5 minutes." />
- * <Alert variant="brand" title="New feature" message="Try it today." />
- * <Alert type="warning" title="Storage almost full">
- *   <Button size="sm">Upgrade plan</Button>
- * </Alert>
- * ```
- */
-export interface AlertProps extends Omit<React.ComponentProps<typeof AlertPrimitive>, 'title'> {
-	/**
-	 * Semantic type that controls the icon and colour variant.
-	 * - `default` - no icon, neutral styling
-	 * - `notice` - info icon (ℹ), neutral styling
-	 * - `positive` - check icon, green styling
-	 * - `warning` - triangle icon, amber styling
-	 * - `negative` - alert circle icon, red/destructive styling
-	 * @default 'default'
-	 */
+export type AlertProps = Omit<RootProps, 'title' | 'children'> & {
 	type?: AlertType
-	/**
-	 * Visual style override. When omitted, the variant is derived from `type`.
-	 */
-	variant?: AlertVariant
-	/** Alert heading rendered in bold. */
-	title?: React.ReactNode
-	/** Alert body text. Alternatively pass `children`. */
-	message?: React.ReactNode
-	children?: React.ReactNode
-	/** Content rendered at the trailing edge of the alert (e.g. a dismiss button). */
-	action?: React.ReactNode
-	className?: string
+	title?: ReactNode
+	message?: ReactNode
+	children?: ReactNode
+	action?: ReactNode
+	dismissible?: boolean
 }
 
-function Alert({
+const icons = {
+	default: null,
+	notice: InfoIcon,
+	negative: CircleAlertIcon,
+	positive: CircleCheckIcon,
+	warning: TriangleAlertIcon,
+}
+
+export function Alert({
 	type = 'default',
+	variant = type === 'negative' ? 'destructive' : 'default',
 	title,
 	message,
 	children,
 	action,
-	className,
-	variant,
-	...alertProps
+	dismissible = false,
+	...props
 }: AlertProps) {
-	const typeVariants: Record<AlertType, AlertVariant> = {
-		default: 'default',
-		negative: 'destructive',
-		notice: 'info',
-		positive: 'success',
-		warning: 'warning',
-	}
-	const resolvedVariant = variant ?? typeVariants[type]
-
-	// Get icon based on type
-	const getIcon = () => {
-		switch (type) {
-			case 'negative':
-				return <CircleAlertIcon />
-			case 'positive':
-				return <CircleCheckIcon />
-			case 'notice':
-				return <InfoIcon />
-			case 'warning':
-				return <TriangleAlertIcon />
-			default:
-				return null
-		}
-	}
-
-	const icon = getIcon()
-	const content = message || children
+	const Icon = icons[type]
+	const content = message ?? children
 
 	return (
-		<AlertPrimitive variant={resolvedVariant} className={className} {...alertProps}>
-			{icon}
-			{title && <AlertTitle>{title}</AlertTitle>}
-			{content && <AlertDescription>{content}</AlertDescription>}
-			{action && <AlertAction>{action}</AlertAction>}
-		</AlertPrimitive>
+		<Root variant={variant} {...props}>
+			{Icon && <Icon aria-hidden />}
+			{title != null && <AlertTitle>{title}</AlertTitle>}
+			{content != null && <AlertDescription>{content}</AlertDescription>}
+			{action != null && <div className="col-start-2">{action}</div>}
+			{dismissible && <AlertClose />}
+		</Root>
 	)
 }
 
-// Re-export all alert sub-components for convenience
-export { AlertAction, AlertDescription, AlertTitle }
-
-export { Alert }
+export { AlertClose, AlertDescription, AlertTitle }

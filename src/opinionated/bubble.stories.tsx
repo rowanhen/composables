@@ -1,16 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Gallery, Group } from '../_storybook/gallery'
 import { Bubble, BubbleContent, BubbleGroup, BubbleReactions } from './bubble'
-import { VStack } from '../_internal/stack'
 
 const meta = {
-	title: 'Content/Bubble',
+	title: 'Components/Bubble',
 	component: Bubble,
-	parameters: {
-		docs: {
-			description: { component: 'Chat and comment bubble surfaces.' },
-		},
-	},
 } satisfies Meta<typeof Bubble>
 
 export default meta
@@ -33,7 +27,7 @@ export const Variants: Story = {
 					<Bubble variant="outline">
 						<BubbleContent>Outlined bubble when the background should stay flat.</BubbleContent>
 					</Bubble>
-					<Bubble variant="critical">
+					<Bubble variant="destructive">
 						<BubbleContent>Critical bubble for error states.</BubbleContent>
 					</Bubble>
 				</BubbleGroup>
@@ -57,14 +51,6 @@ export const AlignmentAndReactions: Story = {
 					</Bubble>
 				</BubbleGroup>
 			</Group>
-		</Gallery>
-	),
-}
-
-export const More: Story = {
-	render: () => (
-		<Gallery>
-			<VStack gap={4} className="max-w-2xl"></VStack>
 		</Gallery>
 	),
 }

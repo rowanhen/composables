@@ -8,4 +8,4 @@ export {
 	TableHead,
 	TableHeader,
 	TableRow,
-} from '../_internal/table'
+} from '../components/keyframery/table'

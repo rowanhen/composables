@@ -1,8 +1,16 @@
-import type { VariantProps } from 'class-variance-authority'
 import * as React from 'react'
 
-import { Field, FieldContent, FieldDescription, FieldError, FieldLabel } from '../_internal/field'
-import { Input } from '../_internal/input'
+import {
+	Field,
+	FieldContent,
+	FieldDescription,
+	FieldError,
+	FieldLabel,
+	type FieldErrors,
+	type FieldProps,
+	fieldErrors,
+} from './field'
+import { Input } from './input'
 import { type NumericInputOptions, useNumericInput } from '../hooks/use-numeric-input'
 
 /**
@@ -30,19 +38,19 @@ import { type NumericInputOptions, useNumericInput } from '../hooks/use-numeric-
  * ```
  */
 export interface FormInputProps
-	extends Omit<React.ComponentProps<'input'>, 'size'>, NumericInputOptions {
+	extends Omit<React.ComponentProps<typeof Input>, 'size'>, NumericInputOptions {
 	/** Label text rendered above the input. */
 	label?: string
 	/** Helper text rendered below the input. */
 	description?: string
 	/** Error message(s). Accepts a string, array of strings, or react-hook-form error array. */
-	error?: string | string[] | Array<{ message?: string } | undefined>
+	error?: FieldErrors
 	/** Disables the input. @default false */
 	disabled?: boolean
 	/** Marks the field as required (shows asterisk + aria-required). @default false */
 	required?: boolean
 	/** Label/input layout direction. @default 'vertical' */
-	orientation?: VariantProps<typeof Field>['orientation']
+	orientation?: FieldProps['orientation']
 	className?: string
 }
 
@@ -66,15 +74,9 @@ function FormInput({
 	type,
 	...restInputProps
 }: FormInputProps) {
-	const errorArray = React.useMemo(() => {
-		if (!error) return undefined
-		if (Array.isArray(error)) {
-			return error.map((e) => (typeof e === 'string' ? { message: e } : e))
-		}
-		return [{ message: error }]
-	}, [error])
+	const errorArray = fieldErrors(error)
 
-	const hasError = Boolean(error)
+	const hasError = errorArray.length > 0
 	const generatedId = React.useId()
 	const inputId = id || generatedId
 
@@ -91,7 +93,7 @@ function FormInput({
 	})
 
 	return (
-		<Field orientation={orientation} className={className} data-invalid={hasError}>
+		<Field orientation={orientation} className={className} invalid={hasError} disabled={disabled}>
 			{label && (
 				<FieldLabel htmlFor={inputId}>
 					{label}
@@ -102,6 +104,10 @@ function FormInput({
 				<Input
 					{...restInputProps}
 					{...numericInputProps}
+					inputMode={numericInputProps.inputMode ?? restInputProps.inputMode}
+					value={
+						numericInputProps.value === undefined ? undefined : String(numericInputProps.value)
+					}
 					id={inputId}
 					disabled={disabled}
 					required={required}

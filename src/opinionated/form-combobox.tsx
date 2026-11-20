@@ -1,14 +1,24 @@
-import type { VariantProps } from 'class-variance-authority'
 import * as React from 'react'
 import {
 	Combobox,
+	ComboboxClear,
 	ComboboxContent,
+	ComboboxControl,
 	ComboboxEmpty,
 	ComboboxInput,
-	ComboboxItem,
 	ComboboxList,
-} from '../_internal/combobox'
-import { Field, FieldContent, FieldDescription, FieldError, FieldLabel } from '../_internal/field'
+	ComboboxTrigger,
+} from '../components/keyframery/combobox'
+import {
+	Field,
+	FieldContent,
+	FieldDescription,
+	FieldError,
+	FieldLabel,
+	type FieldErrors,
+	type FieldProps,
+	fieldErrors,
+} from './field'
 
 /** A single option in a FormCombobox. */
 export interface FormComboboxOption {
@@ -45,16 +55,17 @@ export interface FormComboboxOption {
  * />
  * ```
  */
-export interface FormComboboxProps extends Omit<
-	React.ComponentProps<typeof Combobox>,
-	'value' | 'onValueChange' | 'children'
+export interface FormComboboxProps extends Pick<
+	React.ComponentProps<typeof Combobox<string, false>>,
+	'open' | 'defaultOpen' | 'onOpenChange' | 'speed'
 > {
+	defaultValue?: string | null
 	/** Label text rendered above the combobox. */
 	label?: string
 	/** Helper text rendered below the combobox. */
 	description?: string
 	/** Error message(s). Accepts a string, array, or react-hook-form error array. */
-	error?: string | string[] | Array<{ message?: string } | undefined>
+	error?: FieldErrors
 	/** Placeholder text in the search input. */
 	placeholder?: string
 	/** Array of selectable options. */
@@ -68,7 +79,7 @@ export interface FormComboboxProps extends Omit<
 	/** Marks the field as required. @default false */
 	required?: boolean
 	/** Label/combobox layout direction. @default 'vertical' */
-	orientation?: VariantProps<typeof Field>['orientation']
+	orientation?: FieldProps['orientation']
 	className?: string
 	/** Shows a dropdown chevron button. @default true */
 	showTrigger?: boolean
@@ -112,29 +123,14 @@ function FormCombobox({
 	'aria-labelledby': ariaLabelledBy,
 	...comboboxProps
 }: FormComboboxProps) {
-	const errorArray = React.useMemo(() => {
-		if (!error) return undefined
-		if (Array.isArray(error)) {
-			return error.map((e) => (typeof e === 'string' ? { message: e } : e))
-		}
-		return [{ message: error }]
-	}, [error])
+	const errorArray = fieldErrors(error)
 
-	const hasError = Boolean(error)
+	const hasError = errorArray.length > 0
 	const generatedId = React.useId()
 	const inputId = id || generatedId
 
-	const handleValueChange = React.useCallback(
-		(newValue: unknown) => {
-			if (onValueChange) {
-				onValueChange(newValue === undefined ? null : (newValue as string))
-			}
-		},
-		[onValueChange],
-	)
-
 	return (
-		<Field orientation={orientation} className={className} data-invalid={hasError}>
+		<Field orientation={orientation} className={className} invalid={hasError} disabled={disabled}>
 			{label && (
 				<FieldLabel htmlFor={inputId}>
 					{label}
@@ -142,33 +138,35 @@ function FormCombobox({
 				</FieldLabel>
 			)}
 			<FieldContent>
-				<Combobox value={value ?? undefined} onValueChange={handleValueChange} {...comboboxProps}>
-					<ComboboxInput
-						id={inputId}
-						name={name}
-						placeholder={placeholder}
-						disabled={disabled}
-						showTrigger={showTrigger}
-						showClear={showClear}
-						aria-label={ariaLabel}
-						aria-labelledby={ariaLabelledBy}
-						aria-invalid={hasError}
-						aria-required={required}
-					/>
+				<Combobox<string>
+					items={options}
+					value={value}
+					onValueChange={onValueChange}
+					name={name}
+					disabled={disabled}
+					required={required}
+					{...comboboxProps}
+				>
+					<ComboboxControl>
+						<ComboboxInput
+							id={inputId}
+							placeholder={placeholder}
+							aria-label={ariaLabel}
+							aria-labelledby={ariaLabelledBy}
+							aria-invalid={hasError || undefined}
+							aria-required={required}
+						/>
+						{showClear && <ComboboxClear aria-label="Clear selection" />}
+						{showTrigger && <ComboboxTrigger aria-label="Show options" />}
+					</ComboboxControl>
 					<ComboboxContent
 						side={side}
 						sideOffset={sideOffset}
 						align={align}
 						alignOffset={alignOffset}
 					>
-						<ComboboxList>
-							{options.length === 0 && emptyText && <ComboboxEmpty>{emptyText}</ComboboxEmpty>}
-							{options.map((option) => (
-								<ComboboxItem key={option.value} value={option.value} disabled={option.disabled}>
-									{option.label}
-								</ComboboxItem>
-							))}
-						</ComboboxList>
+						<ComboboxEmpty>{emptyText}</ComboboxEmpty>
+						<ComboboxList />
 					</ComboboxContent>
 				</Combobox>
 				{description && <FieldDescription>{description}</FieldDescription>}

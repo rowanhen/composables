@@ -1,21 +1,27 @@
-import type { VariantProps } from 'class-variance-authority'
-import { ChevronDownIcon } from 'lucide-react'
 import * as React from 'react'
-import { Calendar } from '../_internal/calendar'
-import { Field, FieldContent, FieldDescription, FieldError, FieldLabel } from '../_internal/field'
-import { FieldTrigger } from '../_internal/input'
-import { Popover, PopoverContent, PopoverTrigger } from '../_internal/popover'
+import { Calendar } from './calendar'
+import {
+	Field,
+	FieldContent,
+	FieldDescription,
+	FieldError,
+	FieldLabel,
+	type FieldErrors,
+	type FieldProps,
+	fieldErrors,
+} from './field'
+import { Popover, PopoverContent, PopoverTrigger } from '../components/keyframery/popover'
 
 export interface FormCalendarPopoverProps {
 	label?: string
 	description?: string
-	error?: string | string[] | Array<{ message?: string } | undefined>
+	error?: FieldErrors
 	value?: Date
 	onChange?: (value: Date | undefined) => void
 	onBlur?: () => void
 	disabled?: boolean
 	required?: boolean
-	orientation?: VariantProps<typeof Field>['orientation']
+	orientation?: FieldProps['orientation']
 	className?: string
 	// Additional props
 	id?: string
@@ -27,6 +33,14 @@ export interface FormCalendarPopoverProps {
 	minDate?: Date
 	/** Maximum selectable date - dates after this will be disabled */
 	maxDate?: Date
+}
+
+function toCalendarDate(date: Date | undefined) {
+	if (!date || Number.isNaN(date.getTime())) return undefined
+	const year = String(date.getFullYear()).padStart(4, '0')
+	const month = String(date.getMonth() + 1).padStart(2, '0')
+	const day = String(date.getDate()).padStart(2, '0')
+	return `${year}-${month}-${day}`
 }
 
 function FormCalendarPopover({
@@ -47,46 +61,23 @@ function FormCalendarPopover({
 	placeholder = 'Select date',
 	minDate,
 	maxDate,
-	...props
 }: FormCalendarPopoverProps) {
-	const errorArray = React.useMemo(() => {
-		if (!error) return undefined
-		if (Array.isArray(error)) {
-			return error.map((e) => (typeof e === 'string' ? { message: e } : e))
-		}
-		return [{ message: error }]
-	}, [error])
+	const errorArray = fieldErrors(error)
 
-	const hasError = Boolean(error)
+	const hasError = errorArray.length > 0
 	const generatedId = React.useId()
 	const inputId = id || generatedId
 
 	const [open, setOpen] = React.useState(false)
 
-	const disabledDates = React.useMemo(() => {
-		const matchers: Array<{ before: Date } | { after: Date }> = []
-		if (minDate) {
-			matchers.push({ before: minDate })
-		}
-		if (maxDate) {
-			matchers.push({ after: maxDate })
-		}
-		return matchers.length > 0 ? matchers : undefined
-	}, [minDate, maxDate])
-
-	const handleDateSelect = (date: Date | undefined) => {
-		onChange?.(date)
-		setOpen(false)
-	}
-
-	const handleBlur = () => {
-		onBlur?.()
-	}
+	const calendarDate = toCalendarDate(value)
+	const firstDate = toCalendarDate(minDate)
+	const lastDate = toCalendarDate(maxDate)
 
 	return (
-		<Field orientation={orientation} className={className} data-invalid={hasError}>
+		<Field orientation={orientation} className={className} invalid={hasError} disabled={disabled}>
 			{label && (
-				<FieldLabel htmlFor={inputId}>
+				<FieldLabel id={`${inputId}-label`} htmlFor={inputId}>
 					{label}
 					{required && <span className="text-critical">*</span>}
 				</FieldLabel>
@@ -94,36 +85,39 @@ function FormCalendarPopover({
 			<FieldContent>
 				<Popover open={open} onOpenChange={setOpen}>
 					<PopoverTrigger
-						render={
-							<FieldTrigger
-								id={inputId}
-								name={name}
-								disabled={disabled}
-								aria-invalid={hasError}
-								aria-required={required}
-								aria-label={ariaLabel}
-								aria-labelledby={ariaLabelledBy || (label ? inputId : undefined)}
-								onBlur={handleBlur}
-								data-placeholder={value ? undefined : ''}
-								{...props}
-							>
-								{value ? value.toLocaleDateString() : placeholder}
-								<ChevronDownIcon className="text-muted-foreground size-[1.25em] shrink-0" />
-							</FieldTrigger>
+						id={inputId}
+						disabled={disabled}
+						aria-invalid={hasError || undefined}
+						aria-required={required}
+						aria-label={ariaLabel}
+						aria-labelledby={
+							ariaLabelledBy ?? (label && !ariaLabel ? `${inputId}-label` : undefined)
 						}
-					/>
+						aria-describedby={description ? `${inputId}-description` : undefined}
+						onBlur={onBlur}
+					>
+						{value && calendarDate ? value.toLocaleDateString() : placeholder}
+					</PopoverTrigger>
 					<PopoverContent className="w-auto p-0" align="start">
 						<Calendar
-							mode="single"
-							selected={value}
-							defaultMonth={value || undefined}
-							captionLayout="dropdown"
-							onSelect={handleDateSelect}
-							disabled={disabledDates}
+							value={calendarDate ?? null}
+							defaultMonth={(calendarDate ?? firstDate)?.slice(0, 7)}
+							min={firstDate}
+							max={lastDate}
+							deselectable={!required}
+							onValueChange={(selected) => {
+								onChange?.(
+									typeof selected === 'string' ? new Date(`${selected}T00:00:00`) : undefined,
+								)
+								setOpen(false)
+							}}
 						/>
 					</PopoverContent>
 				</Popover>
-				{description && <FieldDescription>{description}</FieldDescription>}
+				{name && <input type="hidden" name={name} value={calendarDate ?? ''} disabled={disabled} />}
+				{description && (
+					<FieldDescription id={`${inputId}-description`}>{description}</FieldDescription>
+				)}
 				{hasError && <FieldError errors={errorArray} />}
 			</FieldContent>
 		</Field>

@@ -40,7 +40,7 @@ echo "━━━━━━━━━━━━━━━━━━━━━━━━�
 echo ""
 
 echo "→ Building showcase..."
-(cd "$ROOT_DIR" && bunx vite build showcase)
+(cd "$ROOT_DIR" && bun run build:storybook)
 
 echo ""
 echo "→ Deploying to Cloudflare Pages..."

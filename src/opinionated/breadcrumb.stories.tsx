@@ -7,21 +7,17 @@ import {
 	BreadcrumbList,
 	BreadcrumbPage,
 	BreadcrumbSeparator,
-} from '../_internal/breadcrumb'
+} from './breadcrumb'
 
 const meta = {
-	title: 'Navigation/Breadcrumb',
-	parameters: {
-		docs: {
-			description: { component: 'Hierarchy trails for nested pages.' },
-		},
-	},
+	title: 'Components/Breadcrumb',
 } satisfies Meta
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Overview: Story = {
+	name: 'Breadcrumb',
 	render: () => (
 		<Gallery>
 			<Breadcrumb>

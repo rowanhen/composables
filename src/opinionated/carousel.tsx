@@ -1,99 +1,95 @@
-import type * as React from 'react'
+'use client'
 
+import type { ComponentProps, ReactNode } from 'react'
 import {
-	type CarouselApi,
-	Carousel as CarouselPrimitive,
+	Carousel as Root,
 	CarouselContent,
+	CarouselIndicator,
+	CarouselIndicatorGroup,
 	CarouselItem,
 	CarouselNext,
+	CarouselPlayToggle,
 	CarouselPrevious,
-} from '../_internal/carousel'
+	CarouselProgress,
+	CarouselViewport,
+} from '../components/keyframery/carousel'
 
-type CarouselOptions = Parameters<typeof CarouselPrimitive>[0]['opts']
-
-export interface CarouselProps {
-	/** Array of items to render as slides */
-	items?: React.ReactNode[]
-	/** Embla carousel options */
-	opts?: CarouselOptions
-	/** Orientation of the carousel */
-	orientation?: 'horizontal' | 'vertical'
-	/** Whether to show navigation arrows */
+export type CarouselProps = Omit<ComponentProps<typeof Root>, 'children'> & {
+	items?: readonly ReactNode[]
+	children?: ReactNode
 	showNavigation?: boolean
-	/** Callback to receive the carousel API */
-	setApi?: (api: CarouselApi) => void
-	/** Additional class names */
-	className?: string
-	/** Children for advanced usage (overrides items) */
-	children?: React.ReactNode
+	showIndicators?: boolean
+	showPlayToggle?: boolean
+	viewportClassName?: string
 }
 
-/**
- * Opinionated Carousel component with items array API.
- *
- * @example
- * ```tsx
- * <Carousel
- *   items={[
- *     <img src="/slide1.jpg" alt="Slide 1" />,
- *     <img src="/slide2.jpg" alt="Slide 2" />,
- *     <img src="/slide3.jpg" alt="Slide 3" />,
- *   ]}
- *   showNavigation
- * />
- *
- * // Or with advanced usage
- * <Carousel>
- *   <CarouselContent>
- *     <CarouselItem className="basis-1/3">Slide 1</CarouselItem>
- *     <CarouselItem className="basis-1/3">Slide 2</CarouselItem>
- *   </CarouselContent>
- *   <CarouselPrevious />
- *   <CarouselNext />
- * </Carousel>
- * ```
- */
-function Carousel({
+export function Carousel({
 	items,
-	opts,
-	orientation = 'horizontal',
-	showNavigation = false,
-	setApi,
-	className,
 	children,
+	slidesPerPage,
+	showNavigation = false,
+	showIndicators = false,
+	showPlayToggle = false,
+	viewportClassName,
+	...props
 }: CarouselProps) {
-	// If children provided, use primitive API
-	if (children) {
-		return (
-			<CarouselPrimitive
-				opts={opts}
-				orientation={orientation}
-				setApi={setApi}
-				className={className}
-			>
-				{children}
-			</CarouselPrimitive>
-		)
-	}
+	const slideBasis =
+		typeof slidesPerPage === 'number' && slidesPerPage > 1
+			? `calc((100% - ${slidesPerPage - 1} * var(--carousel-gap, 0.75rem)) / ${slidesPerPage})`
+			: undefined
 
-	// Use items array API
 	return (
-		<CarouselPrimitive opts={opts} orientation={orientation} setApi={setApi} className={className}>
-			<CarouselContent>
-				{items?.map((item, index) => (
-					<CarouselItem key={index}>{item}</CarouselItem>
-				))}
-			</CarouselContent>
-			{showNavigation && (
-				<>
-					<CarouselPrevious />
-					<CarouselNext />
-				</>
+		<Root slidesPerPage={slidesPerPage} {...props}>
+			{children ?? (
+				<CarouselViewport className={viewportClassName}>
+					<CarouselContent className="data-[orientation=vertical]:h-full">
+						{items?.map((item, index) => (
+							<CarouselItem key={index} style={slideBasis ? { flexBasis: slideBasis } : undefined}>
+								{item}
+							</CarouselItem>
+						))}
+					</CarouselContent>
+				</CarouselViewport>
 			)}
-		</CarouselPrimitive>
+			{(showNavigation || showIndicators || showPlayToggle) && (
+				<div className="flex flex-wrap items-center justify-between gap-3">
+					{showIndicators && (
+						<CarouselIndicatorGroup aria-label="Choose a slide page" className="empty:hidden">
+							{({ pageCount }) =>
+								pageCount && pageCount > 1
+									? Array.from({ length: pageCount }, (_, index) => (
+											<CarouselIndicator key={index} page={index + 1} />
+										))
+									: null
+							}
+						</CarouselIndicatorGroup>
+					)}
+					{(showNavigation || showPlayToggle) && (
+						<div className="ms-auto flex items-center gap-2">
+							{showPlayToggle && <CarouselPlayToggle />}
+							{showNavigation && (
+								<>
+									<CarouselPrevious />
+									<CarouselNext />
+								</>
+							)}
+						</div>
+					)}
+				</div>
+			)}
+		</Root>
 	)
 }
 
-// Re-export sub-components for advanced usage
-export { type CarouselApi, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious }
-export { Carousel }
+export {
+	CarouselContent,
+	CarouselIndicator,
+	CarouselIndicatorGroup,
+	CarouselItem,
+	CarouselNext,
+	CarouselPlayToggle,
+	CarouselPrevious,
+	CarouselProgress,
+	CarouselViewport,
+}
+export { createCarouselController, type CarouselApi } from '../components/keyframery/carousel'

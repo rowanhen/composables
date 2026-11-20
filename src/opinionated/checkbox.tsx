@@ -1,11 +1,5 @@
-/**
- * Opinionated Checkbox component.
- * Re-exports the primitive as the API is already clean.
- *
- * @example
- * ```tsx
- * <Checkbox checked={checked} onCheckedChange={setChecked} />
- * <Checkbox defaultChecked />
- * ```
- */
-export { Checkbox } from '../_internal/checkbox'
+import type { ComponentProps } from 'react'
+import { Checkbox } from '../components/keyframery/checkbox'
+
+export type CheckboxProps = ComponentProps<typeof Checkbox>
+export { Checkbox }

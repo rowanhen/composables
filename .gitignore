@@ -4,5 +4,5 @@ dist
 *.log
 coverage
 .vite
-.test-downstream
-.build-css-input.css
+/.test-tailwind-*/
+/.build-css-*/

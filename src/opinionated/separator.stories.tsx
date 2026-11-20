@@ -1,36 +1,30 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Gallery } from '../_storybook/gallery'
-import { Separator } from '../_internal/separator'
-import { HStack, VStack } from '../_internal/stack'
-import { Typography } from '../_internal/typography'
+import { Separator } from '../components/keyframery/separator'
 
 const meta = {
 	title: 'Utilities/Separator',
 	component: Separator,
-	parameters: {
-		docs: {
-			description: { component: 'Horizontal and vertical section dividers.' },
-		},
-	},
 } satisfies Meta<typeof Separator>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Overview: Story = {
+	name: 'Separator',
 	render: () => (
 		<Gallery>
-			<VStack gap={4}>
-				<Typography variant="body-100">Horizontal separator</Typography>
+			<div className="flex flex-col gap-4">
+				<p className="text-sm">Horizontal separator</p>
 				<Separator />
-				<HStack gap={4} align="center" className="h-8">
-					<Typography variant="body-100">Left</Typography>
+				<div className="flex gap-4 items-center h-8">
+					<p className="text-sm">Left</p>
 					<Separator orientation="vertical" />
-					<Typography variant="body-100">Middle</Typography>
+					<p className="text-sm">Middle</p>
 					<Separator orientation="vertical" />
-					<Typography variant="body-100">Right</Typography>
-				</HStack>
-			</VStack>
+					<p className="text-sm">Right</p>
+				</div>
+			</div>
 		</Gallery>
 	),
 }

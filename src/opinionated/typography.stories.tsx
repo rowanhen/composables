@@ -1,98 +1,54 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { Gallery } from '../_storybook/gallery'
-import { Separator } from '../_internal/separator'
-import { VStack } from '../_internal/stack'
-import { Typography } from '../_internal/typography'
+import { useState } from 'react'
+import { Button, Typography, type TypographyVariant } from '@leitware/composables'
+import { Gallery, Group } from '../_storybook/gallery'
 
-const meta = {
-	title: 'Foundations/Typography',
-	parameters: {
-		docs: {
-			description: {
-				component: 'Type tokens, font presets, headings, body copy, captions, and code text.',
-			},
-		},
-	},
-} satisfies Meta
-
+const meta = { title: 'Foundations/Typography' } satisfies Meta
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Overview: Story = {
+const families = {
+	Display: ['hero-100', 'heading-600', 'heading-400', 'heading-200', 'brand-heading-200'],
+	Body: ['body-300', 'body-200', 'body-100', 'brand-body-200'],
+	Supporting: ['label-200', 'label-100', 'brand-label-100', 'caption-100'],
+} satisfies Record<string, TypographyVariant[]>
+
+export const Scale: Story = {
 	render: () => (
 		<Gallery>
-			<VStack gap={4}>
-				<Typography variant="hero-400">Hero 400</Typography>
-				<Typography variant="hero-300">Hero 300</Typography>
-				<Typography variant="hero-200">Hero 200</Typography>
-				<Typography variant="hero-100">Hero 100</Typography>
-				<Separator />
-				<Typography variant="heading-600" as="h2">
-					Heading 600
-				</Typography>
-				<Typography variant="heading-500" as="h3">
-					Heading 500
-				</Typography>
-				<Typography variant="heading-400" as="h4">
-					Heading 400
-				</Typography>
-				<Typography variant="heading-300" as="h5">
-					Heading 300
-				</Typography>
-				<Typography variant="heading-200" as="h6">
-					Heading 200
-				</Typography>
-				<Typography variant="heading-100">Heading 100</Typography>
-				<Separator />
-				<Typography variant="brand-heading-600" as="h2">
-					Brand Heading 600
-				</Typography>
-				<Typography variant="brand-heading-500" as="h3">
-					Brand Heading 500
-				</Typography>
-				<Typography variant="brand-heading-400" as="h4">
-					Brand Heading 400
-				</Typography>
-				<Typography variant="brand-heading-300" as="h5">
-					Brand Heading 300
-				</Typography>
-				<Typography variant="brand-heading-200" as="h6">
-					Brand Heading 200
-				</Typography>
-				<Typography variant="brand-heading-100">Brand Heading 100</Typography>
-				<Separator />
-				<Typography variant="body-300">
-					Body 300 - The quick brown fox jumps over the lazy dog.
-				</Typography>
-				<Typography variant="body-200">
-					Body 200 - The quick brown fox jumps over the lazy dog.
-				</Typography>
-				<Typography variant="body-100">
-					Body 100 - The quick brown fox jumps over the lazy dog.
-				</Typography>
-				<Separator />
-				<Typography variant="brand-body-300">
-					Brand Body 300 - The quick brown fox jumps over the lazy dog.
-				</Typography>
-				<Typography variant="brand-body-200">
-					Brand Body 200 - The quick brown fox jumps over the lazy dog.
-				</Typography>
-				<Typography variant="brand-body-100">
-					Brand Body 100 - The quick brown fox jumps over the lazy dog.
-				</Typography>
-				<Separator />
-				<Typography variant="label-200">LABEL 200</Typography>
-				<Typography variant="label-100">LABEL 100</Typography>
-				<Typography variant="brand-label-200">BRAND LABEL 200</Typography>
-				<Typography variant="brand-label-100">BRAND LABEL 100</Typography>
-				<Typography variant="caption-100">Caption 100 - supporting text</Typography>
-				<Typography variant="link-200" as="a">
-					Link 200
-				</Typography>
-				<Typography variant="link-100" as="a">
-					Link 100
-				</Typography>
-			</VStack>
+			{Object.entries(families).map(([label, variants]) => (
+				<Group key={label} label={label}>
+					{variants.map((variant) => (
+						<Typography
+							key={variant}
+							as={variant === 'hero-100' ? 'h1' : undefined}
+							variant={variant}
+						>
+							{variant.charAt(0).toUpperCase() + variant.slice(1).replaceAll('-', ' ')}
+						</Typography>
+					))}
+				</Group>
+			))}
+			<Typography variant="link-100" as="a" href="#storybook-root">
+				Back to top
+			</Typography>
 		</Gallery>
 	),
 }
+
+function RevealDemo() {
+	const [revision, setRevision] = useState(0)
+	return (
+		<div className="flex max-w-sm flex-col items-start gap-4">
+			<Button onClick={() => setRevision((current) => current + 1)}>Replay reveal</Button>
+			<Typography key={revision} as="h2" variant="heading-300" motion="reveal" speed="slow">
+				Your changes are ready
+			</Typography>
+			<Typography variant="body-200">
+				The preview uses the active motion style and the typography of this preset.
+			</Typography>
+		</div>
+	)
+}
+
+export const Reveal: Story = { render: () => <RevealDemo /> }

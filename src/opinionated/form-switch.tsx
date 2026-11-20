@@ -1,8 +1,15 @@
-import type { Switch as SwitchPrimitive } from '@base-ui/react/switch'
-import type { VariantProps } from 'class-variance-authority'
-import * as React from 'react'
-import { Field, FieldContent, FieldDescription, FieldError, FieldLabel } from '../_internal/field'
-import { Switch } from '../_internal/switch'
+import { useId } from 'react'
+import {
+	Field,
+	FieldContent,
+	FieldDescription,
+	FieldError,
+	FieldLabel,
+	fieldErrors,
+	type FieldErrors,
+	type FieldProps,
+} from './field'
+import { Switch, type SwitchProps } from './switch'
 
 /**
  * Props for the opinionated FormSwitch component.
@@ -18,16 +25,13 @@ import { Switch } from '../_internal/switch'
  * />
  * ```
  */
-export interface FormSwitchProps extends Omit<
-	SwitchPrimitive.Root.Props,
-	'checked' | 'onCheckedChange'
-> {
+export interface FormSwitchProps extends Omit<SwitchProps, 'checked' | 'onCheckedChange'> {
 	/** Label text rendered beside the switch. */
 	label?: string
 	/** Helper text rendered below the label. */
 	description?: string
 	/** Error message(s). Accepts a string, array, or react-hook-form error array. */
-	error?: string | string[] | Array<{ message?: string } | undefined>
+	error?: FieldErrors
 	/** Controlled checked state. Omit (or use `defaultChecked`) for uncontrolled. */
 	checked?: boolean
 	/** Called when the user toggles the switch. */
@@ -37,9 +41,7 @@ export interface FormSwitchProps extends Omit<
 	/** Marks the field as required. @default false */
 	required?: boolean
 	/** Label/switch layout direction. @default 'horizontal' */
-	orientation?: VariantProps<typeof Field>['orientation']
-	/** Switch size variant. @default 'default' */
-	size?: 'sm' | 'default'
+	orientation?: FieldProps['orientation']
 	className?: string
 	id?: string
 	name?: string
@@ -56,7 +58,6 @@ function FormSwitch({
 	disabled = false,
 	required = false,
 	orientation = 'horizontal',
-	size = 'default',
 	className,
 	id,
 	name,
@@ -64,22 +65,15 @@ function FormSwitch({
 	'aria-labelledby': ariaLabelledBy,
 	...switchProps
 }: FormSwitchProps) {
-	const errorArray = React.useMemo(() => {
-		if (!error) return undefined
-		if (Array.isArray(error)) {
-			return error.map((e) => (typeof e === 'string' ? { message: e } : e))
-		}
-		return [{ message: error }]
-	}, [error])
-
-	const hasError = Boolean(error)
-	const generatedId = React.useId()
+	const errorArray = fieldErrors(error)
+	const hasError = errorArray.length > 0
+	const generatedId = useId()
 	const switchId = id || generatedId
 
 	const hasLabelOrDescription = Boolean(label || description)
 
 	return (
-		<Field orientation={orientation} className={className} data-invalid={hasError}>
+		<Field orientation={orientation} className={className} invalid={hasError} disabled={disabled}>
 			<FieldContent
 				className={orientation === 'horizontal' ? 'flex-row items-start gap-2' : undefined}
 			>
@@ -106,8 +100,7 @@ function FormSwitch({
 					aria-invalid={hasError}
 					aria-required={required}
 					aria-label={ariaLabel}
-					aria-labelledby={ariaLabelledBy || (label ? switchId : undefined)}
-					size={size}
+					aria-labelledby={ariaLabelledBy}
 					{...switchProps}
 				/>
 			</FieldContent>

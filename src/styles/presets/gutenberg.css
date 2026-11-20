@@ -24,32 +24,25 @@
 	--bg-surface-critical: #fff7f7ff;
 	--bg-surface-emphasis: #f4faffff;
 	--bg-surface-inverse: #63635eff;
-	--bg-surface-transparent: #0000000d;
-	--bg-overlay: var(--overlays-black-alpha-800);
+
+	--bg-overlay: #000000b2;
 	--bg-surface-brand: #e8ecff;
-	--bg-surface-brand-2: #eefaf8ff;
-	--bg-surface-brand-3: #fffaf0ff;
-	--bg-surface-brand-4: #eef2fbff;
-	--bg-surface-brand-5: #f0faf0ff;
+
 	--bg-surface-hover: #dededb;
-	--bg-fill-default: #f9f9f8ff;
+
 	--bg-fill-primary: #0028ff;
-	--bg-fill-primary-hover: #21201cff;
+
 	--bg-fill-selected: #0028ff;
 	--bg-fill-brand: #0028ff;
-	--bg-fill-brand-2: #12a594ff;
-	--bg-fill-brand-3: #ffc53dff;
-	--bg-fill-brand-4: #3e63ddff;
-	--bg-fill-brand-5: #46a758ff;
+
 	--bg-fill-info: #7ce2feff;
 	--bg-fill-success: #46a758ff;
 	--bg-fill-warning: #f76b15ff;
 	--bg-fill-critical: #e5484dff;
 	--bg-fill-emphasis: #0090ffff;
-	--bg-fill-transparent: #0000000d;
+
 	--bg-fill-secondary: #e5e5e2;
-	--bg-fill-secondary-hover: #f1f0efff;
-	--bg-fill-secondary-inverse: #ffffffff;
+
 	--text-default: #292b2b;
 	--text-secondary: #555858;
 	--text-muted: #666969;
@@ -66,10 +59,7 @@
 	--text-critical: #641723ff;
 	--text-emphasis: #113264ff;
 	--text-brand: #0028ff;
-	--text-brand-2: #0d6d5eff;
-	--text-brand-3: #6f5b1bff;
-	--text-brand-4: #1f3780ff;
-	--text-brand-5: #203c25ff;
+
 	--text-link: #0028ff;
 	--icon-default: #303232;
 	--icon-secondary: #666969;
@@ -81,22 +71,16 @@
 	--icon-critical: #ce2c31ff;
 	--icon-emphasis: #0d74ceff;
 	--icon-brand: #0028ff;
-	--icon-brand-2: #12a594ff;
-	--icon-brand-3: #e8a317ff;
-	--icon-brand-4: #3e63ddff;
-	--icon-brand-5: #2a7e3bff;
+
 	--border-default: #d4d5d1;
 	--border-secondary: #dad9d6ff;
 	--border-input: transparent;
-	--border-tertiary: #bcbbb5ff;
+
 	--border-disabled: #dad9d6ff;
 	--border-inverse: #63635eff;
 	--border-focus: #0028ff;
 	--border-brand: #0028ff;
-	--border-brand-2: #8ecec6ff;
-	--border-brand-3: #edd5a0ff;
-	--border-brand-4: #93a9e8ff;
-	--border-brand-5: #94ce9aff;
+
 	--border-info: #8dcae3ff;
 	--border-success: #94ce9aff;
 	--border-warning: #f5ae73ff;
@@ -107,7 +91,7 @@
 	--chart-3: #aa99ecff;
 	--chart-4: #6e56cfff;
 	--chart-5: #654dc4ff;
-	--sidebar-background: #f9f9f8ff;
+	--sidebar: #f9f9f8ff;
 	--sidebar-foreground: #21201cff;
 	--sidebar-primary: #21201cff;
 	--sidebar-primary-foreground: #ffffffff;
@@ -131,8 +115,6 @@
 	--container-lg: 1056px;
 	--container-xl: 1248px;
 	--container-2xl: 1440px;
-	--dropdown-offset: 4;
-	--overlay-offset: 4;
 	--font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 	--font-heading:
 		ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -141,7 +123,6 @@
 	--card-radius: var(--radius-lg);
 	--card-padding: calc(var(--spacing) * 4);
 	--input-radius: calc(var(--radius) * 1.333333);
-	--control-size-md: calc(var(--spacing) * 12);
 	--badge-radius: var(--radius-4xl);
 	--motion-duration-fast: 100ms;
 	--motion-duration-normal: 200ms;
@@ -154,38 +135,17 @@
 	--motion-ease-accelerate: cubic-bezier(0.4, 0, 1, 1);
 	--motion-ease-decelerate: cubic-bezier(0, 0, 0.2, 1);
 	--motion-ease-linear: linear;
-	--transition-default: var(--motion-duration-normal) var(--motion-ease-standard);
-	--transition-fast: var(--motion-duration-fast) var(--motion-ease-standard);
-	--transition-slow: var(--motion-duration-slow) var(--motion-ease-decelerate);
 	--hover-transform: none;
 	--hover-shadow: var(--shadow-md);
 	--active-scale: 0.98;
-	--choice-size: calc(var(--spacing) * 6);
 	--checkbox-radius: calc(var(--radius) * 0.4);
-	--choice-border-width: 1px;
-	--checkbox-icon-size: calc(var(--spacing) * 5.5);
-	--hover-ring-width: 0px;
+
 	--focus-ring-width: 2px;
-	--choice-border-color: var(--border-default);
-	--kbd-height: calc(var(--spacing) * 6);
 	--kbd-radius: var(--radius-md);
-	--kbd-font-size: var(--text-xs);
-	--label-font-size: var(--text-xs);
-	--label-color: var(--text-muted);
 	--control-font-size: var(--text-sm);
-	--tabs-list-radius: 9999px;
-	--tabs-tab-radius: 9999px;
-	--tabs-tab-height: calc(var(--spacing) * 11);
-	--slider-size: calc(var(--spacing) * 14);
-	--switch-height: calc(var(--spacing) * 6);
-	--button-radius-sm: 9999px;
-	--button-radius-xs: 9999px;
-	--button-height: 3rem;
-	--button-height-sm: 2.75rem;
-	--button-height-lg: 3.5rem;
-	--button-font-size: 0.9375rem;
-	--control-size-sm: calc(var(--spacing) * 11);
-	--control-size-lg: calc(var(--spacing) * 14);
+	--tabs-radius: 9999px;
+	--tabs-key-radius: 9999px;
+	--tabs-height: calc(var(--spacing) * 11);
 	--background: var(--bg-default);
 	--foreground: var(--text-default);
 	--card: var(--bg-surface-default);
@@ -221,32 +181,25 @@
 	--bg-surface-critical: #201314ff;
 	--bg-surface-emphasis: #111927ff;
 	--bg-surface-inverse: #b5b3adff;
-	--bg-surface-transparent: #0000000d;
-	--bg-overlay: var(--overlays-black-alpha-800);
+
+	--bg-overlay: #000000b2;
 	--bg-surface-brand: #303c58;
-	--bg-surface-brand-2: #0f201eff;
-	--bg-surface-brand-3: #231e10ff;
-	--bg-surface-brand-4: #111828ff;
-	--bg-surface-brand-5: #141a15ff;
+
 	--bg-surface-hover: #424545;
-	--bg-fill-default: #191918ff;
+
 	--bg-fill-primary: #93b4ff;
-	--bg-fill-primary-hover: #eeeeecff;
+
 	--bg-fill-selected: #93b4ff;
 	--bg-fill-brand: #93b4ff;
-	--bg-fill-brand-2: #12a594ff;
-	--bg-fill-brand-3: #ffc53dff;
-	--bg-fill-brand-4: #3e63ddff;
-	--bg-fill-brand-5: #46a758ff;
+
 	--bg-fill-info: #7ce2feff;
 	--bg-fill-success: #46a758ff;
 	--bg-fill-warning: #f76b15ff;
 	--bg-fill-critical: #e5484dff;
 	--bg-fill-emphasis: #0090ffff;
-	--bg-fill-transparent: #0000000d;
+
 	--bg-fill-secondary: #3c3f3f;
-	--bg-fill-secondary-hover: #222221ff;
-	--bg-fill-secondary-inverse: #000000ff;
+
 	--text-default: #e5e6e2;
 	--text-secondary: #c0c3bf;
 	--text-muted: #a8ada9;
@@ -263,10 +216,7 @@
 	--text-critical: #ffd1d9ff;
 	--text-emphasis: #c2e6ffff;
 	--text-brand: #93b4ff;
-	--text-brand-2: #a8e5dcff;
-	--text-brand-3: #ffe6a0ff;
-	--text-brand-4: #aebff0ff;
-	--text-brand-5: #c2f0c2ff;
+
 	--text-link: #93b4ff;
 	--icon-default: #e5e6e2;
 	--icon-secondary: #a8ada9;
@@ -278,22 +228,16 @@
 	--icon-critical: #ff9592ff;
 	--icon-emphasis: #70b8ffff;
 	--icon-brand: #93b4ff;
-	--icon-brand-2: #4dc8baff;
-	--icon-brand-3: #e8b844ff;
-	--icon-brand-4: #6e8defff;
-	--icon-brand-5: #71d083ff;
+
 	--border-default: #4d5250;
 	--border-secondary: #494844ff;
 	--border-input: transparent;
-	--border-tertiary: #62605bff;
+
 	--border-disabled: #494844ff;
 	--border-inverse: #b5b3adff;
 	--border-focus: #93b4ff;
 	--border-brand: #93b4ff;
-	--border-brand-2: #2a6858ff;
-	--border-brand-3: #6a5020ff;
-	--border-brand-4: #2a4480ff;
-	--border-brand-5: #366740ff;
+
 	--border-info: #1f6692ff;
 	--border-success: #366740ff;
 	--border-warning: #7e451dff;
@@ -304,7 +248,7 @@
 	--chart-3: #6958adff;
 	--chart-4: #6e56cfff;
 	--chart-5: #7d66d9ff;
-	--sidebar-background: #191918ff;
+	--sidebar: #191918ff;
 	--sidebar-foreground: #eeeeecff;
 	--sidebar-primary: #eeeeecff;
 	--sidebar-primary-foreground: #000000ff;
@@ -317,36 +261,17 @@
 		ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 	--font-brand: 'Bricolage Grotesque Variable', sans-serif;
 	--radius: 0.75rem;
-	--choice-size: calc(var(--spacing) * 6);
 	--checkbox-radius: calc(var(--radius) * 0.4);
-	--choice-border-width: 1px;
-	--checkbox-icon-size: calc(var(--spacing) * 5.5);
 	--border-width-base: 0px;
-	--hover-ring-width: 0px;
+
 	--focus-ring-width: 2px;
-	--choice-border-color: var(--border-default);
-	--kbd-height: calc(var(--spacing) * 6);
 	--kbd-radius: var(--radius-md);
-	--kbd-font-size: var(--text-xs);
-	--label-font-size: var(--text-xs);
-	--label-color: var(--text-muted);
 	--control-font-size: var(--text-sm);
-	--tabs-list-radius: 9999px;
-	--tabs-tab-radius: 9999px;
-	--tabs-tab-height: calc(var(--spacing) * 11);
-	--slider-size: calc(var(--spacing) * 14);
-	--switch-height: calc(var(--spacing) * 6);
+	--tabs-radius: 9999px;
+	--tabs-key-radius: 9999px;
+	--tabs-height: calc(var(--spacing) * 11);
 	--input-radius: calc(var(--radius) * 1.333333);
 	--button-radius: 9999px;
-	--button-radius-sm: 9999px;
-	--button-radius-xs: 9999px;
-	--button-height: 3rem;
-	--button-height-sm: 2.75rem;
-	--button-height-lg: 3.5rem;
-	--button-font-size: 0.9375rem;
-	--control-size-md: calc(var(--spacing) * 12);
-	--control-size-sm: calc(var(--spacing) * 11);
-	--control-size-lg: calc(var(--spacing) * 14);
 	--background: var(--bg-default);
 	--foreground: var(--text-default);
 	--card: var(--bg-surface-default);

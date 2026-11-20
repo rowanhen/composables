@@ -14,13 +14,10 @@
 		"types": ["node"],
 		"baseUrl": ".",
 		"paths": {
-			"@/components/_internal/*": ["src/_internal/*"],
-			"@/components/ai-elements/*": ["src/_internal/ai-elements/*"],
-			"@/components/ui-opinionated/*": ["src/opinionated/*"],
 			"@/lib/*": ["src/lib/*"],
 			"@/hooks/*": ["src/hooks/*"],
 			"@/*": ["showcase/src/*"]
 		}
 	},
-	"include": ["src", "showcase/src", ".storybook", "showcase/vite.config.ts"]
+	"include": ["src", "showcase/src", ".storybook"]
 }

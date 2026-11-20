@@ -5,28 +5,6 @@
 export type NumericMode = 'integer' | 'decimal'
 
 /**
- * Creates a regex pattern for validating numeric input
- */
-export function createNumericPattern(mode: NumericMode, maxDecimalPlaces: number): RegExp {
-	if (mode === 'integer') {
-		return /^-?\d*$/
-	}
-	return new RegExp(`^-?\\d*\\.?\\d{0,${maxDecimalPlaces}}$`)
-}
-
-/**
- * Tests if a string value is valid for the given numeric mode
- */
-export function isValidNumericInput(
-	value: string,
-	mode: NumericMode,
-	maxDecimalPlaces: number,
-): boolean {
-	const pattern = createNumericPattern(mode, maxDecimalPlaces)
-	return pattern.test(value)
-}
-
-/**
  * Sanitizes input by removing invalid characters and enforcing constraints.
  * Always returns a valid string for the given mode.
  */

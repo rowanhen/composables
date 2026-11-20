@@ -1,0 +1,120 @@
+/* Keyframery preset k18OWX, scoped to the preset story so overlay portals inherit it. */
+
+:root:has([data-keyframery-preset]) {
+	--background: oklch(1 0 0);
+	--foreground: oklch(0.165 0.008 56);
+	--card: oklch(1 0 0);
+	--card-foreground: oklch(0.165 0.008 56);
+	--popover: oklch(1 0 0);
+	--popover-foreground: oklch(0.165 0.008 56);
+	--primary: oklch(0.507 0.258 266.4);
+	--primary-foreground: oklch(0.985 0 0);
+	--secondary: oklch(0.965 0.002 56);
+	--secondary-foreground: oklch(0.205 0.009 56);
+	--muted: oklch(0.962 0.002 56);
+	--muted-foreground: oklch(0.52 0.014 56);
+	--accent: oklch(0.955 0.002 56);
+	--accent-foreground: oklch(0.205 0.009 56);
+	--border: oklch(0.915 0.004 56);
+	--input: oklch(0.885 0.006 56);
+	--destructive: oklch(0.577 0.225 27);
+	--ring: oklch(0.507 0.258 266.4);
+	--chart-1: oklch(0.56 0.19 263);
+	--chart-2: oklch(0.74 0.1 228);
+	--chart-3: oklch(0.4 0.08 262);
+	--chart-4: oklch(0.72 0.12 62);
+	--chart-5: oklch(0.85 0.035 250);
+	--radius: 0.625rem;
+}
+
+:root:has([data-keyframery-preset]).dark {
+	--background: oklch(0.16 0.008 56);
+	--foreground: oklch(0.965 0.002 56);
+	--card: oklch(0.195 0.009 56);
+	--card-foreground: oklch(0.965 0.002 56);
+	--popover: oklch(0.205 0.009 56);
+	--popover-foreground: oklch(0.965 0.002 56);
+	--primary: oklch(0.707 0.153 272.1);
+	--primary-foreground: oklch(0.24 0.046 272.1);
+	--secondary: oklch(0.255 0.011 56);
+	--secondary-foreground: oklch(0.965 0.002 56);
+	--muted: oklch(0.235 0.01 56);
+	--muted-foreground: oklch(0.69 0.012 56);
+	--accent: oklch(0.275 0.011 56);
+	--accent-foreground: oklch(0.965 0.002 56);
+	--destructive: oklch(0.7 0.19 22);
+	--border: oklch(1 0 0 / 0.1);
+	--input: oklch(1 0 0 / 0.16);
+	--ring: oklch(0.68 0.153 272.1);
+	--chart-1: oklch(0.66 0.17 263);
+	--chart-2: oklch(0.8 0.09 228);
+	--chart-3: oklch(0.56 0.07 260);
+	--chart-4: oklch(0.76 0.11 64);
+	--chart-5: oklch(0.9 0.025 250);
+}
+
+:root:has([data-keyframery-preset]):not([data-motion]) {
+	--kf-speed: 1.35;
+	--ease-spring: linear(
+		0,
+		0.001 0.5%,
+		0.007 1.5%,
+		0.024 2.8%,
+		0.055 4.4%,
+		0.102 6.4%,
+		0.163 8.5%,
+		0.235 10.9%,
+		0.316 13.5%,
+		0.4 16.3%,
+		0.484 19.3%,
+		0.565 22.4%,
+		0.641 25.8%,
+		0.708 29.3%,
+		0.767 33%,
+		0.818 36.8%,
+		0.859 40.8%,
+		0.893 45%,
+		0.92 49.3%,
+		0.941 53.8%,
+		0.957 58.4%,
+		0.97 63.1%,
+		0.979 68%,
+		0.985 73%,
+		0.99 78.1%,
+		0.993 83.4%,
+		0.995 88.8%,
+		0.997 94.3%,
+		1
+	);
+	--ease-pop: linear(
+		0,
+		0.001 0.5%,
+		0.006 1.5%,
+		0.022 2.8%,
+		0.052 4.4%,
+		0.099 6.4%,
+		0.161 8.5%,
+		0.237 10.9%,
+		0.325 13.5%,
+		0.419 16.3%,
+		0.515 19.3%,
+		0.609 22.4%,
+		0.697 25.8%,
+		0.775 29.3%,
+		0.841 33%,
+		0.896 36.8%,
+		0.938 40.8%,
+		0.97 45%,
+		0.991 49.3%,
+		1.005 53.8%,
+		1.012 58.4%,
+		1.015 63.1%,
+		1.015 68%,
+		1.013 73%,
+		1.011 78.1%,
+		1.008 83.4%,
+		1.005 88.8%,
+		1.003 94.3%,
+		1
+	);
+}

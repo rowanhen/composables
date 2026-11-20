@@ -1,21 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Gallery, Group } from '../_storybook/gallery'
 import { NativeSelect } from './native-select'
-import { HStack, VStack } from '../_internal/stack'
 
 const meta = {
-	title: 'Forms/Native select',
+	title: 'Components/Native select',
 	component: NativeSelect,
 	args: {
 		options: [
 			{ label: 'One', value: '1' },
 			{ label: 'Two', value: '2' },
 		],
-	},
-	parameters: {
-		docs: {
-			description: { component: 'Lightweight native select controls with design-system styling.' },
-		},
 	},
 } satisfies Meta<typeof NativeSelect>
 
@@ -29,10 +23,11 @@ const accountOptions = [
 ]
 
 export const Sizes: Story = {
+	name: 'Native select',
 	render: () => (
 		<Gallery>
 			<Group label="Sizes">
-				<HStack gap={4} align="center" wrap>
+				<div className="flex gap-4 items-center flex-wrap">
 					<NativeSelect
 						defaultValue="personal"
 						options={accountOptions}
@@ -46,15 +41,8 @@ export const Sizes: Story = {
 						aria-label="Compact workspace"
 						className="min-w-48"
 					/>
-				</HStack>
+				</div>
 			</Group>
-		</Gallery>
-	),
-}
-
-export const Placeholder: Story = {
-	render: () => (
-		<Gallery>
 			<Group label="Placeholder">
 				<NativeSelect
 					defaultValue=""
@@ -64,14 +52,6 @@ export const Placeholder: Story = {
 					className="min-w-56"
 				/>
 			</Group>
-		</Gallery>
-	),
-}
-
-export const More: Story = {
-	render: () => (
-		<Gallery>
-			<VStack gap={4} className="max-w-xl"></VStack>
 		</Gallery>
 	),
 }

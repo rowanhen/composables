@@ -23,22 +23,20 @@ export {
 // ── Opinionated components ──────────────────────────────────────────────────
 // These are the recommended, higher-level wrappers that most users should use.
 
-export { WindowFrame, type WindowFrameProps } from './opinionated/window-frame'
-
 export {
 	Accordion,
 	AccordionContent,
+	AccordionHeader,
 	AccordionItem,
 	AccordionTrigger,
 	type AccordionItemData,
 	type AccordionProps,
-	type AccordionVariant,
 } from './opinionated/accordion'
 
 export {
 	AlertDialog,
-	AlertDialogAction,
-	AlertDialogCancel,
+	AlertDialogBackdrop,
+	AlertDialogClose,
 	AlertDialogContent,
 	AlertDialogDescription,
 	AlertDialogTitle,
@@ -48,7 +46,7 @@ export {
 
 export {
 	Alert,
-	AlertAction,
+	AlertClose,
 	AlertDescription,
 	AlertTitle,
 	type AlertVariant,
@@ -57,8 +55,21 @@ export {
 } from './opinionated/alert'
 
 export { AspectRatio } from './opinionated/aspect-ratio'
+export {
+	Attachment,
+	AttachmentAction,
+	AttachmentActions,
+	AttachmentContent,
+	AttachmentDescription,
+	AttachmentGroup,
+	AttachmentMedia,
+	AttachmentProgress,
+	AttachmentRemove,
+	AttachmentTitle,
+	AttachmentTrigger,
+} from './opinionated/attachment'
 
-export { Image, imageVariants, type ImageProps } from './opinionated/image'
+export { Autocomplete, type AutocompleteProps } from './opinionated/autocomplete'
 
 export { Avatar, AvatarFallback, AvatarImage, type AvatarProps } from './opinionated/avatar'
 
@@ -85,7 +96,14 @@ export {
 } from './opinionated/bubble'
 
 export { Button, type ButtonProps } from './opinionated/button'
-export { Calendar, CalendarDayButton } from './opinionated/calendar'
+export {
+	ButtonGroup,
+	ButtonGroupSeparator,
+	ButtonGroupText,
+	type ButtonGroupProps,
+} from './opinionated/button-group'
+
+export { Calendar, CalendarDay } from './opinionated/calendar'
 
 export {
 	Card,
@@ -100,14 +118,22 @@ export {
 
 export {
 	Carousel,
+	type CarouselApi,
 	CarouselContent,
+	CarouselIndicator,
+	CarouselIndicatorGroup,
 	CarouselItem,
 	CarouselNext,
+	CarouselPlayToggle,
 	CarouselPrevious,
+	CarouselProgress,
 	type CarouselProps,
+	CarouselViewport,
+	createCarouselController,
 } from './opinionated/carousel'
 
-export { Checkbox } from './opinionated/checkbox'
+export { Checkbox, type CheckboxProps } from './opinionated/checkbox'
+export { ColorPicker, type ColorPickerProps } from './opinionated/color-picker'
 export { CodeBlock, type CodeBlockProps } from './opinionated/code-block'
 
 export {
@@ -117,67 +143,66 @@ export {
 	type CollapsibleProps,
 } from './opinionated/collapsible'
 
-export {
-	Combobox,
-	ComboboxChip,
-	ComboboxChips,
-	ComboboxChipsInput,
-	ComboboxCollection,
-	ComboboxContent,
-	ComboboxEmpty,
-	ComboboxGroup,
-	ComboboxInput,
-	ComboboxItem,
-	ComboboxLabel,
-	ComboboxList,
-	ComboboxSeparator,
-	ComboboxTrigger,
-	ComboboxValue,
-	type ComboboxOption,
-	type ComboboxProps,
-} from './opinionated/combobox'
+export { Combobox, type ComboboxProps } from './opinionated/combobox'
 
 export {
 	Command,
 	CommandDialog,
 	CommandEmpty,
 	CommandGroup,
+	CommandGroupLabel,
 	CommandInput,
 	CommandItem,
+	CommandItemIcon,
+	CommandItemText,
 	CommandList,
 	CommandSeparator,
 	CommandShortcut,
 } from './opinionated/command'
 
-export { Container, type ContainerProps } from './opinionated/container'
+export {
+	ContextMenu,
+	ContextMenuCheckboxItem,
+	ContextMenuContent,
+	ContextMenuGroup,
+	ContextMenuGroupLabel,
+	ContextMenuItem,
+	ContextMenuItemIcon,
+	ContextMenuItemIndicator,
+	ContextMenuRadioGroup,
+	ContextMenuRadioItem,
+	ContextMenuSeparator,
+	ContextMenuShortcut,
+	ContextMenuSub,
+	ContextMenuSubContent,
+	ContextMenuSubTrigger,
+	ContextMenuTrigger,
+	createContextMenuController,
+	type ContextMenuData,
+	type ContextMenuProps,
+} from './opinionated/context-menu'
 
 export {
-	Dialog,
-	DialogClose,
-	DialogContent,
-	DialogDescription,
-	DialogFooter,
-	DialogHeader,
-	DialogTitle,
-	DialogTrigger,
-	type DialogProps,
-} from './opinionated/dialog'
+	DescriptionList,
+	type DescriptionListEntry,
+	type DescriptionListProps,
+} from './opinionated/description-list'
+
+export { Dialog, DialogClose, type DialogProps } from './opinionated/dialog'
 
 export {
-	DataGrid,
-	DataLabel,
-	DataRow,
-	DataValue,
-	type DataGridProps,
-	type DataLabelProps,
-	type DataRowProps,
-	type DataValueProps,
-} from './opinionated/data-grid'
+	DataTable,
+	DataTableBulkAction,
+	type DataTableColumn,
+	type DataTableProps,
+} from './opinionated/data-table'
 
-export { Divider, type DividerProps } from './opinionated/divider'
+export { DatePicker, type DatePickerProps } from './opinionated/date-picker'
 
 export {
+	Direction,
 	DirectionProvider,
+	DirectionToggle,
 	useDirection,
 	type DirectionProviderProps,
 	type TextDirection,
@@ -203,9 +228,7 @@ export {
 
 export {
 	DropZone,
-	DropZoneFile,
 	type Accept,
-	type DropZoneFileProps,
 	type DropZoneProps,
 	type FileRejection,
 } from './opinionated/dropzone'
@@ -224,15 +247,14 @@ export {
 
 export {
 	Field,
+	FieldControl,
 	FieldDescription,
 	FieldError,
 	FieldLabel,
 	FieldGroup,
 	FieldLegend,
-	FieldSeparator,
 	FieldSet,
 	FieldContent,
-	FieldTitle,
 } from './opinionated/field'
 
 export {
@@ -250,7 +272,7 @@ export {
 	type DateOfBirthValue,
 	type FormDateOfBirthProps,
 } from './opinionated/form-date-of-birth'
-export { FormDropZone, ACCEPT_PRESETS, type FormDropZoneProps } from './opinionated/form-dropzone'
+export { FormDropZone, type FormDropZoneProps } from './opinionated/form-dropzone'
 export { FormInput, type FormInputProps } from './opinionated/form-input'
 export {
 	FormInputGroup,
@@ -273,9 +295,6 @@ export { FormSlider, type FormSliderProps } from './opinionated/form-slider'
 export { FormSwitch, type FormSwitchProps } from './opinionated/form-switch'
 export { FormTextarea, type FormTextareaProps } from './opinionated/form-textarea'
 
-export { Grid, type GridProps } from './opinionated/grid'
-export { GridOverlay, type GridOverlayProps } from './opinionated/grid-overlay'
-
 export {
 	HoverCard,
 	HoverCardContent,
@@ -283,17 +302,18 @@ export {
 	type HoverCardProps,
 } from './opinionated/hover-card'
 
-export { Icon } from './opinionated/icon'
 export { Input } from './opinionated/input'
 
-export { Kbd, KbdGroup, type KbdGroupProps, type KbdProps } from './opinionated/kbd'
+export { Kbd, KbdCombo, type KbdComboProps, type KbdProps } from './opinionated/kbd'
 
 export {
 	InputGroup,
 	InputGroupAddon,
 	InputGroupButton,
+	InputGroupCount,
 	InputGroupInput,
 	InputGroupTextarea,
+	InputGroupText,
 } from './opinionated/input-group'
 
 export {
@@ -308,30 +328,9 @@ export {
 	ItemSeparator,
 	ItemTitle,
 	type ItemProps,
-	type ItemVariants,
 } from './opinionated/item'
 
 export { Label } from './opinionated/label'
-
-export {
-	Section,
-	NewspaperGrid,
-	NewspaperCell,
-	type NewspaperCellProps,
-	type NewspaperGridProps,
-	type SectionProps,
-} from './opinionated/layout'
-
-export { BentoGrid, BentoCell } from './opinionated/layout-bento'
-
-export {
-	List,
-	ListArrowItem,
-	ListBulletItem,
-	type ListItemData,
-	type ListVariant,
-	type ListProps,
-} from './opinionated/list'
 
 export { Marker, MarkerContent, MarkerIcon, type MarkerProps } from './opinionated/marker'
 
@@ -343,6 +342,25 @@ export {
 	MessageGroup,
 	MessageHeader,
 } from './opinionated/message'
+export {
+	MessageScroller,
+	MessageScrollerButton,
+	MessageScrollerContent,
+	MessageScrollerItem,
+	MessageScrollerLabel,
+	MessageScrollerViewport,
+} from './opinionated/message-scroller'
+export {
+	Trace,
+	TraceCollapsible,
+	TraceCollapsibleContent,
+	TraceCollapsibleTrigger,
+	TraceDescription,
+	TraceIcon,
+	TraceLine,
+	TraceTitle,
+	type TraceStatus,
+} from './opinionated/trace'
 
 export {
 	NativeSelect,
@@ -351,6 +369,32 @@ export {
 	type NativeSelectOptionData,
 	type NativeSelectProps,
 } from './opinionated/native-select'
+
+export {
+	NavigationMenu,
+	NavigationMenuContent,
+	NavigationMenuIndicator,
+	NavigationMenuItem,
+	NavigationMenuLink,
+	NavigationMenuLinkIcon,
+	NavigationMenuList,
+	NavigationMenuTrigger,
+	NavigationMenuViewport,
+	createNavigationMenuController,
+	type NavigationMenuItemData,
+	type NavigationMenuProps,
+} from './opinionated/navigation-menu'
+
+export { NumberInput, type NumberInputProps } from './opinionated/number-input'
+
+export {
+	createOTPInputController,
+	OTPInput,
+	OTPInputGroup,
+	type OTPInputProps,
+	OTPInputSeparator,
+	OTPInputSlot,
+} from './opinionated/otp-input'
 
 export {
 	Pagination,
@@ -363,11 +407,12 @@ export {
 	type PaginationProps,
 } from './opinionated/pagination'
 
+export { PasswordInput, type PasswordInputProps } from './opinionated/password-input'
+
 export {
 	Popover,
 	PopoverContent,
 	PopoverDescription,
-	PopoverHeader,
 	PopoverTitle,
 	PopoverTrigger,
 	type PopoverProps,
@@ -384,7 +429,12 @@ export {
 
 export { RadioGroup, RadioGroupItem } from './opinionated/radio-group'
 
-export { ResizablePanelGroup, ResizablePanel, ResizableHandle } from './opinionated/resizable'
+export {
+	Resizable,
+	ResizablePanelGroup,
+	ResizablePanel,
+	ResizableHandle,
+} from './opinionated/resizable'
 
 export { ScrollArea, ScrollBar, type ScrollAreaProps } from './opinionated/scroll-area'
 
@@ -401,7 +451,15 @@ export {
 	type SelectProps,
 } from './opinionated/select'
 
-export { Separator } from './opinionated/separator'
+export {
+	SegmentedControl,
+	SegmentedControlItem,
+	createSegmentedControlController,
+	type SegmentedControlItemData,
+	type SegmentedControlProps,
+} from './opinionated/segmented-control'
+
+export { Separator, SeparatorLabel } from './opinionated/separator'
 
 export {
 	Sheet,
@@ -420,23 +478,16 @@ export {
 	SidebarContent,
 	SidebarFooter,
 	SidebarGroup,
-	SidebarGroupAction,
 	SidebarGroupContent,
 	SidebarGroupLabel,
 	SidebarHeader,
-	SidebarInput,
 	SidebarInset,
+	SidebarLabel,
 	SidebarMenu,
-	SidebarMenuAction,
 	SidebarMenuBadge,
 	SidebarMenuButton,
 	SidebarMenuItem,
-	SidebarMenuSub,
-	SidebarMenuSubButton,
-	SidebarMenuSubItem,
 	SidebarProvider,
-	SidebarRail,
-	SidebarSeparator,
 	SidebarTrigger,
 	useSidebar,
 } from './opinionated/sidebar'
@@ -453,11 +504,25 @@ export {
 } from './opinionated/skeleton'
 
 export { Slider } from './opinionated/slider'
-export { Toaster } from './opinionated/sonner'
-export { Spacer, type SpacerProps } from './opinionated/spacer'
-export { Spinner, spinnerVariants } from './opinionated/spinner'
-export { Stack, type StackProps } from './opinionated/stack'
-export { Switch } from './opinionated/switch'
+export { TimeInput, type TimeInputProps } from './opinionated/time-input'
+
+export {
+	createToaster,
+	toast,
+	Toast,
+	ToastAction,
+	ToastClose,
+	ToastDescription,
+	ToastIcon,
+	ToastRegion,
+	ToastTitle,
+} from './opinionated/toast'
+export { Spinner, type SpinnerSize } from './opinionated/spinner'
+export { Stat, StatGroup, type StatProps } from './opinionated/stat'
+
+export { Stepper, type StepperProps, type StepperStep } from './opinionated/stepper'
+
+export { Switch, type SwitchProps } from './opinionated/switch'
 
 export {
 	Table,
@@ -470,16 +535,9 @@ export {
 	TableRow,
 } from './opinionated/table'
 
-export {
-	Tabs,
-	TabsContent,
-	type TabItem,
-	type TabsProps,
-	type TabsVariant,
-} from './opinionated/tabs'
+export { Tabs, type TabItem, type TabsProps } from './opinionated/tabs'
 
 export { Textarea } from './opinionated/textarea'
-export { ThemeInjector } from './opinionated/theme-injector'
 export { Toggle, type ToggleProps } from './opinionated/toggle'
 export {
 	ToggleGroup,
@@ -488,112 +546,306 @@ export {
 	type ToggleGroupProps,
 } from './opinionated/toggle-group'
 
+export {
+	Toolbar,
+	ToolbarButton,
+	ToolbarGroup,
+	ToolbarInput,
+	ToolbarLink,
+	ToolbarSeparator,
+	ToolbarToggle,
+	ToolbarToggleGroup,
+	createToolbarController,
+	type ToolbarProps,
+} from './opinionated/toolbar'
+
 export { Tooltip, TooltipContent, TooltipTrigger, type TooltipProps } from './opinionated/tooltip'
-
-export { Typography, type TypographyProps, type TypographyVariant } from './opinionated/typography'
-
-// Token config panel (advanced)
-export { TokenConfigPanel } from './opinionated/token-config-panel'
 
 // ── Supplementary exports ───────────────────────────────────────────────────
 // Everything publicly exported by an opinionated module is reachable from the
 // root barrel. (v3 subpath imports exposed whole modules; the root entrypoint
 // must offer the same surface.)
 
+export { AlertDialogFooter, AlertDialogHeader, AlertDialogMedia } from './opinionated/alert-dialog'
+export { DropdownMenuShortcut } from './opinionated/dropdown-menu'
 export {
-	AlertDialogFooter,
-	AlertDialogHeader,
-	AlertDialogMedia,
-	AlertDialogOverlay,
-	AlertDialogPortal,
-} from './opinionated/alert-dialog'
-export { avatarVariants } from './opinionated/avatar'
-export { bubbleReactionsVariants, bubbleVariants } from './opinionated/bubble'
-export { useComboboxAnchor } from './opinionated/combobox'
-export { containerVariants } from './opinionated/container'
-export { DialogOverlay, DialogPortal } from './opinionated/dialog'
-export { dividerVariants } from './opinionated/divider'
-export { DropdownMenuPortal, DropdownMenuShortcut } from './opinionated/dropdown-menu'
-export {
+	ACCEPT_PRESETS,
 	DEFAULT_ACCEPT,
 	DEFAULT_MAX_SIZE,
-	DropZoneArea,
-	DropZoneContent,
-	DropZoneFileList,
-	DropZoneInput,
-	Dropzone,
-	DropzoneContent,
-	DropzoneInput,
-	DropzoneLabel,
 	formatFileSize,
-	getAcceptDescription,
-	getRejectionMessage,
-	useDropZoneContext,
 } from './opinionated/dropzone'
-export { gridVariants } from './opinionated/grid'
-export { iconVariants } from './opinionated/icon'
-export {
-	BentoLeader,
-	BentoQuad,
-	BentoSplit,
-	BentoTriple,
-	CellGrid,
-	CellRow,
-	StatCell,
-} from './opinionated/layout-bento'
-export { FlexSpacer, newspaperGridVariants, sectionVariants } from './opinionated/layout'
-export { markerVariants } from './opinionated/marker'
-export { SelectScrollDownButton, SelectScrollUpButton, SelectSeparator } from './opinionated/select'
-export { spacerVariants } from './opinionated/spacer'
-export { stackVariants } from './opinionated/stack'
-export { typographyVariants } from './opinionated/typography'
+export { SelectSeparator } from './opinionated/select'
 
-// Layered surfaces, document navigation, workflow diagrams, and copy fields.
-export {
-	LayerCard,
-	LayerCardRoot,
-	LayerCardPrimary,
-	LayerCardSecondary,
-	type LayerCardProps,
-	type LayerCardRootProps,
-	type LayerCardSectionProps,
-} from './opinionated/layer-card'
-export {
-	TableOfContents,
-	TableOfContentsRoot,
-	TableOfContentsTitle,
-	TableOfContentsList,
-	TableOfContentsItem,
-	TableOfContentsGroup,
-	type TableOfContentsProps,
-	type TableOfContentsItemData,
-	type TableOfContentsItemProps,
-	type TableOfContentsGroupProps,
-} from './opinionated/table-of-contents'
 export {
 	useTableOfContentsActiveId,
 	type TableOfContentsTrackingOptions,
 } from './hooks/use-table-of-contents-active-id'
+
+// Keyframery registry components with their documented names.
 export {
-	ClipboardText,
-	type ClipboardTextProps,
-	type ClipboardTextSize,
-	type ClipboardTextStatus,
-} from './opinionated/clipboard-text'
+	Chart,
+	ChartCenter,
+	ChartCursor,
+	ChartGrid,
+	ChartLegend,
+	ChartMarks,
+	ChartPlot,
+	ChartTooltip,
+	ChartXAxis,
+	ChartYAxis,
+	ChartContainer,
+} from './opinionated/chart'
+export { DateInput, DateInputSegment, createDateInputController } from './opinionated/date-input'
 export {
-	Flow,
-	FlowRoot,
-	FlowNode,
-	FlowParallel,
-	FlowList,
-	FlowAnchor,
-	type FlowProps,
-	type FlowItem,
-	type FlowStep,
-	type FlowBranch,
-	type FlowRootProps,
-	type FlowNodeProps,
-	type FlowAnchorProps,
-	type FlowAlign,
-	type FlowOrientation,
-} from './opinionated/flow'
+	Drawer,
+	DrawerBackdrop,
+	DrawerClose,
+	DrawerContent,
+	DrawerDescription,
+	DrawerFooter,
+	DrawerGrip,
+	DrawerHandle,
+	DrawerHeader,
+	DrawerOutlet,
+	DrawerShortcut,
+	DrawerTitle,
+	DrawerTrigger,
+	createDrawerController,
+	sheetPhysics,
+} from './opinionated/drawer'
+export {
+	FileInput,
+	FileInputDropzone,
+	FileInputDropzoneIcon,
+	FileInputItem,
+	FileInputItemRemove,
+	FileInputList,
+	FileInputTrigger,
+	createFileInputController,
+	relativePath,
+} from './opinionated/file-input'
+export {
+	Filter,
+	FilterBar,
+	FilterBarReset,
+	FilterClear,
+	FilterContent,
+	FilterEmpty,
+	FilterInput,
+	FilterList,
+	FilterOption,
+	FilterOptionIndicator,
+	FilterSeparator,
+	FilterTrigger,
+	FilterValues,
+	type FilterItem,
+} from './opinionated/filter'
+export {
+	Form,
+	FormControl,
+	FormDescription,
+	FormField,
+	FormItem,
+	FormLabel,
+	FormMessage,
+	FormStatus,
+	FormSubmit,
+	useFieldControl,
+} from './opinionated/form'
+export {
+	createImageCropperController,
+	type ImageCrop,
+	ImageCropper,
+	ImageCropperFlip,
+	ImageCropperGrid,
+	ImageCropperHandle,
+	ImageCropperImage,
+	ImageCropperRotate,
+	ImageCropperSelection,
+	ImageCropperViewport,
+	ImageCropperZoom,
+} from './opinionated/image-cropper'
+export {
+	createListboxController,
+	Listbox,
+	ListboxGroup,
+	ListboxGroupLabel,
+	ListboxItem,
+	ListboxItemIcon,
+	ListboxItemIndicator,
+	ListboxItems,
+	ListboxSeparator,
+} from './opinionated/listbox'
+export {
+	contextMenuMotion,
+	createMenuController,
+	type MenuData,
+	Menu,
+	MenuCheckboxItem,
+	MenuContent,
+	MenuContextTrigger,
+	MenuGroup,
+	MenuGroupLabel,
+	MenuItem,
+	MenuItemIcon,
+	MenuItemIndicator,
+	MenuItems,
+	MenuRadioGroup,
+	MenuRadioItem,
+	MenuSeparator,
+	MenuShortcut,
+	MenuSub,
+	MenuSubContent,
+	MenuSubTrigger,
+	MenuTrigger,
+} from './opinionated/menu'
+export {
+	createMenubarController,
+	MenubarMenu,
+	Menubar,
+	MenubarMenuCheckboxItem,
+	MenubarMenuContent,
+	MenubarMenuContextTrigger,
+	MenubarMenuGroup,
+	MenubarMenuGroupLabel,
+	MenubarMenuItem,
+	MenubarMenuItemIcon,
+	MenubarMenuItemIndicator,
+	MenubarMenuItems,
+	MenubarMenuRadioGroup,
+	MenubarMenuRadioItem,
+	MenubarMenuSeparator,
+	MenubarMenuShortcut,
+	MenubarMenuSub,
+	MenubarMenuSubContent,
+	MenubarMenuSubTrigger,
+	MenubarMenuTrigger,
+} from './opinionated/menubar'
+export {
+	Meter,
+	MeterIndicator,
+	MeterLabel,
+	MeterTrack,
+	MeterValue,
+	type MeterProps,
+} from './opinionated/meter'
+export {
+	createMotionStyle,
+	MotionStyle,
+	motionStyle,
+	type MotionStylePreference,
+	motionStyles,
+	type MotionStyleValue,
+	MotionStyleSwitcher,
+} from './opinionated/motion-style'
+export {
+	Preferences,
+	type PreferencesProps,
+	usePreference,
+	PreferenceSwitcher,
+} from './opinionated/preferences'
+export {
+	Questionnaire,
+	QuestionnaireActions,
+	QuestionnaireChoice,
+	QuestionnaireChoiceDescription,
+	QuestionnaireChoices,
+	QuestionnaireDescription,
+	QuestionnaireError,
+	QuestionnaireInput,
+	QuestionnaireItem,
+	QuestionnaireItems,
+	QuestionnaireNext,
+	QuestionnairePrevious,
+	QuestionnaireProgress,
+	QuestionnaireSkip,
+	QuestionnaireSubmit,
+	QuestionnaireTitle,
+} from './opinionated/questionnaire'
+export { Radio, RadioIndicator, createRadioGroupController } from './opinionated/radio'
+export { Rating, RatingItem, createRatingController } from './opinionated/rating'
+export { Sparkline, SparklinePlot } from './opinionated/sparkline'
+export {
+	Timeline,
+	TimelineConnector,
+	TimelineDescription,
+	TimelineItem,
+	TimelineMarker,
+	TimelineTime,
+	TimelineTitle,
+	createTimelineController,
+	type TimelineProps,
+	type TimelineEvent,
+} from './opinionated/timeline'
+export {
+	createTokenInputController,
+	defaultCodec,
+	fromText,
+	toLabel,
+	TokenInput,
+	TokenInputEditor,
+	TokenInputToken,
+	TokenInputTokenRemove,
+	toText,
+	type TokenInputProps,
+} from './opinionated/token-input'
+export {
+	Tree,
+	TreeGroup,
+	TreeItem,
+	TreeItemCheckbox,
+	TreeItemIndicator,
+	TreeItemLabel,
+	TreeItems,
+	createTreeController,
+	toggleTreeChecked,
+	treeCheckedStates,
+	treeFromPaths,
+	visibleTreeRows,
+} from './opinionated/tree'
+export {
+	createTriggerMenuController,
+	textFieldAdapter,
+	TriggerMenu,
+	TriggerMenuContent,
+	TriggerMenuEmpty,
+	TriggerMenuGroup,
+	TriggerMenuGroupLabel,
+	TriggerMenuHint,
+	TriggerMenuInput,
+	TriggerMenuItem,
+	TriggerMenuItemIcon,
+	TriggerMenuItems,
+	TriggerMenuList,
+	TriggerMenuSeparator,
+	TriggerMenuStatus,
+} from './opinionated/trigger-menu'
+export {
+	createWaterfallController,
+	visibleWaterfallRows,
+	type WaterfallData,
+	Waterfall,
+	WaterfallAxis,
+	WaterfallBar,
+	WaterfallCell,
+	WaterfallColumnHeader,
+	WaterfallHeaderRow,
+	WaterfallIndicator,
+	WaterfallMark,
+	WaterfallRow,
+	WaterfallRowHeader,
+	WaterfallTick,
+} from './opinionated/waterfall'
+
+export {
+	KeyframeryProvider,
+	type MotionStyleName,
+	type Speed,
+} from './components/keyframery/motion'
+
+export {
+	Typography,
+	typographyVariants,
+	type TypographyProps,
+	type TypographyVariant,
+} from './opinionated/typography'

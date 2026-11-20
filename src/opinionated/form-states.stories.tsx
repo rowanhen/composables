@@ -1,7 +1,6 @@
 import * as React from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Gallery, Group } from '../_storybook/gallery'
-import { Grid } from '../_internal/grid'
 import { FormCalendarPopover } from './form-calendar-popover'
 import { FormCheckbox } from './form-checkbox'
 import { FormCombobox } from './form-combobox'
@@ -15,15 +14,7 @@ import { FormSwitch } from './form-switch'
 import { FormTextarea } from './form-textarea'
 
 const meta = {
-	title: 'Forms/Validation states',
-	parameters: {
-		docs: {
-			description: {
-				component:
-					'Every form control with assistive text, an error, and disabled - side by side so the states can be compared across presets.',
-			},
-		},
-	},
+	title: 'Components/Validation states',
 } satisfies Meta
 
 export default meta
@@ -57,14 +48,14 @@ function stateProps(state: State) {
 function Row({ title, render }: { title: string; render: (state: State) => React.ReactNode }) {
 	return (
 		<Group label={title}>
-			<Grid columns={3} gap={6}>
+			<div className="grid grid-cols-3 gap-6">
 				{STATES.map(({ state, title: stateTitle }) => (
 					<div key={state} className="flex min-w-0 flex-col gap-2">
 						<span className="text-muted-foreground text-2xs uppercase">{stateTitle}</span>
 						{render(state)}
 					</div>
 				))}
-			</Grid>
+			</div>
 		</Group>
 	)
 }

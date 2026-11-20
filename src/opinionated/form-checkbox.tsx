@@ -1,8 +1,15 @@
-import type { Checkbox as CheckboxPrimitive } from '@base-ui/react/checkbox'
-import type { VariantProps } from 'class-variance-authority'
-import * as React from 'react'
-import { Checkbox } from '../_internal/checkbox'
-import { Field, FieldContent, FieldDescription, FieldError, FieldLabel } from '../_internal/field'
+import { useId } from 'react'
+import { Checkbox, type CheckboxProps } from './checkbox'
+import {
+	Field,
+	FieldContent,
+	FieldDescription,
+	FieldError,
+	FieldLabel,
+	fieldErrors,
+	type FieldErrors,
+	type FieldProps,
+} from './field'
 
 /**
  * Props for the opinionated FormCheckbox component.
@@ -18,16 +25,13 @@ import { Field, FieldContent, FieldDescription, FieldError, FieldLabel } from '.
  * />
  * ```
  */
-export interface FormCheckboxProps extends Omit<
-	CheckboxPrimitive.Root.Props,
-	'checked' | 'onCheckedChange'
-> {
+export interface FormCheckboxProps extends Omit<CheckboxProps, 'checked' | 'onCheckedChange'> {
 	/** Label text rendered beside the checkbox. */
 	label?: string
 	/** Helper text rendered below the label. */
 	description?: string
 	/** Error message(s). Accepts a string, array, or react-hook-form error array. */
-	error?: string | string[] | Array<{ message?: string } | undefined>
+	error?: FieldErrors
 	/** Controlled checked state. Omit (or use `defaultChecked`) for uncontrolled. */
 	checked?: boolean
 	/** Called when the user toggles the checkbox. */
@@ -37,7 +41,7 @@ export interface FormCheckboxProps extends Omit<
 	/** Marks the field as required. @default false */
 	required?: boolean
 	/** Label/checkbox layout direction. @default 'horizontal' */
-	orientation?: VariantProps<typeof Field>['orientation']
+	orientation?: FieldProps['orientation']
 	className?: string
 	id?: string
 	name?: string
@@ -61,33 +65,26 @@ function FormCheckbox({
 	'aria-labelledby': ariaLabelledBy,
 	...checkboxProps
 }: FormCheckboxProps) {
-	const errorArray = React.useMemo(() => {
-		if (!error) return undefined
-		if (Array.isArray(error)) {
-			return error.map((e) => (typeof e === 'string' ? { message: e } : e))
-		}
-		return [{ message: error }]
-	}, [error])
-
-	const hasError = Boolean(error)
-	const generatedId = React.useId()
+	const errorArray = fieldErrors(error)
+	const hasError = errorArray.length > 0
+	const generatedId = useId()
 	const checkboxId = id || generatedId
 
 	return (
-		<Field orientation={orientation} className={className} data-invalid={hasError}>
+		<Field orientation={orientation} className={className} invalid={hasError} disabled={disabled}>
 			<FieldContent>
 				<div className="flex flex-row items-center gap-2">
 					<Checkbox
 						id={checkboxId}
 						name={name}
 						checked={checked}
-						onCheckedChange={onCheckedChange}
+						onCheckedChange={onCheckedChange && ((value) => onCheckedChange(value === true))}
 						disabled={disabled}
 						required={required}
 						aria-invalid={hasError}
 						aria-required={required}
 						aria-label={ariaLabel}
-						aria-labelledby={ariaLabelledBy || (label ? checkboxId : undefined)}
+						aria-labelledby={ariaLabelledBy}
 						{...checkboxProps}
 					/>
 					{label && (

@@ -1,83 +1,39 @@
-import type * as React from 'react'
+'use client'
+
+import type { ComponentProps, ReactNode } from 'react'
 import {
+	Card as Root,
 	CardAction,
 	CardContent,
 	CardDescription,
 	CardFooter,
 	CardHeader,
-	Card as CardPrimitive,
 	CardTitle,
-} from '../_internal/card'
+} from '../components/keyframery/card'
 
-/**
- * Props for the opinionated Card component.
- *
- * @example
- * ```tsx
- * <Card title="Revenue" description="This month">
- *   <p>$12,400</p>
- * </Card>
- *
- * <Card
- *   title="Settings"
- *   action={<Button size="sm">Edit</Button>}
- *   footer={<Button variant="outline">Cancel</Button>}
- * >
- *   <FormInput label="Name" />
- * </Card>
- * ```
- */
-export interface CardProps extends Omit<
-	React.ComponentProps<typeof CardPrimitive>,
-	'size' | 'children' | 'title'
-> {
-	/** Card heading displayed in the header. */
-	title?: React.ReactNode
-	/** Subtitle text displayed below the title. */
-	description?: React.ReactNode
-	/** Content placed in the top-right of the header (e.g. a button or badge). */
-	action?: React.ReactNode
-	/** Main card body content. */
-	children?: React.ReactNode
-	/** Content rendered in the card footer. */
-	footer?: React.ReactNode
-	/** Size variant affecting padding. @default 'default' */
-	size?: 'default' | 'sm'
+export type CardProps = Omit<ComponentProps<typeof Root>, 'title' | 'children'> & {
+	title?: ReactNode
+	description?: ReactNode
+	action?: ReactNode
+	children?: ReactNode
+	footer?: ReactNode
 }
 
-export const Card = ({
-	title,
-	description,
-	action,
-	children,
-	footer,
-	size = 'default',
-	className,
-	...cardProps
-}: CardProps) => {
-	const hasHeader = title || description || action
-
+export function Card({ title, description, action, children, footer, ...props }: CardProps) {
+	const hasHeader = title != null || description != null || action != null
 	return (
-		<CardPrimitive size={size} className={className} {...cardProps}>
+		<Root {...props}>
 			{hasHeader && (
 				<CardHeader>
-					{title && <CardTitle>{title}</CardTitle>}
-					{description && <CardDescription>{description}</CardDescription>}
-					{action && <CardAction>{action}</CardAction>}
+					{title != null && <CardTitle>{title}</CardTitle>}
+					{description != null && <CardDescription>{description}</CardDescription>}
+					{action != null && <CardAction>{action}</CardAction>}
 				</CardHeader>
 			)}
-			{children && <CardContent>{children}</CardContent>}
-			{footer && <CardFooter>{footer}</CardFooter>}
-		</CardPrimitive>
+			{children != null && <CardContent>{children}</CardContent>}
+			{footer != null && <CardFooter>{footer}</CardFooter>}
+		</Root>
 	)
 }
 
-// Re-export sub-components for advanced usage
-export {
-	CardAction,
-	CardContent,
-	CardDescription,
-	CardFooter,
-	CardHeader,
-	CardTitle,
-} from '../_internal/card'
+export { CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }

@@ -1,68 +1,41 @@
-import type { Popover as PopoverPrimitiveBase } from '@base-ui/react/popover'
-import type * as React from 'react'
+'use client'
 
+import type { ComponentProps, ReactElement, ReactNode } from 'react'
 import {
+	Popover as Root,
 	PopoverContent,
-	PopoverDescription,
-	PopoverHeader,
-	Popover as PopoverPrimitive,
-	PopoverTitle,
 	PopoverTrigger,
-} from '../_internal/popover'
+	PopoverDescription,
+	PopoverTitle,
+} from '../components/keyframery/popover'
 
-export interface PopoverProps extends Omit<PopoverPrimitiveBase.Root.Props, 'children'> {
-	/** Element that triggers the popover */
-	trigger: React.ReactNode
-	/** Content to display in the popover */
-	children: React.ReactNode
-	/** Additional class names for the content */
-	className?: string
-	/** Alignment of the content relative to trigger */
-	align?: 'start' | 'center' | 'end'
-	/** Side to position the content */
-	side?: 'top' | 'right' | 'bottom' | 'left'
-}
+export type PopoverProps = Omit<ComponentProps<typeof Root>, 'children'> &
+	Pick<ComponentProps<typeof PopoverContent>, 'align' | 'side' | 'sideOffset' | 'className'> & {
+		trigger: ReactElement | string
+		children: ReactNode
+	}
 
-/**
- * Opinionated Popover component for floating content panels.
- *
- * @example
- * ```tsx
- * <Popover trigger={<Button variant="outline">Open Popover</Button>}>
- *   <PopoverHeader>
- *     <PopoverTitle>Dimensions</PopoverTitle>
- *     <PopoverDescription>Set the dimensions for the layer.</PopoverDescription>
- *   </PopoverHeader>
- *   <div className="grid gap-2">
- *     <Input placeholder="Width" />
- *     <Input placeholder="Height" />
- *   </div>
- * </Popover>
- *
- * // Simple usage
- * <Popover trigger={<Button>Info</Button>} side="right">
- *   <p>Additional information goes here.</p>
- * </Popover>
- * ```
- */
-function Popover({
+export function Popover({
 	trigger,
 	children,
 	className,
-	align = 'center',
-	side = 'bottom',
-	...popoverProps
+	align,
+	side,
+	sideOffset,
+	...props
 }: PopoverProps) {
 	return (
-		<PopoverPrimitive {...popoverProps}>
-			<PopoverTrigger render={<>{trigger}</>} />
-			<PopoverContent className={className} align={align} side={side}>
+		<Root {...props}>
+			{typeof trigger === 'string' ? (
+				<PopoverTrigger>{trigger}</PopoverTrigger>
+			) : (
+				<PopoverTrigger render={trigger} />
+			)}
+			<PopoverContent className={className} align={align} side={side} sideOffset={sideOffset}>
 				{children}
 			</PopoverContent>
-		</PopoverPrimitive>
+		</Root>
 	)
 }
 
-// Re-export sub-components for advanced usage
-export { PopoverContent, PopoverDescription, PopoverHeader, PopoverTitle, PopoverTrigger }
-export { Popover }
+export { PopoverContent, PopoverTrigger, PopoverDescription, PopoverTitle }

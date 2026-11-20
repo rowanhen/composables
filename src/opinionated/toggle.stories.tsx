@@ -1,27 +1,22 @@
 import { BoldIcon, ItalicIcon, UnderlineIcon } from 'lucide-react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Gallery } from '../_storybook/gallery'
-import { HStack, VStack } from '../_internal/stack'
-import { Toggle } from '../_internal/toggle'
+import { Toggle } from './toggle'
 
 const meta = {
-	title: 'Forms/Toggle',
+	title: 'Components/Toggle',
 	component: Toggle,
-	parameters: {
-		docs: {
-			description: { component: 'Pressed-state buttons and binary controls.' },
-		},
-	},
 } satisfies Meta<typeof Toggle>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Overview: Story = {
+	name: 'Toggle',
 	render: () => (
 		<Gallery>
-			<VStack gap={4}>
-				<HStack gap={2}>
+			<div className="flex flex-col gap-4">
+				<div className="flex gap-2">
 					<Toggle aria-label="Bold">
 						<BoldIcon />
 					</Toggle>
@@ -31,19 +26,19 @@ export const Overview: Story = {
 					<Toggle aria-label="Underline">
 						<UnderlineIcon />
 					</Toggle>
-				</HStack>
-				<HStack gap={2}>
-					<Toggle variant="outline" aria-label="Bold">
+				</div>
+				<div className="flex gap-2">
+					<Toggle size="icon-sm" aria-label="Bold">
 						<BoldIcon />
 					</Toggle>
-					<Toggle variant="outline" aria-label="Italic">
+					<Toggle size="icon-sm" aria-label="Italic">
 						<ItalicIcon />
 					</Toggle>
-					<Toggle variant="outline" aria-label="Underline">
+					<Toggle size="icon-sm" aria-label="Underline">
 						<UnderlineIcon />
 					</Toggle>
-				</HStack>
-			</VStack>
+				</div>
+			</div>
 		</Gallery>
 	),
 }

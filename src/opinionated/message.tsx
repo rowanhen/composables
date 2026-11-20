@@ -5,4 +5,4 @@ export {
 	MessageFooter,
 	MessageGroup,
 	MessageHeader,
-} from '../_internal/message'
+} from '../components/keyframery/message'
