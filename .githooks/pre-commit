@@ -2,7 +2,7 @@
 set -e
 
 echo "Running oxlint..."
-bunx oxlint
+bun run lint
 
 echo "Running oxfmt check..."
 bunx oxfmt --check .

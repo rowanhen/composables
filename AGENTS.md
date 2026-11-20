@@ -36,7 +36,7 @@ The a11y oxlint plugin is intentionally disabled. Do not add broad a11y churn un
 
 ## Storybook
 
-The component gallery uses Storybook with React and Vite. Stories live in `showcase/src/stories/` and reuse the existing demo components. Shared styles, fonts, theme controls, and the toaster are configured in `.storybook/preview.tsx`; aliases and Tailwind are configured in `.storybook/main.ts`. Add stories directly rather than generating routes or maintaining a separate navigation registry.
+The component gallery uses Storybook with React and Vite. Each component has a folder in `src/opinionated/` for its implementation and matching stories. Shared stories and gallery helpers live in `src/_storybook/`. Showcase-only tools and styles live in `showcase/src/`. Shared styles, fonts, theme controls, and the toaster are configured in `.storybook/preview.tsx`; aliases and Tailwind are configured in `.storybook/main.ts`. Add stories directly rather than generating routes or maintaining a separate navigation registry.
 
 The build and deploy workflows call `bun run build:storybook` directly.
 

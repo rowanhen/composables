@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { ColorPicker } from '../../../../src/opinionated/color-picker'
+import { ColorPicker } from '../../../../src/opinionated/color-picker/color-picker'
 import utilities from '../../../../src/styles/tailwind.css?raw'
 import { semanticUtilities } from '../../../../src/styles/theme'
 

@@ -13,6 +13,10 @@ const adapter = read('src/styles/tailwind.css')
 const utilities = semanticUtilities(adapter)
 assert.ok(utilities.length > 0, 'Public semantic utilities must be registered')
 assert.equal(read('dist/tailwind.css'), adapter)
+assert.ok(
+	!styles.includes('.ring-\\(--bg-default\\)'),
+	'Avatar story styles must stay in Storybook',
+)
 
 for (const fragment of [
 	'--kf-speed:',

@@ -4,7 +4,7 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
-const plugin = fileURLToPath(new URL('../src/lint/index.mjs', import.meta.url))
+const plugin = fileURLToPath(new URL('../src/lint/index.ts', import.meta.url))
 const oxlint = fileURLToPath(new URL('../node_modules/oxlint/bin/oxlint', import.meta.url))
 
 function lint(source: string) {

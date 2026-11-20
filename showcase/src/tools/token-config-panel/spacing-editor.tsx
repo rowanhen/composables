@@ -1,9 +1,9 @@
 import React from 'react'
 
-import { Input } from '../../../../src/opinionated/input'
-import { FormInput } from '../../../../src/opinionated/form-input'
-import { FormSlider } from '../../../../src/opinionated/form-slider'
-import { Toggle } from '../../../../src/opinionated/toggle'
+import { Input } from '../../../../src/opinionated/input/input'
+import { FormInput } from '../../../../src/opinionated/form-input/form-input'
+import { FormSlider } from '../../../../src/opinionated/form-slider/form-slider'
+import { Toggle } from '../../../../src/opinionated/toggle/toggle'
 
 import type { DimensionToken, FactorToken, StringToken } from './types'
 import { getResolvedDimension, parseNumericValue } from './helpers'

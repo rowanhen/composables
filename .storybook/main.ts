@@ -6,9 +6,7 @@ import { mergeConfig } from 'vite'
 const resolvePath = (path: string) => fileURLToPath(new URL(path, import.meta.url))
 
 const config: StorybookConfig = {
-	// Library stories live beside their components; the showcase keeps stories
-	// for the composables-only components that still use showcase demos.
-	stories: ['../src/**/*.stories.tsx', '../showcase/src/stories/**/*.stories.tsx'],
+	stories: ['../src/opinionated/**/*.stories.tsx', '../src/_storybook/**/*.stories.tsx'],
 	addons: ['@storybook/addon-a11y', '@storybook/addon-links'],
 	staticDirs: ['./public'],
 	framework: '@storybook/react-vite',

@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { Button } from '../../../../src/opinionated/button'
-import { Textarea } from '../../../../src/opinionated/textarea'
+import { Button } from '../../../../src/opinionated/button/button'
+import { Textarea } from '../../../../src/opinionated/textarea/textarea'
 
 import { colorTokens } from './color-editor'
 import { allDimensionTokens, allStringTokens } from './spacing-editor'

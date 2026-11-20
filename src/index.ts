@@ -31,7 +31,7 @@ export {
 	AccordionTrigger,
 	type AccordionItemData,
 	type AccordionProps,
-} from './opinionated/accordion'
+} from './opinionated/accordion/accordion'
 
 export {
 	AlertDialog,
@@ -42,7 +42,7 @@ export {
 	AlertDialogTitle,
 	AlertDialogTrigger,
 	type AlertDialogProps,
-} from './opinionated/alert-dialog'
+} from './opinionated/alert-dialog/alert-dialog'
 
 export {
 	Alert,
@@ -52,9 +52,9 @@ export {
 	type AlertVariant,
 	type AlertType,
 	type AlertProps,
-} from './opinionated/alert'
+} from './opinionated/alert/alert'
 
-export { AspectRatio } from './opinionated/aspect-ratio'
+export { AspectRatio } from './opinionated/aspect-ratio/aspect-ratio'
 export {
 	Attachment,
 	AttachmentAction,
@@ -67,13 +67,13 @@ export {
 	AttachmentRemove,
 	AttachmentTitle,
 	AttachmentTrigger,
-} from './opinionated/attachment'
+} from './opinionated/attachment/attachment'
 
-export { Autocomplete, type AutocompleteProps } from './opinionated/autocomplete'
+export { Autocomplete, type AutocompleteProps } from './opinionated/autocomplete/autocomplete'
 
-export { Avatar, AvatarFallback, AvatarImage, type AvatarProps } from './opinionated/avatar'
+export { Avatar, AvatarFallback, AvatarImage, type AvatarProps } from './opinionated/avatar/avatar'
 
-export { Badge, type BadgeProps } from './opinionated/badge'
+export { Badge, type BadgeProps } from './opinionated/badge/badge'
 
 export {
 	Breadcrumb,
@@ -85,7 +85,7 @@ export {
 	BreadcrumbSeparator,
 	type BreadcrumbItemData,
 	type BreadcrumbProps,
-} from './opinionated/breadcrumb'
+} from './opinionated/breadcrumb/breadcrumb'
 
 export {
 	Bubble,
@@ -93,17 +93,17 @@ export {
 	BubbleGroup,
 	BubbleReactions,
 	type BubbleProps,
-} from './opinionated/bubble'
+} from './opinionated/bubble/bubble'
 
-export { Button, type ButtonProps } from './opinionated/button'
+export { Button, type ButtonProps } from './opinionated/button/button'
 export {
 	ButtonGroup,
 	ButtonGroupSeparator,
 	ButtonGroupText,
 	type ButtonGroupProps,
-} from './opinionated/button-group'
+} from './opinionated/button-group/button-group'
 
-export { Calendar, CalendarDay } from './opinionated/calendar'
+export { Calendar, CalendarDay } from './opinionated/calendar/calendar'
 
 export {
 	Card,
@@ -114,7 +114,7 @@ export {
 	CardHeader,
 	CardTitle,
 	type CardProps,
-} from './opinionated/card'
+} from './opinionated/card/card'
 
 export {
 	Carousel,
@@ -130,20 +130,20 @@ export {
 	type CarouselProps,
 	CarouselViewport,
 	createCarouselController,
-} from './opinionated/carousel'
+} from './opinionated/carousel/carousel'
 
-export { Checkbox, type CheckboxProps } from './opinionated/checkbox'
-export { ColorPicker, type ColorPickerProps } from './opinionated/color-picker'
-export { CodeBlock, type CodeBlockProps } from './opinionated/code-block'
+export { Checkbox, type CheckboxProps } from './opinionated/checkbox/checkbox'
+export { ColorPicker, type ColorPickerProps } from './opinionated/color-picker/color-picker'
+export { CodeBlock, type CodeBlockProps } from './opinionated/code-block/code-block'
 
 export {
 	Collapsible,
 	CollapsibleContent,
 	CollapsibleTrigger,
 	type CollapsibleProps,
-} from './opinionated/collapsible'
+} from './opinionated/collapsible/collapsible'
 
-export { Combobox, type ComboboxProps } from './opinionated/combobox'
+export { Combobox, type ComboboxProps } from './opinionated/combobox/combobox'
 
 export {
 	Command,
@@ -158,7 +158,7 @@ export {
 	CommandList,
 	CommandSeparator,
 	CommandShortcut,
-} from './opinionated/command'
+} from './opinionated/command/command'
 
 export {
 	ContextMenu,
@@ -180,24 +180,24 @@ export {
 	createContextMenuController,
 	type ContextMenuData,
 	type ContextMenuProps,
-} from './opinionated/context-menu'
+} from './opinionated/context-menu/context-menu'
 
 export {
 	DescriptionList,
 	type DescriptionListEntry,
 	type DescriptionListProps,
-} from './opinionated/description-list'
+} from './opinionated/description-list/description-list'
 
-export { Dialog, DialogClose, type DialogProps } from './opinionated/dialog'
+export { Dialog, DialogClose, type DialogProps } from './opinionated/dialog/dialog'
 
 export {
 	DataTable,
 	DataTableBulkAction,
 	type DataTableColumn,
 	type DataTableProps,
-} from './opinionated/data-table'
+} from './opinionated/data-table/data-table'
 
-export { DatePicker, type DatePickerProps } from './opinionated/date-picker'
+export { DatePicker, type DatePickerProps } from './opinionated/date-picker/date-picker'
 
 export {
 	Direction,
@@ -206,7 +206,7 @@ export {
 	useDirection,
 	type DirectionProviderProps,
 	type TextDirection,
-} from './opinionated/direction'
+} from './opinionated/direction/direction'
 
 export {
 	DropdownMenu,
@@ -224,14 +224,14 @@ export {
 	DropdownMenuTrigger,
 	type DropdownMenuItemData,
 	type DropdownMenuProps,
-} from './opinionated/dropdown-menu'
+} from './opinionated/dropdown-menu/dropdown-menu'
 
 export {
 	DropZone,
 	type Accept,
 	type DropZoneProps,
 	type FileRejection,
-} from './opinionated/dropzone'
+} from './opinionated/dropzone/dropzone'
 
 export {
 	Empty,
@@ -243,7 +243,7 @@ export {
 	EmptyTitle,
 	type EmptyProps,
 	type EmptyTableStateProps,
-} from './opinionated/empty'
+} from './opinionated/empty/empty'
 
 export {
 	Field,
@@ -255,56 +255,63 @@ export {
 	FieldLegend,
 	FieldSet,
 	FieldContent,
-} from './opinionated/field'
+} from './opinionated/field/field'
 
 export {
 	FormCalendarPopover,
 	type FormCalendarPopoverProps,
-} from './opinionated/form-calendar-popover'
-export { FormCheckbox, type FormCheckboxProps } from './opinionated/form-checkbox'
+} from './opinionated/form-calendar-popover/form-calendar-popover'
+export { FormCheckbox, type FormCheckboxProps } from './opinionated/form-checkbox/form-checkbox'
 export {
 	FormCombobox,
 	type FormComboboxOption,
 	type FormComboboxProps,
-} from './opinionated/form-combobox'
+} from './opinionated/form-combobox/form-combobox'
 export {
 	FormDateOfBirth,
 	type DateOfBirthValue,
 	type FormDateOfBirthProps,
-} from './opinionated/form-date-of-birth'
-export { FormDropZone, type FormDropZoneProps } from './opinionated/form-dropzone'
-export { FormInput, type FormInputProps } from './opinionated/form-input'
+} from './opinionated/form-date-of-birth/form-date-of-birth'
+export { FormDropZone, type FormDropZoneProps } from './opinionated/form-dropzone/form-dropzone'
+export { FormInput, type FormInputProps } from './opinionated/form-input/form-input'
 export {
 	FormInputGroup,
 	type FormInputGroupProps,
 	type FormInputGroupInputProps,
-} from './opinionated/form-input-group'
+} from './opinionated/form-input-group/form-input-group'
 export {
 	FormMultiCombobox,
 	type FormMultiComboboxOption,
 	type FormMultiComboboxProps,
-} from './opinionated/form-multi-combobox'
-export { FormMultiDropZone, type FormMultiDropZoneProps } from './opinionated/form-multi-dropzone'
+} from './opinionated/form-multi-combobox/form-multi-combobox'
+export {
+	FormMultiDropZone,
+	type FormMultiDropZoneProps,
+} from './opinionated/form-multi-dropzone/form-multi-dropzone'
 export {
 	FormRadioGroup,
 	type FormRadioGroupOption,
 	type FormRadioGroupProps,
-} from './opinionated/form-radiogroup'
-export { FormSelect, type FormSelectOption, type FormSelectProps } from './opinionated/form-select'
-export { FormSlider, type FormSliderProps } from './opinionated/form-slider'
-export { FormSwitch, type FormSwitchProps } from './opinionated/form-switch'
-export { FormTextarea, type FormTextareaProps } from './opinionated/form-textarea'
+} from './opinionated/form-radiogroup/form-radiogroup'
+export {
+	FormSelect,
+	type FormSelectOption,
+	type FormSelectProps,
+} from './opinionated/form-select/form-select'
+export { FormSlider, type FormSliderProps } from './opinionated/form-slider/form-slider'
+export { FormSwitch, type FormSwitchProps } from './opinionated/form-switch/form-switch'
+export { FormTextarea, type FormTextareaProps } from './opinionated/form-textarea/form-textarea'
 
 export {
 	HoverCard,
 	HoverCardContent,
 	HoverCardTrigger,
 	type HoverCardProps,
-} from './opinionated/hover-card'
+} from './opinionated/hover-card/hover-card'
 
-export { Input } from './opinionated/input'
+export { Input } from './opinionated/input/input'
 
-export { Kbd, KbdCombo, type KbdComboProps, type KbdProps } from './opinionated/kbd'
+export { Kbd, KbdCombo, type KbdComboProps, type KbdProps } from './opinionated/kbd/kbd'
 
 export {
 	InputGroup,
@@ -314,7 +321,7 @@ export {
 	InputGroupInput,
 	InputGroupTextarea,
 	InputGroupText,
-} from './opinionated/input-group'
+} from './opinionated/input-group/input-group'
 
 export {
 	Item,
@@ -328,11 +335,11 @@ export {
 	ItemSeparator,
 	ItemTitle,
 	type ItemProps,
-} from './opinionated/item'
+} from './opinionated/item/item'
 
-export { Label } from './opinionated/label'
+export { Label } from './opinionated/label/label'
 
-export { Marker, MarkerContent, MarkerIcon, type MarkerProps } from './opinionated/marker'
+export { Marker, MarkerContent, MarkerIcon, type MarkerProps } from './opinionated/marker/marker'
 
 export {
 	Message,
@@ -341,7 +348,7 @@ export {
 	MessageFooter,
 	MessageGroup,
 	MessageHeader,
-} from './opinionated/message'
+} from './opinionated/message/message'
 export {
 	MessageScroller,
 	MessageScrollerButton,
@@ -349,7 +356,7 @@ export {
 	MessageScrollerItem,
 	MessageScrollerLabel,
 	MessageScrollerViewport,
-} from './opinionated/message-scroller'
+} from './opinionated/message-scroller/message-scroller'
 export {
 	Trace,
 	TraceCollapsible,
@@ -360,7 +367,7 @@ export {
 	TraceLine,
 	TraceTitle,
 	type TraceStatus,
-} from './opinionated/trace'
+} from './opinionated/trace/trace'
 
 export {
 	NativeSelect,
@@ -368,7 +375,7 @@ export {
 	NativeSelectOption,
 	type NativeSelectOptionData,
 	type NativeSelectProps,
-} from './opinionated/native-select'
+} from './opinionated/native-select/native-select'
 
 export {
 	NavigationMenu,
@@ -383,9 +390,9 @@ export {
 	createNavigationMenuController,
 	type NavigationMenuItemData,
 	type NavigationMenuProps,
-} from './opinionated/navigation-menu'
+} from './opinionated/navigation-menu/navigation-menu'
 
-export { NumberInput, type NumberInputProps } from './opinionated/number-input'
+export { NumberInput, type NumberInputProps } from './opinionated/number-input/number-input'
 
 export {
 	createOTPInputController,
@@ -394,7 +401,7 @@ export {
 	type OTPInputProps,
 	OTPInputSeparator,
 	OTPInputSlot,
-} from './opinionated/otp-input'
+} from './opinionated/otp-input/otp-input'
 
 export {
 	Pagination,
@@ -405,9 +412,9 @@ export {
 	PaginationNext,
 	PaginationPrevious,
 	type PaginationProps,
-} from './opinionated/pagination'
+} from './opinionated/pagination/pagination'
 
-export { PasswordInput, type PasswordInputProps } from './opinionated/password-input'
+export { PasswordInput, type PasswordInputProps } from './opinionated/password-input/password-input'
 
 export {
 	Popover,
@@ -416,7 +423,7 @@ export {
 	PopoverTitle,
 	PopoverTrigger,
 	type PopoverProps,
-} from './opinionated/popover'
+} from './opinionated/popover/popover'
 
 export {
 	Progress,
@@ -425,18 +432,18 @@ export {
 	ProgressTrack,
 	ProgressValue,
 	type ProgressProps,
-} from './opinionated/progress'
+} from './opinionated/progress/progress'
 
-export { RadioGroup, RadioGroupItem } from './opinionated/radio-group'
+export { RadioGroup, RadioGroupItem } from './opinionated/radio-group/radio-group'
 
 export {
 	Resizable,
 	ResizablePanelGroup,
 	ResizablePanel,
 	ResizableHandle,
-} from './opinionated/resizable'
+} from './opinionated/resizable/resizable'
 
-export { ScrollArea, ScrollBar, type ScrollAreaProps } from './opinionated/scroll-area'
+export { ScrollArea, ScrollBar, type ScrollAreaProps } from './opinionated/scroll-area/scroll-area'
 
 export {
 	Select,
@@ -449,7 +456,7 @@ export {
 	SelectValue,
 	type SelectOption,
 	type SelectProps,
-} from './opinionated/select'
+} from './opinionated/select/select'
 
 export {
 	SegmentedControl,
@@ -457,9 +464,9 @@ export {
 	createSegmentedControlController,
 	type SegmentedControlItemData,
 	type SegmentedControlProps,
-} from './opinionated/segmented-control'
+} from './opinionated/segmented-control/segmented-control'
 
-export { Separator, SeparatorLabel } from './opinionated/separator'
+export { Separator, SeparatorLabel } from './opinionated/separator/separator'
 
 export {
 	Sheet,
@@ -471,7 +478,7 @@ export {
 	SheetTitle,
 	SheetTrigger,
 	type SheetProps,
-} from './opinionated/sheet'
+} from './opinionated/sheet/sheet'
 
 export {
 	Sidebar,
@@ -490,7 +497,7 @@ export {
 	SidebarProvider,
 	SidebarTrigger,
 	useSidebar,
-} from './opinionated/sidebar'
+} from './opinionated/sidebar/sidebar'
 
 export {
 	Skeleton,
@@ -501,10 +508,10 @@ export {
 	SkeletonCard,
 	SkeletonTableRow,
 	type SkeletonProps,
-} from './opinionated/skeleton'
+} from './opinionated/skeleton/skeleton'
 
-export { Slider } from './opinionated/slider'
-export { TimeInput, type TimeInputProps } from './opinionated/time-input'
+export { Slider } from './opinionated/slider/slider'
+export { TimeInput, type TimeInputProps } from './opinionated/time-input/time-input'
 
 export {
 	createToaster,
@@ -516,13 +523,13 @@ export {
 	ToastIcon,
 	ToastRegion,
 	ToastTitle,
-} from './opinionated/toast'
-export { Spinner, type SpinnerSize } from './opinionated/spinner'
-export { Stat, StatGroup, type StatProps } from './opinionated/stat'
+} from './opinionated/toast/toast'
+export { Spinner, type SpinnerSize } from './opinionated/spinner/spinner'
+export { Stat, StatGroup, type StatProps } from './opinionated/stat/stat'
 
-export { Stepper, type StepperProps, type StepperStep } from './opinionated/stepper'
+export { Stepper, type StepperProps, type StepperStep } from './opinionated/stepper/stepper'
 
-export { Switch, type SwitchProps } from './opinionated/switch'
+export { Switch, type SwitchProps } from './opinionated/switch/switch'
 
 export {
 	Table,
@@ -533,18 +540,18 @@ export {
 	TableHead,
 	TableHeader,
 	TableRow,
-} from './opinionated/table'
+} from './opinionated/table/table'
 
-export { Tabs, type TabItem, type TabsProps } from './opinionated/tabs'
+export { Tabs, type TabItem, type TabsProps } from './opinionated/tabs/tabs'
 
-export { Textarea } from './opinionated/textarea'
-export { Toggle, type ToggleProps } from './opinionated/toggle'
+export { Textarea } from './opinionated/textarea/textarea'
+export { Toggle, type ToggleProps } from './opinionated/toggle/toggle'
 export {
 	ToggleGroup,
 	ToggleGroupItem,
 	type ToggleGroupOption,
 	type ToggleGroupProps,
-} from './opinionated/toggle-group'
+} from './opinionated/toggle-group/toggle-group'
 
 export {
 	Toolbar,
@@ -557,24 +564,33 @@ export {
 	ToolbarToggleGroup,
 	createToolbarController,
 	type ToolbarProps,
-} from './opinionated/toolbar'
+} from './opinionated/toolbar/toolbar'
 
-export { Tooltip, TooltipContent, TooltipTrigger, type TooltipProps } from './opinionated/tooltip'
+export {
+	Tooltip,
+	TooltipContent,
+	TooltipTrigger,
+	type TooltipProps,
+} from './opinionated/tooltip/tooltip'
 
 // ── Supplementary exports ───────────────────────────────────────────────────
 // Everything publicly exported by an opinionated module is reachable from the
 // root barrel. (v3 subpath imports exposed whole modules; the root entrypoint
 // must offer the same surface.)
 
-export { AlertDialogFooter, AlertDialogHeader, AlertDialogMedia } from './opinionated/alert-dialog'
-export { DropdownMenuShortcut } from './opinionated/dropdown-menu'
+export {
+	AlertDialogFooter,
+	AlertDialogHeader,
+	AlertDialogMedia,
+} from './opinionated/alert-dialog/alert-dialog'
+export { DropdownMenuShortcut } from './opinionated/dropdown-menu/dropdown-menu'
 export {
 	ACCEPT_PRESETS,
 	DEFAULT_ACCEPT,
 	DEFAULT_MAX_SIZE,
 	formatFileSize,
-} from './opinionated/dropzone'
-export { SelectSeparator } from './opinionated/select'
+} from './opinionated/dropzone/dropzone'
+export { SelectSeparator } from './opinionated/select/select'
 
 export {
 	useTableOfContentsActiveId,
@@ -594,8 +610,12 @@ export {
 	ChartXAxis,
 	ChartYAxis,
 	ChartContainer,
-} from './opinionated/chart'
-export { DateInput, DateInputSegment, createDateInputController } from './opinionated/date-input'
+} from './opinionated/chart/chart'
+export {
+	DateInput,
+	DateInputSegment,
+	createDateInputController,
+} from './opinionated/date-input/date-input'
 export {
 	Drawer,
 	DrawerBackdrop,
@@ -612,7 +632,7 @@ export {
 	DrawerTrigger,
 	createDrawerController,
 	sheetPhysics,
-} from './opinionated/drawer'
+} from './opinionated/drawer/drawer'
 export {
 	FileInput,
 	FileInputDropzone,
@@ -623,7 +643,7 @@ export {
 	FileInputTrigger,
 	createFileInputController,
 	relativePath,
-} from './opinionated/file-input'
+} from './opinionated/file-input/file-input'
 export {
 	Filter,
 	FilterBar,
@@ -639,7 +659,7 @@ export {
 	FilterTrigger,
 	FilterValues,
 	type FilterItem,
-} from './opinionated/filter'
+} from './opinionated/filter/filter'
 export {
 	Form,
 	FormControl,
@@ -651,7 +671,7 @@ export {
 	FormStatus,
 	FormSubmit,
 	useFieldControl,
-} from './opinionated/form'
+} from './opinionated/form/form'
 export {
 	createImageCropperController,
 	type ImageCrop,
@@ -664,7 +684,7 @@ export {
 	ImageCropperSelection,
 	ImageCropperViewport,
 	ImageCropperZoom,
-} from './opinionated/image-cropper'
+} from './opinionated/image-cropper/image-cropper'
 export {
 	createListboxController,
 	Listbox,
@@ -675,7 +695,7 @@ export {
 	ListboxItemIndicator,
 	ListboxItems,
 	ListboxSeparator,
-} from './opinionated/listbox'
+} from './opinionated/listbox/listbox'
 export {
 	contextMenuMotion,
 	createMenuController,
@@ -698,7 +718,7 @@ export {
 	MenuSubContent,
 	MenuSubTrigger,
 	MenuTrigger,
-} from './opinionated/menu'
+} from './opinionated/menu/menu'
 export {
 	createMenubarController,
 	MenubarMenu,
@@ -720,7 +740,7 @@ export {
 	MenubarMenuSubContent,
 	MenubarMenuSubTrigger,
 	MenubarMenuTrigger,
-} from './opinionated/menubar'
+} from './opinionated/menubar/menubar'
 export {
 	Meter,
 	MeterIndicator,
@@ -728,7 +748,7 @@ export {
 	MeterTrack,
 	MeterValue,
 	type MeterProps,
-} from './opinionated/meter'
+} from './opinionated/meter/meter'
 export {
 	createMotionStyle,
 	MotionStyle,
@@ -737,13 +757,13 @@ export {
 	motionStyles,
 	type MotionStyleValue,
 	MotionStyleSwitcher,
-} from './opinionated/motion-style'
+} from './opinionated/motion-style/motion-style'
 export {
 	Preferences,
 	type PreferencesProps,
 	usePreference,
 	PreferenceSwitcher,
-} from './opinionated/preferences'
+} from './opinionated/preferences/preferences'
 export {
 	Questionnaire,
 	QuestionnaireActions,
@@ -761,10 +781,10 @@ export {
 	QuestionnaireSkip,
 	QuestionnaireSubmit,
 	QuestionnaireTitle,
-} from './opinionated/questionnaire'
-export { Radio, RadioIndicator, createRadioGroupController } from './opinionated/radio'
-export { Rating, RatingItem, createRatingController } from './opinionated/rating'
-export { Sparkline, SparklinePlot } from './opinionated/sparkline'
+} from './opinionated/questionnaire/questionnaire'
+export { Radio, RadioIndicator, createRadioGroupController } from './opinionated/radio/radio'
+export { Rating, RatingItem, createRatingController } from './opinionated/rating/rating'
+export { Sparkline, SparklinePlot } from './opinionated/sparkline/sparkline'
 export {
 	Timeline,
 	TimelineConnector,
@@ -776,7 +796,7 @@ export {
 	createTimelineController,
 	type TimelineProps,
 	type TimelineEvent,
-} from './opinionated/timeline'
+} from './opinionated/timeline/timeline'
 export {
 	createTokenInputController,
 	defaultCodec,
@@ -788,7 +808,7 @@ export {
 	TokenInputTokenRemove,
 	toText,
 	type TokenInputProps,
-} from './opinionated/token-input'
+} from './opinionated/token-input/token-input'
 export {
 	Tree,
 	TreeGroup,
@@ -802,7 +822,7 @@ export {
 	treeCheckedStates,
 	treeFromPaths,
 	visibleTreeRows,
-} from './opinionated/tree'
+} from './opinionated/tree/tree'
 export {
 	createTriggerMenuController,
 	textFieldAdapter,
@@ -819,7 +839,7 @@ export {
 	TriggerMenuList,
 	TriggerMenuSeparator,
 	TriggerMenuStatus,
-} from './opinionated/trigger-menu'
+} from './opinionated/trigger-menu/trigger-menu'
 export {
 	createWaterfallController,
 	visibleWaterfallRows,
@@ -835,7 +855,7 @@ export {
 	WaterfallRow,
 	WaterfallRowHeader,
 	WaterfallTick,
-} from './opinionated/waterfall'
+} from './opinionated/waterfall/waterfall'
 
 export {
 	KeyframeryProvider,
@@ -848,4 +868,4 @@ export {
 	typographyVariants,
 	type TypographyProps,
 	type TypographyVariant,
-} from './opinionated/typography'
+} from './opinionated/typography/typography'

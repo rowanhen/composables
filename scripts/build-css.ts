@@ -55,13 +55,18 @@ function publishFileAtomically(source: string, destination: string) {
 try {
 	// The unique directory is a direct child of the repo, so package imports
 	// still resolve through the repo's node_modules and source paths stay simple.
-	const publicClasses = semanticUtilities(readFileSync(TAILWIND_ADAPTER_SRC, 'utf8'))
-		.map(({ name }) => name)
-		.join(' ')
-	const inputCSS = `@import 'tailwindcss';
+	const semanticClasses = semanticUtilities(readFileSync(TAILWIND_ADAPTER_SRC, 'utf8')).map(
+		({ name }) => name,
+	)
+	// Keep the standalone utilities covered by the downstream CSS check.
+	const publicClasses = ['bg-primary', 'motion-overlay', ...semanticClasses].join(' ')
+	const inputCSS = `@import 'tailwindcss' source(none);
 @import 'tw-animate-css';
 @import '../src/styles/composable.css';
 @source "../src/**/*.{ts,tsx}";
+@source not "../src/**/*.stories.tsx";
+@source not "../src/_storybook";
+@source not "../src/lint";
 @source inline("${publicClasses}");
 `
 	writeFileSync(inputFile, inputCSS)

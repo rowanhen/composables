@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { Button } from '../../../../src/opinionated/button'
-import { ScrollArea } from '../../../../src/opinionated/scroll-area'
-import { Separator } from '../../../../src/opinionated/separator'
+import { Button } from '../../../../src/opinionated/button/button'
+import { ScrollArea } from '../../../../src/opinionated/scroll-area/scroll-area'
+import { Separator } from '../../../../src/opinionated/separator/separator'
 import {
 	Drawer,
 	DrawerBackdrop,
@@ -12,7 +12,7 @@ import {
 	DrawerTitle,
 	DrawerTrigger,
 } from '../../../../src/components/keyframery/drawer'
-import { Switch } from '../../../../src/opinionated/switch'
+import { Switch } from '../../../../src/opinionated/switch/switch'
 import {
 	Tabs,
 	TabsPanel,

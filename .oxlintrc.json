@@ -8,15 +8,25 @@
 	"jsPlugins": [
 		{
 			"name": "composables",
-			"specifier": "./src/lint/index.mjs"
+			"specifier": "./src/lint/index.ts"
 		}
 	],
 	"overrides": [
 		{
-			"files": ["showcase/src/**/*.{js,jsx,ts,tsx}"],
+			"files": [
+				"showcase/src/**/*.{ts,tsx}",
+				"src/opinionated/**/*.stories.tsx",
+				"src/_storybook/**/*.stories.tsx"
+			],
 			"rules": {
 				"composables/use-opinionated-components": "error",
 				"composables/use-semantic-tokens": "error"
+			}
+		},
+		{
+			"files": ["src/opinionated/**/{avatar,card,item,progress}.stories.tsx"],
+			"rules": {
+				"composables/use-opinionated-components": "off"
 			}
 		},
 		{
